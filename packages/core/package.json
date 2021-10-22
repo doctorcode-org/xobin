@@ -1,6 +1,6 @@
 {
   "name": "@xobin/core",
-  "version": "1.0.0-preview1",
+  "version": "1.0.0",
   "description": "The package contains shared classes, types, functions and utils.",
   "author": "DoctorCode Team",
   "license": "MIT",
