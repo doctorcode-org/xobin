@@ -1,0 +1,31 @@
+{
+  "name": "@xobin/core",
+  "version": "1.0.0",
+  "description": "The package contains shared classes, types, functions and utils.",
+  "author": "DoctorCode Team",
+  "license": "MIT",
+  "main": "dist/main.js",
+  "module": "dist/module.js",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "tests"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doctorcode-org/xobin.git",
+    "directory": "packages/core"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/doctorcode-org/xobin/issues"
+  },
+  "dependencies": {
+    "tslib": "^2.3.1"
+  }
+}
