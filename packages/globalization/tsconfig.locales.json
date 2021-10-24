@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist/locales",
+    "rootDir": "./locales",
+    "target": "es5",
+    "sourceMap": false
+  }
+}

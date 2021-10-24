@@ -1,0 +1,32 @@
+{
+  "name": "@xobin/globalization",
+  "version": "1.0.0",
+  "description": "The package contains classes that define culture-related information, including language, country/region, calendars in use, format patterns for dates, currency, and numbers, and sort order for strings. These classes are useful for writing globalized (internationalized) applications.",
+  "author": "DoctorCode Team",
+  "license": "MIT",
+  "main": "dist/main.js",
+  "module": "dist/module.js",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "tests"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doctorcode-org/xobin.git",
+    "directory": "packages/globalization"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/doctorcode-org/xobin/issues"
+  },
+  "dependencies": {
+    "tslib": "^2.3.1",
+    "@xobin/core": "^1.0.0"
+  }
+}

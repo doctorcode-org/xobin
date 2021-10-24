@@ -71,23 +71,10 @@ class TopologicalSort<TVertex> {
     }
 }
 
-//export function syncPackagesVersion(done: TaskFunction) {
-//    const basePackage = JSON.parse(fs.readFileSync("./lerna.json", { encoding: 'utf-8' }));
-//    const packages = glob.sync("./packages/**/package.json");
-
-//    packages.forEach(path => {
-//        const data = JSON.parse(fs.readFileSync(path, { encoding: 'utf-8' }));
-//        data['version'] = basePackage['version'];
-//        fs.writeFileSync(path, JSON.stringify(data, null, 4));
-//    });
-
-//    done();
-//}
-
-const AZIN_MODULE_RX = /^@xobin\//;
+const XOBIN_MODULE_RX = /^@xobin\//;
 
 export async function build() {
-    console.log(`-------------- build packages started at: ${process.cwd()} ------------------------------------------`);
+    console.log(`-------------- build packages started at: ${process.cwd()} ---------------------`);
     const packages = await getPackages();
     console.log(`-------------- ${packages.length} packages found -------------------------------`);
 
@@ -127,8 +114,8 @@ async function buildEntry(packageInfo: PackageInfo, isModule: boolean, compress:
         input: `${packageInfo.dir}/src/index.ts`,
         plugins: plugins,
         external: (name) => {
-            AZIN_MODULE_RX.lastIndex = 0;
-            return AZIN_MODULE_RX.test(name);
+            XOBIN_MODULE_RX.lastIndex = 0;
+            return XOBIN_MODULE_RX.test(name);
         }
     });
 
@@ -151,48 +138,64 @@ async function buildEntry(packageInfo: PackageInfo, isModule: boolean, compress:
     });
 }
 
+export function buildLocalesSource(done: TaskFunction): void {
+    const cultures = JSON.parse(fs.readFileSync('./data/cultures.json', { encoding: 'utf-8' }));
+    Object.keys(cultures)
+        .forEach(cultureName => {
+            if (!cultureName) {
+                return;
+            }
+
+            const cultureData = cultures[cultureName];
+            let content = `import { CultureData, ${cultureData.calendar} } from '@xobin/globalization';\r\n`;
+            content += `export const cultureData: CultureData = ${serilize(cultureData, 0)};`;
+            fs.writeFileSync(`./packages/globalization/locales/${cultureName}.ts`, content, { encoding: 'utf-8' });
+        });
+
+    done();
+
+    function serilize(value: any, indent: number): string {
+        if (Array.isArray(value)) {
+            return `[${value.map(item => serilize(item, 0)).join(', ')}]`;
+        }
+        else if (typeof value == 'object') {
+            return '{\r\n' +
+                `${Object.keys(value).map(prop => {
+                    const propertyValue = value[prop];
+                    let content = indention(indent + 4) + prop + ': ';
+                    if (prop == 'calendar') {
+                        content += `new ${propertyValue}()`;
+                    }
+                    else {
+                        content += serilize(propertyValue, indent + 4);
+                    }
+                    return content;
+                }).join(', \r\n')}` +
+                '\r\n' + indention(indent) + '}';
+        }
+        else {
+            return `${JSON.stringify(value)}`;
+        }
+    }
+
+    function indention(count: number): string {
+        let content = '';
+        for (var i = 0; i < count; i++) {
+            content += ' ';
+        }
+        return content;
+    }
+}
+
 export async function buildLocales(): Promise<void> {
     const files = glob.sync('./packages/globalization/locales/*.ts');
-
     for (let file of files) {
-        const fileName = path.basename(file).split('.').slice(0, -1).join('.');
-        const moduleName = `@xobin/globalization/locales/${fileName}`;
-
-        console.log(`Start build module: ${moduleName}`);
-
-        const bundle = await rollup({
-            input: file,
-            plugins: [
-                typescript({
-                    tsconfig: `./packages/globalization/tsconfig.locales.json`,
-                    include: [file]
-                })
-            ],
-            external: (id) => {
-                AZIN_MODULE_RX.lastIndex = 0;
-                return AZIN_MODULE_RX.test(id);
-            }
-        });
-
-        await bundle.write({
-            format: 'umd',
-            sourcemap: false,
-            amd: { id: moduleName },
-            name: globalXobinName(moduleName),
-            //banner: packageInfo.banner,
-            dir: `./packages/globalization/dist/locales`,
-            globals: (name) => {
-                if (name.startsWith('@xobin')) {
-                    return globalXobinName(name);
-                }
-
-                //TODO: Read from xobin.config.json
-                return name;
-            }
-        });
-
-        console.log(`Complete build module: ${moduleName}`);
+        await buildLocaleModule(file);
     }
+    //const tasks = glob.sync('./packages/globalization/locales/*.ts')
+    //    .map(file => buildLocaleModule(file));
+
+    //await Promise.all(tasks);
 }
 
 export async function test(done: TaskFunction) {
@@ -227,8 +230,8 @@ export async function test(done: TaskFunction) {
                 })
             ],
             external: (name) => {
-                AZIN_MODULE_RX.lastIndex = 0;
-                return AZIN_MODULE_RX.test(name);
+                XOBIN_MODULE_RX.lastIndex = 0;
+                return XOBIN_MODULE_RX.test(name);
             },
             output: {
                 format: 'umd',
@@ -313,7 +316,7 @@ async function getPackages(): Promise<PackageInfo[]> {
                     topologicalSort.addVertex(
                         pack.name,
                         pack,
-                        dependencies.filter(key => AZIN_MODULE_RX.test(key))
+                        dependencies.filter(key => XOBIN_MODULE_RX.test(key))
                     );
                 });
 
@@ -321,6 +324,44 @@ async function getPackages(): Promise<PackageInfo[]> {
             }
         });
     });
+}
+
+async function buildLocaleModule(file: string): Promise<void> {
+    const fileName = path.basename(file).split('.').slice(0, -1).join('.');
+    const moduleName = `@xobin/globalization/locales/${fileName}`;
+
+    console.log(`Start build module: ${moduleName}`);
+
+    const bundle = await rollup({
+        input: file,
+        cache: false,
+        plugins: [
+            typescript({
+                tsconfig: `./packages/globalization/tsconfig.locales.json`,
+                include: [file]
+            })
+        ],
+        external: (id) => {
+            return true;
+        }
+    });
+
+    await bundle.write({
+        format: 'umd',
+        sourcemap: false,
+        amd: { id: moduleName },
+        name: globalXobinName(moduleName),
+        //banner: packageInfo.banner,
+        dir: `./packages/globalization/dist/locales`,
+        globals: (name) => {
+            if (name.startsWith('@xobin')) {
+                return globalXobinName(name);
+            }
+            return name;
+        }
+    });
+
+    console.log(`Complete build module: ${moduleName}`);
 }
 
 function buildBanner(pkg: any): string {
@@ -336,7 +377,7 @@ function buildBanner(pkg: any): string {
 
 function globalXobinName(name: string): string {
     return name
-        .replace('@xobin', 'br')
+        .replace('@xobin', 'xobin')
         .replace(/\\/g, '.')
         .replace(/\//g, '.')
         .replace(/\-/g, '_');

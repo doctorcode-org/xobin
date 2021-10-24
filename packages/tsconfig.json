@@ -8,12 +8,14 @@
     // "noLib": true,                                  
 
     /* Modules */
-    "module": "commonjs",
+    "module": "CommonJS",
     "rootDir": "./",
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
-      "@xobin/core": [ "./core/dist" ]
+      "@xobin/core": [ "./core/dist" ],
+      "@xobin/globalization": [ "./globalization/dist" ],
+      "@xobin/globalization/*": [ "./globalization/dist/*" ]
     },
     // "allowUmdGlobalAccess": true,                   
     // "noResolve": true,                              
