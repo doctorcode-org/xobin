@@ -112,6 +112,42 @@ Format              Description                             Real format         
 
 */
 
+//------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------
+
+const allStandardFormats: string[] = [
+    'd', 'D', 'f', 'F', 'g', 'G',
+    'm', 'M', 'o', 'O', 'r', 'R',
+    's', 't', 'T', 'u', 'U', 'y', 'Y',
+];
+
+const RoundtripFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK";
+const RoundtripDateTimeUnfixed = "yyyy'-'MM'-'ddTHH':'mm':'ss zzz";
+
+const DEFAULT_ALL_DATETIMES_SIZE = 132;
+
+const InvariantFormatInfo = CultureInfo.invariantCulture.dateTimeFormat;
+const InvariantAbbreviatedMonthNames = InvariantFormatInfo.abbreviatedMonthNames;
+const InvariantAbbreviatedDayNames = InvariantFormatInfo.abbreviatedDayNames;
+const Gmt = "GMT";
+
+const fixedNumberFormats = [
+    "0",
+    "00",
+    "000",
+    "0000",
+    "00000",
+    "000000",
+    "0000000",
+];
+
+function FormatDigits(outputBuffer:string) {
+
+}
+
+//------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------
+
 const RoundtripFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK";
 //const RoundtripDateTimeUnfixed = "yyyy'-'MM'-'ddTHH':'mm':'ss zzz";
 const DATE_FORMAT_RX = /(y{5,}|yyyy|yyy|yy|y|M{4,}|MMM|MM|M|d{4,}|ddd|dd|d|h{2,}|h|H{2,}|H|m{2,}|m|s{2,}|s|fffffff|ffffff|fffff|ffff|fff|ff|f|FFFFFFF|FFFFFF|FFFFF|FFFF|FFF|FF|F|t{2,}|t|z{3,}|zz|z|K|g|:|\/)/;
