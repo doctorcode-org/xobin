@@ -5,8 +5,7 @@
   "homepage": "https://www.xobinjs.com",
   "bugs": "",
   "engines": {
-    "node": ">=10.9.0 <=14.8.0",
-    "yarn": ">=1.22.4 <2"
+    "node": ">=20"
   },
   "author": "DoctorCode Team",
   "license": "MIT",
@@ -15,7 +14,9 @@
     "url": "https://github.com/doctorcode-org/xobin.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build --workspace @xobin/core && npm run build --workspace @xobin/globalization",
+    "test": "npm run build && npm run test:types && node --test tests/package/*.test.mjs",
+    "test:types": "tsc --project tests/package/tsconfig.json"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",
@@ -27,6 +28,7 @@
     "@types/karma": "^6.3.1",
     "@types/rollup-plugin-node-builtins": "^2.1.2",
     "@types/rollup-plugin-node-globals": "^1.4.1",
+    "esbuild": "^0.28.2",
     "gulp": "^4.0.2",
     "jasmine-core": "^3.10.0",
     "karma": "^6.3.5",
@@ -36,14 +38,14 @@
     "karma-rollup-plugin": "^0.2.4",
     "karma-rollup-preprocessor": "^7.0.7",
     "karma-spec-reporter": "0.0.32",
-    "karma-typescript": "^5.5.2",
     "lerna": "^4.0.0",
     "rollup": "^2.58.0",
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-globals": "^1.4.0",
     "rollup-plugin-terser": "^7.0.2",
     "ts-node": "^10.3.0",
-    "typescript": "^4.4.4",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
     "rollup-plugin-typescript2": "^0.30.0"
   },
   "workspaces": [

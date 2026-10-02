@@ -4,9 +4,67 @@
   "description": "The package contains classes that define culture-related information, including language, country/region, calendars in use, format patterns for dates, currency, and numbers, and sort order for strings. These classes are useful for writing globalized (internationalized) applications.",
   "author": "DoctorCode Team",
   "license": "MIT",
-  "main": "dist/main.js",
-  "module": "dist/module.js",
-  "typings": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./time-span": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/time_span.mjs",
+      "require": "./dist/index.js"
+    },
+    "./date-time": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/date_time.mjs",
+      "require": "./dist/index.js"
+    },
+    "./calendar": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/calendar.mjs",
+      "require": "./dist/index.js"
+    },
+    "./gregorian-calendar": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/gregorian_calendar.mjs",
+      "require": "./dist/index.js"
+    },
+    "./persian-calendar": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/persian_calendar.mjs",
+      "require": "./dist/index.js"
+    },
+    "./thai-buddhist-calendar": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/thaibuddhist_calendar.mjs",
+      "require": "./dist/index.js"
+    },
+    "./um-al-qura-calendar": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/umalqura_calendar.mjs",
+      "require": "./dist/index.js"
+    },
+    "./culture-info": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/culture_info.mjs",
+      "require": "./dist/index.js"
+    },
+    "./date-time-format": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/date_time_format.mjs",
+      "require": "./dist/index.js"
+    },
+    "./locales/*": {
+      "types": "./dist/locales/*.d.ts",
+      "import": "./dist/locales/*.mjs",
+      "require": "./dist/locales/*.js"
+    }
+  },
+  "sideEffects": false,
   "directories": {
     "lib": "dist",
     "test": "tests"
@@ -20,7 +78,7 @@
     "directory": "packages/globalization"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "build": "tsup --config tsup.esm.config.ts && tsup --config tsup.cjs.config.ts && tsc --project tsconfig.locales.json && tsup --config tsup.locales.config.ts"
   },
   "bugs": {
     "url": "https://github.com/doctorcode-org/xobin/issues"

@@ -1,0 +1,25 @@
+import { defineConfig } from 'tsup';
+
+export default defineConfig({
+  entry: {
+    index: 'src/index.ts',
+    time_span: 'src/lib/time_span.ts',
+    date_time: 'src/lib/date_time.ts',
+    calendar: 'src/lib/calendar.ts',
+    gregorian_calendar: 'src/lib/gregorian_calendar.ts',
+    persian_calendar: 'src/lib/persian_calendar.ts',
+    thaibuddhist_calendar: 'src/lib/thaibuddhist_calendar.ts',
+    umalqura_calendar: 'src/lib/umalqura_calendar.ts',
+    culture_info: 'src/lib/culture_info.ts',
+    date_time_format: 'src/lib/date_time_format.ts',
+  },
+  format: ['esm'],
+  outDir: 'dist',
+  target: 'es2022',
+  tsconfig: 'tsconfig.build.json',
+  dts: true,
+  clean: true,
+  splitting: true,
+  sourcemap: true,
+  external: ['@xobin/core'],
+});

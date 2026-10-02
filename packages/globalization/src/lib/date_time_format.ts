@@ -121,7 +121,6 @@ const allStandardFormats: string[] = [
     's', 't', 'T', 'u', 'U', 'y', 'Y',
 ];
 
-const RoundtripFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK";
 const RoundtripDateTimeUnfixed = "yyyy'-'MM'-'ddTHH':'mm':'ss zzz";
 
 const DEFAULT_ALL_DATETIMES_SIZE = 132;

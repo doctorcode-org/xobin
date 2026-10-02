@@ -4,9 +4,17 @@
   "description": "The package contains shared classes, types, functions and utils.",
   "author": "DoctorCode Team",
   "license": "MIT",
-  "main": "dist/main.js",
-  "module": "dist/module.js",
-  "typings": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "sideEffects": false,
   "directories": {
     "lib": "dist",
     "test": "tests"
@@ -20,7 +28,7 @@
     "directory": "packages/core"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "build": "tsup --config tsup.config.ts"
   },
   "bugs": {
     "url": "https://github.com/doctorcode-org/xobin/issues"
