@@ -149,7 +149,7 @@ export class GregorianCalendar extends Calendar {
      * @param time The DateTime to read.
      */
     getDayOfWeek(time: DateTime): DayOfWeek {
-        return int((time.ticks / TicksPerDay + 1) % 7);
+        return Number((time.ticks / TicksPerDay + 1n) % 7n);
     }
 
     /**
@@ -345,8 +345,8 @@ export class GregorianCalendar extends Calendar {
 
 }
 
-function dateToTicks(year: number, month: number, day: number): number {
-    return getAbsoluteDate(year, month, day) * TicksPerDay;
+function dateToTicks(year: number, month: number, day: number): bigint {
+    return BigInt(getAbsoluteDate(year, month, day)) * TicksPerDay;
 }
 
 export function getAbsoluteDate(year: number, month: number, day: number): number {
@@ -354,7 +354,8 @@ export function getAbsoluteDate(year: number, month: number, day: number): numbe
         const days = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? DaysToMonth366 : DaysToMonth365;
         if (day >= 1 && (day <= days[month]! - days[month - 1]!)) {
             const y = year - 1;
-            return y * 365 + y / 4 - y / 100 + y / 400 + days[month - 1]! + day - 1;
+            return y * 365 + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400)
+                + days[month - 1]! + day - 1;
         }
     }
 

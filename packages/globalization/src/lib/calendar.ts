@@ -115,7 +115,7 @@ export abstract class Calendar {
      * @param time The DateTime to read.
      */
     getHour(time: DateTime): number {
-        return int((time.ticks / TicksPerHour) % 24);
+        return Number((time.ticks / TicksPerHour) % 24n);
     }
 
     /**
@@ -123,7 +123,7 @@ export abstract class Calendar {
      * @param time The DateTime to read.
      */
     getMilliseconds(time: DateTime): number {
-        return int((time.ticks / TicksPerMillisecond) % 1000);
+        return Number((time.ticks / TicksPerMillisecond) % 1000n);
     }
 
     /**
@@ -131,7 +131,7 @@ export abstract class Calendar {
      * @param time The DateTime to read.
      */
     getMinute(time: DateTime): number {
-        return int((time.ticks / TicksPerMinute) % 60);
+        return Number((time.ticks / TicksPerMinute) % 60n);
     }
 
     /**
@@ -139,7 +139,7 @@ export abstract class Calendar {
      * @param time The DateTime to read.
      */
     getSecond(time: DateTime): number {
-        return int((time.ticks / TicksPerSecond) % 60);
+        return Number((time.ticks / TicksPerSecond) % 60n);
     }
 
     /**
@@ -321,18 +321,18 @@ function add(this: Calendar, time: DateTime, value: number, scale: number): Date
     }
 
     const millis = int(tempMillis);
-    const ticks = time.ticks + millis * TicksPerMillisecond;
+    const ticks = time.ticks + BigInt(millis) * TicksPerMillisecond;
     checkAddResult(ticks, this.minSupportedDateTime, this.maxSupportedDateTime);
     return new DateTime(ticks);
 }
 
-export function checkAddResult(ticks: number, minValue: DateTime, maxValue: DateTime) {
+export function checkAddResult(ticks: bigint, minValue: DateTime, maxValue: DateTime) {
     if (ticks < minValue.ticks || ticks > maxValue.ticks) {
         throw new ArgumentException(/*SR.Format(SR.Argument_ResultCalendarRange, minValue, maxValue)*/);
     }
 }
 
-export function timeToTicks(hour: number, minute: number, second: number, millisecond: number): number {
+export function timeToTicks(hour: number, minute: number, second: number, millisecond: number): bigint {
     if (hour < 0 || hour >= 24 || minute < 0 || minute >= 60 || second < 0 || second >= 60) {
         throw new ArgumentOutOfRangeException(/*null, SR.ArgumentOutOfRange_BadHourMinuteSecond*/);
     }
@@ -345,7 +345,7 @@ export function timeToTicks(hour: number, minute: number, second: number, millis
         );
     }
 
-    return timeToTickHelper(hour, minute, second) + millisecond * TicksPerMillisecond;
+    return timeToTickHelper(hour, minute, second) + BigInt(millisecond) * TicksPerMillisecond;
 }
 
 function getFirstDayWeekOfYear(this: Calendar, time: DateTime, firstDayOfWeek: number) {

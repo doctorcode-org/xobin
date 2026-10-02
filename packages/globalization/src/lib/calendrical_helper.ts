@@ -104,7 +104,7 @@ export function midday(date: number, longitude: number): number {
 }
 
 export function getNumberOfDays(date: DateTime): number {
-    return date.ticks / TicksPerDay;
+    return Number(date.ticks) / Number(TicksPerDay);
 }
 
 export function angle(degrees: number, minutes: number, seconds: number): number {
@@ -310,7 +310,8 @@ function reminder(divisor: number, dividend: number): number {
 }
 
 function getGregorianYear(numberOfDays: number): number {
-    return new DateTime(Math.min((Math.floor(numberOfDays) * TicksPerDay), DateTime.maxValue.ticks)).year;
+    const ticks = BigInt(Math.floor(numberOfDays)) * TicksPerDay;
+    return new DateTime(ticks < DateTime.maxValue.ticks ? ticks : DateTime.maxValue.ticks).year;
 }
 
 function obliquity(julianCenturies: number): number {

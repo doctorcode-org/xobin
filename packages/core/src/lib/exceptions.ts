@@ -161,7 +161,7 @@ export class ArgumentOutOfRangeException extends ArgumentException {
      * @param message
      */
     constructor(paramName?: string, message?: string) {
-        super(paramName, message);
+        super(message, paramName);
     }
 }
 

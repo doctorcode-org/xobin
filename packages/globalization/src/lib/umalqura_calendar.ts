@@ -206,7 +206,7 @@ const HijriYearInfo = new Lazy(() => {
     ];
     const mapping: Array<DateMapping> = [];
 
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < rawData.length / 4; i++) {
         mapping.push({
             hijriMonthsLengthFlags: rawData[i * 4]!,
             gregorianDate: new DateTime(rawData[i * 4 + 1]!, rawData[i * 4 + 2]!, rawData[i * 4 + 3]!)
@@ -217,7 +217,7 @@ const HijriYearInfo = new Lazy(() => {
 });
 
 const MinDate = new DateTime(1900, 4, 30);
-const MaxDate = new DateTime(2077, 11, 16, 23, 59, 59, 999);
+const MaxDate = new DateTime(new DateTime(2077, 11, 16, 23, 59, 59, 999).ticks + 9999n);
 
 /**
  * Represents the Saudi Hijri (Um Al Qura) calendar.
@@ -354,7 +354,7 @@ export class UmAlQuraCalendar extends Calendar {
         }
 
         checkYearRange(y);
-        const dt = new DateTime(getAbsoluteDateUmAlQura(y, m, d) * TicksPerDay + time.ticks % TicksPerDay);
+        const dt = new DateTime(BigInt(getAbsoluteDateUmAlQura(y, m, d)) * TicksPerDay + time.ticks % TicksPerDay);
         checkAddResult(dt.ticks, this.minSupportedDateTime, this.maxSupportedDateTime);
         return dt;
     }
@@ -372,7 +372,7 @@ export class UmAlQuraCalendar extends Calendar {
      * @param time
      */
     getDayOfWeek(time: DateTime): DayOfWeek {
-        return int((time.ticks / TicksPerDay + 1) % 7);
+        return Number((time.ticks / TicksPerDay + 1n) % 7n);
     }
 
     /**
@@ -484,7 +484,7 @@ export class UmAlQuraCalendar extends Calendar {
                 throw new ArgumentOutOfRangeException(/*null, SR.ArgumentOutOfRange_BadYearMonthDay*/);
             }
 
-            return new DateTime(lDate * TicksPerDay + timeToTicks(hour, minute, second, millisecond));
+            return new DateTime(BigInt(lDate) * TicksPerDay + timeToTicks(hour, minute, second, millisecond));
         }
 
         // The year/month/era value checking is done in GetDaysInMonth().
@@ -503,7 +503,7 @@ export class UmAlQuraCalendar extends Calendar {
             throw new ArgumentOutOfRangeException(/*null, SR.ArgumentOutOfRange_BadYearMonthDay*/);
         }
 
-        return new DateTime(lDate * TicksPerDay + timeToTicks(hour, minute, second, millisecond));
+        return new DateTime(BigInt(lDate) * TicksPerDay + timeToTicks(hour, minute, second, millisecond));
     }
 }
 
@@ -534,7 +534,7 @@ function convertGregorianToHijri(time: DateTime) {
     // Find the index where we should start our search by quessing the Hijri year that we will be in HijriYearInfo.
     // A Hijri year is 354 or 355 days.  Use 355 days so that we will search from a lower index.
 
-    let index = int((time.ticks - MinDate.ticks) / TicksPerDay) / 355;
+    let index = Math.trunc(Number((time.ticks - MinDate.ticks) / TicksPerDay) / 355);
     do {
     } while (time.compareTo(HijriYearInfo.value[++index]!.gregorianDate) > 0); // while greater
 
@@ -594,7 +594,7 @@ function checkYearMonthRange(year: number, month: number): void {
     }
 }
 
-function checkTicksRange(ticks: number): void {
+function checkTicksRange(ticks: bigint): void {
     if (ticks < MinDate.ticks || ticks > MaxDate.ticks) {
         throw new ArgumentOutOfRangeException(
             //"time",

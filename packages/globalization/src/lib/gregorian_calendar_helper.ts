@@ -75,7 +75,7 @@ export class GregorianCalendarHelper {
 
     getDayOfWeek(time: DateTime): DayOfWeek {
         checkTicksRange.call(this, time.ticks);
-        return int((time.ticks / TicksPerDay + 1) % 7);
+        return Number((time.ticks / TicksPerDay + 1n) % 7n);
     }
 
     getDayOfYear(time: DateTime): number {
@@ -220,26 +220,26 @@ function getGregorianYear(this: GregorianCalendarHelper, year: number): number {
 //    return getYearOffset.call(this, year, false) >= 0;
 //}
 
-function getDatePart(this: GregorianCalendarHelper, ticks: number, part: number): number {
+function getDatePart(this: GregorianCalendarHelper, ticks: bigint, part: number): number {
     checkTicksRange.call(this, ticks);
     // n = number of days since 1/1/0001
-    let n = (int)(ticks / TicksPerDay);
+    let n = Number(ticks / TicksPerDay);
     // y400 = number of whole 400-year periods since 1/1/0001
-    let y400 = n / DaysPer400Years;
+    let y400 = Math.floor(n / DaysPer400Years);
     // n = day number within 400-year period
     n -= y400 * DaysPer400Years;
     // y100 = number of whole 100-year periods within 400-year period
-    let y100 = n / DaysPer100Years;
+    let y100 = Math.floor(n / DaysPer100Years);
     // Last 100-year period has an extra day, so decrement result if 4
     if (y100 == 4) y100 = 3;
     // n = day number within 100-year period
     n -= y100 * DaysPer100Years;
     // y4 = number of whole 4-year periods within 100-year period
-    let y4 = n / DaysPer4Years;
+    let y4 = Math.floor(n / DaysPer4Years);
     // n = day number within 4-year period
     n -= y4 * DaysPer4Years;
     // y1 = number of whole years within 4-year period
-    let y1 = n / DaysPerYear;
+    let y1 = Math.floor(n / DaysPerYear);
     // Last year has an extra day, so decrement result if 4
     if (y1 == 4) y1 = 3;
     // If year was requested, compute and return it
@@ -272,18 +272,19 @@ function getAbsoluteDate(year: number, month: number, day: number): number {
         const days = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? DaysToMonth366 : DaysToMonth365;
         if (day >= 1 && (day <= days[month]! - days[month - 1]!)) {
             const y = year - 1;
-            const absoluteDate = y * 365 + y / 4 - y / 100 + y / 400 + days[month - 1]! + day - 1;
+            const absoluteDate = y * 365 + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400)
+                + days[month - 1]! + day - 1;
             return absoluteDate;
         }
     }
     throw new ArgumentOutOfRangeException(/*null, SR.ArgumentOutOfRange_BadYearMonthDay*/);
 }
 
-function dateToTicks(year: number, month: number, day: number) {
-    return getAbsoluteDate(year, month, day) * TicksPerDay;
+function dateToTicks(year: number, month: number, day: number): bigint {
+    return BigInt(getAbsoluteDate(year, month, day)) * TicksPerDay;
 }
 
-function timeToTicks(hour: number, minute: number, second: number, millisecond: number) {
+function timeToTicks(hour: number, minute: number, second: number, millisecond: number): bigint {
     // TimeSpan.TimeToTicks is a family access function which does no error checking, so
     // we need to put some error checking out here.
     if (hour >= 0 && hour < 24 && minute >= 0 && minute < 60 && second >= 0 && second < 60) {
@@ -296,12 +297,12 @@ function timeToTicks(hour: number, minute: number, second: number, millisecond: 
                 //    MillisPerSecond - 1)
             );
         }
-        return TimeSpanTimeToTicks(hour, minute, second) + millisecond * TicksPerMillisecond;
+        return TimeSpanTimeToTicks(hour, minute, second) + BigInt(millisecond) * TicksPerMillisecond;
     }
     throw new ArgumentOutOfRangeException(/*null, SR.ArgumentOutOfRange_BadHourMinuteSecond*/);
 }
 
-function checkTicksRange(this: GregorianCalendarHelper, ticks: number) {
+function checkTicksRange(this: GregorianCalendarHelper, ticks: bigint) {
     if (ticks < this.cal.minSupportedDateTime.ticks || ticks > this.cal.maxSupportedDateTime.ticks) {
         throw new ArgumentOutOfRangeException(
             //"time",

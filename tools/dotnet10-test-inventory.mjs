@@ -7,6 +7,8 @@ const sourceTag = 'v10.0.7';
 const runtime = process.argv[2];
 const mode = process.argv[3] ?? '--check';
 const output = resolve(dirname(fileURLToPath(import.meta.url)), '../tests/dotnet10-test-inventory.json');
+const mappedFacts = new Map(Object.entries(JSON.parse(readFileSync(resolve(dirname(output), 'dotnet10/mapped-facts.json'), 'utf8'))));
+const usedMappings = new Set();
 const root = 'src/libraries/System.Runtime/tests/';
 
 if (!runtime || !['--check', '--write'].includes(mode)) {
@@ -164,6 +166,14 @@ for (const file of selected) {
             for (const testClass of executedBy) {
                 const id = `${methodId}#Fact@${testClass}`;
                 const old = previousCases.get(id);
+                const mappingKey = `${cls}.${declaration.name}`;
+                const mappedFile = mappedFacts.get(mappingKey);
+                if (mappedFile) {
+                    if (test[1] !== 'Fact') throw new Error(`Only Fact methods may use mapped-facts.json: ${mappingKey}`);
+                    const testSource = readFileSync(resolve(dirname(output), 'dotnet10', mappedFile), 'utf8');
+                    if (!testSource.includes(`test('${mappingKey}'`)) throw new Error(`Mapped JS test is missing: ${mappingKey}`);
+                    usedMappings.add(mappingKey);
+                }
                 cases.push({
                     id,
                     testClass,
@@ -171,8 +181,8 @@ for (const file of selected) {
                     dataLine: null,
                     dataAttribute: null,
                     expansion: 'one-row',
-                    status: old?.status ?? 'unmapped',
-                    jsTest: old?.jsTest ?? null
+                    status: mappedFile ? 'mapped' : (old?.status ?? 'unmapped'),
+                    jsTest: mappedFile ? `tests/dotnet10/${mappedFile}#${mappingKey}` : (old?.jsTest ?? null)
                 });
             }
         }
@@ -193,6 +203,7 @@ for (const file of selected) {
 }
 
 const methodIds = methods.map(method => method.id);
+for (const key of mappedFacts.keys()) if (!usedMappings.has(key)) throw new Error(`Unused mapped Fact: ${key}`);
 const caseIds = methods.flatMap(method => method.cases.map(testCase => testCase.id));
 if (new Set(methodIds).size !== methodIds.length) throw new Error('Duplicate method IDs');
 if (new Set(caseIds).size !== caseIds.length) throw new Error('Duplicate case IDs');

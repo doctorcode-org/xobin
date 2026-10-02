@@ -11,7 +11,7 @@ const MaxCalendarMonth = 10;
 const MaxCalendarDay = 13;
 const MonthsPerYear = 12;
 const DaysToMonth = [0, 31, 62, 93, 124, 155, 186, 216, 246, 276, 306, 336, 366];
-const s_persianEpoch = (new DateTime(622, 3, 22).ticks) / TicksPerDay;
+const s_persianEpoch = Number(new DateTime(622, 3, 22).ticks / TicksPerDay);
 const ApproximateHalfYear = 180;
 
 /**
@@ -160,7 +160,7 @@ export class PersianCalendar extends Calendar {
             d = days;
         }
 
-        const ticks = getAbsoluteDatePersian(y, m, d) * TicksPerDay + time.ticks % TicksPerDay;
+        const ticks = BigInt(getAbsoluteDatePersian(y, m, d)) * TicksPerDay + time.ticks % TicksPerDay;
         checkAddResult(ticks, this.minSupportedDateTime, this.maxSupportedDateTime);
         return new DateTime(ticks);
     }
@@ -178,7 +178,7 @@ export class PersianCalendar extends Calendar {
      * @param time The DateTime to read.
      */
     getDayOfWeek(time: DateTime): DayOfWeek {
-        return int((time.ticks / TicksPerDay + 1) % 7);
+        return Number((time.ticks / TicksPerDay + 1n) % 7n);
     }
 
     /**
@@ -301,11 +301,11 @@ export class PersianCalendar extends Calendar {
             throw new ArgumentOutOfRangeException(/*null, SR.ArgumentOutOfRange_BadYearMonthDay*/);
         }
 
-        return new DateTime(lDate * TicksPerDay + timeToTicks(hour, minute, second, millisecond));
+        return new DateTime(BigInt(lDate) * TicksPerDay + timeToTicks(hour, minute, second, millisecond));
     }
 }
 
-function checkTicksRange(this: Calendar, ticks: number) {
+function checkTicksRange(this: Calendar, ticks: bigint) {
     if (ticks < this.minSupportedDateTime.ticks || ticks > this.maxSupportedDateTime.ticks) {
         throw new ArgumentOutOfRangeException(
             //"time",
@@ -315,12 +315,12 @@ function checkTicksRange(this: Calendar, ticks: number) {
     }
 }
 
-function getDatePart(this: Calendar, ticks: number, part: number): number {
+function getDatePart(this: Calendar, ticks: bigint, part: number): number {
     checkTicksRange.call(this, ticks);
 
     // Get the absolute date. The absolute date is the number of days from January 1st, 1 A.D.
     // 1/1/0001 is absolute date 1.
-    const numDays = ticks / TicksPerDay + 1;
+    const numDays = Number(ticks / TicksPerDay) + 1;
 
     // Calculate the appromixate Persian Year.
     const yearStart = persianNewYearOnOrBefore(numDays);

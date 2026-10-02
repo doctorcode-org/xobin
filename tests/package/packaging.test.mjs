@@ -68,7 +68,7 @@ test('both packages publish declarations for CommonJS and ESM', async () => {
 
 test('a TimeSpan-only consumer bundle excludes DateTime and calendars', async () => {
   const output = await bundle(
-    "import { TimeSpan } from '@xobin/globalization'; globalThis.value = new TimeSpan(1);",
+    "import { TimeSpan } from '@xobin/globalization'; globalThis.value = new TimeSpan(1n);",
   );
   assert.match(output, /TimeSpan/);
   for (const unused of ['DateTime', 'PersianCalendar', 'GregorianCalendar', 'ThaiBuddhistCalendar', 'UmAlQuraCalendar', 'CultureInfo']) {

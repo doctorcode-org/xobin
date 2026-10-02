@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "npm run build --workspace @xobin/core && npm run build --workspace @xobin/globalization",
-    "test": "npm run build && npm run test:types && node --test tests/package/*.test.mjs",
+    "test": "npm run build && npm run test:types && node --test tests/package/*.test.mjs tests/dotnet10/*.test.mjs",
     "test:types": "tsc --project tests/package/tsconfig.json"
   },
   "devDependencies": {

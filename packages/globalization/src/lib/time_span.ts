@@ -1,382 +1,180 @@
-﻿import {
-    MaxSeconds,
-    TicksPerSecond,
-    MinSeconds,
+import {
     LongMaxValue,
-    MaxMilliSeconds,
-    MinMilliSeconds,
-    TicksPerMillisecond,
+    LongMinValue,
+    MaxMicroseconds,
+    MaxMilliseconds,
+    MaxSeconds,
+    MinMicroseconds,
+    MinMilliseconds,
+    MinSeconds,
     TicksPerDay,
     TicksPerHour,
+    TicksPerMicrosecond,
+    TicksPerMillisecond,
     TicksPerMinute,
-    LongMinValue
-} from "./var";
+    TicksPerSecond
+} from './var';
 import {
-    getOrCreateValue,
-    setValue,
-    getValue,
-    int,
-    OverflowException,
     ArgumentException,
     ArgumentOutOfRangeException,
-    IEquatable,
+    getOrCreateValue,
     IComparable,
-    Nullable
+    IEquatable,
+    Nullable,
+    OverflowException
 } from '@xobin/core';
 
-/**
- * Represents a time interval.
- */
+/** A time interval stored as signed 100-nanosecond ticks. */
 export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
+    private readonly _ticks: bigint;
 
-    /**
-     * Initializes a new instance of the TimeSpan structure.
-     */
     constructor();
-
-    /**
-     * Initializes a new instance of the TimeSpan structure to the specified number of ticks.
-     * @param ticks A time period expressed in millisecond units.
-     */
-    constructor(ticks: number);
-
-    /**
-     * Initializes a new instance of the TimeSpan structure to a specified number of hours, minutes, and seconds.
-     * @param hours Number of hours.
-     * @param minutes Number of minutes.
-     * @param seconds Number of seconds.
-     */
+    constructor(ticks: bigint);
     constructor(hours: number, minutes: number, seconds: number);
-
-    /**
-     * Initializes a new instance of the TimeSpan structure to a specified number of days, hours, minutes, and seconds.
-     * @param days Number of days.
-     * @param hours Number of hours.
-     * @param minutes Number of minutes.
-     * @param seconds Number of seconds.
-     */
     constructor(days: number, hours: number, minutes: number, seconds: number);
-
-    /**
-     * Initializes a new instance of the TimeSpan structure to a specified number of days, hours, minutes, seconds, and milliseconds.
-     * @param days Number of days.
-     * @param hours Number of hours.
-     * @param minutes Number of minutes.
-     * @param seconds Number of seconds.
-     * @param milliseconds Number of milliseconds.
-     */
     constructor(days: number, hours: number, minutes: number, seconds: number, milliseconds: number);
-    constructor(days?: number, hours?: number, minutes?: number, seconds?: number, milliseconds?: number) {
+    constructor(days: number, hours: number, minutes: number, seconds: number, milliseconds: number, microseconds: number);
+    constructor(first?: bigint | number, second?: number, third?: number, fourth?: number, fifth?: number, sixth?: number) {
         switch (arguments.length) {
             case 0:
-                setValue(this, 'ticks', 0);
+                this._ticks = 0n;
                 break;
             case 1:
-                setValue(this, 'ticks', int(days!));
+                if (typeof first !== 'bigint') throw new ArgumentException('Ticks must be a bigint.');
+                checkTicks(first);
+                this._ticks = first;
                 break;
             case 3:
-                setValue(this, 'ticks', timeToTicks(days!, hours!, minutes!));
+                this._ticks = timeToTicks(int32(first), int32(second), int32(third));
                 break;
             case 4:
             case 5:
-                const totalMilliSeconds = (days! * 3600 * 24 + hours! * 3600 + minutes! * 60 + seconds!) * 1000 + (milliseconds || 0);
-
-                if (totalMilliSeconds > MaxMilliSeconds || totalMilliSeconds < MinMilliSeconds)
+            case 6: {
+                const days = BigInt(int32(first));
+                const hours = BigInt(int32(second));
+                const minutes = BigInt(int32(third));
+                const seconds = BigInt(int32(fourth));
+                const milliseconds = arguments.length >= 5 ? BigInt(int32(fifth)) : 0n;
+                const microseconds = arguments.length === 6 ? BigInt(int32(sixth)) : 0n;
+                const totalMicroseconds = days * 86400000000n + hours * 3600000000n + minutes * 60000000n
+                    + seconds * 1000000n + milliseconds * 1000n + microseconds;
+                if (totalMicroseconds > MaxMicroseconds || totalMicroseconds < MinMicroseconds) {
                     throw new ArgumentOutOfRangeException('Overflow_TimeSpanTooLong');
-
-                setValue(this, 'ticks', int(totalMilliSeconds * TicksPerMillisecond));
+                }
+                this._ticks = totalMicroseconds * TicksPerMicrosecond;
                 break;
+            }
             default:
                 throw new ArgumentException('Invalid arguments');
         }
     }
 
-    /**
-     * Gets the number of ticks that represent the value of the current TimeSpan structure.
-     */
-    get ticks(): number {
-        return getValue(this, 'ticks');
-    }
+    get ticks(): bigint { return this._ticks; }
+    get days(): number { return Number(this._ticks / TicksPerDay); }
+    get hours(): number { return Number((this._ticks / TicksPerHour) % 24n); }
+    get minutes(): number { return Number((this._ticks / TicksPerMinute) % 60n); }
+    get seconds(): number { return Number((this._ticks / TicksPerSecond) % 60n); }
+    get milliseconds(): number { return Number((this._ticks / TicksPerMillisecond) % 1000n); }
+    get microseconds(): number { return Number((this._ticks / TicksPerMicrosecond) % 1000n); }
+    get nanoseconds(): number { return Number(this._ticks % TicksPerMicrosecond) * 100; }
 
-    /**
-     * Gets the days component of the time interval represented by the current TimeSpan structure.
-     */
-    get days(): number {
-        return int(this.ticks / TicksPerDay);
-    }
-
-    /**
-     * Gets the hours component of the time interval represented by the current TimeSpan structure.
-     */
-    get hours(): number {
-        return int((this.ticks / TicksPerHour) % 24);
-    }
-
-    /**
-     * Gets the minutes component of the time interval represented by the current TimeSpan structure.
-     */
-    get minutes(): number {
-        return int((this.ticks / TicksPerMinute) % 60);
-    }
-
-    /**
-     * Gets the seconds component of the time interval represented by the current TimeSpan structure.
-     */
-    get seconds(): number {
-        return int((this.ticks / TicksPerSecond) % 60);
-    }
-
-    /**
-     * Gets the milliseconds component of the time interval represented by the current TimeSpan structure.
-     */
-    get milliseconds(): number {
-        return int((this.ticks / TicksPerMillisecond) % 1000);
-    }
-
-    /**
-     * Gets the value of the current TimeSpan structure expressed in whole and fractional days.
-     */
-    get totalDays(): number {
-        return this.ticks / TicksPerDay;
-    }
-
-    /**
-     * Gets the value of the current TimeSpan structure expressed in whole and fractional hours.
-     */
-    get totalHours(): number {
-        return this.ticks / TicksPerHour;
-    }
-
-    /**
-     * Gets the value of the current TimeSpan structure expressed in whole and fractional minutes.
-     */
-    get totalMinutes(): number {
-        return this.ticks / TicksPerMinute;
-    }
-
-    /**
-     * Gets the value of the current TimeSpan structure expressed in whole and fractional seconds.
-     */
-    get totalSeconds(): number {
-        return this.ticks / TicksPerSecond;
-    }
-
-    /**
-     * Gets the value of the current TimeSpan structure expressed in whole and fractional milliseconds.
-     */
+    get totalDays(): number { return Number(this._ticks) / Number(TicksPerDay); }
+    get totalHours(): number { return Number(this._ticks) / Number(TicksPerHour); }
+    get totalMinutes(): number { return Number(this._ticks) / Number(TicksPerMinute); }
+    get totalSeconds(): number { return Number(this._ticks) / Number(TicksPerSecond); }
     get totalMilliseconds(): number {
-        const temp = this.ticks / TicksPerMillisecond;
-
-        if (temp > MaxMilliSeconds)
-            return MaxMilliSeconds;
-
-        if (temp < MinMilliSeconds)
-            return MinMilliSeconds;
-
-        return temp;
+        const value = Number(this._ticks) / Number(TicksPerMillisecond);
+        return Math.max(Number(MinMilliseconds), Math.min(Number(MaxMilliseconds), value));
     }
+    get totalMicroseconds(): number { return Number(this._ticks) / Number(TicksPerMicrosecond); }
+    get totalNanoseconds(): number { return Number(this._ticks) * 100; }
 
-    /**
-     * Represents the zero TimeSpan value. This field is read-only.
-     */
     static get zero(): TimeSpan {
-        return getOrCreateValue(this, "zero", () => new TimeSpan(0));
+        return getOrCreateValue(this, 'zero', () => new TimeSpan(0n));
     }
 
-    /**
-     * Represents the minimum TimeSpan value. This field is read-only.
-     */
     static get minValue(): TimeSpan {
-        return getOrCreateValue(this, "minValue", () => new TimeSpan(LongMinValue));
+        return getOrCreateValue(this, 'minValue', () => new TimeSpan(LongMinValue));
     }
 
-    /**
-     * Represents the maximum TimeSpan value. This field is read-only.
-     */
     static get maxValue(): TimeSpan {
-        return getOrCreateValue(this, "maxValue", () => new TimeSpan(LongMaxValue));
+        return getOrCreateValue(this, 'maxValue', () => new TimeSpan(LongMaxValue));
     }
 
-    /**
-     * Returns a new TimeSpan object whose value is the sum of the specified TimeSpan object and this instance.
-     * @param ts The time interval to add.
-     */
-    add(ts: TimeSpan): TimeSpan {
-        const result = this.ticks + ts.ticks;
-
-        if (result > LongMaxValue || result < LongMinValue)
-            throw new OverflowException(/*SR.Overflow_TimeSpanTooLong*/);
-
-        return new TimeSpan(result);
+    add(value: TimeSpan): TimeSpan {
+        return new TimeSpan(checkTicks(this._ticks + value.ticks));
     }
 
-    /**
-     * Returns a new TimeSpan object whose value is the absolute value of the current TimeSpan object.
-     */
+    subtract(value: TimeSpan): TimeSpan {
+        return new TimeSpan(checkTicks(this._ticks - value.ticks));
+    }
+
     duration(): TimeSpan {
-        if (this.ticks == TimeSpan.minValue.ticks)
-            throw new OverflowException(/*SR.Overflow_Duration*/);
-
-        return new TimeSpan(this.ticks >= 0 ? this.ticks : -this.ticks);
+        if (this._ticks === LongMinValue) throw new OverflowException('Overflow_Duration');
+        return new TimeSpan(this._ticks < 0n ? -this._ticks : this._ticks);
     }
 
-    /**
-     * Returns a new TimeSpan object whose value is the negated value of this instance.
-     */
     negate(): TimeSpan {
-        if (this.ticks == TimeSpan.minValue.ticks)
-            throw new OverflowException(/*SR.Overflow_NegateTwosCompNum*/);
-
-        return new TimeSpan(-this.ticks);
+        if (this._ticks === LongMinValue) throw new OverflowException('Overflow_NegateTwosCompNum');
+        return new TimeSpan(-this._ticks);
     }
 
-    /**
-     * Returns a new TimeSpan object whose value is the difference between the specified TimeSpan object and this instance.
-     * @param ts The time interval to be subtracted.
-     */
-    subtract(ts: TimeSpan): TimeSpan {
-        const result = this.ticks - ts.ticks;
-
-        if (result > LongMaxValue || result < LongMinValue)
-            throw new OverflowException(/*SR.Overflow_TimeSpanTooLong*/);
-
-        return new TimeSpan(result);
-    }
-
-    /**
-     * Returns a value indicating whether this instance is equal to a specified TimeSpan object.
-     * @param other An object to compare with this instance.
-     */
     equals(other: TimeSpan): boolean {
-        return other && this.ticks === other.ticks;
+        return other instanceof TimeSpan && this._ticks === other.ticks;
     }
 
-    /**
-     * Compares this instance to a specified object and returns an integer that indicates whether this instance is shorter than, equal to, or longer than the specified object.
-     * @param otherValue An object to compare, or null.
-     */
     compareTo(otherValue: Nullable<object>): number;
-    /**
-     * Compares this instance to a specified TimeSpan object and returns an integer that indicates whether this instance is shorter than, equal to, or longer than the TimeSpan object.
-     * @param otherValue An object to compare to this instance.
-     * @returns A signed number indicating the relative values of this instance and value.
-     */
     compareTo(otherValue: TimeSpan): number;
     compareTo(otherValue: TimeSpan | Nullable<object>): number {
-        if (otherValue == null) {
-            return 1;
-        }
-
-        if (!(otherValue instanceof TimeSpan)) {
-            throw new ArgumentException(/*SR.Arg_MustBeTimeSpan*/);
-        }
-
-        const t = otherValue.ticks;
-        if (this.ticks > t) return 1;
-        if (this.ticks < t) return -1;
-        return 0;
+        if (otherValue == null) return 1;
+        if (!(otherValue instanceof TimeSpan)) throw new ArgumentException('Arg_MustBeTimeSpan');
+        return this._ticks > otherValue.ticks ? 1 : this._ticks < otherValue.ticks ? -1 : 0;
     }
 
-    /**
-     * Returns the primitive value of this TimeSpan instance.
-     */
-    valueOf(): number {
-        return this.ticks;
+    valueOf(): bigint { return this._ticks; }
+
+    static fromDays(value: number): TimeSpan { return interval(value, TicksPerDay); }
+    static fromHours(value: number): TimeSpan { return interval(value, TicksPerHour); }
+    static fromMinutes(value: number): TimeSpan { return interval(value, TicksPerMinute); }
+    static fromSeconds(value: number): TimeSpan { return interval(value, TicksPerSecond); }
+    static fromMilliseconds(value: number): TimeSpan { return interval(value, TicksPerMillisecond); }
+    static fromTicks(value: bigint): TimeSpan { return new TimeSpan(value); }
+
+    static compare(first: TimeSpan, second: TimeSpan): number {
+        return first.ticks > second.ticks ? 1 : first.ticks < second.ticks ? -1 : 0;
     }
 
-    /**
-     * Returns a TimeSpan that represents a specified number of days, where the specification is accurate to the nearest millisecond.
-     * @param value A number of days, accurate to the nearest millisecond.
-     */
-    static fromDays(value: number): TimeSpan {
-        return interval(value, TicksPerDay);
-    }
-
-    /**
-     * Returns a TimeSpan that represents a specified number of hours, where the specification is accurate to the nearest millisecond.
-     * @param value A number of hours accurate to the nearest millisecond.
-     */
-    static fromHours(value: number): TimeSpan {
-        return interval(value, TicksPerHour);
-    }
-
-    /**
-     * Returns a TimeSpan that represents a specified number of minutes, where the specification is accurate to the nearest millisecond.
-     * @param value A number of minutes, accurate to the nearest millisecond.
-     */
-    static fromMinutes(value: number): TimeSpan {
-        return interval(value, TicksPerMinute);
-    }
-
-    /**
-     * Returns a TimeSpan that represents a specified number of seconds, where the specification is accurate to the nearest millisecond.
-     * @param value A number of seconds, accurate to the nearest millisecond.
-     */
-    static fromSeconds(value: number): TimeSpan {
-        return interval(value, TicksPerSecond);
-    }
-
-    /**
-     * Returns a TimeSpan that represents a specified number of milliseconds.
-     * @param value A number of milliseconds.
-     */
-    static fromMilliseconds(value: number): TimeSpan {
-        return interval(value, TicksPerMillisecond);
-    }
-
-    /**
-     * Returns a TimeSpan that represents a specified time, where the specification is in units of ticks.
-     * @param value A number of ticks that represent a time.
-     */
-    static fromTicks(value: number): TimeSpan {
-        return new TimeSpan(value);
-    }
-
-    /**
-     * Compares two TimeSpan values and returns an integer that indicates whether the first value is shorter than, equal to, or longer than the second value.
-     * @param t1 The first time interval to compare.
-     * @param t2 The second time interval to compare.
-     */
-    static compare(t1: TimeSpan, t2: TimeSpan): number {
-        if (t1.ticks > t2.ticks) return 1;
-        if (t1.ticks < t2.ticks) return -1;
-        return 0;
-    }
-
-    /**
-     * Returns a value that indicates whether two specified instances of TimeSpan are equal.
-     * @param t1 The first time interval to compare.
-     * @param t2 The second time interval to compare.
-     */
-    static equals(t1: TimeSpan, t2: TimeSpan): boolean {
-        return t1.ticks === t2.ticks;
+    static equals(first: TimeSpan, second: TimeSpan): boolean {
+        return first.ticks === second.ticks;
     }
 }
 
-export function timeToTicks(hour: number, minute: number, second: number): number {
-    // totalSeconds is bounded by 2^31 * 2^12 + 2^31 * 2^8 + 2^31,
-    // which is less than 2^44, meaning we won't overflow totalSeconds.
-    const totalSeconds = hour * 3600 + minute * 60 + second;
-    if (totalSeconds > MaxSeconds || totalSeconds < MinSeconds)
-        throw new OverflowException('ThrowArgumentOutOfRange_TimeSpanTooLong');
-
-    return int(totalSeconds * TicksPerSecond);
+export function timeToTicks(hour: number, minute: number, second: number): bigint {
+    const totalSeconds = BigInt(int32(hour)) * 3600n + BigInt(int32(minute)) * 60n + BigInt(int32(second));
+    if (totalSeconds > MaxSeconds || totalSeconds < MinSeconds) {
+        throw new ArgumentOutOfRangeException('Overflow_TimeSpanTooLong');
+    }
+    return totalSeconds * TicksPerSecond;
 }
 
-function interval(value: number, scale: number): TimeSpan {
-    if (isNaN(value))
-        throw new ArgumentException(/*SR.Arg_CannotBeNaN*/);
-
-    const ticks = value * scale;
-    return intervalFromDoubleTicks(ticks);
+function int32(value: number | bigint | undefined): number {
+    if (typeof value !== 'number' || !Number.isInteger(value) || value < -2147483648 || value > 2147483647) {
+        throw new ArgumentOutOfRangeException('Integer component out of range');
+    }
+    return value;
 }
 
-function intervalFromDoubleTicks(ticks: number): TimeSpan {
-    if ((ticks > LongMaxValue) || (ticks < LongMinValue) || isNaN(ticks))
-        throw new OverflowException(/*SR.Overflow_TimeSpanTooLong*/);
+function checkTicks(ticks: bigint): bigint {
+    if (ticks < LongMinValue || ticks > LongMaxValue) throw new OverflowException('Overflow_TimeSpanTooLong');
+    return ticks;
+}
 
-    if (ticks == LongMaxValue)
-        return TimeSpan.maxValue;
-
-    return new TimeSpan(int(ticks));
+function interval(value: number, scale: bigint): TimeSpan {
+    if (Number.isNaN(value)) throw new ArgumentException('Arg_CannotBeNaN');
+    const ticks = value * Number(scale);
+    if (!Number.isFinite(ticks) || ticks > Number(LongMaxValue) || ticks < Number(LongMinValue)) {
+        throw new OverflowException('Overflow_TimeSpanTooLong');
+    }
+    if (ticks === Number(LongMaxValue)) return TimeSpan.maxValue;
+    return new TimeSpan(BigInt(Math.trunc(ticks)));
 }
