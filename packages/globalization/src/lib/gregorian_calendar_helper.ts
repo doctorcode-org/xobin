@@ -1,22 +1,15 @@
-﻿import { Calendar, checkAddResult } from './calendar';
-import { ArgumentOutOfRangeException, ArgumentException, int } from '@xobin/core';
-import {
-    TicksPerDay, MillisPerSecond, TicksPerMillisecond, DatePartYear, DatePartMonth, DatePartDay,
-    DatePartDayOfYear, DaysPer400Years, DaysPer100Years, DaysPer4Years, DaysPerYear
-} from './var';
-import { timeToTicks as TimeSpanTimeToTicks } from './time_span';
+import { ArgumentException, ArgumentOutOfRangeException, int } from '@xobin/core';
+import { Calendar, checkAddResult, timeToTicks } from './calendar';
+import { calendarRangeMessage, formatGregorianDateTime } from './calendar_exception';
 import { DateTime } from './date_time';
 import { DayOfWeek } from './day_of_week';
 import { EraInfo } from './era_info';
-import { DaysToMonth366, DaysToMonth365, GregorianCalendar } from './gregorian_calendar';
+import { DaysToMonth365, DaysToMonth366, getAbsoluteDate, GregorianCalendar } from './gregorian_calendar';
 import { CalendarWeekRule } from './calendar_week_rule';
-import { calendarRangeMessage, throwIfNegativeYear } from './calendar_exception';
+import { TicksPerDay } from './var';
 
 export class GregorianCalendarHelper {
-
-    constructor(public readonly cal: Calendar, public readonly eraInfo: EraInfo[]) {
-
-    }
+    constructor(public readonly cal: Calendar, public readonly eraInfo: EraInfo[]) { }
 
     get minYear(): number {
         return this.eraInfo[0]!.minEraYear;
@@ -26,42 +19,57 @@ export class GregorianCalendarHelper {
         return this.eraInfo[0]!.maxEraYear;
     }
 
-    isLeapYear(year: number): boolean {
-        year = getGregorianYear.call(this, year);
-        return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
+    private getYearOffset(year: number, era: number): number {
+        if (year < 0) {
+            throw new ArgumentOutOfRangeException('year', 'Non-negative number required.');
+        }
+
+        const currentEra = this.eraInfo[0]!.era;
+        if (era === 0) era = currentEra;
+        const info = this.eraInfo.find(item => item.era === era);
+        if (!info) {
+            throw new ArgumentOutOfRangeException('era', 'Era value was not valid.');
+        }
+        if (year < info.minEraYear || year > info.maxEraYear) {
+            throw new ArgumentOutOfRangeException('year',
+                calendarRangeMessage(info.minEraYear, info.maxEraYear));
+        }
+        return info.yearOffset;
+    }
+
+    private getGregorianYear(year: number, era: number): number {
+        return year + this.getYearOffset(year, era);
+    }
+
+    private checkTicksRange(ticks: bigint): void {
+        if (ticks < this.cal.minSupportedDateTime.ticks || ticks > this.cal.maxSupportedDateTime.ticks) {
+            throw new ArgumentOutOfRangeException('time',
+                `Specified time is not supported in this calendar. It should be between `
+                + `${formatGregorianDateTime(this.cal.minSupportedDateTime)} (Gregorian date) and `
+                + `${formatGregorianDateTime(this.cal.maxSupportedDateTime)} (Gregorian date), inclusive.`);
+        }
     }
 
     addMonths(time: DateTime, months: number): DateTime {
         if (months < -120000 || months > 120000) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(months),
-                //SR.Format(
-                //    SR.ArgumentOutOfRange_Range,
-                //    -120000,
-                //    120000)
-            );
+            throw new ArgumentOutOfRangeException('months', calendarRangeMessage(-120000, 120000));
         }
-        checkTicksRange.call(this, time.ticks);
+        this.checkTicksRange(time.ticks);
 
-        let y = getDatePart.call(this, time.ticks, DatePartYear);
-        let m = getDatePart.call(this, time.ticks, DatePartMonth);
-        let d = getDatePart.call(this, time.ticks, DatePartDay);
-        let i = m - 1 + months;
-        if (i >= 0) {
-            m = i % 12 + 1;
-            y += i / 12;
+        let year = time.year;
+        let month = time.month;
+        let day = time.day;
+        const index = month - 1 + months;
+        if (index >= 0) {
+            month = index % 12 + 1;
+            year += int(index / 12);
+        } else {
+            month = 12 + (index + 1) % 12;
+            year += int((index - 11) / 12);
         }
-        else {
-            m = 12 + (i + 1) % 12;
-            y += (i - 11) / 12;
-        }
-        const daysArray = (y % 4 == 0 && (y % 100 != 0 || y % 400 == 0)) ? DaysToMonth366 : DaysToMonth365;
-        const days = (daysArray[m]! - daysArray[m - 1]!);
-
-        if (d > days) {
-            d = days;
-        }
-        const ticks = dateToTicks(y, m, d) + (time.ticks % TicksPerDay);
+        const days = isGregorianLeapYear(year) ? DaysToMonth366 : DaysToMonth365;
+        day = Math.min(day, days[month]! - days[month - 1]!);
+        const ticks = BigInt(getAbsoluteDate(year, month, day)) * TicksPerDay + time.ticks % TicksPerDay;
         checkAddResult(ticks, this.cal.minSupportedDateTime, this.cal.maxSupportedDateTime);
         return new DateTime(ticks);
     }
@@ -71,255 +79,116 @@ export class GregorianCalendarHelper {
     }
 
     getDayOfMonth(time: DateTime): number {
-        return getDatePart.call(this, time.ticks, DatePartDay);
+        this.checkTicksRange(time.ticks);
+        return time.day;
     }
 
     getDayOfWeek(time: DateTime): DayOfWeek {
-        checkTicksRange.call(this, time.ticks);
-        return Number((time.ticks / TicksPerDay + 1n) % 7n);
+        this.checkTicksRange(time.ticks);
+        return time.dayOfWeek;
     }
 
     getDayOfYear(time: DateTime): number {
-        return getDatePart.call(this, time.ticks, DatePartDayOfYear);
+        this.checkTicksRange(time.ticks);
+        return time.dayOfYear;
     }
 
-    getDaysInMonth(year: number, month: number): number {
-        year = getGregorianYear.call(this, year);
+    getDaysInMonth(year: number, month: number, era: number = 0): number {
+        year = this.getGregorianYear(year, era);
         if (month < 1 || month > 12) {
-            throw new ArgumentOutOfRangeException(/*nameof(month), SR.ArgumentOutOfRange_Month*/);
+            throw new ArgumentOutOfRangeException('month', month, 'Month must be between one and twelve.');
         }
-
-        const days = ((year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? DaysToMonth366 : DaysToMonth365);
+        const days = isGregorianLeapYear(year) ? DaysToMonth366 : DaysToMonth365;
         return days[month]! - days[month - 1]!;
     }
 
-    getDaysInYear(year: number): number {
-        year = getGregorianYear.call(this, year);
-        return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? 366 : 365;
+    getDaysInYear(year: number, era: number = 0): number {
+        return isGregorianLeapYear(this.getGregorianYear(year, era)) ? 366 : 365;
+    }
+
+    getEra(time: DateTime): number {
+        const info = this.eraInfo.find(item => time.ticks >= item.ticks);
+        if (!info) {
+            throw new ArgumentOutOfRangeException('time', 'Era value was not valid.');
+        }
+        return info.era;
+    }
+
+    get eras(): number[] {
+        return this.eraInfo.map(item => item.era);
     }
 
     getMonth(time: DateTime): number {
-        return getDatePart.call(this, time.ticks, DatePartMonth);
+        this.checkTicksRange(time.ticks);
+        return time.month;
     }
 
-    getMonthsInYear(_year: number): number {
+    getMonthsInYear(year: number, era: number = 0): number {
+        this.getYearOffset(year, era);
         return 12;
     }
 
-    getYear(time: DateTime): number;
-    getYear(year: number, time: DateTime): number;
-    getYear(): number {
-        const time: DateTime = arguments[0];
-
-        if (arguments.length == 1) {
-            const ticks = time.ticks;
-            const year = getDatePart.call(this, ticks, DatePartYear);
-            for (let i = 0; i < this.eraInfo.length; i++) {
-                if (ticks >= this.eraInfo[i]!.ticks) {
-                    return year - this.eraInfo[i]!.yearOffset;
-                }
-            }
-            throw new ArgumentException(/*SR.Argument_NoEra*/);
-        }
-        else {
-            const year: number = arguments[0];
-            const time: DateTime = arguments[1];
-            const ticks = time.ticks;
-            for (let i = 0; i < this.eraInfo.length; i++) {
-                // while calculating dates with JapaneseLuniSolarCalendar, we can run into cases right after the start of the era
-                // and still belong to the month which is started in previous era. Calculating equivalent calendar date will cause
-                // using the new era info which will have the year offset equal to the year we are calculating year = m_EraInfo[i].yearOffset
-                // which will end up with zero as calendar year.
-                // We should use the previous era info instead to get the right year number. Example of such date is Feb 2nd 1989
-                if (ticks >= this.eraInfo[i]!.ticks && year > this.eraInfo[i]!.yearOffset) {
-                    return year - this.eraInfo[i]!.yearOffset;
-                }
-            }
-            throw new ArgumentException(/*SR.Argument_NoEra*/);
-        }
+    getYear(time: DateTime): number {
+        this.checkTicksRange(time.ticks);
+        const info = this.eraInfo.find(item => time.ticks >= item.ticks);
+        if (!info) throw new ArgumentException('No era exists for the specified date.');
+        return time.year - info.yearOffset;
     }
 
-    isLeapDay(year: number, month: number, day: number): boolean {
-        // year/month/era checking is done in GetDaysInMonth()
-        if (day < 1 || day > this.getDaysInMonth(year, month)) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(day),
-                //SR.Format(
-                //    SR.ArgumentOutOfRange_Range,
-                //    1,
-                //    GetDaysInMonth(year, month, era))
-            );
+    isLeapDay(year: number, month: number, day: number, era: number = 0): boolean {
+        const daysInMonth = this.getDaysInMonth(year, month, era);
+        if (day < 1 || day > daysInMonth) {
+            throw new ArgumentOutOfRangeException('day', calendarRangeMessage(1, daysInMonth));
         }
-
-        if (!this.isLeapYear(year)) {
-            return false;
-        }
-
-        if (month == 2 && day == 29) {
-            return true;
-        }
-
-        return false;
+        return this.isLeapYear(year, era) && month === 2 && day === 29;
     }
 
-    getLeapMonth(_year: number): number {
+    getLeapMonth(year: number, era: number = 0): number {
+        this.getYearOffset(year, era);
         return 0;
     }
 
-    isLeapMonth(_year: number, month: number): boolean {
+    isLeapMonth(year: number, month: number, era: number = 0): boolean {
+        this.getYearOffset(year, era);
         if (month < 1 || month > 12) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(month),
-                //SR.Format(
-                //    SR.ArgumentOutOfRange_Range,
-                //    1,
-                //    12)
-            );
+            throw new ArgumentOutOfRangeException('month', calendarRangeMessage(1, 12));
         }
         return false;
     }
 
+    isLeapYear(year: number, era: number = 0): boolean {
+        return isGregorianLeapYear(this.getGregorianYear(year, era));
+    }
+
     getWeekOfYear(time: DateTime, rule: CalendarWeekRule, firstDayOfWeek: DayOfWeek): number {
-        checkTicksRange.call(this, time.ticks);
-        // Use GregorianCalendar to get around the problem that the implmentation in Calendar.GetWeekOfYear()
-        // can call GetYear() that exceeds the supported range of the Gregorian-based calendars.
+        this.checkTicksRange(time.ticks);
         return GregorianCalendar.defaultInstance.getWeekOfYear(time, rule, firstDayOfWeek);
     }
 
     toFourDigitYear(year: number, twoDigitYearMax: number): number {
         if (year < 0) {
-            throwIfNegativeYear(year);
+            throw new ArgumentOutOfRangeException('year', year,
+                `year ('${year}') must be a non-negative value.`);
         }
-
         if (year < 100) {
-            const y = year % 100;
-            return (Math.trunc(twoDigitYearMax / 100) - (y > twoDigitYearMax % 100 ? 1 : 0)) * 100 + y;
+            return (int(twoDigitYearMax / 100) - (year > twoDigitYearMax % 100 ? 1 : 0)) * 100 + year;
         }
-
         if (year < this.minYear || year > this.maxYear) {
             throw new ArgumentOutOfRangeException('year', calendarRangeMessage(this.minYear, this.maxYear));
         }
-        // If the year value is above 100, just return the year value.  Don't have to do
-        // the TwoDigitYearMax comparison.
         return year;
     }
 
-    toDateTime(this: GregorianCalendarHelper, year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number): DateTime {
-        year = getGregorianYear.call(this, year);
-        const ticks = dateToTicks(year, month, day) + timeToTicks(hour, minute, second, millisecond);
-        checkTicksRange.call(this, ticks);
+    toDateTime(year: number, month: number, day: number, hour: number, minute: number,
+        second: number, millisecond: number, era: number = 0): DateTime {
+        year = this.getGregorianYear(year, era);
+        const ticks = BigInt(getAbsoluteDate(year, month, day)) * TicksPerDay
+            + timeToTicks(hour, minute, second, millisecond);
+        this.checkTicksRange(ticks);
         return new DateTime(ticks);
     }
-
 }
 
-function getGregorianYear(this: GregorianCalendarHelper, year: number): number {
-    return getYearOffset.call(this, year, true) + year;
-}
-
-//function isValidYear(this: GregorianCalendarHelper, year: number): boolean {
-//    return getYearOffset.call(this, year, false) >= 0;
-//}
-
-function getDatePart(this: GregorianCalendarHelper, ticks: bigint, part: number): number {
-    checkTicksRange.call(this, ticks);
-    // n = number of days since 1/1/0001
-    let n = Number(ticks / TicksPerDay);
-    // y400 = number of whole 400-year periods since 1/1/0001
-    let y400 = Math.floor(n / DaysPer400Years);
-    // n = day number within 400-year period
-    n -= y400 * DaysPer400Years;
-    // y100 = number of whole 100-year periods within 400-year period
-    let y100 = Math.floor(n / DaysPer100Years);
-    // Last 100-year period has an extra day, so decrement result if 4
-    if (y100 == 4) y100 = 3;
-    // n = day number within 100-year period
-    n -= y100 * DaysPer100Years;
-    // y4 = number of whole 4-year periods within 100-year period
-    let y4 = Math.floor(n / DaysPer4Years);
-    // n = day number within 4-year period
-    n -= y4 * DaysPer4Years;
-    // y1 = number of whole years within 4-year period
-    let y1 = Math.floor(n / DaysPerYear);
-    // Last year has an extra day, so decrement result if 4
-    if (y1 == 4) y1 = 3;
-    // If year was requested, compute and return it
-    if (part == DatePartYear) {
-        return y400 * 400 + y100 * 100 + y4 * 4 + y1 + 1;
-    }
-    // n = day number within year
-    n -= y1 * DaysPerYear;
-    // If day-of-year was requested, return it
-    if (part == DatePartDayOfYear) {
-        return n + 1;
-    }
-    // Leap year calculation looks different from IsLeapYear since y1, y4,
-    // and y100 are relative to year 1, not year 0
-    const leapYear = (y1 == 3 && (y4 != 24 || y100 == 3));
-    const days = leapYear ? DaysToMonth366 : DaysToMonth365;
-    // All months have less than 32 days, so n >> 5 is a good conservative
-    // estimate for the month
-    let m = (n >> 5) + 1;
-    // m = 1-based month number
-    while (n >= days[m]!) m++;
-    // If month was requested, return it
-    if (part == DatePartMonth) return m;
-    // Return 1-based day-of-month
-    return n - days[m - 1]! + 1;
-}
-
-function getAbsoluteDate(year: number, month: number, day: number): number {
-    if (year >= 1 && year <= 9999 && month >= 1 && month <= 12) {
-        const days = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? DaysToMonth366 : DaysToMonth365;
-        if (day >= 1 && (day <= days[month]! - days[month - 1]!)) {
-            const y = year - 1;
-            const absoluteDate = y * 365 + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400)
-                + days[month - 1]! + day - 1;
-            return absoluteDate;
-        }
-    }
-    throw new ArgumentOutOfRangeException(/*null, SR.ArgumentOutOfRange_BadYearMonthDay*/);
-}
-
-function dateToTicks(year: number, month: number, day: number): bigint {
-    return BigInt(getAbsoluteDate(year, month, day)) * TicksPerDay;
-}
-
-function timeToTicks(hour: number, minute: number, second: number, millisecond: number): bigint {
-    // TimeSpan.TimeToTicks is a family access function which does no error checking, so
-    // we need to put some error checking out here.
-    if (hour >= 0 && hour < 24 && minute >= 0 && minute < 60 && second >= 0 && second < 60) {
-        if (millisecond < 0 || millisecond >= MillisPerSecond) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(millisecond),
-                //SR.Format(
-                //    SR.ArgumentOutOfRange_Range,
-                //    0,
-                //    MillisPerSecond - 1)
-            );
-        }
-        return TimeSpanTimeToTicks(hour, minute, second) + BigInt(millisecond) * TicksPerMillisecond;
-    }
-    throw new ArgumentOutOfRangeException(/*null, SR.ArgumentOutOfRange_BadHourMinuteSecond*/);
-}
-
-function checkTicksRange(this: GregorianCalendarHelper, ticks: bigint) {
-    if (ticks < this.cal.minSupportedDateTime.ticks || ticks > this.cal.maxSupportedDateTime.ticks) {
-        throw new ArgumentOutOfRangeException(
-            //"time",
-            //SR.Format(
-            //    CultureInfo.InvariantCulture,
-            //    SR.ArgumentOutOfRange_CalendarRange,
-            //    m_Cal.MinSupportedDateTime,
-            //    m_Cal.MaxSupportedDateTime)
-        );
-    }
-}
-
-// EraInfo.yearOffset:  The offset to Gregorian year when the era starts. Gregorian Year = Era Year + yearOffset
-//                      Era Year = Gregorian Year - yearOffset
-// EraInfo.minEraYear:  Min year value in this era. Generally, this value is 1, but this may be affected by the DateTime.MinValue;
-// EraInfo.maxEraYear:  Max year value in this era. (== the year length of the era + 1)
-function getYearOffset(this: GregorianCalendarHelper, _year: number, _throwOnError: boolean): number {
-    return this.eraInfo[0]!.yearOffset;
+function isGregorianLeapYear(year: number): boolean {
+    return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
 }

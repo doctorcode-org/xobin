@@ -87,6 +87,16 @@ test('a PersianCalendar-only consumer bundle excludes other calendars', async ()
   }
 });
 
+test('a ThaiBuddhistCalendar-only consumer bundle excludes unrelated calendars', async () => {
+  const output = await bundle(
+    "import { ThaiBuddhistCalendar } from '@xobin/globalization'; globalThis.value = new ThaiBuddhistCalendar();",
+  );
+  assert.match(output, /ThaiBuddhistCalendar/);
+  for (const unused of ['PersianCalendar', 'UmAlQuraCalendar']) {
+    assert.equal(output.includes(unused), false, `${unused} remained in the ThaiBuddhistCalendar bundle`);
+  }
+});
+
 test('an ESM locale bundle excludes CommonJS and unrelated calendars', async () => {
   const output = await bundle(
     "import { cultureData } from '@xobin/globalization/locales/fa-IR'; globalThis.value = cultureData;",

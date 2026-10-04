@@ -7,14 +7,16 @@ import { CalendarWeekRule } from './calendar_week_rule';
 import { getOrCreateValue, ArgumentOutOfRangeException, setValue } from '@xobin/core';
 import { EraInfo } from './era_info';
 import { MaxYear } from './gregorian_calendar';
-import { throwIfNegativeYear } from './calendar_exception';
+import { calendarRangeMessage, throwIfNegativeYear } from './calendar_exception';
 
 /**
  * Represents the Thai Buddhist calendar.
  */
 export class ThaiBuddhistCalendar extends Calendar {
+    static readonly ThaiBuddhistEra = 1;
 
-    private readonly _helper = new GregorianCalendarHelper(this, [new EraInfo(1, 1, 1, 1, -543, 544, MaxYear + 543)]);
+    private readonly _helper = new GregorianCalendarHelper(this,
+        [new EraInfo(ThaiBuddhistCalendar.ThaiBuddhistEra, 1, 1, 1, -543, 544, MaxYear + 543)]);
 
     /**
      * Initializes a new instance of the ThaiBuddhistCalendar class.
@@ -48,16 +50,13 @@ export class ThaiBuddhistCalendar extends Calendar {
      * Gets or sets the last year of a 100-year range that can be represented by a 2-digit year.
      */
     override get twoDigitYearMax(): number {
-        return getOrCreateValue(this, "twoDigitYearMax", () => 2572);
+        return getOrCreateValue(this, "twoDigitYearMax", () => 2592);
     }
 
     override set twoDigitYearMax(value) {
         if (value < 99 || value > this._helper.maxYear) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(value),
-                //value,
-                //SR.Format(SR.ArgumentOutOfRange_Range, 99, _helper.MaxYear)
-            );
+            throw new ArgumentOutOfRangeException('value', value,
+                calendarRangeMessage(99, this._helper.maxYear));
         }
 
         setValue(this, "twoDigitYearMax", value);
@@ -67,8 +66,8 @@ export class ThaiBuddhistCalendar extends Calendar {
      * Determines whether the specified year is a leap year.
      * @param year An integer that represents the year.
      */
-    isLeapYear(year: number): boolean {
-        return this._helper.isLeapYear(year);
+    isLeapYear(year: number, era: number = 0): boolean {
+        return this._helper.isLeapYear(year, era);
     }
 
     /**
@@ -76,8 +75,8 @@ export class ThaiBuddhistCalendar extends Calendar {
      * @param year An integer that represents the year.
      * @param month An integer from 1 to 12 that represents the month.
      */
-    isLeapMonth(year: number, month: number): boolean {
-        return this._helper.isLeapMonth(year, month);
+    isLeapMonth(year: number, month: number, era: number = 0): boolean {
+        return this._helper.isLeapMonth(year, month, era);
     }
 
     /**
@@ -86,8 +85,8 @@ export class ThaiBuddhistCalendar extends Calendar {
      * @param month An integer from 1 to 12 that represents the month.
      * @param day An integer from 1 to 31 that represents the day.
      */
-    isLeapDay(year: number, month: number, day: number): boolean {
-        return this._helper.isLeapDay(year, month, day);
+    isLeapDay(year: number, month: number, day: number, era: number = 0): boolean {
+        return this._helper.isLeapDay(year, month, day, era);
     }
 
     /**
@@ -152,16 +151,16 @@ export class ThaiBuddhistCalendar extends Calendar {
      * Returns the number of months in the specified year.
      * @param year An integer that represents the year.
      */
-    getMonthsInYear(year: number): number {
-        return this._helper.getMonthsInYear(year);
+    getMonthsInYear(year: number, era: number = 0): number {
+        return this._helper.getMonthsInYear(year, era);
     }
 
     /**
      * Returns the number of days in the specified year.
      * @param year An integer that represents the year.
      */
-    getDaysInYear(year: number): number {
-        return this._helper.getDaysInYear(year);
+    getDaysInYear(year: number, era: number = 0): number {
+        return this._helper.getDaysInYear(year, era);
     }
 
     /**
@@ -169,8 +168,8 @@ export class ThaiBuddhistCalendar extends Calendar {
      * @param year An integer that represents the year.
      * @param month An integer from 1 to 12 that represents the month.
      */
-    getDaysInMonth(year: number, month: number): number {
-        return this._helper.getDaysInMonth(year, month);
+    getDaysInMonth(year: number, month: number, era: number = 0): number {
+        return this._helper.getDaysInMonth(year, month, era);
     }
 
     /**
@@ -187,8 +186,8 @@ export class ThaiBuddhistCalendar extends Calendar {
      * Calculates the leap month for a specified year.
      * @param year A year.
      */
-    override getLeapMonth(year: number): number {
-        return this._helper.getLeapMonth(year);
+    override getLeapMonth(year: number, era: number = 0): number {
+        return this._helper.getLeapMonth(year, era);
     }
 
     /**
@@ -213,8 +212,17 @@ export class ThaiBuddhistCalendar extends Calendar {
      * @param second An integer from 0 to 59 that represents the second.
      * @param millisecond An integer from 0 to 999 that represents the millisecond.
      */
-    toDateTime(year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number): DateTime {
-        return this._helper.toDateTime(year, month, day, hour, minute, second, millisecond);
+    toDateTime(year: number, month: number, day: number, hour: number, minute: number,
+        second: number, millisecond: number, era: number = 0): DateTime {
+        return this._helper.toDateTime(year, month, day, hour, minute, second, millisecond, era);
+    }
+
+    getEra(time: DateTime): number {
+        return this._helper.getEra(time);
+    }
+
+    get eras(): number[] {
+        return this._helper.eras;
     }
 
 }
