@@ -8,7 +8,9 @@ const runtime = process.argv[2];
 const mode = process.argv[3] ?? '--check';
 const output = resolve(dirname(fileURLToPath(import.meta.url)), '../tests/dotnet10-test-inventory.json');
 const mappedFacts = new Map(Object.entries(JSON.parse(readFileSync(resolve(dirname(output), 'dotnet10/mapped-facts.json'), 'utf8'))));
+const mappedTheories = new Map(Object.entries(JSON.parse(readFileSync(resolve(dirname(output), 'dotnet10/mapped-theories.json'), 'utf8'))));
 const usedMappings = new Set();
+const usedTheoryMappings = new Set();
 const root = 'src/libraries/System.Runtime/tests/';
 
 if (!runtime || !['--check', '--write'].includes(mode)) {
@@ -144,6 +146,18 @@ for (const file of selected) {
         const sources = dataSources(attributes.text, attributes.first + 1);
         const cases = [];
         if (test[1].endsWith('Theory')) {
+            const mappingKey = `${cls}.${declaration.name}`;
+            const mappedFile = mappedTheories.get(mappingKey);
+            if (mappedFile) {
+                const testSource = readFileSync(resolve(dirname(output), 'dotnet10', mappedFile), 'utf8');
+                const fixtureFile = mappedFile.replace(/\.test\.mjs$/, '-cases.json');
+                const fixture = JSON.parse(readFileSync(resolve(dirname(output), 'dotnet10', fixtureFile), 'utf8'));
+                if (!testSource.includes('test(`${row.source}/${index}`')
+                    || !fixture.rows?.some(row => row.source === mappingKey)) {
+                    throw new Error(`Mapped JS theory is missing: ${mappingKey}`);
+                }
+                usedTheoryMappings.add(mappingKey);
+            }
             const theorySources = sources.length ? sources : [{ kind: 'UnresolvedData', line: i + 1, raw: '' }];
             for (const testClass of executedBy) {
                 for (let index = 0; index < theorySources.length; index++) {
@@ -157,8 +171,8 @@ for (const file of selected) {
                         dataLine: source.line,
                         dataAttribute: source.raw,
                         expansion: source.kind === 'InlineData' ? 'one-row' : 'unexpanded',
-                        status: old?.status ?? 'unmapped',
-                        jsTest: old?.jsTest ?? null
+                        status: mappedFile ? (source.kind === 'InlineData' ? 'mapped' : 'mapped-source') : (old?.status ?? 'unmapped'),
+                        jsTest: mappedFile ? `tests/dotnet10/${mappedFile}#${mappingKey}` : (old?.jsTest ?? null)
                     });
                 }
             }
@@ -211,6 +225,7 @@ for (const file of selected) {
 
 const methodIds = methods.map(method => method.id);
 for (const key of mappedFacts.keys()) if (!usedMappings.has(key)) throw new Error(`Unused mapped Fact: ${key}`);
+for (const key of mappedTheories.keys()) if (!usedTheoryMappings.has(key)) throw new Error(`Unused mapped Theory: ${key}`);
 const caseIds = methods.flatMap(method => method.cases.map(testCase => testCase.id));
 if (new Set(methodIds).size !== methodIds.length) throw new Error('Duplicate method IDs');
 if (new Set(caseIds).size !== caseIds.length) throw new Error('Duplicate case IDs');
@@ -224,7 +239,8 @@ const byGroup = Object.fromEntries([...new Set(methods.map(method => method.grou
         methods: groupMethods.length,
         caseRecords: groupCases.length,
         unexpandedDataSources: groupCases.filter(testCase => testCase.expansion === 'unexpanded').length,
-        mappedCases: groupCases.filter(testCase => testCase.status === 'mapped' && testCase.jsTest).length
+        mappedCases: groupCases.filter(testCase => testCase.status === 'mapped' && testCase.jsTest).length,
+        mappedDataSources: groupCases.filter(testCase => testCase.status === 'mapped-source' && testCase.jsTest).length
     }];
 }));
 const summary = {
@@ -235,13 +251,15 @@ const summary = {
     unexpandedDataSources: unexpanded,
     mappedCases: methods.flatMap(method => method.cases)
         .filter(testCase => testCase.status === 'mapped' && testCase.jsTest).length,
+    mappedDataSources: methods.flatMap(method => method.cases)
+        .filter(testCase => testCase.status === 'mapped-source' && testCase.jsTest).length,
     byGroup
 };
 const inventory = {
     sourceTag,
     sourceCommit,
     selection: 'DateTimeTests, TimeSpanTests, full Calendars suite (ISOWeek flagged as adjacent), full DateTimeFormatInfo suite, CultureInfoCalendar and CultureInfoDateTimeFormat',
-    interpretation: 'Cases are expanded for concrete Calendar test subclasses. A Fact or InlineData record is one case. MemberData, ClassData and unresolved theories remain source placeholders until their runtime rows are enumerated.',
+    interpretation: 'Cases are expanded for concrete Calendar test subclasses. A Fact or InlineData record is one case. mapped-source means a MemberData or ClassData method has a JS equivalent, while its original runtime rows remain unexpanded.',
     summary,
     supportFiles,
     methods

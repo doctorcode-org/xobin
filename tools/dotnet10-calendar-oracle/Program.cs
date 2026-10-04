@@ -5,6 +5,22 @@ if (Environment.Version.ToString() != "10.0.7")
     throw new InvalidOperationException($"Expected .NET 10.0.7, got {Environment.Version}.");
 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
+if (args.Length >= 2 && args[0] == "--gregorian")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --gregorian, the fixture output path, and optionally --check.");
+    string gregorianFixture = GregorianOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != gregorianFixture)
+            throw new InvalidOperationException("Gregorian fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], gregorianFixture);
+    }
+    return;
+}
 if (args.Length is < 1 or > 2 || (args.Length == 2 && args[1] != "--check"))
     throw new ArgumentException("Pass the fixture output path, optionally followed by --check.");
 

@@ -1,0 +1,21 @@
+{
+  "GregorianCalendarAddMonths.AddMonths": "gregorian.test.mjs",
+  "GregorianCalendarAddYears.AddYears": "gregorian.test.mjs",
+  "GregorianCalendarGetDayOfMonth.GetDayOfMonth": "gregorian.test.mjs",
+  "GregorianCalendarGetDayOfWeek.GetDayOfWeek": "gregorian.test.mjs",
+  "GregorianCalendarGetDayOfYear.GetDayOfYear": "gregorian.test.mjs",
+  "GregorianCalendarGetDaysInMonth.GetDaysInMonth": "gregorian.test.mjs",
+  "GregorianCalendarGetDaysInYear.GetDaysInYear": "gregorian.test.mjs",
+  "GregorianCalendarGetEra.GetEra": "gregorian.test.mjs",
+  "GregorianCalendarGetLeapMonth.GetLeapMonth": "gregorian.test.mjs",
+  "GregorianCalendarGetMonth.GetMonth": "gregorian.test.mjs",
+  "GregorianCalendarGetMonthsInYear.GetMonthsInYear": "gregorian.test.mjs",
+  "GregorianCalendarGetWeekOfYears.GetWeekOfYear": "gregorian.test.mjs",
+  "GregorianCalendarGetYear.GetYear": "gregorian.test.mjs",
+  "GregorianCalendarIsLeapDay.IsLeapDay": "gregorian.test.mjs",
+  "GregorianCalendarIsLeapMonth.IsLeapMonth": "gregorian.test.mjs",
+  "GregorianCalendarIsLeapYear.IsLeapYearTest": "gregorian.test.mjs",
+  "GregorianCalendarToDateTime.ToDateTime": "gregorian.test.mjs",
+  "GregorianCalendarToFourDigitYear.ToFourDigitYear": "gregorian.test.mjs",
+  "GregorianCalendarTwoDigitYearMax.TwoDigitYearMax": "gregorian.test.mjs"
+}
