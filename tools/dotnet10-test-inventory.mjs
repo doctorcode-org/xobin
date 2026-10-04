@@ -167,12 +167,19 @@ for (const file of selected) {
                 const id = `${methodId}#Fact@${testClass}`;
                 const old = previousCases.get(id);
                 const mappingKey = `${cls}.${declaration.name}`;
-                const mappedFile = mappedFacts.get(mappingKey);
+                const scopedKey = `${mappingKey}@${testClass}`;
+                const scopedMapping = mappedFacts.has(scopedKey);
+                const mappedFile = mappedFacts.get(scopedKey) ?? mappedFacts.get(mappingKey);
+                const mappedTitle = scopedMapping ? `${mappingKey}/${testClass}` : mappingKey;
                 if (mappedFile) {
                     if (test[1] !== 'Fact') throw new Error(`Only Fact methods may use mapped-facts.json: ${mappingKey}`);
                     const testSource = readFileSync(resolve(dirname(output), 'dotnet10', mappedFile), 'utf8');
-                    if (!testSource.includes(`test('${mappingKey}'`)) throw new Error(`Mapped JS test is missing: ${mappingKey}`);
-                    usedMappings.add(mappingKey);
+                    const directTest = testSource.includes(`test('${mappedTitle}'`);
+                    const parameterizedTest = scopedMapping
+                        && testSource.includes('test(`' + mappingKey + '/${name}`')
+                        && testSource.includes(`'${testClass}'`);
+                    if (!directTest && !parameterizedTest) throw new Error(`Mapped JS test is missing: ${mappedTitle}`);
+                    usedMappings.add(scopedMapping ? scopedKey : mappingKey);
                 }
                 cases.push({
                     id,
@@ -182,7 +189,7 @@ for (const file of selected) {
                     dataAttribute: null,
                     expansion: 'one-row',
                     status: mappedFile ? 'mapped' : (old?.status ?? 'unmapped'),
-                    jsTest: mappedFile ? `tests/dotnet10/${mappedFile}#${mappingKey}` : (old?.jsTest ?? null)
+                    jsTest: mappedFile ? `tests/dotnet10/${mappedFile}#${mappedTitle}` : (old?.jsTest ?? null)
                 });
             }
         }

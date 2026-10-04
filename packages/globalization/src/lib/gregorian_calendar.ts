@@ -5,6 +5,7 @@ import { getValue, setValue, getOrCreateValue, int, ArgumentOutOfRangeException 
 import { DateTime, getDate } from './date_time';
 import { DayOfWeek } from './day_of_week';
 import { TicksPerDay } from './var';
+import { throwIfNegativeYear, throwIfYearGreaterThan } from './calendar_exception';
 
 export const MaxYear = 9999;
 //const MinYear = 1;
@@ -316,14 +317,10 @@ export class GregorianCalendar extends Calendar {
      */
    override toFourDigitYear(year: number): number {
         if (year < 0) {
-            throw new ArgumentOutOfRangeException(/*nameof(year), year, SR.ArgumentOutOfRange_NeedNonNegNum*/);
+            throwIfNegativeYear(year);
         }
         if (year > MaxYear) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(year),
-                //year,
-                //SR.Format(SR.ArgumentOutOfRange_Range, 1, MaxYear)
-            );
+            throwIfYearGreaterThan(year, MaxYear);
         }
 
         return super.toFourDigitYear(year);

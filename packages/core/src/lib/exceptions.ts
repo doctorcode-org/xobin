@@ -47,13 +47,13 @@ export class ArgumentException extends Exception {
         super();
 
         setValue(this, "message", message || "");
-        setValue(this, "paramName", paramName || "");
+        setValue(this, "paramName", paramName ?? null);
     }
 
     /** 
      * Gets the name of the parameter that causes this exception. 
      */
-    get paramName(): string {
+    get paramName(): string | null {
         return getValue(this, "paramName");
     }
 
@@ -67,8 +67,9 @@ export class ArgumentException extends Exception {
             message = "Value does not fall within the expected range.";
         }
 
-        if (!isNullOrEmpty(this.paramName)) {
-            message += " " + formatString("(Parameter '{0}')", this.paramName);
+        const paramName = this.paramName;
+        if (paramName) {
+            message += " " + formatString("(Parameter '{0}')", paramName);
         }
 
         return message;
@@ -156,12 +157,37 @@ export class NotSupportedException extends Exception {
  */
 export class ArgumentOutOfRangeException extends ArgumentException {
     /**
-     * 
-     * @param paramName
-     * @param message
+     * Initializes an exception with the invalid parameter and optional actual value.
      */
-    constructor(paramName?: string, message?: string) {
-        super(message, paramName);
+    constructor(paramName?: string, message?: string);
+    constructor(paramName: string | undefined, actualValue: unknown, message: string);
+    constructor(paramName?: string, messageOrActualValue?: unknown, message?: string) {
+        super(message === undefined
+            ? (messageOrActualValue as string | undefined) ?? "Specified argument was out of the range of valid values."
+            : message,
+            paramName);
+        setValue(this, "actualValue", message === undefined ? null : messageOrActualValue ?? null);
+    }
+
+    get actualValue(): unknown {
+        return getValue(this, "actualValue");
+    }
+
+    override get message(): string {
+        const message = super.message;
+        const actualValue = this.actualValue;
+        if (actualValue == null) {
+            return message;
+        }
+        let value = String(actualValue);
+        if (typeof actualValue === 'number') {
+            const magnitude = Math.abs(actualValue);
+            if (magnitude >= 1e17 || (magnitude > 0 && magnitude < 1e-4)) {
+                value = actualValue.toExponential().replace(/e([+-])(\d+)$/, (_, sign: string, exponent: string) =>
+                    `E${sign}${exponent.padStart(2, '0')}`);
+            }
+        }
+        return `${message}\r\nActual value was ${value}.`;
     }
 }
 

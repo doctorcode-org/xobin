@@ -10,6 +10,7 @@ import { DayOfWeek } from './day_of_week';
 import { EraInfo } from './era_info';
 import { DaysToMonth366, DaysToMonth365, GregorianCalendar } from './gregorian_calendar';
 import { CalendarWeekRule } from './calendar_week_rule';
+import { calendarRangeMessage, throwIfNegativeYear } from './calendar_exception';
 
 export class GregorianCalendarHelper {
 
@@ -187,16 +188,16 @@ export class GregorianCalendarHelper {
 
     toFourDigitYear(year: number, twoDigitYearMax: number): number {
         if (year < 0) {
-            throw new ArgumentOutOfRangeException(/*nameof(year), SR.ArgumentOutOfRange_NeedPosNum*/);
+            throwIfNegativeYear(year);
         }
 
         if (year < 100) {
             const y = year % 100;
-            return (twoDigitYearMax / 100 - (y > twoDigitYearMax % 100 ? 1 : 0)) * 100 + y;
+            return (Math.trunc(twoDigitYearMax / 100) - (y > twoDigitYearMax % 100 ? 1 : 0)) * 100 + y;
         }
 
         if (year < this.minYear || year > this.maxYear) {
-            throw new ArgumentOutOfRangeException(/*nameof(year), SR.Format(SR.ArgumentOutOfRange_Range, m_minYear, m_maxYear)*/);
+            throw new ArgumentOutOfRangeException('year', calendarRangeMessage(this.minYear, this.maxYear));
         }
         // If the year value is above 100, just return the year value.  Don't have to do
         // the TwoDigitYearMax comparison.

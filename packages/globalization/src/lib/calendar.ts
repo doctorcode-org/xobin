@@ -15,6 +15,7 @@ import {
 } from './var';
 import { DayOfWeek } from './day_of_week';
 import { CalendarWeekRule } from './calendar_week_rule';
+import { calendarRangeMessage, formatGregorianDateTime, throwIfNegativeYear } from './calendar_exception';
 
 /**
  * Represents time in divisions, such as weeks, months, and years.
@@ -150,11 +151,8 @@ export abstract class Calendar {
      */
     getWeekOfYear(time: DateTime, rule: CalendarWeekRule, firstDayOfWeek: DayOfWeek): number {
         if (firstDayOfWeek < DayOfWeek.Sunday || firstDayOfWeek > DayOfWeek.Saturday) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(firstDayOfWeek),
-                //firstDayOfWeek,
-                //SR.Format(SR.ArgumentOutOfRange_Range, DayOfWeek.Sunday, DayOfWeek.Saturday)
-            );
+            throw new ArgumentOutOfRangeException('firstDayOfWeek', firstDayOfWeek,
+                calendarRangeMessage('Sunday', 'Saturday'));
         }
 
         switch (rule) {
@@ -165,11 +163,8 @@ export abstract class Calendar {
             case CalendarWeekRule.FirstFourDayWeek:
                 return getWeekOfYearFullDays.call(this, time, firstDayOfWeek, 4);
             default:
-                throw new ArgumentOutOfRangeException(
-                    //nameof(rule),
-                    //rule,
-                    //SR.Format(SR.ArgumentOutOfRange_Range, CalendarWeekRule.FirstDay, CalendarWeekRule.FirstFourDayWeek)
-                );
+                throw new ArgumentOutOfRangeException('rule', rule,
+                    calendarRangeMessage('FirstDay', 'FirstFourDayWeek'));
         }
     }
 
@@ -179,10 +174,10 @@ export abstract class Calendar {
      */
     toFourDigitYear(year: number): number {
         if (year < 0) {
-            throw new ArgumentOutOfRangeException('year'/*, year, SR.ArgumentOutOfRange_NeedNonNegNum*/);
+            throwIfNegativeYear(year);
         }
         if (year < 100) {
-            return (this.twoDigitYearMax / 100 - (year > this.twoDigitYearMax % 100 ? 1 : 0)) * 100 + year;
+            return (Math.trunc(this.twoDigitYearMax / 100) - (year > this.twoDigitYearMax % 100 ? 1 : 0)) * 100 + year;
         }
 
         // If the year value is above 100, just return the year value.  Don't have to do
@@ -317,7 +312,7 @@ function add(this: Calendar, time: DateTime, value: number, scale: number): Date
     // before attempting a cast. Otherwise, the result is undefined.
     const tempMillis = (value * scale + (value >= 0 ? 0.5 : -0.5));
     if (!((tempMillis > -MaxMillis) && (tempMillis < MaxMillis))) {
-        throw new ArgumentOutOfRangeException(/*nameof(value), value, SR.ArgumentOutOfRange_AddValue*/);
+        throw new ArgumentOutOfRangeException('value', value, 'Value to add was out of range.');
     }
 
     const millis = int(tempMillis);
@@ -328,21 +323,21 @@ function add(this: Calendar, time: DateTime, value: number, scale: number): Date
 
 export function checkAddResult(ticks: bigint, minValue: DateTime, maxValue: DateTime) {
     if (ticks < minValue.ticks || ticks > maxValue.ticks) {
-        throw new ArgumentException(/*SR.Format(SR.Argument_ResultCalendarRange, minValue, maxValue)*/);
+        throw new ArgumentException('The result is out of the supported range for this calendar. '
+            + `The result should be between ${formatGregorianDateTime(minValue)} (Gregorian date) and `
+            + `${formatGregorianDateTime(maxValue)} (Gregorian date), inclusive.`);
     }
 }
 
 export function timeToTicks(hour: number, minute: number, second: number, millisecond: number): bigint {
     if (hour < 0 || hour >= 24 || minute < 0 || minute >= 60 || second < 0 || second >= 60) {
-        throw new ArgumentOutOfRangeException(/*null, SR.ArgumentOutOfRange_BadHourMinuteSecond*/);
+        throw new ArgumentOutOfRangeException(undefined,
+            'Hour, Minute, and Second parameters describe an un-representable DateTime.');
     }
 
     if (millisecond < 0 || millisecond >= MillisPerSecond) {
-        throw new ArgumentOutOfRangeException(
-            //nameof(millisecond),
-            //millisecond,
-            //SR.Format(SR.ArgumentOutOfRange_Range, 0, MillisPerSecond - 1)
-        );
+        throw new ArgumentOutOfRangeException('millisecond', millisecond,
+            calendarRangeMessage(0, MillisPerSecond - 1));
     }
 
     return timeToTickHelper(hour, minute, second) + BigInt(millisecond) * TicksPerMillisecond;
@@ -352,7 +347,7 @@ function getFirstDayWeekOfYear(this: Calendar, time: DateTime, firstDayOfWeek: n
     const dayOfYear = this.getDayOfYear(time) - 1; // Make the day of year to be 0-based, so that 1/1 is day 0.
     const dayForJan1 = this.getDayOfWeek(time) - (dayOfYear % 7);
     const offset = (dayForJan1 - firstDayOfWeek + 14) % 7;
-    return (dayOfYear + offset) / 7 + 1;
+    return Math.trunc((dayOfYear + offset) / 7) + 1;
 }
 
 function getWeekOfYearFullDays(this: Calendar, time: DateTime, firstDayOfWeek: number, fullDays: number): number {
@@ -376,7 +371,7 @@ function getWeekOfYearFullDays(this: Calendar, time: DateTime, firstDayOfWeek: n
     day = dayOfYear - offset;
     if (day >= 0) {
         // If the day of year value is greater than zero, get the week of year.
-        return day / 7 + 1;
+        return Math.trunc(day / 7) + 1;
     }
 
     // Otherwise, the specified time falls on the week of previous year.
@@ -411,7 +406,7 @@ function getWeekOfYearOfMinSupportedDateTime(this: Calendar, firstDayOfWeek: num
         day += 7;
     }
 
-    return day / 7 + 1;
+    return Math.trunc(day / 7) + 1;
 }
 
 //function isValidYear(this: Calendar, year: number): boolean {

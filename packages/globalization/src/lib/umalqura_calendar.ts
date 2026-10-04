@@ -5,6 +5,7 @@ import { CalendarAlgorithmType } from './calendar_algorithm_type';
 import { DayOfWeek } from './day_of_week';
 import { DatePartDay, DatePartYear, DatePartMonth, DatePartDayOfYear, TicksPerDay } from './var';
 import { getAbsoluteDate } from './gregorian_calendar';
+import { calendarRangeMessage, throwIfNegativeYear } from './calendar_exception';
 
 const MinCalendarYear = 1318;
 const MaxCalendarYear = 1500;
@@ -223,6 +224,10 @@ const MaxDate = new DateTime(new DateTime(2077, 11, 16, 23, 59, 59, 999).ticks +
  * Represents the Saudi Hijri (Um Al Qura) calendar.
  */
 export class UmAlQuraCalendar extends Calendar {
+
+    protected override get daysInYearBeforeMinSupportedYear(): number {
+        return 355;
+    }
 
     /**
      * Gets the earliest date and time supported by this calendar.
@@ -448,7 +453,7 @@ export class UmAlQuraCalendar extends Calendar {
      */
     override toFourDigitYear(year: number): number {
         if (year < 0) {
-            throw new ArgumentOutOfRangeException(/*nameof(year), year, SR.ArgumentOutOfRange_NeedNonNegNum*/);
+            throwIfNegativeYear(year);
         }
 
         if (year < 100) {
@@ -456,11 +461,7 @@ export class UmAlQuraCalendar extends Calendar {
         }
 
         if (year < MinCalendarYear || year > MaxCalendarYear) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(year),
-                //year,
-                //SR.Format(SR.ArgumentOutOfRange_Range, MinCalendarYear, MaxCalendarYear)
-            );
+            throw new ArgumentOutOfRangeException('year', year, calendarRangeMessage(MinCalendarYear, MaxCalendarYear));
         }
 
         return year;

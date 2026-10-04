@@ -5,6 +5,7 @@ import { getOrCreateValue, ArgumentOutOfRangeException, InvalidOperationExceptio
 import { CalendarAlgorithmType } from './calendar_algorithm_type';
 import { TicksPerDay, DatePartYear, DatePartMonth, DatePartDay, DatePartDayOfYear } from './var';
 import { MeanTropicalYearInDays, persianNewYearOnOrBefore, getNumberOfDays } from './calendrical_helper';
+import { calendarRangeMessage, throwIfNegativeYear } from './calendar_exception';
 
 const MaxCalendarYear = 9378;
 const MaxCalendarMonth = 10;
@@ -256,7 +257,7 @@ export class PersianCalendar extends Calendar {
      */
     override toFourDigitYear(year: number): number {
         if (year < 0) {
-            throw new ArgumentOutOfRangeException(/*nameof(year), year, SR.ArgumentOutOfRange_NeedNonNegNum*/);
+            throwIfNegativeYear(year);
         }
 
         if (year < 100) {
@@ -264,11 +265,7 @@ export class PersianCalendar extends Calendar {
         }
 
         if (year > MaxCalendarYear) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(year),
-                //year,
-                //SR.Format(SR.ArgumentOutOfRange_Range, 1, MaxCalendarYear)
-            );
+            throw new ArgumentOutOfRangeException('year', year, calendarRangeMessage(1, MaxCalendarYear));
         }
 
         return year;

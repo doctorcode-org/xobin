@@ -20,5 +20,15 @@
   "TimeSpanTests.Ctor_Int_Int_Int_Int_Int_Int": "time-span-ticks.test.mjs",
   "TimeSpanTests.Ctor_Int_Int_Int_Int_Int_Int_Invalid": "time-span-ticks.test.mjs",
   "TimeSpanTests.TotalMilliseconds_Invalid": "time-span-ticks.test.mjs",
-  "TimeSpanTests.FromMinMaxValue_DoesNotThrow": "time-span-ticks.test.mjs"
+  "TimeSpanTests.FromMinMaxValue_DoesNotThrow": "time-span-ticks.test.mjs",
+  "CalendarTestBase.GetWeekOfYear_Invalid_ThrowsArgumentOutOfRangeException@GregorianCalendarDefaultTests": "calendar-base.test.mjs",
+  "CalendarTestBase.GetWeekOfYear_Invalid_ThrowsArgumentOutOfRangeException@GregorianCalendarLocalizedTests": "calendar-base.test.mjs",
+  "CalendarTestBase.GetWeekOfYear_Invalid_ThrowsArgumentOutOfRangeException@GregorianCalendarUSEnglishTests": "calendar-base.test.mjs",
+  "CalendarTestBase.GetWeekOfYear_Invalid_ThrowsArgumentOutOfRangeException@GregorianCalendarMiddleEastFrenchTests": "calendar-base.test.mjs",
+  "CalendarTestBase.GetWeekOfYear_Invalid_ThrowsArgumentOutOfRangeException@GregorianCalendarArabicTests": "calendar-base.test.mjs",
+  "CalendarTestBase.GetWeekOfYear_Invalid_ThrowsArgumentOutOfRangeException@GregorianCalendarTransliteratedEnglishTests": "calendar-base.test.mjs",
+  "CalendarTestBase.GetWeekOfYear_Invalid_ThrowsArgumentOutOfRangeException@GregorianCalendarTransliteratedFrenchTests": "calendar-base.test.mjs",
+  "CalendarTestBase.GetWeekOfYear_Invalid_ThrowsArgumentOutOfRangeException@PersianCalendarTests": "calendar-base.test.mjs",
+  "CalendarTestBase.GetWeekOfYear_Invalid_ThrowsArgumentOutOfRangeException@ThaiBuddhistCalendarTests": "calendar-base.test.mjs",
+  "CalendarTestBase.GetWeekOfYear_Invalid_ThrowsArgumentOutOfRangeException@UmAlQuraCalendarTests": "calendar-base.test.mjs"
 }

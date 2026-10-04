@@ -7,6 +7,7 @@ import { CalendarWeekRule } from './calendar_week_rule';
 import { getOrCreateValue, ArgumentOutOfRangeException, setValue } from '@xobin/core';
 import { EraInfo } from './era_info';
 import { MaxYear } from './gregorian_calendar';
+import { throwIfNegativeYear } from './calendar_exception';
 
 /**
  * Represents the Thai Buddhist calendar.
@@ -196,7 +197,7 @@ export class ThaiBuddhistCalendar extends Calendar {
      */
     override toFourDigitYear(year: number): number {
         if (year < 0) {
-            throw new ArgumentOutOfRangeException(/*nameof(year), year, SR.ArgumentOutOfRange_NeedNonNegNum*/);
+            throwIfNegativeYear(year);
         }
 
         return this._helper.toFourDigitYear(year, this.twoDigitYearMax);
