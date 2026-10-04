@@ -32,5 +32,7 @@
   "CalendarTestBase.GetWeekOfYear_Invalid_ThrowsArgumentOutOfRangeException@ThaiBuddhistCalendarTests": "calendar-base.test.mjs",
   "CalendarTestBase.GetWeekOfYear_Invalid_ThrowsArgumentOutOfRangeException@UmAlQuraCalendarTests": "calendar-base.test.mjs",
   "ThaiBuddhistCalendarGetWeekOfYear.GetWeekOfYear_LastDayOfYear": "thai-buddhist.test.mjs",
-  "ThaiBuddhistCalendarTwoDigitYearMax.TwoDigitYearMax_Get": "thai-buddhist.test.mjs"
+  "ThaiBuddhistCalendarTwoDigitYearMax.TwoDigitYearMax_Get": "thai-buddhist.test.mjs",
+  "PersianCalendarTests.CalendarConversion": "persian.test.mjs",
+  "PersianCalendarTests.IsLeapYear": "persian.test.mjs"
 }

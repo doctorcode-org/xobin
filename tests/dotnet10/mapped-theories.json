@@ -35,5 +35,13 @@
   "ThaiBuddhistCalendarIsLeapYear.IsLeapYear": "thai-buddhist.test.mjs",
   "ThaiBuddhistCalendarToDateTime.ToDateTime": "thai-buddhist.test.mjs",
   "ThaiBuddhistCalendarToFourDigitYear.ToFourDigitYear": "thai-buddhist.test.mjs",
-  "ThaiBuddhistCalendarTwoDigitYearMax.TwoDigitYearMax_Set": "thai-buddhist.test.mjs"
+  "ThaiBuddhistCalendarTwoDigitYearMax.TwoDigitYearMax_Set": "thai-buddhist.test.mjs",
+  "PersianCalendarTests.IsLeapMonth": "persian.test.mjs",
+  "PersianCalendarTests.IsLeapDay": "persian.test.mjs",
+  "PersianCalendarTests.GetLeapMonth": "persian.test.mjs",
+  "PersianCalendarTests.GetDaysInYear": "persian.test.mjs",
+  "PersianCalendarTests.GetMonthsInYear": "persian.test.mjs",
+  "PersianCalendarTests.GetDayOfWeek": "persian.test.mjs",
+  "PersianCalendarTests.TwoDigitYearMax_Set": "persian.test.mjs",
+  "PersianCalendarTests.ToFourDigitYear": "persian.test.mjs"
 }

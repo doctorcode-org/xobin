@@ -5,7 +5,7 @@ import { getOrCreateValue, ArgumentOutOfRangeException, InvalidOperationExceptio
 import { CalendarAlgorithmType } from './calendar_algorithm_type';
 import { TicksPerDay, DatePartYear, DatePartMonth, DatePartDay, DatePartDayOfYear } from './var';
 import { MeanTropicalYearInDays, persianNewYearOnOrBefore, getNumberOfDays } from './calendrical_helper';
-import { calendarRangeMessage, throwIfNegativeYear } from './calendar_exception';
+import { calendarRangeMessage, formatGregorianDateTime, throwIfNegativeYear } from './calendar_exception';
 
 const MaxCalendarYear = 9378;
 const MaxCalendarMonth = 10;
@@ -19,6 +19,7 @@ const ApproximateHalfYear = 180;
  * Represents the Persian calendar.
  */
 export class PersianCalendar extends Calendar {
+    static readonly PersianEra = 1;
 
     /**
      * Initializes a new instance of the PersianCalendar class.
@@ -52,16 +53,13 @@ export class PersianCalendar extends Calendar {
     * Gets or sets the last year of a 100-year range that can be represented by a 2-digit year.
     */
     override get twoDigitYearMax(): number {
-        return getOrCreateValue(this, 'twoDigitYearMax', () => 1410);
+        return getOrCreateValue(this, 'twoDigitYearMax', () => 1429);
     }
 
     override set twoDigitYearMax(value) {
         if (value < 99 || value > MaxCalendarYear) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(value),
-                //value,
-                //SR.Format(SR.ArgumentOutOfRange_Range, 99, MaxYear)
-            );
+            throw new ArgumentOutOfRangeException('value', value,
+                calendarRangeMessage(99, MaxCalendarYear));
         }
 
         setValue(this, 'twoDigitYearMax', value);
@@ -71,8 +69,8 @@ export class PersianCalendar extends Calendar {
      * Determines whether the specified year in the specified era is a leap year.
      * @param year An integer from 1 through 9378 that represents the year.
      */
-    isLeapYear(year: number): boolean {
-        checkYearRange(year);
+    isLeapYear(year: number, era: number = 0): boolean {
+        checkYearRange(year, era);
 
         if (year == MaxCalendarYear) {
             return false;
@@ -86,8 +84,8 @@ export class PersianCalendar extends Calendar {
      * @param year An integer from 1 through 9378 that represents the year.
      * @param month An integer that represents the month and ranges from 1 through 12 if year is not 9378, or 1 through 10 if year is 9378.
      */
-    isLeapMonth(year: number, month: number): boolean {
-        checkYearMonthRange(year, month);
+    isLeapMonth(year: number, month: number, era: number = 0): boolean {
+        checkYearMonthRange(year, month, era);
         return false;
     }
 
@@ -97,26 +95,23 @@ export class PersianCalendar extends Calendar {
      * @param month An integer that represents the month and ranges from 1 through 12 if year is not 9378, or 1 through 10 if year is 9378.
      * @param day An integer from 1 through 31 that represents the day.
      */
-    isLeapDay(year: number, month: number, day: number): boolean {
+    isLeapDay(year: number, month: number, day: number, era: number = 0): boolean {
         // The year/month/era value checking is done in GetDaysInMonth().
-        const daysInMonth = this.getDaysInMonth(year, month);
+        const daysInMonth = this.getDaysInMonth(year, month, era);
         if (day < 1 || day > daysInMonth) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(day),
-                //day,
-                //SR.Format(SR.ArgumentOutOfRange_Day, daysInMonth, month)
-            );
+            throw new ArgumentOutOfRangeException('day', day,
+                `Day must be between 1 and ${daysInMonth} for month ${month}.`);
         }
 
-        return this.isLeapYear(year) && month == 12 && day == 30;
+        return this.isLeapYear(year, era) && month == 12 && day == 30;
     }
 
     /**
      * Returns the leap month for a specified year.
      * @param year An integer from 1 through 9378 that represents the year to convert.
      */
-    override getLeapMonth(year: number): number {
-        checkYearRange(year);
+    override getLeapMonth(year: number, era: number = 0): number {
+        checkYearRange(year, era);
         return 0;
     }
 
@@ -136,11 +131,8 @@ export class PersianCalendar extends Calendar {
      */
     addMonths(time: DateTime, months: number): DateTime {
         if (months < -120000 || months > 120000) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(months),
-                //months,
-                //SR.Format(SR.ArgumentOutOfRange_Range, -120000, 120000)
-            );
+            throw new ArgumentOutOfRangeException('months', months,
+                calendarRangeMessage(-120000, 120000));
         }
 
         // Get the date in Persian calendar.
@@ -150,11 +142,11 @@ export class PersianCalendar extends Calendar {
         let i = m - 1 + months;
         if (i >= 0) {
             m = i % 12 + 1;
-            y += i / 12;
+            y += int(i / 12);
         }
         else {
             m = 12 + (i + 1) % 12;
-            y += (i - 11) / 12;
+            y += int((i - 11) / 12);
         }
         const days = this.getDaysInMonth(y, m);
         if (d > days) {
@@ -210,8 +202,8 @@ export class PersianCalendar extends Calendar {
      * Returns the number of months in the specified year.
      * @param year An integer from 1 through 9378 that represents the year.
      */
-    getMonthsInYear(year: number): number {
-        checkYearRange(year);
+    getMonthsInYear(year: number, era: number = 0): number {
+        checkYearRange(year, era);
         if (year == MaxCalendarYear) {
             return MaxCalendarMonth;
         }
@@ -223,12 +215,13 @@ export class PersianCalendar extends Calendar {
      * Returns the number of days in the specified year.
      * @param year An integer from 1 through 9378 that represents the year.
      */
-    getDaysInYear(year: number): number {
+    getDaysInYear(year: number, era: number = 0): number {
+        checkYearRange(year, era);
         if (year == MaxCalendarYear) {
             return DaysToMonth[MaxCalendarMonth - 1]! + MaxCalendarDay;
         }
 
-        return this.isLeapYear(year) ? 366 : 365;
+        return this.isLeapYear(year, era) ? 366 : 365;
     }
 
     /**
@@ -236,8 +229,8 @@ export class PersianCalendar extends Calendar {
      * @param year An integer from 1 through 9378 that represents the year.
      * @param month An integer that represents the month, and ranges from 1 through 12 if year is not 9378, or 1 through 10 if year is 9378.
      */
-    getDaysInMonth(year: number, month: number): number {
-        checkYearMonthRange(year, month);
+    getDaysInMonth(year: number, month: number, era: number = 0): number {
+        checkYearMonthRange(year, month, era);
 
         if ((month == MaxCalendarMonth) && (year == MaxCalendarYear)) {
             return MaxCalendarDay;
@@ -281,34 +274,41 @@ export class PersianCalendar extends Calendar {
      * @param second An integer from 0 through 59 that represents the second.
      * @param millisecond An integer from 0 through 999 that represents the millisecond.
      */
-    toDateTime(year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number): DateTime {
+    toDateTime(year: number, month: number, day: number, hour: number, minute: number,
+        second: number, millisecond: number, era: number = 0): DateTime {
         // The year/month/era checking is done in GetDaysInMonth().
-        const daysInMonth = this.getDaysInMonth(year, month);
+        const daysInMonth = this.getDaysInMonth(year, month, era);
         if (day < 1 || day > daysInMonth) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(day),
-                //day,
-                //SR.Format(SR.ArgumentOutOfRange_Day, daysInMonth, month)
-            );
+            throw new ArgumentOutOfRangeException('day', day,
+                `Day must be between 1 and ${daysInMonth} for month ${month}.`);
         }
 
         const lDate = getAbsoluteDatePersian(year, month, day);
 
         if (lDate < 0) {
-            throw new ArgumentOutOfRangeException(/*null, SR.ArgumentOutOfRange_BadYearMonthDay*/);
+            throw new ArgumentOutOfRangeException(undefined,
+                'Year, Month, and Day parameters describe an un-representable DateTime.');
         }
 
         return new DateTime(BigInt(lDate) * TicksPerDay + timeToTicks(hour, minute, second, millisecond));
+    }
+
+    getEra(time: DateTime): number {
+        checkTicksRange.call(this, time.ticks);
+        return PersianCalendar.PersianEra;
+    }
+
+    get eras(): number[] {
+        return [PersianCalendar.PersianEra];
     }
 }
 
 function checkTicksRange(this: Calendar, ticks: bigint) {
     if (ticks < this.minSupportedDateTime.ticks || ticks > this.maxSupportedDateTime.ticks) {
-        throw new ArgumentOutOfRangeException(
-            //"time",
-            //ticks,
-            //SR.Format(SR.ArgumentOutOfRange_CalendarRange, s_minDate, s_maxDate)
-        );
+        throw new ArgumentOutOfRangeException('time', ticks,
+            `Specified time is not supported in this calendar. It should be between `
+            + `${formatGregorianDateTime(this.minSupportedDateTime)} (Gregorian date) and `
+            + `${formatGregorianDateTime(this.maxSupportedDateTime)} (Gregorian date), inclusive.`);
     }
 }
 
@@ -345,22 +345,27 @@ function getDatePart(this: Calendar, ticks: bigint, part: number): number {
     }
 
     // Incorrect part value.
-    throw new InvalidOperationException(/*SR.InvalidOperation_DateTimeParsing*/);
+    throw new InvalidOperationException('Internal Error in DateTime and Calendar operations.');
 }
 
-function checkYearRange(year: number) {
+function checkEraRange(era: number): void {
+    if (era !== 0 && era !== PersianCalendar.PersianEra) {
+        throw new ArgumentOutOfRangeException('era', era, 'Era value was not valid.');
+    }
+}
+
+function checkYearRange(year: number, era: number = 0) {
+    checkEraRange(era);
     if (year < 1 || year > MaxCalendarYear) {
-        throw new ArgumentOutOfRangeException(
-            //nameof(year),
-            //year,
-            //SR.Format(SR.ArgumentOutOfRange_Range, 1, MaxCalendarYear)
-        );
+        throw new ArgumentOutOfRangeException('year', year,
+            calendarRangeMessage(1, MaxCalendarYear));
     }
 }
 
 function getAbsoluteDatePersian(year: number, month: number, day: number) {
     if (year < 1 || year > MaxCalendarYear || month < 1 || month > 12) {
-        throw new ArgumentOutOfRangeException(/*null, SR.ArgumentOutOfRange_BadYearMonthDay*/);
+        throw new ArgumentOutOfRangeException(undefined,
+            'Year, Month, and Day parameters describe an un-representable DateTime.');
     }
 
     // day is one based, make 0 based since this will be the number of days we add to beginning of year below
@@ -371,20 +376,18 @@ function getAbsoluteDatePersian(year: number, month: number, day: number) {
     return yearStart;
 }
 
-function checkYearMonthRange(year: number, month: number): void {
-    checkYearRange(year);
+function checkYearMonthRange(year: number, month: number, era: number = 0): void {
+    checkYearRange(year, era);
     if (year == MaxCalendarYear) {
         if (month > MaxCalendarMonth) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(month),
-                //month,
-                //SR.Format(SR.ArgumentOutOfRange_Range, 1, MaxCalendarMonth)
-            );
+            throw new ArgumentOutOfRangeException('month', month,
+                calendarRangeMessage(1, MaxCalendarMonth));
         }
     }
 
     if (month < 1 || month > 12) {
-        throw new ArgumentOutOfRangeException(/*nameof(month), month, SR.ArgumentOutOfRange_Month*/);
+        throw new ArgumentOutOfRangeException('month', month,
+            'Month must be between one and twelve.');
     }
 }
 
