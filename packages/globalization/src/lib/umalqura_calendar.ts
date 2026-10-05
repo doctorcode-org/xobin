@@ -5,7 +5,7 @@ import { CalendarAlgorithmType } from './calendar_algorithm_type';
 import { DayOfWeek } from './day_of_week';
 import { DatePartDay, DatePartYear, DatePartMonth, DatePartDayOfYear, TicksPerDay } from './var';
 import { getAbsoluteDate } from './gregorian_calendar';
-import { calendarRangeMessage, throwIfNegativeYear } from './calendar_exception';
+import { calendarRangeMessage, formatGregorianDateTime, throwIfNegativeYear } from './calendar_exception';
 
 const MinCalendarYear = 1318;
 const MaxCalendarYear = 1500;
@@ -224,6 +224,7 @@ const MaxDate = new DateTime(new DateTime(2077, 11, 16, 23, 59, 59, 999).ticks +
  * Represents the Saudi Hijri (Um Al Qura) calendar.
  */
 export class UmAlQuraCalendar extends Calendar {
+    static readonly UmAlQuraEra = 1;
 
     protected override get daysInYearBeforeMinSupportedYear(): number {
         return 355;
@@ -259,11 +260,8 @@ export class UmAlQuraCalendar extends Calendar {
 
     override set twoDigitYearMax(value) {
         if (value != 99 && (value < MinCalendarYear || value > MaxCalendarYear)) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(value),
-                //value,
-                //SR.Format(SR.ArgumentOutOfRange_Range, MinCalendarYear, MaxCalendarYear)
-            );
+            throw new ArgumentOutOfRangeException('value', value,
+                calendarRangeMessage(MinCalendarYear, MaxCalendarYear));
         }
 
         // We allow year 99 to be set so that one can make ToFourDigitYearMax a no-op by setting TwoDigitYearMax to 99.
@@ -274,8 +272,8 @@ export class UmAlQuraCalendar extends Calendar {
      * 
      * @param year
      */
-    isLeapYear(year: number): boolean {
-        checkYearRange(year);
+    isLeapYear(year: number, era: number = 0): boolean {
+        checkYearRange(year, era);
         return realGetDaysInYear(year) == 355;
     }
 
@@ -284,8 +282,8 @@ export class UmAlQuraCalendar extends Calendar {
      * @param year
      * @param month
      */
-    isLeapMonth(year: number, month: number): boolean {
-        checkYearMonthRange(year, month);
+    isLeapMonth(year: number, month: number, era: number = 0): boolean {
+        checkYearMonthRange(year, month, era);
         return false;
     }
 
@@ -295,20 +293,17 @@ export class UmAlQuraCalendar extends Calendar {
      * @param month
      * @param day
      */
-    isLeapDay(year: number, month: number, day: number): boolean {
+    isLeapDay(year: number, month: number, day: number, era: number = 0): boolean {
         if (day >= 1 && day <= 29) {
-            checkYearMonthRange(year, month);
+            checkYearMonthRange(year, month, era);
             return false;
         }
 
         // The year/month/era value checking is done in GetDaysInMonth().
-        const daysInMonth = this.getDaysInMonth(year, month);
+        const daysInMonth = this.getDaysInMonth(year, month, era);
         if (day < 1 || day > daysInMonth) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(day),
-                //day,
-                //SR.Format(SR.ArgumentOutOfRange_Day, daysInMonth, month)
-            );
+            throw new ArgumentOutOfRangeException('day', day,
+                `Day must be between 1 and ${daysInMonth} for month ${month}.`);
         }
         return false;
     }
@@ -319,7 +314,7 @@ export class UmAlQuraCalendar extends Calendar {
      * @param years
      */
     addYears(time: DateTime, years: number): DateTime {
-        return this.addMonths(time, years * 12);
+        return this.addMonths(time, Math.imul(years, 12));
     }
 
     /**
@@ -329,11 +324,8 @@ export class UmAlQuraCalendar extends Calendar {
      */
     addMonths(time: DateTime, months: number): DateTime {
         if (months < -120000 || months > 120000) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(months),
-                //months,
-                //SR.Format(SR.ArgumentOutOfRange_Range, -120000, 120000)
-            );
+            throw new ArgumentOutOfRangeException('months', months,
+                calendarRangeMessage(-120000, 120000));
         }
 
         // Get the date in UmAlQura calendar.
@@ -344,11 +336,11 @@ export class UmAlQuraCalendar extends Calendar {
 
         if (i >= 0) {
             m = i % 12 + 1;
-            y += i / 12;
+            y += int(i / 12);
         }
         else {
             m = 12 + (i + 1) % 12;
-            y += (i - 11) / 12;
+            y += int((i - 11) / 12);
         }
 
         if (d > 29) {
@@ -408,8 +400,8 @@ export class UmAlQuraCalendar extends Calendar {
      * 
      * @param year
      */
-    getMonthsInYear(year: number): number {
-        checkYearRange(year);
+    getMonthsInYear(year: number, era: number = 0): number {
+        checkYearRange(year, era);
         return 12;
     }
 
@@ -417,8 +409,8 @@ export class UmAlQuraCalendar extends Calendar {
      * 
      * @param year
      */
-    getDaysInYear(year: number): number {
-        checkYearRange(year);
+    getDaysInYear(year: number, era: number = 0): number {
+        checkYearRange(year, era);
         return realGetDaysInYear(year);
     }
 
@@ -427,8 +419,8 @@ export class UmAlQuraCalendar extends Calendar {
      * @param year
      * @param month
      */
-    getDaysInMonth(year: number, month: number): number {
-        checkYearMonthRange(year, month);
+    getDaysInMonth(year: number, month: number, era: number = 0): number {
+        checkYearMonthRange(year, month, era);
 
         if ((HijriYearInfo.value[year - MinCalendarYear]!.hijriMonthsLengthFlags & (1 << month - 1)) == 0) {
             return 29;
@@ -442,8 +434,8 @@ export class UmAlQuraCalendar extends Calendar {
      * 
      * @param year
      */
-    override getLeapMonth(year: number): number {
-        checkYearRange(year);
+    override getLeapMonth(year: number, era: number = 0): number {
+        checkYearRange(year, era);
         return 0;
     }
 
@@ -477,34 +469,42 @@ export class UmAlQuraCalendar extends Calendar {
      * @param second
      * @param millisecond
      */
-    toDateTime(year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number): DateTime {
+    toDateTime(year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number, era: number = 0): DateTime {
         if (day >= 1 && day <= 29) {
-            checkYearMonthRange(year, month);
+            checkYearMonthRange(year, month, era);
             const lDate = getAbsoluteDateUmAlQura(year, month, day);
             if (lDate < 0) {
-                throw new ArgumentOutOfRangeException(/*null, SR.ArgumentOutOfRange_BadYearMonthDay*/);
+                throw new ArgumentOutOfRangeException(undefined,
+                    'Year, Month, and Day parameters describe an un-representable DateTime.');
             }
 
             return new DateTime(BigInt(lDate) * TicksPerDay + timeToTicks(hour, minute, second, millisecond));
         }
 
         // The year/month/era value checking is done in GetDaysInMonth().
-        const daysInMonth = this.getDaysInMonth(year, month);
+        const daysInMonth = this.getDaysInMonth(year, month, era);
 
         if (day < 1 || day > daysInMonth) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(day),
-                //day,
-                //SR.Format(SR.ArgumentOutOfRange_Day, daysInMonth, month)
-            );
+            throw new ArgumentOutOfRangeException('day', day,
+                `Day must be between 1 and ${daysInMonth} for month ${month}.`);
         }
 
         const lDate = getAbsoluteDateUmAlQura(year, month, day);
         if (lDate < 0) {
-            throw new ArgumentOutOfRangeException(/*null, SR.ArgumentOutOfRange_BadYearMonthDay*/);
+            throw new ArgumentOutOfRangeException(undefined,
+                'Year, Month, and Day parameters describe an un-representable DateTime.');
         }
 
         return new DateTime(BigInt(lDate) * TicksPerDay + timeToTicks(hour, minute, second, millisecond));
+    }
+
+    getEra(time: DateTime): number {
+        checkTicksRange(time.ticks);
+        return UmAlQuraCalendar.UmAlQuraEra;
+    }
+
+    get eras(): number[] {
+        return [UmAlQuraCalendar.UmAlQuraEra];
     }
 }
 
@@ -528,7 +528,7 @@ function getDatePart(time: DateTime, part: number): number {
     }
 
     // Incorrect part value.
-    throw new InvalidOperationException(/*SR.InvalidOperation_DateTimeParsing*/);
+    throw new InvalidOperationException('Internal Error in DateTime and Calendar operations.');
 }
 
 function convertGregorianToHijri(time: DateTime) {
@@ -578,34 +578,33 @@ function realGetDaysInYear(year: number): number {
     return days;
 }
 
-function checkYearRange(year: number): void {
-    if (year < MinCalendarYear || year > MaxCalendarYear) {
-        throw new ArgumentOutOfRangeException(
-            //nameof(year),
-            //year,
-            //SR.Format(SR.ArgumentOutOfRange_Range, MinCalendarYear, MaxCalendarYear)
-        );
+function checkEraRange(era: number): void {
+    if (era !== 0 && era !== UmAlQuraCalendar.UmAlQuraEra) {
+        throw new ArgumentOutOfRangeException('era', era, 'Era value was not valid.');
     }
 }
 
-function checkYearMonthRange(year: number, month: number): void {
-    checkYearRange(year);
+function checkYearRange(year: number, era: number = 0): void {
+    checkEraRange(era);
+    if (year < MinCalendarYear || year > MaxCalendarYear) {
+        throw new ArgumentOutOfRangeException('year', year,
+            calendarRangeMessage(MinCalendarYear, MaxCalendarYear));
+    }
+}
+
+function checkYearMonthRange(year: number, month: number, era: number = 0): void {
+    checkYearRange(year, era);
     if (month < 1 || month > 12) {
-        throw new ArgumentOutOfRangeException(/*nameof(month), month, SR.ArgumentOutOfRange_Month*/);
+        throw new ArgumentOutOfRangeException('month', month, 'Month must be between one and twelve.');
     }
 }
 
 function checkTicksRange(ticks: bigint): void {
     if (ticks < MinDate.ticks || ticks > MaxDate.ticks) {
-        throw new ArgumentOutOfRangeException(
-            //"time",
-            //ticks,
-            //SR.Format(
-            //    CultureInfo.InvariantCulture,
-            //    SR.ArgumentOutOfRange_CalendarRange,
-            //    s_minDate,
-            //    s_maxDate)
-        );
+        throw new ArgumentOutOfRangeException('time', ticks,
+            `Specified time is not supported in this calendar. It should be between `
+            + `${formatGregorianDateTime(MinDate)} (Gregorian date) and `
+            + `${formatGregorianDateTime(MaxDate)} (Gregorian date), inclusive.`);
     }
 }
 

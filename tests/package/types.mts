@@ -1,7 +1,8 @@
-import { DateTime, TimeSpan, PersianCalendar, ThaiBuddhistCalendar } from '@xobin/globalization';
+import { DateTime, TimeSpan, PersianCalendar, ThaiBuddhistCalendar, UmAlQuraCalendar } from '@xobin/globalization';
 import { TimeSpan as DirectTimeSpan } from '@xobin/globalization/time-span';
 import { PersianCalendar as DirectPersianCalendar } from '@xobin/globalization/persian-calendar';
 import { ThaiBuddhistCalendar as DirectThaiBuddhistCalendar } from '@xobin/globalization/thai-buddhist-calendar';
+import { UmAlQuraCalendar as DirectUmAlQuraCalendar } from '@xobin/globalization/um-al-qura-calendar';
 import { cultureData } from '@xobin/globalization/locales/fa-IR';
 
 const span: TimeSpan = new DirectTimeSpan(1n);
@@ -16,5 +17,10 @@ const thaiCalendar: ThaiBuddhistCalendar = new DirectThaiBuddhistCalendar();
 const thaiEra: number = thaiCalendar.getEra(new DateTime(1n));
 const thaiEras: number[] = thaiCalendar.eras;
 const thaiDate: DateTime = thaiCalendar.toDateTime(2567, 1, 1, 0, 0, 0, 0, ThaiBuddhistCalendar.ThaiBuddhistEra);
-export { span, calendar, ticks, persianEra, persianEras, persianDate, thaiCalendar, thaiEra, thaiEras, thaiDate };
+const umAlQuraCalendar: UmAlQuraCalendar = new DirectUmAlQuraCalendar();
+const umAlQuraEra: number = umAlQuraCalendar.getEra(new DateTime(2024, 3, 20));
+const umAlQuraEras: number[] = umAlQuraCalendar.eras;
+const umAlQuraDate: DateTime = umAlQuraCalendar.toDateTime(1445, 9, 10, 0, 0, 0, 0, UmAlQuraCalendar.UmAlQuraEra);
+export { span, calendar, ticks, persianEra, persianEras, persianDate, thaiCalendar, thaiEra, thaiEras, thaiDate,
+  umAlQuraCalendar, umAlQuraEra, umAlQuraEras, umAlQuraDate };
 export const localeName: string = cultureData.name;
