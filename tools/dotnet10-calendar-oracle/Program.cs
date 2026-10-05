@@ -117,6 +117,22 @@ if (args.Length >= 2 && args[0] == "--calendar-conversion")
     }
     return;
 }
+if (args.Length >= 2 && args[0] == "--calendar-add")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --calendar-add, the fixture output path, and optionally --check.");
+    string addFixture = CalendarAddOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != addFixture)
+            throw new InvalidOperationException("Calendar add fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], addFixture);
+    }
+    return;
+}
 if (args.Length is < 1 or > 2 || (args.Length == 2 && args[1] != "--check"))
     throw new ArgumentException("Pass the fixture output path, optionally followed by --check.");
 
