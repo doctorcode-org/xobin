@@ -38,6 +38,13 @@ export function getOrCreateValue<T extends object, K extends keyof T>(obj: T, ke
     return map[key];
 }
 
+export function copyValues(source: object, target: object): void {
+    const map = DataMap.get(source);
+    if (map) {
+        DataMap.set(target, { ...map });
+    }
+}
+
 function getMap(obj: any, create?: boolean): any {
     let map = DataMap.get(obj);
     if (!map && create) {

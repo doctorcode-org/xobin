@@ -265,6 +265,7 @@ export class UmAlQuraCalendar extends Calendar {
         }
 
         // We allow year 99 to be set so that one can make ToFourDigitYearMax a no-op by setting TwoDigitYearMax to 99.
+        this.verifyWritable();
         setValue(this, "twoDigitYearMax", value);
     }
 

@@ -57,6 +57,7 @@ export class GregorianCalendar extends Calendar {
     }
 
     set calendarType(value: GregorianCalendarTypes) {
+        this.verifyWritable();
         if (value < GregorianCalendarTypes.Localized || value > GregorianCalendarTypes.TransliteratedFrench) {
             throw new ArgumentOutOfRangeException('value', value,
                 calendarRangeMessage('Localized', 'TransliteratedFrench'));
@@ -73,6 +74,7 @@ export class GregorianCalendar extends Calendar {
     }
 
     override set twoDigitYearMax(value) {
+        this.verifyWritable();
         if (value < 99 || value > MaxYear) {
             throw new ArgumentOutOfRangeException('value', value, calendarRangeMessage(99, MaxYear));
         }

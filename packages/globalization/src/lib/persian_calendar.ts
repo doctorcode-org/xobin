@@ -57,6 +57,7 @@ export class PersianCalendar extends Calendar {
     }
 
     override set twoDigitYearMax(value) {
+        this.verifyWritable();
         if (value < 99 || value > MaxCalendarYear) {
             throw new ArgumentOutOfRangeException('value', value,
                 calendarRangeMessage(99, MaxCalendarYear));

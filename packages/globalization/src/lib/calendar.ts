@@ -1,6 +1,6 @@
 ﻿import { DateTime } from './date_time';
 import { CalendarAlgorithmType } from './calendar_algorithm_type';
-import { ArgumentOutOfRangeException, ArgumentException, getOrCreateValue, int } from '@xobin/core';
+import { ArgumentOutOfRangeException, ArgumentException, ArgumentNullException, InvalidOperationException, copyValues, getOrCreateValue, int } from '@xobin/core';
 import {
     MillisPerDay,
     MillisPerHour,
@@ -21,6 +21,41 @@ import { calendarRangeMessage, formatGregorianDateTime, throwIfNegativeYear } fr
  * Represents time in divisions, such as weeks, months, and years.
  */
 export abstract class Calendar {
+    private _isReadOnly = false;
+
+    get isReadOnly(): boolean {
+        return this._isReadOnly;
+    }
+
+    private memberwiseClone(): this {
+        const cloned = Object.assign(Object.create(Object.getPrototypeOf(this)), this) as this;
+        copyValues(this, cloned);
+        return cloned;
+    }
+
+    clone(): this {
+        const cloned = this.memberwiseClone();
+        cloned._isReadOnly = false;
+        return cloned;
+    }
+
+    static readOnly<T extends Calendar>(calendar: T): T {
+        if (calendar == null) {
+            throw new ArgumentNullException('calendar');
+        }
+        if (calendar.isReadOnly) {
+            return calendar;
+        }
+        const cloned = calendar.memberwiseClone();
+        cloned._isReadOnly = true;
+        return cloned;
+    }
+
+    protected verifyWritable(): void {
+        if (this._isReadOnly) {
+            throw new InvalidOperationException('Instance is read-only.');
+        }
+    }
 
     /**
      * Gets the number of days in the year that precedes the year that is specified by the MinSupportedDateTime property.

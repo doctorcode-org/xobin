@@ -54,6 +54,7 @@ export class ThaiBuddhistCalendar extends Calendar {
     }
 
     override set twoDigitYearMax(value) {
+        this.verifyWritable();
         if (value < 99 || value > this._helper.maxYear) {
             throw new ArgumentOutOfRangeException('value', value,
                 calendarRangeMessage(99, this._helper.maxYear));

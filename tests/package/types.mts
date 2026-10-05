@@ -1,4 +1,4 @@
-import { DateTime, TimeSpan, PersianCalendar, ThaiBuddhistCalendar, UmAlQuraCalendar } from '@xobin/globalization';
+import { Calendar, DateTime, TimeSpan, PersianCalendar, ThaiBuddhistCalendar, UmAlQuraCalendar } from '@xobin/globalization';
 import { TimeSpan as DirectTimeSpan } from '@xobin/globalization/time-span';
 import { PersianCalendar as DirectPersianCalendar } from '@xobin/globalization/persian-calendar';
 import { ThaiBuddhistCalendar as DirectThaiBuddhistCalendar } from '@xobin/globalization/thai-buddhist-calendar';
@@ -21,6 +21,9 @@ const umAlQuraCalendar: UmAlQuraCalendar = new DirectUmAlQuraCalendar();
 const umAlQuraEra: number = umAlQuraCalendar.getEra(new DateTime(2024, 3, 20));
 const umAlQuraEras: number[] = umAlQuraCalendar.eras;
 const umAlQuraDate: DateTime = umAlQuraCalendar.toDateTime(1445, 9, 10, 0, 0, 0, 0, UmAlQuraCalendar.UmAlQuraEra);
+const readOnlyPersian: PersianCalendar = Calendar.readOnly(calendar);
+const clonedPersian: PersianCalendar = readOnlyPersian.clone();
+const readOnlyFlag: boolean = readOnlyPersian.isReadOnly;
 export { span, calendar, ticks, persianEra, persianEras, persianDate, thaiCalendar, thaiEra, thaiEras, thaiDate,
-  umAlQuraCalendar, umAlQuraEra, umAlQuraEras, umAlQuraDate };
+  umAlQuraCalendar, umAlQuraEra, umAlQuraEras, umAlQuraDate, readOnlyPersian, clonedPersian, readOnlyFlag };
 export const localeName: string = cultureData.name;
