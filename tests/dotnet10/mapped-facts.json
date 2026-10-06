@@ -8,6 +8,7 @@
   "DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int": "date-time-ticks.test.mjs",
   "DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int_DateTimeKind": "date-time-ticks.test.mjs",
   "DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int_Calendar": "date-time-ticks.test.mjs",
+  "DateTimeTests.Ctor_NullCalendar_ThrowsArgumentNullException": "date-time-constructor.test.mjs",
   "TimeSpanTests.MaxValue": "time-span-ticks.test.mjs",
   "TimeSpanTests.MinValue": "time-span-ticks.test.mjs",
   "TimeSpanTests.Zero": "time-span-ticks.test.mjs",
