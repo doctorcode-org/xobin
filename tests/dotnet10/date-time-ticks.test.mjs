@@ -57,33 +57,6 @@ test('DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int_Calendar', () => {
   verify(new DateTime(2012, 12, 31, 13, 50, 10, new GregorianCalendar()), 2012, 12, 31, 13, 50, 10, 0, DateTimeKind.unspecified);
 });
 
-const constructorRows = [
-  [1986, 8, 15, 10, 20, 5, 600], [1986, 2, 28, 10, 20, 5, 600],
-  [1986, 12, 31, 10, 20, 5, 600], [2000, 2, 28, 10, 20, 5, 600],
-  [2000, 2, 29, 10, 20, 5, 600], [2000, 12, 31, 10, 20, 5, 600],
-  [1900, 2, 28, 10, 20, 5, 600], [1900, 12, 31, 10, 20, 5, 600],
-];
-
-const constructorVariants = [
-  ['Ctor_Int_Int_Int_Int_Int_Int_Int', (row) => row, DateTimeKind.unspecified, 0],
-  ['Ctor_Int_Int_Int_Int_Int_Int_Int_Calendar', (row) => [...row, new GregorianCalendar()], DateTimeKind.unspecified, 0],
-  ['Ctor_Int_Int_Int_Int_Int_Int_Int_Int_DateTimeKind', (row) => [...row, DateTimeKind.local], DateTimeKind.local, 0],
-  ['Ctor_Int_Int_Int_Int_Int_Int_Int_Int_Calendar_DateTimeKind', (row) => [...row, new GregorianCalendar(), DateTimeKind.local], DateTimeKind.local, 0],
-  ['Ctor_Int_Int_Int_Int_Int_Int_Int_Int', (row) => [...row, 300], DateTimeKind.unspecified, 300],
-  ['Ctor_Int_Int_Int_Int_Int_Int_Int_Int_Calendar', (row) => [...row, 300, new GregorianCalendar()], DateTimeKind.unspecified, 300],
-  ['Ctor_Int_Int_Int_Int_Int_Int_Int_Int_Int_DateTimeKind', (row) => [...row, 300, DateTimeKind.local], DateTimeKind.local, 300],
-  ['Ctor_Int_Int_Int_Int_Int_Int_Int_Int_Int_Calendar_DateTimeKind', (row) => [...row, 300, new GregorianCalendar(), DateTimeKind.local], DateTimeKind.local, 300],
-];
-
-for (const row of constructorRows) {
-  const key = `${row[0]}-${row[1]}-${row[2]}`;
-  for (const [name, args, kind, microsecond] of constructorVariants) {
-    test(`DateTimeTests.${name}/${key}`, () => {
-      verify(new DateTime(...args(row)), ...row, kind, microsecond);
-    });
-  }
-}
-
 test('100-nanosecond DateTime arithmetic and TimeSpan interop', () => {
   const start = new DateTime(2000, 2, 29, 23, 59, 59, 999, 999, DateTimeKind.utc);
   const end = start.addTicks(1n);

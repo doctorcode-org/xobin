@@ -53,5 +53,14 @@
   "DateTimeTests.Ctor_InvalidSecond_ThrowsArgumentOutOfRangeException": "date-time-constructor.test.mjs",
   "DateTimeTests.Ctor_InvalidMillisecond_ThrowsArgumentOutOfRangeException": "date-time-constructor.test.mjs",
   "DateTimeTests.Ctor_InvalidMicrosecond_ThrowsArgumentOutOfRangeException": "date-time-constructor.test.mjs",
-  "DateTimeTests.Ctor_InvalidDateTimeKind_ThrowsArgumentException": "date-time-constructor.test.mjs"
+  "DateTimeTests.Ctor_InvalidDateTimeKind_ThrowsArgumentException": "date-time-constructor.test.mjs",
+  "DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int_Int": "date-time-constructor-valid.test.mjs",
+  "DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int_Int_Calendar": "date-time-constructor-valid.test.mjs",
+  "DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int_Int_Int_DateTimeKind": "date-time-constructor-valid.test.mjs",
+  "DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int_Int_Int_Calendar_DateTimeKind": "date-time-constructor-valid.test.mjs",
+  "DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int_Int_Int": "date-time-constructor-valid.test.mjs",
+  "DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int_Int_Int_Calendar": "date-time-constructor-valid.test.mjs",
+  "DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int_Int_Int_Int_DateTimeKind": "date-time-constructor-valid.test.mjs",
+  "DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int_Int_Int_Int_Calendar_DateTimeKind": "date-time-constructor-valid.test.mjs",
+  "DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int_Int_Int_Int_WithNanoseconds": "date-time-constructor-valid.test.mjs"
 }
