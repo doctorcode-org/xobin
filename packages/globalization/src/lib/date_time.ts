@@ -821,7 +821,8 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      */
     static isLeapYear(year: number): boolean {
         if (year < 1 || year > 9999) {
-            throw new Error('ThrowArgumentOutOfRange_Year');
+            throw new ArgumentOutOfRangeException('year',
+                'Year must be between 1 and 9999.');
         }
         return (year & 3) == 0 && ((year & 15) == 0 || (year % 25) != 0);
     }
@@ -833,7 +834,8 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      */
     static daysInMonth(year: number, month: number): number {
         if (month < 1 || month > 12)
-            throw new Error('ArgumentOutOfRange_Month');
+            throw new ArgumentOutOfRangeException('month', month,
+                'Month must be between one and twelve.');
 
         // IsLeapYear checks the year argument
         const days = this.isLeapYear(year) ? s_daysToMonth366 : s_daysToMonth365;

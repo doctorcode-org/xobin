@@ -62,5 +62,10 @@
   "DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int_Int_Int_Calendar": "date-time-constructor-valid.test.mjs",
   "DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int_Int_Int_Int_DateTimeKind": "date-time-constructor-valid.test.mjs",
   "DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int_Int_Int_Int_Calendar_DateTimeKind": "date-time-constructor-valid.test.mjs",
-  "DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int_Int_Int_Int_WithNanoseconds": "date-time-constructor-valid.test.mjs"
+  "DateTimeTests.Ctor_Int_Int_Int_Int_Int_Int_Int_Int_Int_WithNanoseconds": "date-time-constructor-valid.test.mjs",
+  "DateTimeTests.DaysInMonth_Invoke_ReturnsExpected": "date-time-calendar-math.test.mjs",
+  "DateTimeTests.DaysInMonth_InvalidMonth_ThrowsArgumentOutOfRangeException": "date-time-calendar-math.test.mjs",
+  "DateTimeTests.DaysInMonth_InvalidYear_ThrowsArgumentOutOfRangeException": "date-time-calendar-math.test.mjs",
+  "DateTimeTests.IsLeapYear_Invoke_ReturnsExpected": "date-time-calendar-math.test.mjs",
+  "DateTimeTests.IsLeapYear_InvalidYear_ThrowsArgumentOutOfRangeException": "date-time-calendar-math.test.mjs"
 }
