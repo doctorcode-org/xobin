@@ -29,7 +29,9 @@ const sourceCommit = git('rev-parse', `${sourceTag}^{commit}`);
 const allFiles = git('ls-tree', '-r', '--name-only', sourceTag, root).split(/\r?\n/);
 const core = new Map([
     [`${root}System.Runtime.Tests/System/DateTimeTests.cs`, 'DateTime'],
+    [`${root}System.Runtime.Tests/System/DateOnlyTests.cs`, 'DateOnly'],
     [`${root}System.Runtime.Tests/System/TimeSpanTests.cs`, 'TimeSpan'],
+    [`${root}System.Runtime.Tests/System/TimeOnlyTests.cs`, 'TimeOnly'],
     [`${root}System.Globalization.Tests/CultureInfo/CultureInfoCalendar.cs`, 'CultureInfo'],
     [`${root}System.Globalization.Tests/CultureInfo/CultureInfoDateTimeFormat.cs`, 'CultureInfo']
 ]);
@@ -258,7 +260,7 @@ const summary = {
 const inventory = {
     sourceTag,
     sourceCommit,
-    selection: 'DateTimeTests, TimeSpanTests, full Calendars suite (ISOWeek flagged as adjacent), full DateTimeFormatInfo suite, CultureInfoCalendar and CultureInfoDateTimeFormat',
+    selection: 'DateTimeTests, TimeSpanTests, DateOnlyTests, TimeOnlyTests, full Calendars suite (ISOWeek flagged as adjacent), full DateTimeFormatInfo suite, CultureInfoCalendar and CultureInfoDateTimeFormat',
     interpretation: 'Cases are expanded for concrete Calendar test subclasses. A Fact or InlineData record is one case. mapped-source means a MemberData or ClassData method has a JS equivalent, while its original runtime rows remain unexpanded.',
     summary,
     supportFiles,
