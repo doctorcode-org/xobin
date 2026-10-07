@@ -600,60 +600,6 @@ describe('DateTime class', () => {
         memberData.forEach(data => test.apply(null, data));
     });
 
-    it('CompareTo_Invoke_ReturnsExpected', () => {
-        const memberData: [DateTime, any, number][] = [
-            [new DateTime(10), new DateTime(10), 0],
-            [new DateTime(10), new DateTime(11), -1],
-            [new DateTime(10), new DateTime(9), 1],
-            [new DateTime(10), null, 1],
-        ];
-
-        function test(date: DateTime, other: any, expected: number) {
-            if (other instanceof DateTime) {
-                expect(date.compareTo(other)).toBe(expected);
-                expect(DateTime.compare(date, other)).toBe(expected);
-
-                expect(expected > 0).toBe(+date > +other);
-                expect(expected >= 0).toBe(+date >= +other);
-                expect(expected < 0).toBe(+date < +other);
-                expect(expected <= 0).toBe(+date <= +other);
-            }
-
-            expect(date.compareTo(other)).toBe(expected);
-        }
-
-
-        memberData.forEach(data => test.apply(null, data));
-    });
-
-    it('CompareTo_NotDateTime_ThrowsArgumentException', () => {
-        expect(() => DateTime.now.compareTo(new Object())).toThrowError(Error/*ArgumentException*/);
-    });
-
-    it('Equals_Invoke_ReturnsExpected', () => {
-        const memberData: [DateTime, any, boolean][] = [
-            [new DateTime(10), new DateTime(10), true],
-            [new DateTime(10), new DateTime(11), false],
-            [new DateTime(10), new DateTime(9), false],
-            [new DateTime(10), new Object(), false],
-            [new DateTime(10), null, false]
-        ];
-
-        function test(date: DateTime, other: any, expected: boolean) {
-            if (other instanceof DateTime) {
-                expect(date.equals(other)).toBe(expected);
-                expect(DateTime.equals(date, other)).toBe(expected);
-
-                expect(+date == +other).toBe(expected);
-                expect(+date != +other).toBe(!expected);
-            }
-
-            expect(date.equals(other)).toBe(expected);
-        }
-
-        memberData.forEach(data => test.apply(null, data));
-    });
-
     it('DayOfWeek_Get_ReturnsExpected', () => {
         const dateTime = new DateTime(2012, 6, 18);
         expect(dateTime.dayOfWeek).toBe(DayOfWeek.Monday);

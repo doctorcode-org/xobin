@@ -1,0 +1,15 @@
+{
+  "runtime": "10.0.7",
+  "rows": [
+    {"source":"DateTimeTests.CompareTo_Invoke_ReturnsExpected","dateTicks":"10","otherKind":"dateTime","otherTicks":"10","compareTo":0,"staticCompare":0,"greaterThan":false,"greaterThanOrEqual":true,"lessThan":false,"lessThanOrEqual":true},
+    {"source":"DateTimeTests.CompareTo_Invoke_ReturnsExpected","dateTicks":"10","otherKind":"dateTime","otherTicks":"11","compareTo":-1,"staticCompare":-1,"greaterThan":false,"greaterThanOrEqual":false,"lessThan":true,"lessThanOrEqual":true},
+    {"source":"DateTimeTests.CompareTo_Invoke_ReturnsExpected","dateTicks":"10","otherKind":"dateTime","otherTicks":"9","compareTo":1,"staticCompare":1,"greaterThan":true,"greaterThanOrEqual":true,"lessThan":false,"lessThanOrEqual":false},
+    {"source":"DateTimeTests.CompareTo_Invoke_ReturnsExpected","dateTicks":"10","otherKind":"null","otherTicks":null,"compareTo":1,"staticCompare":null,"greaterThan":null,"greaterThanOrEqual":null,"lessThan":null,"lessThanOrEqual":null},
+    {"source":"DateTimeTests.Equals_Invoke_ReturnsExpected","dateTicks":"10","otherKind":"dateTime","otherTicks":"10","instanceEquals":true,"staticEquals":true,"hashCodesEqual":true,"equalOperator":true,"notEqualOperator":false,"dateHashCode":10,"otherHashCode":10},
+    {"source":"DateTimeTests.Equals_Invoke_ReturnsExpected","dateTicks":"10","otherKind":"dateTime","otherTicks":"11","instanceEquals":false,"staticEquals":false,"hashCodesEqual":false,"equalOperator":false,"notEqualOperator":true,"dateHashCode":10,"otherHashCode":11},
+    {"source":"DateTimeTests.Equals_Invoke_ReturnsExpected","dateTicks":"10","otherKind":"dateTime","otherTicks":"9","instanceEquals":false,"staticEquals":false,"hashCodesEqual":false,"equalOperator":false,"notEqualOperator":true,"dateHashCode":10,"otherHashCode":9},
+    {"source":"DateTimeTests.Equals_Invoke_ReturnsExpected","dateTicks":"10","otherKind":"object","otherTicks":null,"instanceEquals":false,"staticEquals":null,"hashCodesEqual":null,"equalOperator":null,"notEqualOperator":null,"dateHashCode":10,"otherHashCode":null},
+    {"source":"DateTimeTests.Equals_Invoke_ReturnsExpected","dateTicks":"10","otherKind":"null","otherTicks":null,"instanceEquals":false,"staticEquals":null,"hashCodesEqual":null,"equalOperator":null,"notEqualOperator":null,"dateHashCode":10,"otherHashCode":null}
+  ],
+  "invalidCompare": {"source":"DateTimeTests.CompareTo_NotDateTime_ThrowsArgumentException","error":"ArgumentException","paramName":null,"message":"Object must be of type DateTime."}
+}

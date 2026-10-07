@@ -782,7 +782,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         }
 
         if (!(value instanceof DateTime)) {
-            throw new ArgumentException(/*SR.Arg_MustBeDateTime*/);
+            throw new ArgumentException('Object must be of type DateTime.');
         }
 
         const ticks1 = this.ticks;
@@ -809,6 +809,14 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         }
 
         return false;
+    }
+
+    /**
+     * Returns the hash code for this instance.
+     */
+    getHashCode(): number {
+        const ticks = this.ticks;
+        return Number(BigInt.asIntN(32, ticks ^ (ticks >> 32n)));
     }
 
     valueOf(): bigint {
