@@ -828,6 +828,22 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
     }
 
     /**
+     * Indicates whether this instance is within the daylight saving time range for the current time zone.
+     */
+    isDaylightSavingTime(): boolean {
+        if (this.kind.value === DateTimeKind.utc.value || this.ticks === MinTicks || this.ticks === MaxTicks) {
+            return false;
+        }
+
+        const date = new Date(this.year, this.month - 1, this.day, this.hour, this.minute, this.second, this.millisecond);
+        let standardOffset = Number.NEGATIVE_INFINITY;
+        for (let month = 0; month < 12; month++) {
+            standardOffset = Math.max(standardOffset, new Date(this.year, month, 1).getTimezoneOffset());
+        }
+        return date.getTimezoneOffset() < standardOffset;
+    }
+
+    /**
      * Returns the number of days in the specified month and year.
      * @param year The year.
      * @param month The month (a number ranging from 1 to 12).

@@ -10,9 +10,9 @@
   "summary": {
     "types": 29,
     "members": 807,
-    "present": 282,
+    "present": 283,
     "incomplete": 40,
-    "missing": 485,
+    "missing": 484,
     "missingTypes": 15,
     "missingRootExports": 15,
     "missingSubpathExports": 21
@@ -2021,9 +2021,9 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 71,
+        "present": 72,
         "incomplete": 4,
-        "missing": 42
+        "missing": 41
       },
       "extraLocalMembers": [],
       "members": [
@@ -3780,9 +3780,9 @@
             "parameters": []
           },
           "jsMember": "isDaylightSavingTime",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "DT-07",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },

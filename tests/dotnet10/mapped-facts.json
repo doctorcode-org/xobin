@@ -330,5 +330,7 @@
   "DateTimeTests.DayOfWeek_Get_ReturnsExpected": "date-time-parts.test.mjs",
   "DateTimeTests.DayOfYear_Get_ReturnsExpected": "date-time-parts.test.mjs",
   "DateTimeTests.DayOfYear_Random": "date-time-parts.test.mjs",
-  "DateTimeTests.TimeOfDay_Get_ReturnsExpected": "date-time-parts.test.mjs"
+  "DateTimeTests.TimeOfDay_Get_ReturnsExpected": "date-time-parts.test.mjs",
+  "DateTimeTests.Today_Get_ReturnsExpected": "date-time-clock.test.mjs",
+  "DateTimeTests.TestTimeSynchronizationWithTheSystem": "date-time-clock.test.mjs"
 }
