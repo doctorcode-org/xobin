@@ -684,9 +684,9 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         }
 
         const ticks = this.ticks;
-        let valueTicks = value.ticks;
+        const valueTicks = value.ticks;
         if (ticks - MinTicks < valueTicks || ticks - MaxTicks > valueTicks) {
-            throw new ArgumentOutOfRangeException(/*nameof(value), SR.ArgumentOutOfRange_DateArithmetic*/);
+            throw new ArgumentOutOfRangeException('value', 'The added or subtracted value results in an un-representable DateTime.');
         }
         return new DateTime(ticks - valueTicks, this.kind);
     }
