@@ -15,8 +15,7 @@
     DatePartYear,
     DatePartDayOfYear,
     DatePartMonth,
-    DatePartDay,
-    getTimezoneOffset
+    DatePartDay
 } from "./var";
 import { Calendar } from "./calendar";
 import { TimeSpan, timeToTicks as TimeSpanTimeToTicks } from "./time_span";
@@ -696,15 +695,15 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * @param throwOnOverflow
      */
     toLocalTime(throwOnOverflow?: boolean): DateTime {
-        if (this.kind == DateTimeKind.local) {
+        if (this.kind.value === DateTimeKind.local.value) {
             return this;
         }
 
-        const offset = getTimezoneOffset();
-        const ticks = this.ticks + BigInt(offset) * TicksPerMinute;
+        const date = createUtcDate(this);
+        const ticks = localDateToTicks(date) + this.ticks % TicksPerMillisecond;
         if (ticks > MaxTicks) {
             if (throwOnOverflow)
-                throw new ArgumentException(/*SR.Arg_ArgumentOutOfRangeException*/);
+                throw new ArgumentException('The added or subtracted value results in an un-representable DateTime.');
             else
                 return new DateTime(MaxTicks, DateTimeKind.local);
         }
@@ -723,12 +722,14 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * Converts the value of the current DateTime object to Coordinated Universal Time (UTC).
      */
     toUniversalTime(): DateTime {
-        if (this.kind == DateTimeKind.utc) {
+        if (this.kind.value === DateTimeKind.utc.value) {
             return this;
         }
 
-        const offset = getTimezoneOffset();
-        const ticks = this.ticks - BigInt(offset) * TicksPerMinute;
+        const date = createLocalDate(this);
+        const ticks = utcDateToTicks(date) + this.ticks % TicksPerMillisecond;
+        if (ticks < MinTicks) return new DateTime(MinTicks, DateTimeKind.utc);
+        if (ticks > MaxTicks) return new DateTime(MaxTicks, DateTimeKind.utc);
         return new DateTime(ticks, DateTimeKind.utc);
     }
 
@@ -835,10 +836,13 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
             return false;
         }
 
-        const date = new Date(this.year, this.month - 1, this.day, this.hour, this.minute, this.second, this.millisecond);
+        const date = createLocalDate(this);
         let standardOffset = Number.NEGATIVE_INFINITY;
         for (let month = 0; month < 12; month++) {
-            standardOffset = Math.max(standardOffset, new Date(this.year, month, 1).getTimezoneOffset());
+            const sample = new Date(0);
+            sample.setFullYear(this.year, month, 1);
+            sample.setHours(12, 0, 0, 0);
+            standardOffset = Math.max(standardOffset, sample.getTimezoneOffset());
         }
         return date.getTimezoneOffset() < standardOffset;
     }
@@ -926,6 +930,38 @@ function timeToTicks(hour: number, minute: number, second: number): bigint {
     }
 
     return TimeSpanTimeToTicks(hour, minute, second);
+}
+
+function createUtcDate(value: DateTime): Date {
+    const date = new Date(0);
+    date.setUTCFullYear(value.year, value.month - 1, value.day);
+    date.setUTCHours(value.hour, value.minute, value.second, value.millisecond);
+    return date;
+}
+
+function createLocalDate(value: DateTime): Date {
+    const date = new Date(0);
+    date.setFullYear(value.year, value.month - 1, value.day);
+    date.setHours(value.hour, value.minute, value.second, value.millisecond);
+    return date;
+}
+
+function localDateToTicks(date: Date): bigint {
+    const year = date.getFullYear();
+    if (year < 1) return MinTicks - 1n;
+    if (year > 9999) return MaxTicks + 1n;
+    return dateToTicks(year, date.getMonth() + 1, date.getDate())
+        + timeToTicks(date.getHours(), date.getMinutes(), date.getSeconds())
+        + BigInt(date.getMilliseconds()) * TicksPerMillisecond;
+}
+
+function utcDateToTicks(date: Date): bigint {
+    const year = date.getUTCFullYear();
+    if (year < 1) return MinTicks - 1n;
+    if (year > 9999) return MaxTicks + 1n;
+    return dateToTicks(year, date.getUTCMonth() + 1, date.getUTCDate())
+        + timeToTicks(date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds())
+        + BigInt(date.getUTCMilliseconds()) * TicksPerMillisecond;
 }
 
 function throwTicksOutOfRange(): never {

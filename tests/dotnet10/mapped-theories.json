@@ -92,5 +92,6 @@
   "DateTimeTests.IsLeapYear_Invoke_ReturnsExpected": "date-time-calendar-math.test.mjs",
   "DateTimeTests.IsLeapYear_InvalidYear_ThrowsArgumentOutOfRangeException": "date-time-calendar-math.test.mjs",
   "DateTimeTests.CompareTo_Invoke_ReturnsExpected": "date-time-comparison.test.mjs",
-  "DateTimeTests.Equals_Invoke_ReturnsExpected": "date-time-comparison.test.mjs"
+  "DateTimeTests.Equals_Invoke_ReturnsExpected": "date-time-comparison.test.mjs",
+  "DateTimeTests.IsDaylightSavingTime_Invoke_ReturnsExpected": "date-time-timezone.test.mjs"
 }
