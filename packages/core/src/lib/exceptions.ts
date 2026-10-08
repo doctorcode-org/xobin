@@ -21,6 +21,13 @@ export class Exception extends Error {
     }
 }
 
+/** The exception thrown when a conversion is not supported. */
+export class InvalidCastException extends Exception {
+    constructor(message = 'Specified cast is not valid.') {
+        super(message);
+    }
+}
+
 /** 
  * The exception that is thrown when a requested method or operation is not implemented. 
  */

@@ -36,7 +36,9 @@ import {
     ArgumentNullException,
     OverflowException,
     IComparable,
-    IEquatable
+    IEquatable,
+    InvalidCastException,
+    TypeCode
 } from '@xobin/core';
 
 
@@ -793,6 +795,44 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         return fileTime;
     }
 
+    getTypeCode(): TypeCode { return TypeCode.dateTime; }
+
+    toBoolean(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Boolean'); }
+    toChar(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Char'); }
+    toSByte(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('SByte'); }
+    toByte(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Byte'); }
+    toInt16(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Int16'); }
+    toUInt16(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('UInt16'); }
+    toInt32(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Int32'); }
+    toUInt32(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('UInt32'); }
+    toInt64(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Int64'); }
+    toUInt64(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('UInt64'); }
+    toSingle(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Single'); }
+    toDouble(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Double'); }
+    toDecimal(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Decimal'); }
+    toDateTime(_provider?: IFormatProvider | null): DateTime { return this; }
+
+    /** JavaScript constructor tokens represent CLR Type values. */
+    toType(conversionType: typeof DateTime, provider?: IFormatProvider | null): DateTime;
+    toType(conversionType: Function | null, provider?: IFormatProvider | null): unknown;
+    toType(conversionType: Function | null, provider?: IFormatProvider | null): unknown {
+        if (conversionType == null) throw new ArgumentNullException('conversionType');
+        if (conversionType === DateTime || conversionType === Object) return this;
+        if (conversionType === String) return provider ? this.toString(provider) : this.toString();
+        if (conversionType === Boolean) return this.toBoolean(provider);
+        if (conversionType === Number) return this.toDouble(provider);
+        if (conversionType === BigInt) return this.toInt64(provider);
+        throw new InvalidCastException(`Invalid cast from 'DateTime' to '${conversionType.name}'.`);
+    }
+
+    /** A SerializationInfo adapter receives the exact unsigned 64-bit dateData. */
+    getObjectData(info: { addValue(name: string, value: bigint): void } | null, _context?: unknown): void {
+        if (info == null) throw new ArgumentNullException('info');
+        const kind = ambiguousLocalDaylight.has(this) ? 3n : BigInt(this.kind.value);
+        info.addValue('ticks', this.ticks);
+        info.addValue('dateData', this.ticks | kind << 62n);
+    }
+
     /**
      * Converts the value of the current DateTime object to its equivalent string representation using the formatting conventions of the current culture.
      */
@@ -1198,4 +1238,8 @@ function preserveLocalKind(source: DateTime, ticks: bigint): DateTime {
     const result = new DateTime(ticks, source.kind);
     if (ambiguousLocalDaylight.has(source)) ambiguousLocalDaylight.add(result);
     return result;
+}
+
+function invalidDateTimeCast(type: string): never {
+    throw new InvalidCastException(`Invalid cast from 'DateTime' to '${type}'.`);
 }

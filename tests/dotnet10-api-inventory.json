@@ -10,9 +10,9 @@
   "summary": {
     "types": 29,
     "members": 807,
-    "present": 291,
+    "present": 292,
     "incomplete": 40,
-    "missing": 476,
+    "missing": 475,
     "missingTypes": 15,
     "missingRootExports": 15,
     "missingSubpathExports": 21
@@ -2021,11 +2021,28 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 80,
+        "present": 81,
         "incomplete": 4,
-        "missing": 33
+        "missing": 32
       },
-      "extraLocalMembers": [],
+      "extraLocalMembers": [
+        "getObjectData",
+        "toBoolean",
+        "toByte",
+        "toChar",
+        "toDateTime",
+        "toDecimal",
+        "toDouble",
+        "toInt16",
+        "toInt32",
+        "toInt64",
+        "toSByte",
+        "toSingle",
+        "toType",
+        "toUInt16",
+        "toUInt32",
+        "toUInt64"
+      ],
       "members": [
         {
           "id": "System.DateTime::constructor:.ctor:instance:value:DateOnly,value:TimeOnly",
@@ -3762,9 +3779,9 @@
             "parameters": []
           },
           "jsMember": "getTypeCode",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "DT-11",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },

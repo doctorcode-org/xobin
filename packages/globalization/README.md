@@ -22,3 +22,19 @@ Its `--windows-time-zones`, `--date-time-time-zone-matrix`,
 compare regenerated output. The supplemental matrix selects each Windows zone
 as .NET's local zone inside the isolated oracle process so hidden ambiguous DST
 state is tested through DateTime's public conversion and binary APIs.
+
+## CLR conversion adapters
+
+`DateTime.getTypeCode()` returns `TypeCode.dateTime` from `@xobin/core`, with
+the CLR numeric value 16. The primitive conversion methods throw
+`InvalidCastException` with the reference message. `toType` accepts JavaScript
+constructor tokens: `DateTime` and `Object` return the instance, `String` uses
+the DateTime formatter, `Boolean`, `Number`, and `BigInt` request Boolean,
+Double, and Int64 conversions. DateTime string formatting remains a separate
+unfinished roadmap task.
+
+`getObjectData(info, context)` accepts an adapter with
+`addValue(name: string, value: bigint)`. It writes `ticks` and the unsigned
+64-bit `dateData`, including Kind and the hidden ambiguous-DST bit. These are
+the fields used by the CLR serializer; this API does not produce a JSON string
+or emulate .NET's binary serializer.
