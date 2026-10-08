@@ -332,5 +332,7 @@
   "DateTimeTests.DayOfYear_Random": "date-time-parts.test.mjs",
   "DateTimeTests.TimeOfDay_Get_ReturnsExpected": "date-time-parts.test.mjs",
   "DateTimeTests.Today_Get_ReturnsExpected": "date-time-clock.test.mjs",
-  "DateTimeTests.TestTimeSynchronizationWithTheSystem": "date-time-clock.test.mjs"
+  "DateTimeTests.TestTimeSynchronizationWithTheSystem": "date-time-clock.test.mjs",
+  "DateTimeTests.UnixEpoch": "date-time-precision.test.mjs",
+  "DateTimeTests.TestRoundTrippingDateTimeAndFileTime": "date-time-precision.test.mjs"
 }

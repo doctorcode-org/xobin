@@ -108,5 +108,6 @@
   "DateTimeTests.FromFileTime_Invoke_ReturnsExpected": "date-time-file-time.test.mjs",
   "DateTimeTests.FromFileTime_OutOfRange_ThrowsArgumentOutOfRangeException": "date-time-file-time.test.mjs",
   "DateTimeTests.FromFileTimeUtc_Invoke_ReturnsExpected": "date-time-file-time.test.mjs",
-  "DateTimeTests.FromFileTimeUtc_OutOfRange_ThrowsArgumentOutOfRangeException": "date-time-file-time.test.mjs"
+  "DateTimeTests.FromFileTimeUtc_OutOfRange_ThrowsArgumentOutOfRangeException": "date-time-file-time.test.mjs",
+  "DateTimeTests.TestDateTimeCalculationPrecision": "date-time-precision.test.mjs"
 }
