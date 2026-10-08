@@ -71,7 +71,7 @@ test('a TimeSpan-only consumer bundle excludes DateTime and calendars', async ()
     "import { TimeSpan } from '@xobin/globalization'; globalThis.value = new TimeSpan(1n);",
   );
   assert.match(output, /TimeSpan/);
-  for (const unused of ['DateTime', 'PersianCalendar', 'GregorianCalendar', 'ThaiBuddhistCalendar', 'UmAlQuraCalendar', 'CultureInfo']) {
+  for (const unused of ['DateTime', 'PersianCalendar', 'GregorianCalendar', 'ThaiBuddhistCalendar', 'UmAlQuraCalendar', 'CultureInfo', 'Iran Standard Time', 'Pacific Standard Time']) {
     assert.equal(output.includes(unused), false, `${unused} remained in the TimeSpan bundle`);
   }
   assert.equal(output.includes('var require_dist = __commonJS'), false, 'the CommonJS core bundle remained in the ESM output');

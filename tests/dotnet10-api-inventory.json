@@ -10,9 +10,9 @@
   "summary": {
     "types": 29,
     "members": 807,
-    "present": 287,
+    "present": 291,
     "incomplete": 40,
-    "missing": 480,
+    "missing": 476,
     "missingTypes": 15,
     "missingRootExports": 15,
     "missingSubpathExports": 21
@@ -2021,9 +2021,9 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 76,
+        "present": 80,
         "incomplete": 4,
-        "missing": 37
+        "missing": 33
       },
       "extraLocalMembers": [],
       "members": [
@@ -3577,9 +3577,9 @@
             ]
           },
           "jsMember": "fromFileTime",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "DT-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -3602,9 +3602,9 @@
             ]
           },
           "jsMember": "fromFileTimeUtc",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "DT-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -4292,9 +4292,9 @@
             "parameters": []
           },
           "jsMember": "toFileTime",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "DT-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -4310,9 +4310,9 @@
             "parameters": []
           },
           "jsMember": "toFileTimeUtc",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "DT-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },

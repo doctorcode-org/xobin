@@ -100,5 +100,13 @@
   "DateTimeTests.FromOADate_InvalidValue_ThrowsArgumentException": "date-time-oa-date.test.mjs",
   "DateTimeTests.ToBinary_Invoke_ReturnsExpected": "date-time-binary.test.mjs",
   "DateTimeTests.FromBinary_Invoke_ReturnsExpected": "date-time-binary.test.mjs",
-  "DateTimeTests.FromBinary_OutOfRangeTicks_ThrowsArgumentException": "date-time-binary.test.mjs"
+  "DateTimeTests.FromBinary_OutOfRangeTicks_ThrowsArgumentException": "date-time-binary.test.mjs",
+  "DateTimeTests.ToFileTime_Invoke_ReturnsExpected": "date-time-file-time.test.mjs",
+  "DateTimeTests.ToFileTimeUtc_Invoke_ReturnsExpected": "date-time-file-time.test.mjs",
+  "DateTimeTests.ToFileTime_SmallDate_ThrowsArgumentOutOfRangeException": "date-time-file-time.test.mjs",
+  "DateTimeTests.ToFileTimeUtc_SmallDate_ThrowsArgumentOutOfRangeException": "date-time-file-time.test.mjs",
+  "DateTimeTests.FromFileTime_Invoke_ReturnsExpected": "date-time-file-time.test.mjs",
+  "DateTimeTests.FromFileTime_OutOfRange_ThrowsArgumentOutOfRangeException": "date-time-file-time.test.mjs",
+  "DateTimeTests.FromFileTimeUtc_Invoke_ReturnsExpected": "date-time-file-time.test.mjs",
+  "DateTimeTests.FromFileTimeUtc_OutOfRange_ThrowsArgumentOutOfRangeException": "date-time-file-time.test.mjs"
 }

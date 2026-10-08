@@ -1,5 +1,6 @@
 {
   "runtime": "10.0.7",
+  "timeZone": "Iran Standard Time",
   "rows": [
     {
       "source": "DateTimeTests.ToBinary_Invoke_ReturnsExpected",
@@ -24,7 +25,6 @@
       "operation": "toBinary",
       "input": "123456789101112:2",
       "result": "-9223248742065674696",
-      "environment": "windows-time-zone-data",
       "error": null,
       "paramName": null,
       "message": null
@@ -64,7 +64,6 @@
       "source": "DateTimeTests.FromBinary_Invoke_ReturnsExpected",
       "operation": "roundtrip",
       "input": "636812696700120000:2",
-      "environment": "windows-time-zone-data",
       "result": {
         "binary": "-8586559466154655808",
         "ticks": "636812696700120000",
@@ -78,7 +77,6 @@
       "source": "DateTimeTests.FromBinary_Invoke_ReturnsExpected",
       "operation": "roundtrip",
       "input": "today",
-      "environment": "system-clock-and-time-zone-data",
       "result": {
         "binary": null,
         "ticks": null,

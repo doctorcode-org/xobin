@@ -1,4 +1,4 @@
-﻿import {
+import {
     MinTicks,
     MaxTicks,
     TicksPerDay,
@@ -9,6 +9,7 @@
     DaysPer100Years,
     DaysPer4Years,
     DaysPerYear,
+    DaysTo1601,
     DaysTo1899,
     MaxMillis,
     TicksPerHour,
@@ -23,6 +24,7 @@ import { Calendar } from "./calendar";
 import { TimeSpan, timeToTicks as TimeSpanTimeToTicks } from "./time_span";
 import { DayOfWeek } from './day_of_week';
 import { DateTimeKind } from './date_time_kind';
+import { localTimeOffset } from './local_time_zone';
 import {
     ArgumentOutOfRangeException,
     ArgumentException,
@@ -49,6 +51,8 @@ const TicksMask = 0x3fffffffffffffffn;
 const TicksCeiling = 0x4000000000000000n;
 const KindUtc = 0x4000000000000000n;
 const KindLocal = 0x8000000000000000n;
+const FileTimeOffset = BigInt(DaysTo1601) * TicksPerDay;
+const ambiguousLocalDaylight = new WeakSet<DateTime>();
 
 /**
  * Represents an instant in time, typically expressed as a date and time of day.
@@ -409,7 +413,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      */
     get date(): DateTime {
         const ticks = this.ticks;
-        return new DateTime(ticks - ticks % TicksPerDay, this.kind);
+        return preserveLocalKind(this, ticks - ticks % TicksPerDay);
     }
 
     /**
@@ -508,17 +512,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * Gets a DateTime object that is set to the current date and time on this computer, expressed as the local time.
      */
     static get now(): DateTime {
-        const d = new Date();
-        return new DateTime(
-            d.getFullYear(),
-            d.getMonth() + 1,
-            d.getDate(),
-            d.getHours(),
-            d.getMinutes(),
-            d.getSeconds(),
-            d.getMilliseconds(),
-            DateTimeKind.local
-        );
+        return DateTime.utcNow.toLocalTime();
     }
 
     /**
@@ -599,7 +593,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         if (month === 2 && day === 29 && !DateTime.isLeapYear(year)) {
             day = 28;
         }
-        return new DateTime(dateToTicks(year, month, day) + this.ticks % TicksPerDay, this.kind);
+        return preserveLocalKind(this, dateToTicks(year, month, day) + this.ticks % TicksPerDay);
     }
 
     /**
@@ -628,7 +622,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         const days = DateTime.daysInMonth(year, month);
         if (day > days) day = days;
 
-        return new DateTime(dateToTicks(year, month, day) + this.ticks % TicksPerDay, this.kind);
+        return preserveLocalKind(this, dateToTicks(year, month, day) + this.ticks % TicksPerDay);
     }
 
     /**
@@ -676,7 +670,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         if (value > MaxTicks - ticks || value < MinTicks - ticks) {
             throw new ArgumentOutOfRangeException('value', 'The added or subtracted value results in an un-representable DateTime.');
         }
-        return new DateTime(ticks + value, this.kind);
+        return preserveLocalKind(this, ticks + value);
     }
 
     /**
@@ -699,7 +693,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         if (ticks - MinTicks < valueTicks || ticks - MaxTicks > valueTicks) {
             throw new ArgumentOutOfRangeException('value', 'The added or subtracted value results in an un-representable DateTime.');
         }
-        return new DateTime(ticks - valueTicks, this.kind);
+        return preserveLocalKind(this, ticks - valueTicks);
     }
 
     /**
@@ -711,8 +705,8 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
             return this;
         }
 
-        const date = createUtcDate(this);
-        const ticks = localDateToTicks(date) + this.ticks % TicksPerMillisecond;
+        const offset = localTimeOffset(this.ticks, true);
+        const ticks = this.ticks + offset.ticks;
         if (ticks > MaxTicks) {
             if (throwOnOverflow)
                 throw new ArgumentException('The added or subtracted value results in an un-representable DateTime.');
@@ -727,7 +721,9 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
                 return new DateTime(MinTicks, DateTimeKind.local);
         }
 
-        return new DateTime(ticks, DateTimeKind.local);
+        const result = new DateTime(ticks, DateTimeKind.local);
+        if (offset.ambiguousDaylight) ambiguousLocalDaylight.add(result);
+        return result;
     }
 
     /**
@@ -738,8 +734,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
             return this;
         }
 
-        const date = createLocalDate(this);
-        const ticks = utcDateToTicks(date) + this.ticks % TicksPerMillisecond;
+        const ticks = this.ticks - localTimeOffset(this.ticks, false, ambiguousLocalDaylight.has(this), this.kind.value === DateTimeKind.local.value).ticks;
         if (ticks < MinTicks) return new DateTime(MinTicks, DateTimeKind.utc);
         if (ticks > MaxTicks) return new DateTime(MaxTicks, DateTimeKind.utc);
         return new DateTime(ticks, DateTimeKind.utc);
@@ -777,6 +772,25 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
             return BigInt.asIntN(64, storedTicks | KindLocal);
         }
         return BigInt.asIntN(64, this.ticks | BigInt(this.kind.value) << 62n);
+    }
+
+    /**
+     * Converts this value to a Windows file time, treating unspecified values as local.
+     */
+    toFileTime(): bigint {
+        return this.toUniversalTime().toFileTimeUtc();
+    }
+
+    /**
+     * Converts this value to a Windows file time, treating unspecified values as UTC.
+     */
+    toFileTimeUtc(): bigint {
+        const ticks = this.kind.value === DateTimeKind.local.value ? this.toUniversalTime().ticks : this.ticks;
+        const fileTime = ticks - FileTimeOffset;
+        if (fileTime < 0n) {
+            throw new ArgumentOutOfRangeException(undefined, 'Not a valid Win32 FileTime.');
+        }
+        return fileTime;
     }
 
     /**
@@ -878,19 +892,11 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * Indicates whether this instance is within the daylight saving time range for the current time zone.
      */
     isDaylightSavingTime(): boolean {
-        if (this.kind.value === DateTimeKind.utc.value || this.ticks === MinTicks || this.ticks === MaxTicks) {
+        if (this.kind.value === DateTimeKind.utc.value) {
             return false;
         }
 
-        const date = createLocalDate(this);
-        let standardOffset = Number.NEGATIVE_INFINITY;
-        for (let month = 0; month < 12; month++) {
-            const sample = new Date(0);
-            sample.setFullYear(this.year, month, 1);
-            sample.setHours(12, 0, 0, 0);
-            standardOffset = Math.max(standardOffset, sample.getTimezoneOffset());
-        }
-        return date.getTimezoneOffset() < standardOffset;
+        return localTimeOffset(this.ticks, false, ambiguousLocalDaylight.has(this), this.kind.value === DateTimeKind.local.value).daylight;
     }
 
     /**
@@ -947,16 +953,36 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
             if (ticks > TicksCeiling - TicksPerDay) ticks -= TicksCeiling;
 
             const boundary = ticks < MinTicks ? DateTime.minValue : ticks > MaxTicks ? DateTime.maxValue : new DateTime(ticks, DateTimeKind.utc);
-            ticks += utcOffsetTicks(boundary);
+            const offset = localTimeOffset(boundary.ticks, true);
+            ticks += offset.ticks;
             if (ticks < 0n) ticks += TicksPerDay;
             if (ticks > MaxTicks) throwBadBinaryData();
-            return new DateTime(ticks, DateTimeKind.local);
+            const result = new DateTime(ticks, DateTimeKind.local);
+            if (offset.ambiguousDaylight) ambiguousLocalDaylight.add(result);
+            return result;
         }
 
         const ticks = data & TicksMask;
         if (ticks > MaxTicks) throwBadBinaryData();
         const kind = (data & KindUtc) !== 0n ? DateTimeKind.utc : DateTimeKind.unspecified;
         return new DateTime(ticks, kind);
+    }
+
+    /**
+     * Creates a local DateTime from a Windows file time.
+     */
+    static fromFileTime(fileTime: bigint): DateTime {
+        return DateTime.fromFileTimeUtc(fileTime).toLocalTime();
+    }
+
+    /**
+     * Creates a UTC DateTime from a Windows file time.
+     */
+    static fromFileTimeUtc(fileTime: bigint): DateTime {
+        if (fileTime < 0n || fileTime > MaxTicks - FileTimeOffset) {
+            throw new ArgumentOutOfRangeException('fileTime', 'Not a valid Win32 FileTime.');
+        }
+        return new DateTime(fileTime + FileTimeOffset, DateTimeKind.utc);
     }
 
     /**
@@ -1019,44 +1045,8 @@ function timeToTicks(hour: number, minute: number, second: number): bigint {
     return TimeSpanTimeToTicks(hour, minute, second);
 }
 
-function createUtcDate(value: DateTime): Date {
-    const date = new Date(0);
-    date.setUTCFullYear(value.year, value.month - 1, value.day);
-    date.setUTCHours(value.hour, value.minute, value.second, value.millisecond);
-    return date;
-}
-
-function createLocalDate(value: DateTime): Date {
-    const date = new Date(0);
-    date.setFullYear(value.year, value.month - 1, value.day);
-    date.setHours(value.hour, value.minute, value.second, value.millisecond);
-    return date;
-}
-
-function localDateToTicks(date: Date): bigint {
-    const year = date.getFullYear();
-    if (year < 1) return MinTicks - 1n;
-    if (year > 9999) return MaxTicks + 1n;
-    return dateToTicks(year, date.getMonth() + 1, date.getDate())
-        + timeToTicks(date.getHours(), date.getMinutes(), date.getSeconds())
-        + BigInt(date.getMilliseconds()) * TicksPerMillisecond;
-}
-
-function utcDateToTicks(date: Date): bigint {
-    const year = date.getUTCFullYear();
-    if (year < 1) return MinTicks - 1n;
-    if (year > 9999) return MaxTicks + 1n;
-    return dateToTicks(year, date.getUTCMonth() + 1, date.getUTCDate())
-        + timeToTicks(date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds())
-        + BigInt(date.getUTCMilliseconds()) * TicksPerMillisecond;
-}
-
 function localOffsetTicks(value: DateTime): bigint {
-    return BigInt(-createLocalDate(value).getTimezoneOffset()) * TicksPerMinute;
-}
-
-function utcOffsetTicks(value: DateTime): bigint {
-    return BigInt(-createUtcDate(value).getTimezoneOffset()) * TicksPerMinute;
+    return localTimeOffset(value.ticks, false, ambiguousLocalDaylight.has(value)).ticks;
 }
 
 function throwTicksOutOfRange(): never {
@@ -1203,3 +1193,9 @@ Local (internally there are two variants), or Utc. These four values can be stor
 The bottom 62 bits store the ticks. The operation x & 0x3fffffffffffffffL is a bitwise-and operation,
 also sometimes called masking. It returns only the bits that correspond to the ticks.
  */
+
+function preserveLocalKind(source: DateTime, ticks: bigint): DateTime {
+    const result = new DateTime(ticks, source.kind);
+    if (ambiguousLocalDaylight.has(source)) ambiguousLocalDaylight.add(result);
+    return result;
+}
