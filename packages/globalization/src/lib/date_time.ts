@@ -577,10 +577,18 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      */
     addYears(value: number): DateTime {
         if (value < -10000 || value > 10000) {
-            throw new Error('ArgumentOutOfRange_DateTimeBadYears');
+            throw new ArgumentOutOfRangeException('value', 'Years value must be between +/-10000.');
         }
 
-        return this.addMonths(value * 12);
+        let { year, month, day } = getDate.call(this);
+        year += value;
+        if (year < 1 || year > 9999) {
+            throw new ArgumentOutOfRangeException('value', 'The added or subtracted value results in an un-representable DateTime.');
+        }
+        if (month === 2 && day === 29 && !DateTime.isLeapYear(year)) {
+            day = 28;
+        }
+        return new DateTime(dateToTicks(year, month, day) + this.ticks % TicksPerDay, this.kind);
     }
 
     /**
@@ -589,7 +597,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      */
     addMonths(months: number): DateTime {
         if (months < -120000 || months > 120000)
-            throw new Error('ArgumentOutOfRange_DateTimeBadMonths');
+            throw new ArgumentOutOfRangeException('months', 'Months value must be between +/-120000.');
 
         let { year, month, day } = getDate.call(this);
 
@@ -604,7 +612,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         }
 
         if (year < 1 || year > 9999) {
-            throw new Error('ArgumentOutOfRange_DateArithmetic');
+            throw new ArgumentOutOfRangeException('months', 'The added or subtracted value results in an un-representable DateTime.');
         }
         const days = DateTime.daysInMonth(year, month);
         if (day > days) day = days;

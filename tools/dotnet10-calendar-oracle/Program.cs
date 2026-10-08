@@ -229,6 +229,22 @@ if (args.Length >= 2 && args[0] == "--date-time-add")
     }
     return;
 }
+if (args.Length >= 2 && args[0] == "--date-time-add-months-years")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --date-time-add-months-years, the fixture output path, and optionally --check.");
+    string addFixture = DateTimeAddMonthsYearsOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != addFixture)
+            throw new InvalidOperationException("DateTime AddMonths/AddYears fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], addFixture);
+    }
+    return;
+}
 if (args.Length >= 2 && args[0] == "--api-inventory")
 {
     if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
