@@ -326,5 +326,9 @@
   "ThaiBuddhistCalendarGetWeekOfYear.GetWeekOfYear_LastDayOfYear": "thai-buddhist.test.mjs",
   "ThaiBuddhistCalendarTwoDigitYearMax.TwoDigitYearMax_Get": "thai-buddhist.test.mjs",
   "PersianCalendarTests.CalendarConversion": "persian.test.mjs",
-  "PersianCalendarTests.IsLeapYear": "persian.test.mjs"
+  "PersianCalendarTests.IsLeapYear": "persian.test.mjs",
+  "DateTimeTests.DayOfWeek_Get_ReturnsExpected": "date-time-parts.test.mjs",
+  "DateTimeTests.DayOfYear_Get_ReturnsExpected": "date-time-parts.test.mjs",
+  "DateTimeTests.DayOfYear_Random": "date-time-parts.test.mjs",
+  "DateTimeTests.TimeOfDay_Get_ReturnsExpected": "date-time-parts.test.mjs"
 }
