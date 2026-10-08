@@ -877,8 +877,10 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
 }
 
 function addUnits(date: DateTime, value: number, scale: bigint): DateTime {
-    if (!Number.isFinite(value) || Math.abs(value) > Number(MaxTicks / scale))
-        throw new ArgumentOutOfRangeException(/*nameof(value), SR.ArgumentOutOfRange_AddValue*/);
+    if (Math.abs(value) > Number(MaxTicks / scale))
+        throw new ArgumentOutOfRangeException('value', 'Value to add was out of range.');
+    if (Number.isNaN(value))
+        return date.addTicks(0n);
     const whole = Math.trunc(value);
     const ticks = BigInt(whole) * scale + BigInt(Math.trunc((value - whole) * Number(scale)));
     return date.addTicks(ticks);
