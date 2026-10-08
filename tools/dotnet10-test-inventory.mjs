@@ -11,6 +11,7 @@ const mappedFacts = new Map(Object.entries(JSON.parse(readFileSync(resolve(dirna
 const mappedTheories = new Map(Object.entries(JSON.parse(readFileSync(resolve(dirname(output), 'dotnet10/mapped-theories.json'), 'utf8'))));
 const usedMappings = new Set();
 const usedTheoryMappings = new Set();
+const fixtureCache = new Map();
 const root = 'src/libraries/System.Runtime/tests/';
 
 if (!runtime || !['--check', '--write'].includes(mode)) {
@@ -132,6 +133,46 @@ function dataSources(text, firstLine) {
     return sources;
 }
 
+function dataSourceIdentity(source, cls) {
+    if (source.kind === 'UnresolvedData') {
+        return { member: null, name: `${cls}.<unresolved>` };
+    }
+    const member = source.raw.match(/\bnameof\s*\(\s*(?:\w+\.)?(\w+)\s*\)/)?.[1]
+        ?? source.raw.match(/\bMemberData\s*\(\s*"([^"]+)"/)?.[1]
+        ?? source.raw.match(/\bClassData\s*\(\s*typeof\s*\(\s*([\w.]+)\s*\)/)?.[1]
+        ?? null;
+    if (!member) throw new Error(`Could not identify ${source.kind} at line ${source.line}: ${source.raw}`);
+    return { member, name: `${cls}.${member}` };
+}
+
+function mappedTheoryDetails(mappingKey, mappedFile) {
+    const testPath = resolve(dirname(output), 'dotnet10', mappedFile);
+    const fixtureFile = mappedFile.replace(/\.test\.mjs$/, '-cases.json');
+    if (fixtureFile === mappedFile) throw new Error(`Mapped JS theory is not a test module: ${mappedFile}`);
+    const fixturePath = resolve(dirname(output), 'dotnet10', fixtureFile);
+    const testSource = readFileSync(testPath, 'utf8');
+    let fixture = fixtureCache.get(fixturePath);
+    if (!fixture) {
+        fixture = JSON.parse(readFileSync(fixturePath, 'utf8'));
+        fixtureCache.set(fixturePath, fixture);
+    }
+    if (!Array.isArray(fixture.rows)) throw new Error(`Oracle fixture has no rows array: ${fixtureFile}`);
+    const rows = fixture.rows.filter(row => row.source === mappingKey);
+    if (!testSource.includes(`./${fixtureFile}`)
+        || !testSource.includes('test(`${row.source}/${index}`')
+        || rows.length === 0) {
+        throw new Error(`Mapped JS theory is missing oracle rows or execution: ${mappingKey}`);
+    }
+    return {
+        fixture: `tests/dotnet10/${fixtureFile}`,
+        selector: { field: 'source', value: mappingKey },
+        rows: rows.length,
+        jsTestFile: `tests/dotnet10/${mappedFile}`,
+        jsTestName: mappingKey
+    };
+}
+
+const dynamicDataSources = [];
 for (const file of selected) {
     const lines = sourceLines.get(file);
     let markers = 0;
@@ -150,14 +191,8 @@ for (const file of selected) {
         if (test[1].endsWith('Theory')) {
             const mappingKey = `${cls}.${declaration.name}`;
             const mappedFile = mappedTheories.get(mappingKey);
+            const mappedDetails = mappedFile ? mappedTheoryDetails(mappingKey, mappedFile) : null;
             if (mappedFile) {
-                const testSource = readFileSync(resolve(dirname(output), 'dotnet10', mappedFile), 'utf8');
-                const fixtureFile = mappedFile.replace(/\.test\.mjs$/, '-cases.json');
-                const fixture = JSON.parse(readFileSync(resolve(dirname(output), 'dotnet10', fixtureFile), 'utf8'));
-                if (!testSource.includes('test(`${row.source}/${index}`')
-                    || !fixture.rows?.some(row => row.source === mappingKey)) {
-                    throw new Error(`Mapped JS theory is missing: ${mappingKey}`);
-                }
                 usedTheoryMappings.add(mappingKey);
             }
             const theorySources = sources.length ? sources : [{ kind: 'UnresolvedData', line: i + 1, raw: '' }];
@@ -166,6 +201,8 @@ for (const file of selected) {
                     const source = theorySources[index];
                     const id = `${methodId}#${source.kind}:${source.line}:${index + 1}@${testClass}`;
                     const old = previousCases.get(id);
+                    const isDynamic = source.kind !== 'InlineData';
+                    const dataSourceId = isDynamic ? id : null;
                     cases.push({
                         id,
                         testClass,
@@ -174,8 +211,33 @@ for (const file of selected) {
                         dataAttribute: source.raw,
                         expansion: source.kind === 'InlineData' ? 'one-row' : 'unexpanded',
                         status: mappedFile ? (source.kind === 'InlineData' ? 'mapped' : 'mapped-source') : (old?.status ?? 'unmapped'),
-                        jsTest: mappedFile ? `tests/dotnet10/${mappedFile}#${mappingKey}` : (old?.jsTest ?? null)
+                        jsTest: mappedFile ? `tests/dotnet10/${mappedFile}#${mappingKey}` : (old?.jsTest ?? null),
+                        ...(dataSourceId ? { dataSourceId } : {})
                     });
+                    if (isDynamic) {
+                        const identity = dataSourceIdentity(source, cls);
+                        dynamicDataSources.push({
+                            id: dataSourceId,
+                            kind: source.kind,
+                            name: identity.name,
+                            member: identity.member,
+                            consumerMethod: methodId,
+                            executedBy: testClass,
+                            sourceFile: file,
+                            attributeLine: source.line,
+                            attribute: source.raw,
+                            status: mappedDetails ? 'mapped' : 'unmapped',
+                            oracle: mappedDetails ? {
+                                fixture: mappedDetails.fixture,
+                                selector: mappedDetails.selector,
+                                rowCount: mappedDetails.rows
+                            } : null,
+                            javascript: mappedDetails ? {
+                                testFile: mappedDetails.jsTestFile,
+                                testName: mappedDetails.jsTestName
+                            } : null
+                        });
+                    }
                 }
             }
         } else {
@@ -231,6 +293,23 @@ for (const key of mappedTheories.keys()) if (!usedTheoryMappings.has(key)) throw
 const caseIds = methods.flatMap(method => method.cases.map(testCase => testCase.id));
 if (new Set(methodIds).size !== methodIds.length) throw new Error('Duplicate method IDs');
 if (new Set(caseIds).size !== caseIds.length) throw new Error('Duplicate case IDs');
+const dataSourceIds = dynamicDataSources.map(source => source.id);
+if (new Set(dataSourceIds).size !== dataSourceIds.length) throw new Error('Duplicate data source IDs');
+const dynamicCases = methods.flatMap(method => method.cases)
+    .filter(testCase => testCase.expansion === 'unexpanded');
+const dataSourceById = new Map(dynamicDataSources.map(source => [source.id, source]));
+if (dynamicCases.length !== dynamicDataSources.length
+    || dynamicCases.some(testCase => !dataSourceById.has(testCase.dataSourceId))) {
+    throw new Error('A dynamic test case is missing its data source record.');
+}
+if (dynamicCases.some(testCase =>
+    (testCase.status === 'mapped-source') !== (dataSourceById.get(testCase.dataSourceId).status === 'mapped'))) {
+    throw new Error('Dynamic case and data source mapping statuses differ.');
+}
+if (dynamicDataSources.some(source => source.status === 'mapped'
+    && (!source.oracle || source.oracle.rowCount <= 0 || !source.javascript))) {
+    throw new Error('Mapped data source is missing its oracle row count or JavaScript test.');
+}
 const caseCount = caseIds.length;
 const unexpanded = methods.flatMap(method => method.cases)
     .filter(testCase => testCase.expansion === 'unexpanded').length;
@@ -242,7 +321,10 @@ const byGroup = Object.fromEntries([...new Set(methods.map(method => method.grou
         caseRecords: groupCases.length,
         unexpandedDataSources: groupCases.filter(testCase => testCase.expansion === 'unexpanded').length,
         mappedCases: groupCases.filter(testCase => testCase.status === 'mapped' && testCase.jsTest).length,
-        mappedDataSources: groupCases.filter(testCase => testCase.status === 'mapped-source' && testCase.jsTest).length
+        mappedDataSources: groupCases.filter(testCase => testCase.status === 'mapped-source' && testCase.jsTest).length,
+        mappedOracleRows: dynamicDataSources.filter(source => source.status === 'mapped'
+            && groupMethods.some(method => method.id === source.consumerMethod))
+            .reduce((sum, source) => sum + source.oracle.rowCount, 0)
     }];
 }));
 const summary = {
@@ -255,21 +337,28 @@ const summary = {
         .filter(testCase => testCase.status === 'mapped' && testCase.jsTest).length,
     mappedDataSources: methods.flatMap(method => method.cases)
         .filter(testCase => testCase.status === 'mapped-source' && testCase.jsTest).length,
+    mappedOracleRows: dynamicDataSources.filter(source => source.status === 'mapped')
+        .reduce((sum, source) => sum + source.oracle.rowCount, 0),
+    dataSourcesWithoutOracle: dynamicDataSources.filter(source => source.oracle === null).length,
     byGroup
 };
 const inventory = {
+    schemaVersion: 2,
     sourceTag,
     sourceCommit,
     selection: 'DateTimeTests, TimeSpanTests, DateOnlyTests, TimeOnlyTests, full Calendars suite (ISOWeek flagged as adjacent), full DateTimeFormatInfo suite, CultureInfoCalendar and CultureInfoDateTimeFormat',
-    interpretation: 'Cases are expanded for concrete Calendar test subclasses. A Fact or InlineData record is one case. mapped-source means a MemberData or ClassData method has a JS equivalent, while its original runtime rows remain unexpanded.',
+    interpretation: 'Cases are expanded for concrete Calendar test subclasses. A Fact or InlineData record is one case. Each dynamic MemberData, ClassData, or unresolved source has a dataSources record. A mapped source is valid only when its .NET 10 oracle fixture, exact row count, and JavaScript test are recorded.',
     summary,
     supportFiles,
+    dataSources: dynamicDataSources,
     methods
 };
 // One line per method keeps later mapping changes reviewable.
-const header = JSON.stringify({ ...inventory, methods: undefined }, null, 2);
+const header = JSON.stringify({ ...inventory, dataSources: undefined, methods: undefined }, null, 2);
 const serialized = header.slice(0, -2)
-    + ',\n  "methods": [\n'
+    + ',\n  "dataSources": [\n'
+    + dynamicDataSources.map(source => `    ${JSON.stringify(source)}`).join(',\n')
+    + '\n  ],\n  "methods": [\n'
     + methods.map(method => `    ${JSON.stringify(method)}`).join(',\n')
     + '\n  ]\n}\n';
 if (mode === '--write') {
