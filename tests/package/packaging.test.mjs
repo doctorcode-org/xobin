@@ -39,6 +39,11 @@ test('CommonJS and ESM resolve the public package entry', async () => {
   }
   assert.equal(commonjs.TimeSpan, commonjsTimeSpan.TimeSpan);
   assert.equal(esm.TimeSpan, esmTimeSpan.TimeSpan);
+  for (const [name, path] of [['DateOnly', 'date-only'], ['TimeOnly', 'time-only']]) {
+    const direct = await import(`@xobin/globalization/${path}`);
+    assert.equal(esm[name], direct[name]);
+    assert.equal(commonjs[name], require(`@xobin/globalization/${path}`)[name]);
+  }
 });
 
 test('the existing locale path still resolves', () => {
@@ -71,7 +76,7 @@ test('a TimeSpan-only consumer bundle excludes DateTime and calendars', async ()
     "import { TimeSpan } from '@xobin/globalization'; globalThis.value = new TimeSpan(1n);",
   );
   assert.match(output, /TimeSpan/);
-  for (const unused of ['DateTime', 'PersianCalendar', 'GregorianCalendar', 'ThaiBuddhistCalendar', 'UmAlQuraCalendar', 'CultureInfo', 'Iran Standard Time', 'Pacific Standard Time']) {
+  for (const unused of ['DateTime', 'DateOnly', 'TimeOnly', 'PersianCalendar', 'GregorianCalendar', 'ThaiBuddhistCalendar', 'UmAlQuraCalendar', 'CultureInfo', 'Iran Standard Time', 'Pacific Standard Time']) {
     assert.equal(output.includes(unused), false, `${unused} remained in the TimeSpan bundle`);
   }
   assert.equal(output.includes('var require_dist = __commonJS'), false, 'the CommonJS core bundle remained in the ESM output');

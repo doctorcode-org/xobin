@@ -27,3 +27,16 @@ const readOnlyFlag: boolean = readOnlyPersian.isReadOnly;
 export { span, calendar, ticks, persianEra, persianEras, persianDate, thaiCalendar, thaiEra, thaiEras, thaiDate,
   umAlQuraCalendar, umAlQuraEra, umAlQuraEras, umAlQuraDate, readOnlyPersian, clonedPersian, readOnlyFlag };
 export const localeName: string = cultureData.name;
+
+import { DateOnly } from '@xobin/globalization/date-only';
+import { TimeOnly } from '@xobin/globalization/time-only';
+import { DateTimeKind } from '@xobin/globalization';
+import { TypeCode } from '@xobin/core';
+const dateOnly: DateOnly = new DateOnly(2024, 2, 29);
+const timeOnly: TimeOnly = new TimeOnly(863999999999n);
+const combined: DateTime = new DateTime(dateOnly, timeOnly, DateTimeKind.utc);
+const dateAndTime: [DateOnly, TimeOnly] = combined.deconstruct();
+const dateParts: [number, number, number] = combined.deconstruct('date');
+const code: TypeCode = combined.getTypeCode();
+const converted: DateTime = combined.toType(DateTime);
+export { dateOnly, timeOnly, combined, dateAndTime, dateParts, code, converted };

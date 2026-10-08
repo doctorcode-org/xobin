@@ -24,6 +24,8 @@ import { Calendar } from "./calendar";
 import { TimeSpan, timeToTicks as TimeSpanTimeToTicks } from "./time_span";
 import { DayOfWeek } from './day_of_week';
 import { DateTimeKind } from './date_time_kind';
+import { DateOnly } from './date_only';
+import { TimeOnly } from './time_only';
 import { localTimeOffset } from './local_time_zone';
 import {
     ArgumentOutOfRangeException,
@@ -78,6 +80,8 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * @param kind One of the enumeration values that indicates whether ticks specifies a local time, Coordinated Universal Time (UTC), or neither.
      */
     constructor(ticks: bigint, kind: DateTimeKind);
+    constructor(date: DateOnly, time: TimeOnly);
+    constructor(date: DateOnly, time: TimeOnly, kind: DateTimeKind);
 
     /**
      * Initializes a new instance of the DateTime structure to the specified year, month, and day.
@@ -213,6 +217,10 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
                 break;
 
             case 2:
+                if (arguments[0] instanceof DateOnly && arguments[1] instanceof TimeOnly) {
+                    ticks = BigInt(arguments[0].dayNumber) * TicksPerDay + arguments[1].ticks;
+                    break;
+                }
                 ticks = arguments[0];
                 kind = arguments[1];
                 if (typeof ticks !== 'bigint') throw new ArgumentException('Ticks must be a bigint.');
@@ -227,6 +235,12 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
                 break;
 
             case 3:
+                if (arguments[0] instanceof DateOnly && arguments[1] instanceof TimeOnly) {
+                    kind = arguments[2];
+                    if (kind.value < DateTimeKind.unspecified.value || kind.value > DateTimeKind.local.value) throwInvalidKind();
+                    ticks = BigInt(arguments[0].dayNumber) * TicksPerDay + arguments[1].ticks;
+                    break;
+                }
                 year = arguments[0];
                 month = arguments[1];
                 day = arguments[2];
@@ -796,6 +810,13 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
     }
 
     getTypeCode(): TypeCode { return TypeCode.dateTime; }
+
+    deconstruct(): [DateOnly, TimeOnly];
+    deconstruct(parts: 'date'): [number, number, number];
+    deconstruct(parts?: 'date'): [DateOnly, TimeOnly] | [number, number, number] {
+        return parts === 'date' ? [this.year, this.month, this.day]
+            : [DateOnly.fromDateTime(this), TimeOnly.fromDateTime(this)];
+    }
 
     toBoolean(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Boolean'); }
     toChar(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Char'); }

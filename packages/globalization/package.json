@@ -62,6 +62,16 @@
       "types": "./dist/locales/*.d.ts",
       "import": "./dist/locales/*.mjs",
       "require": "./dist/locales/*.js"
+    },
+    "./date-only": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/date_only.mjs",
+      "require": "./dist/index.js"
+    },
+    "./time-only": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/time_only.mjs",
+      "require": "./dist/index.js"
     }
   },
   "sideEffects": false,

@@ -5,6 +5,8 @@ export { CalendarWeekRule } from './lib/calendar_week_rule';
 export { CultureData } from './lib/culture_data';
 export { CultureInfo, CultureName } from './lib/culture_info';
 export { DateTime } from './lib/date_time';
+export { DateOnly } from './lib/date_only';
+export { TimeOnly } from './lib/time_only';
 export { DateTimeFormat } from './lib/date_time_format';
 export { DateTimeFormatInfo } from './lib/date_time_format_info';
 export { DateTimeKind } from './lib/date_time_kind';

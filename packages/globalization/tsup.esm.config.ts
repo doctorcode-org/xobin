@@ -5,6 +5,8 @@ export default defineConfig({
     index: 'src/index.ts',
     time_span: 'src/lib/time_span.ts',
     date_time: 'src/lib/date_time.ts',
+    date_only: 'src/lib/date_only.ts',
+    time_only: 'src/lib/time_only.ts',
     calendar: 'src/lib/calendar.ts',
     gregorian_calendar: 'src/lib/gregorian_calendar.ts',
     persian_calendar: 'src/lib/persian_calendar.ts',
