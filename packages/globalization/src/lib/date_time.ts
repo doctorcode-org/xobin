@@ -45,6 +45,10 @@ const DoubleDateOffset = BigInt(DaysTo1899) * TicksPerDay;
 const OADateMinAsTicks = BigInt(DaysPer100Years - DaysPerYear) * TicksPerDay;
 const OADateMinAsDouble = -657435;
 const OADateMaxAsDouble = 2958466;
+const TicksMask = 0x3fffffffffffffffn;
+const TicksCeiling = 0x4000000000000000n;
+const KindUtc = 0x4000000000000000n;
+const KindLocal = 0x8000000000000000n;
 
 /**
  * Represents an instant in time, typically expressed as a date and time of day.
@@ -763,6 +767,19 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
     }
 
     /**
+     * Serializes this value, including its DateTimeKind, into a signed 64-bit integer.
+     */
+    toBinary(): bigint {
+        if (this.kind.value === DateTimeKind.local.value) {
+            const offsetTicks = localOffsetTicks(this);
+            let storedTicks = this.ticks - offsetTicks;
+            if (storedTicks < 0n) storedTicks += TicksCeiling;
+            return BigInt.asIntN(64, storedTicks | KindLocal);
+        }
+        return BigInt.asIntN(64, this.ticks | BigInt(this.kind.value) << 62n);
+    }
+
+    /**
      * Converts the value of the current DateTime object to its equivalent string representation using the formatting conventions of the current culture.
      */
     toString(): string;
@@ -921,6 +938,28 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
     }
 
     /**
+     * Deserializes a value produced by toBinary.
+     */
+    static fromBinary(dateData: bigint): DateTime {
+        const data = BigInt.asUintN(64, dateData);
+        if ((data & KindLocal) !== 0n) {
+            let ticks = data & TicksMask;
+            if (ticks > TicksCeiling - TicksPerDay) ticks -= TicksCeiling;
+
+            const boundary = ticks < MinTicks ? DateTime.minValue : ticks > MaxTicks ? DateTime.maxValue : new DateTime(ticks, DateTimeKind.utc);
+            ticks += utcOffsetTicks(boundary);
+            if (ticks < 0n) ticks += TicksPerDay;
+            if (ticks > MaxTicks) throwBadBinaryData();
+            return new DateTime(ticks, DateTimeKind.local);
+        }
+
+        const ticks = data & TicksMask;
+        if (ticks > MaxTicks) throwBadBinaryData();
+        const kind = (data & KindUtc) !== 0n ? DateTimeKind.utc : DateTimeKind.unspecified;
+        return new DateTime(ticks, kind);
+    }
+
+    /**
      * Returns a value indicating whether two DateTime instances have the same date and time value.
      * @param t1 The first object to compare.
      * @param t2 The second object to compare.
@@ -1012,6 +1051,14 @@ function utcDateToTicks(date: Date): bigint {
         + BigInt(date.getUTCMilliseconds()) * TicksPerMillisecond;
 }
 
+function localOffsetTicks(value: DateTime): bigint {
+    return BigInt(-createLocalDate(value).getTimezoneOffset()) * TicksPerMinute;
+}
+
+function utcOffsetTicks(value: DateTime): bigint {
+    return BigInt(-createUtcDate(value).getTimezoneOffset()) * TicksPerMinute;
+}
+
 function throwTicksOutOfRange(): never {
     throw new ArgumentOutOfRangeException('ticks',
         'Ticks must be between DateTime.MinValue.Ticks and DateTime.MaxValue.Ticks.');
@@ -1019,6 +1066,12 @@ function throwTicksOutOfRange(): never {
 
 function throwInvalidKind(): never {
     throw new ArgumentException('Invalid DateTimeKind value.', 'kind');
+}
+
+function throwBadBinaryData(): never {
+    throw new ArgumentException(
+        'The binary data must result in a DateTime with ticks between DateTime.MinValue.Ticks and DateTime.MaxValue.Ticks.',
+        'dateData');
 }
 
 function throwInvalidDate(): never {

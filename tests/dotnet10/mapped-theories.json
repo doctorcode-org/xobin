@@ -97,5 +97,8 @@
   "DateTimeTests.ToOADate_Invoke_ReturnsExpected": "date-time-oa-date.test.mjs",
   "DateTimeTests.ToOADate_SmallDate_ThrowsOverflowException": "date-time-oa-date.test.mjs",
   "DateTimeTests.FromOADate_Invoke_ReturnsExpected": "date-time-oa-date.test.mjs",
-  "DateTimeTests.FromOADate_InvalidValue_ThrowsArgumentException": "date-time-oa-date.test.mjs"
+  "DateTimeTests.FromOADate_InvalidValue_ThrowsArgumentException": "date-time-oa-date.test.mjs",
+  "DateTimeTests.ToBinary_Invoke_ReturnsExpected": "date-time-binary.test.mjs",
+  "DateTimeTests.FromBinary_Invoke_ReturnsExpected": "date-time-binary.test.mjs",
+  "DateTimeTests.FromBinary_OutOfRangeTicks_ThrowsArgumentException": "date-time-binary.test.mjs"
 }

@@ -10,9 +10,9 @@
   "summary": {
     "types": 29,
     "members": 807,
-    "present": 285,
+    "present": 287,
     "incomplete": 40,
-    "missing": 482,
+    "missing": 480,
     "missingTypes": 15,
     "missingRootExports": 15,
     "missingSubpathExports": 21
@@ -2021,9 +2021,9 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 74,
+        "present": 76,
         "incomplete": 4,
-        "missing": 39
+        "missing": 37
       },
       "extraLocalMembers": [],
       "members": [
@@ -3552,9 +3552,9 @@
             ]
           },
           "jsMember": "fromBinary",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "DT-09",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -4274,9 +4274,9 @@
             "parameters": []
           },
           "jsMember": "toBinary",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "DT-09",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
