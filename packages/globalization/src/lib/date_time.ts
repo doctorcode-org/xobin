@@ -559,24 +559,8 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * Returns a new DateTime that adds the value of the specified TimeSpan to the value of this instance.
      * @param value A positive or negative time interval.
      */
-    add(value: TimeSpan): DateTime;
-    /**
-     * 
-     * @param value
-     * @param scale
-     */
-    add(value: number, scale: bigint): DateTime;
-    add(value: TimeSpan | number, scale?: bigint): DateTime {
-        if (value instanceof TimeSpan) {
-            return this.addTicks(value.ticks);
-        }
-        else {
-            if (!Number.isFinite(value) || Math.abs(value) > Number(MaxTicks / scale!))
-                throw new ArgumentOutOfRangeException(/*nameof(value), SR.ArgumentOutOfRange_AddValue*/);
-            const whole = Math.trunc(value);
-            const ticks = BigInt(whole) * scale! + BigInt(Math.trunc((value - whole) * Number(scale!)));
-            return this.addTicks(ticks);
-        }
+    add(value: TimeSpan): DateTime {
+        return this.addTicks(value.ticks);
     }
 
     /**
@@ -584,7 +568,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * @param value A number of whole and fractional days. The value parameter can be negative or positive.
      */
     addDays(value: number): DateTime {
-        return this.add(value, TicksPerDay);
+        return addUnits(this, value, TicksPerDay);
     }
 
     /**
@@ -633,7 +617,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * @param value A number of whole and fractional hours. The value parameter can be negative or positive.
      */
     addHours(value: number): DateTime {
-        return this.add(value, TicksPerHour);
+        return addUnits(this, value, TicksPerHour);
     }
 
     /**
@@ -641,7 +625,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * @param value A number of whole and fractional minutes. The value parameter can be negative or positive.
      */
     addMinutes(value: number): DateTime {
-        return this.add(value, TicksPerMinute);
+        return addUnits(this, value, TicksPerMinute);
     }
 
     /**
@@ -649,7 +633,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * @param value A number of whole and fractional seconds. The value parameter can be negative or positive.
      */
     addSeconds(value: number): DateTime {
-        return this.add(value, TicksPerSecond);
+        return addUnits(this, value, TicksPerSecond);
     }
 
     /**
@@ -657,11 +641,11 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * @param value A number of whole and fractional milliseconds. The value parameter can be negative or positive.
      */
     addMilliseconds(value: number): DateTime {
-        return this.add(value, TicksPerMillisecond);
+        return addUnits(this, value, TicksPerMillisecond);
     }
 
     addMicroseconds(value: number): DateTime {
-        return this.add(value, TicksPerMicrosecond);
+        return addUnits(this, value, TicksPerMicrosecond);
     }
 
     /**
@@ -671,7 +655,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
     addTicks(value: bigint): DateTime {
         const ticks = this.ticks;
         if (value > MaxTicks - ticks || value < MinTicks - ticks) {
-            throw new ArgumentOutOfRangeException('value', 'ArgumentOutOfRange_DateArithmetic');
+            throw new ArgumentOutOfRangeException('value', 'The added or subtracted value results in an un-representable DateTime.');
         }
         return new DateTime(ticks + value, this.kind);
     }
@@ -882,6 +866,14 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         if (ticks1 < ticks2) return -1;
         return 0;
     }
+}
+
+function addUnits(date: DateTime, value: number, scale: bigint): DateTime {
+    if (!Number.isFinite(value) || Math.abs(value) > Number(MaxTicks / scale))
+        throw new ArgumentOutOfRangeException(/*nameof(value), SR.ArgumentOutOfRange_AddValue*/);
+    const whole = Math.trunc(value);
+    const ticks = BigInt(whole) * scale + BigInt(Math.trunc((value - whole) * Number(scale)));
+    return date.addTicks(ticks);
 }
 
 function dateToTicks(year: number, month: number, day: number): bigint {
