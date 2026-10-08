@@ -93,5 +93,9 @@
   "DateTimeTests.IsLeapYear_InvalidYear_ThrowsArgumentOutOfRangeException": "date-time-calendar-math.test.mjs",
   "DateTimeTests.CompareTo_Invoke_ReturnsExpected": "date-time-comparison.test.mjs",
   "DateTimeTests.Equals_Invoke_ReturnsExpected": "date-time-comparison.test.mjs",
-  "DateTimeTests.IsDaylightSavingTime_Invoke_ReturnsExpected": "date-time-timezone.test.mjs"
+  "DateTimeTests.IsDaylightSavingTime_Invoke_ReturnsExpected": "date-time-timezone.test.mjs",
+  "DateTimeTests.ToOADate_Invoke_ReturnsExpected": "date-time-oa-date.test.mjs",
+  "DateTimeTests.ToOADate_SmallDate_ThrowsOverflowException": "date-time-oa-date.test.mjs",
+  "DateTimeTests.FromOADate_Invoke_ReturnsExpected": "date-time-oa-date.test.mjs",
+  "DateTimeTests.FromOADate_InvalidValue_ThrowsArgumentException": "date-time-oa-date.test.mjs"
 }

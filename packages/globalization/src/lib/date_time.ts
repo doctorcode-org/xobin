@@ -9,6 +9,8 @@
     DaysPer100Years,
     DaysPer4Years,
     DaysPerYear,
+    DaysTo1899,
+    MaxMillis,
     TicksPerHour,
     TicksPerMinute,
     TicksPerSecond,
@@ -30,6 +32,7 @@ import {
     int,
     IFormatProvider,
     ArgumentNullException,
+    OverflowException,
     IComparable,
     IEquatable
 } from '@xobin/core';
@@ -37,6 +40,11 @@ import {
 
 const s_daysToMonth365 = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365];
 const s_daysToMonth366 = [0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366];
+const MillisecondsPerDay = 86400000;
+const DoubleDateOffset = BigInt(DaysTo1899) * TicksPerDay;
+const OADateMinAsTicks = BigInt(DaysPer100Years - DaysPerYear) * TicksPerDay;
+const OADateMinAsDouble = -657435;
+const OADateMaxAsDouble = 2958466;
 
 /**
  * Represents an instant in time, typically expressed as a date and time of day.
@@ -734,6 +742,27 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
     }
 
     /**
+     * Converts this value to an OLE Automation date.
+     */
+    toOADate(): number {
+        let ticks = this.ticks;
+        if (ticks === 0n) return 0;
+        if (ticks < TicksPerDay) ticks += DoubleDateOffset;
+        if (ticks < OADateMinAsTicks) {
+            throw new OverflowException('Not a legal OleAut date.');
+        }
+
+        let milliseconds = (ticks - DoubleDateOffset) / TicksPerMillisecond;
+        if (milliseconds < 0n) {
+            const fraction = milliseconds % BigInt(MillisecondsPerDay);
+            if (fraction !== 0n) {
+                milliseconds -= (BigInt(MillisecondsPerDay) + fraction) * 2n;
+            }
+        }
+        return Number(milliseconds) / MillisecondsPerDay;
+    }
+
+    /**
      * Converts the value of the current DateTime object to its equivalent string representation using the formatting conventions of the current culture.
      */
     toString(): string;
@@ -870,6 +899,25 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      */
     static specifyKind(value: DateTime, kind: DateTimeKind): DateTime {
         return new DateTime(value.ticks, kind);
+    }
+
+    /**
+     * Returns a DateTime equivalent to the specified OLE Automation date.
+     */
+    static fromOADate(value: number): DateTime {
+        if (!(value < OADateMaxAsDouble) || !(value > OADateMinAsDouble)) {
+            throw new ArgumentException('Not a legal OleAut date.');
+        }
+
+        let milliseconds = Math.trunc(value * MillisecondsPerDay + (value >= 0 ? 0.5 : -0.5));
+        if (milliseconds < 0) {
+            milliseconds -= (milliseconds % MillisecondsPerDay) * 2;
+        }
+        milliseconds += Number(DoubleDateOffset / TicksPerMillisecond);
+        if (milliseconds < 0 || milliseconds > MaxMillis) {
+            throw new ArgumentException('OleAut date did not convert to a DateTime correctly.');
+        }
+        return new DateTime(BigInt(milliseconds) * TicksPerMillisecond, DateTimeKind.unspecified);
     }
 
     /**

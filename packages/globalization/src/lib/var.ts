@@ -45,7 +45,7 @@ export const DaysTo10000 = DaysPer400Years * 25 - 366;  // 3652059
 
 export const MinTicks = 0n;
 export const MaxTicks = BigInt(DaysTo10000) * TicksPerDay - 1n;
-export const MaxMillis = DaysTo10000 * MillisPerDay;
+export const MaxMillis = Number(MaxTicks / TicksPerMillisecond);
 
 export const DatePartYear = 0;
 export const DatePartDayOfYear = 1;
