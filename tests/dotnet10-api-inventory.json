@@ -10,12 +10,12 @@
   "summary": {
     "types": 29,
     "members": 807,
-    "present": 355,
+    "present": 365,
     "incomplete": 39,
-    "missing": 413,
-    "missingTypes": 13,
-    "missingRootExports": 13,
-    "missingSubpathExports": 19
+    "missing": 403,
+    "missingTypes": 12,
+    "missingRootExports": 12,
+    "missingSubpathExports": 18
   },
   "types": [
     {
@@ -8888,19 +8888,19 @@
       "local": {
         "file": "src/lib/date_time_styles.ts",
         "symbol": "DateTimeStyles",
-        "declarationKind": null,
+        "declarationKind": "enum",
         "typeShape": {
-          "status": "missing",
-          "reason": "local type is missing"
+          "status": "present",
+          "reason": "a matching local declaration exists"
         },
-        "rootExported": false,
+        "rootExported": true,
         "expectedSubpath": "./date-time-styles",
-        "subpathExported": false
+        "subpathExported": true
       },
       "counts": {
-        "present": 0,
+        "present": 10,
         "incomplete": 0,
-        "missing": 10
+        "missing": 0
       },
       "extraLocalMembers": [],
       "members": [
@@ -8915,10 +8915,10 @@
             "signature": "AdjustToUniversal = 16",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "AdjustToUniversal",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8933,10 +8933,10 @@
             "signature": "AllowInnerWhite = 4",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "AllowInnerWhite",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8951,10 +8951,10 @@
             "signature": "AllowLeadingWhite = 1",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "AllowLeadingWhite",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8969,10 +8969,10 @@
             "signature": "AllowTrailingWhite = 2",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "AllowTrailingWhite",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8987,10 +8987,10 @@
             "signature": "AllowWhiteSpaces = 7",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "AllowWhiteSpaces",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9005,10 +9005,10 @@
             "signature": "AssumeLocal = 32",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "AssumeLocal",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9023,10 +9023,10 @@
             "signature": "AssumeUniversal = 64",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "AssumeUniversal",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9041,10 +9041,10 @@
             "signature": "NoCurrentDateDefault = 8",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "NoCurrentDateDefault",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9059,10 +9059,10 @@
             "signature": "None = 0",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "None",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9077,10 +9077,10 @@
             "signature": "RoundtripKind = 128",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "RoundtripKind",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         }

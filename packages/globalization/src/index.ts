@@ -10,6 +10,7 @@ export { TimeOnly } from './lib/time_only';
 export { DateTimeFormat } from './lib/date_time_format';
 export { DateTimeFormatInfo } from './lib/date_time_format_info';
 export { DateTimeKind } from './lib/date_time_kind';
+export { DateTimeStyles } from './lib/date_time_styles';
 export { DayOfWeek } from './lib/day_of_week';
 export { CultureNotFoundException } from './lib/exceptions';
 export { GregorianCalendar } from './lib/gregorian_calendar';

@@ -4,6 +4,10 @@ import { PersianCalendar as DirectPersianCalendar } from '@xobin/globalization/p
 import { ThaiBuddhistCalendar as DirectThaiBuddhistCalendar } from '@xobin/globalization/thai-buddhist-calendar';
 import { UmAlQuraCalendar as DirectUmAlQuraCalendar } from '@xobin/globalization/um-al-qura-calendar';
 import { cultureData } from '@xobin/globalization/locales/fa-IR';
+import { DateTimeStyles } from '@xobin/globalization/date-time-styles';
+
+const parsingStyles: DateTimeStyles = DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.RoundtripKind;
+void parsingStyles;
 
 const span: TimeSpan = new DirectTimeSpan(1n);
 const ticks: bigint = new DateTime(1n).ticks;

@@ -18,6 +18,16 @@
       "import": "./dist/time_span.mjs",
       "require": "./dist/index.js"
     },
+    "./date-time-styles": {
+      "import": {
+        "types": "./dist/date_time_styles.d.mts",
+        "default": "./dist/date_time_styles.mjs"
+      },
+      "require": {
+        "types": "./dist/date_time_styles.d.ts",
+        "default": "./dist/date_time_styles.js"
+      }
+    },
     "./date-time": {
       "types": "./dist/index.d.ts",
       "import": "./dist/date_time.mjs",

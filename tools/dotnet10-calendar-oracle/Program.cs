@@ -5,6 +5,17 @@ if (Environment.Version.ToString() != "10.0.7")
     throw new InvalidOperationException($"Expected .NET 10.0.7, got {Environment.Version}.");
 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
+if (args.Length >= 2 && args[0] == "--date-time-styles")
+{
+    string output = DateTimeStylesOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check")
+    {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Styles fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
 // Environment-dependent DateTime fixtures use UTC in both runtimes.
 // Pin only this isolated oracle process; no host time-zone setting is changed.
 if (args.Length > 0 && args[0] is "--date-time-format" or "--date-time-binary" or "--date-time-file-time")
