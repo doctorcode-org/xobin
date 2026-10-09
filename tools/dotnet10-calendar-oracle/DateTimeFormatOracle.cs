@@ -264,7 +264,18 @@ internal static class DateTimeFormatOracle
             allFormats.Add(new { ticks = date.Ticks.ToString(), kind = (int)kind, format, culture = name, result,
                 error = error?.GetType().Name, message = error?.Message });
         }
-        return JsonSerializer.Serialize(new { runtime = Environment.Version.ToString(), timeZone = TimeZoneInfo.Local.Id, cultures, rows, supplemental, allFormats }, new JsonSerializerOptions { WriteIndented = true }) + "\n";
+        var customFormats = new List<object>();
+        foreach (string name in cultures.Keys)
+        foreach (string pattern in new[] { "yyyy", "'custom'" })
+        foreach (string format in new[] { "F", "U" })
+        {
+            var culture = new CultureInfo(name, false);
+            culture.DateTimeFormat.FullDateTimePattern = pattern;
+            var date = new DateTime(2024, 3, 20, 3, 4, 5, DateTimeKind.Utc);
+            customFormats.Add(new { culture = name, pattern, format, ticks = date.Ticks.ToString(),
+                kind = (int)date.Kind, result = date.ToString(format, culture) });
+        }
+        return JsonSerializer.Serialize(new { runtime = Environment.Version.ToString(), timeZone = TimeZoneInfo.Local.Id, cultures, rows, supplemental, allFormats, customFormats }, new JsonSerializerOptions { WriteIndented = true }) + "\n";
 
         void AddCulture(CultureInfo c)
         {

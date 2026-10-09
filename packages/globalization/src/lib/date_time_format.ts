@@ -2,17 +2,31 @@ import { FormatException, IFormatProvider } from '@xobin/core';
 import type { CultureInfo } from './culture_info';
 import { DateTime, getDateTimeOffset } from './date_time';
 import { DateTimeFormatInfo } from './date_time_format_info';
-import { getCurrentFormatContext, invariantDateTimeFormat, gregorianFormatCalendar, FormatCalendar, FormatContext } from './date_time_format_context';
+import { getCurrentFormatContext, getGregorianFormatInfo, invariantDateTimeFormat, gregorianFormatCalendar, FormatCalendar, FormatContext } from './date_time_format_context';
 import { TicksPerSecond, TicksPerMinute } from './var';
 
 type FormatInfo = DateTimeFormatInfo & { calendar?: FormatCalendar; eraNames?: readonly string[] };
 
-/** Formats DateTime values using .NET standard and custom format tokens. */
+/**
+ * Formats DateTime values using .NET standard and custom format tokens.
+ */
 export class DateTimeFormat {
+    /**
+     * Formats a date and time using the specified format and culture.
+     * @param date The DateTime to format.
+     * @param format A standard or custom date and time format string.
+     * @param culture The culture that supplies formatting information.
+     */
     formatInput(date: DateTime, format: string, culture?: CultureInfo): string {
         return DateTimeFormat.format(date, format, culture);
     }
 
+    /**
+     * Formats a date and time using a standard or custom format string.
+     * @param date The DateTime to format.
+     * @param format A standard or custom date and time format string.
+     * @param provider An object that supplies culture-specific formatting information.
+     */
     static format(date: DateTime, format?: string | null, provider?: IFormatProvider | null): string {
         const candidate = provider as (IFormatProvider & Partial<FormatContext>) | null | undefined;
         const culture = candidate?.dateTimeFormat && candidate.calendar ? candidate as FormatContext : getCurrentFormatContext();
@@ -37,7 +51,7 @@ export class DateTimeFormat {
                 }
                 case 'U':
                     date = date.toUniversalTime();
-                    if (info === culture.dateTimeFormat) info = culture.gregorianDateTimeFormat ?? info;
+                    if (info === culture.dateTimeFormat) info = getGregorianFormatInfo(culture);
                     calendar = gregorianFormatCalendar;
                     format = info.fullDateTimePattern;
                     break;
@@ -57,6 +71,12 @@ export class DateTimeFormat {
         return customized(date, format, info, calendar);
     }
 
+    /**
+     * Returns the string representations associated with standard date and time formats.
+     * @param date The DateTime to format.
+     * @param format A single standard format specifier, or null for all standard formats.
+     * @param provider An object that supplies culture-specific formatting information.
+     */
     static getAllFormats(date: DateTime, format?: string | null, provider?: IFormatProvider | null): string[] {
         const candidate = provider as (IFormatProvider & Partial<FormatContext>) | null | undefined;
         const culture = candidate?.dateTimeFormat && candidate.calendar ? candidate as FormatContext : getCurrentFormatContext();

@@ -752,7 +752,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
             return this;
         }
 
-        const ticks = this.ticks - localTimeOffset(this.ticks, false, ambiguousLocalDaylight.has(this), this.kind.value === DateTimeKind.local.value).ticks;
+        const ticks = this.ticks - localTimeOffset(this.ticks, false, ambiguousLocalDaylight.has(this)).ticks;
         if (ticks < MinTicks) return new DateTime(MinTicks, DateTimeKind.utc);
         if (ticks > MaxTicks) return new DateTime(MaxTicks, DateTimeKind.utc);
         return new DateTime(ticks, DateTimeKind.utc);
@@ -881,20 +881,64 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
             ? DateTimeFormat.format(this, null, format) : DateTimeFormat.format(this, format, provider);
     }
 
-    toLongDateString(): string { return this.toString('D'); }
-    toLongTimeString(): string { return this.toString('T'); }
-    toShortDateString(): string { return this.toString('d'); }
-    toShortTimeString(): string { return this.toString('t'); }
+    /**
+     * Converts this instance to a long date string using the current culture.
+     */
+    toLongDateString(): string {
+        return this.toString('D');
+    }
 
+    /**
+     * Converts this instance to a long time string using the current culture.
+     */
+    toLongTimeString(): string {
+        return this.toString('T');
+    }
+
+    /**
+     * Converts this instance to a short date string using the current culture.
+     */
+    toShortDateString(): string {
+        return this.toString('d');
+    }
+
+    /**
+     * Converts this instance to a short time string using the current culture.
+     */
+    toShortTimeString(): string {
+        return this.toString('t');
+    }
+
+    /**
+     * Returns all standard string representations using the current culture.
+     */
     getDateTimeFormats(): string[];
+
+    /**
+     * Returns all standard string representations using the specified format provider.
+     * @param provider An object that supplies culture-specific formatting information.
+     */
     getDateTimeFormats(provider: IFormatProvider | null): string[];
+
+    /**
+     * Returns all string representations associated with a standard format specifier.
+     * @param format A single standard date and time format specifier.
+     * @param provider An object that supplies culture-specific formatting information.
+     */
     getDateTimeFormats(format: string, provider?: IFormatProvider | null): string[];
     getDateTimeFormats(format?: string | IFormatProvider | null, provider?: IFormatProvider | null): string[] {
         return typeof format === 'object' && format !== null
             ? DateTimeFormat.getAllFormats(this, null, format) : DateTimeFormat.getAllFormats(this, format, provider);
     }
 
-    /** Formats into a character buffer (UTF-16) or byte buffer (UTF-8). */
+    /**
+     * Tries to format this instance into a UTF-16 character buffer or UTF-8 byte buffer.
+     * @param destination The buffer that receives the formatted date and time.
+     * @param charsWritten Receives the number of UTF-16 code units or UTF-8 bytes written; zero if the buffer is too small.
+     * @param format A standard or custom date and time format string.
+     * @param provider An object that supplies culture-specific formatting information.
+     * @returns True if the destination has enough space; otherwise, false.
+     */
     tryFormat(destination: string[] | Uint16Array | Uint8Array, charsWritten: OutParam<number>, format?: string | null, provider?: IFormatProvider | null): boolean {
         const text = DateTimeFormat.format(this, format, provider);
         if (destination instanceof Uint8Array) {
@@ -991,7 +1035,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
             return false;
         }
 
-        return localTimeOffset(this.ticks, false, ambiguousLocalDaylight.has(this), this.kind.value === DateTimeKind.local.value).daylight;
+        return localTimeOffset(this.ticks, false, ambiguousLocalDaylight.has(this)).daylight;
     }
 
     /**
@@ -1301,5 +1345,5 @@ function invalidDateTimeCast(type: string): never {
 
 /** Internal formatter access preserves the ambiguous local DST flag. */
 export function getDateTimeOffset(value: DateTime): bigint {
-    return localTimeOffset(value.ticks, false, ambiguousLocalDaylight.has(value), value.kind.value === DateTimeKind.local.value).ticks;
+    return localTimeOffset(value.ticks, false, ambiguousLocalDaylight.has(value)).ticks;
 }

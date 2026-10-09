@@ -1,6 +1,6 @@
 {
   "runtime": "10.0.7",
-  "timeZone": "Iran Standard Time",
+  "timeZone": "UTC",
   "cultures": {
     "": {
       "calendar": "GregorianCalendar",
@@ -4986,7 +4986,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "",
-      "result": "0001 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "0001 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -5776,7 +5776,7 @@
       "kind": 2,
       "format": "o",
       "culture": "",
-      "result": "0001-01-01T00:00:00.0000000\u002B03:30",
+      "result": "0001-01-01T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -5786,7 +5786,7 @@
       "kind": 2,
       "format": "O",
       "culture": "",
-      "result": "0001-01-01T00:00:00.0000000\u002B03:30",
+      "result": "0001-01-01T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -5796,7 +5796,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "",
-      "result": "0001-01-01 00:00:00.0000000 \u002B03:30",
+      "result": "0001-01-01 00:00:00.0000000 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -5846,7 +5846,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "",
-      "result": "0001 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "0001 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -6176,7 +6176,7 @@
       "kind": 0,
       "format": "U",
       "culture": "",
-      "result": "Monday, 28 February 2000 20:30:00",
+      "result": "Tuesday, 29 February 2000 00:00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -6276,7 +6276,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "",
-      "result": "2000 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "2000 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -7036,7 +7036,7 @@
       "kind": 2,
       "format": "U",
       "culture": "",
-      "result": "Monday, 28 February 2000 20:30:00",
+      "result": "Tuesday, 29 February 2000 00:00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -7066,7 +7066,7 @@
       "kind": 2,
       "format": "o",
       "culture": "",
-      "result": "2000-02-29T00:00:00.0000000\u002B03:30",
+      "result": "2000-02-29T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -7076,7 +7076,7 @@
       "kind": 2,
       "format": "O",
       "culture": "",
-      "result": "2000-02-29T00:00:00.0000000\u002B03:30",
+      "result": "2000-02-29T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -7086,7 +7086,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "",
-      "result": "2000-02-29 00:00:00.0000000 \u002B03:30",
+      "result": "2000-02-29 00:00:00.0000000 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -7136,7 +7136,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "",
-      "result": "2000 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "2000 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -7466,7 +7466,7 @@
       "kind": 0,
       "format": "U",
       "culture": "",
-      "result": "Thursday, 07 March 2024 09:05:08",
+      "result": "Thursday, 07 March 2024 12:35:08",
       "error": null,
       "paramName": null,
       "message": null
@@ -7566,7 +7566,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "",
-      "result": "2024 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "2024 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -8326,7 +8326,7 @@
       "kind": 2,
       "format": "U",
       "culture": "",
-      "result": "Thursday, 07 March 2024 09:05:08",
+      "result": "Thursday, 07 March 2024 12:35:08",
       "error": null,
       "paramName": null,
       "message": null
@@ -8356,7 +8356,7 @@
       "kind": 2,
       "format": "o",
       "culture": "",
-      "result": "2024-03-07T12:35:08.1234567\u002B03:30",
+      "result": "2024-03-07T12:35:08.1234567\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -8366,7 +8366,7 @@
       "kind": 2,
       "format": "O",
       "culture": "",
-      "result": "2024-03-07T12:35:08.1234567\u002B03:30",
+      "result": "2024-03-07T12:35:08.1234567\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -8376,7 +8376,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "",
-      "result": "2024-03-07 12:35:08.1234567 \u002B03:30",
+      "result": "2024-03-07 12:35:08.1234567 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -8426,7 +8426,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "",
-      "result": "2024 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "2024 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -8756,7 +8756,7 @@
       "kind": 0,
       "format": "U",
       "culture": "",
-      "result": "Friday, 31 December 9999 20:29:59",
+      "result": "Friday, 31 December 9999 23:59:59",
       "error": null,
       "paramName": null,
       "message": null
@@ -8856,7 +8856,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "",
-      "result": "9999 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "9999 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -9616,7 +9616,7 @@
       "kind": 2,
       "format": "U",
       "culture": "",
-      "result": "Friday, 31 December 9999 20:29:59",
+      "result": "Friday, 31 December 9999 23:59:59",
       "error": null,
       "paramName": null,
       "message": null
@@ -9646,7 +9646,7 @@
       "kind": 2,
       "format": "o",
       "culture": "",
-      "result": "9999-12-31T23:59:59.9999999\u002B03:30",
+      "result": "9999-12-31T23:59:59.9999999\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -9656,7 +9656,7 @@
       "kind": 2,
       "format": "O",
       "culture": "",
-      "result": "9999-12-31T23:59:59.9999999\u002B03:30",
+      "result": "9999-12-31T23:59:59.9999999\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -9666,7 +9666,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "",
-      "result": "9999-12-31 23:59:59.9999999 \u002B03:30",
+      "result": "9999-12-31 23:59:59.9999999 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -9716,7 +9716,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "",
-      "result": "9999 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "9999 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -10146,7 +10146,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "en-US",
-      "result": "0001 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "0001 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -10936,7 +10936,7 @@
       "kind": 2,
       "format": "o",
       "culture": "en-US",
-      "result": "0001-01-01T00:00:00.0000000\u002B03:30",
+      "result": "0001-01-01T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -10946,7 +10946,7 @@
       "kind": 2,
       "format": "O",
       "culture": "en-US",
-      "result": "0001-01-01T00:00:00.0000000\u002B03:30",
+      "result": "0001-01-01T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -10956,7 +10956,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "en-US",
-      "result": "0001-01-01 00:00:00.0000000 \u002B03:30",
+      "result": "0001-01-01 00:00:00.0000000 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -11006,7 +11006,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "en-US",
-      "result": "0001 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "0001 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -11336,7 +11336,7 @@
       "kind": 0,
       "format": "U",
       "culture": "en-US",
-      "result": "Monday, February 28, 2000 8:30:00 PM",
+      "result": "Tuesday, February 29, 2000 12:00:00 AM",
       "error": null,
       "paramName": null,
       "message": null
@@ -11436,7 +11436,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "en-US",
-      "result": "2000 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "2000 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -12196,7 +12196,7 @@
       "kind": 2,
       "format": "U",
       "culture": "en-US",
-      "result": "Monday, February 28, 2000 8:30:00 PM",
+      "result": "Tuesday, February 29, 2000 12:00:00 AM",
       "error": null,
       "paramName": null,
       "message": null
@@ -12226,7 +12226,7 @@
       "kind": 2,
       "format": "o",
       "culture": "en-US",
-      "result": "2000-02-29T00:00:00.0000000\u002B03:30",
+      "result": "2000-02-29T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -12236,7 +12236,7 @@
       "kind": 2,
       "format": "O",
       "culture": "en-US",
-      "result": "2000-02-29T00:00:00.0000000\u002B03:30",
+      "result": "2000-02-29T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -12246,7 +12246,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "en-US",
-      "result": "2000-02-29 00:00:00.0000000 \u002B03:30",
+      "result": "2000-02-29 00:00:00.0000000 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -12296,7 +12296,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "en-US",
-      "result": "2000 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "2000 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -12626,7 +12626,7 @@
       "kind": 0,
       "format": "U",
       "culture": "en-US",
-      "result": "Thursday, March 7, 2024 9:05:08 AM",
+      "result": "Thursday, March 7, 2024 12:35:08 PM",
       "error": null,
       "paramName": null,
       "message": null
@@ -12726,7 +12726,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "en-US",
-      "result": "2024 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "2024 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -13486,7 +13486,7 @@
       "kind": 2,
       "format": "U",
       "culture": "en-US",
-      "result": "Thursday, March 7, 2024 9:05:08 AM",
+      "result": "Thursday, March 7, 2024 12:35:08 PM",
       "error": null,
       "paramName": null,
       "message": null
@@ -13516,7 +13516,7 @@
       "kind": 2,
       "format": "o",
       "culture": "en-US",
-      "result": "2024-03-07T12:35:08.1234567\u002B03:30",
+      "result": "2024-03-07T12:35:08.1234567\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -13526,7 +13526,7 @@
       "kind": 2,
       "format": "O",
       "culture": "en-US",
-      "result": "2024-03-07T12:35:08.1234567\u002B03:30",
+      "result": "2024-03-07T12:35:08.1234567\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -13536,7 +13536,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "en-US",
-      "result": "2024-03-07 12:35:08.1234567 \u002B03:30",
+      "result": "2024-03-07 12:35:08.1234567 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -13586,7 +13586,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "en-US",
-      "result": "2024 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "2024 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -13916,7 +13916,7 @@
       "kind": 0,
       "format": "U",
       "culture": "en-US",
-      "result": "Friday, December 31, 9999 8:29:59 PM",
+      "result": "Friday, December 31, 9999 11:59:59 PM",
       "error": null,
       "paramName": null,
       "message": null
@@ -14016,7 +14016,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "en-US",
-      "result": "9999 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "9999 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -14776,7 +14776,7 @@
       "kind": 2,
       "format": "U",
       "culture": "en-US",
-      "result": "Friday, December 31, 9999 8:29:59 PM",
+      "result": "Friday, December 31, 9999 11:59:59 PM",
       "error": null,
       "paramName": null,
       "message": null
@@ -14806,7 +14806,7 @@
       "kind": 2,
       "format": "o",
       "culture": "en-US",
-      "result": "9999-12-31T23:59:59.9999999\u002B03:30",
+      "result": "9999-12-31T23:59:59.9999999\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -14816,7 +14816,7 @@
       "kind": 2,
       "format": "O",
       "culture": "en-US",
-      "result": "9999-12-31T23:59:59.9999999\u002B03:30",
+      "result": "9999-12-31T23:59:59.9999999\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -14826,7 +14826,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "en-US",
-      "result": "9999-12-31 23:59:59.9999999 \u002B03:30",
+      "result": "9999-12-31 23:59:59.9999999 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -14876,7 +14876,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "en-US",
-      "result": "9999 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "9999 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -15306,7 +15306,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "th-TH",
-      "result": "0544 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "0544 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -16096,7 +16096,7 @@
       "kind": 2,
       "format": "o",
       "culture": "th-TH",
-      "result": "0001-01-01T00:00:00.0000000\u002B03:30",
+      "result": "0001-01-01T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -16106,7 +16106,7 @@
       "kind": 2,
       "format": "O",
       "culture": "th-TH",
-      "result": "0001-01-01T00:00:00.0000000\u002B03:30",
+      "result": "0001-01-01T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -16116,7 +16116,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "th-TH",
-      "result": "0544-01-01 00:00:00.0000000 \u002B03:30",
+      "result": "0544-01-01 00:00:00.0000000 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -16166,7 +16166,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "th-TH",
-      "result": "0544 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "0544 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -16496,7 +16496,7 @@
       "kind": 0,
       "format": "U",
       "culture": "th-TH",
-      "result": "\u0E27\u0E31\u0E19\u0E08\u0E31\u0E19\u0E17\u0E23\u0E4C\u0E17\u0E35\u0E48 28 \u0E01\u0E38\u0E21\u0E20\u0E32\u0E1E\u0E31\u0E19\u0E18\u0E4C \u0E04.\u0E28. 2000 20:30:00",
+      "result": "\u0E27\u0E31\u0E19\u0E2D\u0E31\u0E07\u0E04\u0E32\u0E23\u0E17\u0E35\u0E48 29 \u0E01\u0E38\u0E21\u0E20\u0E32\u0E1E\u0E31\u0E19\u0E18\u0E4C \u0E04.\u0E28. 2000 00:00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -16596,7 +16596,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "th-TH",
-      "result": "2543 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "2543 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -17356,7 +17356,7 @@
       "kind": 2,
       "format": "U",
       "culture": "th-TH",
-      "result": "\u0E27\u0E31\u0E19\u0E08\u0E31\u0E19\u0E17\u0E23\u0E4C\u0E17\u0E35\u0E48 28 \u0E01\u0E38\u0E21\u0E20\u0E32\u0E1E\u0E31\u0E19\u0E18\u0E4C \u0E04.\u0E28. 2000 20:30:00",
+      "result": "\u0E27\u0E31\u0E19\u0E2D\u0E31\u0E07\u0E04\u0E32\u0E23\u0E17\u0E35\u0E48 29 \u0E01\u0E38\u0E21\u0E20\u0E32\u0E1E\u0E31\u0E19\u0E18\u0E4C \u0E04.\u0E28. 2000 00:00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -17386,7 +17386,7 @@
       "kind": 2,
       "format": "o",
       "culture": "th-TH",
-      "result": "2000-02-29T00:00:00.0000000\u002B03:30",
+      "result": "2000-02-29T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -17396,7 +17396,7 @@
       "kind": 2,
       "format": "O",
       "culture": "th-TH",
-      "result": "2000-02-29T00:00:00.0000000\u002B03:30",
+      "result": "2000-02-29T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -17406,7 +17406,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "th-TH",
-      "result": "2543-02-29 00:00:00.0000000 \u002B03:30",
+      "result": "2543-02-29 00:00:00.0000000 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -17456,7 +17456,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "th-TH",
-      "result": "2543 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "2543 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -17786,7 +17786,7 @@
       "kind": 0,
       "format": "U",
       "culture": "th-TH",
-      "result": "\u0E27\u0E31\u0E19\u0E1E\u0E24\u0E2B\u0E31\u0E2A\u0E1A\u0E14\u0E35\u0E17\u0E35\u0E48 7 \u0E21\u0E35\u0E19\u0E32\u0E04\u0E21 \u0E04.\u0E28. 2024 09:05:08",
+      "result": "\u0E27\u0E31\u0E19\u0E1E\u0E24\u0E2B\u0E31\u0E2A\u0E1A\u0E14\u0E35\u0E17\u0E35\u0E48 7 \u0E21\u0E35\u0E19\u0E32\u0E04\u0E21 \u0E04.\u0E28. 2024 12:35:08",
       "error": null,
       "paramName": null,
       "message": null
@@ -17886,7 +17886,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "th-TH",
-      "result": "2567 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "2567 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -18646,7 +18646,7 @@
       "kind": 2,
       "format": "U",
       "culture": "th-TH",
-      "result": "\u0E27\u0E31\u0E19\u0E1E\u0E24\u0E2B\u0E31\u0E2A\u0E1A\u0E14\u0E35\u0E17\u0E35\u0E48 7 \u0E21\u0E35\u0E19\u0E32\u0E04\u0E21 \u0E04.\u0E28. 2024 09:05:08",
+      "result": "\u0E27\u0E31\u0E19\u0E1E\u0E24\u0E2B\u0E31\u0E2A\u0E1A\u0E14\u0E35\u0E17\u0E35\u0E48 7 \u0E21\u0E35\u0E19\u0E32\u0E04\u0E21 \u0E04.\u0E28. 2024 12:35:08",
       "error": null,
       "paramName": null,
       "message": null
@@ -18676,7 +18676,7 @@
       "kind": 2,
       "format": "o",
       "culture": "th-TH",
-      "result": "2024-03-07T12:35:08.1234567\u002B03:30",
+      "result": "2024-03-07T12:35:08.1234567\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -18686,7 +18686,7 @@
       "kind": 2,
       "format": "O",
       "culture": "th-TH",
-      "result": "2024-03-07T12:35:08.1234567\u002B03:30",
+      "result": "2024-03-07T12:35:08.1234567\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -18696,7 +18696,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "th-TH",
-      "result": "2567-03-07 12:35:08.1234567 \u002B03:30",
+      "result": "2567-03-07 12:35:08.1234567 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -18746,7 +18746,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "th-TH",
-      "result": "2567 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "2567 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -19076,7 +19076,7 @@
       "kind": 0,
       "format": "U",
       "culture": "th-TH",
-      "result": "\u0E27\u0E31\u0E19\u0E28\u0E38\u0E01\u0E23\u0E4C\u0E17\u0E35\u0E48 31 \u0E18\u0E31\u0E19\u0E27\u0E32\u0E04\u0E21 \u0E04.\u0E28. 9999 20:29:59",
+      "result": "\u0E27\u0E31\u0E19\u0E28\u0E38\u0E01\u0E23\u0E4C\u0E17\u0E35\u0E48 31 \u0E18\u0E31\u0E19\u0E27\u0E32\u0E04\u0E21 \u0E04.\u0E28. 9999 23:59:59",
       "error": null,
       "paramName": null,
       "message": null
@@ -19176,7 +19176,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "th-TH",
-      "result": "10542 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "10542 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -19936,7 +19936,7 @@
       "kind": 2,
       "format": "U",
       "culture": "th-TH",
-      "result": "\u0E27\u0E31\u0E19\u0E28\u0E38\u0E01\u0E23\u0E4C\u0E17\u0E35\u0E48 31 \u0E18\u0E31\u0E19\u0E27\u0E32\u0E04\u0E21 \u0E04.\u0E28. 9999 20:29:59",
+      "result": "\u0E27\u0E31\u0E19\u0E28\u0E38\u0E01\u0E23\u0E4C\u0E17\u0E35\u0E48 31 \u0E18\u0E31\u0E19\u0E27\u0E32\u0E04\u0E21 \u0E04.\u0E28. 9999 23:59:59",
       "error": null,
       "paramName": null,
       "message": null
@@ -19966,7 +19966,7 @@
       "kind": 2,
       "format": "o",
       "culture": "th-TH",
-      "result": "9999-12-31T23:59:59.9999999\u002B03:30",
+      "result": "9999-12-31T23:59:59.9999999\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -19976,7 +19976,7 @@
       "kind": 2,
       "format": "O",
       "culture": "th-TH",
-      "result": "9999-12-31T23:59:59.9999999\u002B03:30",
+      "result": "9999-12-31T23:59:59.9999999\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -19986,7 +19986,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "th-TH",
-      "result": "10542-12-31 23:59:59.9999999 \u002B03:30",
+      "result": "10542-12-31 23:59:59.9999999 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -20036,7 +20036,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "th-TH",
-      "result": "10542 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "10542 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -20466,7 +20466,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "fr-FR",
-      "result": "0001 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "0001 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -21256,7 +21256,7 @@
       "kind": 2,
       "format": "o",
       "culture": "fr-FR",
-      "result": "0001-01-01T00:00:00.0000000\u002B03:30",
+      "result": "0001-01-01T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -21266,7 +21266,7 @@
       "kind": 2,
       "format": "O",
       "culture": "fr-FR",
-      "result": "0001-01-01T00:00:00.0000000\u002B03:30",
+      "result": "0001-01-01T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -21276,7 +21276,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "fr-FR",
-      "result": "0001-01-01 00:00:00.0000000 \u002B03:30",
+      "result": "0001-01-01 00:00:00.0000000 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -21326,7 +21326,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "fr-FR",
-      "result": "0001 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "0001 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -21656,7 +21656,7 @@
       "kind": 0,
       "format": "U",
       "culture": "fr-FR",
-      "result": "lundi 28 f\u00E9vrier 2000 20:30:00",
+      "result": "mardi 29 f\u00E9vrier 2000 00:00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -21756,7 +21756,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "fr-FR",
-      "result": "2000 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "2000 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -22516,7 +22516,7 @@
       "kind": 2,
       "format": "U",
       "culture": "fr-FR",
-      "result": "lundi 28 f\u00E9vrier 2000 20:30:00",
+      "result": "mardi 29 f\u00E9vrier 2000 00:00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -22546,7 +22546,7 @@
       "kind": 2,
       "format": "o",
       "culture": "fr-FR",
-      "result": "2000-02-29T00:00:00.0000000\u002B03:30",
+      "result": "2000-02-29T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -22556,7 +22556,7 @@
       "kind": 2,
       "format": "O",
       "culture": "fr-FR",
-      "result": "2000-02-29T00:00:00.0000000\u002B03:30",
+      "result": "2000-02-29T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -22566,7 +22566,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "fr-FR",
-      "result": "2000-02-29 00:00:00.0000000 \u002B03:30",
+      "result": "2000-02-29 00:00:00.0000000 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -22616,7 +22616,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "fr-FR",
-      "result": "2000 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "2000 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -22946,7 +22946,7 @@
       "kind": 0,
       "format": "U",
       "culture": "fr-FR",
-      "result": "jeudi 7 mars 2024 09:05:08",
+      "result": "jeudi 7 mars 2024 12:35:08",
       "error": null,
       "paramName": null,
       "message": null
@@ -23046,7 +23046,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "fr-FR",
-      "result": "2024 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "2024 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -23806,7 +23806,7 @@
       "kind": 2,
       "format": "U",
       "culture": "fr-FR",
-      "result": "jeudi 7 mars 2024 09:05:08",
+      "result": "jeudi 7 mars 2024 12:35:08",
       "error": null,
       "paramName": null,
       "message": null
@@ -23836,7 +23836,7 @@
       "kind": 2,
       "format": "o",
       "culture": "fr-FR",
-      "result": "2024-03-07T12:35:08.1234567\u002B03:30",
+      "result": "2024-03-07T12:35:08.1234567\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -23846,7 +23846,7 @@
       "kind": 2,
       "format": "O",
       "culture": "fr-FR",
-      "result": "2024-03-07T12:35:08.1234567\u002B03:30",
+      "result": "2024-03-07T12:35:08.1234567\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -23856,7 +23856,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "fr-FR",
-      "result": "2024-03-07 12:35:08.1234567 \u002B03:30",
+      "result": "2024-03-07 12:35:08.1234567 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -23906,7 +23906,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "fr-FR",
-      "result": "2024 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "2024 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -24236,7 +24236,7 @@
       "kind": 0,
       "format": "U",
       "culture": "fr-FR",
-      "result": "vendredi 31 d\u00E9cembre 9999 20:29:59",
+      "result": "vendredi 31 d\u00E9cembre 9999 23:59:59",
       "error": null,
       "paramName": null,
       "message": null
@@ -24336,7 +24336,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "fr-FR",
-      "result": "9999 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "9999 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -25096,7 +25096,7 @@
       "kind": 2,
       "format": "U",
       "culture": "fr-FR",
-      "result": "vendredi 31 d\u00E9cembre 9999 20:29:59",
+      "result": "vendredi 31 d\u00E9cembre 9999 23:59:59",
       "error": null,
       "paramName": null,
       "message": null
@@ -25126,7 +25126,7 @@
       "kind": 2,
       "format": "o",
       "culture": "fr-FR",
-      "result": "9999-12-31T23:59:59.9999999\u002B03:30",
+      "result": "9999-12-31T23:59:59.9999999\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -25136,7 +25136,7 @@
       "kind": 2,
       "format": "O",
       "culture": "fr-FR",
-      "result": "9999-12-31T23:59:59.9999999\u002B03:30",
+      "result": "9999-12-31T23:59:59.9999999\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -25146,7 +25146,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "fr-FR",
-      "result": "9999-12-31 23:59:59.9999999 \u002B03:30",
+      "result": "9999-12-31 23:59:59.9999999 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -25196,7 +25196,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "fr-FR",
-      "result": "9999 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "9999 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -25626,7 +25626,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "ru-RU",
-      "result": "0001 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "0001 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -26416,7 +26416,7 @@
       "kind": 2,
       "format": "o",
       "culture": "ru-RU",
-      "result": "0001-01-01T00:00:00.0000000\u002B03:30",
+      "result": "0001-01-01T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -26426,7 +26426,7 @@
       "kind": 2,
       "format": "O",
       "culture": "ru-RU",
-      "result": "0001-01-01T00:00:00.0000000\u002B03:30",
+      "result": "0001-01-01T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -26436,7 +26436,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "ru-RU",
-      "result": "0001-01-01 00:00:00.0000000 \u002B03:30",
+      "result": "0001-01-01 00:00:00.0000000 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -26486,7 +26486,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "ru-RU",
-      "result": "0001 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "0001 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -26816,7 +26816,7 @@
       "kind": 0,
       "format": "U",
       "culture": "ru-RU",
-      "result": "\u043F\u043E\u043D\u0435\u0434\u0435\u043B\u044C\u043D\u0438\u043A, 28 \u0444\u0435\u0432\u0440\u0430\u043B\u044F 2000\u202F\u0433. 20:30:00",
+      "result": "\u0432\u0442\u043E\u0440\u043D\u0438\u043A, 29 \u0444\u0435\u0432\u0440\u0430\u043B\u044F 2000\u202F\u0433. 00:00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -26916,7 +26916,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "ru-RU",
-      "result": "2000 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "2000 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -27676,7 +27676,7 @@
       "kind": 2,
       "format": "U",
       "culture": "ru-RU",
-      "result": "\u043F\u043E\u043D\u0435\u0434\u0435\u043B\u044C\u043D\u0438\u043A, 28 \u0444\u0435\u0432\u0440\u0430\u043B\u044F 2000\u202F\u0433. 20:30:00",
+      "result": "\u0432\u0442\u043E\u0440\u043D\u0438\u043A, 29 \u0444\u0435\u0432\u0440\u0430\u043B\u044F 2000\u202F\u0433. 00:00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -27706,7 +27706,7 @@
       "kind": 2,
       "format": "o",
       "culture": "ru-RU",
-      "result": "2000-02-29T00:00:00.0000000\u002B03:30",
+      "result": "2000-02-29T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -27716,7 +27716,7 @@
       "kind": 2,
       "format": "O",
       "culture": "ru-RU",
-      "result": "2000-02-29T00:00:00.0000000\u002B03:30",
+      "result": "2000-02-29T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -27726,7 +27726,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "ru-RU",
-      "result": "2000-02-29 00:00:00.0000000 \u002B03:30",
+      "result": "2000-02-29 00:00:00.0000000 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -27776,7 +27776,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "ru-RU",
-      "result": "2000 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "2000 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -28106,7 +28106,7 @@
       "kind": 0,
       "format": "U",
       "culture": "ru-RU",
-      "result": "\u0447\u0435\u0442\u0432\u0435\u0440\u0433, 7 \u043C\u0430\u0440\u0442\u0430 2024\u202F\u0433. 09:05:08",
+      "result": "\u0447\u0435\u0442\u0432\u0435\u0440\u0433, 7 \u043C\u0430\u0440\u0442\u0430 2024\u202F\u0433. 12:35:08",
       "error": null,
       "paramName": null,
       "message": null
@@ -28206,7 +28206,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "ru-RU",
-      "result": "2024 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "2024 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -28966,7 +28966,7 @@
       "kind": 2,
       "format": "U",
       "culture": "ru-RU",
-      "result": "\u0447\u0435\u0442\u0432\u0435\u0440\u0433, 7 \u043C\u0430\u0440\u0442\u0430 2024\u202F\u0433. 09:05:08",
+      "result": "\u0447\u0435\u0442\u0432\u0435\u0440\u0433, 7 \u043C\u0430\u0440\u0442\u0430 2024\u202F\u0433. 12:35:08",
       "error": null,
       "paramName": null,
       "message": null
@@ -28996,7 +28996,7 @@
       "kind": 2,
       "format": "o",
       "culture": "ru-RU",
-      "result": "2024-03-07T12:35:08.1234567\u002B03:30",
+      "result": "2024-03-07T12:35:08.1234567\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -29006,7 +29006,7 @@
       "kind": 2,
       "format": "O",
       "culture": "ru-RU",
-      "result": "2024-03-07T12:35:08.1234567\u002B03:30",
+      "result": "2024-03-07T12:35:08.1234567\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -29016,7 +29016,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "ru-RU",
-      "result": "2024-03-07 12:35:08.1234567 \u002B03:30",
+      "result": "2024-03-07 12:35:08.1234567 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -29066,7 +29066,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "ru-RU",
-      "result": "2024 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "2024 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -29396,7 +29396,7 @@
       "kind": 0,
       "format": "U",
       "culture": "ru-RU",
-      "result": "\u043F\u044F\u0442\u043D\u0438\u0446\u0430, 31 \u0434\u0435\u043A\u0430\u0431\u0440\u044F 9999\u202F\u0433. 20:29:59",
+      "result": "\u043F\u044F\u0442\u043D\u0438\u0446\u0430, 31 \u0434\u0435\u043A\u0430\u0431\u0440\u044F 9999\u202F\u0433. 23:59:59",
       "error": null,
       "paramName": null,
       "message": null
@@ -29496,7 +29496,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "ru-RU",
-      "result": "9999 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "9999 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -30256,7 +30256,7 @@
       "kind": 2,
       "format": "U",
       "culture": "ru-RU",
-      "result": "\u043F\u044F\u0442\u043D\u0438\u0446\u0430, 31 \u0434\u0435\u043A\u0430\u0431\u0440\u044F 9999\u202F\u0433. 20:29:59",
+      "result": "\u043F\u044F\u0442\u043D\u0438\u0446\u0430, 31 \u0434\u0435\u043A\u0430\u0431\u0440\u044F 9999\u202F\u0433. 23:59:59",
       "error": null,
       "paramName": null,
       "message": null
@@ -30286,7 +30286,7 @@
       "kind": 2,
       "format": "o",
       "culture": "ru-RU",
-      "result": "9999-12-31T23:59:59.9999999\u002B03:30",
+      "result": "9999-12-31T23:59:59.9999999\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -30296,7 +30296,7 @@
       "kind": 2,
       "format": "O",
       "culture": "ru-RU",
-      "result": "9999-12-31T23:59:59.9999999\u002B03:30",
+      "result": "9999-12-31T23:59:59.9999999\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -30306,7 +30306,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "ru-RU",
-      "result": "9999-12-31 23:59:59.9999999 \u002B03:30",
+      "result": "9999-12-31 23:59:59.9999999 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -30356,7 +30356,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "ru-RU",
-      "result": "9999 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "9999 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -31576,7 +31576,7 @@
       "kind": 2,
       "format": "o",
       "culture": "fa-IR",
-      "result": "0001-01-01T00:00:00.0000000\u002B03:30",
+      "result": "0001-01-01T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -31586,7 +31586,7 @@
       "kind": 2,
       "format": "O",
       "culture": "fa-IR",
-      "result": "0001-01-01T00:00:00.0000000\u002B03:30",
+      "result": "0001-01-01T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -31976,7 +31976,7 @@
       "kind": 0,
       "format": "U",
       "culture": "fa-IR",
-      "result": "2000 \u0641\u0648\u0631\u06CC\u0647\u0654 28, \u062F\u0648\u0634\u0646\u0628\u0647 20:30:00",
+      "result": "2000 \u0641\u0648\u0631\u06CC\u0647\u0654 29, \u0633\u0647\u200C\u0634\u0646\u0628\u0647 0:00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -32076,7 +32076,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "fa-IR",
-      "result": "1378 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "1378 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -32836,7 +32836,7 @@
       "kind": 2,
       "format": "U",
       "culture": "fa-IR",
-      "result": "2000 \u0641\u0648\u0631\u06CC\u0647\u0654 28, \u062F\u0648\u0634\u0646\u0628\u0647 20:30:00",
+      "result": "2000 \u0641\u0648\u0631\u06CC\u0647\u0654 29, \u0633\u0647\u200C\u0634\u0646\u0628\u0647 0:00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -32866,7 +32866,7 @@
       "kind": 2,
       "format": "o",
       "culture": "fa-IR",
-      "result": "2000-02-29T00:00:00.0000000\u002B03:30",
+      "result": "2000-02-29T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -32876,7 +32876,7 @@
       "kind": 2,
       "format": "O",
       "culture": "fa-IR",
-      "result": "2000-02-29T00:00:00.0000000\u002B03:30",
+      "result": "2000-02-29T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -32886,7 +32886,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "fa-IR",
-      "result": "1378-12-10 00:00:00.0000000 \u002B03:30",
+      "result": "1378-12-10 00:00:00.0000000 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -32936,7 +32936,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "fa-IR",
-      "result": "1378 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "1378 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -33266,7 +33266,7 @@
       "kind": 0,
       "format": "U",
       "culture": "fa-IR",
-      "result": "2024 \u0645\u0627\u0631\u0633 7, \u067E\u0646\u062C\u0634\u0646\u0628\u0647 9:05:08",
+      "result": "2024 \u0645\u0627\u0631\u0633 7, \u067E\u0646\u062C\u0634\u0646\u0628\u0647 12:35:08",
       "error": null,
       "paramName": null,
       "message": null
@@ -33366,7 +33366,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "fa-IR",
-      "result": "1402 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "1402 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -34126,7 +34126,7 @@
       "kind": 2,
       "format": "U",
       "culture": "fa-IR",
-      "result": "2024 \u0645\u0627\u0631\u0633 7, \u067E\u0646\u062C\u0634\u0646\u0628\u0647 9:05:08",
+      "result": "2024 \u0645\u0627\u0631\u0633 7, \u067E\u0646\u062C\u0634\u0646\u0628\u0647 12:35:08",
       "error": null,
       "paramName": null,
       "message": null
@@ -34156,7 +34156,7 @@
       "kind": 2,
       "format": "o",
       "culture": "fa-IR",
-      "result": "2024-03-07T12:35:08.1234567\u002B03:30",
+      "result": "2024-03-07T12:35:08.1234567\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -34166,7 +34166,7 @@
       "kind": 2,
       "format": "O",
       "culture": "fa-IR",
-      "result": "2024-03-07T12:35:08.1234567\u002B03:30",
+      "result": "2024-03-07T12:35:08.1234567\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -34176,7 +34176,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "fa-IR",
-      "result": "1402-12-17 12:35:08.1234567 \u002B03:30",
+      "result": "1402-12-17 12:35:08.1234567 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -34226,7 +34226,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "fa-IR",
-      "result": "1402 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "1402 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -34556,7 +34556,7 @@
       "kind": 0,
       "format": "U",
       "culture": "fa-IR",
-      "result": "9999 \u062F\u0633\u0627\u0645\u0628\u0631 31, \u062C\u0645\u0639\u0647 20:29:59",
+      "result": "9999 \u062F\u0633\u0627\u0645\u0628\u0631 31, \u062C\u0645\u0639\u0647 23:59:59",
       "error": null,
       "paramName": null,
       "message": null
@@ -34656,7 +34656,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "fa-IR",
-      "result": "9378 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "9378 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -35416,7 +35416,7 @@
       "kind": 2,
       "format": "U",
       "culture": "fa-IR",
-      "result": "9999 \u062F\u0633\u0627\u0645\u0628\u0631 31, \u062C\u0645\u0639\u0647 20:29:59",
+      "result": "9999 \u062F\u0633\u0627\u0645\u0628\u0631 31, \u062C\u0645\u0639\u0647 23:59:59",
       "error": null,
       "paramName": null,
       "message": null
@@ -35446,7 +35446,7 @@
       "kind": 2,
       "format": "o",
       "culture": "fa-IR",
-      "result": "9999-12-31T23:59:59.9999999\u002B03:30",
+      "result": "9999-12-31T23:59:59.9999999\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -35456,7 +35456,7 @@
       "kind": 2,
       "format": "O",
       "culture": "fa-IR",
-      "result": "9999-12-31T23:59:59.9999999\u002B03:30",
+      "result": "9999-12-31T23:59:59.9999999\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -35466,7 +35466,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "fa-IR",
-      "result": "9378-10-13 23:59:59.9999999 \u002B03:30",
+      "result": "9378-10-13 23:59:59.9999999 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -35516,7 +35516,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "fa-IR",
-      "result": "9378 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "9378 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -36736,7 +36736,7 @@
       "kind": 2,
       "format": "o",
       "culture": "ar-SA",
-      "result": "0001-01-01T00:00:00.0000000\u002B03:30",
+      "result": "0001-01-01T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -36746,7 +36746,7 @@
       "kind": 2,
       "format": "O",
       "culture": "ar-SA",
-      "result": "0001-01-01T00:00:00.0000000\u002B03:30",
+      "result": "0001-01-01T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -37136,7 +37136,7 @@
       "kind": 0,
       "format": "U",
       "culture": "ar-SA",
-      "result": "\u0627\u0644\u0627\u062B\u0646\u064A\u0646\u060C 28 \u0641\u0628\u0631\u0627\u064A\u0631 2000 \u0645 8:30:00 \u0645",
+      "result": "\u0627\u0644\u062B\u0644\u0627\u062B\u0627\u0621\u060C 29 \u0641\u0628\u0631\u0627\u064A\u0631 2000 \u0645 12:00:00 \u0635",
       "error": null,
       "paramName": null,
       "message": null
@@ -37236,7 +37236,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "ar-SA",
-      "result": "1420 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "1420 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -37996,7 +37996,7 @@
       "kind": 2,
       "format": "U",
       "culture": "ar-SA",
-      "result": "\u0627\u0644\u0627\u062B\u0646\u064A\u0646\u060C 28 \u0641\u0628\u0631\u0627\u064A\u0631 2000 \u0645 8:30:00 \u0645",
+      "result": "\u0627\u0644\u062B\u0644\u0627\u062B\u0627\u0621\u060C 29 \u0641\u0628\u0631\u0627\u064A\u0631 2000 \u0645 12:00:00 \u0635",
       "error": null,
       "paramName": null,
       "message": null
@@ -38026,7 +38026,7 @@
       "kind": 2,
       "format": "o",
       "culture": "ar-SA",
-      "result": "2000-02-29T00:00:00.0000000\u002B03:30",
+      "result": "2000-02-29T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -38036,7 +38036,7 @@
       "kind": 2,
       "format": "O",
       "culture": "ar-SA",
-      "result": "2000-02-29T00:00:00.0000000\u002B03:30",
+      "result": "2000-02-29T00:00:00.0000000\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -38046,7 +38046,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "ar-SA",
-      "result": "1420-11-23 00:00:00.0000000 \u002B03:30",
+      "result": "1420-11-23 00:00:00.0000000 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -38096,7 +38096,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "ar-SA",
-      "result": "1420 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "1420 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -38426,7 +38426,7 @@
       "kind": 0,
       "format": "U",
       "culture": "ar-SA",
-      "result": "\u0627\u0644\u062E\u0645\u064A\u0633\u060C 7 \u0645\u0627\u0631\u0633 2024 \u0645 9:05:08 \u0635",
+      "result": "\u0627\u0644\u062E\u0645\u064A\u0633\u060C 7 \u0645\u0627\u0631\u0633 2024 \u0645 12:35:08 \u0645",
       "error": null,
       "paramName": null,
       "message": null
@@ -38526,7 +38526,7 @@
       "kind": 0,
       "format": "yyyy z zz zzz K KKK",
       "culture": "ar-SA",
-      "result": "1445 \u002B3 \u002B03 \u002B03:30  ",
+      "result": "1445 \u002B0 \u002B00 \u002B00:00  ",
       "error": null,
       "paramName": null,
       "message": null
@@ -39286,7 +39286,7 @@
       "kind": 2,
       "format": "U",
       "culture": "ar-SA",
-      "result": "\u0627\u0644\u062E\u0645\u064A\u0633\u060C 7 \u0645\u0627\u0631\u0633 2024 \u0645 9:05:08 \u0635",
+      "result": "\u0627\u0644\u062E\u0645\u064A\u0633\u060C 7 \u0645\u0627\u0631\u0633 2024 \u0645 12:35:08 \u0645",
       "error": null,
       "paramName": null,
       "message": null
@@ -39316,7 +39316,7 @@
       "kind": 2,
       "format": "o",
       "culture": "ar-SA",
-      "result": "2024-03-07T12:35:08.1234567\u002B03:30",
+      "result": "2024-03-07T12:35:08.1234567\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -39326,7 +39326,7 @@
       "kind": 2,
       "format": "O",
       "culture": "ar-SA",
-      "result": "2024-03-07T12:35:08.1234567\u002B03:30",
+      "result": "2024-03-07T12:35:08.1234567\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -39336,7 +39336,7 @@
       "kind": 2,
       "format": "yyyy-MM-dd HH:mm:ss.fffffff K",
       "culture": "ar-SA",
-      "result": "1445-08-26 12:35:08.1234567 \u002B03:30",
+      "result": "1445-08-26 12:35:08.1234567 \u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -39386,7 +39386,7 @@
       "kind": 2,
       "format": "yyyy z zz zzz K KKK",
       "culture": "ar-SA",
-      "result": "1445 \u002B3 \u002B03 \u002B03:30 \u002B03:30 \u002B03:30\u002B03:30\u002B03:30",
+      "result": "1445 \u002B0 \u002B00 \u002B00:00 \u002B00:00 \u002B00:00\u002B00:00\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -39716,7 +39716,7 @@
       "kind": 0,
       "format": "U",
       "culture": "ar-SA",
-      "result": "\u0627\u0644\u062C\u0645\u0639\u0629\u060C 31 \u062F\u064A\u0633\u0645\u0628\u0631 9999 \u0645 8:29:59 \u0645",
+      "result": "\u0627\u0644\u062C\u0645\u0639\u0629\u060C 31 \u062F\u064A\u0633\u0645\u0628\u0631 9999 \u0645 11:59:59 \u0645",
       "error": null,
       "paramName": null,
       "message": null
@@ -40576,7 +40576,7 @@
       "kind": 2,
       "format": "U",
       "culture": "ar-SA",
-      "result": "\u0627\u0644\u062C\u0645\u0639\u0629\u060C 31 \u062F\u064A\u0633\u0645\u0628\u0631 9999 \u0645 8:29:59 \u0645",
+      "result": "\u0627\u0644\u062C\u0645\u0639\u0629\u060C 31 \u062F\u064A\u0633\u0645\u0628\u0631 9999 \u0645 11:59:59 \u0645",
       "error": null,
       "paramName": null,
       "message": null
@@ -40606,7 +40606,7 @@
       "kind": 2,
       "format": "o",
       "culture": "ar-SA",
-      "result": "9999-12-31T23:59:59.9999999\u002B03:30",
+      "result": "9999-12-31T23:59:59.9999999\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -40616,7 +40616,7 @@
       "kind": 2,
       "format": "O",
       "culture": "ar-SA",
-      "result": "9999-12-31T23:59:59.9999999\u002B03:30",
+      "result": "9999-12-31T23:59:59.9999999\u002B00:00",
       "error": null,
       "paramName": null,
       "message": null
@@ -40900,7 +40900,7 @@
         "5:23 AM",
         "05:23:15",
         "2009-07-28 05:23:15Z",
-        "Tuesday, 28 July 2009 00:53:15",
+        "Tuesday, 28 July 2009 05:23:15",
         "2009 July",
         "2009 July"
       ],
@@ -41104,7 +41104,7 @@
       "format": "U",
       "culture": "",
       "result": [
-        "Tuesday, 28 July 2009 00:53:15"
+        "Tuesday, 28 July 2009 05:23:15"
       ],
       "error": null,
       "message": null
@@ -41443,8 +41443,8 @@
         "2009-07-28 05:23:15",
         "July 28",
         "July 28",
-        "2009-07-28T05:23:15.0000000\u002B04:30",
-        "2009-07-28T05:23:15.0000000\u002B04:30",
+        "2009-07-28T05:23:15.0000000\u002B00:00",
+        "2009-07-28T05:23:15.0000000\u002B00:00",
         "Tue, 28 Jul 2009 05:23:15 GMT",
         "Tue, 28 Jul 2009 05:23:15 GMT",
         "2009-07-28T05:23:15",
@@ -41454,7 +41454,7 @@
         "5:23 AM",
         "05:23:15",
         "2009-07-28 05:23:15Z",
-        "Tuesday, 28 July 2009 00:53:15",
+        "Tuesday, 28 July 2009 05:23:15",
         "2009 July",
         "2009 July"
       ],
@@ -41567,7 +41567,7 @@
       "format": "o",
       "culture": "",
       "result": [
-        "2009-07-28T05:23:15.0000000\u002B04:30"
+        "2009-07-28T05:23:15.0000000\u002B00:00"
       ],
       "error": null,
       "message": null
@@ -41578,7 +41578,7 @@
       "format": "O",
       "culture": "",
       "result": [
-        "2009-07-28T05:23:15.0000000\u002B04:30"
+        "2009-07-28T05:23:15.0000000\u002B00:00"
       ],
       "error": null,
       "message": null
@@ -41658,7 +41658,7 @@
       "format": "U",
       "culture": "",
       "result": [
-        "Tuesday, 28 July 2009 00:53:15"
+        "Tuesday, 28 July 2009 05:23:15"
       ],
       "error": null,
       "message": null
@@ -41725,8 +41725,8 @@
         "5:23 AM",
         "5:23:15 AM",
         "2009-07-28 05:23:15Z",
-        "Tuesday, July 28, 2009 12:53:15 AM",
-        "July 28, 2009 12:53:15 AM",
+        "Tuesday, July 28, 2009 5:23:15 AM",
+        "July 28, 2009 5:23:15 AM",
         "July 2009",
         "July 2009"
       ],
@@ -41924,8 +41924,8 @@
       "format": "U",
       "culture": "en-US",
       "result": [
-        "Tuesday, July 28, 2009 12:53:15 AM",
-        "July 28, 2009 12:53:15 AM"
+        "Tuesday, July 28, 2009 5:23:15 AM",
+        "July 28, 2009 5:23:15 AM"
       ],
       "error": null,
       "message": null
@@ -42251,16 +42251,16 @@
         "7/28/09 5:23:15 AM",
         "July 28",
         "July 28",
-        "2009-07-28T05:23:15.0000000\u002B04:30",
-        "2009-07-28T05:23:15.0000000\u002B04:30",
+        "2009-07-28T05:23:15.0000000\u002B00:00",
+        "2009-07-28T05:23:15.0000000\u002B00:00",
         "Tue, 28 Jul 2009 05:23:15 GMT",
         "Tue, 28 Jul 2009 05:23:15 GMT",
         "2009-07-28T05:23:15",
         "5:23 AM",
         "5:23:15 AM",
         "2009-07-28 05:23:15Z",
-        "Tuesday, July 28, 2009 12:53:15 AM",
-        "July 28, 2009 12:53:15 AM",
+        "Tuesday, July 28, 2009 5:23:15 AM",
+        "July 28, 2009 5:23:15 AM",
         "July 2009",
         "July 2009"
       ],
@@ -42370,7 +42370,7 @@
       "format": "o",
       "culture": "en-US",
       "result": [
-        "2009-07-28T05:23:15.0000000\u002B04:30"
+        "2009-07-28T05:23:15.0000000\u002B00:00"
       ],
       "error": null,
       "message": null
@@ -42381,7 +42381,7 @@
       "format": "O",
       "culture": "en-US",
       "result": [
-        "2009-07-28T05:23:15.0000000\u002B04:30"
+        "2009-07-28T05:23:15.0000000\u002B00:00"
       ],
       "error": null,
       "message": null
@@ -42458,8 +42458,8 @@
       "format": "U",
       "culture": "en-US",
       "result": [
-        "Tuesday, July 28, 2009 12:53:15 AM",
-        "July 28, 2009 12:53:15 AM"
+        "Tuesday, July 28, 2009 5:23:15 AM",
+        "July 28, 2009 5:23:15 AM"
       ],
       "error": null,
       "message": null
@@ -42526,8 +42526,8 @@
         "05:23",
         "05:23:15",
         "2009-07-28 05:23:15Z",
-        "\u0E27\u0E31\u0E19\u0E2D\u0E31\u0E07\u0E04\u0E32\u0E23\u0E17\u0E35\u0E48 28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 \u0E1E.\u0E28. 2552 00:53:15",
-        "28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 2552 00:53:15",
+        "\u0E27\u0E31\u0E19\u0E2D\u0E31\u0E07\u0E04\u0E32\u0E23\u0E17\u0E35\u0E48 28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 \u0E1E.\u0E28. 2552 05:23:15",
+        "28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 2552 05:23:15",
         "\u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 2552",
         "\u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 2552"
       ],
@@ -42725,8 +42725,8 @@
       "format": "U",
       "culture": "th-TH",
       "result": [
-        "\u0E27\u0E31\u0E19\u0E2D\u0E31\u0E07\u0E04\u0E32\u0E23\u0E17\u0E35\u0E48 28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 \u0E1E.\u0E28. 2552 00:53:15",
-        "28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 2552 00:53:15"
+        "\u0E27\u0E31\u0E19\u0E2D\u0E31\u0E07\u0E04\u0E32\u0E23\u0E17\u0E35\u0E48 28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 \u0E1E.\u0E28. 2552 05:23:15",
+        "28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 2552 05:23:15"
       ],
       "error": null,
       "message": null
@@ -43052,16 +43052,16 @@
         "28/7/52 05:23:15",
         "28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21",
         "28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21",
-        "2009-07-28T05:23:15.0000000\u002B04:30",
-        "2009-07-28T05:23:15.0000000\u002B04:30",
+        "2009-07-28T05:23:15.0000000\u002B00:00",
+        "2009-07-28T05:23:15.0000000\u002B00:00",
         "Tue, 28 Jul 2009 05:23:15 GMT",
         "Tue, 28 Jul 2009 05:23:15 GMT",
         "2009-07-28T05:23:15",
         "05:23",
         "05:23:15",
         "2009-07-28 05:23:15Z",
-        "\u0E27\u0E31\u0E19\u0E2D\u0E31\u0E07\u0E04\u0E32\u0E23\u0E17\u0E35\u0E48 28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 \u0E1E.\u0E28. 2552 00:53:15",
-        "28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 2552 00:53:15",
+        "\u0E27\u0E31\u0E19\u0E2D\u0E31\u0E07\u0E04\u0E32\u0E23\u0E17\u0E35\u0E48 28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 \u0E1E.\u0E28. 2552 05:23:15",
+        "28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 2552 05:23:15",
         "\u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 2552",
         "\u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 2552"
       ],
@@ -43171,7 +43171,7 @@
       "format": "o",
       "culture": "th-TH",
       "result": [
-        "2009-07-28T05:23:15.0000000\u002B04:30"
+        "2009-07-28T05:23:15.0000000\u002B00:00"
       ],
       "error": null,
       "message": null
@@ -43182,7 +43182,7 @@
       "format": "O",
       "culture": "th-TH",
       "result": [
-        "2009-07-28T05:23:15.0000000\u002B04:30"
+        "2009-07-28T05:23:15.0000000\u002B00:00"
       ],
       "error": null,
       "message": null
@@ -43259,8 +43259,8 @@
       "format": "U",
       "culture": "th-TH",
       "result": [
-        "\u0E27\u0E31\u0E19\u0E2D\u0E31\u0E07\u0E04\u0E32\u0E23\u0E17\u0E35\u0E48 28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 \u0E1E.\u0E28. 2552 00:53:15",
-        "28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 2552 00:53:15"
+        "\u0E27\u0E31\u0E19\u0E2D\u0E31\u0E07\u0E04\u0E32\u0E23\u0E17\u0E35\u0E48 28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 \u0E1E.\u0E28. 2552 05:23:15",
+        "28 \u0E01\u0E23\u0E01\u0E0E\u0E32\u0E04\u0E21 2552 05:23:15"
       ],
       "error": null,
       "message": null
@@ -43324,8 +43324,8 @@
         "05:23",
         "05:23:15",
         "2009-07-28 05:23:15Z",
-        "mardi 28 juillet 2009 00:53:15",
-        "28 juillet 2009 00:53:15",
+        "mardi 28 juillet 2009 05:23:15",
+        "28 juillet 2009 05:23:15",
         "juillet 2009",
         "juillet 2009"
       ],
@@ -43520,8 +43520,8 @@
       "format": "U",
       "culture": "fr-FR",
       "result": [
-        "mardi 28 juillet 2009 00:53:15",
-        "28 juillet 2009 00:53:15"
+        "mardi 28 juillet 2009 05:23:15",
+        "28 juillet 2009 05:23:15"
       ],
       "error": null,
       "message": null
@@ -43838,16 +43838,16 @@
         "28 juil. 2009 05:23:15",
         "28 juillet",
         "28 juillet",
-        "2009-07-28T05:23:15.0000000\u002B04:30",
-        "2009-07-28T05:23:15.0000000\u002B04:30",
+        "2009-07-28T05:23:15.0000000\u002B00:00",
+        "2009-07-28T05:23:15.0000000\u002B00:00",
         "Tue, 28 Jul 2009 05:23:15 GMT",
         "Tue, 28 Jul 2009 05:23:15 GMT",
         "2009-07-28T05:23:15",
         "05:23",
         "05:23:15",
         "2009-07-28 05:23:15Z",
-        "mardi 28 juillet 2009 00:53:15",
-        "28 juillet 2009 00:53:15",
+        "mardi 28 juillet 2009 05:23:15",
+        "28 juillet 2009 05:23:15",
         "juillet 2009",
         "juillet 2009"
       ],
@@ -43954,7 +43954,7 @@
       "format": "o",
       "culture": "fr-FR",
       "result": [
-        "2009-07-28T05:23:15.0000000\u002B04:30"
+        "2009-07-28T05:23:15.0000000\u002B00:00"
       ],
       "error": null,
       "message": null
@@ -43965,7 +43965,7 @@
       "format": "O",
       "culture": "fr-FR",
       "result": [
-        "2009-07-28T05:23:15.0000000\u002B04:30"
+        "2009-07-28T05:23:15.0000000\u002B00:00"
       ],
       "error": null,
       "message": null
@@ -44042,8 +44042,8 @@
       "format": "U",
       "culture": "fr-FR",
       "result": [
-        "mardi 28 juillet 2009 00:53:15",
-        "28 juillet 2009 00:53:15"
+        "mardi 28 juillet 2009 05:23:15",
+        "28 juillet 2009 05:23:15"
       ],
       "error": null,
       "message": null
@@ -44107,8 +44107,8 @@
         "05:23",
         "05:23:15",
         "2009-07-28 05:23:15Z",
-        "\u0432\u0442\u043E\u0440\u043D\u0438\u043A, 28 \u0438\u044E\u043B\u044F 2009\u202F\u0433. 00:53:15",
-        "28 \u0438\u044E\u043B\u044F 2009\u202F\u0433. 00:53:15",
+        "\u0432\u0442\u043E\u0440\u043D\u0438\u043A, 28 \u0438\u044E\u043B\u044F 2009\u202F\u0433. 05:23:15",
+        "28 \u0438\u044E\u043B\u044F 2009\u202F\u0433. 05:23:15",
         "\u0438\u044E\u043B\u044C 2009\u202F\u0433.",
         "\u0438\u044E\u043B\u044C 2009\u202F\u0433."
       ],
@@ -44303,8 +44303,8 @@
       "format": "U",
       "culture": "ru-RU",
       "result": [
-        "\u0432\u0442\u043E\u0440\u043D\u0438\u043A, 28 \u0438\u044E\u043B\u044F 2009\u202F\u0433. 00:53:15",
-        "28 \u0438\u044E\u043B\u044F 2009\u202F\u0433. 00:53:15"
+        "\u0432\u0442\u043E\u0440\u043D\u0438\u043A, 28 \u0438\u044E\u043B\u044F 2009\u202F\u0433. 05:23:15",
+        "28 \u0438\u044E\u043B\u044F 2009\u202F\u0433. 05:23:15"
       ],
       "error": null,
       "message": null
@@ -44621,16 +44621,16 @@
         "28 \u0438\u044E\u043B. 2009\u202F\u0433. 05:23:15",
         "28 \u0438\u044E\u043B\u044F",
         "28 \u0438\u044E\u043B\u044F",
-        "2009-07-28T05:23:15.0000000\u002B04:30",
-        "2009-07-28T05:23:15.0000000\u002B04:30",
+        "2009-07-28T05:23:15.0000000\u002B00:00",
+        "2009-07-28T05:23:15.0000000\u002B00:00",
         "Tue, 28 Jul 2009 05:23:15 GMT",
         "Tue, 28 Jul 2009 05:23:15 GMT",
         "2009-07-28T05:23:15",
         "05:23",
         "05:23:15",
         "2009-07-28 05:23:15Z",
-        "\u0432\u0442\u043E\u0440\u043D\u0438\u043A, 28 \u0438\u044E\u043B\u044F 2009\u202F\u0433. 00:53:15",
-        "28 \u0438\u044E\u043B\u044F 2009\u202F\u0433. 00:53:15",
+        "\u0432\u0442\u043E\u0440\u043D\u0438\u043A, 28 \u0438\u044E\u043B\u044F 2009\u202F\u0433. 05:23:15",
+        "28 \u0438\u044E\u043B\u044F 2009\u202F\u0433. 05:23:15",
         "\u0438\u044E\u043B\u044C 2009\u202F\u0433.",
         "\u0438\u044E\u043B\u044C 2009\u202F\u0433."
       ],
@@ -44737,7 +44737,7 @@
       "format": "o",
       "culture": "ru-RU",
       "result": [
-        "2009-07-28T05:23:15.0000000\u002B04:30"
+        "2009-07-28T05:23:15.0000000\u002B00:00"
       ],
       "error": null,
       "message": null
@@ -44748,7 +44748,7 @@
       "format": "O",
       "culture": "ru-RU",
       "result": [
-        "2009-07-28T05:23:15.0000000\u002B04:30"
+        "2009-07-28T05:23:15.0000000\u002B00:00"
       ],
       "error": null,
       "message": null
@@ -44825,8 +44825,8 @@
       "format": "U",
       "culture": "ru-RU",
       "result": [
-        "\u0432\u0442\u043E\u0440\u043D\u0438\u043A, 28 \u0438\u044E\u043B\u044F 2009\u202F\u0433. 00:53:15",
-        "28 \u0438\u044E\u043B\u044F 2009\u202F\u0433. 00:53:15"
+        "\u0432\u0442\u043E\u0440\u043D\u0438\u043A, 28 \u0438\u044E\u043B\u044F 2009\u202F\u0433. 05:23:15",
+        "28 \u0438\u044E\u043B\u044F 2009\u202F\u0433. 05:23:15"
       ],
       "error": null,
       "message": null
@@ -44890,8 +44890,8 @@
         "5:23",
         "5:23:15",
         "2009-07-28 05:23:15Z",
-        "1388 \u0645\u0631\u062F\u0627\u062F 6, \u0633\u0647\u200C\u0634\u0646\u0628\u0647 0:53:15",
-        "6 \u0645\u0631\u062F\u0627\u062F 1388 0:53:15",
+        "1388 \u0645\u0631\u062F\u0627\u062F 6, \u0633\u0647\u200C\u0634\u0646\u0628\u0647 5:23:15",
+        "6 \u0645\u0631\u062F\u0627\u062F 1388 5:23:15",
         "1388 \u0645\u0631\u062F\u0627\u062F",
         "1388 \u0645\u0631\u062F\u0627\u062F"
       ],
@@ -45086,8 +45086,8 @@
       "format": "U",
       "culture": "fa-IR",
       "result": [
-        "1388 \u0645\u0631\u062F\u0627\u062F 6, \u0633\u0647\u200C\u0634\u0646\u0628\u0647 0:53:15",
-        "6 \u0645\u0631\u062F\u0627\u062F 1388 0:53:15"
+        "1388 \u0645\u0631\u062F\u0627\u062F 6, \u0633\u0647\u200C\u0634\u0646\u0628\u0647 5:23:15",
+        "6 \u0645\u0631\u062F\u0627\u062F 1388 5:23:15"
       ],
       "error": null,
       "message": null
@@ -45404,16 +45404,16 @@
         "6 \u0645\u0631\u062F\u0627\u062F 1388 5:23:15",
         "6 \u0645\u0631\u062F\u0627\u062F",
         "6 \u0645\u0631\u062F\u0627\u062F",
-        "2009-07-28T05:23:15.0000000\u002B04:30",
-        "2009-07-28T05:23:15.0000000\u002B04:30",
+        "2009-07-28T05:23:15.0000000\u002B00:00",
+        "2009-07-28T05:23:15.0000000\u002B00:00",
         "Tue, 28 Jul 2009 05:23:15 GMT",
         "Tue, 28 Jul 2009 05:23:15 GMT",
         "2009-07-28T05:23:15",
         "5:23",
         "5:23:15",
         "2009-07-28 05:23:15Z",
-        "1388 \u0645\u0631\u062F\u0627\u062F 6, \u0633\u0647\u200C\u0634\u0646\u0628\u0647 0:53:15",
-        "6 \u0645\u0631\u062F\u0627\u062F 1388 0:53:15",
+        "1388 \u0645\u0631\u062F\u0627\u062F 6, \u0633\u0647\u200C\u0634\u0646\u0628\u0647 5:23:15",
+        "6 \u0645\u0631\u062F\u0627\u062F 1388 5:23:15",
         "1388 \u0645\u0631\u062F\u0627\u062F",
         "1388 \u0645\u0631\u062F\u0627\u062F"
       ],
@@ -45520,7 +45520,7 @@
       "format": "o",
       "culture": "fa-IR",
       "result": [
-        "2009-07-28T05:23:15.0000000\u002B04:30"
+        "2009-07-28T05:23:15.0000000\u002B00:00"
       ],
       "error": null,
       "message": null
@@ -45531,7 +45531,7 @@
       "format": "O",
       "culture": "fa-IR",
       "result": [
-        "2009-07-28T05:23:15.0000000\u002B04:30"
+        "2009-07-28T05:23:15.0000000\u002B00:00"
       ],
       "error": null,
       "message": null
@@ -45608,8 +45608,8 @@
       "format": "U",
       "culture": "fa-IR",
       "result": [
-        "1388 \u0645\u0631\u062F\u0627\u062F 6, \u0633\u0647\u200C\u0634\u0646\u0628\u0647 0:53:15",
-        "6 \u0645\u0631\u062F\u0627\u062F 1388 0:53:15"
+        "1388 \u0645\u0631\u062F\u0627\u062F 6, \u0633\u0647\u200C\u0634\u0646\u0628\u0647 5:23:15",
+        "6 \u0645\u0631\u062F\u0627\u062F 1388 5:23:15"
       ],
       "error": null,
       "message": null
@@ -45676,8 +45676,8 @@
         "5:23 \u0635",
         "5:23:15 \u0635",
         "2009-07-28 05:23:15Z",
-        "\u0627\u0644\u062B\u0644\u0627\u062B\u0627\u0621\u060C 6 \u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629 12:53:15 \u0635",
-        "6 \u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629 12:53:15 \u0635",
+        "\u0627\u0644\u062B\u0644\u0627\u062B\u0627\u0621\u060C 6 \u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629 5:23:15 \u0635",
+        "6 \u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629 5:23:15 \u0635",
         "\u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629",
         "\u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629"
       ],
@@ -45875,8 +45875,8 @@
       "format": "U",
       "culture": "ar-SA",
       "result": [
-        "\u0627\u0644\u062B\u0644\u0627\u062B\u0627\u0621\u060C 6 \u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629 12:53:15 \u0635",
-        "6 \u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629 12:53:15 \u0635"
+        "\u0627\u0644\u062B\u0644\u0627\u062B\u0627\u0621\u060C 6 \u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629 5:23:15 \u0635",
+        "6 \u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629 5:23:15 \u0635"
       ],
       "error": null,
       "message": null
@@ -46202,16 +46202,16 @@
         "6\u200F\u200F/8\u200F\u200F/1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629 5:23:15 \u0635",
         "6 \u0634\u0639\u0628\u0627\u0646",
         "6 \u0634\u0639\u0628\u0627\u0646",
-        "2009-07-28T05:23:15.0000000\u002B04:30",
-        "2009-07-28T05:23:15.0000000\u002B04:30",
+        "2009-07-28T05:23:15.0000000\u002B00:00",
+        "2009-07-28T05:23:15.0000000\u002B00:00",
         "Tue, 28 Jul 2009 05:23:15 GMT",
         "Tue, 28 Jul 2009 05:23:15 GMT",
         "2009-07-28T05:23:15",
         "5:23 \u0635",
         "5:23:15 \u0635",
         "2009-07-28 05:23:15Z",
-        "\u0627\u0644\u062B\u0644\u0627\u062B\u0627\u0621\u060C 6 \u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629 12:53:15 \u0635",
-        "6 \u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629 12:53:15 \u0635",
+        "\u0627\u0644\u062B\u0644\u0627\u062B\u0627\u0621\u060C 6 \u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629 5:23:15 \u0635",
+        "6 \u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629 5:23:15 \u0635",
         "\u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629",
         "\u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629"
       ],
@@ -46321,7 +46321,7 @@
       "format": "o",
       "culture": "ar-SA",
       "result": [
-        "2009-07-28T05:23:15.0000000\u002B04:30"
+        "2009-07-28T05:23:15.0000000\u002B00:00"
       ],
       "error": null,
       "message": null
@@ -46332,7 +46332,7 @@
       "format": "O",
       "culture": "ar-SA",
       "result": [
-        "2009-07-28T05:23:15.0000000\u002B04:30"
+        "2009-07-28T05:23:15.0000000\u002B00:00"
       ],
       "error": null,
       "message": null
@@ -46409,8 +46409,8 @@
       "format": "U",
       "culture": "ar-SA",
       "result": [
-        "\u0627\u0644\u062B\u0644\u0627\u062B\u0627\u0621\u060C 6 \u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629 12:53:15 \u0635",
-        "6 \u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629 12:53:15 \u0635"
+        "\u0627\u0644\u062B\u0644\u0627\u062B\u0627\u0621\u060C 6 \u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629 5:23:15 \u0635",
+        "6 \u0634\u0639\u0628\u0627\u0646 1430 \u0628\u0639\u062F \u0627\u0644\u0647\u062C\u0631\u0629 5:23:15 \u0635"
       ],
       "error": null,
       "message": null
@@ -46445,6 +46445,232 @@
       "result": null,
       "error": "FormatException",
       "message": "Input string was not in a correct format."
+    }
+  ],
+  "customFormats": [
+    {
+      "culture": "",
+      "pattern": "yyyy",
+      "format": "F",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "2024"
+    },
+    {
+      "culture": "",
+      "pattern": "yyyy",
+      "format": "U",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "2024"
+    },
+    {
+      "culture": "",
+      "pattern": "\u0027custom\u0027",
+      "format": "F",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "custom"
+    },
+    {
+      "culture": "",
+      "pattern": "\u0027custom\u0027",
+      "format": "U",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "custom"
+    },
+    {
+      "culture": "en-US",
+      "pattern": "yyyy",
+      "format": "F",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "2024"
+    },
+    {
+      "culture": "en-US",
+      "pattern": "yyyy",
+      "format": "U",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "2024"
+    },
+    {
+      "culture": "en-US",
+      "pattern": "\u0027custom\u0027",
+      "format": "F",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "custom"
+    },
+    {
+      "culture": "en-US",
+      "pattern": "\u0027custom\u0027",
+      "format": "U",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "custom"
+    },
+    {
+      "culture": "th-TH",
+      "pattern": "yyyy",
+      "format": "F",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "2567"
+    },
+    {
+      "culture": "th-TH",
+      "pattern": "yyyy",
+      "format": "U",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "\u0E27\u0E31\u0E19\u0E1E\u0E38\u0E18\u0E17\u0E35\u0E48 20 \u0E21\u0E35\u0E19\u0E32\u0E04\u0E21 \u0E04.\u0E28. 2024 03:04:05"
+    },
+    {
+      "culture": "th-TH",
+      "pattern": "\u0027custom\u0027",
+      "format": "F",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "custom"
+    },
+    {
+      "culture": "th-TH",
+      "pattern": "\u0027custom\u0027",
+      "format": "U",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "\u0E27\u0E31\u0E19\u0E1E\u0E38\u0E18\u0E17\u0E35\u0E48 20 \u0E21\u0E35\u0E19\u0E32\u0E04\u0E21 \u0E04.\u0E28. 2024 03:04:05"
+    },
+    {
+      "culture": "fr-FR",
+      "pattern": "yyyy",
+      "format": "F",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "2024"
+    },
+    {
+      "culture": "fr-FR",
+      "pattern": "yyyy",
+      "format": "U",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "2024"
+    },
+    {
+      "culture": "fr-FR",
+      "pattern": "\u0027custom\u0027",
+      "format": "F",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "custom"
+    },
+    {
+      "culture": "fr-FR",
+      "pattern": "\u0027custom\u0027",
+      "format": "U",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "custom"
+    },
+    {
+      "culture": "ru-RU",
+      "pattern": "yyyy",
+      "format": "F",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "2024"
+    },
+    {
+      "culture": "ru-RU",
+      "pattern": "yyyy",
+      "format": "U",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "2024"
+    },
+    {
+      "culture": "ru-RU",
+      "pattern": "\u0027custom\u0027",
+      "format": "F",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "custom"
+    },
+    {
+      "culture": "ru-RU",
+      "pattern": "\u0027custom\u0027",
+      "format": "U",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "custom"
+    },
+    {
+      "culture": "fa-IR",
+      "pattern": "yyyy",
+      "format": "F",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "1403"
+    },
+    {
+      "culture": "fa-IR",
+      "pattern": "yyyy",
+      "format": "U",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "2024 \u0645\u0627\u0631\u0633 20, \u0686\u0647\u0627\u0631\u0634\u0646\u0628\u0647 3:04:05"
+    },
+    {
+      "culture": "fa-IR",
+      "pattern": "\u0027custom\u0027",
+      "format": "F",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "custom"
+    },
+    {
+      "culture": "fa-IR",
+      "pattern": "\u0027custom\u0027",
+      "format": "U",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "2024 \u0645\u0627\u0631\u0633 20, \u0686\u0647\u0627\u0631\u0634\u0646\u0628\u0647 3:04:05"
+    },
+    {
+      "culture": "ar-SA",
+      "pattern": "yyyy",
+      "format": "F",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "1445"
+    },
+    {
+      "culture": "ar-SA",
+      "pattern": "yyyy",
+      "format": "U",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "\u0627\u0644\u0623\u0631\u0628\u0639\u0627\u0621\u060C 20 \u0645\u0627\u0631\u0633 2024 \u0645 3:04:05 \u0635"
+    },
+    {
+      "culture": "ar-SA",
+      "pattern": "\u0027custom\u0027",
+      "format": "F",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "custom"
+    },
+    {
+      "culture": "ar-SA",
+      "pattern": "\u0027custom\u0027",
+      "format": "U",
+      "ticks": "638465006450000000",
+      "kind": 1,
+      "result": "\u0627\u0644\u0623\u0631\u0628\u0639\u0627\u0621\u060C 20 \u0645\u0627\u0631\u0633 2024 \u0645 3:04:05 \u0635"
     }
   ]
 }

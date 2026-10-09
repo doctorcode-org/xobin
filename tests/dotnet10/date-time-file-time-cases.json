@@ -1,6 +1,6 @@
 {
   "runtime": "10.0.7",
-  "timeZone": "Iran Standard Time",
+  "timeZone": "UTC",
   "rows": [
     {
       "source": "DateTimeTests.ToFileTime_Invoke_ReturnsExpected",
@@ -56,7 +56,7 @@
       "inputTicks": "636812064000000000",
       "inputKind": 2,
       "fileTime": null,
-      "result": "131900706000000000",
+      "result": "131900832000000000",
       "error": null,
       "paramName": null,
       "message": null,
@@ -68,7 +68,7 @@
       "inputTicks": "636786790500120000",
       "inputKind": 2,
       "fileTime": null,
-      "result": "131875432500120000",
+      "result": "131875558500120000",
       "error": null,
       "paramName": null,
       "message": null,
@@ -116,7 +116,7 @@
       "inputTicks": "636812064000000000",
       "inputKind": 2,
       "fileTime": null,
-      "result": "131900706000000000",
+      "result": "131900832000000000",
       "error": null,
       "paramName": null,
       "message": null,
@@ -201,7 +201,7 @@
       "inputKind": null,
       "fileTime": "0",
       "result": {
-        "ticks": "504911358000000000",
+        "ticks": "504911232000000000",
         "kind": 2
       },
       "error": null,
@@ -231,7 +231,7 @@
       "inputKind": null,
       "fileTime": "131875558500120000",
       "result": {
-        "ticks": "636786916500120000",
+        "ticks": "636786790500120000",
         "kind": 2
       },
       "error": null,

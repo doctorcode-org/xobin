@@ -10,8 +10,27 @@ export interface FormatCalendar {
 }
 export interface FormatContext {
     readonly dateTimeFormat: DateTimeFormatInfo;
-    readonly gregorianDateTimeFormat?: DateTimeFormatInfo;
     readonly calendar: FormatCalendar;
+}
+
+// Gregorian variants belong to the locale data, not the public CultureInfo API.
+const gregorianFormatInfo = new WeakMap<FormatContext, DateTimeFormatInfo>();
+
+/**
+ * Registers the Gregorian format data used internally by the universal full format.
+ * @param context The culture whose Gregorian format data is being registered.
+ * @param info The format data extracted with a Gregorian calendar in the reference runtime.
+ */
+export function setGregorianFormatInfo(context: FormatContext, info: DateTimeFormatInfo): void {
+    gregorianFormatInfo.set(context, info);
+}
+
+/**
+ * Gets a culture's internal Gregorian format data, falling back to its current format data.
+ * @param context The culture whose Gregorian format data is being retrieved.
+ */
+export function getGregorianFormatInfo(context: FormatContext): DateTimeFormatInfo {
+    return gregorianFormatInfo.get(context) ?? context.dateTimeFormat;
 }
 
 export const invariantDateTimeFormat: DateTimeFormatInfo = {
@@ -161,5 +180,18 @@ export const gregorianFormatCalendar: FormatCalendar = {
 };
 const invariantContext: FormatContext = { dateTimeFormat: invariantDateTimeFormat, calendar: gregorianFormatCalendar };
 let currentContext = invariantContext;
-export function getCurrentFormatContext(): FormatContext { return currentContext; }
-export function setCurrentFormatContext(context: FormatContext): void { currentContext = context; }
+
+/**
+ * Gets the formatting context of the current culture.
+ */
+export function getCurrentFormatContext(): FormatContext {
+    return currentContext;
+}
+
+/**
+ * Updates the formatting context when the current culture changes.
+ * @param context The culture that supplies the current formatting information.
+ */
+export function setCurrentFormatContext(context: FormatContext): void {
+    currentContext = context;
+}

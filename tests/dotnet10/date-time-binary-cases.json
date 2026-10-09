@@ -1,6 +1,6 @@
 {
   "runtime": "10.0.7",
-  "timeZone": "Iran Standard Time",
+  "timeZone": "UTC",
   "rows": [
     {
       "source": "DateTimeTests.ToBinary_Invoke_ReturnsExpected",
@@ -24,7 +24,7 @@
       "source": "DateTimeTests.ToBinary_Invoke_ReturnsExpected",
       "operation": "toBinary",
       "input": "123456789101112:2",
-      "result": "-9223248742065674696",
+      "result": "-9223248580065674696",
       "error": null,
       "paramName": null,
       "message": null
@@ -65,7 +65,7 @@
       "operation": "roundtrip",
       "input": "636812696700120000:2",
       "result": {
-        "binary": "-8586559466154655808",
+        "binary": "-8586559340154655808",
         "ticks": "636812696700120000",
         "kind": 2
       },

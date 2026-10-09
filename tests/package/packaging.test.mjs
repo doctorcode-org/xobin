@@ -56,6 +56,14 @@ test('an ESM consumer can import a locale', async () => {
   assert.equal(cultureData.name, 'fa-IR');
 });
 
+test('the application locale import resolves to the same module in both formats', async () => {
+  const canonical = await import('@xobin/globalization/locales/fa-IR');
+  const application = await import('@xobin/globalization/dist/locales/fa-IR');
+  assert.equal(application.cultureData, canonical.cultureData);
+  assert.equal(require('@xobin/globalization/dist/locales/fa-IR').cultureData,
+    require('@xobin/globalization/locales/fa-IR').cultureData);
+});
+
 test('both packages publish declarations for CommonJS and ESM', async () => {
   for (const packageName of ['core', 'globalization']) {
     const dist = path.join(repositoryRoot, 'packages', packageName, 'dist');
@@ -97,6 +105,9 @@ test('a DateTime-only consumer bundle excludes culture classes and calendar impl
   for (const unused of ['CultureInfo', 'GregorianCalendar', 'PersianCalendar', 'ThaiBuddhistCalendar', 'UmAlQuraCalendar']) {
     assert.equal(output.includes(unused), false, `${unused} remained in the DateTime bundle`);
   }
+  for (const unused of ['Iran Standard Time', 'Pacific Standard Time', 'windowsTimeZones', 'windowsTimeZoneAliases']) {
+    assert.equal(output.includes(unused), false, `${unused} remained in the DateTime bundle`);
+  }
 });
 
 test('a ThaiBuddhistCalendar-only consumer bundle excludes unrelated calendars', async () => {
@@ -127,4 +138,51 @@ test('an ESM locale bundle excludes CommonJS and unrelated calendars', async () 
   for (const unused of ['ThaiBuddhistCalendar', 'UmAlQuraCalendar', 'var require_dist = __commonJS']) {
     assert.equal(output.includes(unused), false, `${unused} remained in the locale bundle`);
   }
+});
+
+test('loading one browser culture includes only its locale module', async () => {
+  const result = await build({
+    stdin: {
+      contents: "import { CultureInfo } from '@xobin/globalization'; import { cultureData } from '@xobin/globalization/locales/fa-IR'; globalThis.culture = CultureInfo.loadCultureInfo('fa-IR', cultureData);",
+      resolveDir: repositoryRoot,
+      loader: 'js',
+    },
+    bundle: true,
+    format: 'esm',
+    platform: 'browser',
+    treeShaking: true,
+    write: false,
+    metafile: true,
+    logLevel: 'silent',
+  });
+  const locales = Object.keys(result.metafile.inputs).filter(file => file.includes('/dist/locales/'));
+  assert.deepEqual(locales, ['packages/globalization/dist/locales/fa-IR.mjs']);
+  const output = result.outputFiles[0].text;
+  for (const unused of ['ThaiBuddhistCalendar', 'UmAlQuraCalendar']) {
+    assert.equal(output.includes(unused), false, `${unused} remained in the culture loader bundle`);
+  }
+});
+
+test('a literal dynamic locale import creates a separate browser chunk', async () => {
+  const result = await build({
+    stdin: {
+      contents: "import { CultureInfo } from '@xobin/globalization'; globalThis.loadCulture = async () => { const { cultureData } = await import('@xobin/globalization/locales/fa-IR'); return CultureInfo.loadCultureInfo('fa-IR', cultureData); };",
+      resolveDir: repositoryRoot,
+      loader: 'js',
+    },
+    bundle: true,
+    format: 'esm',
+    platform: 'browser',
+    treeShaking: true,
+    splitting: true,
+    outdir: 'browser-culture-analysis',
+    write: false,
+    metafile: true,
+    logLevel: 'silent',
+  });
+  const localeChunk = Object.values(result.metafile.outputs).find(output =>
+    output.entryPoint === 'packages/globalization/dist/locales/fa-IR.mjs');
+  assert.ok(localeChunk, 'the requested culture must have its own dynamic entry');
+  const locales = Object.keys(result.metafile.inputs).filter(file => file.includes('/dist/locales/'));
+  assert.deepEqual(locales, ['packages/globalization/dist/locales/fa-IR.mjs']);
 });

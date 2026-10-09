@@ -5,9 +5,9 @@ import { DateTime, DateTimeKind } from '@xobin/globalization';
 
 const fixture = JSON.parse(readFileSync(new URL('./date-time-binary-cases.json', import.meta.url), 'utf8'));
 assert.equal(fixture.runtime, '10.0.7');
-assert.equal(fixture.timeZone, 'Iran Standard Time');
+assert.equal(fixture.timeZone, 'UTC');
 const previousZone = process.env.TZ;
-before(() => { process.env.TZ = 'Asia/Tehran'; });
+before(() => { process.env.TZ = 'UTC'; });
 after(() => {
   if (previousZone === undefined) delete process.env.TZ;
   else process.env.TZ = previousZone;

@@ -7577,7 +7577,6 @@
       "extraLocalMembers": [
         "englishName",
         "getFormat",
-        "gregorianDateTimeFormat",
         "invariantUICulture",
         "isNeutralCulture",
         "isRightToLeft",

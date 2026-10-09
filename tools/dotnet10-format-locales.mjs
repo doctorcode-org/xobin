@@ -26,7 +26,14 @@ for (const [name, data] of Object.entries(fixture.cultures)) {
   const pattern = /^    dateTimeFormat: \{[\s\S]*?^    calendar:/m;
   if (!pattern.test(source)) throw new Error(`Locale format block not found: ${name}`);
   const render = (value) => JSON.stringify(value, null, 2).replaceAll('\n', '\n    ');
-  let output = source.replace(pattern, `    dateTimeFormat: ${render(data.formatInfo)},\n    gregorianDateTimeFormat: ${render(data.gregorianDateTimeFormat)},\n    calendar:`);
+  const gregorian = data.calendar === 'GregorianCalendar' ? ''
+    : `    gregorianDateTimeFormat: ${render(data.gregorianDateTimeFormat)},\n`;
+  let output = source.replace(pattern, `    dateTimeFormat: ${render(data.formatInfo)},\n${gregorian}    calendar:`);
+  // This extra field is generator metadata, not a member of CultureData or CultureInfo.
+  const declaration = gregorian
+    ? 'export const cultureData: CultureData & { gregorianDateTimeFormat?: CultureData["dateTimeFormat"] } = {'
+    : 'export const cultureData: CultureData = {';
+  output = output.replace(/^export const cultureData: .* = \{$/m, declaration);
   if (!output.startsWith(header)) output = header + output;
   if (mode === '--write') writeFileSync(file, output);
   else if (output !== source) throw new Error(`Locale differs from reference format data: ${name}`);

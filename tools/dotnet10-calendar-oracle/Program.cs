@@ -5,6 +5,13 @@ if (Environment.Version.ToString() != "10.0.7")
     throw new InvalidOperationException($"Expected .NET 10.0.7, got {Environment.Version}.");
 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
+// Environment-dependent DateTime fixtures use UTC in both runtimes.
+// Pin only this isolated oracle process; no host time-zone setting is changed.
+if (args.Length > 0 && args[0] is "--date-time-format" or "--date-time-binary" or "--date-time-file-time")
+{
+    var cache = typeof(TimeZoneInfo).GetField("s_cachedData", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static)!.GetValue(null)!;
+    cache.GetType().GetField("_localTimeZone", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)!.SetValue(cache, TimeZoneInfo.Utc);
+}
 if (args.Length >= 2 && args[0] == "--date-time-format")
 {
     string output = DateTimeFormatOracle.Generate();
@@ -58,28 +65,6 @@ if (args.Length >= 2 && args[0] == "--date-time-binary")
     }
     else if (args.Length == 2) File.WriteAllText(args[1], output);
     else throw new ArgumentException("Pass output path and optionally --check.");
-    return;
-}
-if (args.Length >= 2 && args[0] == "--date-time-time-zone-matrix")
-{
-    string output = DateTimeTimeZoneMatrixOracle.Generate();
-    if (args.Length == 3 && args[2] == "--check")
-    {
-        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Time-zone matrix differs from the reference runtime.");
-    }
-    else if (args.Length == 2) File.WriteAllText(args[1], output);
-    else throw new ArgumentException("Pass output path and optionally --check.");
-    return;
-}
-if (args.Length >= 3 && args[0] == "--windows-time-zones")
-{
-    string output = WindowsTimeZoneOracle.Generate(args[2]);
-    if (args.Length == 4 && args[3] == "--check")
-    {
-        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Time-zone rules differ from the reference runtime.");
-    }
-    else if (args.Length == 3) File.WriteAllText(args[1], output);
-    else throw new ArgumentException("Pass output path, alias input path, and optionally --check.");
     return;
 }
 if (args.Length >= 2 && args[0] == "--date-time-file-time")

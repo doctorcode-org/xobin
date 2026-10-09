@@ -1,5 +1,5 @@
-import { invariantDateTimeFormat, setCurrentFormatContext } from './date_time_format_context';
-﻿import { Calendar } from './calendar';
+import { invariantDateTimeFormat, setCurrentFormatContext, setGregorianFormatInfo } from './date_time_format_context';
+import { Calendar } from './calendar';
 import { DateTimeFormatInfo } from './date_time_format_info';
 import { NumberFormatInfo } from './number_format_info';
 import { getOrCreateValue, PlainObject, setValue, ArgumentNullException, getValue } from '@xobin/core';
@@ -63,6 +63,10 @@ export type CultureName = (keyof CultureCollection);
  * The information includes the names for the culture, the writing system, the calendar used, the sort order of strings, and formatting for dates and numbers.
  */
 export class CultureInfo {
+    /**
+     * Gets an object that defines the format of the specified type.
+     * @param formatType The name of the format information type to retrieve.
+     */
     getFormat(formatType: string): object | null {
         return formatType === 'DateTimeFormatInfo' ? this.dateTimeFormat
             : formatType === 'NumberFormatInfo' ? this.numberFormat : null;
@@ -77,7 +81,6 @@ export class CultureInfo {
      * Gets or sets a DateTimeFormatInfo that defines the culturally appropriate format of displaying dates and times.
      */
     readonly dateTimeFormat!: DateTimeFormatInfo;
-    readonly gregorianDateTimeFormat?: DateTimeFormatInfo;
 
     /**
      * Gets the culture name in the format languagefull [country/regionfull] in English.
@@ -143,7 +146,12 @@ export class CultureInfo {
         Object.keys(cultureData)
             .forEach(property => {
                 const propertyValue = cultureData[property];
-                if (property === 'parent') {
+                if (property === 'gregorianDateTimeFormat') {
+                    if (!(cultureData.calendar instanceof GregorianCalendar)) {
+                        setGregorianFormatInfo(this, cloneFormatInfo(propertyValue));
+                    }
+                }
+                else if (property === 'parent') {
                     setValue(this, 'parent', propertyValue);
                 }
                 else {
@@ -151,7 +159,9 @@ export class CultureInfo {
                         configurable: true,
                         enumerable: true,
                         writable: false,
-                        value: propertyValue
+                        value: property === 'dateTimeFormat' || property === 'numberFormat'
+                            ? cloneFormatInfo(propertyValue)
+                            : property === 'calendar' ? propertyValue.clone() : propertyValue
                     });
                 }                
             });
@@ -216,9 +226,10 @@ export class CultureInfo {
     }
 
     /**
-     * 
-     * @param name
-     * @param data
+     * Registers explicitly imported culture data and returns a culture initialized from that data.
+     * @param name The name of the culture to register.
+     * @param data The culture data imported from its individual locale module.
+     * @returns A new CultureInfo for the registered culture.
      */
     static loadCultureInfo(name: CultureName, data: CultureData): CultureInfo {
         if (!name) {
@@ -229,6 +240,24 @@ export class CultureInfo {
         return new CultureInfo(name);
     }
 
+}
+
+/**
+ * Copies format data so culture instances do not share mutable arrays or pattern collections.
+ * @param info The date or number format data to copy.
+ */
+function cloneFormatInfo<T extends object>(info: T): T {
+    const copy = { ...info };
+    for (const key of Object.keys(info) as Array<keyof T>) {
+        const value = info[key];
+        if (Array.isArray(value)) {
+            copy[key] = value.slice() as T[keyof T];
+        }
+        else if (value !== null && typeof value === 'object') {
+            copy[key] = cloneFormatInfo(value) as T[keyof T];
+        }
+    }
+    return copy;
 }
 
 interface CultureCollection {

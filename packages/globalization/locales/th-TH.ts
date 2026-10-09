@@ -1,6 +1,6 @@
 // Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, ThaiBuddhistCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { gregorianDateTimeFormat?: CultureData["dateTimeFormat"] } = {
     parent: "th", 
     lcid: 1054, 
     name: "th-TH", 

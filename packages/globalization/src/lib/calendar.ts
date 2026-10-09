@@ -297,6 +297,11 @@ export abstract class Calendar {
      * @param time The DateTime to read.
      */
     abstract getYear(time: DateTime): number;
+
+    /**
+     * When overridden in a derived class, returns the era in the specified DateTime.
+     * @param time The DateTime to read.
+     */
     abstract getEra(time: DateTime): number;
 
     /**

@@ -6,22 +6,63 @@ Usage information and reference details can be found in [Xobin documentation](ht
 
 License: MIT
 
+## Browser culture loading
+
+Import each required culture explicitly. Importing a locale does not register it
+or load the other locale modules. The loader's name, arguments and synchronous
+return value are unchanged:
+
+```ts
+import { CultureInfo } from '@xobin/globalization';
+import { cultureData } from '@xobin/globalization/locales/fa-IR';
+
+const culture = CultureInfo.loadCultureInfo('fa-IR', cultureData);
+CultureInfo.currentCulture = culture;
+CultureInfo.currentUICulture = culture;
+```
+
+The existing application path `@xobin/globalization/dist/locales/fa-IR` resolves
+to the same module. Prefer `@xobin/globalization/locales/fa-IR` in new code.
+For deferred loading, use a literal import so the browser bundler can create a
+separate chunk without including every locale:
+
+```ts
+const { cultureData } = await import('@xobin/globalization/locales/en-US');
+const culture = CultureInfo.loadCultureInfo('en-US', cultureData);
+```
+
+If an application accesses `culture.parent`, explicitly import and register the
+parent culture as well (for example `fa` for `fa-IR`). Parent data is not
+automatically downloaded. Each CultureInfo instance has independent date/number
+format data and calendar state; changing an instance does not modify the imported
+locale data or another instance.
+
+The DateTimeFormatInfo class and its reference setter/read-only behavior remain
+outstanding; this loading change does not claim to complete them.
+
 ## Local time reference
 
-DateTime local conversions use a snapshot of Windows `TimeZoneInfo` rules
-exported by the pinned .NET 10.0.7 oracle. The host's `Intl` time-zone ID selects
-the corresponding Windows zone through generated IANA aliases. This deliberately
-uses the same historical rules as the Windows reference rather than the host's
-historical IANA offsets. This snapshot does not update automatically when an OS
-time-zone database changes. Unmapped host zone IDs currently use native offsets;
-parity with the Windows reference is verified only for the mapped zones.
+DateTime local conversions use the host's native Date time-zone database.
+No Windows time-zone table or IANA alias table is shipped. Historical offsets,
+including offsets with seconds, follow the browser or Node.js runtime and may
+differ from Windows. Bigint arithmetic preserves all 100-nanosecond ticks.
 
-The rule generator and its alias input are in `tools/dotnet10-calendar-oracle`.
-Its `--windows-time-zones`, `--date-time-time-zone-matrix`,
-`--date-time-file-time`, and `--date-time-binary` modes support `--check` to
-compare regenerated output. The supplemental matrix selects each Windows zone
-as .NET's local zone inside the isolated oracle process so hidden ambiguous DST
-state is tested through DateTime's public conversion and binary APIs.
+For overlapping local times, a newly constructed value selects the later UTC
+occurrence. Values converted from UTC preserve their original occurrence through
+conversion, arithmetic and binary roundtrips. Nonexistent spring-forward times
+use Date's native resolution with the offset before the transition.
+
+Date does not expose a daylight-saving flag. IsDaylightSavingTime estimates it by
+comparing the selected offset with the smallest offset sampled monthly in that
+year. This covers ordinary seasonal clock changes, but cannot distinguish every
+political base-offset change, permanent DST or negative-DST rule. Exact Windows
+classification is not promised.
+
+The .NET formatting, FileTime and binary fixtures use UTC as the local zone in
+both runtimes, preserving direct comparison of the official test inputs. Native
+zone tests separately verify local components, sub-millisecond precision, gaps,
+overlaps and roundtrips using the zones supported by the test runtime. The oracle
+pins UTC only inside its isolated process; it does not change the host's zone.
 
 ## CLR conversion adapters
 

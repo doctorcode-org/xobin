@@ -5,8 +5,9 @@ import { DateTime, DateTimeKind, CultureInfo, GregorianCalendar, ThaiBuddhistCal
 
 const fixture = JSON.parse(readFileSync(new URL('./date-time-format-cases.json', import.meta.url), 'utf8'));
 assert.equal(fixture.runtime, '10.0.7');
+assert.equal(fixture.timeZone, 'UTC');
 const previousZone = process.env.TZ;
-before(() => { process.env.TZ = 'Asia/Tehran'; });
+before(() => { process.env.TZ = 'UTC'; });
 after(() => {
   if (previousZone === undefined) delete process.env.TZ;
   else process.env.TZ = previousZone;
@@ -77,6 +78,7 @@ test('DateTimeFormat.BuiltLocaleDataAndCurrentCulture', async () => {
     for (const name of Object.keys(fixture.cultures).filter(Boolean)) {
       const { cultureData } = await import(`@xobin/globalization/locales/${name}`);
       const culture = CultureInfo.loadCultureInfo(name, cultureData);
+      assert.equal('gregorianDateTimeFormat' in culture, false);
       CultureInfo.currentCulture = culture;
       for (const row of fixture.supplemental.filter(row => row.culture === name && !row.error && BigInt(row.ticks) > 0n)) {
         const date = new DateTime(BigInt(row.ticks), kinds[row.kind]);
@@ -88,6 +90,32 @@ test('DateTimeFormat.BuiltLocaleDataAndCurrentCulture', async () => {
 test('DateTimeTests.ToLongTimeString_Invoke_ReturnsExpected', () => {
   const date = DateTime.now;
   assert.equal(date.toLongTimeString(), date.toString('T'));
+});
+
+test('DateTimeFormat.CustomFullDateTimePatternsReference', () => {
+  for (const row of fixture.customFormats) {
+    const culture = new CultureInfo(row.culture);
+    culture.dateTimeFormat.fullDateTimePattern = row.pattern;
+    const date = new DateTime(BigInt(row.ticks), kinds[row.kind]);
+    assert.equal(date.toString(row.format, culture), row.result, `${row.culture}/${row.format}/${row.pattern}`);
+  }
+});
+
+test('CultureInfo.LoadedInstancesHaveIndependentFormatAndCalendarState', async () => {
+  const { cultureData } = await import('@xobin/globalization/locales/fa-IR');
+  const first = CultureInfo.loadCultureInfo('fa-IR', cultureData);
+  const second = new CultureInfo('fa-IR');
+  const original = cultureData.dateTimeFormat.shortDatePattern;
+  first.dateTimeFormat.shortDatePattern = 'yyyy';
+  first.dateTimeFormat.monthNames[0] = 'changed';
+  first.numberFormat.numberGroupSizes[0] = 1;
+  first.calendar.twoDigitYearMax = 1400;
+  assert.equal(second.dateTimeFormat.shortDatePattern, original);
+  assert.equal(cultureData.dateTimeFormat.shortDatePattern, original);
+  assert.equal(second.dateTimeFormat.monthNames[0], cultureData.dateTimeFormat.monthNames[0]);
+  assert.equal(second.numberFormat.numberGroupSizes[0], cultureData.numberFormat.numberGroupSizes[0]);
+  assert.equal(second.calendar.twoDigitYearMax, cultureData.calendar.twoDigitYearMax);
+  assert.notEqual(first.calendar, second.calendar);
 });
 test('DateTimeTests.ToShortDateString_Invoke_ReturnsExpected', () => {
   const date = DateTime.now;

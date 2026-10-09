@@ -30,7 +30,7 @@ export const localeName: string = cultureData.name;
 
 import { DateOnly } from '@xobin/globalization/date-only';
 import { TimeOnly } from '@xobin/globalization/time-only';
-import { DateTimeKind } from '@xobin/globalization';
+import { CultureInfo, DateTimeKind } from '@xobin/globalization';
 import { TypeCode } from '@xobin/core';
 const dateOnly: DateOnly = new DateOnly(2024, 2, 29);
 const timeOnly: TimeOnly = new TimeOnly(863999999999n);
@@ -40,3 +40,6 @@ const dateParts: [number, number, number] = combined.deconstruct('date');
 const code: TypeCode = combined.getTypeCode();
 const converted: DateTime = combined.toType(DateTime);
 export { dateOnly, timeOnly, combined, dateAndTime, dateParts, code, converted };
+
+// @ts-expect-error Gregorian locale metadata is not part of the CLR CultureInfo API.
+CultureInfo.invariantCulture.gregorianDateTimeFormat;
