@@ -10,9 +10,9 @@
   "summary": {
     "types": 29,
     "members": 807,
-    "present": 340,
-    "incomplete": 43,
-    "missing": 424,
+    "present": 355,
+    "incomplete": 39,
+    "missing": 413,
     "missingTypes": 13,
     "missingRootExports": 13,
     "missingSubpathExports": 19
@@ -2024,9 +2024,9 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 81,
-        "incomplete": 6,
-        "missing": 30
+        "present": 95,
+        "incomplete": 2,
+        "missing": 20
       },
       "extraLocalMembers": [
         "getObjectData",
@@ -3665,9 +3665,9 @@
             "parameters": []
           },
           "jsMember": "getDateTimeFormats",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FORMAT-01..FORMAT-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -3690,9 +3690,9 @@
             ]
           },
           "jsMember": "getDateTimeFormats",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FORMAT-01..FORMAT-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -3715,9 +3715,9 @@
             ]
           },
           "jsMember": "getDateTimeFormats",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FORMAT-01..FORMAT-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -3746,9 +3746,9 @@
             ]
           },
           "jsMember": "getDateTimeFormats",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FORMAT-01..FORMAT-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -4366,9 +4366,9 @@
             "parameters": []
           },
           "jsMember": "toLongDateString",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FORMAT-01..FORMAT-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -4384,9 +4384,9 @@
             "parameters": []
           },
           "jsMember": "toLongTimeString",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FORMAT-01..FORMAT-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -4420,9 +4420,9 @@
             "parameters": []
           },
           "jsMember": "toShortDateString",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FORMAT-01..FORMAT-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -4438,9 +4438,9 @@
             "parameters": []
           },
           "jsMember": "toShortTimeString",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FORMAT-01..FORMAT-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -4456,9 +4456,9 @@
             "parameters": []
           },
           "jsMember": "toString",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "member body is a known stub",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FORMAT-01..FORMAT-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -4481,9 +4481,9 @@
             ]
           },
           "jsMember": "toString",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "member body is a known stub",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FORMAT-01..FORMAT-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -4506,9 +4506,9 @@
             ]
           },
           "jsMember": "toString",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "member body is a known stub",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FORMAT-01..FORMAT-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -4537,9 +4537,9 @@
             ]
           },
           "jsMember": "toString",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "member body is a known stub",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FORMAT-01..FORMAT-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -4598,9 +4598,9 @@
             ]
           },
           "jsMember": "tryFormat",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FORMAT-01..FORMAT-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -4641,9 +4641,9 @@
             ]
           },
           "jsMember": "tryFormat",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FORMAT-01..FORMAT-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -5923,9 +5923,9 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 34,
+        "present": 35,
         "incomplete": 8,
-        "missing": 3
+        "missing": 2
       },
       "extraLocalMembers": [
         "_isReadOnly",
@@ -6436,9 +6436,9 @@
             ]
           },
           "jsMember": "getEra",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -7576,6 +7576,8 @@
       },
       "extraLocalMembers": [
         "englishName",
+        "getFormat",
+        "gregorianDateTimeFormat",
         "invariantUICulture",
         "isNeutralCulture",
         "isRightToLeft",
@@ -7982,7 +7984,9 @@
         "missing": 23
       },
       "extraLocalMembers": [
+        "allDateTimePatterns",
         "amDesignator",
+        "eraNames",
         "pmDesignator"
       ],
       "members": [

@@ -5,6 +5,17 @@ if (Environment.Version.ToString() != "10.0.7")
     throw new InvalidOperationException($"Expected .NET 10.0.7, got {Environment.Version}.");
 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
+if (args.Length >= 2 && args[0] == "--date-time-format")
+{
+    string output = DateTimeFormatOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check")
+    {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Format fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
 if (args.Length >= 2 && args[0] == "--date-time-only")
 {
     string output = DateTimeOnlyOracle.Generate();

@@ -92,6 +92,13 @@ test('a PersianCalendar-only consumer bundle excludes other calendars', async ()
   }
 });
 
+test('a DateTime-only consumer bundle excludes culture classes and calendar implementations', async () => {
+  const output = await bundle("import { DateTime } from '@xobin/globalization'; globalThis.value = new DateTime(1n).toString('O');");
+  for (const unused of ['CultureInfo', 'GregorianCalendar', 'PersianCalendar', 'ThaiBuddhistCalendar', 'UmAlQuraCalendar']) {
+    assert.equal(output.includes(unused), false, `${unused} remained in the DateTime bundle`);
+  }
+});
+
 test('a ThaiBuddhistCalendar-only consumer bundle excludes unrelated calendars', async () => {
   const output = await bundle(
     "import { ThaiBuddhistCalendar } from '@xobin/globalization'; globalThis.value = new ThaiBuddhistCalendar();",

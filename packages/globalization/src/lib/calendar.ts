@@ -297,6 +297,7 @@ export abstract class Calendar {
      * @param time The DateTime to read.
      */
     abstract getYear(time: DateTime): number;
+    abstract getEra(time: DateTime): number;
 
     /**
      * When overridden in a derived class, returns the month in the specified DateTime.

@@ -113,5 +113,7 @@
   "DateTimeTests.Ctor_DateOnly_TimeOnly": "date-time-only.test.mjs",
   "DateTimeTests.Ctor_DateOnly_TimeOnly_DateTimeKind": "date-time-only.test.mjs",
   "DateTimeTests.DeconstructionTest_DateOnly_TimeOnly": "date-time-only.test.mjs",
-  "DateTimeTests.DeconstructionTest_Year_Month_Day": "date-time-only.test.mjs"
+  "DateTimeTests.DeconstructionTest_Year_Month_Day": "date-time-only.test.mjs",
+  "DateTimeTests.ToString_Invoke_ReturnsExpected": "date-time-format.test.mjs",
+  "DateTimeTests.TryFormat_MatchesExpected": "date-time-format.test.mjs"
 }

@@ -30,11 +30,26 @@ the CLR numeric value 16. The primitive conversion methods throw
 `InvalidCastException` with the reference message. `toType` accepts JavaScript
 constructor tokens: `DateTime` and `Object` return the instance, `String` uses
 the DateTime formatter, `Boolean`, `Number`, and `BigInt` request Boolean,
-Double, and Int64 conversions. DateTime string formatting remains a separate
-unfinished roadmap task.
+Double, and Int64 conversions.
 
 `getObjectData(info, context)` accepts an adapter with
 `addValue(name: string, value: bigint)`. It writes `ticks` and the unsigned
 64-bit `dateData`, including Kind and the hidden ambiguous-DST bit. These are
 the fields used by the CLR serializer; this API does not produce a JSON string
 or emulate .NET's binary serializer.
+
+## DateTime formatting
+
+`toString` supports standard and custom .NET DateTime formats, and the long/short
+date/time helpers use the same formatter. `getDateTimeFormats` preserves the
+reference pattern order and duplicates. `tryFormat` accepts a `string[]` or
+`Uint16Array` character buffer, or a `Uint8Array` UTF-8 buffer, and writes the
+count to an `OutParam<number>` object (`{ result: 0 }`). Too-small buffers return
+false with a zero count.
+
+Formatting data for invariant, `en-US`, `fr-FR`, `ru-RU`, `fa-IR`, `ar-SA`, and
+`th-TH` is generated from the .NET reference, including Gregorian variants for
+`U`. `tools/dotnet10-format-locales.mjs --check` verifies the shipped profile
+data against its oracle. Refreshing the remaining locale profiles and adding
+the DateTimeFormatInfo class and remaining calendars are outstanding roadmap
+tasks; current tests do not claim formatting parity for every .NET culture.

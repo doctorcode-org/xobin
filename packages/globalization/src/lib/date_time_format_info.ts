@@ -1,6 +1,8 @@
 ﻿import { DayOfWeek } from './day_of_week';
 
 export interface DateTimeFormatInfo {
+    eraNames?: ReadonlyArray<string>;
+    allDateTimePatterns?: Readonly<Record<string, ReadonlyArray<string>>>;
     abbreviatedDayNames: ReadonlyArray<string>;
     abbreviatedMonthGenitiveNames: ReadonlyArray<string>;
     abbreviatedMonthNames: ReadonlyArray<string>;

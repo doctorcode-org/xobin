@@ -26,6 +26,7 @@ import { DayOfWeek } from './day_of_week';
 import { DateTimeKind } from './date_time_kind';
 import { DateOnly } from './date_only';
 import { TimeOnly } from './time_only';
+import { DateTimeFormat } from './date_time_format';
 import { localTimeOffset } from './local_time_zone';
 import {
     ArgumentOutOfRangeException,
@@ -40,7 +41,8 @@ import {
     IComparable,
     IEquatable,
     InvalidCastException,
-    TypeCode
+    TypeCode,
+    OutParam
 } from '@xobin/core';
 
 
@@ -862,21 +864,53 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * Converts the value of the current DateTime object to its equivalent string representation using the specified format and the formatting conventions of the current culture.
      * @param format A standard or custom date and time format string.
      */
-    toString(format: string): string;
+    toString(format: string | null): string;
     /**
      * Converts the value of the current DateTime object to its equivalent string representation using the specified culture-specific format information.
      * @param provider An object that supplies culture-specific formatting information.
      */
-    toString(provider: IFormatProvider): string;
+    toString(provider: IFormatProvider | null): string;
     /**
      * Converts the value of the current DateTime object to its equivalent string representation using the specified format and culture-specific format information.
      * @param format A standard or custom date and time format string.
      * @param provider An object that supplies culture-specific formatting information.
      */
-    toString(format: string, provider: IFormatProvider): string;
-    toString(/*format?: string | IFormatProvider, provider?: IFormatProvider*/): string {
-        //return `${format}_${provider}`;
-        return "";
+    toString(format: string | null, provider: IFormatProvider | null): string;
+    toString(format?: string | IFormatProvider | null, provider?: IFormatProvider | null): string {
+        return typeof format === 'object' && format !== null
+            ? DateTimeFormat.format(this, null, format) : DateTimeFormat.format(this, format, provider);
+    }
+
+    toLongDateString(): string { return this.toString('D'); }
+    toLongTimeString(): string { return this.toString('T'); }
+    toShortDateString(): string { return this.toString('d'); }
+    toShortTimeString(): string { return this.toString('t'); }
+
+    getDateTimeFormats(): string[];
+    getDateTimeFormats(provider: IFormatProvider | null): string[];
+    getDateTimeFormats(format: string, provider?: IFormatProvider | null): string[];
+    getDateTimeFormats(format?: string | IFormatProvider | null, provider?: IFormatProvider | null): string[] {
+        return typeof format === 'object' && format !== null
+            ? DateTimeFormat.getAllFormats(this, null, format) : DateTimeFormat.getAllFormats(this, format, provider);
+    }
+
+    /** Formats into a character buffer (UTF-16) or byte buffer (UTF-8). */
+    tryFormat(destination: string[] | Uint16Array | Uint8Array, charsWritten: OutParam<number>, format?: string | null, provider?: IFormatProvider | null): boolean {
+        const text = DateTimeFormat.format(this, format, provider);
+        if (destination instanceof Uint8Array) {
+            const bytes = new TextEncoder().encode(text);
+            if (bytes.length > destination.length) { charsWritten.result = 0; return false; }
+            destination.set(bytes);
+            charsWritten.result = bytes.length;
+        } else {
+            if (text.length > destination.length) { charsWritten.result = 0; return false; }
+            for (let i = 0; i < text.length; i++) {
+                if (destination instanceof Uint16Array) destination[i] = text.charCodeAt(i);
+                else destination[i] = text[i]!;
+            }
+            charsWritten.result = text.length;
+        }
+        return true;
     }
 
     /**
@@ -1263,4 +1297,9 @@ function preserveLocalKind(source: DateTime, ticks: bigint): DateTime {
 
 function invalidDateTimeCast(type: string): never {
     throw new InvalidCastException(`Invalid cast from 'DateTime' to '${type}'.`);
+}
+
+/** Internal formatter access preserves the ambiguous local DST flag. */
+export function getDateTimeOffset(value: DateTime): bigint {
+    return localTimeOffset(value.ticks, false, ambiguousLocalDaylight.has(value), value.kind.value === DateTimeKind.local.value).ticks;
 }

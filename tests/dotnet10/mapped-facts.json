@@ -352,5 +352,10 @@
   "DateTimeTests.ToDateTime_Invoke_ReturnsExpected": "date-time-conversion.test.mjs",
   "DateTimeTests.ToType_DateTime_ReturnsExpected": "date-time-conversion.test.mjs",
   "DateTimeTests.GetObjectData_Invoke_ReturnsExpected": "date-time-conversion.test.mjs",
-  "DateTimeTests.GetObjectData_NullInfo_ThrowsArgumentNullException": "date-time-conversion.test.mjs"
+  "DateTimeTests.GetObjectData_NullInfo_ThrowsArgumentNullException": "date-time-conversion.test.mjs",
+  "DateTimeTests.ToLongDateString_Invoke_ReturnsExpected": "date-time-format.test.mjs",
+  "DateTimeTests.ToShortDateString_Invoke_ReturnsExpected": "date-time-format.test.mjs",
+  "DateTimeTests.ToLongTimeString_Invoke_ReturnsExpected": "date-time-format.test.mjs",
+  "DateTimeTests.ToShortTimeString_Invoke_ReturnsExpected": "date-time-format.test.mjs",
+  "DateTimeTests.GetDateTimeFormats_FormatSpecifier_InvalidFormat": "date-time-format.test.mjs"
 }

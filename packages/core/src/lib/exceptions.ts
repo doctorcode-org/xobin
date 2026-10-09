@@ -28,6 +28,11 @@ export class InvalidCastException extends Exception {
     }
 }
 
+/** The exception thrown when a format string or input has an invalid form. */
+export class FormatException extends Exception {
+    constructor(message = 'One of the identified items was in an invalid format.') { super(message); }
+}
+
 /** 
  * The exception that is thrown when a requested method or operation is not implemented. 
  */

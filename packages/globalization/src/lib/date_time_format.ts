@@ -1,348 +1,208 @@
-﻿import { DateTimeFormatInfo } from './date_time_format_info';
-import { DateTime } from './date_time';
-import { PlainObject } from '@xobin/core';
-import { CultureInfo } from './culture_info';
+import { FormatException, IFormatProvider } from '@xobin/core';
+import type { CultureInfo } from './culture_info';
+import { DateTime, getDateTimeOffset } from './date_time';
+import { DateTimeFormatInfo } from './date_time_format_info';
+import { getCurrentFormatContext, invariantDateTimeFormat, gregorianFormatCalendar, FormatCalendar, FormatContext } from './date_time_format_context';
+import { TicksPerSecond, TicksPerMinute } from './var';
 
-/*
-Customized format patterns:
-P.S. Format in the table below is the internal number format used to display the pattern.
+type FormatInfo = DateTimeFormatInfo & { calendar?: FormatCalendar; eraNames?: readonly string[] };
 
-Patterns   Format      Description                           Example
-=========  ==========  ===================================== ========
-"h"         "0"         hour (12-hour clock)w/o leading zero  3
-"hh"        "00"        hour (12-hour clock)with leading zero 03
-"hh*"       "00"        hour (12-hour clock)with leading zero 03
-
-"H"         "0"         hour (24-hour clock)w/o leading zero  8
-"HH"        "00"        hour (24-hour clock)with leading zero 08
-"HH*"       "00"        hour (24-hour clock)                  08
-
-"m"         "0"         minute w/o leading zero
-"mm"        "00"        minute with leading zero
-"mm*"       "00"        minute with leading zero
-
-"s"         "0"         second w/o leading zero
-"ss"        "00"        second with leading zero
-"ss*"       "00"        second with leading zero
-
-"f"         "0"         second fraction (1 digit)
-"ff"        "00"        second fraction (2 digit)
-"fff"       "000"       second fraction (3 digit)
-"ffff"      "0000"      second fraction (4 digit)
-"fffff"     "00000"         second fraction (5 digit)
-"ffffff"    "000000"    second fraction (6 digit)
-"fffffff"   "0000000"   second fraction (7 digit)
-
-"F"         "0"         second fraction (up to 1 digit)
-"FF"        "00"        second fraction (up to 2 digit)
-"FFF"       "000"       second fraction (up to 3 digit)
-"FFFF"      "0000"      second fraction (up to 4 digit)
-"FFFFF"     "00000"     second fraction (up to 5 digit)
-"FFFFFF"    "000000"    second fraction (up to 6 digit)
-"FFFFFFF"   "0000000"   second fraction (up to 7 digit)
-
-"t"                     first character of AM/PM designator  A
-"tt"                    AM/PM designator                     AM
-"tt*"                   AM/PM designator                     PM
-
-"d"         "0"         day w/o leading zero                  1
-"dd"        "00"        day with leading zero                 01
-"ddd"                   short weekday name (abbreviation)     Mon
-"dddd"                  full weekday name                     Monday
-"dddd*"                 full weekday name                     Monday
-
-
-"M"         "0"         month w/o leading zero                2
-"MM"        "00"        month with leading zero               02
-"MMM"                   short month name (abbreviation)       Feb
-"MMMM"                  full month name                       Febuary
-"MMMM*"                 full month name                       Febuary
-
-"y"         "0"         two digit year (year % 100) w/o leading zero           0
-"yy"        "00"        two digit year (year % 100) with leading zero          00
-"yyy"       "D3"        year                                  2000
-"yyyy"      "D4"        year                                  2000
-"yyyyy"     "D5"        year                                  2000
-...
-
-"z"         "+0;-0"     timezone offset w/o leading zero      -8
-"zz"        "+00;-00"   timezone offset with leading zero     -08
-"zzz"       "+00;-00"   for hour offset, "00" for minute offset  full timezone offset   -07:30
-"zzz*"      "+00;-00"   for hour offset, "00" for minute offset   full timezone offset   -08:00
-
-"K"         -Local       "zzz", e.g. -08:00
-            -Utc         "'Z'", representing UTC
-            -Unspecified ""
-            -DateTimeOffset      "zzzzz" e.g -07:30:15
-
-"g*"                the current era name                  A.D.
-
-":"                 time separator                        : -- DEPRECATED - Insert separator directly into pattern (eg: "H.mm.ss")
-"/"                 date separator                        /-- DEPRECATED - Insert separator directly into pattern (eg: "M-dd-yyyy")
-"'"                 quoted string                         'ABC' will insert ABC into the formatted string.
-'"'                 quoted string                         "ABC" will insert ABC into the formatted string.
-"%"                 used to quote a single pattern characters      E.g.The format character "%y" is to print two digit year.
-"\"                 escaped character                     E.g. '\d' insert the character 'd' into the format string.
-other characters    insert the character into the format string.
-
-Pre-defined format characters:
-(U) to indicate Universal time is used.
-(G) to indicate Gregorian calendar is used.
-
-Format              Description                             Real format                             Example
-=========           =================================       ======================                  =======================
-"d"                 short date                              culture-specific                        10/31/1999
-"D"                 long data                               culture-specific                        Sunday, October 31, 1999
-"f"                 full date (long date + short time)      culture-specific                        Sunday, October 31, 1999 2:00 AM
-"F"                 full date (long date + long time)       culture-specific                        Sunday, October 31, 1999 2:00:00 AM
-"g"                 general date (short date + short time)  culture-specific                        10/31/1999 2:00 AM
-"G"                 general date (short date + long time)   culture-specific                        10/31/1999 2:00:00 AM
-"m"/"M"             Month/Day date                          culture-specific                        October 31
-(G)     "o"/"O"     Round Trip XML                          "yyyy-MM-ddTHH:mm:ss.fffffffK"          1999-10-31 02:00:00.0000000Z
-(G)     "r"/"R"     RFC 1123 date,                          "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'"   Sun, 31 Oct 1999 10:00:00 GMT
-(G)     "s"         Sortable format, based on ISO 8601.     "yyyy-MM-dd'T'HH:mm:ss"                 1999-10-31T02:00:00
-                                                            ('T' for local time)
-"t"                 short time                              culture-specific                        2:00 AM
-"T"                 long time                               culture-specific                        2:00:00 AM
-(G)     "u"         Universal time with sortable format,    "yyyy'-'MM'-'dd HH':'mm':'ss'Z'"        1999-10-31 10:00:00Z
-                    based on ISO 8601.
-(U)     "U"         Universal time with full                culture-specific                        Sunday, October 31, 1999 10:00:00 AM
-                    (long date + long time) format
-"y"/"Y"             Year/Month day                          culture-specific                        October, 1999
-
-*/
-
-//------------------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------------------
-
-const allStandardFormats: string[] = [
-    'd', 'D', 'f', 'F', 'g', 'G',
-    'm', 'M', 'o', 'O', 'r', 'R',
-    's', 't', 'T', 'u', 'U', 'y', 'Y',
-];
-
-const RoundtripDateTimeUnfixed = "yyyy'-'MM'-'ddTHH':'mm':'ss zzz";
-
-const DEFAULT_ALL_DATETIMES_SIZE = 132;
-
-const InvariantFormatInfo = CultureInfo.invariantCulture.dateTimeFormat;
-const InvariantAbbreviatedMonthNames = InvariantFormatInfo.abbreviatedMonthNames;
-const InvariantAbbreviatedDayNames = InvariantFormatInfo.abbreviatedDayNames;
-const Gmt = "GMT";
-
-const fixedNumberFormats = [
-    "0",
-    "00",
-    "000",
-    "0000",
-    "00000",
-    "000000",
-    "0000000",
-];
-
-function FormatDigits(outputBuffer:string) {
-
-}
-
-//------------------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------------------
-
-const RoundtripFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK";
-//const RoundtripDateTimeUnfixed = "yyyy'-'MM'-'ddTHH':'mm':'ss zzz";
-const DATE_FORMAT_RX = /(y{5,}|yyyy|yyy|yy|y|M{4,}|MMM|MM|M|d{4,}|ddd|dd|d|h{2,}|h|H{2,}|H|m{2,}|m|s{2,}|s|fffffff|ffffff|fffff|ffff|fff|ff|f|FFFFFFF|FFFFFF|FFFFF|FFFF|FFF|FF|F|t{2,}|t|z{3,}|zz|z|K|g|:|\/)/;
-
+/** Formats DateTime values using .NET standard and custom format tokens. */
 export class DateTimeFormat {
+    formatInput(date: DateTime, format: string, culture?: CultureInfo): string {
+        return DateTimeFormat.format(date, format, culture);
+    }
 
-    /**
-     * 
-     * @param date
-     * @param format
-     * @param culture
-     */
-    formatInput(date: DateTime, format: string, culture: CultureInfo = CultureInfo.currentCulture): string {
-        if (format.length == 1) {
-            format = getRealFormat(format, culture.dateTimeFormat);
-        }
-
-        let year: number;
-        let month: number;
-        let day: number;
-        //let dayOfWeek: number;
-        let hour: number;
-        let minute: number;
-        let second: number;
-        let millisecond: number;
-
-        const calendar = culture.calendar;
-        year = calendar.getYear(date);
-        month = calendar.getMonth(date);
-        day = calendar.getDayOfMonth(date);
-        //dayOfWeek = calendar.getDayOfWeek(this);
-        hour = calendar.getHour(date);
-        minute = calendar.getMinute(date);
-        second = calendar.getSecond(date);
-        millisecond = calendar.getMilliseconds(date);
-
-        const dateTimeFormat = CultureInfo.currentCulture.dateTimeFormat;
-
-        const data: PlainObject<any> = {};
-        data["yyyy"] = year;
-        data["yyy"] = year;
-        data["yy"] = pad((year % 100));
-        data["y"] = (year % 100);
-        //..........................................................................................
-        data["MMMM"] = dateTimeFormat.monthNames[month];
-        data["MMM"] = dateTimeFormat.abbreviatedMonthNames[month];
-        data["MM"] = pad(month);
-        data["M"] = month;
-        //..........................................................................................
-        data["dddd"] = dateTimeFormat.dayNames[date.dayOfWeek];
-        data["ddd"] = dateTimeFormat.shortestDayNames[date.dayOfWeek];
-        data["dd"] = pad(day);
-        data["d"] = day;
-        //..........................................................................................
-        data["hh"] = pad(hour > 12 ? hour - 12 : hour);
-        data["h"] = hour > 12 ? hour - 12 : hour;
-        //..........................................................................................
-        data["HH"] = pad(hour);
-        data["H"] = hour;
-        //..........................................................................................
-        data["mm"] = pad(minute);
-        data["m"] = minute;
-        //..........................................................................................
-        data["ss"] = pad(second);
-        data["s"] = second;
-        //..........................................................................................
-        data["fffffff"] = "";
-        data["ffffff"] = "";
-        data["fffff"] = "";
-        data["ffff"] = "";
-        data["fff"] = millisecond;
-        data["ff"] = Math.round(millisecond / 10);
-        data["f"] = Math.round(millisecond / 100);
-        //..........................................................................................
-        data["FFFFFFF"] = "";
-        data["FFFFFF"] = "";
-        data["FFFFF"] = "";
-        data["FFFF"] = "";
-        data["FFF"] = "";
-        data["FF"] = "";
-        data["F"] = "";
-        //..........................................................................................
-        data["tt"] = (hour > 12 ? dateTimeFormat.pmDesignator : dateTimeFormat.amDesignator);
-        data["t"] = (hour > 12 ? dateTimeFormat.pmDesignator : dateTimeFormat.amDesignator)[0]; // اینجا فقط یک کارکتر نیاز داریم
-        //..........................................................................................
-        data["zzz"] = "";
-        data["zz"] = "";
-        data["z"] = "";
-        //..........................................................................................
-        data["K"] = "";
-        //..........................................................................................
-        data["g"] = "";
-        //..........................................................................................
-        data[":"] = dateTimeFormat.timeSeparator;
-        data["/"] = dateTimeFormat.dateSeparator;
-        //..........................................................................................
-
-        let res = format!.split(DATE_FORMAT_RX);
-
-        let output = "";
-
-        for (var i = 0; i < res.length; i++) {
-            if (res[i]) {
-                if (data[res[i]!]) {
-                    output += data[res[i]!];
+    static format(date: DateTime, format?: string | null, provider?: IFormatProvider | null): string {
+        const candidate = provider as (IFormatProvider & Partial<FormatContext>) | null | undefined;
+        const culture = candidate?.dateTimeFormat && candidate.calendar ? candidate as FormatContext : getCurrentFormatContext();
+        const supplied = provider?.getFormat('DateTimeFormatInfo') as Partial<FormatInfo> | null | undefined;
+        let info: FormatInfo = supplied && typeof supplied.shortDatePattern === 'string' ? supplied as FormatInfo : culture.dateTimeFormat;
+        let calendar = info.calendar ?? culture.calendar;
+        format = format || (date.ticks < 864000000000n && (calendar.minSupportedDateTime?.ticks ?? 0n) > date.ticks ? 's' : 'G');
+        if (format.length === 1) {
+            switch (format) {
+                case 'o': case 'O':
+                    info = invariantDateTimeFormat;
+                    calendar = gregorianFormatCalendar;
+                    format = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK";
+                    break;
+                case 'r': case 'R': case 's': case 'u': {
+                    const standard = format;
+                    info = invariantDateTimeFormat;
+                    calendar = gregorianFormatCalendar;
+                    format = standard === 's' ? info.sortableDateTimePattern
+                        : standard === 'u' ? info.universalSortableDateTimePattern : info.rfC1123Pattern;
+                    break;
                 }
-                else {
-                    output += res[i];
-                }
+                case 'U':
+                    date = date.toUniversalTime();
+                    if (info === culture.dateTimeFormat) info = culture.gregorianDateTimeFormat ?? info;
+                    calendar = gregorianFormatCalendar;
+                    format = info.fullDateTimePattern;
+                    break;
+                case 'd': format = info.shortDatePattern; break;
+                case 'D': format = info.longDatePattern; break;
+                case 't': format = info.shortTimePattern; break;
+                case 'T': format = info.longTimePattern; break;
+                case 'f': format = info.longDatePattern + ' ' + info.shortTimePattern; break;
+                case 'F': format = info.fullDateTimePattern; break;
+                case 'g': format = info.shortDatePattern + ' ' + info.shortTimePattern; break;
+                case 'G': format = info.shortDatePattern + ' ' + info.longTimePattern; break;
+                case 'm': case 'M': format = info.monthDayPattern; break;
+                case 'y': case 'Y': format = info.yearMonthPattern; break;
+                default: throw invalidFormat();
             }
         }
-
-        return output;
+        return customized(date, format, info, calendar);
     }
 
-}
-
-function getRealFormat(format: string, dtfi: DateTimeFormatInfo): string {
-    let realFormat: string;
-
-    switch (format[0]) {
-        case 'd':       // Short Date
-            realFormat = dtfi.shortDatePattern;
-            break;
-        case 'D':       // Long Date
-            realFormat = dtfi.longDatePattern;
-            break;
-        case 'f':       // Full (long date + short time)
-            realFormat = dtfi.longDatePattern + " " + dtfi.shortTimePattern;
-            break;
-        case 'F':       // Full (long date + long time)
-            realFormat = dtfi.fullDateTimePattern;
-            break;
-        case 'g':       // General (short date + short time)
-            realFormat = dtfi.shortDatePattern + dtfi.shortTimePattern;
-            break;
-        case 'G':       // General (short date + long time)
-            realFormat = dtfi.shortDatePattern + dtfi.longTimePattern;
-            break;
-        case 'm':
-        case 'M':       // Month/Day Date
-            realFormat = dtfi.monthDayPattern;
-            break;
-        case 'o':
-        case 'O':
-            realFormat = RoundtripFormat;
-            break;
-        case 'r':
-        case 'R':       // RFC 1123 Standard
-            realFormat = dtfi.rfC1123Pattern;
-            break;
-        case 's':       // Sortable without Time Zone Info
-            realFormat = dtfi.sortableDateTimePattern;
-            break;
-        case 't':       // Short Time
-            realFormat = dtfi.shortTimePattern;
-            break;
-        case 'T':       // Long Time
-            realFormat = dtfi.longTimePattern;
-            break;
-        case 'u':       // Universal with Sortable format
-            realFormat = dtfi.universalSortableDateTimePattern;
-            break;
-        case 'U':       // Universal with Full (long date + long time) format
-            realFormat = dtfi.fullDateTimePattern;
-            break;
-        case 'y':
-        case 'Y':       // Year/Month Date
-            realFormat = dtfi.yearMonthPattern;
-            break;
-        default:
-            realFormat = format;
-            break;
+    static getAllFormats(date: DateTime, format?: string | null, provider?: IFormatProvider | null): string[] {
+        const candidate = provider as (IFormatProvider & Partial<FormatContext>) | null | undefined;
+        const culture = candidate?.dateTimeFormat && candidate.calendar ? candidate as FormatContext : getCurrentFormatContext();
+        const supplied = provider?.getFormat('DateTimeFormatInfo') as Partial<FormatInfo> | null | undefined;
+        const info: FormatInfo = supplied && typeof supplied.shortDatePattern === 'string' ? supplied as FormatInfo : culture.dateTimeFormat;
+        const calendar = info.calendar ?? culture.calendar;
+        if (format == null) return [...'dDfFgGmMoOrRstTuUyY'].flatMap(value => DateTimeFormat.getAllFormats(date, value, provider));
+        if (format.length !== 1 || !'dDfFgGmMoOrRstTuUyY'.includes(format)) throw invalidFormat();
+        if ('oOrRsu'.includes(format)) return [DateTimeFormat.format(date, format, provider)];
+        const patterns = (value: string): readonly string[] => {
+            const active = value === 'd' ? info.shortDatePattern : value === 'D' ? info.longDatePattern
+                : value === 't' ? info.shortTimePattern : value === 'T' ? info.longTimePattern
+                : 'mM'.includes(value) ? info.monthDayPattern : info.yearMonthPattern;
+            const previous = info.allDateTimePatterns?.[value] ?? [];
+            if (previous[0] === active) return previous.slice();
+            const index = previous.indexOf(active);
+            if (index < 0) return [active, ...previous];
+            const merged = previous.slice();
+            merged[index] = merged[0]!;
+            merged[0] = active;
+            return merged;
+        };
+        let selected: readonly string[];
+        if ('fFgGU'.includes(format)) {
+            const dates = patterns(format === 'g' || format === 'G' ? 'd' : 'D');
+            const times = patterns(format === 'f' || format === 'g' ? 't' : 'T');
+            selected = dates.flatMap(day => times.map(time => day + ' ' + time));
+        } else selected = patterns(format);
+        const value = format === 'U' ? date.toUniversalTime() : date;
+        return selected.map(pattern => customized(value, pattern, info, calendar));
     }
-
-    return realFormat;
 }
 
-function pad(value: number): string {
-    return (value > 9) ?
-        "" + value :
-        "0" + value;
+function customized(date: DateTime, pattern: string, info: FormatInfo, calendar: FormatCalendar): string {
+    let output = '';
+    let genitive = false;
+    let timeOnly = true;
+    for (let i = 0; i < pattern.length; i++) {
+        const c = pattern[i]!;
+        if (c === "'" || c === '"') {
+            try { i = quote(pattern, i).end; } catch { break; }
+        } else if (c === '\\') i++;
+        else if (c === 'd') {
+            let count = 1;
+            while (pattern[i + count] === c) count++;
+            if (count <= 2) genitive = true;
+            i += count - 1;
+        }
+    }
+    for (let i = 0; i < pattern.length;) {
+        const c = pattern[i]!;
+        if (c === "'" || c === '"') {
+            const quoted = quote(pattern, i);
+            output += quoted.text;
+            i = quoted.end + 1;
+            continue;
+        }
+        if (c === '\\') {
+            if (++i === pattern.length) throw invalidFormat();
+            output += pattern[i++];
+            continue;
+        }
+        if (c === '%') {
+            if (++i === pattern.length || pattern[i] === '%') throw invalidFormat();
+            const token = pattern[i++]!;
+            const formatted = customized(date, token, info, calendar);
+            if (token === 'F' && !formatted && output.endsWith('.')) output = output.slice(0, -1);
+            if ('yMd'.includes(token)) timeOnly = false;
+            output += formatted;
+            continue;
+        }
+        let count = 1;
+        if ('yMdHhmsftFzg'.includes(c)) while (pattern[i + count] === c) count++;
+        const pad = (value: number, minimum = count) => String(value).padStart(minimum, '0');
+        switch (c) {
+            case 'y': {
+                timeOnly = false;
+                const year = calendar.getYear(date);
+                output += pad(count <= 2 ? year % 100 : year);
+                break;
+            }
+            case 'M': {
+                timeOnly = false;
+                const month = calendar.getMonth(date);
+                output += count <= 2 ? pad(month)
+                    : (count === 3 ? genitive ? info.abbreviatedMonthGenitiveNames : info.abbreviatedMonthNames
+                        : genitive ? info.monthGenitiveNames : info.monthNames)[month - 1];
+                break;
+            }
+            case 'd':
+                timeOnly = false;
+                output += count <= 2 ? pad(calendar.getDayOfMonth(date))
+                    : (count === 3 ? info.abbreviatedDayNames : info.dayNames)[date.dayOfWeek];
+                break;
+            case 'H': output += pad(date.hour, Math.min(count, 2)); break;
+            case 'h': output += pad(date.hour % 12 || 12, Math.min(count, 2)); break;
+            case 'm': output += pad(date.minute, Math.min(count, 2)); break;
+            case 's': output += pad(date.second, Math.min(count, 2)); break;
+            case 'f': case 'F': {
+                if (count > 7) throw invalidFormat();
+                let fraction = (date.ticks % TicksPerSecond).toString().padStart(7, '0').slice(0, count);
+                if (c === 'F') fraction = fraction.replace(/0+$/, '');
+                if (!fraction && output.endsWith('.')) output = output.slice(0, -1);
+                output += fraction;
+                break;
+            }
+            case 't': {
+                const designator = date.hour < 12 ? info.amDesignator : info.pmDesignator;
+                output += count === 1 ? designator.slice(0, 1) : designator;
+                break;
+            }
+            case 'z': {
+                const offset = timeOnly && date.ticks < 864000000000n ? getDateTimeOffset(DateTime.now)
+                    : date.kind.value === 1 ? 0n : getDateTimeOffset(date);
+                output += offsetText(offset, count);
+                break;
+            }
+            case 'K': output += date.kind.value === 1 ? 'Z' : date.kind.value === 2 ? offsetText(getDateTimeOffset(date), 3) : ''; break;
+            case 'g': output += info.eraNames?.[calendar.getEra(date) - 1] ?? 'A.D.'; break;
+            case ':': output += info.timeSeparator; break;
+            case '/': output += info.dateSeparator; break;
+            default: output += c;
+        }
+        i += count;
+    }
+    return output;
 }
 
-/*
- "yyyy/MMMMM/dd Ali".replace(DATE_FORMAT_RX, function(i){
-console.log(i)
-switch(i){
-    case 'yyyy':
-    return 1986;
-   case 'MMMMM':
-    return 'Feb';
- case 'dd':
-    return 23;
-    default:
-return i;
+function offsetText(offset: bigint, count: number): string {
+    const minutes = Math.abs(Number(offset / TicksPerMinute));
+    const hours = Math.floor(minutes / 60).toString();
+    return (offset < 0n ? '-' : '+') + (count === 1 ? hours : hours.padStart(2, '0'))
+        + (count >= 3 ? ':' + (minutes % 60).toString().padStart(2, '0') : '');
 }
-})
- */
+
+function quote(pattern: string, start: number): { text: string; end: number } {
+    let text = '';
+    for (let i = start + 1; i < pattern.length; i++) {
+        const c = pattern[i]!;
+        if (c === pattern[start]) return { text, end: i };
+        if (c === '\\') {
+            if (++i === pattern.length) throw invalidFormat();
+            text += pattern[i];
+        } else text += c;
+    }
+    throw new FormatException(`Cannot find a matching quote character for the character '${pattern[start]}'.`);
+}
+
+function invalidFormat(): FormatException { return new FormatException('Input string was not in a correct format.'); }

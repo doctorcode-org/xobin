@@ -15,5 +15,6 @@ export interface CultureData {
     isNeutralCulture: boolean;
     numberFormat: NumberFormatInfo;
     dateTimeFormat: DateTimeFormatInfo;
+    gregorianDateTimeFormat?: DateTimeFormatInfo;
     calendar: Calendar;
 }
