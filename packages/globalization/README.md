@@ -92,5 +92,34 @@ Formatting data for invariant, `en-US`, `fr-FR`, `ru-RU`, `fa-IR`, `ar-SA`, and
 `th-TH` is generated from the .NET reference, including Gregorian variants for
 `U`. `tools/dotnet10-format-locales.mjs --check` verifies the shipped profile
 data against its oracle. Refreshing the remaining locale profiles and adding
-the DateTimeFormatInfo class and remaining calendars are outstanding roadmap
-tasks; current tests do not claim formatting parity for every .NET culture.
+the remaining calendars are outstanding roadmap tasks; current tests do not
+claim formatting parity for every .NET culture.
+
+## DateTimeFormatInfo
+
+`DateTimeFormatInfo` is a class. Its constructor creates writable invariant
+formatting information. `invariantInfo` is a shared read-only instance;
+`currentInfo` follows `CultureInfo.currentCulture`. `clone()` produces a writable
+copy with an independent calendar. `readOnly(info)` returns a read-only copy,
+including its calendar, or the same instance when it is already read-only.
+
+```typescript
+import { DateTimeFormatInfo } from '@xobin/globalization/date-time-format-info';
+
+const info = DateTimeFormatInfo.invariantInfo.clone();
+info.shortDatePattern = 'yyyy/MM/dd';
+const readOnlyInfo = DateTimeFormatInfo.readOnly(info);
+```
+
+`getInstance(provider)` accepts a format-info instance or queries
+`provider.getFormat(DateTimeFormatInfo)`, using the constructor as the type token.
+A null provider or an unsupported result falls back to `currentInfo`.
+`CultureInfo.loadCultureInfo(name, data)` retains its synchronous registration
+signature and constructs a format-info instance from the explicitly loaded data.
+
+Locale era names and pattern collections are internal data, not additional
+properties of this class. The RFC property is `rfc1123Pattern`. Detailed property
+validation, calendar changes, era/name lookup methods and pattern-management
+methods remain separate roadmap tasks. The remaining legacy locale profiles do
+not yet carry reference-generated calendar-week rules; their default is FirstDay
+until those profiles are refreshed.

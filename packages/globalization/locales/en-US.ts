@@ -92,6 +92,7 @@ export const cultureData: CultureData = {
         "Saturday"
       ],
       "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
       "fullDateTimePattern": "dddd, MMMM d, yyyy h:mm:ss tt",
       "longDatePattern": "dddd, MMMM d, yyyy",
       "longTimePattern": "h:mm:ss tt",

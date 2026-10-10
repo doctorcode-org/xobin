@@ -357,5 +357,9 @@
   "DateTimeTests.ToShortDateString_Invoke_ReturnsExpected": "date-time-format.test.mjs",
   "DateTimeTests.ToLongTimeString_Invoke_ReturnsExpected": "date-time-format.test.mjs",
   "DateTimeTests.ToShortTimeString_Invoke_ReturnsExpected": "date-time-format.test.mjs",
-  "DateTimeTests.GetDateTimeFormats_FormatSpecifier_InvalidFormat": "date-time-format.test.mjs"
+  "DateTimeTests.GetDateTimeFormats_FormatSpecifier_InvalidFormat": "date-time-format.test.mjs",
+  "DateTimeFormatInfoGetFormat.GetFormat_Invoke_ReturnsExpected": "date-time-format-info.test.mjs",
+  "DateTimeFormatInfoGetFormat.GetFormat_UnsupportedFormatType_ReturnsNull": "date-time-format-info.test.mjs",
+  "DateTimeFormatInfoGetInstance.GetInstance_ExpectedCurrent_ReturnsExpected": "date-time-format-info.test.mjs",
+  "DateTimeFormatInfoReadOnly.ReadOnly_NullDtfi_ThrowsArgumentNullException": "date-time-format-info.test.mjs"
 }

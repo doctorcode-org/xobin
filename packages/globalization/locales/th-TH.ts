@@ -92,6 +92,7 @@ export const cultureData: CultureData & { gregorianDateTimeFormat?: CultureData[
         "วันเสาร์"
       ],
       "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
       "fullDateTimePattern": "ddddที่ d MMMM g yyyy HH:mm:ss",
       "longDatePattern": "ddddที่ d MMMM g yyyy",
       "longTimePattern": "HH:mm:ss",
@@ -229,6 +230,7 @@ export const cultureData: CultureData & { gregorianDateTimeFormat?: CultureData[
         "วันเสาร์"
       ],
       "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
       "fullDateTimePattern": "ddddที่ d MMMM g yyyy HH:mm:ss",
       "longDatePattern": "ddddที่ d MMMM g yyyy",
       "longTimePattern": "HH:mm:ss",

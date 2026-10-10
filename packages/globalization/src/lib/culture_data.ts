@@ -1,5 +1,5 @@
 ﻿import { NumberFormatInfo } from './number_format_info';
-import { DateTimeFormatInfo } from './date_time_format_info';
+import type { DateTimeFormatData } from './date_time_format_data';
 import { Calendar } from './calendar';
 
 export interface CultureData {
@@ -14,6 +14,6 @@ export interface CultureData {
     isRightToLeft: boolean;
     isNeutralCulture: boolean;
     numberFormat: NumberFormatInfo;
-    dateTimeFormat: DateTimeFormatInfo;
+    dateTimeFormat: DateTimeFormatData;
     calendar: Calendar;
 }

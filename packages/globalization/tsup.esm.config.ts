@@ -6,6 +6,7 @@ export default defineConfig({
     time_span: 'src/lib/time_span.ts',
     date_time: 'src/lib/date_time.ts',
     date_time_styles: 'src/lib/date_time_styles.ts',
+    date_time_format_info: 'src/date_time_format_info.ts',
     'internal/date_time_styles_validation': 'src/lib/date_time_styles_validation.ts',
     date_only: 'src/lib/date_only.ts',
     time_only: 'src/lib/time_only.ts',

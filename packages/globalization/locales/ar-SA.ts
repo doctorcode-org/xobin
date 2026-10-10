@@ -92,6 +92,7 @@ export const cultureData: CultureData & { gregorianDateTimeFormat?: CultureData[
         "السبت"
       ],
       "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
       "fullDateTimePattern": "dddd، d MMMM yyyy g h:mm:ss tt",
       "longDatePattern": "dddd، d MMMM yyyy g",
       "longTimePattern": "h:mm:ss tt",
@@ -229,6 +230,7 @@ export const cultureData: CultureData & { gregorianDateTimeFormat?: CultureData[
         "السبت"
       ],
       "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
       "fullDateTimePattern": "dddd، d MMMM yyyy g h:mm:ss tt",
       "longDatePattern": "dddd، d MMMM yyyy g",
       "longTimePattern": "h:mm:ss tt",

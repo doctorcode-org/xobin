@@ -10,12 +10,12 @@
   "summary": {
     "types": 29,
     "members": 807,
-    "present": 365,
-    "incomplete": 39,
-    "missing": 403,
+    "present": 396,
+    "incomplete": 18,
+    "missing": 393,
     "missingTypes": 12,
     "missingRootExports": 12,
-    "missingSubpathExports": 18
+    "missingSubpathExports": 17
   },
   "types": [
     {
@@ -7968,25 +7968,26 @@
       "local": {
         "file": "src/lib/date_time_format_info.ts",
         "symbol": "DateTimeFormatInfo",
-        "declarationKind": "interface",
+        "declarationKind": "class",
         "typeShape": {
-          "status": "incomplete",
-          "reason": "the .NET class exists only as a TypeScript interface"
+          "status": "present",
+          "reason": "a matching local declaration exists"
         },
         "rootExported": true,
         "expectedSubpath": "./date-time-format-info",
-        "subpathExported": false
+        "subpathExported": true
       },
       "counts": {
-        "present": 0,
-        "incomplete": 21,
-        "missing": 23
+        "present": 31,
+        "incomplete": 0,
+        "missing": 13
       },
       "extraLocalMembers": [
-        "allDateTimePatterns",
+        "_invariantInfo",
         "amDesignator",
-        "eraNames",
-        "pmDesignator"
+        "pmDesignator",
+        "state",
+        "verifyWritable"
       ],
       "members": [
         {
@@ -8001,9 +8002,9 @@
             "parameters": []
           },
           "jsMember": "constructor",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8019,9 +8020,9 @@
             "parameters": []
           },
           "jsMember": "clone",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8237,9 +8238,9 @@
             ]
           },
           "jsMember": "getFormat",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8262,9 +8263,9 @@
             ]
           },
           "jsMember": "getInstance",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8337,9 +8338,9 @@
             ]
           },
           "jsMember": "readOnly",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8404,9 +8405,9 @@
             "parameters": []
           },
           "jsMember": "abbreviatedDayNames",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8422,9 +8423,9 @@
             "parameters": []
           },
           "jsMember": "abbreviatedMonthGenitiveNames",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8440,9 +8441,9 @@
             "parameters": []
           },
           "jsMember": "abbreviatedMonthNames",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-05",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8458,9 +8459,9 @@
             "parameters": []
           },
           "jsMember": "calendar",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-03",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8476,9 +8477,9 @@
             "parameters": []
           },
           "jsMember": "calendarWeekRule",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-03",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8494,9 +8495,9 @@
             "parameters": []
           },
           "jsMember": "currentInfo",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8512,9 +8513,9 @@
             "parameters": []
           },
           "jsMember": "dateSeparator",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-07",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8530,9 +8531,9 @@
             "parameters": []
           },
           "jsMember": "dayNames",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8548,9 +8549,9 @@
             "parameters": []
           },
           "jsMember": "firstDayOfWeek",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-03",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8566,9 +8567,9 @@
             "parameters": []
           },
           "jsMember": "fullDateTimePattern",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-07",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8584,9 +8585,9 @@
             "parameters": []
           },
           "jsMember": "invariantInfo",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8602,9 +8603,9 @@
             "parameters": []
           },
           "jsMember": "isReadOnly",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8620,9 +8621,9 @@
             "parameters": []
           },
           "jsMember": "longDatePattern",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-07",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8638,9 +8639,9 @@
             "parameters": []
           },
           "jsMember": "longTimePattern",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-07",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8656,9 +8657,9 @@
             "parameters": []
           },
           "jsMember": "monthDayPattern",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-07",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8674,9 +8675,9 @@
             "parameters": []
           },
           "jsMember": "monthGenitiveNames",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8692,9 +8693,9 @@
             "parameters": []
           },
           "jsMember": "monthNames",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-05",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8710,9 +8711,9 @@
             "parameters": []
           },
           "jsMember": "nativeCalendarName",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8745,10 +8746,10 @@
             "signature": "string RFC1123Pattern { get;  }",
             "parameters": []
           },
-          "jsMember": "rfC1123Pattern",
-          "status": "incomplete",
+          "jsMember": "rfc1123Pattern",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-07",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8764,9 +8765,9 @@
             "parameters": []
           },
           "jsMember": "shortDatePattern",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-07",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8782,9 +8783,9 @@
             "parameters": []
           },
           "jsMember": "shortTimePattern",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-07",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8800,9 +8801,9 @@
             "parameters": []
           },
           "jsMember": "shortestDayNames",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8818,9 +8819,9 @@
             "parameters": []
           },
           "jsMember": "sortableDateTimePattern",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-07",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8836,9 +8837,9 @@
             "parameters": []
           },
           "jsMember": "timeSeparator",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-07",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8854,9 +8855,9 @@
             "parameters": []
           },
           "jsMember": "universalSortableDateTimePattern",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-07",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8872,9 +8873,9 @@
             "parameters": []
           },
           "jsMember": "yearMonthPattern",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "shape exists only as an interface; .NET behavior is absent",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-07",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         }

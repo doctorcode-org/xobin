@@ -287,7 +287,8 @@ internal static class DateTimeFormatOracle
         object Info(DateTimeFormatInfo f) => new {
                 abbreviatedDayNames = f.AbbreviatedDayNames, abbreviatedMonthGenitiveNames = f.AbbreviatedMonthGenitiveNames,
                 abbreviatedMonthNames = f.AbbreviatedMonthNames, amDesignator = f.AMDesignator, dateSeparator = f.DateSeparator,
-                dayNames = f.DayNames, firstDayOfWeek = (int)f.FirstDayOfWeek, fullDateTimePattern = f.FullDateTimePattern,
+                dayNames = f.DayNames, firstDayOfWeek = (int)f.FirstDayOfWeek, calendarWeekRule = (int)f.CalendarWeekRule,
+                fullDateTimePattern = f.FullDateTimePattern,
                 longDatePattern = f.LongDatePattern, longTimePattern = f.LongTimePattern, monthDayPattern = f.MonthDayPattern,
                 monthGenitiveNames = f.MonthGenitiveNames, monthNames = f.MonthNames, nativeCalendarName = f.NativeCalendarName,
                 pmDesignator = f.PMDesignator, rfC1123Pattern = f.RFC1123Pattern, shortDatePattern = f.ShortDatePattern,

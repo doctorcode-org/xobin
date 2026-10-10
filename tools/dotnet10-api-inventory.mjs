@@ -88,7 +88,7 @@ const memberAliases = new Map([
   ['System.DateTimeKind::Unspecified', 'unspecified'],
   ['System.DateTimeKind::Utc', 'utc'],
   ['System.DateTimeKind::Local', 'local'],
-  ['System.Globalization.DateTimeFormatInfo::RFC1123Pattern', 'rfC1123Pattern'],
+  ['System.Globalization.DateTimeFormatInfo::RFC1123Pattern', 'rfc1123Pattern'],
 ]);
 
 function lowerFirst(value) {

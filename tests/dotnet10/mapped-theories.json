@@ -115,5 +115,8 @@
   "DateTimeTests.DeconstructionTest_DateOnly_TimeOnly": "date-time-only.test.mjs",
   "DateTimeTests.DeconstructionTest_Year_Month_Day": "date-time-only.test.mjs",
   "DateTimeTests.ToString_Invoke_ReturnsExpected": "date-time-format.test.mjs",
-  "DateTimeTests.TryFormat_MatchesExpected": "date-time-format.test.mjs"
+  "DateTimeTests.TryFormat_MatchesExpected": "date-time-format.test.mjs",
+  "DateTimeFormatInfoClone.Clone_Invoke_ReturnsExpected": "date-time-format-info.test.mjs",
+  "DateTimeFormatInfoReadOnly.ReadOnly_Invoke_ReturnsExpected": "date-time-format-info.test.mjs",
+  "DateTimeFormatInfoGetInstance.GetInstance_ValidNonNullProvider_ReturnsExpected": "date-time-format-info.test.mjs"
 }

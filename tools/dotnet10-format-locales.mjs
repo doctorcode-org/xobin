@@ -12,9 +12,9 @@ for (const [name, data] of Object.entries(fixture.cultures)) {
   if (!name) {
     const file = path.join(root, 'packages/globalization/src/lib/date_time_format_context.ts');
     const source = readFileSync(file, 'utf8').replaceAll('\r\n', '\n');
-    const pattern = /export const invariantDateTimeFormat: DateTimeFormatInfo = \{[\s\S]*?\n\s*\};(?=\s*\n\s*export const gregorianFormatCalendar)/;
+    const pattern = /export const invariantDateTimeFormat: DateTimeFormatData = \{[\s\S]*?\n\s*\};(?=\s*\n\s*export const gregorianFormatCalendar)/;
     if (!pattern.test(source)) throw new Error('Invariant format block not found.');
-    const output = source.replace(pattern, `export const invariantDateTimeFormat: DateTimeFormatInfo = ${JSON.stringify(data.formatInfo, null, 2)};`);
+    const output = source.replace(pattern, `export const invariantDateTimeFormat: DateTimeFormatData = ${JSON.stringify(data.formatInfo, null, 2)};`);
     if (mode === '--write') writeFileSync(file, output);
     else if (source !== output) throw new Error('Invariant format data differs from the reference.');
     continue;

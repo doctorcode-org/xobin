@@ -1,5 +1,6 @@
 import type { DateTime } from './date_time';
 import type { DateTimeFormatInfo } from './date_time_format_info';
+import type { DateTimeFormatData } from './date_time_format_data';
 
 export interface FormatCalendar {
     getYear(date: DateTime): number;
@@ -9,19 +10,19 @@ export interface FormatCalendar {
     readonly minSupportedDateTime?: { readonly ticks: bigint };
 }
 export interface FormatContext {
-    readonly dateTimeFormat: DateTimeFormatInfo;
+    readonly dateTimeFormat: DateTimeFormatInfo | DateTimeFormatData;
     readonly calendar: FormatCalendar;
 }
 
 // Gregorian variants belong to the locale data, not the public CultureInfo API.
-const gregorianFormatInfo = new WeakMap<FormatContext, DateTimeFormatInfo>();
+const gregorianFormatInfo = new WeakMap<FormatContext, DateTimeFormatData>();
 
 /**
  * Registers the Gregorian format data used internally by the universal full format.
  * @param context The culture whose Gregorian format data is being registered.
  * @param info The format data extracted with a Gregorian calendar in the reference runtime.
  */
-export function setGregorianFormatInfo(context: FormatContext, info: DateTimeFormatInfo): void {
+export function setGregorianFormatInfo(context: FormatContext, info: DateTimeFormatData): void {
     gregorianFormatInfo.set(context, info);
 }
 
@@ -29,11 +30,11 @@ export function setGregorianFormatInfo(context: FormatContext, info: DateTimeFor
  * Gets a culture's internal Gregorian format data, falling back to its current format data.
  * @param context The culture whose Gregorian format data is being retrieved.
  */
-export function getGregorianFormatInfo(context: FormatContext): DateTimeFormatInfo {
+export function getGregorianFormatInfo(context: FormatContext): DateTimeFormatInfo | DateTimeFormatData {
     return gregorianFormatInfo.get(context) ?? context.dateTimeFormat;
 }
 
-export const invariantDateTimeFormat: DateTimeFormatInfo = {
+export const invariantDateTimeFormat: DateTimeFormatData = {
   "abbreviatedDayNames": [
     "Sun",
     "Mon",
@@ -85,6 +86,7 @@ export const invariantDateTimeFormat: DateTimeFormatInfo = {
     "Saturday"
   ],
   "firstDayOfWeek": 0,
+  "calendarWeekRule": 0,
   "fullDateTimePattern": "dddd, dd MMMM yyyy HH:mm:ss",
   "longDatePattern": "dddd, dd MMMM yyyy",
   "longTimePattern": "HH:mm:ss",

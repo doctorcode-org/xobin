@@ -1,8 +1,8 @@
 import { invariantDateTimeFormat, setCurrentFormatContext, setGregorianFormatInfo } from './date_time_format_context';
 import { Calendar } from './calendar';
-import { DateTimeFormatInfo } from './date_time_format_info';
+import { DateTimeFormatInfo, createDateTimeFormatInfo } from './date_time_format_info';
 import { NumberFormatInfo } from './number_format_info';
-import { getOrCreateValue, PlainObject, setValue, ArgumentNullException, getValue } from '@xobin/core';
+import { getOrCreateValue, PlainObject, setValue, ArgumentNullException, InvalidOperationException, getValue } from '@xobin/core';
 import { CultureData } from './culture_data';
 import { CultureNotFoundException } from './exceptions';
 import { GregorianCalendar } from './gregorian_calendar';
@@ -52,6 +52,7 @@ const CULTURES_DATA: PlainObject<CultureData> = {
         calendar: new GregorianCalendar()
     }
 };
+const READ_ONLY_CULTURES = new WeakSet<CultureInfo>();
 
 /**
  * Represents a type of standard culture name.
@@ -65,10 +66,10 @@ export type CultureName = (keyof CultureCollection);
 export class CultureInfo {
     /**
      * Gets an object that defines the format of the specified type.
-     * @param formatType The name of the format information type to retrieve.
+     * @param formatType The type of formatting information to retrieve.
      */
-    getFormat(formatType: string): object | null {
-        return formatType === 'DateTimeFormatInfo' ? this.dateTimeFormat
+    getFormat(formatType: unknown): object | null {
+        return formatType === DateTimeFormatInfo || formatType === 'DateTimeFormatInfo' ? this.dateTimeFormat
             : formatType === 'NumberFormatInfo' ? this.numberFormat : null;
     }
 
@@ -80,7 +81,15 @@ export class CultureInfo {
     /**
      * Gets or sets a DateTimeFormatInfo that defines the culturally appropriate format of displaying dates and times.
      */
-    readonly dateTimeFormat!: DateTimeFormatInfo;
+    get dateTimeFormat(): DateTimeFormatInfo {
+        return getValue(this, 'dateTimeFormat');
+    }
+
+    set dateTimeFormat(value: DateTimeFormatInfo) {
+        if (READ_ONLY_CULTURES.has(this)) throw new InvalidOperationException('Instance is read-only.');
+        if (value == null) throw new ArgumentNullException('value');
+        setValue(this, 'dateTimeFormat', value);
+    }
 
     /**
      * Gets the culture name in the format languagefull [country/regionfull] in English.
@@ -144,6 +153,7 @@ export class CultureInfo {
         }
 
         Object.keys(cultureData)
+            .filter(property => property !== 'dateTimeFormat')
             .forEach(property => {
                 const propertyValue = cultureData[property];
                 if (property === 'gregorianDateTimeFormat') {
@@ -159,12 +169,13 @@ export class CultureInfo {
                         configurable: true,
                         enumerable: true,
                         writable: false,
-                        value: property === 'dateTimeFormat' || property === 'numberFormat'
+                        value: property === 'numberFormat'
                             ? cloneFormatInfo(propertyValue)
                             : property === 'calendar' ? propertyValue.clone() : propertyValue
                     });
                 }                
             });
+        this.dateTimeFormat = createDateTimeFormatInfo(cultureData.dateTimeFormat, this.calendar);
     }
 
     /**
@@ -215,7 +226,13 @@ export class CultureInfo {
      * Gets the CultureInfo object that is culture-independent (invariant).
      */
     static get invariantCulture(): CultureInfo {
-        return getOrCreateValue(this, "invariantCulture", () => new CultureInfo(""));
+        return getOrCreateValue(this, "invariantCulture", () => {
+            const culture = new CultureInfo('');
+            culture.dateTimeFormat = DateTimeFormatInfo.invariantInfo;
+            Object.defineProperty(culture, 'calendar', { value: DateTimeFormatInfo.invariantInfo.calendar });
+            READ_ONLY_CULTURES.add(culture);
+            return culture;
+        });
     }
 
     /**

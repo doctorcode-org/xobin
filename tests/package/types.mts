@@ -5,6 +5,19 @@ import { ThaiBuddhistCalendar as DirectThaiBuddhistCalendar } from '@xobin/globa
 import { UmAlQuraCalendar as DirectUmAlQuraCalendar } from '@xobin/globalization/um-al-qura-calendar';
 import { cultureData } from '@xobin/globalization/locales/fa-IR';
 import { DateTimeStyles } from '@xobin/globalization/date-time-styles';
+import { DateTimeFormatInfo } from '@xobin/globalization/date-time-format-info';
+
+const formatInfo: DateTimeFormatInfo = new DateTimeFormatInfo();
+const formatClone: DateTimeFormatInfo = formatInfo.clone();
+const readOnlyFormat: DateTimeFormatInfo = DateTimeFormatInfo.readOnly(formatInfo);
+const resolvedFormat: DateTimeFormatInfo = DateTimeFormatInfo.getInstance({ getFormat: () => formatInfo });
+void [formatClone, readOnlyFormat, resolvedFormat];
+// @ts-expect-error locale metadata is not a member of the .NET format-info class
+formatInfo.eraNames;
+// @ts-expect-error locale pattern collections are not a public property
+formatInfo.allDateTimePatterns;
+// @ts-expect-error obsolete casing is not part of the class API
+formatInfo.rfC1123Pattern;
 
 const parsingStyles: DateTimeStyles = DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.RoundtripKind;
 void parsingStyles;
