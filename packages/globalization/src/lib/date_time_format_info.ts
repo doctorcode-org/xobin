@@ -139,7 +139,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
 
     set abbreviatedMonthGenitiveNames(value: string[]) {
         this.verifyWritable();
-        if (value == null) throw new ArgumentNullException('value');
+        this.verifyMonthNames(value);
         this.state.data.abbreviatedMonthGenitiveNames = value;
     }
 
@@ -152,7 +152,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
 
     set abbreviatedMonthNames(value: string[]) {
         this.verifyWritable();
-        if (value == null) throw new ArgumentNullException('value');
+        this.verifyMonthNames(value);
         this.state.data.abbreviatedMonthNames = value;
     }
 
@@ -288,7 +288,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
 
     set monthGenitiveNames(value: string[]) {
         this.verifyWritable();
-        if (value == null) throw new ArgumentNullException('value');
+        this.verifyMonthNames(value);
         this.state.data.monthGenitiveNames = value;
     }
 
@@ -301,7 +301,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
 
     set monthNames(value: string[]) {
         this.verifyWritable();
-        if (value == null) throw new ArgumentNullException('value');
+        this.verifyMonthNames(value);
         this.state.data.monthNames = value;
     }
 
@@ -433,6 +433,18 @@ export class DateTimeFormatInfo implements IFormatProvider {
         if (value == null) throw new ArgumentNullException('value');
         if (value.length !== 7) throw new ArgumentException('Length of the array must be 7.', 'value');
         for (let i = 0; i < value.length; i++) {
+            if (value[i] == null) throw new ArgumentNullException('value', 'Found a null value within an array.');
+        }
+    }
+
+    /**
+     * Validates thirteen month entries, allowing a null thirteenth month as in .NET.
+     * @param value The array supplied to a month-name property.
+     */
+    private verifyMonthNames(value: string[]): void {
+        if (value == null) throw new ArgumentNullException('value');
+        if (value.length !== 13) throw new ArgumentException('Length of the array must be 13.', 'value');
+        for (let i = 0; i < 12; i++) {
             if (value[i] == null) throw new ArgumentNullException('value', 'Found a null value within an array.');
         }
     }

@@ -134,5 +134,17 @@
   "DateTimeFormatInfoAbbreviatedDayNames.AbbreviatedDayNames_SetInvalidLength_ThrowsArgumentException": "date-time-format-day-names.test.mjs",
   "DateTimeFormatInfoAbbreviatedDayNames.AbbreviatedDayNames_Get_ReturnsExpected_ICU": "date-time-format-day-names.test.mjs",
   "DateTimeFormatInfoShortestDayNames.ShortestDayNames_Set_GetReturnsExpected": "date-time-format-day-names.test.mjs",
-  "DateTimeFormatInfoShortestDayNames.ShortestDayNames_SetInvalidLength_ThrowsArgumentException": "date-time-format-day-names.test.mjs"
+  "DateTimeFormatInfoShortestDayNames.ShortestDayNames_SetInvalidLength_ThrowsArgumentException": "date-time-format-day-names.test.mjs",
+  "DateTimeFormatInfoMonthNames.MonthNames_Get_ReturnsExpected_ICU": "date-time-format-month-names.test.mjs",
+  "DateTimeFormatInfoMonthNames.MonthNames_Set_GetReturnsExpected": "date-time-format-month-names.test.mjs",
+  "DateTimeFormatInfoMonthNames.MonthNames_SetNullValueInValues_ThrowsArgumentException": "date-time-format-month-names.test.mjs",
+  "DateTimeFormatInfoAbbreviatedMonthNames.AbbreviatedMonthNames_Get_ReturnsExpected_ICU": "date-time-format-month-names.test.mjs",
+  "DateTimeFormatInfoAbbreviatedMonthNames.AbbreviatedMonthNames_Set_GetReturnsExpected": "date-time-format-month-names.test.mjs",
+  "DateTimeFormatInfoAbbreviatedMonthNames.AbbreviatedMonthNames_SetNullValueInValues_ThrowsArgumentException": "date-time-format-month-names.test.mjs",
+  "DateTimeFormatInfoMonthGenitiveNames.MonthGenitiveNames_Get_ReturnsExpected": "date-time-format-month-names.test.mjs",
+  "DateTimeFormatInfoMonthGenitiveNames.MonthGenitiveNames_Set_GetReturnsExpected": "date-time-format-month-names.test.mjs",
+  "DateTimeFormatInfoMonthGenitiveNames.MonthGenitiveNames_SetNullValueInValues_ThrowsArgumentException": "date-time-format-month-names.test.mjs",
+  "DateTimeFormatInfoAbbreviatedMonthGenitiveNames.AbbreviatedMonthGenitiveNames_Get_ReturnsExpected_ICU": "date-time-format-month-names.test.mjs",
+  "DateTimeFormatInfoAbbreviatedMonthGenitiveNames.AbbreviatedMonthGenitiveNames_Set_GetReturnsExpected": "date-time-format-month-names.test.mjs",
+  "DateTimeFormatInfoAbbreviatedMonthGenitiveNames.AbbreviatedMonthGenitiveNames_SetNullValueInValues_ThrowsArgumentException": "date-time-format-month-names.test.mjs"
 }

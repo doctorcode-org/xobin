@@ -161,8 +161,10 @@ function customized(date: DateTime, pattern: string, info: FormatInfo, calendar:
             case 'M': {
                 timeOnly = false;
                 const month = calendar.getMonth(date);
-                // The reference initializes month-format flags by examining all day names.
-                if (count >= 3 && [...info.dayNames, ...info.abbreviatedDayNames].some(name => name == null)) {
+                // Month-format flags inspect all regular/genitive month names and day names.
+                if (count >= 3 && [info.monthNames, info.monthGenitiveNames,
+                    info.abbreviatedMonthNames, info.abbreviatedMonthGenitiveNames,
+                    info.dayNames, info.abbreviatedDayNames].some(names => names.some(name => name == null))) {
                     throw new NullReferenceException();
                 }
                 output += count <= 2 ? pad(month)

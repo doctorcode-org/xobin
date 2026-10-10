@@ -130,6 +130,9 @@ profiles support these transitions. Remaining legacy profiles still need their
 optional-calendar data and reference-generated week rules refreshed (`br-FR`
 has its week rule refreshed separately). Day-name arrays require exactly seven
 non-null entries. Their getters return copies, while setters retain the supplied
-array, matching .NET (including subsequent caller mutations). Month-name array
-validation, era/name lookup
-methods and pattern-management methods remain separate roadmap tasks.
+array, matching .NET (including subsequent caller mutations). All four month-name
+arrays require thirteen entries, with non-null values in the first twelve; the
+thirteenth entry may be empty, non-empty, or null. Getters copy the arrays and
+setters retain the supplied references. Era/name lookup methods and
+pattern-management methods remain separate roadmap tasks. Official tests that
+also require parsing remain pending until the parser is implemented.

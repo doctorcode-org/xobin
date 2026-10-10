@@ -7989,6 +7989,7 @@
         "pmDesignator",
         "state",
         "verifyDayNames",
+        "verifyMonthNames",
         "verifyWritable"
       ],
       "members": [
