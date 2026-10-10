@@ -1,3 +1,4 @@
+import { registerCalendarIdentity } from './calendar_identity';
 ﻿import { Calendar } from './calendar';
 import { DateTime } from './date_time';
 import { CalendarAlgorithmType } from './calendar_algorithm_type';
@@ -227,3 +228,5 @@ export class ThaiBuddhistCalendar extends Calendar {
     }
 
 }
+
+registerCalendarIdentity(ThaiBuddhistCalendar.prototype, 'System.Globalization.ThaiBuddhistCalendar', () => 7);

@@ -2,6 +2,8 @@ import type { DayOfWeek } from './day_of_week';
 import type { IFormatProvider } from '@xobin/core';
 import type { CalendarWeekRule } from './calendar_week_rule';
 import type { FormatCalendar } from './date_time_format_context';
+import type { Calendar } from './calendar';
+import { getCalendarIdentity } from './calendar_identity';
 
 /** Locale format data used internally by formatting and DateTimeFormatInfo. */
 export interface DateTimeFormatData {
@@ -38,6 +40,7 @@ export interface DateTimeFormatState {
     data: DateTimeFormatData;
     calendar: FormatCalendar;
     isReadOnly: boolean;
+    calendarFormats: ReadonlyMap<number, DateTimeFormatData>;
 }
 
 export const dateTimeFormatStates = new WeakMap<object, DateTimeFormatState>();
@@ -59,5 +62,31 @@ export function getProviderDateTimeFormat(provider?: IFormatProvider | null): ob
 /** Gets the internal data of an instance, or explicitly registered locale data. */
 export function getDateTimeFormatData(info: object): DateTimeFormatData {
     return dateTimeFormatStates.get(info)?.data ?? info as DateTimeFormatData;
+}
+
+/** Restores calendar-dependent fields while preserving explicitly customized time information. */
+export function getCalendarFormatData(state: DateTimeFormatState, id: number): DateTimeFormatData | undefined {
+    const original = state.calendarFormats.get(id);
+    if (!original) return undefined;
+    const data = { ...state.data };
+    for (const key of [
+        'eraNames', 'monthDayPattern', 'dayNames', 'abbreviatedDayNames', 'shortestDayNames',
+        'monthNames', 'abbreviatedMonthNames', 'monthGenitiveNames', 'abbreviatedMonthGenitiveNames',
+        'longDatePattern', 'shortDatePattern', 'yearMonthPattern', 'dateSeparator', 'nativeCalendarName',
+        'allDateTimePatterns',
+    ] as const) {
+        (data as unknown as Record<string, unknown>)[key] = original[key];
+    }
+    data.fullDateTimePattern = data.longDatePattern + ' ' + data.longTimePattern;
+    return data;
+}
+
+/** Gets the data used by the universal full format after its Gregorian-calendar transition. */
+export function getUniversalDateTimeFormatData(info: object): DateTimeFormatData {
+    const state = dateTimeFormatStates.get(info);
+    if (!state || getCalendarIdentity(state.calendar as Calendar).isGregorian) {
+        return getDateTimeFormatData(info);
+    }
+    return getCalendarFormatData(state, 1) ?? state.data;
 }
 

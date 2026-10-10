@@ -1,3 +1,4 @@
+import { registerCalendarIdentity } from './calendar_identity';
 ﻿import { Calendar, checkAddResult, timeToTicks } from './calendar';
 import { DateTime, getDate } from './date_time';
 import { getOrCreateValue, InvalidOperationException, ArgumentOutOfRangeException, setValue, int, Lazy } from '@xobin/core';
@@ -630,3 +631,5 @@ function convertHijriToGregorian(HijriYear: number, HijriMonth: number, HijriDay
     dt = dt.addDays(nDays);
     return getDate.call(dt);
 }
+
+registerCalendarIdentity(UmAlQuraCalendar.prototype, 'System.Globalization.UmAlQuraCalendar', () => 23);

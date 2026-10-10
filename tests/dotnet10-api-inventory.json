@@ -5931,6 +5931,7 @@
         "_isReadOnly",
         "daysInYearBeforeMinSupportedYear",
         "memberwiseClone",
+        "toString",
         "verifyWritable"
       ],
       "members": [
@@ -7987,6 +7988,7 @@
         "amDesignator",
         "pmDesignator",
         "state",
+        "verifyDayNames",
         "verifyWritable"
       ],
       "members": [

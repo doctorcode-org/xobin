@@ -1,10 +1,11 @@
-import { ArgumentNullException, InvalidOperationException, IFormatProvider } from '@xobin/core';
+import { ArgumentException, ArgumentNullException, ArgumentOutOfRangeException, InvalidOperationException, IFormatProvider } from '@xobin/core';
 import { Calendar } from './calendar';
 import { GregorianCalendar } from './gregorian_calendar';
 import { DayOfWeek } from './day_of_week';
 import { CalendarWeekRule } from './calendar_week_rule';
 import { getCurrentFormatContext, invariantDateTimeFormat } from './date_time_format_context';
-import { DateTimeFormatData, DateTimeFormatState, dateTimeFormatStates, registerDateTimeFormatInfoType } from './date_time_format_data';
+import { DateTimeFormatData, DateTimeFormatState, dateTimeFormatStates, registerDateTimeFormatInfoType, getCalendarFormatData } from './date_time_format_data';
+import { getCalendarIdentity } from './calendar_identity';
 
 /**
  * Provides culture-specific information for formatting and parsing dates and times.
@@ -20,6 +21,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
             data: copyFormatData(invariantDateTimeFormat),
             calendar: new GregorianCalendar(),
             isReadOnly: false,
+            calendarFormats: new Map([[1, copyFormatData(invariantDateTimeFormat)]]),
         });
     }
 
@@ -69,6 +71,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
             data: { ...this.state.data },
             calendar: this.calendar.clone(),
             isReadOnly: false,
+            calendarFormats: this.state.calendarFormats,
         });
         return clone;
     }
@@ -85,6 +88,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
             data: { ...dtfi.state.data },
             calendar: Calendar.readOnly(dtfi.calendar),
             isReadOnly: true,
+            calendarFormats: dtfi.state.calendarFormats,
         });
         return copy;
     }
@@ -106,6 +110,10 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set calendar(value: Calendar) {
         this.verifyWritable();
         if (value == null) throw new ArgumentNullException('value');
+        if (value === this.calendar) return;
+        const data = getCalendarFormatData(this.state, getCalendarIdentity(value).id);
+        if (!data) throw new ArgumentOutOfRangeException('value', value, 'Not a valid calendar for the given culture.');
+        this.state.data = data;
         this.state.calendar = value;
     }
 
@@ -118,7 +126,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
 
     set abbreviatedDayNames(value: string[]) {
         this.verifyWritable();
-        if (value == null) throw new ArgumentNullException('value');
+        this.verifyDayNames(value);
         this.state.data.abbreviatedDayNames = value;
     }
 
@@ -170,6 +178,9 @@ export class DateTimeFormatInfo implements IFormatProvider {
 
     set calendarWeekRule(value: CalendarWeekRule) {
         this.verifyWritable();
+        if (!Number.isInteger(value) || value < CalendarWeekRule.FirstDay || value > CalendarWeekRule.FirstFourDayWeek) {
+            throw new ArgumentOutOfRangeException('value', value, 'Valid values are between FirstDay and FirstFourDayWeek, inclusive.');
+        }
         this.state.data.calendarWeekRule = value;
     }
 
@@ -195,7 +206,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
 
     set dayNames(value: string[]) {
         this.verifyWritable();
-        if (value == null) throw new ArgumentNullException('value');
+        this.verifyDayNames(value);
         this.state.data.dayNames = value;
     }
 
@@ -208,6 +219,9 @@ export class DateTimeFormatInfo implements IFormatProvider {
 
     set firstDayOfWeek(value: DayOfWeek) {
         this.verifyWritable();
+        if (!Number.isInteger(value) || value < DayOfWeek.Sunday || value > DayOfWeek.Saturday) {
+            throw new ArgumentOutOfRangeException('value', value, 'Valid values are between Sunday and Saturday, inclusive.');
+        }
         this.state.data.firstDayOfWeek = value;
     }
 
@@ -340,7 +354,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
 
     set shortestDayNames(value: string[]) {
         this.verifyWritable();
-        if (value == null) throw new ArgumentNullException('value');
+        this.verifyDayNames(value);
         this.state.data.shortestDayNames = value;
     }
 
@@ -410,6 +424,18 @@ export class DateTimeFormatInfo implements IFormatProvider {
     private verifyWritable(): void {
         if (this.isReadOnly) throw new InvalidOperationException('Instance is read-only.');
     }
+
+    /**
+     * Validates the seven non-null entries required by a day-name array.
+     * @param value The array supplied to a day-name property.
+     */
+    private verifyDayNames(value: string[]): void {
+        if (value == null) throw new ArgumentNullException('value');
+        if (value.length !== 7) throw new ArgumentException('Length of the array must be 7.', 'value');
+        for (let i = 0; i < value.length; i++) {
+            if (value[i] == null) throw new ArgumentNullException('value', 'Found a null value within an array.');
+        }
+    }
 }
 
 registerDateTimeFormatInfoType(DateTimeFormatInfo);
@@ -418,11 +444,16 @@ registerDateTimeFormatInfoType(DateTimeFormatInfo);
  * Creates a format-info instance from explicitly loaded locale data.
  * @param data The locale's date and time format data.
  * @param calendar The culture's calendar instance.
+ * @param calendarFormats The optional calendars and their format-data overrides from the locale oracle.
  * @internal
  */
-export function createDateTimeFormatInfo(data: DateTimeFormatData, calendar: Calendar): DateTimeFormatInfo {
+export function createDateTimeFormatInfo(data: DateTimeFormatData, calendar: Calendar,
+    calendarFormats?: Readonly<Record<number, Partial<DateTimeFormatData>>>): DateTimeFormatInfo {
     const info = new DateTimeFormatInfo();
-    dateTimeFormatStates.set(info, { data: copyFormatData(data), calendar, isReadOnly: false });
+    const formats = new Map<number, DateTimeFormatData>(Object.entries(calendarFormats ?? {})
+        .map(([id, overrides]) => [Number(id), copyFormatData({ ...data, ...overrides })]));
+    formats.set(getCalendarIdentity(calendar).id, copyFormatData(data));
+    dateTimeFormatStates.set(info, { data: copyFormatData(data), calendar, isReadOnly: false, calendarFormats: formats });
     return info;
 }
 

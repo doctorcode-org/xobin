@@ -118,5 +118,21 @@
   "DateTimeTests.TryFormat_MatchesExpected": "date-time-format.test.mjs",
   "DateTimeFormatInfoClone.Clone_Invoke_ReturnsExpected": "date-time-format-info.test.mjs",
   "DateTimeFormatInfoReadOnly.ReadOnly_Invoke_ReturnsExpected": "date-time-format-info.test.mjs",
-  "DateTimeFormatInfoGetInstance.GetInstance_ValidNonNullProvider_ReturnsExpected": "date-time-format-info.test.mjs"
+  "DateTimeFormatInfoGetInstance.GetInstance_ValidNonNullProvider_ReturnsExpected": "date-time-format-info.test.mjs",
+  "DateTimeFormatInfoAMDesignator.AMDesignator_Set_GetReturnsExpected": "date-time-format-properties.test.mjs",
+  "DateTimeFormatInfoPMDesignator.PMDesignator_Set_GetReturnsExpected": "date-time-format-properties.test.mjs",
+  "DateTimeFormatInfoFirstDayOfWeek.FirstDayOfWeek": "date-time-format-properties.test.mjs",
+  "DateTimeFormatInfoFirstDayOfWeek.FirstDayOfWeek_Set_GetReturnsExpected": "date-time-format-properties.test.mjs",
+  "DateTimeFormatInfoFirstDayOfWeek.FirstDayOfWeek_SetInvalid_ThrowsArgumentOutOfRangeException": "date-time-format-properties.test.mjs",
+  "DateTimeFormatInfoCalendarWeekRule.CalendarWeekRuleTest": "date-time-format-properties.test.mjs",
+  "DateTimeFormatInfoCalendarWeekRule.CalendarWeekRule_Set_GetReturnsExpected": "date-time-format-properties.test.mjs",
+  "DateTimeFormatInfoCalendarWeekRule.CalendarWeekRule_SetInvalidValue_ThrowsArgumentOutOfRangeException": "date-time-format-properties.test.mjs",
+  "DateTimeFormatInfoDayNames.DayNames_Set_GetReturnsExpected": "date-time-format-day-names.test.mjs",
+  "DateTimeFormatInfoDayNames.DayNames_SetInvalidLength_ThrowsArgumentException": "date-time-format-day-names.test.mjs",
+  "DateTimeFormatInfoDayNames.DayNames_Get_ReturnsExpected_ICU": "date-time-format-day-names.test.mjs",
+  "DateTimeFormatInfoAbbreviatedDayNames.AbbreviatedDayNames_Set_GetReturnsExpected": "date-time-format-day-names.test.mjs",
+  "DateTimeFormatInfoAbbreviatedDayNames.AbbreviatedDayNames_SetInvalidLength_ThrowsArgumentException": "date-time-format-day-names.test.mjs",
+  "DateTimeFormatInfoAbbreviatedDayNames.AbbreviatedDayNames_Get_ReturnsExpected_ICU": "date-time-format-day-names.test.mjs",
+  "DateTimeFormatInfoShortestDayNames.ShortestDayNames_Set_GetReturnsExpected": "date-time-format-day-names.test.mjs",
+  "DateTimeFormatInfoShortestDayNames.ShortestDayNames_SetInvalidLength_ThrowsArgumentException": "date-time-format-day-names.test.mjs"
 }

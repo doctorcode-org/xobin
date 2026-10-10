@@ -5,6 +5,28 @@ if (Environment.Version.ToString() != "10.0.7")
     throw new InvalidOperationException($"Expected .NET 10.0.7, got {Environment.Version}.");
 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
+if (args.Length >= 2 && args[0] == "--date-time-format-day-names")
+{
+    string output = DateTimeFormatDayNamesOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check")
+    {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Day names fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-format-properties")
+{
+    string output = DateTimeFormatPropertiesOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check")
+    {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Format properties fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
 if (args.Length >= 2 && args[0] == "--date-time-format-info")
 {
     string output = DateTimeFormatInfoOracle.Generate();

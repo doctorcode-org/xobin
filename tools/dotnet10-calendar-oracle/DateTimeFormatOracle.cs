@@ -282,7 +282,24 @@ internal static class DateTimeFormatOracle
             var f = c.DateTimeFormat;
             var gregorian = (DateTimeFormatInfo)f.Clone();
             gregorian.Calendar = new GregorianCalendar();
-            cultures[c.Name] = new { calendar = f.Calendar.GetType().Name, formatInfo = Info(f), gregorianDateTimeFormat = Info(gregorian) };
+            var original = JsonSerializer.SerializeToElement(Info(f));
+            var calendarFormats = new Dictionary<int, Dictionary<string, JsonElement>>();
+            var idProperty = typeof(Calendar).GetProperty("ID", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)!;
+            foreach (Calendar calendar in c.OptionalCalendars)
+            {
+                var variant = (DateTimeFormatInfo)f.Clone();
+                variant.Calendar = calendar;
+                var selected = JsonSerializer.SerializeToElement(Info(variant));
+                var changes = new Dictionary<string, JsonElement>();
+                foreach (string key in new[] { "eraNames", "monthDayPattern", "dayNames", "abbreviatedDayNames", "shortestDayNames",
+                    "monthNames", "abbreviatedMonthNames", "monthGenitiveNames", "abbreviatedMonthGenitiveNames",
+                    "longDatePattern", "shortDatePattern", "yearMonthPattern", "dateSeparator", "nativeCalendarName", "allDateTimePatterns" })
+                {
+                    if (selected.GetProperty(key).GetRawText() != original.GetProperty(key).GetRawText()) changes[key] = selected.GetProperty(key);
+                }
+                calendarFormats[Convert.ToInt32(idProperty.GetValue(calendar))] = changes;
+            }
+            cultures[c.Name] = new { calendar = f.Calendar.GetType().Name, formatInfo = Info(f), gregorianDateTimeFormat = Info(gregorian), calendarFormats };
         }
         object Info(DateTimeFormatInfo f) => new {
                 abbreviatedDayNames = f.AbbreviatedDayNames, abbreviatedMonthGenitiveNames = f.AbbreviatedMonthGenitiveNames,

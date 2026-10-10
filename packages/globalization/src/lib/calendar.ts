@@ -14,6 +14,7 @@ import {
     timeToTicks as timeToTickHelper,
 } from './var';
 import { DayOfWeek } from './day_of_week';
+import { getCalendarIdentity } from './calendar_identity';
 import { CalendarWeekRule } from './calendar_week_rule';
 import { calendarRangeMessage, formatGregorianDateTime, throwIfNegativeYear } from './calendar_exception';
 
@@ -21,6 +22,13 @@ import { calendarRangeMessage, formatGregorianDateTime, throwIfNegativeYear } fr
  * Represents time in divisions, such as weeks, months, and years.
  */
 export abstract class Calendar {
+    /**
+     * Returns the calendar's type name, following the inherited .NET Object.ToString behavior.
+     */
+    toString(): string {
+        return getCalendarIdentity(this).name;
+    }
+
     private _isReadOnly = false;
 
     get isReadOnly(): boolean {

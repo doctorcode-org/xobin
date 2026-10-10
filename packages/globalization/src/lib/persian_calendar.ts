@@ -1,3 +1,4 @@
+import { registerCalendarIdentity } from './calendar_identity';
 ﻿import { Calendar, checkAddResult, timeToTicks } from './calendar';
 import { DateTime } from './date_time';
 import { DayOfWeek } from './day_of_week';
@@ -406,3 +407,5 @@ function daysInPreviousMonths(month: number): number {
     --month;
     return DaysToMonth[month]!;
 }
+
+registerCalendarIdentity(PersianCalendar.prototype, 'System.Globalization.PersianCalendar', () => 22);

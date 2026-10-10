@@ -1,3 +1,4 @@
+import { registerCalendarIdentity } from './calendar_identity';
 ﻿import { Calendar, checkAddResult } from './calendar';
 import { GregorianCalendarTypes } from './gregorian_calendar_types';
 import { CalendarAlgorithmType } from './calendar_algorithm_type';
@@ -351,3 +352,5 @@ export function getAbsoluteDate(year: number, month: number, day: number): numbe
     throw new ArgumentOutOfRangeException(undefined,
         'Year, Month, and Day parameters describe an un-representable DateTime.');
 }
+
+registerCalendarIdentity(GregorianCalendar.prototype, 'System.Globalization.GregorianCalendar', calendar => (calendar as GregorianCalendar).calendarType, true);

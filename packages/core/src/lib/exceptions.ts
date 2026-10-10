@@ -21,6 +21,19 @@ export class Exception extends Error {
     }
 }
 
+/**
+ * The exception thrown when an operation dereferences a null object reference.
+ */
+export class NullReferenceException extends Exception {
+    /**
+     * Initializes a new instance with the default or specified error message.
+     * @param message The message that describes the error.
+     */
+    constructor(message: string = 'Object reference not set to an instance of an object.') {
+        super(message);
+    }
+}
+
 /** The exception thrown when a conversion is not supported. */
 export class InvalidCastException extends Exception {
     constructor(message = 'Specified cast is not valid.') {

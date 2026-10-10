@@ -118,8 +118,18 @@ A null provider or an unsupported result falls back to `currentInfo`.
 signature and constructs a format-info instance from the explicitly loaded data.
 
 Locale era names and pattern collections are internal data, not additional
-properties of this class. The RFC property is `rfc1123Pattern`. Detailed property
-validation, calendar changes, era/name lookup methods and pattern-management
-methods remain separate roadmap tasks. The remaining legacy locale profiles do
-not yet carry reference-generated calendar-week rules; their default is FirstDay
-until those profiles are refreshed.
+properties of this class. The RFC property is `rfc1123Pattern`. Designator,
+first-day and week-rule validation, read-only checks, and calendar changes follow
+the reference. Assigning a different calendar resets calendar-dependent date
+data while preserving custom time patterns and designators. Assigning the same
+calendar object preserves the current data.
+
+Optional-calendar data is stored as compact differences in the selected locale
+module; it does not automatically load calendar implementations. The generated
+profiles support these transitions. Remaining legacy profiles still need their
+optional-calendar data and reference-generated week rules refreshed (`br-FR`
+has its week rule refreshed separately). Day-name arrays require exactly seven
+non-null entries. Their getters return copies, while setters retain the supplied
+array, matching .NET (including subsequent caller mutations). Month-name array
+validation, era/name lookup
+methods and pattern-management methods remain separate roadmap tasks.

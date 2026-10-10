@@ -40,6 +40,7 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
+        calendarWeekRule: 2,
         amDesignator: "A.M.", 
         dateSeparator: "/", 
         firstDayOfWeek: 1, 

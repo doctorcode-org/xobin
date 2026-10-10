@@ -1,6 +1,6 @@
 // Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, UmAlQuraCalendar } from '@xobin/globalization';
-export const cultureData: CultureData & { gregorianDateTimeFormat?: CultureData["dateTimeFormat"] } = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>> } = {
     parent: "ar", 
     lcid: 1025, 
     name: "ar-SA", 
@@ -178,143 +178,77 @@ export const cultureData: CultureData & { gregorianDateTimeFormat?: CultureData[
         ]
       }
     },
-    gregorianDateTimeFormat: {
-      "abbreviatedDayNames": [
-        "الأحد",
-        "الاثنين",
-        "الثلاثاء",
-        "الأربعاء",
-        "الخميس",
-        "الجمعة",
-        "السبت"
-      ],
-      "abbreviatedMonthGenitiveNames": [
-        "يناير",
-        "فبراير",
-        "مارس",
-        "أبريل",
-        "مايو",
-        "يونيو",
-        "يوليو",
-        "أغسطس",
-        "سبتمبر",
-        "أكتوبر",
-        "نوفمبر",
-        "ديسمبر",
-        ""
-      ],
-      "abbreviatedMonthNames": [
-        "يناير",
-        "فبراير",
-        "مارس",
-        "أبريل",
-        "مايو",
-        "يونيو",
-        "يوليو",
-        "أغسطس",
-        "سبتمبر",
-        "أكتوبر",
-        "نوفمبر",
-        "ديسمبر",
-        ""
-      ],
-      "amDesignator": "ص",
-      "dateSeparator": "‏/",
-      "dayNames": [
-        "الأحد",
-        "الاثنين",
-        "الثلاثاء",
-        "الأربعاء",
-        "الخميس",
-        "الجمعة",
-        "السبت"
-      ],
-      "firstDayOfWeek": 0,
-      "calendarWeekRule": 0,
-      "fullDateTimePattern": "dddd، d MMMM yyyy g h:mm:ss tt",
-      "longDatePattern": "dddd، d MMMM yyyy g",
-      "longTimePattern": "h:mm:ss tt",
-      "monthDayPattern": "d MMMM",
-      "monthGenitiveNames": [
-        "يناير",
-        "فبراير",
-        "مارس",
-        "أبريل",
-        "مايو",
-        "يونيو",
-        "يوليو",
-        "أغسطس",
-        "سبتمبر",
-        "أكتوبر",
-        "نوفمبر",
-        "ديسمبر",
-        ""
-      ],
-      "monthNames": [
-        "يناير",
-        "فبراير",
-        "مارس",
-        "أبريل",
-        "مايو",
-        "يونيو",
-        "يوليو",
-        "أغسطس",
-        "سبتمبر",
-        "أكتوبر",
-        "نوفمبر",
-        "ديسمبر",
-        ""
-      ],
-      "nativeCalendarName": "التقويم الميلادي",
-      "pmDesignator": "م",
-      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
-      "shortDatePattern": "d‏/M‏/yyyy g",
-      "shortestDayNames": [
-        "ح",
-        "ن",
-        "ث",
-        "ر",
-        "خ",
-        "ج",
-        "س"
-      ],
-      "shortTimePattern": "h:mm tt",
-      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
-      "timeSeparator": ":",
-      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
-      "yearMonthPattern": "MMMM yyyy g",
-      "eraNames": [
-        "م"
-      ],
-      "allDateTimePatterns": {
-        "d": [
-          "d‏/M‏/yyyy g",
-          "d MMM yyyy g",
-          "d‏/M‏/yyyy g"
+    calendarFormats: {
+      "1": {
+        "eraNames": [
+          "م"
         ],
-        "D": [
-          "dddd، d MMMM yyyy g",
-          "d MMMM yyyy g"
+        "monthNames": [
+          "يناير",
+          "فبراير",
+          "مارس",
+          "أبريل",
+          "مايو",
+          "يونيو",
+          "يوليو",
+          "أغسطس",
+          "سبتمبر",
+          "أكتوبر",
+          "نوفمبر",
+          "ديسمبر",
+          ""
         ],
-        "t": [
-          "h:mm tt"
+        "abbreviatedMonthNames": [
+          "يناير",
+          "فبراير",
+          "مارس",
+          "أبريل",
+          "مايو",
+          "يونيو",
+          "يوليو",
+          "أغسطس",
+          "سبتمبر",
+          "أكتوبر",
+          "نوفمبر",
+          "ديسمبر",
+          ""
         ],
-        "T": [
-          "h:mm:ss tt"
+        "monthGenitiveNames": [
+          "يناير",
+          "فبراير",
+          "مارس",
+          "أبريل",
+          "مايو",
+          "يونيو",
+          "يوليو",
+          "أغسطس",
+          "سبتمبر",
+          "أكتوبر",
+          "نوفمبر",
+          "ديسمبر",
+          ""
         ],
-        "y": [
-          "MMMM yyyy g"
+        "abbreviatedMonthGenitiveNames": [
+          "يناير",
+          "فبراير",
+          "مارس",
+          "أبريل",
+          "مايو",
+          "يونيو",
+          "يوليو",
+          "أغسطس",
+          "سبتمبر",
+          "أكتوبر",
+          "نوفمبر",
+          "ديسمبر",
+          ""
         ],
-        "Y": [
-          "MMMM yyyy g"
-        ],
-        "m": [
-          "d MMMM"
-        ],
-        "M": [
-          "d MMMM"
-        ]
-      }
+        "nativeCalendarName": "التقويم الميلادي"
+      },
+      "6": {
+        "nativeCalendarName": "التقويم الهجري"
+      },
+      "23": {}
     },
     calendar: new UmAlQuraCalendar()
 };

@@ -1,8 +1,8 @@
-import { FormatException, IFormatProvider } from '@xobin/core';
+import { FormatException, NullReferenceException, IFormatProvider } from '@xobin/core';
 import type { CultureInfo } from './culture_info';
 import { DateTime, getDateTimeOffset } from './date_time';
-import { DateTimeFormatData, getDateTimeFormatData, getProviderDateTimeFormat } from './date_time_format_data';
-import { getCurrentFormatContext, getGregorianFormatInfo, invariantDateTimeFormat, gregorianFormatCalendar, FormatCalendar, FormatContext } from './date_time_format_context';
+import { DateTimeFormatData, getDateTimeFormatData, getProviderDateTimeFormat, getUniversalDateTimeFormatData } from './date_time_format_data';
+import { getCurrentFormatContext, invariantDateTimeFormat, gregorianFormatCalendar, FormatCalendar, FormatContext } from './date_time_format_context';
 import { TicksPerSecond, TicksPerMinute } from './var';
 
 type FormatInfo = DateTimeFormatData;
@@ -51,7 +51,7 @@ export class DateTimeFormat {
                 }
                 case 'U':
                     date = date.toUniversalTime();
-                    if (source === culture.dateTimeFormat) info = getDateTimeFormatData(getGregorianFormatInfo(culture));
+                    info = getUniversalDateTimeFormatData(source);
                     calendar = gregorianFormatCalendar;
                     format = info.fullDateTimePattern;
                     break;
@@ -161,6 +161,10 @@ function customized(date: DateTime, pattern: string, info: FormatInfo, calendar:
             case 'M': {
                 timeOnly = false;
                 const month = calendar.getMonth(date);
+                // The reference initializes month-format flags by examining all day names.
+                if (count >= 3 && [...info.dayNames, ...info.abbreviatedDayNames].some(name => name == null)) {
+                    throw new NullReferenceException();
+                }
                 output += count <= 2 ? pad(month)
                     : (count === 3 ? genitive ? info.abbreviatedMonthGenitiveNames : info.abbreviatedMonthNames
                         : genitive ? info.monthGenitiveNames : info.monthNames)[month - 1];

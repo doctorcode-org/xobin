@@ -26,15 +26,23 @@ for (const [name, data] of Object.entries(fixture.cultures)) {
   const pattern = /^    dateTimeFormat: \{[\s\S]*?^    calendar:/m;
   if (!pattern.test(source)) throw new Error(`Locale format block not found: ${name}`);
   const render = (value) => JSON.stringify(value, null, 2).replaceAll('\n', '\n    ');
-  const gregorian = data.calendar === 'GregorianCalendar' ? ''
-    : `    gregorianDateTimeFormat: ${render(data.gregorianDateTimeFormat)},\n`;
-  let output = source.replace(pattern, `    dateTimeFormat: ${render(data.formatInfo)},\n${gregorian}    calendar:`);
+  const calendarFormats = `    calendarFormats: ${render(data.calendarFormats)},\n`;
+  let output = source.replace(pattern, `    dateTimeFormat: ${render(data.formatInfo)},\n${calendarFormats}    calendar:`);
   // This extra field is generator metadata, not a member of CultureData or CultureInfo.
-  const declaration = gregorian
-    ? 'export const cultureData: CultureData & { gregorianDateTimeFormat?: CultureData["dateTimeFormat"] } = {'
-    : 'export const cultureData: CultureData = {';
+  const declaration = 'export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>> } = {';
   output = output.replace(/^export const cultureData: .* = \{$/m, declaration);
   if (!output.startsWith(header)) output = header + output;
   if (mode === '--write') writeFileSync(file, output);
   else if (output !== source) throw new Error(`Locale differs from reference format data: ${name}`);
 }
+
+// The desktop CalendarWeekRule MemberData branch also uses this existing locale.
+const properties = JSON.parse(readFileSync(path.join(root, 'tests/dotnet10/date-time-format-properties-cases.json'), 'utf8'));
+if (properties.runtime !== '10.0.7') throw new Error('Expected .NET 10.0.7 property reference.');
+const rule = properties.rows.find(row => row.source === 'DateTimeFormatInfoCalendarWeekRule.CalendarWeekRuleTest' && row.culture === 'br-FR')?.result;
+if (!Number.isInteger(rule)) throw new Error('br-FR calendar week rule not found.');
+const bretonFile = path.join(root, 'packages/globalization/locales/br-FR.ts');
+const bretonSource = readFileSync(bretonFile, 'utf8').replaceAll('\r\n', '\n');
+const bretonOutput = bretonSource.replace(/(    dateTimeFormat: \{\n)(?:        calendarWeekRule: \d+,\n)?/, `$1        calendarWeekRule: ${rule},\n`);
+if (mode === '--write') writeFileSync(bretonFile, bretonOutput);
+else if (bretonSource !== bretonOutput) throw new Error('br-FR calendar week rule differs from the reference.');

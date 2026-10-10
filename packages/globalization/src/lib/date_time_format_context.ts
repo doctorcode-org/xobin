@@ -14,26 +14,6 @@ export interface FormatContext {
     readonly calendar: FormatCalendar;
 }
 
-// Gregorian variants belong to the locale data, not the public CultureInfo API.
-const gregorianFormatInfo = new WeakMap<FormatContext, DateTimeFormatData>();
-
-/**
- * Registers the Gregorian format data used internally by the universal full format.
- * @param context The culture whose Gregorian format data is being registered.
- * @param info The format data extracted with a Gregorian calendar in the reference runtime.
- */
-export function setGregorianFormatInfo(context: FormatContext, info: DateTimeFormatData): void {
-    gregorianFormatInfo.set(context, info);
-}
-
-/**
- * Gets a culture's internal Gregorian format data, falling back to its current format data.
- * @param context The culture whose Gregorian format data is being retrieved.
- */
-export function getGregorianFormatInfo(context: FormatContext): DateTimeFormatInfo | DateTimeFormatData {
-    return gregorianFormatInfo.get(context) ?? context.dateTimeFormat;
-}
-
 export const invariantDateTimeFormat: DateTimeFormatData = {
   "abbreviatedDayNames": [
     "Sun",

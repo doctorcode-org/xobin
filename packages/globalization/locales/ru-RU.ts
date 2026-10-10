@@ -1,6 +1,6 @@
 // Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>> } = {
     parent: "ru", 
     lcid: 1049, 
     name: "ru-RU", 
@@ -176,6 +176,9 @@ export const cultureData: CultureData = {
           "d MMMM"
         ]
       }
+    },
+    calendarFormats: {
+      "1": {}
     },
     calendar: new GregorianCalendar()
 };

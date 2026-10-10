@@ -1,4 +1,4 @@
-import { invariantDateTimeFormat, setCurrentFormatContext, setGregorianFormatInfo } from './date_time_format_context';
+import { invariantDateTimeFormat, setCurrentFormatContext } from './date_time_format_context';
 import { Calendar } from './calendar';
 import { DateTimeFormatInfo, createDateTimeFormatInfo } from './date_time_format_info';
 import { NumberFormatInfo } from './number_format_info';
@@ -153,15 +153,10 @@ export class CultureInfo {
         }
 
         Object.keys(cultureData)
-            .filter(property => property !== 'dateTimeFormat')
+            .filter(property => !['dateTimeFormat', 'calendarFormats', 'gregorianDateTimeFormat'].includes(property))
             .forEach(property => {
                 const propertyValue = cultureData[property];
-                if (property === 'gregorianDateTimeFormat') {
-                    if (!(cultureData.calendar instanceof GregorianCalendar)) {
-                        setGregorianFormatInfo(this, cloneFormatInfo(propertyValue));
-                    }
-                }
-                else if (property === 'parent') {
+                if (property === 'parent') {
                     setValue(this, 'parent', propertyValue);
                 }
                 else {
@@ -175,7 +170,9 @@ export class CultureInfo {
                     });
                 }                
             });
-        this.dateTimeFormat = createDateTimeFormatInfo(cultureData.dateTimeFormat, this.calendar);
+        const calendarFormats = cultureData.calendarFormats ?? (cultureData.gregorianDateTimeFormat
+            ? { 1: cultureData.gregorianDateTimeFormat } : undefined);
+        this.dateTimeFormat = createDateTimeFormatInfo(cultureData.dateTimeFormat, this.calendar, calendarFormats);
     }
 
     /**
