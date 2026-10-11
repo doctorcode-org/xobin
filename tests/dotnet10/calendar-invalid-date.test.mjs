@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import {
   GregorianCalendar, GregorianCalendarTypes, PersianCalendar,
-  ThaiBuddhistCalendar, UmAlQuraCalendar,
+  ThaiBuddhistCalendar, KoreanCalendar, UmAlQuraCalendar,
 } from '@xobin/globalization';
 
 const fixture = JSON.parse(readFileSync(new URL('./calendar-invalid-date-cases.json', import.meta.url), 'utf8'));
@@ -19,6 +19,7 @@ const createCalendar = {
   'GregorianCalendarUSEnglishTests': () => new GregorianCalendar(GregorianCalendarTypes.USEnglish),
   'PersianCalendarTests': () => new PersianCalendar(),
   'ThaiBuddhistCalendarTests': () => new ThaiBuddhistCalendar(),
+  'KoreanCalendarTests': () => new KoreanCalendar(),
   'UmAlQuraCalendarTests': () => new UmAlQuraCalendar(),
 };
 

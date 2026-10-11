@@ -1,0 +1,1989 @@
+{
+  "runtime": "10.0.7",
+  "sourceTag": "v10.0.7",
+  "rows": [
+    {
+      "source": "DateTimeFormatInfoGetDayName.GetDayName_Invoke_ReturnsExpected",
+      "culture": "invariant",
+      "method": "GetDayName",
+      "values": [
+        {
+          "value": 0,
+          "result": "Sunday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 1,
+          "result": "Monday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "Tuesday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "Wednesday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "Thursday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "Friday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "Saturday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetDayName.GetDayName_Invoke_ReturnsExpected",
+      "culture": "new",
+      "method": "GetDayName",
+      "values": [
+        {
+          "value": 0,
+          "result": "Sunday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 1,
+          "result": "Monday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "Tuesday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "Wednesday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "Thursday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "Friday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "Saturday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetDayName.GetDayName_Invoke_ReturnsExpected",
+      "culture": "en-US",
+      "method": "GetDayName",
+      "values": [
+        {
+          "value": 0,
+          "result": "Sunday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 1,
+          "result": "Monday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "Tuesday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "Wednesday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "Thursday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "Friday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "Saturday",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetDayName.GetDayName_Invoke_ReturnsExpected",
+      "culture": "fr-FR",
+      "method": "GetDayName",
+      "values": [
+        {
+          "value": 0,
+          "result": "dimanche",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 1,
+          "result": "lundi",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "mardi",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "mercredi",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "jeudi",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "vendredi",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "samedi",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetDayName.GetDayName_InvalidDayOfWeek_ThrowsArgumentOutOfRangeException",
+      "culture": "new",
+      "method": "GetDayName",
+      "values": [
+        {
+          "value": -1,
+          "result": null,
+          "error": "ArgumentOutOfRangeException",
+          "message": "Valid values are between Sunday and Saturday, inclusive. (Parameter \u0027dayofweek\u0027)\r\nActual value was -1.",
+          "paramName": "dayofweek",
+          "actualValue": -1
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetDayName.GetDayName_InvalidDayOfWeek_ThrowsArgumentOutOfRangeException",
+      "culture": "new",
+      "method": "GetDayName",
+      "values": [
+        {
+          "value": 7,
+          "result": null,
+          "error": "ArgumentOutOfRangeException",
+          "message": "Valid values are between Sunday and Saturday, inclusive. (Parameter \u0027dayofweek\u0027)\r\nActual value was 7.",
+          "paramName": "dayofweek",
+          "actualValue": 7
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetAbbreviatedDayName.GetAbbreviatedDayName_Invoke_ReturnsExpected",
+      "culture": "invariant",
+      "method": "GetAbbreviatedDayName",
+      "values": [
+        {
+          "value": 0,
+          "result": "Sun",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 1,
+          "result": "Mon",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "Tue",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "Wed",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "Thu",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "Fri",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "Sat",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetAbbreviatedDayName.GetAbbreviatedDayName_Invoke_ReturnsExpected",
+      "culture": "new",
+      "method": "GetAbbreviatedDayName",
+      "values": [
+        {
+          "value": 0,
+          "result": "Sun",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 1,
+          "result": "Mon",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "Tue",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "Wed",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "Thu",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "Fri",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "Sat",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetAbbreviatedDayName.GetAbbreviatedDayName_Invoke_ReturnsExpected",
+      "culture": "en-US",
+      "method": "GetAbbreviatedDayName",
+      "values": [
+        {
+          "value": 0,
+          "result": "Sun",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 1,
+          "result": "Mon",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "Tue",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "Wed",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "Thu",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "Fri",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "Sat",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetAbbreviatedDayName.GetAbbreviatedDayName_Invoke_ReturnsExpected",
+      "culture": "fr-FR",
+      "method": "GetAbbreviatedDayName",
+      "values": [
+        {
+          "value": 0,
+          "result": "dim.",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 1,
+          "result": "lun.",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "mar.",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "mer.",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "jeu.",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "ven.",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "sam.",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetAbbreviatedDayName.GetAbbreviatedDayName_Invalid_ThrowsArgumentOutOfRangeException",
+      "culture": "new",
+      "method": "GetAbbreviatedDayName",
+      "values": [
+        {
+          "value": -1,
+          "result": null,
+          "error": "ArgumentOutOfRangeException",
+          "message": "Valid values are between Sunday and Saturday, inclusive. (Parameter \u0027dayofweek\u0027)\r\nActual value was -1.",
+          "paramName": "dayofweek",
+          "actualValue": -1
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetAbbreviatedDayName.GetAbbreviatedDayName_Invalid_ThrowsArgumentOutOfRangeException",
+      "culture": "new",
+      "method": "GetAbbreviatedDayName",
+      "values": [
+        {
+          "value": 7,
+          "result": null,
+          "error": "ArgumentOutOfRangeException",
+          "message": "Valid values are between Sunday and Saturday, inclusive. (Parameter \u0027dayofweek\u0027)\r\nActual value was 7.",
+          "paramName": "dayofweek",
+          "actualValue": 7
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetMonthName.GetMonthName_Invoke_ReturnsExpected",
+      "culture": "invariant",
+      "method": "GetMonthName",
+      "values": [
+        {
+          "value": 1,
+          "result": "January",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "February",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "March",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "April",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "May",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "June",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 7,
+          "result": "July",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 8,
+          "result": "August",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 9,
+          "result": "September",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 10,
+          "result": "October",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 11,
+          "result": "November",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 12,
+          "result": "December",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 13,
+          "result": "",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetMonthName.GetMonthName_Invoke_ReturnsExpected",
+      "culture": "new",
+      "method": "GetMonthName",
+      "values": [
+        {
+          "value": 1,
+          "result": "January",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "February",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "March",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "April",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "May",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "June",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 7,
+          "result": "July",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 8,
+          "result": "August",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 9,
+          "result": "September",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 10,
+          "result": "October",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 11,
+          "result": "November",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 12,
+          "result": "December",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 13,
+          "result": "",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetMonthName.GetMonthName_Invoke_ReturnsExpected",
+      "culture": "en-US",
+      "method": "GetMonthName",
+      "values": [
+        {
+          "value": 1,
+          "result": "January",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "February",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "March",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "April",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "May",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "June",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 7,
+          "result": "July",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 8,
+          "result": "August",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 9,
+          "result": "September",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 10,
+          "result": "October",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 11,
+          "result": "November",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 12,
+          "result": "December",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 13,
+          "result": "",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetMonthName.GetMonthName_Invoke_ReturnsExpected",
+      "culture": "fr-FR",
+      "method": "GetMonthName",
+      "values": [
+        {
+          "value": 1,
+          "result": "janvier",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "f\u00E9vrier",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "mars",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "avril",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "mai",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "juin",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 7,
+          "result": "juillet",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 8,
+          "result": "ao\u00FBt",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 9,
+          "result": "septembre",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 10,
+          "result": "octobre",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 11,
+          "result": "novembre",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 12,
+          "result": "d\u00E9cembre",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 13,
+          "result": "",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetMonthName.GetMonthName_InvalidMonth_ThrowsArgumentOutOfRangeException",
+      "culture": "new",
+      "method": "GetMonthName",
+      "values": [
+        {
+          "value": 0,
+          "result": null,
+          "error": "ArgumentOutOfRangeException",
+          "message": "Valid values are between 1 and 13, inclusive. (Parameter \u0027month\u0027)\r\nActual value was 0.",
+          "paramName": "month",
+          "actualValue": 0
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetMonthName.GetMonthName_InvalidMonth_ThrowsArgumentOutOfRangeException",
+      "culture": "new",
+      "method": "GetMonthName",
+      "values": [
+        {
+          "value": 14,
+          "result": null,
+          "error": "ArgumentOutOfRangeException",
+          "message": "Valid values are between 1 and 13, inclusive. (Parameter \u0027month\u0027)\r\nActual value was 14.",
+          "paramName": "month",
+          "actualValue": 14
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetAbbreviatedMonthName.GetAbbreviatedMonthName_Invoke_ReturnsExpected",
+      "culture": "invariant",
+      "method": "GetAbbreviatedMonthName",
+      "values": [
+        {
+          "value": 1,
+          "result": "Jan",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "Feb",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "Mar",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "Apr",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "May",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "Jun",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 7,
+          "result": "Jul",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 8,
+          "result": "Aug",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 9,
+          "result": "Sep",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 10,
+          "result": "Oct",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 11,
+          "result": "Nov",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 12,
+          "result": "Dec",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 13,
+          "result": "",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetAbbreviatedMonthName.GetAbbreviatedMonthName_Invoke_ReturnsExpected",
+      "culture": "new",
+      "method": "GetAbbreviatedMonthName",
+      "values": [
+        {
+          "value": 1,
+          "result": "Jan",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "Feb",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "Mar",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "Apr",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "May",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "Jun",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 7,
+          "result": "Jul",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 8,
+          "result": "Aug",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 9,
+          "result": "Sep",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 10,
+          "result": "Oct",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 11,
+          "result": "Nov",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 12,
+          "result": "Dec",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 13,
+          "result": "",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetAbbreviatedMonthName.GetAbbreviatedMonthName_Invoke_ReturnsExpected",
+      "culture": "en-US",
+      "method": "GetAbbreviatedMonthName",
+      "values": [
+        {
+          "value": 1,
+          "result": "Jan",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "Feb",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "Mar",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "Apr",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "May",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "Jun",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 7,
+          "result": "Jul",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 8,
+          "result": "Aug",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 9,
+          "result": "Sep",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 10,
+          "result": "Oct",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 11,
+          "result": "Nov",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 12,
+          "result": "Dec",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 13,
+          "result": "",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetAbbreviatedMonthName.GetAbbreviatedMonthName_Invoke_ReturnsExpected",
+      "culture": "fr-FR",
+      "method": "GetAbbreviatedMonthName",
+      "values": [
+        {
+          "value": 1,
+          "result": "janv.",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "f\u00E9vr.",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "mars",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "avr.",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "mai",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "juin",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 7,
+          "result": "juil.",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 8,
+          "result": "ao\u00FBt",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 9,
+          "result": "sept.",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 10,
+          "result": "oct.",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 11,
+          "result": "nov.",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 12,
+          "result": "d\u00E9c.",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 13,
+          "result": "",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetAbbreviatedMonthName.GetAbbreviatedMonthName_InvalidMonth_ThrowsArgumentOutOfRangeException",
+      "culture": "new",
+      "method": "GetAbbreviatedMonthName",
+      "values": [
+        {
+          "value": 0,
+          "result": null,
+          "error": "ArgumentOutOfRangeException",
+          "message": "Valid values are between 1 and 13, inclusive. (Parameter \u0027month\u0027)\r\nActual value was 0.",
+          "paramName": "month",
+          "actualValue": 0
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoGetAbbreviatedMonthName.GetAbbreviatedMonthName_InvalidMonth_ThrowsArgumentOutOfRangeException",
+      "culture": "new",
+      "method": "GetAbbreviatedMonthName",
+      "values": [
+        {
+          "value": 14,
+          "result": null,
+          "error": "ArgumentOutOfRangeException",
+          "message": "Valid values are between 1 and 13, inclusive. (Parameter \u0027month\u0027)\r\nActual value was 14.",
+          "paramName": "month",
+          "actualValue": 14
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoMiscTests.GetShortestDayName_Invoke_ReturnsExpected",
+      "culture": "",
+      "method": "GetShortestDayName",
+      "values": [
+        {
+          "value": 0,
+          "result": "Su",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 1,
+          "result": "Mo",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "Tu",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "We",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "Th",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "Fr",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "Sa",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoMiscTests.GetShortestDayName_Invoke_ReturnsExpected",
+      "culture": "en-US",
+      "method": "GetShortestDayName",
+      "values": [
+        {
+          "value": 0,
+          "result": "S",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 1,
+          "result": "M",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "T",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "W",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "T",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "F",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "S",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoMiscTests.GetShortestDayName_Invoke_ReturnsExpected",
+      "culture": "ja-JP",
+      "method": "GetShortestDayName",
+      "values": [
+        {
+          "value": 0,
+          "result": "\u65E5",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 1,
+          "result": "\u6708",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "\u706B",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "\u6C34",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "\u6728",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "\u91D1",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "\u571F",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoMiscTests.GetShortestDayName_Invoke_ReturnsExpected",
+      "culture": "zh-CN",
+      "method": "GetShortestDayName",
+      "values": [
+        {
+          "value": 0,
+          "result": "\u65E5",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 1,
+          "result": "\u4E00",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "\u4E8C",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "\u4E09",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "\u56DB",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "\u4E94",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "\u516D",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoMiscTests.GetShortestDayName_Invoke_ReturnsExpected",
+      "culture": "ar-SA",
+      "method": "GetShortestDayName",
+      "values": [
+        {
+          "value": 0,
+          "result": "\u062D",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 1,
+          "result": "\u0646",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "\u062B",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "\u0631",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "\u062E",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "\u062C",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "\u0633",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoMiscTests.GetShortestDayName_Invoke_ReturnsExpected",
+      "culture": "ko-KR",
+      "method": "GetShortestDayName",
+      "values": [
+        {
+          "value": 0,
+          "result": "\uC77C",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 1,
+          "result": "\uC6D4",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "\uD654",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "\uC218",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "\uBAA9",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "\uAE08",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "\uD1A0",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "DateTimeFormatInfoMiscTests.GetShortestDayName_Invoke_ReturnsExpected",
+      "culture": "he-IL",
+      "method": "GetShortestDayName",
+      "values": [
+        {
+          "value": 0,
+          "result": "\u05D0\u05F3",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 1,
+          "result": "\u05D1\u05F3",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 2,
+          "result": "\u05D2\u05F3",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 3,
+          "result": "\u05D3\u05F3",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 4,
+          "result": "\u05D4\u05F3",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 5,
+          "result": "\u05D5\u05F3",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        },
+        {
+          "value": 6,
+          "result": "\u05E9\u05F3",
+          "error": null,
+          "message": null,
+          "paramName": null,
+          "actualValue": null
+        }
+      ]
+    },
+    {
+      "source": "Supplementary.ShortestDayRange",
+      "culture": "new",
+      "method": "GetShortestDayName",
+      "values": [
+        {
+          "value": -1,
+          "result": null,
+          "error": "ArgumentOutOfRangeException",
+          "message": "Valid values are between Sunday and Saturday, inclusive. (Parameter \u0027dayOfWeek\u0027)\r\nActual value was -1.",
+          "paramName": "dayOfWeek",
+          "actualValue": -1
+        }
+      ]
+    },
+    {
+      "source": "Supplementary.ShortestDayRange",
+      "culture": "new",
+      "method": "GetShortestDayName",
+      "values": [
+        {
+          "value": 7,
+          "result": null,
+          "error": "ArgumentOutOfRangeException",
+          "message": "Valid values are between Sunday and Saturday, inclusive. (Parameter \u0027dayOfWeek\u0027)\r\nActual value was 7.",
+          "paramName": "dayOfWeek",
+          "actualValue": 7
+        }
+      ]
+    }
+  ]
+}

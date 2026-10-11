@@ -208,6 +208,9 @@ internal static class DateTimeFormatOracle
     {
         var rows = new List<object>();
         var cultures = new Dictionary<string, object>();
+        foreach (string file in Directory.GetFiles("packages/globalization/locales", "*.ts").OrderBy(path => path, StringComparer.Ordinal))
+            AddCulture(new CultureInfo(Path.GetFileNameWithoutExtension(file), false));
+        foreach (CultureInfo culture in CultureInfo.GetCultures(CultureTypes.AllCultures).OrderBy(c => c.Name, StringComparer.Ordinal)) AddCulture(culture);
         foreach (var a in ToString_MatchesExpected_MemberData())
         {
             var date = (DateTime)a[0];
@@ -275,13 +278,11 @@ internal static class DateTimeFormatOracle
             customFormats.Add(new { culture = name, pattern, format, ticks = date.Ticks.ToString(),
                 kind = (int)date.Kind, result = date.ToString(format, culture) });
         }
-        return JsonSerializer.Serialize(new { runtime = Environment.Version.ToString(), timeZone = TimeZoneInfo.Local.Id, cultures, rows, supplemental, allFormats, customFormats }, new JsonSerializerOptions { WriteIndented = true }) + "\n";
+        return JsonSerializer.Serialize(new { runtime = Environment.Version.ToString(), timeZone = TimeZoneInfo.Local.Id, cultures = cultures.OrderBy(pair => pair.Key, StringComparer.Ordinal).ToDictionary(pair => pair.Key, pair => pair.Value), rows, supplemental, allFormats, customFormats }, new JsonSerializerOptions { WriteIndented = true }) + "\n";
 
         void AddCulture(CultureInfo c)
         {
             var f = c.DateTimeFormat;
-            var gregorian = (DateTimeFormatInfo)f.Clone();
-            gregorian.Calendar = new GregorianCalendar();
             var original = JsonSerializer.SerializeToElement(Info(f));
             var calendarFormats = new Dictionary<int, Dictionary<string, JsonElement>>();
             var idProperty = typeof(Calendar).GetProperty("ID", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)!;
@@ -291,7 +292,7 @@ internal static class DateTimeFormatOracle
                 variant.Calendar = calendar;
                 var selected = JsonSerializer.SerializeToElement(Info(variant));
                 var changes = new Dictionary<string, JsonElement>();
-                foreach (string key in new[] { "eraNames", "monthDayPattern", "dayNames", "abbreviatedDayNames", "shortestDayNames",
+                foreach (string key in new[] { "leapYearMonthNames", "eraNames", "abbreviatedEraNames", "abbreviatedEnglishEraNames", "monthDayPattern", "dayNames", "abbreviatedDayNames", "shortestDayNames",
                     "monthNames", "abbreviatedMonthNames", "monthGenitiveNames", "abbreviatedMonthGenitiveNames",
                     "longDatePattern", "shortDatePattern", "yearMonthPattern", "dateSeparator", "nativeCalendarName", "allDateTimePatterns" })
                 {
@@ -299,9 +300,25 @@ internal static class DateTimeFormatOracle
                 }
                 calendarFormats[Convert.ToInt32(idProperty.GetValue(calendar))] = changes;
             }
-            cultures[c.Name] = new { calendar = f.Calendar.GetType().Name, formatInfo = Info(f), gregorianDateTimeFormat = Info(gregorian), calendarFormats };
+            object? localeInfo = null;
+            if (c.Name.Length > 0)
+            {
+                var numberFields = System.Text.RegularExpressions.Regex.Matches(File.ReadAllText("packages/globalization/src/lib/number_format_info.ts"), @"^    (\w+):", System.Text.RegularExpressions.RegexOptions.Multiline)
+                    .Select(match => match.Groups[1].Value);
+                var numberFormat = new Dictionary<string, object?>();
+                foreach (string field in numberFields)
+                {
+                    string member = field == "naNSymbol" ? "NaNSymbol" : char.ToUpperInvariant(field[0]) + field.Substring(1);
+                    numberFormat[field] = typeof(NumberFormatInfo).GetProperty(member)!.GetValue(c.NumberFormat);
+                }
+                localeInfo = new { parent=c.Parent.Name, lcid=c.LCID, name=c.Name, nativeName=c.NativeName, englishName=c.EnglishName,
+                    twoLetterISOLanguageName=c.TwoLetterISOLanguageName, threeLetterISOLanguageName=c.ThreeLetterISOLanguageName,
+                    listSeparator=c.TextInfo.ListSeparator, isRightToLeft=c.TextInfo.IsRightToLeft, isNeutralCulture=c.IsNeutralCulture, numberFormat };
+            }
+            cultures[c.Name] = new { localeInfo, calendar = f.Calendar.GetType().Name, calendarId = Convert.ToInt32(idProperty.GetValue(f.Calendar)), formatInfo = Info(f), calendarFormats, optionalCalendarIds = c.OptionalCalendars.Select(calendar => Convert.ToInt32(idProperty.GetValue(calendar))).ToArray() };
         }
         object Info(DateTimeFormatInfo f) => new {
+                leapYearMonthNames = f.Calendar is HebrewCalendar ? (string[])typeof(DateTimeFormatInfo).GetMethod("InternalGetLeapYearMonthNames", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)!.Invoke(f, null)! : null,
                 abbreviatedDayNames = f.AbbreviatedDayNames, abbreviatedMonthGenitiveNames = f.AbbreviatedMonthGenitiveNames,
                 abbreviatedMonthNames = f.AbbreviatedMonthNames, amDesignator = f.AMDesignator, dateSeparator = f.DateSeparator,
                 dayNames = f.DayNames, firstDayOfWeek = (int)f.FirstDayOfWeek, calendarWeekRule = (int)f.CalendarWeekRule,
@@ -311,7 +328,9 @@ internal static class DateTimeFormatOracle
                 pmDesignator = f.PMDesignator, rfC1123Pattern = f.RFC1123Pattern, shortDatePattern = f.ShortDatePattern,
                 shortestDayNames = f.ShortestDayNames, shortTimePattern = f.ShortTimePattern, sortableDateTimePattern = f.SortableDateTimePattern,
                 timeSeparator = f.TimeSeparator, universalSortableDateTimePattern = f.UniversalSortableDateTimePattern,
-                yearMonthPattern = f.YearMonthPattern, eraNames = f.Calendar.Eras.Select(f.GetEraName).ToArray(),
+                yearMonthPattern = f.YearMonthPattern, eraNames = f.Calendar.Eras.Reverse().Select(f.GetEraName).ToArray(),
+                abbreviatedEraNames = f.Calendar.Eras.Reverse().Select(f.GetAbbreviatedEraName).ToArray(),
+                abbreviatedEnglishEraNames = (string[])typeof(DateTimeFormatInfo).GetProperty("AbbreviatedEnglishEraNames", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)!.GetValue(f)!,
                 allDateTimePatterns = new[] { 'd', 'D', 't', 'T', 'y', 'Y', 'm', 'M' }.ToDictionary(value => value.ToString(), value => f.GetAllDateTimePatterns(value)) };
     }
 }

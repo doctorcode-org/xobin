@@ -4,7 +4,7 @@ import { GregorianCalendar } from './gregorian_calendar';
 import { DayOfWeek } from './day_of_week';
 import { CalendarWeekRule } from './calendar_week_rule';
 import { getCurrentFormatContext, invariantDateTimeFormat } from './date_time_format_context';
-import { DateTimeFormatData, DateTimeFormatState, dateTimeFormatStates, registerDateTimeFormatInfoType, getCalendarFormatData } from './date_time_format_data';
+import { DateTimeFormatData, DateTimeFormatState, dateTimeFormatStates, registerDateTimeFormatInfoType, getCalendarFormatData, clearMonthFormatFlags, copyMonthFormatFlags } from './date_time_format_data';
 import { getCalendarIdentity } from './calendar_identity';
 
 /**
@@ -21,6 +21,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
             data: copyFormatData(invariantDateTimeFormat),
             calendar: new GregorianCalendar(),
             isReadOnly: false,
+            cultureName: '',
             calendarFormats: new Map([[1, copyFormatData(invariantDateTimeFormat)]]),
         });
     }
@@ -72,7 +73,9 @@ export class DateTimeFormatInfo implements IFormatProvider {
             calendar: this.calendar.clone(),
             isReadOnly: false,
             calendarFormats: this.state.calendarFormats,
+            cultureName: this.state.cultureName,
         });
+        copyMonthFormatFlags(this.state.data, clone.state.data);
         return clone;
     }
 
@@ -89,7 +92,9 @@ export class DateTimeFormatInfo implements IFormatProvider {
             calendar: Calendar.readOnly(dtfi.calendar),
             isReadOnly: true,
             calendarFormats: dtfi.state.calendarFormats,
+            cultureName: dtfi.state.cultureName,
         });
+        copyMonthFormatFlags(dtfi.state.data, copy.state.data);
         return copy;
     }
 
@@ -127,6 +132,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set abbreviatedDayNames(value: string[]) {
         this.verifyWritable();
         this.verifyDayNames(value);
+        clearMonthFormatFlags(this.state.data);
         this.state.data.abbreviatedDayNames = value;
     }
 
@@ -140,6 +146,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set abbreviatedMonthGenitiveNames(value: string[]) {
         this.verifyWritable();
         this.verifyMonthNames(value);
+        clearMonthFormatFlags(this.state.data);
         this.state.data.abbreviatedMonthGenitiveNames = value;
     }
 
@@ -153,6 +160,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set abbreviatedMonthNames(value: string[]) {
         this.verifyWritable();
         this.verifyMonthNames(value);
+        clearMonthFormatFlags(this.state.data);
         this.state.data.abbreviatedMonthNames = value;
     }
 
@@ -166,6 +174,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set amDesignator(value: string) {
         this.verifyWritable();
         if (value == null) throw new ArgumentNullException('value');
+        clearMonthFormatFlags(this.state.data);
         this.state.data.amDesignator = value;
     }
 
@@ -194,6 +203,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set dateSeparator(value: string) {
         this.verifyWritable();
         if (value == null) throw new ArgumentNullException('value');
+        clearMonthFormatFlags(this.state.data);
         this.state.data.dateSeparator = value;
     }
 
@@ -207,6 +217,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set dayNames(value: string[]) {
         this.verifyWritable();
         this.verifyDayNames(value);
+        clearMonthFormatFlags(this.state.data);
         this.state.data.dayNames = value;
     }
 
@@ -248,6 +259,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set longDatePattern(value: string) {
         this.verifyWritable();
         if (value == null) throw new ArgumentNullException('value');
+        clearMonthFormatFlags(this.state.data);
         this.state.data.longDatePattern = value;
         this.state.data.fullDateTimePattern = this.longDatePattern + ' ' + this.longTimePattern;
     }
@@ -262,6 +274,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set longTimePattern(value: string) {
         this.verifyWritable();
         if (value == null) throw new ArgumentNullException('value');
+        clearMonthFormatFlags(this.state.data);
         this.state.data.longTimePattern = value;
         this.state.data.fullDateTimePattern = this.longDatePattern + ' ' + this.longTimePattern;
     }
@@ -289,6 +302,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set monthGenitiveNames(value: string[]) {
         this.verifyWritable();
         this.verifyMonthNames(value);
+        clearMonthFormatFlags(this.state.data);
         this.state.data.monthGenitiveNames = value;
     }
 
@@ -302,6 +316,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set monthNames(value: string[]) {
         this.verifyWritable();
         this.verifyMonthNames(value);
+        clearMonthFormatFlags(this.state.data);
         this.state.data.monthNames = value;
     }
 
@@ -322,6 +337,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set pmDesignator(value: string) {
         this.verifyWritable();
         if (value == null) throw new ArgumentNullException('value');
+        clearMonthFormatFlags(this.state.data);
         this.state.data.pmDesignator = value;
     }
 
@@ -342,6 +358,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set shortDatePattern(value: string) {
         this.verifyWritable();
         if (value == null) throw new ArgumentNullException('value');
+        clearMonthFormatFlags(this.state.data);
         this.state.data.shortDatePattern = value;
     }
 
@@ -368,6 +385,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set shortTimePattern(value: string) {
         this.verifyWritable();
         if (value == null) throw new ArgumentNullException('value');
+        clearMonthFormatFlags(this.state.data);
         this.state.data.shortTimePattern = value;
     }
 
@@ -388,6 +406,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set timeSeparator(value: string) {
         this.verifyWritable();
         if (value == null) throw new ArgumentNullException('value');
+        clearMonthFormatFlags(this.state.data);
         this.state.data.timeSeparator = value;
     }
 
@@ -408,7 +427,181 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set yearMonthPattern(value: string) {
         this.verifyWritable();
         if (value == null) throw new ArgumentNullException('value');
+        clearMonthFormatFlags(this.state.data);
         this.state.data.yearMonthPattern = value;
+    }
+
+    /**
+     * Gets the era number matching a culture-specific or English era name.
+     * @param eraName The full or abbreviated era name to find.
+     */
+    getEra(eraName: string): number {
+        if (eraName == null) throw new ArgumentNullException('eraName');
+        if (eraName.length === 0) return -1;
+        const data = this.state.data;
+        const local = new Intl.Collator(this.state.cultureName || 'en', { sensitivity: 'accent' });
+        const english = new Intl.Collator('en', { sensitivity: 'accent' });
+        for (const [names, comparer] of [
+            [data.eraNames ?? [], local], [data.abbreviatedEraNames ?? [], local],
+            [data.abbreviatedEnglishEraNames ?? [], english],
+        ] as const) {
+            for (let i = 0; i < names.length; i++) {
+                if (names[i]!.length > 0 && comparer.compare(eraName, names[i]!) === 0) return i + 1;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Gets the full name of the specified era.
+     * @param era The era number, or zero for the calendar's current era.
+     */
+    getEraName(era: number): string {
+        return this.getEraNameFromArray(era, this.state.data.eraNames ?? []);
+    }
+
+    /**
+     * Gets the abbreviated name of the specified era.
+     * @param era The era number, or zero for the calendar's current era.
+     */
+    getAbbreviatedEraName(era: number): string {
+        const names = this.state.data.abbreviatedEraNames;
+        return names?.length ? this.getEraNameFromArray(era, names) : this.getEraName(era);
+    }
+
+    /**
+     * Resolves a one-based era index using the calendar's current era for zero.
+     * @param era The requested era number.
+     * @param names The calendar's era names in ascending era order.
+     */
+    private getEraNameFromArray(era: number, names: ReadonlyArray<string>): string {
+        const calendarData = this.state.calendarFormats.get(getCalendarIdentity(this.calendar).id);
+        const selected = era === 0 ? calendarData?.eraNames?.length || 1 : era;
+        if (!Number.isInteger(selected) || selected < 1 || selected > names.length) {
+            throw new ArgumentOutOfRangeException('era', selected, 'Era value was not valid.');
+        }
+        return names[selected - 1]!;
+    }
+
+    /**
+     * Gets the full name of a day of the week.
+     * @param dayofweek The day from Sunday through Saturday.
+     */
+    getDayName(dayofweek: DayOfWeek): string {
+        return this.getDayNameFromArray(dayofweek, 'dayofweek', this.state.data.dayNames);
+    }
+
+    /**
+     * Gets the abbreviated name of a day of the week.
+     * @param dayofweek The day from Sunday through Saturday.
+     */
+    getAbbreviatedDayName(dayofweek: DayOfWeek): string {
+        return this.getDayNameFromArray(dayofweek, 'dayofweek', this.state.data.abbreviatedDayNames);
+    }
+
+    /**
+     * Gets the shortest name of a day of the week.
+     * @param dayOfWeek The day from Sunday through Saturday.
+     */
+    getShortestDayName(dayOfWeek: DayOfWeek): string {
+        return this.getDayNameFromArray(dayOfWeek, 'dayOfWeek', this.state.data.shortestDayNames);
+    }
+
+    /**
+     * Gets the full name of a month.
+     * @param month The month from one through thirteen.
+     */
+    getMonthName(month: number): string {
+        return this.getMonthNameFromArray(month, this.state.data.monthNames);
+    }
+
+    /**
+     * Gets the abbreviated name of a month.
+     * @param month The month from one through thirteen.
+     */
+    getAbbreviatedMonthName(month: number): string {
+        return this.getMonthNameFromArray(month, this.state.data.abbreviatedMonthNames);
+    }
+
+    /**
+     * Gets all standard patterns, or those for one standard format specifier.
+     * @param format The standard format specifier, or undefined for all specifiers.
+     */
+    getAllDateTimePatterns(format?: string): string[] {
+        if (format === undefined) return [...'dDfFgGmMoOrRstTuUyY'].flatMap(value => this.getAllDateTimePatterns(value));
+        const patterns = (key: 'd' | 'D' | 't' | 'T' | 'y'): string[] => {
+            const active = key === 'd' ? this.shortDatePattern : key === 'D' ? this.longDatePattern
+                : key === 't' ? this.shortTimePattern : key === 'T' ? this.longTimePattern : this.yearMonthPattern;
+            const values = (this.state.data.allDateTimePatterns?.[key] ?? [active]).slice();
+            if (values[0] === active) return values;
+            const index = values.indexOf(active);
+            if (index < 0) return [active, ...values];
+            values[index] = values[0]!;
+            values[0] = active;
+            return values;
+        };
+        switch (format) {
+            case 'd': case 'D': case 't': case 'T': return patterns(format);
+            case 'y': case 'Y': return patterns('y');
+            case 'm': case 'M': return [this.monthDayPattern];
+            case 'o': case 'O': return ["yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK"];
+            case 'r': case 'R': return [this.rfc1123Pattern];
+            case 's': return [this.sortableDateTimePattern];
+            case 'u': return [this.universalSortableDateTimePattern];
+            case 'f': case 'F': case 'g': case 'G': case 'U':
+                return patterns(format === 'g' || format === 'G' ? 'd' : 'D')
+                    .flatMap(date => patterns(format === 'f' || format === 'g' ? 't' : 'T').map(time => date + ' ' + time));
+            default: throw new ArgumentException(`Format specifier '${format}' was invalid.`, 'format');
+        }
+    }
+
+    /**
+     * Replaces date, time, or year-month patterns, using the first pattern as default.
+     * @param patterns The non-empty array of non-null patterns, retained by reference.
+     * @param format One of d, D, t, T, y, or Y.
+     */
+    setAllDateTimePatterns(patterns: string[], format: string): void {
+        this.verifyWritable();
+        if (patterns == null) throw new ArgumentNullException('patterns');
+        if (patterns.length === 0) throw new ArgumentException('Array must not be of length zero.', 'patterns');
+        for (let i = 0; i < patterns.length; i++) {
+            if (patterns[i] == null) throw new ArgumentNullException(`patterns[${i}]`, 'Found a null value within an array.');
+        }
+        if (format.length !== 1 || !'dDtTyY'.includes(format)) {
+            throw new ArgumentException(`Format specifier '${format}' was invalid.`, 'format');
+        }
+        const key = format === 'Y' ? 'y' : format;
+        this.state.data.allDateTimePatterns = { ...this.state.data.allDateTimePatterns, [key]: patterns };
+        if (key === 'd') this.shortDatePattern = patterns[0]!;
+        else if (key === 'D') this.longDatePattern = patterns[0]!;
+        else if (key === 't') this.shortTimePattern = patterns[0]!;
+        else if (key === 'T') this.longTimePattern = patterns[0]!;
+        else this.yearMonthPattern = patterns[0]!;
+    }
+
+    /**
+     * Validates a day index and returns its name without copying the array.
+     * @param day The day index to validate.
+     * @param paramName The public method's parameter name.
+     * @param names The selected day-name array.
+     */
+    private getDayNameFromArray(day: DayOfWeek, paramName: string, names: ReadonlyArray<string>): string {
+        if (!Number.isInteger(day) || day < 0 || day > 6) {
+            throw new ArgumentOutOfRangeException(paramName, day, 'Valid values are between Sunday and Saturday, inclusive.');
+        }
+        return names[day]!;
+    }
+
+    /**
+     * Validates a month index and returns its name without copying the array.
+     * @param month The one-based month index.
+     * @param names The selected month-name array.
+     */
+    private getMonthNameFromArray(month: number, names: ReadonlyArray<string>): string {
+        if (!Number.isInteger(month) || month < 1 || month > 13) {
+            throw new ArgumentOutOfRangeException('month', month, 'Valid values are between 1 and 13, inclusive.');
+        }
+        return names[month - 1]!;
     }
 
     /**
@@ -457,15 +650,16 @@ registerDateTimeFormatInfoType(DateTimeFormatInfo);
  * @param data The locale's date and time format data.
  * @param calendar The culture's calendar instance.
  * @param calendarFormats The optional calendars and their format-data overrides from the locale oracle.
+ * @param cultureName The culture used for linguistic era-name comparison.
  * @internal
  */
 export function createDateTimeFormatInfo(data: DateTimeFormatData, calendar: Calendar,
-    calendarFormats?: Readonly<Record<number, Partial<DateTimeFormatData>>>): DateTimeFormatInfo {
+    calendarFormats?: Readonly<Record<number, Partial<DateTimeFormatData>>>, cultureName: string = ''): DateTimeFormatInfo {
     const info = new DateTimeFormatInfo();
     const formats = new Map<number, DateTimeFormatData>(Object.entries(calendarFormats ?? {})
         .map(([id, overrides]) => [Number(id), copyFormatData({ ...data, ...overrides })]));
     formats.set(getCalendarIdentity(calendar).id, copyFormatData(data));
-    dateTimeFormatStates.set(info, { data: copyFormatData(data), calendar, isReadOnly: false, calendarFormats: formats });
+    dateTimeFormatStates.set(info, { data: copyFormatData(data), calendar, isReadOnly: false, calendarFormats: formats, cultureName });
     return info;
 }
 

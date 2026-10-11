@@ -250,7 +250,9 @@ for (const file of selected) {
                 const mappedFile = mappedFacts.get(scopedKey) ?? mappedFacts.get(mappingKey);
                 const mappedTitle = scopedMapping ? `${mappingKey}/${testClass}` : mappingKey;
                 if (mappedFile) {
-                    if (test[1] !== 'Fact') throw new Error(`Only Fact methods may use mapped-facts.json: ${mappingKey}`);
+                    if (!['Fact', 'ConditionalFact'].includes(test[1])) {
+                        throw new Error(`Only Fact or ConditionalFact methods may use mapped-facts.json: ${mappingKey}`);
+                    }
                     const testSource = readFileSync(resolve(dirname(output), 'dotnet10', mappedFile), 'utf8');
                     const directTest = testSource.includes(`test('${mappedTitle}'`);
                     const parameterizedTest = scopedMapping

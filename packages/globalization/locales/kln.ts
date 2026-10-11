@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 4096, 
     name: "kln", 
@@ -40,29 +41,153 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "krn", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 0, 
-        fullDateTimePattern: "dddd, d MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd, d MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "koosk", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["Kts", "Kot", "Koo", "Kos", "Koa", "Kom", "Kol"], 
-        shortestDayNames: ["Kts", "Kot", "Koo", "Kos", "Koa", "Kom", "Kol"], 
-        dayNames: ["Kotisap", "Kotaai", "Koaeng’", "Kosomok", "Koang’wan", "Komuut", "Kolo"], 
-        abbreviatedMonthNames: ["Mul", "Ngat", "Taa", "Iwo", "Mam", "Paa", "Nge", "Roo", "Bur", "Epe", "Kpt", "Kpa", ""], 
-        monthNames: ["Mulgul", "Ng’atyaato", "Kiptaamo", "Iwootkuut", "Mamuut", "Paagi", "Ng’eiyeet", "Rooptui", "Bureet", "Epeeso", "Kipsuunde ne taai", "Kipsuunde nebo aeng’", ""], 
-        nativeCalendarName: "Gregorian Calendar", 
-        abbreviatedMonthGenitiveNames: ["Mul", "Ngat", "Taa", "Iwo", "Mam", "Paa", "Nge", "Roo", "Bur", "Epe", "Kpt", "Kpa", ""], 
-        monthGenitiveNames: ["Mulgul", "Ng’atyaato", "Kiptaamo", "Iwootkuut", "Mamuut", "Paagi", "Ng’eiyeet", "Rooptui", "Bureet", "Epeeso", "Kipsuunde ne taai", "Kipsuunde nebo aeng’", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Kts",
+        "Kot",
+        "Koo",
+        "Kos",
+        "Koa",
+        "Kom",
+        "Kol"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Mul",
+        "Ngat",
+        "Taa",
+        "Iwo",
+        "Mam",
+        "Paa",
+        "Nge",
+        "Roo",
+        "Bur",
+        "Epe",
+        "Kpt",
+        "Kpa",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Mul",
+        "Ngat",
+        "Taa",
+        "Iwo",
+        "Mam",
+        "Paa",
+        "Nge",
+        "Roo",
+        "Bur",
+        "Epe",
+        "Kpt",
+        "Kpa",
+        ""
+      ],
+      "amDesignator": "karoon",
+      "dateSeparator": "/",
+      "dayNames": [
+        "Kotisap",
+        "Kotaai",
+        "Koaeng’",
+        "Kosomok",
+        "Koang’wan",
+        "Komuut",
+        "Kolo"
+      ],
+      "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, d MMMM yyyy HH:mm:ss",
+      "longDatePattern": "dddd, d MMMM yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "Mulgul",
+        "Ng’atyaato",
+        "Kiptaamo",
+        "Iwootkuut",
+        "Mamuut",
+        "Paagi",
+        "Ng’eiyeet",
+        "Rooptui",
+        "Bureet",
+        "Epeeso",
+        "Kipsuunde ne taai",
+        "Kipsuunde nebo aeng’",
+        ""
+      ],
+      "monthNames": [
+        "Mulgul",
+        "Ng’atyaato",
+        "Kiptaamo",
+        "Iwootkuut",
+        "Mamuut",
+        "Paagi",
+        "Ng’eiyeet",
+        "Rooptui",
+        "Bureet",
+        "Epeeso",
+        "Kipsuunde ne taai",
+        "Kipsuunde nebo aeng’",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "kooskoliny",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd/MM/yyyy",
+      "shortestDayNames": [
+        "T",
+        "T",
+        "O",
+        "S",
+        "A",
+        "M",
+        "L"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "KO"
+      ],
+      "abbreviatedEraNames": [
+        "KO"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd/MM/yyyy",
+          "d MMM yyyy",
+          "d/M/yyyy"
+        ],
+        "D": [
+          "dddd, d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

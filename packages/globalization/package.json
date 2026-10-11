@@ -97,6 +97,31 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/time_only.mjs",
       "require": "./dist/index.js"
+    },
+    "./korean-calendar": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/korean_calendar.mjs",
+      "require": "./dist/index.js"
+    },
+    "./taiwan-calendar": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/taiwan_calendar.mjs",
+      "require": "./dist/index.js"
+    },
+    "./japanese-calendar": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/japanese_calendar.mjs",
+      "require": "./dist/index.js"
+    },
+    "./hijri-calendar": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/hijri_calendar.mjs",
+      "require": "./dist/index.js"
+    },
+    "./hebrew-calendar": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/hebrew_calendar.mjs",
+      "require": "./dist/index.js"
     }
   },
   "sideEffects": false,

@@ -18,9 +18,9 @@ for (const [name, data] of Object.entries(fixture.cultures)) {
   if (!name) cultures[name] = CultureInfo.invariantCulture;
   else cultures[name] = CultureInfo.loadCultureInfo(name, {
     ...CultureInfo.invariantCulture, parent: '', name,
-    calendar: new calendars[data.calendar](),
+    calendar: data.calendar === 'GregorianCalendar' ? new GregorianCalendar(data.calendarId) : new calendars[data.calendar](),
     dateTimeFormat: data.formatInfo,
-    gregorianDateTimeFormat: data.gregorianDateTimeFormat,
+    calendarFormats: data.calendarFormats,
   });
 }
 

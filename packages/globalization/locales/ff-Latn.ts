@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "ff", 
     lcid: 31847, 
     name: "ff-Latn", 
@@ -40,29 +41,152 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd d MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd d MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "dd MMMM", 
-        pmDesignator: "", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["alet", "alt.", "tal.", "alar.", "alk.", "alj.", "aset"], 
-        shortestDayNames: ["Al", "Te", "Ta", "Al", "Al", "Ju", "As"], 
-        dayNames: ["alete", "altine", "talaata", "alarba", "alkamiisa", "aljumaa", "asete"], 
-        abbreviatedMonthNames: ["samw", "feeb", "mar", "awr", "me", "suy", "sul", "ut", "sat", "okt", "now", "dees", ""], 
-        monthNames: ["samwiee", "feeburyee", "marsa", "awril", "me", "suyeŋ", "sulyee", "ut", "satambara", "oktoobar", "nowamburu", "deesamburu", ""], 
-        nativeCalendarName: "Lebbi tuubaaka", 
-        abbreviatedMonthGenitiveNames: ["samw", "feeb", "mar", "awr", "me", "suy", "sul", "ut", "sat", "okt", "now", "dees", ""], 
-        monthGenitiveNames: ["samwiee", "feeburyee", "marsa", "awril", "me", "suyeŋ", "sulyee", "ut", "satambara", "oktoobar", "nowamburu", "deesamburu", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "dew",
+        "aaɓ",
+        "maw",
+        "nje",
+        "naa",
+        "mwd",
+        "hbi"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "sii",
+        "col",
+        "mbo",
+        "see",
+        "duu",
+        "kor",
+        "mor",
+        "juk",
+        "slt",
+        "yar",
+        "jol",
+        "bow",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "sii",
+        "col",
+        "mbo",
+        "see",
+        "duu",
+        "kor",
+        "mor",
+        "juk",
+        "slt",
+        "yar",
+        "jol",
+        "bow",
+        ""
+      ],
+      "amDesignator": "subaka",
+      "dateSeparator": "/",
+      "dayNames": [
+        "dewo",
+        "aaɓnde",
+        "mawbaare",
+        "njeslaare",
+        "naasaande",
+        "mawnde",
+        "hoore-biir"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd d MMMM yyyy HH:mm:ss",
+      "longDatePattern": "dddd d MMMM yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "d MMMM",
+      "monthGenitiveNames": [
+        "siilo",
+        "colte",
+        "mbooy",
+        "seeɗto",
+        "duujal",
+        "korse",
+        "morso",
+        "juko",
+        "siilto",
+        "yarkomaa",
+        "jolal",
+        "bowte",
+        ""
+      ],
+      "monthNames": [
+        "siilo",
+        "colte",
+        "mbooy",
+        "seeɗto",
+        "duujal",
+        "korse",
+        "morso",
+        "juko",
+        "siilto",
+        "yarkomaa",
+        "jolal",
+        "bowte",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "kikiiɗe",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "d/M/yyyy",
+      "shortestDayNames": [
+        "d",
+        "a",
+        "m",
+        "n",
+        "n",
+        "m",
+        "h"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "C-I"
+      ],
+      "abbreviatedEraNames": [
+        "C-I"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "d/M/yyyy",
+          "d MMM, yyyy"
+        ],
+        "D": [
+          "dddd d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "d MMMM"
+        ],
+        "M": [
+          "d MMMM"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

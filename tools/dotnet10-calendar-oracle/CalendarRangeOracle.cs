@@ -16,6 +16,7 @@ internal static class CalendarRangeOracle
             ("GregorianCalendarUSEnglishTests", () => new GregorianCalendar(GregorianCalendarTypes.USEnglish)),
             ("PersianCalendarTests", () => new PersianCalendar()),
             ("ThaiBuddhistCalendarTests", () => new ThaiBuddhistCalendar()),
+            ("KoreanCalendarTests", () => new KoreanCalendar()),
             ("UmAlQuraCalendarTests", () => new UmAlQuraCalendar()),
         };
         string[] operations = ["GetEra", "GetYear", "GetMonth", "GetDayOfYear", "GetDayOfMonth", "GetDayOfWeek"];

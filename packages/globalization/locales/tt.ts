@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 68, 
     name: "tt", 
@@ -40,29 +41,152 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "", 
-        dateSeparator: ".", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dd MMMM yyyy' ел' HH:mm:ss", 
-        longDatePattern: "dd MMMM yyyy' ел'", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "d MMMM", 
-        pmDesignator: "", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd.MM.yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["якш.", "дүш.", "сиш.", "чәрш.", "пәнҗ.", "җом.", "шим."], 
-        shortestDayNames: ["я", "д", "с", "ч", "п", "җ", "ш"], 
-        dayNames: ["якшәмбе", "дүшәмбе", "сишәмбе", "чәршәмбе", "пәнҗешәмбе", "җомга", "шимбә"], 
-        abbreviatedMonthNames: ["гыйн.", "фев.", "мар.", "апр.", "май", "июнь", "июль", "авг.", "сен.", "окт.", "нояб.", "дек.", ""], 
-        monthNames: ["гыйнвар", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь", ""], 
-        nativeCalendarName: "Григориан календаре", 
-        abbreviatedMonthGenitiveNames: ["гыйн.", "фев.", "мар.", "апр.", "май", "июнь", "июль", "авг.", "сен.", "окт.", "нояб.", "дек.", ""], 
-        monthGenitiveNames: ["гыйнвар", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "якш.",
+        "дүш.",
+        "сиш.",
+        "чәр.",
+        "пәнҗ.",
+        "җом.",
+        "шим."
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "гыйн.",
+        "фев.",
+        "мар.",
+        "апр.",
+        "май",
+        "июнь",
+        "июль",
+        "авг.",
+        "сент.",
+        "окт.",
+        "нояб.",
+        "дек.",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "гыйн.",
+        "фев.",
+        "мар.",
+        "апр.",
+        "май",
+        "июнь",
+        "июль",
+        "авг.",
+        "сент.",
+        "окт.",
+        "нояб.",
+        "дек.",
+        ""
+      ],
+      "amDesignator": "AM",
+      "dateSeparator": ".",
+      "dayNames": [
+        "якшәмбе",
+        "дүшәмбе",
+        "сишәмбе",
+        "чәршәмбе",
+        "пәнҗешәмбе",
+        "җомга",
+        "шимбә"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 2,
+      "fullDateTimePattern": "d MMMM, yyyy 'ел', dddd H:mm:ss",
+      "longDatePattern": "d MMMM, yyyy 'ел', dddd",
+      "longTimePattern": "H:mm:ss",
+      "monthDayPattern": "d MMMM",
+      "monthGenitiveNames": [
+        "гыйнвар",
+        "февраль",
+        "март",
+        "апрель",
+        "май",
+        "июнь",
+        "июль",
+        "август",
+        "сентябрь",
+        "октябрь",
+        "ноябрь",
+        "декабрь",
+        ""
+      ],
+      "monthNames": [
+        "гыйнвар",
+        "февраль",
+        "март",
+        "апрель",
+        "май",
+        "июнь",
+        "июль",
+        "август",
+        "сентябрь",
+        "октябрь",
+        "ноябрь",
+        "декабрь",
+        ""
+      ],
+      "nativeCalendarName": "григориан ел исәбе",
+      "pmDesignator": "PM",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd.MM.yyyy",
+      "shortestDayNames": [
+        "Я",
+        "Д",
+        "С",
+        "Ч",
+        "П",
+        "Җ",
+        "Ш"
+      ],
+      "shortTimePattern": "H:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy 'ел', MMMM",
+      "eraNames": [
+        "милади"
+      ],
+      "abbreviatedEraNames": [
+        "милади"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd.MM.yyyy",
+          "d MMM, yyyy 'ел'"
+        ],
+        "D": [
+          "d MMMM, yyyy 'ел', dddd",
+          "d MMMM, yyyy 'ел'"
+        ],
+        "t": [
+          "H:mm"
+        ],
+        "T": [
+          "H:mm:ss"
+        ],
+        "y": [
+          "yyyy 'ел', MMMM"
+        ],
+        "Y": [
+          "yyyy 'ел', MMMM"
+        ],
+        "m": [
+          "d MMMM"
+        ],
+        "M": [
+          "d MMMM"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "ts", 
     lcid: 1073, 
     name: "ts-ZA", 
@@ -40,29 +41,152 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "AM", 
-        dateSeparator: "-", 
-        firstDayOfWeek: 0, 
-        fullDateTimePattern: "yyyy MMMM d, dddd HH:mm:ss", 
-        longDatePattern: "yyyy MMMM d, dddd", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "PM", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "yyyy-MM-dd", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "yyyy MMMM", 
-        abbreviatedDayNames: ["Son", "Mus", "Bir", "Har", "Ne", "Tlh", "Mug"], 
-        shortestDayNames: ["Son", "Mus", "Bir", "Har", "Ne", "Tlh", "Mug"], 
-        dayNames: ["Sonta", "Musumbhunuku", "Ravumbirhi", "Ravunharhu", "Ravumune", "Ravuntlhanu", "Mugqivela"], 
-        abbreviatedMonthNames: ["Sun", "Yan", "Kul", "Dzi", "Mud", "Kho", "Maw", "Mha", "Ndz", "Nhl", "Huk", "N’w", ""], 
-        monthNames: ["Sunguti", "Nyenyenyani", "Nyenyankulu", "Dzivamisoko", "Mudyaxihi", "Khotavuxika", "Mawuwani", "Mhawuri", "Ndzhati", "Nhlangula", "Hukuri", "N’wendzamhala", ""], 
-        nativeCalendarName: "Gregorian Calendar", 
-        abbreviatedMonthGenitiveNames: ["Sun", "Yan", "Kul", "Dzi", "Mud", "Kho", "Maw", "Mha", "Ndz", "Nhl", "Huk", "N’w", ""], 
-        monthGenitiveNames: ["Sunguti", "Nyenyenyani", "Nyenyankulu", "Dzivamisoko", "Mudyaxihi", "Khotavuxika", "Mawuwani", "Mhawuri", "Ndzhati", "Nhlangula", "Hukuri", "N’wendzamhala", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Son",
+        "Mus",
+        "Bir",
+        "Har",
+        "Ne",
+        "Tlh",
+        "Mug"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Sun",
+        "Yan",
+        "Kul",
+        "Dzi",
+        "Mud",
+        "Kho",
+        "Maw",
+        "Mha",
+        "Ndz",
+        "Nhl",
+        "Huk",
+        "N’w",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Sun",
+        "Yan",
+        "Kul",
+        "Dzi",
+        "Mud",
+        "Kho",
+        "Maw",
+        "Mha",
+        "Ndz",
+        "Nhl",
+        "Huk",
+        "N’w",
+        ""
+      ],
+      "amDesignator": "AM",
+      "dateSeparator": "-",
+      "dayNames": [
+        "Sonta",
+        "Musumbhunuku",
+        "Ravumbirhi",
+        "Ravunharhu",
+        "Ravumune",
+        "Ravuntlhanu",
+        "Mugqivela"
+      ],
+      "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "yyyy MMMM d, dddd HH:mm:ss",
+      "longDatePattern": "yyyy MMMM d, dddd",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "Sunguti",
+        "Nyenyenyani",
+        "Nyenyankulu",
+        "Dzivamisoko",
+        "Mudyaxihi",
+        "Khotavuxika",
+        "Mawuwani",
+        "Mhawuri",
+        "Ndzhati",
+        "Nhlangula",
+        "Hukuri",
+        "N’wendzamhala",
+        ""
+      ],
+      "monthNames": [
+        "Sunguti",
+        "Nyenyenyani",
+        "Nyenyankulu",
+        "Dzivamisoko",
+        "Mudyaxihi",
+        "Khotavuxika",
+        "Mawuwani",
+        "Mhawuri",
+        "Ndzhati",
+        "Nhlangula",
+        "Hukuri",
+        "N’wendzamhala",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "PM",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "yyyy-MM-dd",
+      "shortestDayNames": [
+        "S",
+        "M",
+        "T",
+        "W",
+        "T",
+        "F",
+        "S"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "CE"
+      ],
+      "abbreviatedEraNames": [
+        "CE"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "yyyy-MM-dd",
+          "yyyy MMM d"
+        ],
+        "D": [
+          "yyyy MMMM d, dddd",
+          "yyyy MMMM d"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

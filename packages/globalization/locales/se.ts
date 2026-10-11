@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 59, 
     name: "se", 
@@ -40,29 +41,152 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "i.b.", 
-        dateSeparator: "-", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "yyyy MMMM d, dddd HH:mm:ss", 
-        longDatePattern: "yyyy MMMM d, dddd", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "e.b.", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "yyyy-MM-dd", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "yyyy MMMM", 
-        abbreviatedDayNames: ["sotn", "vuos", "maŋ", "gask", "duor", "bear", "láv"], 
-        shortestDayNames: ["sotn", "vuos", "maŋ", "gask", "duor", "bear", "láv"], 
-        dayNames: ["sotnabeaivi", "vuossárga", "maŋŋebárga", "gaskavahkku", "duorasdat", "bearjadat", "lávvardat"], 
-        abbreviatedMonthNames: ["ođđj", "guov", "njuk", "cuo", "mies", "geas", "suoi", "borg", "čakč", "golg", "skáb", "juov", ""], 
-        monthNames: ["ođđajagemánnu", "guovvamánnu", "njukčamánnu", "cuoŋománnu", "miessemánnu", "geassemánnu", "suoidnemánnu", "borgemánnu", "čakčamánnu", "golggotmánnu", "skábmamánnu", "juovlamánnu", ""], 
-        nativeCalendarName: "gregoria kaleander", 
-        abbreviatedMonthGenitiveNames: ["ođđj", "guov", "njuk", "cuo", "mies", "geas", "suoi", "borg", "čakč", "golg", "skáb", "juov", ""], 
-        monthGenitiveNames: ["ođđajagemánnu", "guovvamánnu", "njukčamánnu", "cuoŋománnu", "miessemánnu", "geassemánnu", "suoidnemánnu", "borgemánnu", "čakčamánnu", "golggotmánnu", "skábmamánnu", "juovlamánnu", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "sotn",
+        "vuos",
+        "maŋ",
+        "gask",
+        "duor",
+        "bear",
+        "láv"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "ođđj",
+        "guov",
+        "njuk",
+        "cuo",
+        "mies",
+        "geas",
+        "suoi",
+        "borg",
+        "čakč",
+        "golg",
+        "skáb",
+        "juov",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "ođđj",
+        "guov",
+        "njuk",
+        "cuo",
+        "mies",
+        "geas",
+        "suoi",
+        "borg",
+        "čakč",
+        "golg",
+        "skáb",
+        "juov",
+        ""
+      ],
+      "amDesignator": "iđitbeaivet",
+      "dateSeparator": "-",
+      "dayNames": [
+        "sotnabeaivi",
+        "vuossárga",
+        "maŋŋebárga",
+        "gaskavahkku",
+        "duorasdat",
+        "bearjadat",
+        "lávvardat"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 2,
+      "fullDateTimePattern": "yyyy MMMM d, dddd HH:mm:ss",
+      "longDatePattern": "yyyy MMMM d, dddd",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "ođđajagemánnu",
+        "guovvamánnu",
+        "njukčamánnu",
+        "cuoŋománnu",
+        "miessemánnu",
+        "geassemánnu",
+        "suoidnemánnu",
+        "borgemánnu",
+        "čakčamánnu",
+        "golggotmánnu",
+        "skábmamánnu",
+        "juovlamánnu",
+        ""
+      ],
+      "monthNames": [
+        "ođđajagemánnu",
+        "guovvamánnu",
+        "njukčamánnu",
+        "cuoŋománnu",
+        "miessemánnu",
+        "geassemánnu",
+        "suoidnemánnu",
+        "borgemánnu",
+        "čakčamánnu",
+        "golggotmánnu",
+        "skábmamánnu",
+        "juovlamánnu",
+        ""
+      ],
+      "nativeCalendarName": "gregoria kaleander",
+      "pmDesignator": "eahketbeaivet",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "yyyy-MM-dd",
+      "shortestDayNames": [
+        "S",
+        "V",
+        "M",
+        "G",
+        "D",
+        "B",
+        "L"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "m.Kr."
+      ],
+      "abbreviatedEraNames": [
+        "m.Kr."
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "yyyy-MM-dd",
+          "yyyy MMM d"
+        ],
+        "D": [
+          "yyyy MMMM d, dddd",
+          "yyyy MMMM d"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

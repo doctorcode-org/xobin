@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 43, 
     name: "hy", 
@@ -40,29 +41,153 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "", 
-        dateSeparator: ".", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "d MMMM, yyyy HH:mm:ss", 
-        longDatePattern: "d MMMM, yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "d MMMM", 
-        pmDesignator: "", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd.MM.yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM, yyyy", 
-        abbreviatedDayNames: ["Կիր", "Երկ", "Երք", "Չրք", "Հնգ", "Ուր", "Շբթ"], 
-        shortestDayNames: ["Կ", "Ե", "Ե", "Չ", "Հ", "Ո", "Շ"], 
-        dayNames: ["Կիրակի", "Երկուշաբթի", "Երեքշաբթի", "Չորեքշաբթի", "Հինգշաբթի", "Ուրբաթ", "Շաբաթ"], 
-        abbreviatedMonthNames: ["Հնվ", "Փտվ", "Մրտ", "Ապր", "Մյս", "Հնս", "Հլս", "Օգս", "Սպտ", "Հկտ", "Նյմ", "Դկտ", ""], 
-        monthNames: ["Հունվար", "Փետրվար", "Մարտ", "Ապրիլ", "Մայիս", "Հունիս", "Հուլիս", "Օգոստոս", "Սեպտեմբեր", "Հոկտեմբեր", "Նոյեմբեր", "Դեկտեմբեր", ""], 
-        nativeCalendarName: "Օրացույց", 
-        abbreviatedMonthGenitiveNames: ["Հնվ", "Փտվ", "Մրտ", "Ապր", "Մյս", "Հնս", "Հլս", "Օգս", "Սպտ", "Հկտ", "Նյմ", "Դկտ", ""], 
-        monthGenitiveNames: ["հունվարի", "փետրվարի", "մարտի", "ապրիլի", "մայիսի", "հունիսի", "հուլիսի", "օգոստոսի", "սեպտեմբերի", "հոկտեմբերի", "նոյեմբերի", "դեկտեմբերի", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "կիր",
+        "երկ",
+        "երք",
+        "չրք",
+        "հնգ",
+        "ուր",
+        "շբթ"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "հնվ",
+        "փտվ",
+        "մրտ",
+        "ապր",
+        "մյս",
+        "հնս",
+        "հլս",
+        "օգս",
+        "սեպ",
+        "հոկ",
+        "նոյ",
+        "դեկ",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "հնվ",
+        "փտվ",
+        "մրտ",
+        "ապր",
+        "մյս",
+        "հնս",
+        "հլս",
+        "օգս",
+        "սեպ",
+        "հոկ",
+        "նոյ",
+        "դեկ",
+        ""
+      ],
+      "amDesignator": "AM",
+      "dateSeparator": ".",
+      "dayNames": [
+        "կիրակի",
+        "երկուշաբթի",
+        "երեքշաբթի",
+        "չորեքշաբթի",
+        "հինգշաբթի",
+        "ուրբաթ",
+        "շաբաթ"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "yyyy թ. MMMM d, dddd HH:mm:ss",
+      "longDatePattern": "yyyy թ. MMMM d, dddd",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "հունվարի",
+        "փետրվարի",
+        "մարտի",
+        "ապրիլի",
+        "մայիսի",
+        "հունիսի",
+        "հուլիսի",
+        "օգոստոսի",
+        "սեպտեմբերի",
+        "հոկտեմբերի",
+        "նոյեմբերի",
+        "դեկտեմբերի",
+        ""
+      ],
+      "monthNames": [
+        "հունվար",
+        "փետրվար",
+        "մարտ",
+        "ապրիլ",
+        "մայիս",
+        "հունիս",
+        "հուլիս",
+        "օգոստոս",
+        "սեպտեմբեր",
+        "հոկտեմբեր",
+        "նոյեմբեր",
+        "դեկտեմբեր",
+        ""
+      ],
+      "nativeCalendarName": "գրիգորյան օրացույց",
+      "pmDesignator": "PM",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd.MM.yyyy",
+      "shortestDayNames": [
+        "Կ",
+        "Ե",
+        "Ե",
+        "Չ",
+        "Հ",
+        "Ո",
+        "Շ"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy թ․ MMMM",
+      "eraNames": [
+        "մ.թ."
+      ],
+      "abbreviatedEraNames": [
+        "մ.թ."
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd.MM.yyyy",
+          "dd MMM, yyyy թ.",
+          "dd.MM.yy"
+        ],
+        "D": [
+          "yyyy թ. MMMM d, dddd",
+          "dd MMMM, yyyy թ."
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "yyyy թ․ MMMM"
+        ],
+        "Y": [
+          "yyyy թ․ MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

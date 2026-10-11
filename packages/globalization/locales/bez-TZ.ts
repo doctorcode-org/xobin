@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "bez", 
     lcid: 4096, 
     name: "bez-TZ", 
@@ -40,29 +41,153 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "pamilau", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, d MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd, d MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "pamunyi", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["Mul", "Vil", "Hiv", "Hid", "Hit", "Hih", "Lem"], 
-        shortestDayNames: ["Mul", "Vil", "Hiv", "Hid", "Hit", "Hih", "Lem"], 
-        dayNames: ["pa mulungu", "pa shahuviluha", "pa hivili", "pa hidatu", "pa hitayi", "pa hihanu", "pa shahulembela"], 
-        abbreviatedMonthNames: ["Hut", "Vil", "Dat", "Tai", "Han", "Sit", "Sab", "Nan", "Tis", "Kum", "Kmj", "Kmb", ""], 
-        monthNames: ["pa mwedzi gwa hutala", "pa mwedzi gwa wuvili", "pa mwedzi gwa wudatu", "pa mwedzi gwa wutai", "pa mwedzi gwa wuhanu", "pa mwedzi gwa sita", "pa mwedzi gwa saba", "pa mwedzi gwa nane", "pa mwedzi gwa tisa", "pa mwedzi gwa kumi", "pa mwedzi gwa kumi na moja", "pa mwedzi gwa kumi na mbili", ""], 
-        nativeCalendarName: "Gregorian Calendar", 
-        abbreviatedMonthGenitiveNames: ["Hut", "Vil", "Dat", "Tai", "Han", "Sit", "Sab", "Nan", "Tis", "Kum", "Kmj", "Kmb", ""], 
-        monthGenitiveNames: ["pa mwedzi gwa hutala", "pa mwedzi gwa wuvili", "pa mwedzi gwa wudatu", "pa mwedzi gwa wutai", "pa mwedzi gwa wuhanu", "pa mwedzi gwa sita", "pa mwedzi gwa saba", "pa mwedzi gwa nane", "pa mwedzi gwa tisa", "pa mwedzi gwa kumi", "pa mwedzi gwa kumi na moja", "pa mwedzi gwa kumi na mbili", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Mul",
+        "Vil",
+        "Hiv",
+        "Hid",
+        "Hit",
+        "Hih",
+        "Lem"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Hut",
+        "Vil",
+        "Dat",
+        "Tai",
+        "Han",
+        "Sit",
+        "Sab",
+        "Nan",
+        "Tis",
+        "Kum",
+        "Kmj",
+        "Kmb",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Hut",
+        "Vil",
+        "Dat",
+        "Tai",
+        "Han",
+        "Sit",
+        "Sab",
+        "Nan",
+        "Tis",
+        "Kum",
+        "Kmj",
+        "Kmb",
+        ""
+      ],
+      "amDesignator": "pamilau",
+      "dateSeparator": "/",
+      "dayNames": [
+        "pa mulungu",
+        "pa shahuviluha",
+        "pa hivili",
+        "pa hidatu",
+        "pa hitayi",
+        "pa hihanu",
+        "pa shahulembela"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, d MMMM yyyy HH:mm:ss",
+      "longDatePattern": "dddd, d MMMM yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "pa mwedzi gwa hutala",
+        "pa mwedzi gwa wuvili",
+        "pa mwedzi gwa wudatu",
+        "pa mwedzi gwa wutai",
+        "pa mwedzi gwa wuhanu",
+        "pa mwedzi gwa sita",
+        "pa mwedzi gwa saba",
+        "pa mwedzi gwa nane",
+        "pa mwedzi gwa tisa",
+        "pa mwedzi gwa kumi",
+        "pa mwedzi gwa kumi na moja",
+        "pa mwedzi gwa kumi na mbili",
+        ""
+      ],
+      "monthNames": [
+        "pa mwedzi gwa hutala",
+        "pa mwedzi gwa wuvili",
+        "pa mwedzi gwa wudatu",
+        "pa mwedzi gwa wutai",
+        "pa mwedzi gwa wuhanu",
+        "pa mwedzi gwa sita",
+        "pa mwedzi gwa saba",
+        "pa mwedzi gwa nane",
+        "pa mwedzi gwa tisa",
+        "pa mwedzi gwa kumi",
+        "pa mwedzi gwa kumi na moja",
+        "pa mwedzi gwa kumi na mbili",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "pamunyi",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd/MM/yyyy",
+      "shortestDayNames": [
+        "M",
+        "J",
+        "H",
+        "H",
+        "H",
+        "W",
+        "J"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "BM"
+      ],
+      "abbreviatedEraNames": [
+        "BM"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd/MM/yyyy",
+          "d MMM yyyy",
+          "d/M/yyyy"
+        ],
+        "D": [
+          "dddd, d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

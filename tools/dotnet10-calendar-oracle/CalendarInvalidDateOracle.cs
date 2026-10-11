@@ -6,7 +6,7 @@ internal static class CalendarInvalidDateOracle
     private static IEnumerable<(int year, int month, int day, int era, string parameter)> TestData(
         Calendar calendar, bool includeMonth, bool includeDay)
     {
-        // Every calendar currently available in xobin has exactly one era.
+        // These fixture inputs select single-era calendars.
         if (calendar.Eras.Length != 1)
             throw new InvalidOperationException("This oracle requires a single-era calendar.");
 
@@ -48,6 +48,7 @@ internal static class CalendarInvalidDateOracle
             ("GregorianCalendarUSEnglishTests", () => new GregorianCalendar(GregorianCalendarTypes.USEnglish)),
             ("PersianCalendarTests", () => new PersianCalendar()),
             ("ThaiBuddhistCalendarTests", () => new ThaiBuddhistCalendar()),
+            ("KoreanCalendarTests", () => new KoreanCalendar()),
             ("UmAlQuraCalendarTests", () => new UmAlQuraCalendar()),
         };
         var operations = new (string name, bool month, bool day)[]

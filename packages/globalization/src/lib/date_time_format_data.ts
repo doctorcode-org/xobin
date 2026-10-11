@@ -1,4 +1,5 @@
 import type { DayOfWeek } from './day_of_week';
+import { NullReferenceException } from '@xobin/core';
 import type { IFormatProvider } from '@xobin/core';
 import type { CalendarWeekRule } from './calendar_week_rule';
 import type { FormatCalendar } from './date_time_format_context';
@@ -7,7 +8,10 @@ import { getCalendarIdentity } from './calendar_identity';
 
 /** Locale format data used internally by formatting and DateTimeFormatInfo. */
 export interface DateTimeFormatData {
+    leapYearMonthNames?: ReadonlyArray<string> | null;
     eraNames?: ReadonlyArray<string>;
+    abbreviatedEraNames?: ReadonlyArray<string>;
+    abbreviatedEnglishEraNames?: ReadonlyArray<string>;
     allDateTimePatterns?: Readonly<Record<string, ReadonlyArray<string>>>;
     abbreviatedDayNames: ReadonlyArray<string>;
     abbreviatedMonthGenitiveNames: ReadonlyArray<string>;
@@ -40,6 +44,7 @@ export interface DateTimeFormatState {
     data: DateTimeFormatData;
     calendar: FormatCalendar;
     isReadOnly: boolean;
+    cultureName: string;
     calendarFormats: ReadonlyMap<number, DateTimeFormatData>;
 }
 
@@ -70,7 +75,7 @@ export function getCalendarFormatData(state: DateTimeFormatState, id: number): D
     if (!original) return undefined;
     const data = { ...state.data };
     for (const key of [
-        'eraNames', 'monthDayPattern', 'dayNames', 'abbreviatedDayNames', 'shortestDayNames',
+        'leapYearMonthNames', 'eraNames', 'abbreviatedEraNames', 'abbreviatedEnglishEraNames', 'monthDayPattern', 'dayNames', 'abbreviatedDayNames', 'shortestDayNames',
         'monthNames', 'abbreviatedMonthNames', 'monthGenitiveNames', 'abbreviatedMonthGenitiveNames',
         'longDatePattern', 'shortDatePattern', 'yearMonthPattern', 'dateSeparator', 'nativeCalendarName',
         'allDateTimePatterns',
@@ -90,3 +95,32 @@ export function getUniversalDateTimeFormatData(info: object): DateTimeFormatData
     return getCalendarFormatData(state, 1) ?? state.data;
 }
 
+
+const monthFormatFlags = new WeakMap<DateTimeFormatData, { useGenitiveMonth: boolean }>();
+
+/** Initializes the reference's cached month-format flags, preserving caller-array mutation behavior. */
+export function getMonthFormatFlags(data: DateTimeFormatData): { useGenitiveMonth: boolean } {
+    let flags = monthFormatFlags.get(data);
+    if (!flags) {
+        for (const names of [data.monthNames, data.monthGenitiveNames,
+            data.abbreviatedMonthNames, data.abbreviatedMonthGenitiveNames,
+            data.dayNames, data.abbreviatedDayNames]) {
+            for (const name of names) if (name == null) throw new NullReferenceException();
+        }
+        flags = { useGenitiveMonth: data.monthNames.some((name, i) => name !== data.monthGenitiveNames[i])
+            || data.abbreviatedMonthNames.some((name, i) => name !== data.abbreviatedMonthGenitiveNames[i]) };
+        monthFormatFlags.set(data, flags);
+    }
+    return flags;
+}
+
+/** Invalidates cached flags when a setter clears the reference's token table. */
+export function clearMonthFormatFlags(data: DateTimeFormatData): void {
+    monthFormatFlags.delete(data);
+}
+
+/** Copies initialized flags during the reference's memberwise clone operation. */
+export function copyMonthFormatFlags(source: DateTimeFormatData, target: DateTimeFormatData): void {
+    const flags = monthFormatFlags.get(source);
+    if (flags) monthFormatFlags.set(target, flags);
+}

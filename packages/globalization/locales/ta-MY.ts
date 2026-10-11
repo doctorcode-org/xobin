@@ -1,5 +1,6 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import { CultureData, GregorianCalendar, HijriCalendar } from '@xobin/globalization';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "ta", 
     lcid: 4096, 
     name: "ta-MY", 
@@ -40,29 +41,222 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "முற்பகல்", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, d MMMM, yyyy tt h:mm:ss", 
-        longDatePattern: "dddd, d MMMM, yyyy", 
-        longTimePattern: "tt h:mm:ss", 
-        monthDayPattern: "d MMMM", 
-        pmDesignator: "பிற்பகல்", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "d/M/yyyy", 
-        shortTimePattern: "tt h:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["ஞாயி.", "திங்.", "செவ்.", "புத.", "வியா.", "வெள்.", "சனி"], 
-        shortestDayNames: ["ஞா", "தி", "செ", "பு", "வி", "வெ", "ச"], 
-        dayNames: ["ஞாயிறு", "திங்கள்", "செவ்வாய்", "புதன்", "வியாழன்", "வெள்ளி", "சனி"], 
-        abbreviatedMonthNames: ["ஜன.", "பிப்.", "மார்.", "ஏப்.", "மே", "ஜூன்", "ஜூலை", "ஆக.", "செப்.", "அக்.", "நவ.", "டிச.", ""], 
-        monthNames: ["ஜனவரி", "பிப்ரவரி", "மார்ச்", "ஏப்ரல்", "மே", "ஜூன்", "ஜூலை", "ஆகஸ்ட்", "செப்டம்பர்", "அக்டோபர்", "நவம்பர்", "டிசம்பர்", ""], 
-        nativeCalendarName: "கிரிகோரியன் நாள்காட்டி", 
-        abbreviatedMonthGenitiveNames: ["ஜன.", "பிப்.", "மார்.", "ஏப்.", "மே", "ஜூன்", "ஜூலை", "ஆக.", "செப்.", "அக்.", "நவ.", "டிச.", ""], 
-        monthGenitiveNames: ["ஜனவரி", "பிப்ரவரி", "மார்ச்", "ஏப்ரல்", "மே", "ஜூன்", "ஜூலை", "ஆகஸ்ட்", "செப்டம்பர்", "அக்டோபர்", "நவம்பர்", "டிசம்பர்", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "ஞாயி.",
+        "திங்.",
+        "செவ்.",
+        "புத.",
+        "வியா.",
+        "வெள்.",
+        "சனி"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "ஜன.",
+        "பிப்.",
+        "மார்.",
+        "ஏப்.",
+        "மே",
+        "ஜூன்",
+        "ஜூலை",
+        "ஆக.",
+        "செப்.",
+        "அக்.",
+        "நவ.",
+        "டிச.",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "ஜன.",
+        "பிப்.",
+        "மார்.",
+        "ஏப்.",
+        "மே",
+        "ஜூன்",
+        "ஜூலை",
+        "ஆக.",
+        "செப்.",
+        "அக்.",
+        "நவ.",
+        "டிச.",
+        ""
+      ],
+      "amDesignator": "முற்பகல்",
+      "dateSeparator": "/",
+      "dayNames": [
+        "ஞாயிறு",
+        "திங்கள்",
+        "செவ்வாய்",
+        "புதன்",
+        "வியாழன்",
+        "வெள்ளி",
+        "சனி"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, d MMMM, yyyy tt h:mm:ss",
+      "longDatePattern": "dddd, d MMMM, yyyy",
+      "longTimePattern": "tt h:mm:ss",
+      "monthDayPattern": "d MMMM",
+      "monthGenitiveNames": [
+        "ஜனவரி",
+        "பிப்ரவரி",
+        "மார்ச்",
+        "ஏப்ரல்",
+        "மே",
+        "ஜூன்",
+        "ஜூலை",
+        "ஆகஸ்ட்",
+        "செப்டம்பர்",
+        "அக்டோபர்",
+        "நவம்பர்",
+        "டிசம்பர்",
+        ""
+      ],
+      "monthNames": [
+        "ஜனவரி",
+        "பிப்ரவரி",
+        "மார்ச்",
+        "ஏப்ரல்",
+        "மே",
+        "ஜூன்",
+        "ஜூலை",
+        "ஆகஸ்ட்",
+        "செப்டம்பர்",
+        "அக்டோபர்",
+        "நவம்பர்",
+        "டிசம்பர்",
+        ""
+      ],
+      "nativeCalendarName": "கிரிகோரியன் நாள்காட்டி",
+      "pmDesignator": "பிற்பகல்",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "d/M/yyyy",
+      "shortestDayNames": [
+        "ஞா",
+        "தி",
+        "செ",
+        "பு",
+        "வி",
+        "வெ",
+        "ச"
+      ],
+      "shortTimePattern": "tt h:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "கி.பி."
+      ],
+      "abbreviatedEraNames": [
+        "கி.பி."
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "d/M/yyyy",
+          "d MMM, yyyy",
+          "d/M/yy"
+        ],
+        "D": [
+          "dddd, d MMMM, yyyy",
+          "d MMMM, yyyy"
+        ],
+        "t": [
+          "tt h:mm"
+        ],
+        "T": [
+          "tt h:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "d MMMM"
+        ],
+        "M": [
+          "d MMMM"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {},
+      "6": {
+        "eraNames": [
+          "بعد الهجرة"
+        ],
+        "abbreviatedEraNames": [
+          "هـ"
+        ],
+        "monthNames": [
+          "முஹர்ரம்",
+          "சஃபர்",
+          "ரபி 1",
+          "ரபி 2",
+          "ஜுமதா 1",
+          "ஜுமதா 2",
+          "ரஜப்",
+          "ஷஃபான்",
+          "ரமலான்",
+          "ஷவ்வால்",
+          "துல் கஃதா",
+          "துல் ஹிஜ்ஜா",
+          ""
+        ],
+        "abbreviatedMonthNames": [
+          "முஹ.",
+          "சஃப.",
+          "ரபி 1",
+          "ரபி 2",
+          "ஜும. 1",
+          "ஜும. 2",
+          "ரஜ.",
+          "ஷஃ.",
+          "ரம.",
+          "ஷவ்.",
+          "துல் கஃ.",
+          "துல் ஹிஜ்.",
+          ""
+        ],
+        "monthGenitiveNames": [
+          "முஹர்ரம்",
+          "சஃபர்",
+          "ரபி 1",
+          "ரபி 2",
+          "ஜுமதா 1",
+          "ஜுமதா 2",
+          "ரஜப்",
+          "ஷஃபான்",
+          "ரமலான்",
+          "ஷவ்வால்",
+          "துல் கஃதா",
+          "துல் ஹிஜ்ஜா",
+          ""
+        ],
+        "abbreviatedMonthGenitiveNames": [
+          "முஹ.",
+          "சஃப.",
+          "ரபி 1",
+          "ரபி 2",
+          "ஜும. 1",
+          "ஜும. 2",
+          "ரஜ.",
+          "ஷஃ.",
+          "ரம.",
+          "ஷவ்.",
+          "துல் கஃ.",
+          "துல் ஹிஜ்.",
+          ""
+        ],
+        "nativeCalendarName": "இஸ்லாமிய நாள்காட்டி"
+      }
+    },
+    calendarFactories: [() => new GregorianCalendar(1), () => new HijriCalendar()],
+    calendar: new GregorianCalendar(1)
 };

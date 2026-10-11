@@ -30,6 +30,14 @@ export class GregorianCalendarHelper {
         if (!info) {
             throw new ArgumentOutOfRangeException('era', 'Era value was not valid.');
         }
+        if (year > info.maxEraYear) {
+            let remainingYears = year - info.maxEraYear;
+            for (let index = this.eraInfo.indexOf(info) - 1; index >= 0; index--) {
+                const subsequentEra = this.eraInfo[index]!;
+                if (remainingYears <= subsequentEra.maxEraYear) return info.yearOffset;
+                remainingYears -= subsequentEra.maxEraYear;
+            }
+        }
         if (year < info.minEraYear || year > info.maxEraYear) {
             throw new ArgumentOutOfRangeException('year',
                 calendarRangeMessage(info.minEraYear, info.maxEraYear));
@@ -109,7 +117,7 @@ export class GregorianCalendarHelper {
     getEra(time: DateTime): number {
         const info = this.eraInfo.find(item => time.ticks >= item.ticks);
         if (!info) {
-            throw new ArgumentOutOfRangeException('time', 'Era value was not valid.');
+            throw new ArgumentOutOfRangeException('time', 'Time value was out of era range.');
         }
         return info.era;
     }

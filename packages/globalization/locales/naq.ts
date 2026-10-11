@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 4096, 
     name: "naq", 
@@ -40,29 +41,153 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "ǁgoagas", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, d MMMM yyyy h:mm:ss tt", 
-        longDatePattern: "dddd, d MMMM yyyy", 
-        longTimePattern: "h:mm:ss tt", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "ǃuias", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "h:mm tt", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["Son", "Ma", "De", "Wu", "Do", "Fr", "Sat"], 
-        shortestDayNames: ["Son", "Ma", "De", "Wu", "Do", "Fr", "Sat"], 
-        dayNames: ["Sontaxtsees", "Mantaxtsees", "Denstaxtsees", "Wunstaxtsees", "Dondertaxtsees", "Fraitaxtsees", "Satertaxtsees"], 
-        abbreviatedMonthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", ""], 
-        monthNames: ["ǃKhanni", "ǃKhanǀgôab", "ǀKhuuǁkhâb", "ǃHôaǂkhaib", "ǃKhaitsâb", "Gamaǀaeb", "ǂKhoesaob", "Aoǁkhuumûǁkhâb", "Taraǀkhuumûǁkhâb", "ǂNûǁnâiseb", "ǀHooǂgaeb", "Hôasoreǁkhâb", ""], 
-        nativeCalendarName: "Gregorian Calendar", 
-        abbreviatedMonthGenitiveNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", ""], 
-        monthGenitiveNames: ["ǃKhanni", "ǃKhanǀgôab", "ǀKhuuǁkhâb", "ǃHôaǂkhaib", "ǃKhaitsâb", "Gamaǀaeb", "ǂKhoesaob", "Aoǁkhuumûǁkhâb", "Taraǀkhuumûǁkhâb", "ǂNûǁnâiseb", "ǀHooǂgaeb", "Hôasoreǁkhâb", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Son",
+        "Ma",
+        "De",
+        "Wu",
+        "Do",
+        "Fr",
+        "Sat"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+        ""
+      ],
+      "amDesignator": "ǁgoagas",
+      "dateSeparator": "/",
+      "dayNames": [
+        "Sontaxtsees",
+        "Mantaxtsees",
+        "Denstaxtsees",
+        "Wunstaxtsees",
+        "Dondertaxtsees",
+        "Fraitaxtsees",
+        "Satertaxtsees"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, d MMMM yyyy h:mm:ss tt",
+      "longDatePattern": "dddd, d MMMM yyyy",
+      "longTimePattern": "h:mm:ss tt",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "ǃKhanni",
+        "ǃKhanǀgôab",
+        "ǀKhuuǁkhâb",
+        "ǃHôaǂkhaib",
+        "ǃKhaitsâb",
+        "Gamaǀaeb",
+        "ǂKhoesaob",
+        "Aoǁkhuumûǁkhâb",
+        "Taraǀkhuumûǁkhâb",
+        "ǂNûǁnâiseb",
+        "ǀHooǂgaeb",
+        "Hôasoreǁkhâb",
+        ""
+      ],
+      "monthNames": [
+        "ǃKhanni",
+        "ǃKhanǀgôab",
+        "ǀKhuuǁkhâb",
+        "ǃHôaǂkhaib",
+        "ǃKhaitsâb",
+        "Gamaǀaeb",
+        "ǂKhoesaob",
+        "Aoǁkhuumûǁkhâb",
+        "Taraǀkhuumûǁkhâb",
+        "ǂNûǁnâiseb",
+        "ǀHooǂgaeb",
+        "Hôasoreǁkhâb",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "ǃuias",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd/MM/yyyy",
+      "shortestDayNames": [
+        "S",
+        "M",
+        "E",
+        "W",
+        "D",
+        "F",
+        "A"
+      ],
+      "shortTimePattern": "h:mm tt",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "AD"
+      ],
+      "abbreviatedEraNames": [
+        "AD"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd/MM/yyyy",
+          "d MMM yyyy",
+          "d/M/yyyy"
+        ],
+        "D": [
+          "dddd, d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "h:mm tt"
+        ],
+        "T": [
+          "h:mm:ss tt"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

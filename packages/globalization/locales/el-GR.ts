@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "el", 
     lcid: 1032, 
     name: "el-GR", 
@@ -40,29 +41,153 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "πμ", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, d MMMM yyyy h:mm:ss tt", 
-        longDatePattern: "dddd, d MMMM yyyy", 
-        longTimePattern: "h:mm:ss tt", 
-        monthDayPattern: "d MMMM", 
-        pmDesignator: "μμ", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "d/M/yyyy", 
-        shortTimePattern: "h:mm tt", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["Κυρ", "Δευ", "Τρι", "Τετ", "Πεμ", "Παρ", "Σαβ"], 
-        shortestDayNames: ["Κυ", "Δε", "Τρ", "Τε", "Πε", "Πα", "Σα"], 
-        dayNames: ["Κυριακή", "Δευτέρα", "Τρίτη", "Τετάρτη", "Πέμπτη", "Παρασκευή", "Σάββατο"], 
-        abbreviatedMonthNames: ["Ιαν", "Φεβ", "Μαρ", "Απρ", "Μαϊ", "Ιουν", "Ιουλ", "Αυγ", "Σεπ", "Οκτ", "Νοε", "Δεκ", ""], 
-        monthNames: ["Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος", "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος", "Σεπτέμβριος", "Οκτώβριος", "Νοέμβριος", "Δεκέμβριος", ""], 
-        nativeCalendarName: "Γρηγοριανό Ημερολόγιο", 
-        abbreviatedMonthGenitiveNames: ["Ιαν", "Φεβ", "Μαρ", "Απρ", "Μαϊ", "Ιουν", "Ιουλ", "Αυγ", "Σεπ", "Οκτ", "Νοε", "Δεκ", ""], 
-        monthGenitiveNames: ["Ιανουαρίου", "Φεβρουαρίου", "Μαρτίου", "Απριλίου", "Μαΐου", "Ιουνίου", "Ιουλίου", "Αυγούστου", "Σεπτεμβρίου", "Οκτωβρίου", "Νοεμβρίου", "Δεκεμβρίου", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Κυρ",
+        "Δευ",
+        "Τρί",
+        "Τετ",
+        "Πέμ",
+        "Παρ",
+        "Σάβ"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Ιαν",
+        "Φεβ",
+        "Μαρ",
+        "Απρ",
+        "Μαΐ",
+        "Ιουν",
+        "Ιουλ",
+        "Αυγ",
+        "Σεπ",
+        "Οκτ",
+        "Νοε",
+        "Δεκ",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Ιαν",
+        "Φεβ",
+        "Μάρ",
+        "Απρ",
+        "Μάι",
+        "Ιούν",
+        "Ιούλ",
+        "Αύγ",
+        "Σεπ",
+        "Οκτ",
+        "Νοέ",
+        "Δεκ",
+        ""
+      ],
+      "amDesignator": "π.μ.",
+      "dateSeparator": "/",
+      "dayNames": [
+        "Κυριακή",
+        "Δευτέρα",
+        "Τρίτη",
+        "Τετάρτη",
+        "Πέμπτη",
+        "Παρασκευή",
+        "Σάββατο"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 2,
+      "fullDateTimePattern": "dddd d MMMM yyyy h:mm:ss tt",
+      "longDatePattern": "dddd d MMMM yyyy",
+      "longTimePattern": "h:mm:ss tt",
+      "monthDayPattern": "d MMMM",
+      "monthGenitiveNames": [
+        "Ιανουαρίου",
+        "Φεβρουαρίου",
+        "Μαρτίου",
+        "Απριλίου",
+        "Μαΐου",
+        "Ιουνίου",
+        "Ιουλίου",
+        "Αυγούστου",
+        "Σεπτεμβρίου",
+        "Οκτωβρίου",
+        "Νοεμβρίου",
+        "Δεκεμβρίου",
+        ""
+      ],
+      "monthNames": [
+        "Ιανουάριος",
+        "Φεβρουάριος",
+        "Μάρτιος",
+        "Απρίλιος",
+        "Μάιος",
+        "Ιούνιος",
+        "Ιούλιος",
+        "Αύγουστος",
+        "Σεπτέμβριος",
+        "Οκτώβριος",
+        "Νοέμβριος",
+        "Δεκέμβριος",
+        ""
+      ],
+      "nativeCalendarName": "Γρηγοριανό ημερολόγιο",
+      "pmDesignator": "μ.μ.",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "d/M/yyyy",
+      "shortestDayNames": [
+        "Κ",
+        "Δ",
+        "Τ",
+        "Τ",
+        "Π",
+        "Π",
+        "Σ"
+      ],
+      "shortTimePattern": "h:mm tt",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "μ.Χ."
+      ],
+      "abbreviatedEraNames": [
+        "μ.Χ."
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "d/M/yyyy",
+          "d MMM yyyy",
+          "d/M/yy"
+        ],
+        "D": [
+          "dddd d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "h:mm tt"
+        ],
+        "T": [
+          "h:mm:ss tt"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "d MMMM"
+        ],
+        "M": [
+          "d MMMM"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

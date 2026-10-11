@@ -1,6 +1,6 @@
 // Date format data generated from the pinned .NET 10.0.7 formatting oracle.
-import { CultureData, UmAlQuraCalendar } from '@xobin/globalization';
-export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>> } = {
+import { CultureData, UmAlQuraCalendar, GregorianCalendar, HijriCalendar } from '@xobin/globalization';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "ar", 
     lcid: 1025, 
     name: "ar-SA", 
@@ -41,6 +41,7 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
         digitSubstitution: 0
     }, 
     dateTimeFormat: {
+      "leapYearMonthNames": null,
       "abbreviatedDayNames": [
         "الأحد",
         "الاثنين",
@@ -148,6 +149,12 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
       "eraNames": [
         "بعد الهجرة"
       ],
+      "abbreviatedEraNames": [
+        "هـ"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
       "allDateTimePatterns": {
         "d": [
           "d‏/M‏/yyyy g",
@@ -181,6 +188,9 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
     calendarFormats: {
       "1": {
         "eraNames": [
+          "م"
+        ],
+        "abbreviatedEraNames": [
           "م"
         ],
         "monthNames": [
@@ -250,5 +260,6 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
       },
       "23": {}
     },
+    calendarFactories: [() => new UmAlQuraCalendar(), () => new GregorianCalendar(1), () => new HijriCalendar()],
     calendar: new UmAlQuraCalendar()
 };

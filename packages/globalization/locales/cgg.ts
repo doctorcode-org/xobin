@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 4096, 
     name: "cgg", 
@@ -40,29 +41,153 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "AM", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, d MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd, d MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "PM", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["SAN", "ORK", "OKB", "OKS", "OKN", "OKT", "OMK"], 
-        shortestDayNames: ["SAN", "ORK", "OKB", "OKS", "OKN", "OKT", "OMK"], 
-        dayNames: ["Sande", "Orwokubanza", "Orwakabiri", "Orwakashatu", "Orwakana", "Orwakataano", "Orwamukaaga"], 
-        abbreviatedMonthNames: ["KBZ", "KBR", "KST", "KKN", "KTN", "KMK", "KMS", "KMN", "KMW", "KKM", "KNK", "KNB", ""], 
-        monthNames: ["Okwokubanza", "Okwakabiri", "Okwakashatu", "Okwakana", "Okwakataana", "Okwamukaaga", "Okwamushanju", "Okwamunaana", "Okwamwenda", "Okwaikumi", "Okwaikumi na kumwe", "Okwaikumi na ibiri", ""], 
-        nativeCalendarName: "Gregorian Calendar", 
-        abbreviatedMonthGenitiveNames: ["KBZ", "KBR", "KST", "KKN", "KTN", "KMK", "KMS", "KMN", "KMW", "KKM", "KNK", "KNB", ""], 
-        monthGenitiveNames: ["Okwokubanza", "Okwakabiri", "Okwakashatu", "Okwakana", "Okwakataana", "Okwamukaaga", "Okwamushanju", "Okwamunaana", "Okwamwenda", "Okwaikumi", "Okwaikumi na kumwe", "Okwaikumi na ibiri", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "SAN",
+        "ORK",
+        "OKB",
+        "OKS",
+        "OKN",
+        "OKT",
+        "OMK"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "KBZ",
+        "KBR",
+        "KST",
+        "KKN",
+        "KTN",
+        "KMK",
+        "KMS",
+        "KMN",
+        "KMW",
+        "KKM",
+        "KNK",
+        "KNB",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "KBZ",
+        "KBR",
+        "KST",
+        "KKN",
+        "KTN",
+        "KMK",
+        "KMS",
+        "KMN",
+        "KMW",
+        "KKM",
+        "KNK",
+        "KNB",
+        ""
+      ],
+      "amDesignator": "AM",
+      "dateSeparator": "/",
+      "dayNames": [
+        "Sande",
+        "Orwokubanza",
+        "Orwakabiri",
+        "Orwakashatu",
+        "Orwakana",
+        "Orwakataano",
+        "Orwamukaaga"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, d MMMM yyyy HH:mm:ss",
+      "longDatePattern": "dddd, d MMMM yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "Okwokubanza",
+        "Okwakabiri",
+        "Okwakashatu",
+        "Okwakana",
+        "Okwakataana",
+        "Okwamukaaga",
+        "Okwamushanju",
+        "Okwamunaana",
+        "Okwamwenda",
+        "Okwaikumi",
+        "Okwaikumi na kumwe",
+        "Okwaikumi na ibiri",
+        ""
+      ],
+      "monthNames": [
+        "Okwokubanza",
+        "Okwakabiri",
+        "Okwakashatu",
+        "Okwakana",
+        "Okwakataana",
+        "Okwamukaaga",
+        "Okwamushanju",
+        "Okwamunaana",
+        "Okwamwenda",
+        "Okwaikumi",
+        "Okwaikumi na kumwe",
+        "Okwaikumi na ibiri",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "PM",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd/MM/yyyy",
+      "shortestDayNames": [
+        "S",
+        "K",
+        "R",
+        "S",
+        "N",
+        "T",
+        "M"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "AD"
+      ],
+      "abbreviatedEraNames": [
+        "AD"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd/MM/yyyy",
+          "d MMM yyyy",
+          "d/M/yyyy"
+        ],
+        "D": [
+          "dddd, d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

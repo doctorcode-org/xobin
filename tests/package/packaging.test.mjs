@@ -186,3 +186,22 @@ test('a literal dynamic locale import creates a separate browser chunk', async (
   const locales = Object.keys(result.metafile.inputs).filter(file => file.includes('/dist/locales/'));
   assert.deepEqual(locales, ['packages/globalization/dist/locales/fa-IR.mjs']);
 });
+
+for (const [name, subpath] of [['JapaneseCalendar', 'japanese-calendar'], ['TaiwanCalendar', 'taiwan-calendar'], ['KoreanCalendar', 'korean-calendar'], ['HijriCalendar', 'hijri-calendar'], ['HebrewCalendar', 'hebrew-calendar']]) {
+  test(name + ' resolves from ESM and CommonJS subpaths and excludes unrelated calendars', async () => {
+    const root = await import('@xobin/globalization');
+    const direct = await import('@xobin/globalization/' + subpath);
+    assert.strictEqual(root[name], direct[name]);
+    assert.strictEqual(require('@xobin/globalization')[name], require('@xobin/globalization/' + subpath)[name]);
+    const output = await bundle("import { " + name + " } from '@xobin/globalization/" + subpath + "'; globalThis.value = new " + name + "();");
+    for (const other of ['JapaneseCalendar', 'TaiwanCalendar', 'KoreanCalendar', 'HijriCalendar', 'HebrewCalendar', 'PersianCalendar', 'ThaiBuddhistCalendar', 'UmAlQuraCalendar']) {
+      if (other !== name) assert.equal(output.includes(other), false, other + ' remained in the ' + name + ' bundle');
+    }
+  });
+}
+
+test('a selected Japanese culture includes its optional calendar and excludes other calendar data', async () => {
+  const output = await bundle("import { CultureInfo } from '@xobin/globalization'; import { cultureData } from '@xobin/globalization/locales/ja-JP'; CultureInfo.loadCultureInfo('ja-JP', cultureData); globalThis.value = new CultureInfo('ja-JP').optionalCalendars;");
+  assert.match(output, /JapaneseCalendar/);
+  for (const other of ['HebrewCalendar', 'HijriCalendar', 'KoreanCalendar', 'TaiwanCalendar', 'PersianCalendar', 'UmAlQuraCalendar']) assert.equal(output.includes(other), false);
+});

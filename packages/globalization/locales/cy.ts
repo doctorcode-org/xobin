@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 82, 
     name: "cy", 
@@ -40,29 +41,154 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "yb", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, d MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd, d MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "yh", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["Sul", "Llun", "Maw", "Mer", "Iau", "Gwen", "Sad"], 
-        shortestDayNames: ["Su", "Ll", "Ma", "Me", "Ia", "Gw", "Sa"], 
-        dayNames: ["Dydd Sul", "Dydd Llun", "Dydd Mawrth", "Dydd Mercher", "Dydd Iau", "Dydd Gwener", "Dydd Sadwrn"], 
-        abbreviatedMonthNames: ["Ion", "Chw", "Maw", "Ebr", "Mai", "Meh", "Gor", "Awst", "Medi", "Hyd", "Tach", "Rhag", ""], 
-        monthNames: ["Ionawr", "Chwefror", "Mawrth", "Ebrill", "Mai", "Mehefin", "Gorffennaf", "Awst", "Medi", "Hydref", "Tachwedd", "Rhagfyr", ""], 
-        nativeCalendarName: "Calendr Gregori", 
-        abbreviatedMonthGenitiveNames: ["Ion", "Chwef", "Maw", "Ebrill", "Mai", "Meh", "Gorff", "Awst", "Medi", "Hyd", "Tach", "Rhag", ""], 
-        monthGenitiveNames: ["Ionawr", "Chwefror", "Mawrth", "Ebrill", "Mai", "Mehefin", "Gorffennaf", "Awst", "Medi", "Hydref", "Tachwedd", "Rhagfyr", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Sul",
+        "Llun",
+        "Maw",
+        "Mer",
+        "Iau",
+        "Gwe",
+        "Sad"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Ion",
+        "Chwef",
+        "Maw",
+        "Ebr",
+        "Mai",
+        "Meh",
+        "Gorff",
+        "Awst",
+        "Medi",
+        "Hyd",
+        "Tach",
+        "Rhag",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Ion",
+        "Chw",
+        "Maw",
+        "Ebr",
+        "Mai",
+        "Meh",
+        "Gor",
+        "Awst",
+        "Medi",
+        "Hyd",
+        "Tach",
+        "Rhag",
+        ""
+      ],
+      "amDesignator": "yb",
+      "dateSeparator": "/",
+      "dayNames": [
+        "Dydd Sul",
+        "Dydd Llun",
+        "Dydd Mawrth",
+        "Dydd Mercher",
+        "Dydd Iau",
+        "Dydd Gwener",
+        "Dydd Sadwrn"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 2,
+      "fullDateTimePattern": "dddd, d MMMM yyyy HH:mm:ss",
+      "longDatePattern": "dddd, d MMMM yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "Ionawr",
+        "Chwefror",
+        "Mawrth",
+        "Ebrill",
+        "Mai",
+        "Mehefin",
+        "Gorffennaf",
+        "Awst",
+        "Medi",
+        "Hydref",
+        "Tachwedd",
+        "Rhagfyr",
+        ""
+      ],
+      "monthNames": [
+        "Ionawr",
+        "Chwefror",
+        "Mawrth",
+        "Ebrill",
+        "Mai",
+        "Mehefin",
+        "Gorffennaf",
+        "Awst",
+        "Medi",
+        "Hydref",
+        "Tachwedd",
+        "Rhagfyr",
+        ""
+      ],
+      "nativeCalendarName": "Calendr Gregori",
+      "pmDesignator": "yh",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd/MM/yyyy",
+      "shortestDayNames": [
+        "S",
+        "Ll",
+        "M",
+        "M",
+        "I",
+        "G",
+        "S"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "OC"
+      ],
+      "abbreviatedEraNames": [
+        "O"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd/MM/yyyy",
+          "d MMM yyyy",
+          "d/M/yyyy",
+          "dd/MM/yy"
+        ],
+        "D": [
+          "dddd, d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "lkt", 
     lcid: 4096, 
     name: "lkt-US", 
@@ -40,29 +41,153 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "AM", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 0, 
-        fullDateTimePattern: "dddd, MMMM d, yyyy h:mm:ss tt", 
-        longDatePattern: "dddd, MMMM d, yyyy", 
-        longTimePattern: "h:mm:ss tt", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "PM", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "M/d/yyyy", 
-        shortTimePattern: "h:mm tt", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "yyyy MMMM", 
-        abbreviatedDayNames: ["Aŋpétuwakȟaŋ", "Aŋpétuwaŋži", "Aŋpétunuŋpa", "Aŋpétuyamni", "Aŋpétutopa", "Aŋpétuzaptaŋ", "Owáŋgyužažapi"], 
-        shortestDayNames: ["Aŋpétuwakȟaŋ", "Aŋpétuwaŋži", "Aŋpétunuŋpa", "Aŋpétuyamni", "Aŋpétutopa", "Aŋpétuzaptaŋ", "Owáŋgyužažapi"], 
-        dayNames: ["Aŋpétuwakȟaŋ", "Aŋpétuwaŋži", "Aŋpétunuŋpa", "Aŋpétuyamni", "Aŋpétutopa", "Aŋpétuzaptaŋ", "Owáŋgyužažapi"], 
-        abbreviatedMonthNames: ["Wiótheȟika Wí", "Thiyóȟeyuŋka Wí", "Ištáwičhayazaŋ Wí", "Pȟežítȟo Wí", "Čhaŋwápetȟo Wí", "Wípazukȟa-wašté Wí", "Čhaŋpȟásapa Wí", "Wasútȟuŋ Wí", "Čhaŋwápeǧi Wí", "Čhaŋwápe-kasná Wí", "Waníyetu Wí", "Tȟahékapšuŋ Wí", ""], 
-        monthNames: ["Wiótheȟika Wí", "Thiyóȟeyuŋka Wí", "Ištáwičhayazaŋ Wí", "Pȟežítȟo Wí", "Čhaŋwápetȟo Wí", "Wípazukȟa-wašté Wí", "Čhaŋpȟásapa Wí", "Wasútȟuŋ Wí", "Čhaŋwápeǧi Wí", "Čhaŋwápe-kasná Wí", "Waníyetu Wí", "Tȟahékapšuŋ Wí", ""], 
-        nativeCalendarName: "Gregorian Calendar", 
-        abbreviatedMonthGenitiveNames: ["Wiótheȟika Wí", "Thiyóȟeyuŋka Wí", "Ištáwičhayazaŋ Wí", "Pȟežítȟo Wí", "Čhaŋwápetȟo Wí", "Wípazukȟa-wašté Wí", "Čhaŋpȟásapa Wí", "Wasútȟuŋ Wí", "Čhaŋwápeǧi Wí", "Čhaŋwápe-kasná Wí", "Waníyetu Wí", "Tȟahékapšuŋ Wí", ""], 
-        monthGenitiveNames: ["Wiótheȟika Wí", "Thiyóȟeyuŋka Wí", "Ištáwičhayazaŋ Wí", "Pȟežítȟo Wí", "Čhaŋwápetȟo Wí", "Wípazukȟa-wašté Wí", "Čhaŋpȟásapa Wí", "Wasútȟuŋ Wí", "Čhaŋwápeǧi Wí", "Čhaŋwápe-kasná Wí", "Waníyetu Wí", "Tȟahékapšuŋ Wí", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Aŋpétuwakȟaŋ",
+        "Aŋpétuwaŋži",
+        "Aŋpétunuŋpa",
+        "Aŋpétuyamni",
+        "Aŋpétutopa",
+        "Aŋpétuzaptaŋ",
+        "Owáŋgyužažapi"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Wiótheȟika Wí",
+        "Thiyóȟeyuŋka Wí",
+        "Ištáwičhayazaŋ Wí",
+        "Pȟežítȟo Wí",
+        "Čhaŋwápetȟo Wí",
+        "Wípazukȟa-wašté Wí",
+        "Čhaŋpȟásapa Wí",
+        "Wasútȟuŋ Wí",
+        "Čhaŋwápeǧi Wí",
+        "Čhaŋwápe-kasná Wí",
+        "Waníyetu Wí",
+        "Tȟahékapšuŋ Wí",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Wiótheȟika Wí",
+        "Thiyóȟeyuŋka Wí",
+        "Ištáwičhayazaŋ Wí",
+        "Pȟežítȟo Wí",
+        "Čhaŋwápetȟo Wí",
+        "Wípazukȟa-wašté Wí",
+        "Čhaŋpȟásapa Wí",
+        "Wasútȟuŋ Wí",
+        "Čhaŋwápeǧi Wí",
+        "Čhaŋwápe-kasná Wí",
+        "Waníyetu Wí",
+        "Tȟahékapšuŋ Wí",
+        ""
+      ],
+      "amDesignator": "AM",
+      "dateSeparator": "/",
+      "dayNames": [
+        "Aŋpétuwakȟaŋ",
+        "Aŋpétuwaŋži",
+        "Aŋpétunuŋpa",
+        "Aŋpétuyamni",
+        "Aŋpétutopa",
+        "Aŋpétuzaptaŋ",
+        "Owáŋgyužažapi"
+      ],
+      "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, MMMM d, yyyy h:mm:ss tt",
+      "longDatePattern": "dddd, MMMM d, yyyy",
+      "longTimePattern": "h:mm:ss tt",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "Wiótheȟika Wí",
+        "Thiyóȟeyuŋka Wí",
+        "Ištáwičhayazaŋ Wí",
+        "Pȟežítȟo Wí",
+        "Čhaŋwápetȟo Wí",
+        "Wípazukȟa-wašté Wí",
+        "Čhaŋpȟásapa Wí",
+        "Wasútȟuŋ Wí",
+        "Čhaŋwápeǧi Wí",
+        "Čhaŋwápe-kasná Wí",
+        "Waníyetu Wí",
+        "Tȟahékapšuŋ Wí",
+        ""
+      ],
+      "monthNames": [
+        "Wiótheȟika Wí",
+        "Thiyóȟeyuŋka Wí",
+        "Ištáwičhayazaŋ Wí",
+        "Pȟežítȟo Wí",
+        "Čhaŋwápetȟo Wí",
+        "Wípazukȟa-wašté Wí",
+        "Čhaŋpȟásapa Wí",
+        "Wasútȟuŋ Wí",
+        "Čhaŋwápeǧi Wí",
+        "Čhaŋwápe-kasná Wí",
+        "Waníyetu Wí",
+        "Tȟahékapšuŋ Wí",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "PM",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "M/d/yyyy",
+      "shortestDayNames": [
+        "S",
+        "M",
+        "T",
+        "W",
+        "T",
+        "F",
+        "S"
+      ],
+      "shortTimePattern": "h:mm tt",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "CE"
+      ],
+      "abbreviatedEraNames": [
+        "CE"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "M/d/yyyy",
+          "MMM d, yyyy",
+          "M/d/yy"
+        ],
+        "D": [
+          "dddd, MMMM d, yyyy",
+          "MMMM d, yyyy"
+        ],
+        "t": [
+          "h:mm tt"
+        ],
+        "T": [
+          "h:mm:ss tt"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

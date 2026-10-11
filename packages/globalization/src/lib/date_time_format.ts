@@ -1,7 +1,10 @@
-import { FormatException, NullReferenceException, IFormatProvider } from '@xobin/core';
+import { formatHebrewNumber } from './hebrew_number';
+import type { Calendar } from './calendar';
+import { getCalendarIdentity } from './calendar_identity';
+import { FormatException, IFormatProvider } from '@xobin/core';
 import type { CultureInfo } from './culture_info';
 import { DateTime, getDateTimeOffset } from './date_time';
-import { DateTimeFormatData, getDateTimeFormatData, getProviderDateTimeFormat, getUniversalDateTimeFormatData } from './date_time_format_data';
+import { DateTimeFormatData, getDateTimeFormatData, getProviderDateTimeFormat, getUniversalDateTimeFormatData, getMonthFormatFlags } from './date_time_format_data';
 import { getCurrentFormatContext, invariantDateTimeFormat, gregorianFormatCalendar, FormatCalendar, FormatContext } from './date_time_format_context';
 import { TicksPerSecond, TicksPerMinute } from './var';
 
@@ -112,20 +115,8 @@ export class DateTimeFormat {
 
 function customized(date: DateTime, pattern: string, info: FormatInfo, calendar: FormatCalendar): string {
     let output = '';
-    let genitive = false;
     let timeOnly = true;
-    for (let i = 0; i < pattern.length; i++) {
-        const c = pattern[i]!;
-        if (c === "'" || c === '"') {
-            try { i = quote(pattern, i).end; } catch { break; }
-        } else if (c === '\\') i++;
-        else if (c === 'd') {
-            let count = 1;
-            while (pattern[i + count] === c) count++;
-            if (count <= 2) genitive = true;
-            i += count - 1;
-        }
-    }
+    const calendarId = getCalendarIdentity(calendar as Calendar).id;
     for (let i = 0; i < pattern.length;) {
         const c = pattern[i]!;
         if (c === "'" || c === '"') {
@@ -155,27 +146,37 @@ function customized(date: DateTime, pattern: string, info: FormatInfo, calendar:
             case 'y': {
                 timeOnly = false;
                 const year = calendar.getYear(date);
-                output += pad(count <= 2 ? year % 100 : year);
+                if (calendarId === 3 && year === 1 && (pattern[i + count] === '年'
+                    || pattern[i + count] === "'" && pattern[i + count + 1] === '年')) {
+                    output += '元';
+                } else if (calendarId === 3 || calendarId === 4) {
+                    output += pad(year, Math.min(count, 2));
+                } else output += calendarId === 8 ? formatHebrewNumber(year) : pad(count <= 2 ? year % 100 : year);
                 break;
             }
             case 'M': {
                 timeOnly = false;
-                const month = calendar.getMonth(date);
-                // Month-format flags inspect all regular/genitive month names and day names.
-                if (count >= 3 && [info.monthNames, info.monthGenitiveNames,
-                    info.abbreviatedMonthNames, info.abbreviatedMonthGenitiveNames,
-                    info.dayNames, info.abbreviatedDayNames].some(names => names.some(name => name == null))) {
-                    throw new NullReferenceException();
+                let month = calendar.getMonth(date);
+                if (calendarId === 8) {
+                    if (count <= 2) output += formatHebrewNumber(month);
+                    else if ((calendar as Calendar).isLeapYear(calendar.getYear(date))) {
+                        output += info.leapYearMonthNames?.[month - 1] ?? info.monthNames[month - 1] ?? '';
+                    } else {
+                        if (month >= 7) month++;
+                        output += (count === 3 ? info.abbreviatedMonthNames : info.monthNames)[month - 1] ?? '';
+                    }
+                    break;
                 }
+                const genitive = count >= 3 && getMonthFormatFlags(info).useGenitiveMonth && usesGenitiveMonth(pattern, i, count);
                 output += count <= 2 ? pad(month)
                     : (count === 3 ? genitive ? info.abbreviatedMonthGenitiveNames : info.abbreviatedMonthNames
-                        : genitive ? info.monthGenitiveNames : info.monthNames)[month - 1];
+                        : genitive ? info.monthGenitiveNames : info.monthNames)[month - 1] ?? '';
                 break;
             }
             case 'd':
                 timeOnly = false;
-                output += count <= 2 ? pad(calendar.getDayOfMonth(date))
-                    : (count === 3 ? info.abbreviatedDayNames : info.dayNames)[date.dayOfWeek];
+                output += count <= 2 ? calendarId === 8 ? formatHebrewNumber(calendar.getDayOfMonth(date)) : pad(calendar.getDayOfMonth(date))
+                    : (count === 3 ? info.abbreviatedDayNames : info.dayNames)[date.dayOfWeek] ?? '';
                 break;
             case 'H': output += pad(date.hour, Math.min(count, 2)); break;
             case 'h': output += pad(date.hour % 12 || 12, Math.min(count, 2)); break;
@@ -209,6 +210,30 @@ function customized(date: DateTime, pattern: string, info: FormatInfo, calendar:
         i += count;
     }
     return output;
+}
+
+/**
+ * Matches .NET's raw scan for a nearby one- or two-character day token.
+ * @param pattern The complete custom format, including quoted and escaped text.
+ * @param index The position of the month token.
+ * @param count The length of the month token.
+ */
+function usesGenitiveMonth(pattern: string, index: number, count: number): boolean {
+    let i = index - 1;
+    while (i >= 0 && pattern[i] !== 'd') i--;
+    if (i >= 0) {
+        let repeat = 0;
+        while (--i >= 0 && pattern[i] === 'd') repeat++;
+        if (repeat <= 1) return true;
+    }
+    i = index + count;
+    while (i < pattern.length && pattern[i] !== 'd') i++;
+    if (i < pattern.length) {
+        let repeat = 0;
+        while (++i < pattern.length && pattern[i] === 'd') repeat++;
+        if (repeat <= 1) return true;
+    }
+    return false;
 }
 
 function offsetText(offset: bigint, count: number): string {

@@ -1,6 +1,6 @@
 // Date format data generated from the pinned .NET 10.0.7 formatting oracle.
-import { CultureData, PersianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>> } = {
+import { CultureData, PersianCalendar, GregorianCalendar, HijriCalendar } from '@xobin/globalization';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "fa", 
     lcid: 1065, 
     name: "fa-IR", 
@@ -41,6 +41,7 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
         digitSubstitution: 0
     }, 
     dateTimeFormat: {
+      "leapYearMonthNames": null,
       "abbreviatedDayNames": [
         "یکشنبه",
         "دوشنبه",
@@ -148,6 +149,12 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
       "eraNames": [
         "ه‍.ش."
       ],
+      "abbreviatedEraNames": [
+        "ه‍.ش."
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
       "allDateTimePatterns": {
         "d": [
           "yyyy/M/d",
@@ -181,6 +188,9 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
       "1": {
         "eraNames": [
           "م."
+        ],
+        "abbreviatedEraNames": [
+          "م"
         ],
         "monthNames": [
           "ژانویه",
@@ -248,6 +258,9 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
         "eraNames": [
           "بعد الهجرة"
         ],
+        "abbreviatedEraNames": [
+          "هـ"
+        ],
         "monthNames": [
           "محرم",
           "صفر",
@@ -312,5 +325,6 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
       },
       "22": {}
     },
+    calendarFactories: [() => new PersianCalendar(), () => new GregorianCalendar(1), () => new HijriCalendar()],
     calendar: new PersianCalendar()
 };

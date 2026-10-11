@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "rwk", 
     lcid: 4096, 
     name: "rwk-TZ", 
@@ -40,29 +41,153 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "utuko", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, d MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd, d MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "kyiukonyi", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["Jpi", "Jtt", "Jnn", "Jtn", "Alh", "Iju", "Jmo"], 
-        shortestDayNames: ["Jpi", "Jtt", "Jnn", "Jtn", "Alh", "Iju", "Jmo"], 
-        dayNames: ["Jumapilyi", "Jumatatuu", "Jumanne", "Jumatanu", "Alhamisi", "Ijumaa", "Jumamosi"], 
-        abbreviatedMonthNames: ["Jan", "Feb", "Mac", "Apr", "Mei", "Jun", "Jul", "Ago", "Sep", "Okt", "Nov", "Des", ""], 
-        monthNames: ["Januari", "Februari", "Machi", "Aprilyi", "Mei", "Junyi", "Julyai", "Agusti", "Septemba", "Oktoba", "Novemba", "Desemba", ""], 
-        nativeCalendarName: "Gregorian Calendar", 
-        abbreviatedMonthGenitiveNames: ["Jan", "Feb", "Mac", "Apr", "Mei", "Jun", "Jul", "Ago", "Sep", "Okt", "Nov", "Des", ""], 
-        monthGenitiveNames: ["Januari", "Februari", "Machi", "Aprilyi", "Mei", "Junyi", "Julyai", "Agusti", "Septemba", "Oktoba", "Novemba", "Desemba", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Jpi",
+        "Jtt",
+        "Jnn",
+        "Jtn",
+        "Alh",
+        "Iju",
+        "Jmo"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Jan",
+        "Feb",
+        "Mac",
+        "Apr",
+        "Mei",
+        "Jun",
+        "Jul",
+        "Ago",
+        "Sep",
+        "Okt",
+        "Nov",
+        "Des",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Jan",
+        "Feb",
+        "Mac",
+        "Apr",
+        "Mei",
+        "Jun",
+        "Jul",
+        "Ago",
+        "Sep",
+        "Okt",
+        "Nov",
+        "Des",
+        ""
+      ],
+      "amDesignator": "utuko",
+      "dateSeparator": "/",
+      "dayNames": [
+        "Jumapilyi",
+        "Jumatatuu",
+        "Jumanne",
+        "Jumatanu",
+        "Alhamisi",
+        "Ijumaa",
+        "Jumamosi"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, d MMMM yyyy HH:mm:ss",
+      "longDatePattern": "dddd, d MMMM yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "Januari",
+        "Februari",
+        "Machi",
+        "Aprilyi",
+        "Mei",
+        "Junyi",
+        "Julyai",
+        "Agusti",
+        "Septemba",
+        "Oktoba",
+        "Novemba",
+        "Desemba",
+        ""
+      ],
+      "monthNames": [
+        "Januari",
+        "Februari",
+        "Machi",
+        "Aprilyi",
+        "Mei",
+        "Junyi",
+        "Julyai",
+        "Agusti",
+        "Septemba",
+        "Oktoba",
+        "Novemba",
+        "Desemba",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "kyiukonyi",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd/MM/yyyy",
+      "shortestDayNames": [
+        "J",
+        "J",
+        "J",
+        "J",
+        "A",
+        "I",
+        "J"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "BK"
+      ],
+      "abbreviatedEraNames": [
+        "BK"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd/MM/yyyy",
+          "d MMM yyyy",
+          "d/M/yyyy"
+        ],
+        "D": [
+          "dddd, d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

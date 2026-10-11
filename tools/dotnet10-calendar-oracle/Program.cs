@@ -5,6 +5,59 @@ if (Environment.Version.ToString() != "10.0.7")
     throw new InvalidOperationException($"Expected .NET 10.0.7, got {Environment.Version}.");
 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
+if (args.Length >= 2 && args[0] == "--korean") {
+    string output=KoreanOracle.Generate();
+    if(args.Length==3 && args[2]=="--check") { if(File.ReadAllText(args[1])!=output) throw new InvalidOperationException("Korean fixture differs from reference."); }
+    else File.WriteAllText(args[1],output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--format-calendar-dependencies") {
+    string output=FormatCalendarDependenciesOracle.Generate();
+    if(args.Length==3 && args[2]=="--check") { if(File.ReadAllText(args[1])!=output) throw new InvalidOperationException("Format calendar dependencies fixture differs."); }
+    else File.WriteAllText(args[1],output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--calendar-dependencies") {
+    string output = CalendarDependenciesOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Calendar dependency fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if(args.Length>=2 && args[0]=="--culture-date-time-format") {
+    string output=CultureDateTimeFormatOracle.Generate();
+    if(args.Length==3 && args[2]=="--check") {if(File.ReadAllText(args[1])!=output) throw new InvalidOperationException("Culture fixture differs.");}
+    else if(args.Length==2) File.WriteAllText(args[1],output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-format-lookup") {
+    string output=DateTimeFormatLookupOracle.Generate();
+    if(args.Length==3 && args[2]=="--check") { if(File.ReadAllText(args[1])!=output) throw new InvalidOperationException("Lookup fixture differs."); }
+    else if(args.Length==2) File.WriteAllText(args[1],output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-format-patterns")
+{
+    string output = DateTimeFormatPatternsOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Patterns fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-format-era")
+{
+    string output = DateTimeFormatEraOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Era fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
 if (args.Length >= 2 && args[0] == "--date-time-format-month-names")
 {
     string output = DateTimeFormatMonthNamesOracle.Generate();
@@ -447,6 +500,7 @@ var calendarFactories = new Dictionary<string, Func<Calendar>>
     ["Gregorian"] = () => new GregorianCalendar(),
     ["Persian"] = () => new PersianCalendar(),
     ["ThaiBuddhist"] = () => new ThaiBuddhistCalendar(),
+    ["Korean"] = () => new KoreanCalendar(),
     ["UmAlQura"] = () => new UmAlQuraCalendar(),
 };
 
@@ -478,7 +532,7 @@ foreach (var (name, makeCalendar) in calendarFactories)
         calendar.MinSupportedDateTime.Ticks,
         calendar.MaxSupportedDateTime.Ticks,
     };
-    if (name is "Gregorian" or "ThaiBuddhist")
+    if (name is "Gregorian" or "ThaiBuddhist" or "Korean")
     {
         foreach (var date in new[]
         {
@@ -563,6 +617,7 @@ foreach (var (name, makeCalendar) in calendarFactories)
         "Gregorian" => [2029, 2049, 2099],
         "Persian" => [1410, 1450],
         "ThaiBuddhist" => [2049, 2572],
+        "Korean" => [2049, 4382],
         _ => [99, 1451, 1499],
     };
     foreach (int max in maxValues)

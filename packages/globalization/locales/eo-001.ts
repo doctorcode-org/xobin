@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "eo", 
     lcid: 4096, 
     name: "eo-001", 
@@ -40,29 +41,154 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "atm", 
-        dateSeparator: "-", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, d-'a' 'de' MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd, d-'a' 'de' MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "ptm", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "yyyy-MM-dd", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "yyyy MMMM", 
-        abbreviatedDayNames: ["di", "lu", "ma", "me", "ĵa", "ve", "sa"], 
-        shortestDayNames: ["di", "lu", "ma", "me", "ĵa", "ve", "sa"], 
-        dayNames: ["dimanĉo", "lundo", "mardo", "merkredo", "ĵaŭdo", "vendredo", "sabato"], 
-        abbreviatedMonthNames: ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aŭg", "sep", "okt", "nov", "dec", ""], 
-        monthNames: ["januaro", "februaro", "marto", "aprilo", "majo", "junio", "julio", "aŭgusto", "septembro", "oktobro", "novembro", "decembro", ""], 
-        nativeCalendarName: "gregoria kalendaro", 
-        abbreviatedMonthGenitiveNames: ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aŭg", "sep", "okt", "nov", "dec", ""], 
-        monthGenitiveNames: ["januaro", "februaro", "marto", "aprilo", "majo", "junio", "julio", "aŭgusto", "septembro", "oktobro", "novembro", "decembro", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "di",
+        "lu",
+        "ma",
+        "me",
+        "ĵa",
+        "ve",
+        "sa"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "jan",
+        "feb",
+        "mar",
+        "apr",
+        "maj",
+        "jun",
+        "jul",
+        "aŭg",
+        "sep",
+        "okt",
+        "nov",
+        "dec",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "jan",
+        "feb",
+        "mar",
+        "apr",
+        "maj",
+        "jun",
+        "jul",
+        "aŭg",
+        "sep",
+        "okt",
+        "nov",
+        "dec",
+        ""
+      ],
+      "amDesignator": "atm",
+      "dateSeparator": "-",
+      "dayNames": [
+        "dimanĉo",
+        "lundo",
+        "mardo",
+        "merkredo",
+        "ĵaŭdo",
+        "vendredo",
+        "sabato"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, d-'a' 'de' MMMM yyyy HH:mm:ss",
+      "longDatePattern": "dddd, d-'a' 'de' MMMM yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "januaro",
+        "februaro",
+        "marto",
+        "aprilo",
+        "majo",
+        "junio",
+        "julio",
+        "aŭgusto",
+        "septembro",
+        "oktobro",
+        "novembro",
+        "decembro",
+        ""
+      ],
+      "monthNames": [
+        "januaro",
+        "februaro",
+        "marto",
+        "aprilo",
+        "majo",
+        "junio",
+        "julio",
+        "aŭgusto",
+        "septembro",
+        "oktobro",
+        "novembro",
+        "decembro",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "ptm",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "yyyy-MM-dd",
+      "shortestDayNames": [
+        "S",
+        "M",
+        "T",
+        "W",
+        "T",
+        "F",
+        "S"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "pK"
+      ],
+      "abbreviatedEraNames": [
+        "pK"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "yyyy-MM-dd",
+          "yyyy-MMM-dd",
+          "yyyy-M-d",
+          "yy-MM-dd"
+        ],
+        "D": [
+          "dddd, d-'a' 'de' MMMM yyyy",
+          "yyyy-MMMM-dd"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

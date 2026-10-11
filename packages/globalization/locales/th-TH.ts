@@ -1,6 +1,6 @@
 // Date format data generated from the pinned .NET 10.0.7 formatting oracle.
-import { CultureData, ThaiBuddhistCalendar } from '@xobin/globalization';
-export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>> } = {
+import { CultureData, ThaiBuddhistCalendar, GregorianCalendar } from '@xobin/globalization';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "th", 
     lcid: 1054, 
     name: "th-TH", 
@@ -41,6 +41,7 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
+      "leapYearMonthNames": null,
       "abbreviatedDayNames": [
         "อา.",
         "จ.",
@@ -148,6 +149,12 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
       "eraNames": [
         "พ.ศ."
       ],
+      "abbreviatedEraNames": [
+        "พ.ศ."
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
       "allDateTimePatterns": {
         "d": [
           "d/M/yyyy",
@@ -183,9 +190,13 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
         "eraNames": [
           "ค.ศ."
         ],
+        "abbreviatedEraNames": [
+          "ค.ศ."
+        ],
         "nativeCalendarName": "ปฏิทินเกรกอเรียน"
       },
       "7": {}
     },
+    calendarFactories: [() => new ThaiBuddhistCalendar(), () => new GregorianCalendar(1)],
     calendar: new ThaiBuddhistCalendar()
 };

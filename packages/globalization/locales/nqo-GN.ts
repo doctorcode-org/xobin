@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "nqo", 
     lcid: 4096, 
     name: "nqo-GN", 
@@ -40,29 +41,153 @@ export const cultureData: CultureData = {
         digitSubstitution: 2
     }, 
     dateTimeFormat: {
-        amDesignator: "ߛ", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 6, 
-        fullDateTimePattern: "dddd, MMMM dd, yyyy tt hh:mm:ss", 
-        longDatePattern: "dddd, MMMM dd, yyyy", 
-        longTimePattern: "tt hh:mm:ss", 
-        monthDayPattern: "MMMM ߕߟߋ߬ dd", 
-        pmDesignator: "ߥ", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "tt hh:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM, yyyy", 
-        abbreviatedDayNames: ["ߞߊ߯ߙ", "ߞߐ߬ߓ", "ߞߐ߬ߟ", "ߞߎߣ", "ߓߌߟ", "ߛߌ߬ߣ", "ߞߍ߲ߘ"], 
-        shortestDayNames: ["ߞߊ", "ߞߐ", "ߞߟ", "ߞߎ", "ߓߌ", "ߛߌ", "ߞߍ"], 
-        dayNames: ["ߞߊ߯ߙߌ", "ߞߐ߬ߓߊ߬ߟߏ߲", "ߞߐ߬ߟߏ߲", "ߞߎߣߎ߲ߟߏ߲", "ߓߌߟߏ߲", "ߛߌ߬ߣߌ߲߬ߟߏ߲", "ߞߍ߲ߘߍߟߏ߲"], 
-        abbreviatedMonthNames: ["ߓߌ߲ߠ", "ߞߏ߲ߞ", "ߕߙߊ", "ߞߏ߲ߘ", "ߘߓߕ", "ߥߊ߬ߛ", "ߞߊ߬ߙ", "ߘߓߊ߬", "ߕߎߟ", "ߞߏ߲ߓ", "ߣߍߣ", "ߞߏ߬ߟ", ""], 
-        monthNames: ["ߓߌ߲ߠߊߥߎߟߋ߲", "ߞߏ߲ߞߏߜߍ", "ߕߙߊߓߊ", "ߞߏ߲ߞߏߘߌ߬ߓߌ", "ߘߓߊ߬ߕߊ", "ߥߊ߬ߛߌߥߊ߬ߙߊ", "ߞߊ߬ߙߌߝߐ߭", "ߘߓߊ߬ߓߌߟߊ", "ߕߎߟߊߝߌ߲", "ߞߏ߲ߓߌߕߌ߮", "ߣߍߣߍߓߊ", "ߞߏ߬ߟߌ߲߬ߞߏߟߌ߲", ""], 
-        nativeCalendarName: "ߞߙߎ߬ߞߊ߲߬ ߝߎߥߊ߫ ߛߊ߲߬ߞߎ߲", 
-        abbreviatedMonthGenitiveNames: ["ߓߌ߲ߠ", "ߞߏ߲ߞ", "ߕߙߊ", "ߞߏ߲ߘ", "ߘߓߕ", "ߥߊ߬ߛ", "ߞߊ߬ߙ", "ߘߓߊ߬", "ߕߎߟ", "ߞߏ߲ߓ", "ߣߍߣ", "ߞߏ߬ߟ", ""], 
-        monthGenitiveNames: ["ߓߌ߲ߠߊߥߎߟߋ߲", "ߞߏ߲ߞߏߜߍ", "ߕߙߊߓߊ", "ߞߏ߲ߞߏߘߌ߬ߓߌ", "ߘߓߊ߬ߕߊ", "ߥߊ߬ߛߌߥߊ߬ߙߊ", "ߞߊ߬ߙߌߝߐ߭", "ߘߓߊ߬ߓߌߟߊ", "ߕߎߟߊߝߌ߲", "ߞߏ߲ߓߌߕߌ߮", "ߣߍߣߍߓߊ", "ߞߏ߬ߟߌ߲߬ߞߏߟߌ߲", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "ߞߊ߯ߙ",
+        "ߞߐ߬ߓ",
+        "ߞߐ߬ߟ",
+        "ߞߎߣ",
+        "ߓߌߟ",
+        "ߛߌ߬ߣ",
+        "ߞߍ߲ߘ"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "ߓߌ߲ߠ",
+        "ߞߏ߲ߞ",
+        "ߕߙߊ",
+        "ߞߏ߲ߘ",
+        "ߘߓߊ߬ߕ",
+        "ߥߊ߬ߛ",
+        "ߞߊ߬ߙ",
+        "ߘߓߊ߬ߓ",
+        "ߕߎߟߊߝߌ߲",
+        "ߞߏ߲ߓ",
+        "ߣߍߣ",
+        "ߞߏߟ",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "ߓߌ߲ߠ",
+        "ߞߏ߲ߞ",
+        "ߕߙߊ",
+        "ߞߏ߲ߘ",
+        "ߘߓߊ߬ߕ",
+        "ߥߊ߬ߛ",
+        "ߞߊ߬ߙ",
+        "ߘߓߊ߬ߓ",
+        "ߕߎߟߊߝߌ߲",
+        "ߞߏ߲ߓ",
+        "ߣߍߣ",
+        "ߞߏߟ",
+        ""
+      ],
+      "amDesignator": "ߛ",
+      "dateSeparator": "-",
+      "dayNames": [
+        "ߞߊ߯ߙߌߟߏ߲",
+        "ߞߐ߬ߓߊ߬ߟߏ߲",
+        "ߞߐ߬ߟߏ߲",
+        "ߞߎߣߎ߲ߟߏ߲",
+        "ߓߌߟߏ߲",
+        "ߛߌ߬ߣߌ߲߬ߟߏ߲",
+        "ߞߍ߲ߘߍߟߏ߲"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "yyyy MMMM d, dddd HH:mm:ss",
+      "longDatePattern": "yyyy MMMM d, dddd",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "ߓߌ߲ߠߊߥߎߟߋ߲",
+        "ߞߏ߲ߞߏߜߍ",
+        "ߕߙߊߓߊ",
+        "ߞߏ߲ߞߏߘߌ߬ߓߌ",
+        "ߘߓߊ߬ߕߊ",
+        "ߥߊ߬ߛߌ߬ߥߙߊ",
+        "ߞߊ߬ߙߌߝߐ߭",
+        "ߘߓߊ߬ߓߌߟߊ",
+        "ߕߎߟߊߝߌ߲",
+        "ߞߏ߲ߓߌߕߌ߮",
+        "ߣߍߣߍߓߊ",
+        "ߞߏߟߌ߲ߞߏߟߌ߲",
+        ""
+      ],
+      "monthNames": [
+        "ߓߌ߲ߠߊߥߎߟߋ߲",
+        "ߞߏ߲ߞߏߜߍ",
+        "ߕߙߊߓߊ",
+        "ߞߏ߲ߞߏߘߌ߬ߓߌ",
+        "ߘߓߊ߬ߕߊ",
+        "ߥߊ߬ߛߌ߬ߥߙߊ",
+        "ߞߊ߬ߙߌߝߐ߭",
+        "ߘߓߊ߬ߓߌߟߊ",
+        "ߕߎߟߊߝߌ߲",
+        "ߞߏ߲ߓߌߕߌ߮",
+        "ߣߍߣߍߓߊ",
+        "ߞߏߟߌ߲ߞߏߟߌ߲",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "ߥ",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "yyyy-MM-dd",
+      "shortestDayNames": [
+        "ߞ",
+        "ߞ",
+        "ߞ",
+        "ߞ",
+        "ߓ",
+        "ߛ",
+        "ߞ"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "ߌߛ. ߡ. ߞߐ߫"
+      ],
+      "abbreviatedEraNames": [
+        "ߌߛ. ߞߐ߫"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "yyyy-MM-dd",
+          "yyyy MMM d",
+          "yyyy / dd / MM"
+        ],
+        "D": [
+          "yyyy MMMM d, dddd",
+          "yyyy MMMM d"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

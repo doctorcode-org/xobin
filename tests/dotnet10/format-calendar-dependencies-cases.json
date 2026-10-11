@@ -1,0 +1,5923 @@
+{
+  "runtime": "10.0.7",
+  "rows": [
+    {
+      "source": "DateTimeFormatInfoMiscTests.NativeCalendarName_Get_ReturnsExpected",
+      "name": "en-US",
+      "calendar": "GregorianCalendar",
+      "result": "Gregorian Calendar"
+    },
+    {
+      "source": "DateTimeFormatInfoMiscTests.NativeCalendarName_Get_ReturnsExpected",
+      "name": "ar-SA",
+      "calendar": "HijriCalendar",
+      "result": "\u0627\u0644\u062A\u0642\u0648\u064A\u0645 \u0627\u0644\u0647\u062C\u0631\u064A"
+    },
+    {
+      "source": "DateTimeFormatInfoMiscTests.NativeCalendarName_Get_ReturnsExpected",
+      "name": "ar-SA",
+      "calendar": "UmAlQuraCalendar",
+      "result": "\u0627\u0644\u062A\u0642\u0648\u064A\u0645 \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064A (\u0623\u0645 \u0627\u0644\u0642\u0631\u0649)"
+    },
+    {
+      "source": "DateTimeFormatInfoMiscTests.NativeCalendarName_Get_ReturnsExpected",
+      "name": "ja-JP",
+      "calendar": "JapaneseCalendar",
+      "result": "\u548C\u66A6"
+    },
+    {
+      "source": "DateTimeFormatInfoMiscTests.NativeCalendarName_Get_ReturnsExpected",
+      "name": "th-TH",
+      "calendar": "ThaiBuddhistCalendar",
+      "result": "\u0E1B\u0E0F\u0E34\u0E17\u0E34\u0E19\u0E1E\u0E38\u0E17\u0E18"
+    },
+    {
+      "source": "DateTimeFormatInfoMiscTests.NativeCalendarName_Get_ReturnsExpected",
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "result": "\u05DC\u05D5\u05D7 \u05D4\u05E9\u05E0\u05D4 \u05D4\u05E2\u05D1\u05E8\u05D9"
+    },
+    {
+      "source": "DateTimeFormatInfoMiscTests.NativeCalendarName_Get_ReturnsExpected",
+      "name": "ko-KR",
+      "calendar": "KoreanCalendar",
+      "result": "\uB2E8\uAE30\uB825"
+    },
+    {
+      "source": "DateTimeFormatInfoMiscTests.NativeCalendarName_Get_ReturnsExpected",
+      "name": "fa-IR",
+      "calendar": "PersianCalendar",
+      "result": "\u062A\u0642\u0648\u06CC\u0645 \u0647\u062C\u0631\u06CC \u0634\u0645\u0633\u06CC"
+    }
+  ],
+  "formats": [
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636415488000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05D7\u05DE\u05D9\u05E9\u05D9, \u05D0\u0027 \u05D1\u05EA\u05E9\u05E8\u05D9 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636415488000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D0\u0027 \u05D0\u0027 \u05EA\u05E9\u05E8\u05D9 \u05EA\u05E9\u05E8\u05D9 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636441408000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E9\u05D1\u05EA, \u05D0\u0027 \u05D1\u05D7\u05E9\u05D5\u05D5\u05DF \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636441408000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D1\u0027 \u05D1\u0027 \u05D7\u05E9\u05D5\u05DF \u05D7\u05E9\u05D5\u05D5\u05DF \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636466464000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E8\u05D0\u05E9\u05D5\u05DF, \u05D0\u0027 \u05D1\u05DB\u05E1\u05DC\u05D5 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636466464000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D2\u0027 \u05D2\u0027 \u05DB\u05E1\u05DC\u05D5 \u05DB\u05E1\u05DC\u05D5 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636492384000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E9\u05DC\u05D9\u05E9\u05D9, \u05D0\u0027 \u05D1\u05D8\u05D1\u05EA \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636492384000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D3\u0027 \u05D3\u0027 \u05D8\u05D1\u05EA \u05D8\u05D1\u05EA \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636517440000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E8\u05D1\u05D9\u05E2\u05D9, \u05D0\u0027 \u05D1\u05E9\u05D1\u05D8 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636517440000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D4\u0027 \u05D4\u0027 \u05E9\u05D1\u05D8 \u05E9\u05D1\u05D8 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636543360000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E9\u05D9\u05E9\u05D9, \u05D0\u0027 \u05D1\u05D0\u05D3\u05E8 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636543360000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D5\u0027 \u05D5\u0027 \u05D0\u05D3\u05E8 \u05D0\u05F3 \u05D0\u05D3\u05E8 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636568416000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E9\u05D1\u05EA, \u05D0\u0027 \u05D1\u05E0\u05D9\u05E1\u05DF \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636568416000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D6\u0027 \u05D6\u0027 \u05E0\u05D9\u05E1\u05DF \u05E0\u05D9\u05E1\u05DF \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636594336000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E9\u05E0\u05D9, \u05D0\u0027 \u05D1\u05D0\u05D9\u05D9\u05E8 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636594336000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D7\u0027 \u05D7\u0027 \u05D0\u05D9\u05D9\u05E8 \u05D0\u05D9\u05D9\u05E8 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636619392000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E9\u05DC\u05D9\u05E9\u05D9, \u05D0\u0027 \u05D1\u05E1\u05D9\u05D5\u05D5\u05DF \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636619392000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D8\u0027 \u05D8\u0027 \u05E1\u05D9\u05D5\u05DF \u05E1\u05D9\u05D5\u05D5\u05DF \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636645312000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05D7\u05DE\u05D9\u05E9\u05D9, \u05D0\u0027 \u05D1\u05EA\u05DE\u05D5\u05D6 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636645312000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D9\u0027 \u05D9\u0027 \u05EA\u05DE\u05D5\u05D6 \u05EA\u05DE\u05D5\u05D6 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636670368000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E9\u05D9\u05E9\u05D9, \u05D0\u0027 \u05D1\u05D0\u05D1 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636670368000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D9\u0022\u05D0 \u05D9\u0022\u05D0 \u05D0\u05D1 \u05D0\u05D1 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636696288000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E8\u05D0\u05E9\u05D5\u05DF, \u05D0\u0027 \u05D1\u05D0\u05DC\u05D5\u05DC \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636696288000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D9\u0022\u05D1 \u05D9\u0022\u05D1 \u05D0\u05DC\u05D5\u05DC \u05D0\u05DC\u05D5\u05DC \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7 \u05EA\u05E9\u05E2\u0022\u05D7"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636721344000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E9\u05E0\u05D9, \u05D0\u0027 \u05D1\u05EA\u05E9\u05E8\u05D9 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636721344000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D0\u0027 \u05D0\u0027 \u05EA\u05E9\u05E8\u05D9 \u05EA\u05E9\u05E8\u05D9 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636747264000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E8\u05D1\u05D9\u05E2\u05D9, \u05D0\u0027 \u05D1\u05D7\u05E9\u05D5\u05D5\u05DF \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636747264000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D1\u0027 \u05D1\u0027 \u05D7\u05E9\u05D5\u05D5\u05DF \u05D7\u05E9\u05D5\u05D5\u05DF \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636773184000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E9\u05D9\u05E9\u05D9, \u05D0\u0027 \u05D1\u05DB\u05E1\u05DC\u05D5 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636773184000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D2\u0027 \u05D2\u0027 \u05DB\u05E1\u05DC\u05D5 \u05DB\u05E1\u05DC\u05D5 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636799104000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E8\u05D0\u05E9\u05D5\u05DF, \u05D0\u0027 \u05D1\u05D8\u05D1\u05EA \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636799104000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D3\u0027 \u05D3\u0027 \u05D8\u05D1\u05EA \u05D8\u05D1\u05EA \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636824160000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E9\u05E0\u05D9, \u05D0\u0027 \u05D1\u05E9\u05D1\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636824160000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D4\u0027 \u05D4\u0027 \u05E9\u05D1\u05D8 \u05E9\u05D1\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636850080000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E8\u05D1\u05D9\u05E2\u05D9, \u05D0\u0027 \u05D1\u05D0\u05D3\u05E8 \u05D0\u05F3 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636850080000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D5\u0027 \u05D5\u0027 \u05D0\u05D3\u05E8 \u05D0\u05F3 \u05D0\u05D3\u05E8 \u05D0\u05F3 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636876000000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E9\u05D9\u05E9\u05D9, \u05D0\u0027 \u05D1\u05D0\u05D3\u05E8 \u05D1\u05F3 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636876000000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D6\u0027 \u05D6\u0027 \u05D0\u05D3\u05E8 \u05D1\u05F3 \u05D0\u05D3\u05E8 \u05D1\u05F3 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636901056000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E9\u05D1\u05EA, \u05D0\u0027 \u05D1\u05E0\u05D9\u05E1\u05DF \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636901056000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D7\u0027 \u05D7\u0027 \u05E0\u05D9\u05E1\u05DF \u05E0\u05D9\u05E1\u05DF \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636926976000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E9\u05E0\u05D9, \u05D0\u0027 \u05D1\u05D0\u05D9\u05D9\u05E8 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636926976000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D8\u0027 \u05D8\u0027 \u05D0\u05D9\u05D9\u05E8 \u05D0\u05D9\u05D9\u05E8 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636952032000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E9\u05DC\u05D9\u05E9\u05D9, \u05D0\u0027 \u05D1\u05E1\u05D9\u05D5\u05D5\u05DF \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636952032000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D9\u0027 \u05D9\u0027 \u05E1\u05D9\u05D5\u05D5\u05DF \u05E1\u05D9\u05D5\u05D5\u05DF \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636977952000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05D7\u05DE\u05D9\u05E9\u05D9, \u05D0\u0027 \u05D1\u05EA\u05DE\u05D5\u05D6 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "636977952000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D9\u0022\u05D0 \u05D9\u0022\u05D0 \u05EA\u05DE\u05D5\u05D6 \u05EA\u05DE\u05D5\u05D6 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "637003008000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E9\u05D9\u05E9\u05D9, \u05D0\u0027 \u05D1\u05D0\u05D1 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "637003008000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D9\u0022\u05D1 \u05D9\u0022\u05D1 \u05D0\u05D1 \u05D0\u05D1 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "637028928000000000",
+      "format": "dddd, d \u05D1MMMM yyyy",
+      "result": "\u05D9\u05D5\u05DD \u05E8\u05D0\u05E9\u05D5\u05DF, \u05D0\u0027 \u05D1\u05D0\u05DC\u05D5\u05DC \u05EA\u05E9\u05E2\u0022\u05D8"
+    },
+    {
+      "name": "he-IL",
+      "calendar": "HebrewCalendar",
+      "ticks": "637028928000000000",
+      "format": "d dd M MM MMM MMMM y yy yyyy",
+      "result": "\u05D0\u0027 \u05D0\u0027 \u05D9\u0022\u05D2 \u05D9\u0022\u05D2 \u05D0\u05DC\u05D5\u05DC \u05D0\u05DC\u05D5\u05DC \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8 \u05EA\u05E9\u05E2\u0022\u05D8"
+    }
+  ],
+  "japaneseEraNumbers": [
+    {
+      "name": "M",
+      "result": 1
+    },
+    {
+      "name": "T",
+      "result": 2
+    },
+    {
+      "name": "S",
+      "result": 3
+    },
+    {
+      "name": "H",
+      "result": 4
+    },
+    {
+      "name": "R",
+      "result": 5
+    },
+    {
+      "name": "Q",
+      "result": -1
+    }
+  ],
+  "optional": [
+    {
+      "name": "",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "aa",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "aa-DJ",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "aa-ER",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "aa-ET",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "af",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "af-NA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "af-ZA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "agq",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "agq-CM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ak",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ak-GH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "am",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "am-ET",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ar",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-001",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ar-AE",
+      "calendars": [
+        "GregorianCalendar",
+        "UmAlQuraCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-BH",
+      "calendars": [
+        "GregorianCalendar",
+        "UmAlQuraCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-DJ",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-DZ",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-EG",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-ER",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-IL",
+      "calendars": [
+        "GregorianCalendar",
+        "HebrewCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-IQ",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-JO",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-KM",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-KW",
+      "calendars": [
+        "GregorianCalendar",
+        "UmAlQuraCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-LB",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-LY",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-MA",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-MR",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-OM",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-PS",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-QA",
+      "calendars": [
+        "GregorianCalendar",
+        "UmAlQuraCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-SA",
+      "calendars": [
+        "UmAlQuraCalendar",
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-SD",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-SO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ar-SS",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ar-SY",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-TD",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-TN",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ar-YE",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "arn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "arn-CL",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "as",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "as-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "asa",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "asa-TZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ast",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ast-ES",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "az",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "az-Cyrl",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "az-Cyrl-AZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "az-Latn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "az-Latn-AZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ba",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ba-RU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bas",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bas-CM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "be",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "be-BY",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bem",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bem-ZM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bez",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bez-TZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bg",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bg-BG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bgc",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bgc-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bho",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bho-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bin",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bin-NG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bm",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bm-ML",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bn",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "bn-BD",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "bn-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bo",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bo-CN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bo-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "br",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "br-FR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "brx",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "brx-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bs",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bs-Cyrl",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bs-Cyrl-BA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bs-Latn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "bs-Latn-BA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "byn",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "byn-ER",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ca",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ca-AD",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ca-ES",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ca-FR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ca-IT",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ccp",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ccp-BD",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ccp-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ce",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ce-RU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ceb",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ceb-PH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "cgg",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "cgg-UG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "chr",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "chr-US",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ckb",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ckb-IQ",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ckb-IR",
+      "calendars": [
+        "PersianCalendar",
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "co",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "co-FR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "cs",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "cs-CZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "cu",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "cu-RU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "cv",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "cv-RU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "cy",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "cy-GB",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "da",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "da-DK",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "da-GL",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "dav",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "dav-KE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "de",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "de-AT",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "de-BE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "de-CH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "de-DE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "de-IT",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "de-LI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "de-LU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "dje",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "dje-NE",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "doi",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "doi-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "dsb",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "dsb-DE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "dua",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "dua-CM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "dv",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "dv-MV",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "dyo",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "dyo-SN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "dz",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "dz-BT",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ebu",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ebu-KE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ee",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ee-GH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ee-TG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "el",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "el-CY",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "el-GR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-001",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-029",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-150",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-AE",
+      "calendars": [
+        "GregorianCalendar",
+        "UmAlQuraCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "en-AG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-AI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-AS",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-AT",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-AU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-BB",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-BE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-BI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-BM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-BS",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-BW",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-BZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-CA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-CC",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-CH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-CK",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-CM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-CX",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-CY",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-DE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-DK",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-DM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-ER",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "en-FI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-FJ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-FK",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-FM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-GB",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-GD",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-GG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-GH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-GI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-GM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-GU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-GY",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-HK",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-ID",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "en-IE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-IL",
+      "calendars": [
+        "GregorianCalendar",
+        "HebrewCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "en-IM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-IO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-JE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-JM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-KE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-KI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-KN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-KY",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-LC",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-LR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-LS",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-MG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-MH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-MO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-MP",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-MS",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-MT",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-MU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-MV",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-MW",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-MY",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "en-NA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-NF",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-NG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-NL",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-NR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-NU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-NZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-PG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-PH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-PK",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "en-PN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-PR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-PW",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-RW",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-SB",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-SC",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-SD",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "en-SE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-SG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-SH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-SI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-SL",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-SS",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-SX",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-SZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-TC",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-TK",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-TO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-TT",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-TV",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-TZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-UG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-UM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-US",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-US-POSIX",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-VC",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-VG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-VI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-VU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-WS",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-ZA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-ZM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "en-ZW",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "eo",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "eo-001",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-419",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-AR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-BO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-BR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-BZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-CL",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-CO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-CR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-CU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-DO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-EC",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-ES",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-GQ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-GT",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-HN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-MX",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-NI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-PA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-PE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-PH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-PR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-PY",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-SV",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-US",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-UY",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "es-VE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "et",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "et-EE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "eu",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "eu-ES",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ewo",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ewo-CM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fa",
+      "calendars": [
+        "PersianCalendar",
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "fa-AF",
+      "calendars": [
+        "PersianCalendar",
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "fa-IR",
+      "calendars": [
+        "PersianCalendar",
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ff",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Adlm",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Adlm-BF",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Adlm-CM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Adlm-GH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Adlm-GM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Adlm-GN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Adlm-GW",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Adlm-LR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Adlm-MR",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ff-Adlm-NE",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ff-Adlm-NG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Adlm-SL",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Adlm-SN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Latn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Latn-BF",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Latn-CM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Latn-GH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Latn-GM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Latn-GN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Latn-GW",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Latn-LR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Latn-MR",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ff-Latn-NE",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ff-Latn-NG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Latn-SL",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ff-Latn-SN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fi",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fi-FI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fil",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fil-PH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fo",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fo-DK",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fo-FO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-029",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-BE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-BF",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-BI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-BJ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-BL",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-CA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-CD",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-CF",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-CG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-CH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-CI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-CM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-DJ",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "fr-DZ",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "fr-FR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-GA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-GF",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-GN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-GP",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-GQ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-HT",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-KM",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "fr-LU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-MA",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "fr-MC",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-MF",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-MG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-ML",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-MQ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-MR",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "fr-MU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-NC",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-NE",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "fr-PF",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-PM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-RE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-RW",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-SC",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-SN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-SY",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "fr-TD",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "fr-TG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-TN",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "fr-VU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-WF",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fr-YT",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fur",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fur-IT",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fy",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "fy-NL",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ga",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ga-GB",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ga-IE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "gd",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "gd-GB",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "gl",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "gl-ES",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "gn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "gn-PY",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "gsw",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "gsw-CH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "gsw-FR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "gsw-LI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "gu",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "gu-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "guz",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "guz-KE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "gv",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "gv-IM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ha",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ha-GH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ha-NE",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ha-NG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "haw",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "haw-US",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "he",
+      "calendars": [
+        "GregorianCalendar",
+        "HebrewCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "he-IL",
+      "calendars": [
+        "GregorianCalendar",
+        "HebrewCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "hi",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "hi-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "hi-Latn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "hi-Latn-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "hr",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "hr-BA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "hr-HR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "hsb",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "hsb-DE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "hu",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "hu-HU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "hy",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "hy-AM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ia",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ia-001",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ibb",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ibb-NG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "id",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "id-ID",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ig",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ig-NG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ii",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ii-CN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "is",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "is-IS",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "it",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "it-CH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "it-IT",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "it-SM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "it-VA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "iu",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "iu-CA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "iu-Latn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "iu-Latn-CA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ja",
+      "calendars": [
+        "GregorianCalendar",
+        "JapaneseCalendar"
+      ]
+    },
+    {
+      "name": "ja-JP",
+      "calendars": [
+        "GregorianCalendar",
+        "JapaneseCalendar"
+      ]
+    },
+    {
+      "name": "jgo",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "jgo-CM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "jmc",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "jmc-TZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "jv",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "jv-ID",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "jv-Java",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "jv-Java-ID",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ka",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ka-GE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kab",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "kab-DZ",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "kam",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kam-KE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kde",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kde-TZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kea",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kea-CV",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kgp",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kgp-BR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "khq",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "khq-ML",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ki",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ki-KE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kk",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kk-KZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kkj",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kkj-CM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kl",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kl-GL",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kln",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kln-KE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "km",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "km-KH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kn-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ko",
+      "calendars": [
+        "GregorianCalendar",
+        "KoreanCalendar"
+      ]
+    },
+    {
+      "name": "ko-KP",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ko-KR",
+      "calendars": [
+        "GregorianCalendar",
+        "KoreanCalendar"
+      ]
+    },
+    {
+      "name": "kok",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kok-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kr",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kr-Latn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kr-Latn-NG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ks",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ks-Arab",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ks-Arab-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ks-Deva",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ks-Deva-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ksb",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ksb-TZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ksf",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ksf-CM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ksh",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ksh-DE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kw",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "kw-GB",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ky",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ky-KG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "la",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "la-VA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "lag",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "lag-TZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "lb",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "lb-LU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "lg",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "lg-UG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "lkt",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "lkt-US",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ln",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ln-AO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ln-CD",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ln-CF",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ln-CG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "lo",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "lo-LA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "lrc",
+      "calendars": [
+        "PersianCalendar",
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "lrc-IQ",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "lrc-IR",
+      "calendars": [
+        "PersianCalendar",
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "lt",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "lt-LT",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "lu",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "lu-CD",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "luo",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "luo-KE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "luy",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "luy-KE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "lv",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "lv-LV",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mai",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mai-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mas",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mas-KE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mas-TZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mer",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mer-KE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mfe",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mfe-MU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mg",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mg-MG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mgh",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mgh-MZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mgo",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mgo-CM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mi",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mi-NZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mk",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mk-MK",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ml",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ml-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mn-MN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mn-Mong",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mn-Mong-CN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mn-Mong-MN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mni",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mni-Beng",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mni-Beng-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "moh",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "moh-CA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mr",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mr-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ms",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ms-BN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ms-ID",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ms-MY",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ms-SG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mt",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mt-MT",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mua",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mua-CM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "my",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "my-MM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "mzn",
+      "calendars": [
+        "PersianCalendar",
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "mzn-IR",
+      "calendars": [
+        "PersianCalendar",
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "naq",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "naq-NA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nb",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nb-NO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nb-SJ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nd",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nd-ZW",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nds",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nds-DE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nds-NL",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ne",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ne-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ne-NP",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nl",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nl-AW",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nl-BE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nl-BQ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nl-CW",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nl-NL",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nl-SR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nl-SX",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nmg",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nmg-CM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nn-NO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nnh",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nnh-CM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "no",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nqo",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nqo-GN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nr",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nr-ZA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nso",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nso-ZA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nus",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nus-SS",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nyn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "nyn-UG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "oc",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "oc-ES",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "oc-FR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "om",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "om-ET",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "om-KE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "or",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "or-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "os",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "os-GE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "os-RU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pa",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pa-Arab",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "pa-Arab-PK",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "pa-Guru",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pa-Guru-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pap",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pap-029",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pcm",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pcm-NG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pl",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pl-PL",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "prg",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "prg-001",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ps",
+      "calendars": [
+        "PersianCalendar",
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ps-AF",
+      "calendars": [
+        "PersianCalendar",
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ps-PK",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "pt",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pt-AO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pt-BR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pt-CH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pt-CV",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pt-GQ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pt-GW",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pt-LU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pt-MO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pt-MZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pt-PT",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pt-ST",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "pt-TL",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "qu",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "qu-BO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "qu-EC",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "qu-PE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "quc",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "quc-GT",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "raj",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "raj-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "rm",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "rm-CH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "rn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "rn-BI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ro",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ro-MD",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ro-RO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "rof",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "rof-TZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ru",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ru-BY",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ru-KG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ru-KZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ru-MD",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ru-RU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ru-UA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "rw",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "rw-RW",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "rwk",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "rwk-TZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sa",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sa-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sah",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sah-RU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "saq",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "saq-KE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sat",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sat-Olck",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sat-Olck-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sbp",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sbp-TZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sc",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sc-IT",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sd",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "sd-Arab",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "sd-Arab-PK",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "sd-Deva",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sd-Deva-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "se",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "se-FI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "se-NO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "se-SE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "seh",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "seh-MZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ses",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ses-ML",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sg",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sg-CF",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "shi",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "shi-Latn",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "shi-Latn-MA",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "shi-Tfng",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "shi-Tfng-MA",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "si",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "si-LK",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sk",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sk-SK",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sl",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sl-SI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sma",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sma-NO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sma-SE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "smj",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "smj-NO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "smj-SE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "smn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "smn-FI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sms",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sms-FI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sn-ZW",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "so",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "so-DJ",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "so-ET",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "so-KE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "so-SO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sq",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sq-AL",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sq-MK",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sq-XK",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sr",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sr-Cyrl",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sr-Cyrl-BA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sr-Cyrl-ME",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sr-Cyrl-RS",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sr-Cyrl-XK",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sr-Latn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sr-Latn-BA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sr-Latn-ME",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sr-Latn-RS",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sr-Latn-XK",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ss",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ss-SZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ss-ZA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ssy",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ssy-ER",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "st",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "st-LS",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "st-ZA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "su",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "su-Latn",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "su-Latn-ID",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "sv",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sv-AX",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sv-FI",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sv-SE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sw",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sw-CD",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sw-KE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sw-TZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "sw-UG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "syr",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "syr-SY",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ta",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ta-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ta-LK",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ta-MY",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ta-SG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "te",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "te-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "teo",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "teo-KE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "teo-UG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "tg",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "tg-TJ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "th",
+      "calendars": [
+        "ThaiBuddhistCalendar",
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "th-TH",
+      "calendars": [
+        "ThaiBuddhistCalendar",
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ti",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ti-ER",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ti-ET",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "tig",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "tig-ER",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "tk",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "tk-TM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "tn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "tn-BW",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "tn-ZA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "to",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "to-TO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "tr",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "tr-CY",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "tr-TR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ts",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ts-ZA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "tt",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "tt-RU",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "twq",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "twq-NE",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "tzm",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "tzm-Arab",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "tzm-Arab-MA",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "tzm-DZ",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "tzm-MA",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "tzm-Tfng",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "tzm-Tfng-MA",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ug",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ug-CN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "uk",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "uk-UA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ur",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "ur-IN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ur-PK",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "uz",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "uz-Arab",
+      "calendars": [
+        "PersianCalendar",
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "uz-Arab-AF",
+      "calendars": [
+        "PersianCalendar",
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "uz-Cyrl",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "uz-Cyrl-UZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "uz-Latn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "uz-Latn-UZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "vai",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "vai-Latn",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "vai-Latn-LR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "vai-Vaii",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "vai-Vaii-LR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ve",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "ve-ZA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "vi",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "vi-VN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "vo",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "vo-001",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "vun",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "vun-TZ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "wae",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "wae-CH",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "wal",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "wal-ET",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "wo",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "wo-SN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "xh",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "xh-ZA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "xog",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "xog-UG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "yav",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "yav-CM",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "yi",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "yi-001",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "yo",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "yo-BJ",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "yo-NG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "yrl",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "yrl-BR",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "yrl-CO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "yrl-VE",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "zgh",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "zgh-MA",
+      "calendars": [
+        "GregorianCalendar",
+        "HijriCalendar"
+      ]
+    },
+    {
+      "name": "zh",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "zh-Hans",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "zh-Hans-CN",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "zh-Hans-HK",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "zh-Hans-MO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "zh-Hans-SG",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "zh-Hant",
+      "calendars": [
+        "GregorianCalendar",
+        "TaiwanCalendar"
+      ]
+    },
+    {
+      "name": "zh-Hant-HK",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "zh-Hant-MO",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "zh-Hant-TW",
+      "calendars": [
+        "GregorianCalendar",
+        "TaiwanCalendar"
+      ]
+    },
+    {
+      "name": "zu",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    },
+    {
+      "name": "zu-ZA",
+      "calendars": [
+        "GregorianCalendar"
+      ]
+    }
+  ]
+}

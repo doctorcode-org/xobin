@@ -20,3 +20,8 @@ export { PersianCalendar } from './lib/persian_calendar';
 export { ThaiBuddhistCalendar } from './lib/thaibuddhist_calendar';
 export { TimeSpan } from './lib/time_span';
 export { UmAlQuraCalendar } from './lib/umalqura_calendar';
+export { KoreanCalendar } from './lib/korean_calendar';
+export { TaiwanCalendar } from './lib/taiwan_calendar';
+export { JapaneseCalendar } from './lib/japanese_calendar';
+export { HijriCalendar } from './lib/hijri_calendar';
+export { HebrewCalendar } from './lib/hebrew_calendar';

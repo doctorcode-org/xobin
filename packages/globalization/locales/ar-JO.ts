@@ -1,5 +1,6 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import { CultureData, GregorianCalendar, HijriCalendar } from '@xobin/globalization';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "ar", 
     lcid: 11265, 
     name: "ar-JO", 
@@ -40,29 +41,221 @@ export const cultureData: CultureData = {
         digitSubstitution: 0
     }, 
     dateTimeFormat: {
-        amDesignator: "ص", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 6, 
-        fullDateTimePattern: "dd MMMM, yyyy hh:mm:ss tt", 
-        longDatePattern: "dd MMMM, yyyy", 
-        longTimePattern: "hh:mm:ss tt", 
-        monthDayPattern: "dd MMMM", 
-        pmDesignator: "م", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "hh:mm tt", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM, yyyy", 
-        abbreviatedDayNames: ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"], 
-        shortestDayNames: ["ح", "ن", "ث", "ر", "خ", "ج", "س"], 
-        dayNames: ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"], 
-        abbreviatedMonthNames: ["كانون الثاني", "شباط", "آذار", "نيسان", "أيار", "حزيران", "تموز", "آب", "أيلول", "تشرين الأول", "تشرين الثاني", "كانون الأول", ""], 
-        monthNames: ["كانون الثاني", "شباط", "آذار", "نيسان", "أيار", "حزيران", "تموز", "آب", "أيلول", "تشرين الأول", "تشرين الثاني", "كانون الأول", ""], 
-        nativeCalendarName: "التقويم الميلادي (عربي)‏", 
-        abbreviatedMonthGenitiveNames: ["كانون الثاني", "شباط", "آذار", "نيسان", "أيار", "حزيران", "تموز", "آب", "أيلول", "تشرين الأول", "تشرين الثاني", "كانون الأول", ""], 
-        monthGenitiveNames: ["كانون الثاني", "شباط", "آذار", "نيسان", "أيار", "حزيران", "تموز", "آب", "أيلول", "تشرين الأول", "تشرين الثاني", "كانون الأول", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "الأحد",
+        "الاثنين",
+        "الثلاثاء",
+        "الأربعاء",
+        "الخميس",
+        "الجمعة",
+        "السبت"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "كانون الثاني",
+        "شباط",
+        "آذار",
+        "نيسان",
+        "أيار",
+        "حزيران",
+        "تموز",
+        "آب",
+        "أيلول",
+        "تشرين الأول",
+        "تشرين الثاني",
+        "كانون الأول",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "كانون الثاني",
+        "شباط",
+        "آذار",
+        "نيسان",
+        "أيار",
+        "حزيران",
+        "تموز",
+        "آب",
+        "أيلول",
+        "تشرين الأول",
+        "تشرين الثاني",
+        "كانون الأول",
+        ""
+      ],
+      "amDesignator": "ص",
+      "dateSeparator": "‏/",
+      "dayNames": [
+        "الأحد",
+        "الاثنين",
+        "الثلاثاء",
+        "الأربعاء",
+        "الخميس",
+        "الجمعة",
+        "السبت"
+      ],
+      "firstDayOfWeek": 6,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd، d MMMM yyyy h:mm:ss tt",
+      "longDatePattern": "dddd، d MMMM yyyy",
+      "longTimePattern": "h:mm:ss tt",
+      "monthDayPattern": "d MMMM",
+      "monthGenitiveNames": [
+        "كانون الثاني",
+        "شباط",
+        "آذار",
+        "نيسان",
+        "أيار",
+        "حزيران",
+        "تموز",
+        "آب",
+        "أيلول",
+        "تشرين الأول",
+        "تشرين الثاني",
+        "كانون الأول",
+        ""
+      ],
+      "monthNames": [
+        "كانون الثاني",
+        "شباط",
+        "آذار",
+        "نيسان",
+        "أيار",
+        "حزيران",
+        "تموز",
+        "آب",
+        "أيلول",
+        "تشرين الأول",
+        "تشرين الثاني",
+        "كانون الأول",
+        ""
+      ],
+      "nativeCalendarName": "التقويم الميلادي",
+      "pmDesignator": "م",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "d‏/M‏/yyyy",
+      "shortestDayNames": [
+        "ح",
+        "ن",
+        "ث",
+        "ر",
+        "خ",
+        "ج",
+        "س"
+      ],
+      "shortTimePattern": "h:mm tt",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "م"
+      ],
+      "abbreviatedEraNames": [
+        "م"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "d‏/M‏/yyyy",
+          "dd‏/MM‏/yyyy"
+        ],
+        "D": [
+          "dddd، d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "h:mm tt"
+        ],
+        "T": [
+          "h:mm:ss tt"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "d MMMM"
+        ],
+        "M": [
+          "d MMMM"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {},
+      "6": {
+        "eraNames": [
+          "بعد الهجرة"
+        ],
+        "abbreviatedEraNames": [
+          "هـ"
+        ],
+        "monthNames": [
+          "محرم",
+          "صفر",
+          "ربيع الأول",
+          "ربيع الآخر",
+          "جمادى الأولى",
+          "جمادى الآخرة",
+          "رجب",
+          "شعبان",
+          "رمضان",
+          "شوال",
+          "ذو القعدة",
+          "ذو الحجة",
+          ""
+        ],
+        "abbreviatedMonthNames": [
+          "محرم",
+          "صفر",
+          "ربيع الأول",
+          "ربيع الآخر",
+          "جمادى الأولى",
+          "جمادى الآخرة",
+          "رجب",
+          "شعبان",
+          "رمضان",
+          "شوال",
+          "ذو القعدة",
+          "ذو الحجة",
+          ""
+        ],
+        "monthGenitiveNames": [
+          "محرم",
+          "صفر",
+          "ربيع الأول",
+          "ربيع الآخر",
+          "جمادى الأولى",
+          "جمادى الآخرة",
+          "رجب",
+          "شعبان",
+          "رمضان",
+          "شوال",
+          "ذو القعدة",
+          "ذو الحجة",
+          ""
+        ],
+        "abbreviatedMonthGenitiveNames": [
+          "محرم",
+          "صفر",
+          "ربيع الأول",
+          "ربيع الآخر",
+          "جمادى الأولى",
+          "جمادى الآخرة",
+          "رجب",
+          "شعبان",
+          "رمضان",
+          "شوال",
+          "ذو القعدة",
+          "ذو الحجة",
+          ""
+        ],
+        "nativeCalendarName": "التقويم الهجري"
+      }
+    },
+    calendarFactories: [() => new GregorianCalendar(1), () => new HijriCalendar()],
+    calendar: new GregorianCalendar(1)
 };

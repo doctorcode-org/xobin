@@ -23,6 +23,11 @@ import { calendarRangeMessage, formatGregorianDateTime, throwIfNegativeYear } fr
  */
 export abstract class Calendar {
     /**
+     * Gets the eras supported by this calendar in reverse chronological order.
+     */
+    abstract get eras(): number[];
+
+    /**
      * Returns the calendar's type name, following the inherited .NET Object.ToString behavior.
      */
     toString(): string {

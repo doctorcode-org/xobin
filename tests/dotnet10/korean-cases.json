@@ -1,0 +1,836 @@
+{
+  "runtime": "10.0.7",
+  "sourceTag": "v10.0.7",
+  "rows": [
+    {
+      "source": "KoreanCalendarAddMonths.AddMonths",
+      "arguments": [
+        "0",
+        1
+      ],
+      "result": [
+        "26784000000000"
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarAddMonths.AddMonths",
+      "arguments": [
+        "3155378975999999999",
+        -2
+      ],
+      "result": [
+        "3155326271999999999"
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarAddMonths.AddMonths",
+      "arguments": [
+        "631793952000000000",
+        1
+      ],
+      "result": [
+        "631819872000000000"
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarAddMonths.AddMonths",
+      "arguments": [
+        "632899008000000000",
+        2
+      ],
+      "result": [
+        "632951712000000000"
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarAddYears.AddYears",
+      "arguments": [
+        "0",
+        5062
+      ],
+      "result": [
+        "1597412448000000000"
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarAddYears.AddYears",
+      "arguments": [
+        "3155378975999999999",
+        -1307
+      ],
+      "result": [
+        "2742930431999999999"
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarAddYears.AddYears",
+      "arguments": [
+        "630822816000000000",
+        6958
+      ],
+      "result": [
+        "2826556128000000000"
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarAddYears.AddYears",
+      "arguments": [
+        "630822816000000000",
+        -1749
+      ],
+      "result": [
+        "78891840000000000"
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarAddYears.AddYears",
+      "arguments": [
+        "632118816000000000",
+        2
+      ],
+      "result": [
+        "632750400000000000"
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "0"
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "3155378975999999999"
+      ],
+      "result": [
+        31
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "633398400000000000"
+      ],
+      "result": [
+        29
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "1631695976800157324"
+      ],
+      "result": [
+        23
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDayOfWeek.GetDayOfWeek",
+      "arguments": [
+        "0"
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDayOfWeek.GetDayOfWeek",
+      "arguments": [
+        "3155378975999999999"
+      ],
+      "result": [
+        5
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDayOfWeek.GetDayOfWeek",
+      "arguments": [
+        "630873792000000000"
+      ],
+      "result": [
+        2
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDayOfWeek.GetDayOfWeek",
+      "arguments": [
+        "1631695976800157324"
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDayOfYear.GetDayOfYear",
+      "arguments": [
+        "0"
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDayOfYear.GetDayOfYear",
+      "arguments": [
+        "3155378975999999999"
+      ],
+      "result": [
+        365
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDayOfYear.GetDayOfYear",
+      "arguments": [
+        "630866016000000000"
+      ],
+      "result": [
+        51
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDayOfYear.GetDayOfYear",
+      "arguments": [
+        "1631695976800157324"
+      ],
+      "result": [
+        235
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDaysInMonth.GetDaysInMonth",
+      "arguments": [
+        1,
+        1
+      ],
+      "result": [
+        31,
+        31,
+        31
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDaysInMonth.GetDaysInMonth",
+      "arguments": [
+        9999,
+        12
+      ],
+      "result": [
+        31,
+        31,
+        31
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDaysInMonth.GetDaysInMonth",
+      "arguments": [
+        2004,
+        2
+      ],
+      "result": [
+        29,
+        29,
+        29
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDaysInMonth.GetDaysInMonth",
+      "arguments": [
+        5062,
+        9
+      ],
+      "result": [
+        30,
+        30,
+        30
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDaysInYear.GetDaysInYear",
+      "arguments": [
+        1
+      ],
+      "result": [
+        365,
+        365,
+        365
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDaysInYear.GetDaysInYear",
+      "arguments": [
+        9999
+      ],
+      "result": [
+        365,
+        365,
+        365
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDaysInYear.GetDaysInYear",
+      "arguments": [
+        2004
+      ],
+      "result": [
+        366,
+        366,
+        366
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetDaysInYear.GetDaysInYear",
+      "arguments": [
+        5062
+      ],
+      "result": [
+        365,
+        365,
+        365
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetEra.GetEra",
+      "arguments": [
+        "0"
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetEra.GetEra",
+      "arguments": [
+        "3155378975999999999"
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetEra.GetEra",
+      "arguments": [
+        "632136096000000000"
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetMonth.GetMonth",
+      "arguments": [
+        "0"
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetMonth.GetMonth",
+      "arguments": [
+        "3155378975999999999"
+      ],
+      "result": [
+        12
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetMonth.GetMonth",
+      "arguments": [
+        "632136096000000000"
+      ],
+      "result": [
+        2
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetMonthsInYear.GetMonthsInYear",
+      "arguments": [
+        1
+      ],
+      "result": [
+        12,
+        12,
+        12
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetMonthsInYear.GetMonthsInYear",
+      "arguments": [
+        9999
+      ],
+      "result": [
+        12,
+        12,
+        12
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetMonthsInYear.GetMonthsInYear",
+      "arguments": [
+        2004
+      ],
+      "result": [
+        12,
+        12,
+        12
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetMonthsInYear.GetMonthsInYear",
+      "arguments": [
+        5062
+      ],
+      "result": [
+        12,
+        12,
+        12
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "0",
+        0,
+        0
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        0,
+        0
+      ],
+      "result": [
+        53
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "633398400000000000",
+        0,
+        0
+      ],
+      "result": [
+        9
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "1631695976800157324",
+        0,
+        0
+      ],
+      "result": [
+        35
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetYear.GetYear",
+      "arguments": [
+        "0"
+      ],
+      "result": [
+        2334
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetYear.GetYear",
+      "arguments": [
+        "3155378975999999999"
+      ],
+      "result": [
+        12332
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetYear.GetYear",
+      "arguments": [
+        "633398400000000000"
+      ],
+      "result": [
+        4341
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarGetYear.GetYear",
+      "arguments": [
+        "1631695976800157324"
+      ],
+      "result": [
+        7504
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarIsLeapDay.IsLeapDay",
+      "arguments": [
+        1,
+        1,
+        1
+      ],
+      "result": [
+        false,
+        false,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarIsLeapDay.IsLeapDay",
+      "arguments": [
+        9999,
+        12,
+        31
+      ],
+      "result": [
+        false,
+        false,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarIsLeapDay.IsLeapDay",
+      "arguments": [
+        1900,
+        2,
+        28
+      ],
+      "result": [
+        false,
+        false,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarIsLeapDay.IsLeapDay",
+      "arguments": [
+        1200,
+        2,
+        29
+      ],
+      "result": [
+        true,
+        true,
+        true
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarIsLeapMonth.IsLeapMonth",
+      "arguments": [
+        1,
+        1
+      ],
+      "result": [
+        false,
+        false,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarIsLeapMonth.IsLeapMonth",
+      "arguments": [
+        9999,
+        12
+      ],
+      "result": [
+        false,
+        false,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarIsLeapMonth.IsLeapMonth",
+      "arguments": [
+        1900,
+        2
+      ],
+      "result": [
+        false,
+        false,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarIsLeapMonth.IsLeapMonth",
+      "arguments": [
+        1200,
+        2
+      ],
+      "result": [
+        false,
+        false,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarIsLeapYear.IsLeapYear",
+      "arguments": [
+        1
+      ],
+      "result": [
+        false,
+        false,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarIsLeapYear.IsLeapYear",
+      "arguments": [
+        9999
+      ],
+      "result": [
+        false,
+        false,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarIsLeapYear.IsLeapYear",
+      "arguments": [
+        1900
+      ],
+      "result": [
+        false,
+        false,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarIsLeapYear.IsLeapYear",
+      "arguments": [
+        1200
+      ],
+      "result": [
+        true,
+        true,
+        true
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarToDateTime.ToDateTime",
+      "arguments": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "result": [
+        "0",
+        "0",
+        "0"
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarToDateTime.ToDateTime",
+      "arguments": [
+        9999,
+        12,
+        31,
+        23,
+        59,
+        59,
+        999
+      ],
+      "result": [
+        "3155378975999990000",
+        "3155378975999990000",
+        "3155378975999990000"
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarToDateTime.ToDateTime",
+      "arguments": [
+        2004,
+        2,
+        29,
+        1,
+        1,
+        1,
+        0
+      ],
+      "result": [
+        "632136132610000000",
+        "632136132610000000",
+        "632136132610000000"
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarToDateTime.ToDateTime",
+      "arguments": [
+        1600,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "result": [
+        "504595008000000000",
+        "504595008000000000",
+        "504595008000000000"
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarToDateTime.ToDateTime",
+      "arguments": [
+        5171,
+        8,
+        23,
+        0,
+        14,
+        40,
+        15
+      ],
+      "result": [
+        "1631695976800150000",
+        "1631695976800150000",
+        "1631695976800150000"
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarToFourDigitYear.ToFourDigitYear",
+      "arguments": [
+        0
+      ],
+      "result": [
+        4300
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarToFourDigitYear.ToFourDigitYear",
+      "arguments": [
+        99
+      ],
+      "result": [
+        4299
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarToFourDigitYear.ToFourDigitYear",
+      "arguments": [
+        61
+      ],
+      "result": [
+        4361
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarTwoDigitYearMax.TwoDigitYearMax_Set",
+      "arguments": [
+        99
+      ],
+      "result": [
+        99
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarTwoDigitYearMax.TwoDigitYearMax_Set",
+      "arguments": [
+        2016
+      ],
+      "result": [
+        2016
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarTwoDigitYearMax.TwoDigitYearMax_Get",
+      "arguments": [],
+      "result": [
+        4382
+      ],
+      "error": null
+    },
+    {
+      "source": "KoreanCalendarToFourDigitYear.ToFourDigitYear_InvalidYear_ThrowsArgumentOutOfRangeException",
+      "arguments": [
+        100
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between 2334 and 12332, inclusive. (Parameter \u0027year\u0027)",
+      "paramName": "year",
+      "actualValue": null
+    }
+  ]
+}

@@ -3,12 +3,12 @@ import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import {
   DateTime, GregorianCalendar, GregorianCalendarTypes, PersianCalendar,
-  ThaiBuddhistCalendar, UmAlQuraCalendar,
+  ThaiBuddhistCalendar, KoreanCalendar, UmAlQuraCalendar,
 } from '@xobin/globalization';
 
 const fixture = JSON.parse(readFileSync(new URL('./calendar-range-cases.json', import.meta.url), 'utf8'));
 assert.equal(fixture.runtime, '10.0.7');
-assert.equal(fixture.cases.length, 60);
+assert.equal(fixture.cases.length, 66);
 
 const createCalendar = {
   'GregorianCalendarDefaultTests': () => new GregorianCalendar(),
@@ -20,6 +20,7 @@ const createCalendar = {
   'GregorianCalendarUSEnglishTests': () => new GregorianCalendar(GregorianCalendarTypes.USEnglish),
   'PersianCalendarTests': () => new PersianCalendar(),
   'ThaiBuddhistCalendarTests': () => new ThaiBuddhistCalendar(),
+  'KoreanCalendarTests': () => new KoreanCalendar(),
   'UmAlQuraCalendarTests': () => new UmAlQuraCalendar(),
 };
 const operations = ['GetEra', 'GetYear', 'GetMonth', 'GetDayOfYear', 'GetDayOfMonth', 'GetDayOfWeek'];

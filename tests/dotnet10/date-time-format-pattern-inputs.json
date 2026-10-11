@@ -1,0 +1,618 @@
+[
+  {
+    "source": "DateTimeFormatInfoShortDatePattern.ShortDatePattern_Get_ReturnsExpected_ICU",
+    "property": "ShortDatePattern",
+    "culture": "en-US",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoShortDatePattern.ShortDatePattern_Get_ReturnsExpected_ICU",
+    "property": "ShortDatePattern",
+    "culture": "fr-FR",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoShortDatePattern.ShortDatePattern_InvariantInfo",
+    "property": "ShortDatePattern",
+    "culture": "invariant",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoShortDatePattern.ShortDatePattern_Set_GetReturnsExpected",
+    "property": "ShortDatePattern",
+    "culture": "new",
+    "action": "set",
+    "value": ""
+  },
+  {
+    "source": "DateTimeFormatInfoShortDatePattern.ShortDatePattern_Set_GetReturnsExpected",
+    "property": "ShortDatePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "garbage"
+  },
+  {
+    "source": "DateTimeFormatInfoShortDatePattern.ShortDatePattern_Set_GetReturnsExpected",
+    "property": "ShortDatePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "MM/dd/yyyy"
+  },
+  {
+    "source": "DateTimeFormatInfoShortDatePattern.ShortDatePattern_Set_GetReturnsExpected",
+    "property": "ShortDatePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "MM-DD-yyyy"
+  },
+  {
+    "source": "DateTimeFormatInfoShortDatePattern.ShortDatePattern_Set_GetReturnsExpected",
+    "property": "ShortDatePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "d"
+  },
+  {
+    "source": "DateTimeFormatInfoShortDatePattern.ShortDatePattern_SetNullValue_ThrowsArgumentNullException",
+    "property": "ShortDatePattern",
+    "culture": "new",
+    "action": "set",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoShortDatePattern.ShortDatePattern_SetReadOnly_ThrowsInvalidOperationException",
+    "property": "ShortDatePattern",
+    "culture": "invariant",
+    "action": "set",
+    "value": "custom"
+  },
+  {
+    "source": "Supplementary.ReadOnlyOrder",
+    "property": "ShortDatePattern",
+    "culture": "invariant",
+    "action": "set",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoLongDatePattern.LongDatePattern_InvariantInfo_ReturnsExpected",
+    "property": "LongDatePattern",
+    "culture": "invariant",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoLongDatePattern.LongDatePattern_Get_ReturnsExpected_ICU",
+    "property": "LongDatePattern",
+    "culture": "en-US",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoLongDatePattern.LongDatePattern_Get_ReturnsExpected_ICU",
+    "property": "LongDatePattern",
+    "culture": "fr-FR",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoLongDatePattern.LongDatePattern_Set_GetReturnsExpected",
+    "property": "LongDatePattern",
+    "culture": "new",
+    "action": "set",
+    "value": ""
+  },
+  {
+    "source": "DateTimeFormatInfoLongDatePattern.LongDatePattern_Set_GetReturnsExpected",
+    "property": "LongDatePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "garbage"
+  },
+  {
+    "source": "DateTimeFormatInfoLongDatePattern.LongDatePattern_Set_GetReturnsExpected",
+    "property": "LongDatePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "dddd, dd MMMM yyyy HH:mm:ss"
+  },
+  {
+    "source": "DateTimeFormatInfoLongDatePattern.LongDatePattern_Set_GetReturnsExpected",
+    "property": "LongDatePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "dddd"
+  },
+  {
+    "source": "DateTimeFormatInfoLongDatePattern.LongDatePattern_Set_GetReturnsExpected",
+    "property": "LongDatePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "D"
+  },
+  {
+    "source": "DateTimeFormatInfoLongDatePattern.LongDatePattern_Set_GetReturnsExpected",
+    "property": "LongDatePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "HH:mm:ss dddd, dd MMMM yyyy"
+  },
+  {
+    "source": "DateTimeFormatInfoLongDatePattern.LongDatePattern_Set_GetReturnsExpected",
+    "property": "LongDatePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "dddd, dd MMMM yyyy"
+  },
+  {
+    "source": "DateTimeFormatInfoLongDatePattern.LongDatePattern_SetNullValue_ThrowsArgumentNullException",
+    "property": "LongDatePattern",
+    "culture": "new",
+    "action": "set",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoLongDatePattern.LongDatePattern_SetReadOnly_ThrowsInvalidOperationException",
+    "property": "LongDatePattern",
+    "culture": "invariant",
+    "action": "set",
+    "value": "custom"
+  },
+  {
+    "source": "Supplementary.ReadOnlyOrder",
+    "property": "LongDatePattern",
+    "culture": "invariant",
+    "action": "set",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoShortTimePattern.ShortTimePattern_GetInvariantInfo_ReturnsExpected",
+    "property": "ShortTimePattern",
+    "culture": "invariant",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoShortTimePattern.ShortTimePattern_Set_GetReturnsExpected",
+    "property": "ShortTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": ""
+  },
+  {
+    "source": "DateTimeFormatInfoShortTimePattern.ShortTimePattern_Set_GetReturnsExpected",
+    "property": "ShortTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "garbage"
+  },
+  {
+    "source": "DateTimeFormatInfoShortTimePattern.ShortTimePattern_Set_GetReturnsExpected",
+    "property": "ShortTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "dddd, dd MMMM yyyy HH:mm:ss"
+  },
+  {
+    "source": "DateTimeFormatInfoShortTimePattern.ShortTimePattern_Set_GetReturnsExpected",
+    "property": "ShortTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "HH:mm"
+  },
+  {
+    "source": "DateTimeFormatInfoShortTimePattern.ShortTimePattern_Set_GetReturnsExpected",
+    "property": "ShortTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "t"
+  },
+  {
+    "source": "DateTimeFormatInfoShortTimePattern.ShortTimePattern_SetNull_ThrowsArgumentNullException",
+    "property": "ShortTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoShortTimePattern.ShortTimePattern_SetReadOnly_ThrowsInvalidOperationException",
+    "property": "ShortTimePattern",
+    "culture": "invariant",
+    "action": "set",
+    "value": "custom"
+  },
+  {
+    "source": "Supplementary.ReadOnlyOrder",
+    "property": "ShortTimePattern",
+    "culture": "invariant",
+    "action": "set",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoLongTimePattern.LongTimePattern_GetInvariantInfo_ReturnsExpected",
+    "property": "LongTimePattern",
+    "culture": "invariant",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoLongTimePattern.LongTimePattern_Set_GetReturnsExpected",
+    "property": "LongTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": ""
+  },
+  {
+    "source": "DateTimeFormatInfoLongTimePattern.LongTimePattern_Set_GetReturnsExpected",
+    "property": "LongTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "garbage"
+  },
+  {
+    "source": "DateTimeFormatInfoLongTimePattern.LongTimePattern_Set_GetReturnsExpected",
+    "property": "LongTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "dddd, dd MMMM yyyy HH:mm:ss"
+  },
+  {
+    "source": "DateTimeFormatInfoLongTimePattern.LongTimePattern_Set_GetReturnsExpected",
+    "property": "LongTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "HH"
+  },
+  {
+    "source": "DateTimeFormatInfoLongTimePattern.LongTimePattern_Set_GetReturnsExpected",
+    "property": "LongTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "T"
+  },
+  {
+    "source": "DateTimeFormatInfoLongTimePattern.LongTimePattern_Set_GetReturnsExpected",
+    "property": "LongTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "HH:mm:ss dddd, dd MMMM yyyy"
+  },
+  {
+    "source": "DateTimeFormatInfoLongTimePattern.LongTimePattern_Set_GetReturnsExpected",
+    "property": "LongTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "HH:mm:ss"
+  },
+  {
+    "source": "DateTimeFormatInfoLongTimePattern.LongTimePattern_SetNullValue_ThrowsArgumentNullException",
+    "property": "LongTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoLongTimePattern.LongTimePattern_SetReadOnly_ThrowsInvalidOperationException",
+    "property": "LongTimePattern",
+    "culture": "invariant",
+    "action": "set",
+    "value": "custom"
+  },
+  {
+    "source": "Supplementary.ReadOnlyOrder",
+    "property": "LongTimePattern",
+    "culture": "invariant",
+    "action": "set",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoFullDateTimePattern.FullDateTimePattern_GetInvariantInfo_ReturnsExpected",
+    "property": "FullDateTimePattern",
+    "culture": "invariant",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoFullDateTimePattern.FullDateTimePattern_Set_GetReturnsExpected",
+    "property": "FullDateTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": ""
+  },
+  {
+    "source": "DateTimeFormatInfoFullDateTimePattern.FullDateTimePattern_Set_GetReturnsExpected",
+    "property": "FullDateTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "garbage"
+  },
+  {
+    "source": "DateTimeFormatInfoFullDateTimePattern.FullDateTimePattern_Set_GetReturnsExpected",
+    "property": "FullDateTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "dddd, dd MMMM yyyy HH:mm:ss"
+  },
+  {
+    "source": "DateTimeFormatInfoFullDateTimePattern.FullDateTimePattern_Set_GetReturnsExpected",
+    "property": "FullDateTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "dddd"
+  },
+  {
+    "source": "DateTimeFormatInfoFullDateTimePattern.FullDateTimePattern_Set_GetReturnsExpected",
+    "property": "FullDateTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "F"
+  },
+  {
+    "source": "DateTimeFormatInfoFullDateTimePattern.FullDateTimePattern_Set_GetReturnsExpected",
+    "property": "FullDateTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": "HH:mm:ss dddd, dd MMMM yyyy"
+  },
+  {
+    "source": "DateTimeFormatInfoFullDateTimePattern.FullDateTimePattern_SetNullValue_ThrowsArgumentNullException",
+    "property": "FullDateTimePattern",
+    "culture": "new",
+    "action": "set",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoFullDateTimePattern.FullDateTimePattern_SetReadOnly_ThrowsInvalidOperationException",
+    "property": "FullDateTimePattern",
+    "culture": "invariant",
+    "action": "set",
+    "value": "custom"
+  },
+  {
+    "source": "Supplementary.ReadOnlyOrder",
+    "property": "FullDateTimePattern",
+    "culture": "invariant",
+    "action": "set",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoMonthDayPattern.MonthDayPattern_GetInvariantInfo_ReturnsExpected",
+    "property": "MonthDayPattern",
+    "culture": "invariant",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoMonthDayPattern.MonthDayPattern_Get_ReturnsExpected_ICU",
+    "property": "MonthDayPattern",
+    "culture": "en-US",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoMonthDayPattern.MonthDayPattern_Get_ReturnsExpected_ICU",
+    "property": "MonthDayPattern",
+    "culture": "fr-FR",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoMonthDayPattern.MonthDayPattern_Set_GetReturnsExpected",
+    "property": "MonthDayPattern",
+    "culture": "new",
+    "action": "set",
+    "value": ""
+  },
+  {
+    "source": "DateTimeFormatInfoMonthDayPattern.MonthDayPattern_Set_GetReturnsExpected",
+    "property": "MonthDayPattern",
+    "culture": "new",
+    "action": "set",
+    "value": "garbage"
+  },
+  {
+    "source": "DateTimeFormatInfoMonthDayPattern.MonthDayPattern_Set_GetReturnsExpected",
+    "property": "MonthDayPattern",
+    "culture": "new",
+    "action": "set",
+    "value": "MMMM"
+  },
+  {
+    "source": "DateTimeFormatInfoMonthDayPattern.MonthDayPattern_Set_GetReturnsExpected",
+    "property": "MonthDayPattern",
+    "culture": "new",
+    "action": "set",
+    "value": "MMM dd"
+  },
+  {
+    "source": "DateTimeFormatInfoMonthDayPattern.MonthDayPattern_Set_GetReturnsExpected",
+    "property": "MonthDayPattern",
+    "culture": "new",
+    "action": "set",
+    "value": "M"
+  },
+  {
+    "source": "DateTimeFormatInfoMonthDayPattern.MonthDayPattern_Set_GetReturnsExpected",
+    "property": "MonthDayPattern",
+    "culture": "new",
+    "action": "set",
+    "value": "dd MMMM"
+  },
+  {
+    "source": "DateTimeFormatInfoMonthDayPattern.MonthDayPattern_Set_GetReturnsExpected",
+    "property": "MonthDayPattern",
+    "culture": "new",
+    "action": "set",
+    "value": "MMMM dd"
+  },
+  {
+    "source": "DateTimeFormatInfoMonthDayPattern.MonthDayPattern_Set_GetReturnsExpected",
+    "property": "MonthDayPattern",
+    "culture": "new",
+    "action": "set",
+    "value": "m"
+  },
+  {
+    "source": "DateTimeFormatInfoMonthDayPattern.MonthDayPattern_SetNull_ThrowsArgumentNullException",
+    "property": "MonthDayPattern",
+    "culture": "new",
+    "action": "set",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoMonthDayPattern.MonthDayPattern_SetReadOnly_ThrowsInvalidOperationException",
+    "property": "MonthDayPattern",
+    "culture": "invariant",
+    "action": "set",
+    "value": "custom"
+  },
+  {
+    "source": "Supplementary.ReadOnlyOrder",
+    "property": "MonthDayPattern",
+    "culture": "invariant",
+    "action": "set",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoYearMonthPattern.YearMonthPattern",
+    "property": "YearMonthPattern",
+    "culture": "invariant",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoYearMonthPattern.YearMonthPattern",
+    "property": "YearMonthPattern",
+    "culture": "fr-FR",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoYearMonthPattern.YearMonthPattern_Set_GetReturnsExpected",
+    "property": "YearMonthPattern",
+    "culture": "new",
+    "action": "set",
+    "value": ""
+  },
+  {
+    "source": "DateTimeFormatInfoYearMonthPattern.YearMonthPattern_Set_GetReturnsExpected",
+    "property": "YearMonthPattern",
+    "culture": "new",
+    "action": "set",
+    "value": "garbage"
+  },
+  {
+    "source": "DateTimeFormatInfoYearMonthPattern.YearMonthPattern_Set_GetReturnsExpected",
+    "property": "YearMonthPattern",
+    "culture": "new",
+    "action": "set",
+    "value": "yyyy MMMM"
+  },
+  {
+    "source": "DateTimeFormatInfoYearMonthPattern.YearMonthPattern_Set_GetReturnsExpected",
+    "property": "YearMonthPattern",
+    "culture": "new",
+    "action": "set",
+    "value": "y"
+  },
+  {
+    "source": "DateTimeFormatInfoYearMonthPattern.YearMonthPattern_Set_GetReturnsExpected",
+    "property": "YearMonthPattern",
+    "culture": "new",
+    "action": "set",
+    "value": "Y"
+  },
+  {
+    "source": "DateTimeFormatInfoYearMonthPattern.YearMonthPattern_SetNull_ThrowsArgumentNullException",
+    "property": "YearMonthPattern",
+    "culture": "new",
+    "action": "set",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoYearMonthPattern.YearMonthPattern_SetReadOnly_ThrowsInvalidOperationException",
+    "property": "YearMonthPattern",
+    "culture": "invariant",
+    "action": "set",
+    "value": "custom"
+  },
+  {
+    "source": "Supplementary.ReadOnlyOrder",
+    "property": "YearMonthPattern",
+    "culture": "invariant",
+    "action": "set",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoRFC1123Pattern.RFC1123Pattern_Get_ReturnsExpected",
+    "property": "RFC1123Pattern",
+    "culture": "invariant",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoRFC1123Pattern.RFC1123Pattern_Get_ReturnsExpected",
+    "property": "RFC1123Pattern",
+    "culture": "en-US",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoRFC1123Pattern.RFC1123Pattern_Get_ReturnsExpected",
+    "property": "RFC1123Pattern",
+    "culture": "ja-JP",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoSortableDateTimePattern.SortableDateTimePattern_Get_ReturnsExpected",
+    "property": "SortableDateTimePattern",
+    "culture": "invariant",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoSortableDateTimePattern.SortableDateTimePattern_Get_ReturnsExpected",
+    "property": "SortableDateTimePattern",
+    "culture": "en-US",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoSortableDateTimePattern.SortableDateTimePattern_Get_ReturnsExpected",
+    "property": "SortableDateTimePattern",
+    "culture": "ja-JP",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoUniversalSortableDateTimePattern.UniversalSortableDateTimePattern_Get_ReturnsExpected",
+    "property": "UniversalSortableDateTimePattern",
+    "culture": "invariant",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoUniversalSortableDateTimePattern.UniversalSortableDateTimePattern_Get_ReturnsExpected",
+    "property": "UniversalSortableDateTimePattern",
+    "culture": "en-US",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoUniversalSortableDateTimePattern.UniversalSortableDateTimePattern_Get_ReturnsExpected",
+    "property": "UniversalSortableDateTimePattern",
+    "culture": "ja-JP",
+    "action": "get",
+    "value": null
+  },
+  {
+    "source": "DateTimeFormatInfoUniversalSortableDateTimePattern.UniversalSortableDateTimePattern_Get_ReturnsExpected",
+    "property": "UniversalSortableDateTimePattern",
+    "culture": "fr-FR",
+    "action": "get",
+    "value": null
+  }
+]

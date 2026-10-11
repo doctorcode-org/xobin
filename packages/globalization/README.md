@@ -88,12 +88,14 @@ reference pattern order and duplicates. `tryFormat` accepts a `string[]` or
 count to an `OutParam<number>` object (`{ result: 0 }`). Too-small buffers return
 false with a zero count.
 
-Formatting data for invariant, `en-US`, `fr-FR`, `ru-RU`, `fa-IR`, `ar-SA`, and
-`th-TH` is generated from the .NET reference, including Gregorian variants for
-`U`. `tools/dotnet10-format-locales.mjs --check` verifies the shipped profile
-data against its oracle. Refreshing the remaining locale profiles and adding
-the remaining calendars are outstanding roadmap tasks; current tests do not
-claim formatting parity for every .NET culture.
+Formatting data for invariant and every shipped culture module is generated
+from the .NET reference, including optional-calendar differences and Gregorian
+variants for `U`. The catalog includes all cultures enumerated by the pinned
+reference environment. `tools/dotnet10-format-locales.mjs --check` verifies
+the profile data and culture-name union against the oracle. Every culture
+remains an independent module, including newly added reference cultures.
+Non-default calendars without an implementation and parsing remain roadmap
+dependencies; matching default-culture formatting does not claim their parity.
 
 ## DateTimeFormatInfo
 
@@ -125,14 +127,34 @@ data while preserving custom time patterns and designators. Assigning the same
 calendar object preserves the current data.
 
 Optional-calendar data is stored as compact differences in the selected locale
-module; it does not automatically load calendar implementations. The generated
-profiles support these transitions. Remaining legacy profiles still need their
-optional-calendar data and reference-generated week rules refreshed (`br-FR`
-has its week rule refreshed separately). Day-name arrays require exactly seven
+module. Each selected locale imports only the implementations of its optional calendars. The generated
+profiles all have their calendar overrides and week rules regenerated from the reference. Day-name arrays require exactly seven
 non-null entries. Their getters return copies, while setters retain the supplied
 array, matching .NET (including subsequent caller mutations). All four month-name
 arrays require thirteen entries, with non-null values in the first twelve; the
 thirteenth entry may be empty, non-empty, or null. Getters copy the arrays and
-setters retain the supplied references. Era/name lookup methods and
-pattern-management methods remain separate roadmap tasks. Official tests that
-also require parsing remain pending until the parser is implemented.
+setters retain the supplied references. Era names and abbreviations come from
+the selected culture's data. `getEra`, `getEraName`, and
+`getAbbreviatedEraName` support the current calendar; era-name comparison uses
+the host's native `Intl.Collator` with case ignored and accents preserved.
+Day/month name lookup methods validate their indexes without copying arrays.
+
+`getAllDateTimePatterns` returns copies with the current default pattern first,
+preserving reference order and duplicates. `setAllDateTimePatterns` accepts
+`d`, `D`, `t`, `T`, `y`, or `Y`, retains its input array, and updates the default
+and derived patterns. Tests check all default cultures and 59,094 DateTime
+format-collection cases against the reference. The offset-zero DateTimeOffset
+cache-invalidation assertions are exercised through the shared DateTime
+formatter with an explicit offset pattern; no DateTimeOffset API is claimed.
+Official tests containing parsing assertions remain pending; the complete official test
+inventory has not yet reached full coverage.
+
+### Formatting calendar prerequisites
+
+JapaneseCalendar, TaiwanCalendar, KoreanCalendar, HijriCalendar and HebrewCalendar are TypeScript implementations with individual ESM entry points. CultureInfo.optionalCalendars creates fresh calendar instances in the pinned runtime's order. Locale modules carry private construction callbacks for their optional calendars; loadCultureInfo(name, data) remains synchronous. These callbacks are not public CultureData or CultureInfo properties. Importing a locale includes only its related calendar implementations.
+
+Japanese first-era-year formatting, Japanese/Taiwan year digit rules, Hebrew calendar numbers and Hebrew leap/non-leap month names are compared with the actual .NET 10.0.7 runtime. HebrewCalendar contains only its intrinsic calendar translation data from the MIT-licensed .NET source. No time-zone database is added. Default two-digit-year settings follow the pinned reference environment.
+
+Calendar dependency fixtures are supplemental differential checks, not a claim that every official calendar test has been ported. Five remaining official DateTimeFormatInfo methods contain parsing assertions and remain unmapped until parsing is agreed: both genitive parsing tests, Hebrew month round trips, Japanese first-era-year round trips, and French Canada time parsing. Their formatting portions have supplemental coverage.
+
+KoreanCalendar now has equivalents for all 20 direct official test methods and 30 of its 31 inherited CalendarTestBase methods. Input providers, including seeded random inputs, are generated from the pinned official sources. Its 71 direct oracle rows include 55 MemberData rows. The remaining inherited Japanese date-parsing test is deliberately unmapped while parsing is deferred; no full CAL-07 completion is claimed.

@@ -17,6 +17,7 @@ internal static class CalendarAddOracle
             ("GregorianCalendarUSEnglishTests", () => new GregorianCalendar(GregorianCalendarTypes.USEnglish)),
             ("PersianCalendarTests", () => new PersianCalendar()),
             ("ThaiBuddhistCalendarTests", () => new ThaiBuddhistCalendar()),
+            ("KoreanCalendarTests", () => new KoreanCalendar()),
             ("UmAlQuraCalendarTests", () => new UmAlQuraCalendar()),
         };
 

@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "kde", 
     lcid: 4096, 
     name: "kde-TZ", 
@@ -40,29 +41,153 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "Muhi", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, d MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd, d MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "Chilo", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["Ll2", "Ll3", "Ll4", "Ll5", "Ll6", "Ll7", "Ll1"], 
-        shortestDayNames: ["Ll2", "Ll3", "Ll4", "Ll5", "Ll6", "Ll7", "Ll1"], 
-        dayNames: ["Liduva lyapili", "Liduva lyatatu", "Liduva lyanchechi", "Liduva lyannyano", "Liduva lyannyano na linji", "Liduva lyannyano na mavili", "Liduva litandi"], 
-        abbreviatedMonthNames: ["Jan", "Feb", "Mac", "Apr", "Mei", "Jun", "Jul", "Ago", "Sep", "Okt", "Nov", "Des", ""], 
-        monthNames: ["Mwedi Ntandi", "Mwedi wa Pili", "Mwedi wa Tatu", "Mwedi wa Nchechi", "Mwedi wa Nnyano", "Mwedi wa Nnyano na Umo", "Mwedi wa Nnyano na Mivili", "Mwedi wa Nnyano na Mitatu", "Mwedi wa Nnyano na Nchechi", "Mwedi wa Nnyano na Nnyano", "Mwedi wa Nnyano na Nnyano na U", "Mwedi wa Nnyano na Nnyano na M", ""], 
-        nativeCalendarName: "Gregorian Calendar", 
-        abbreviatedMonthGenitiveNames: ["Jan", "Feb", "Mac", "Apr", "Mei", "Jun", "Jul", "Ago", "Sep", "Okt", "Nov", "Des", ""], 
-        monthGenitiveNames: ["Mwedi Ntandi", "Mwedi wa Pili", "Mwedi wa Tatu", "Mwedi wa Nchechi", "Mwedi wa Nnyano", "Mwedi wa Nnyano na Umo", "Mwedi wa Nnyano na Mivili", "Mwedi wa Nnyano na Mitatu", "Mwedi wa Nnyano na Nchechi", "Mwedi wa Nnyano na Nnyano", "Mwedi wa Nnyano na Nnyano na U", "Mwedi wa Nnyano na Nnyano na M", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Ll2",
+        "Ll3",
+        "Ll4",
+        "Ll5",
+        "Ll6",
+        "Ll7",
+        "Ll1"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Jan",
+        "Feb",
+        "Mac",
+        "Apr",
+        "Mei",
+        "Jun",
+        "Jul",
+        "Ago",
+        "Sep",
+        "Okt",
+        "Nov",
+        "Des",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Jan",
+        "Feb",
+        "Mac",
+        "Apr",
+        "Mei",
+        "Jun",
+        "Jul",
+        "Ago",
+        "Sep",
+        "Okt",
+        "Nov",
+        "Des",
+        ""
+      ],
+      "amDesignator": "Muhi",
+      "dateSeparator": "/",
+      "dayNames": [
+        "Liduva lyapili",
+        "Liduva lyatatu",
+        "Liduva lyanchechi",
+        "Liduva lyannyano",
+        "Liduva lyannyano na linji",
+        "Liduva lyannyano na mavili",
+        "Liduva litandi"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, d MMMM yyyy HH:mm:ss",
+      "longDatePattern": "dddd, d MMMM yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "Mwedi Ntandi",
+        "Mwedi wa Pili",
+        "Mwedi wa Tatu",
+        "Mwedi wa Nchechi",
+        "Mwedi wa Nnyano",
+        "Mwedi wa Nnyano na Umo",
+        "Mwedi wa Nnyano na Mivili",
+        "Mwedi wa Nnyano na Mitatu",
+        "Mwedi wa Nnyano na Nchechi",
+        "Mwedi wa Nnyano na Nnyano",
+        "Mwedi wa Nnyano na Nnyano na U",
+        "Mwedi wa Nnyano na Nnyano na M",
+        ""
+      ],
+      "monthNames": [
+        "Mwedi Ntandi",
+        "Mwedi wa Pili",
+        "Mwedi wa Tatu",
+        "Mwedi wa Nchechi",
+        "Mwedi wa Nnyano",
+        "Mwedi wa Nnyano na Umo",
+        "Mwedi wa Nnyano na Mivili",
+        "Mwedi wa Nnyano na Mitatu",
+        "Mwedi wa Nnyano na Nchechi",
+        "Mwedi wa Nnyano na Nnyano",
+        "Mwedi wa Nnyano na Nnyano na U",
+        "Mwedi wa Nnyano na Nnyano na M",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "Chilo",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd/MM/yyyy",
+      "shortestDayNames": [
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "1"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "NY"
+      ],
+      "abbreviatedEraNames": [
+        "NY"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd/MM/yyyy",
+          "d MMM yyyy",
+          "d/M/yyyy"
+        ],
+        "D": [
+          "dddd, d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

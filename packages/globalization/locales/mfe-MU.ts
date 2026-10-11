@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "mfe", 
     lcid: 4096, 
     name: "mfe-MU", 
@@ -40,29 +41,152 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "AM", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd d MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd d MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "d MMMM", 
-        pmDesignator: "PM", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "d/M/yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["dim", "lin", "mar", "mer", "ze", "van", "sam"], 
-        shortestDayNames: ["dim", "lin", "mar", "mer", "ze", "van", "sam"], 
-        dayNames: ["dimans", "lindi", "mardi", "merkredi", "zedi", "vandredi", "samdi"], 
-        abbreviatedMonthNames: ["zan", "fev", "mar", "avr", "me", "zin", "zil", "out", "sep", "okt", "nov", "des", ""], 
-        monthNames: ["zanvie", "fevriye", "mars", "avril", "me", "zin", "zilye", "out", "septam", "oktob", "novam", "desam", ""], 
-        nativeCalendarName: "Gregorian Calendar", 
-        abbreviatedMonthGenitiveNames: ["zan", "fev", "mar", "avr", "me", "zin", "zil", "out", "sep", "okt", "nov", "des", ""], 
-        monthGenitiveNames: ["zanvie", "fevriye", "mars", "avril", "me", "zin", "zilye", "out", "septam", "oktob", "novam", "desam", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "dim",
+        "lin",
+        "mar",
+        "mer",
+        "ze",
+        "van",
+        "sam"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "zan",
+        "fev",
+        "mar",
+        "avr",
+        "me",
+        "zin",
+        "zil",
+        "out",
+        "sep",
+        "okt",
+        "nov",
+        "des",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "zan",
+        "fev",
+        "mar",
+        "avr",
+        "me",
+        "zin",
+        "zil",
+        "out",
+        "sep",
+        "okt",
+        "nov",
+        "des",
+        ""
+      ],
+      "amDesignator": "AM",
+      "dateSeparator": "/",
+      "dayNames": [
+        "dimans",
+        "lindi",
+        "mardi",
+        "merkredi",
+        "zedi",
+        "vandredi",
+        "samdi"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd d MMMM yyyy HH:mm:ss",
+      "longDatePattern": "dddd d MMMM yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "d MMMM",
+      "monthGenitiveNames": [
+        "zanvie",
+        "fevriye",
+        "mars",
+        "avril",
+        "me",
+        "zin",
+        "zilye",
+        "out",
+        "septam",
+        "oktob",
+        "novam",
+        "desam",
+        ""
+      ],
+      "monthNames": [
+        "zanvie",
+        "fevriye",
+        "mars",
+        "avril",
+        "me",
+        "zin",
+        "zilye",
+        "out",
+        "septam",
+        "oktob",
+        "novam",
+        "desam",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "PM",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "d/M/yyyy",
+      "shortestDayNames": [
+        "d",
+        "l",
+        "m",
+        "m",
+        "z",
+        "v",
+        "s"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "ap. Z-K"
+      ],
+      "abbreviatedEraNames": [
+        "ap. Z-K"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "d/M/yyyy",
+          "d MMM, yyyy"
+        ],
+        "D": [
+          "dddd d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "d MMMM"
+        ],
+        "M": [
+          "d MMMM"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

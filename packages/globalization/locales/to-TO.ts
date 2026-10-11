@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "to", 
     lcid: 4096, 
     name: "to-TO", 
@@ -40,29 +41,153 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "AM", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd d MMMM yyyy h:mm:ss tt", 
-        longDatePattern: "dddd d MMMM yyyy", 
-        longTimePattern: "h:mm:ss tt", 
-        monthDayPattern: "d MMMM", 
-        pmDesignator: "PM", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "d/M/yyyy", 
-        shortTimePattern: "h:mm tt", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["Sāp", "Mōn", "Tūs", "Pul", "Tuʻa", "Fal", "Tok"], 
-        shortestDayNames: ["Sāp", "Mōn", "Tūs", "Pul", "Tuʻa", "Fal", "Tok"], 
-        dayNames: ["Sāpate", "Mōnite", "Tūsite", "Pulelulu", "Tuʻapulelulu", "Falaite", "Tokonaki"], 
-        abbreviatedMonthNames: ["Sān", "Fēp", "Maʻa", "ʻEpe", "Mē", "Sun", "Siu", "ʻAok", "Sep", "ʻOka", "Nōv", "Tīs", ""], 
-        monthNames: ["Sānuali", "Fēpueli", "Maʻasi", "ʻEpeleli", "Mē", "Sune", "Siulai", "ʻAokosi", "Sepitema", "ʻOkatopa", "Nōvema", "Tīsema", ""], 
-        nativeCalendarName: "fakakelekolia", 
-        abbreviatedMonthGenitiveNames: ["Sān", "Fēp", "Maʻa", "ʻEpe", "Mē", "Sun", "Siu", "ʻAok", "Sep", "ʻOka", "Nōv", "Tīs", ""], 
-        monthGenitiveNames: ["Sānuali", "Fēpueli", "Maʻasi", "ʻEpeleli", "Mē", "Sune", "Siulai", "ʻAokosi", "Sepitema", "ʻOkatopa", "Nōvema", "Tīsema", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Sāp",
+        "Mōn",
+        "Tūs",
+        "Pul",
+        "Tuʻa",
+        "Fal",
+        "Tok"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Sān",
+        "Fēp",
+        "Maʻa",
+        "ʻEpe",
+        "Mē",
+        "Sun",
+        "Siu",
+        "ʻAok",
+        "Sep",
+        "ʻOka",
+        "Nōv",
+        "Tīs",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Sān",
+        "Fēp",
+        "Maʻa",
+        "ʻEpe",
+        "Mē",
+        "Sun",
+        "Siu",
+        "ʻAok",
+        "Sep",
+        "ʻOka",
+        "Nōv",
+        "Tīs",
+        ""
+      ],
+      "amDesignator": "hengihengi",
+      "dateSeparator": "/",
+      "dayNames": [
+        "Sāpate",
+        "Mōnite",
+        "Tūsite",
+        "Pulelulu",
+        "Tuʻapulelulu",
+        "Falaite",
+        "Tokonaki"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd d MMMM yyyy h:mm:ss tt",
+      "longDatePattern": "dddd d MMMM yyyy",
+      "longTimePattern": "h:mm:ss tt",
+      "monthDayPattern": "d MMMM",
+      "monthGenitiveNames": [
+        "Sānuali",
+        "Fēpueli",
+        "Maʻasi",
+        "ʻEpeleli",
+        "Mē",
+        "Sune",
+        "Siulai",
+        "ʻAokosi",
+        "Sepitema",
+        "ʻOkatopa",
+        "Nōvema",
+        "Tīsema",
+        ""
+      ],
+      "monthNames": [
+        "Sānuali",
+        "Fēpueli",
+        "Maʻasi",
+        "ʻEpeleli",
+        "Mē",
+        "Sune",
+        "Siulai",
+        "ʻAokosi",
+        "Sepitema",
+        "ʻOkatopa",
+        "Nōvema",
+        "Tīsema",
+        ""
+      ],
+      "nativeCalendarName": "fakakelekolia",
+      "pmDesignator": "efiafi",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "d/M/yyyy",
+      "shortestDayNames": [
+        "S",
+        "M",
+        "T",
+        "P",
+        "T",
+        "F",
+        "T"
+      ],
+      "shortTimePattern": "h:mm tt",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "TS"
+      ],
+      "abbreviatedEraNames": [
+        "TS"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "d/M/yyyy",
+          "d MMM yyyy",
+          "d/M/yy"
+        ],
+        "D": [
+          "dddd d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "h:mm tt"
+        ],
+        "T": [
+          "h:mm:ss tt"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "d MMMM"
+        ],
+        "M": [
+          "d MMMM"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 4096, 
     name: "saq", 
@@ -40,29 +41,153 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "Tesiran", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 0, 
-        fullDateTimePattern: "dddd, d MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd, d MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "Teipa", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["Are", "Kun", "Ong", "Ine", "Ile", "Sap", "Kwe"], 
-        shortestDayNames: ["Are", "Kun", "Ong", "Ine", "Ile", "Sap", "Kwe"], 
-        dayNames: ["Mderot ee are", "Mderot ee kuni", "Mderot ee ong’wan", "Mderot ee inet", "Mderot ee ile", "Mderot ee sapa", "Mderot ee kwe"], 
-        abbreviatedMonthNames: ["Obo", "Waa", "Oku", "Ong", "Ime", "Ile", "Sap", "Isi", "Saa", "Tom", "Tob", "Tow", ""], 
-        monthNames: ["Lapa le obo", "Lapa le waare", "Lapa le okuni", "Lapa le ong’wan", "Lapa le imet", "Lapa le ile", "Lapa le sapa", "Lapa le isiet", "Lapa le saal", "Lapa le tomon", "Lapa le tomon obo", "Lapa le tomon waare", ""], 
-        nativeCalendarName: "Gregorian Calendar", 
-        abbreviatedMonthGenitiveNames: ["Obo", "Waa", "Oku", "Ong", "Ime", "Ile", "Sap", "Isi", "Saa", "Tom", "Tob", "Tow", ""], 
-        monthGenitiveNames: ["Lapa le obo", "Lapa le waare", "Lapa le okuni", "Lapa le ong’wan", "Lapa le imet", "Lapa le ile", "Lapa le sapa", "Lapa le isiet", "Lapa le saal", "Lapa le tomon", "Lapa le tomon obo", "Lapa le tomon waare", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Are",
+        "Kun",
+        "Ong",
+        "Ine",
+        "Ile",
+        "Sap",
+        "Kwe"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Obo",
+        "Waa",
+        "Oku",
+        "Ong",
+        "Ime",
+        "Ile",
+        "Sap",
+        "Isi",
+        "Saa",
+        "Tom",
+        "Tob",
+        "Tow",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Obo",
+        "Waa",
+        "Oku",
+        "Ong",
+        "Ime",
+        "Ile",
+        "Sap",
+        "Isi",
+        "Saa",
+        "Tom",
+        "Tob",
+        "Tow",
+        ""
+      ],
+      "amDesignator": "Tesiran",
+      "dateSeparator": "/",
+      "dayNames": [
+        "Mderot ee are",
+        "Mderot ee kuni",
+        "Mderot ee ong’wan",
+        "Mderot ee inet",
+        "Mderot ee ile",
+        "Mderot ee sapa",
+        "Mderot ee kwe"
+      ],
+      "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, d MMMM yyyy HH:mm:ss",
+      "longDatePattern": "dddd, d MMMM yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "Lapa le obo",
+        "Lapa le waare",
+        "Lapa le okuni",
+        "Lapa le ong’wan",
+        "Lapa le imet",
+        "Lapa le ile",
+        "Lapa le sapa",
+        "Lapa le isiet",
+        "Lapa le saal",
+        "Lapa le tomon",
+        "Lapa le tomon obo",
+        "Lapa le tomon waare",
+        ""
+      ],
+      "monthNames": [
+        "Lapa le obo",
+        "Lapa le waare",
+        "Lapa le okuni",
+        "Lapa le ong’wan",
+        "Lapa le imet",
+        "Lapa le ile",
+        "Lapa le sapa",
+        "Lapa le isiet",
+        "Lapa le saal",
+        "Lapa le tomon",
+        "Lapa le tomon obo",
+        "Lapa le tomon waare",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "Teipa",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd/MM/yyyy",
+      "shortestDayNames": [
+        "A",
+        "K",
+        "O",
+        "I",
+        "I",
+        "S",
+        "K"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "BK"
+      ],
+      "abbreviatedEraNames": [
+        "BK"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd/MM/yyyy",
+          "d MMM yyyy",
+          "d/M/yyyy"
+        ],
+        "D": [
+          "dddd, d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

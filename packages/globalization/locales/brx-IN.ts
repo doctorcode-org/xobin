@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "brx", 
     lcid: 4096, 
     name: "brx-IN", 
@@ -40,29 +41,152 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "फुं", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 0, 
-        fullDateTimePattern: "dddd, MMMM d, yyyy h:mm:ss tt", 
-        longDatePattern: "dddd, MMMM d, yyyy", 
-        longTimePattern: "h:mm:ss tt", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "बेलासे", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "M/d/yyyy", 
-        shortTimePattern: "h:mm tt", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["रबि", "सम", "मंगल", "बुद", "बिसथि", "सुखुर", "सुनि"], 
-        shortestDayNames: ["रबि", "सम", "मंगल", "बुद", "बिसथि", "सुखुर", "सुनि"], 
-        dayNames: ["रबिबार", "समबार", "मंगलबार", "बुदबार", "बिसथिबार", "सुखुरबार", "सुनिबार"], 
-        abbreviatedMonthNames: ["जानुवारी", "फेब्रुवारी", "मार्स", "एफ्रिल", "मे", "जुन", "जुलाइ", "आगस्थ", "सेबथेज्ब़र", "अखथबर", "नबेज्ब़र", "दिसेज्ब़र", ""], 
-        monthNames: ["जानुवारी", "फेब्रुवारी", "मार्स", "एफ्रिल", "मे", "जुन", "जुलाइ", "आगस्थ", "सेबथेज्ब़र", "अखथबर", "नबेज्ब़र", "दिसेज्ब़र", ""], 
-        nativeCalendarName: "ग्रेगरीअन पंचांग", 
-        abbreviatedMonthGenitiveNames: ["जानुवारी", "फेब्रुवारी", "मार्स", "एफ्रिल", "मे", "जुन", "जुलाइ", "आगस्थ", "सेबथेज्ब़र", "अखथबर", "नबेज्ब़र", "दिसेज्ब़र", ""], 
-        monthGenitiveNames: ["जानुवारी", "फेब्रुवारी", "मार्स", "एफ्रिल", "मे", "जुन", "जुलाइ", "आगस्थ", "सेबथेज्ब़र", "अखथबर", "नबेज्ब़र", "दिसेज्ब़र", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "रबि",
+        "सम",
+        "मंगल",
+        "बुध",
+        "बिस्थि",
+        "सुखुर",
+        "सनि"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "जान",
+        "फेब",
+        "मार्च",
+        "एप्रि",
+        "मे",
+        "जुन",
+        "जुल",
+        "आग",
+        "सेप",
+        "अक्ट’",
+        "नवे",
+        "डिसे",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "जान",
+        "फेब",
+        "मार्च",
+        "एप्रि",
+        "मे",
+        "जुन",
+        "जुल",
+        "आग",
+        "सेप",
+        "अक्ट’",
+        "नवे",
+        "डिसे",
+        ""
+      ],
+      "amDesignator": "फुं",
+      "dateSeparator": "-",
+      "dayNames": [
+        "रबिबार",
+        "समबार",
+        "मंगलबार",
+        "बुधबार",
+        "बिस्थिबार",
+        "सुुखुरबार",
+        "सनिबार"
+      ],
+      "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "d MMMM yyyy, dddd tt h:mm:ss",
+      "longDatePattern": "d MMMM yyyy, dddd",
+      "longTimePattern": "tt h:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "जानुवारी",
+        "फेब्रूवारी",
+        "मार्च",
+        "एप्रिल",
+        "मे",
+        "जुन",
+        "जुलाई",
+        "आगष्ट",
+        "सेप्थेम्बर",
+        "अक्ट’बर",
+        "नवेम्बर",
+        "डिसेम्बर",
+        ""
+      ],
+      "monthNames": [
+        "जानुवारी",
+        "फेब्रूवारी",
+        "मार्च",
+        "एप्रिल",
+        "मे",
+        "जुन",
+        "जुलाई",
+        "आगष्ट",
+        "सेप्थेम्बर",
+        "अक्ट’बर",
+        "नवेम्बर",
+        "डिसेम्बर",
+        ""
+      ],
+      "nativeCalendarName": "ग्रेग’रियान फान्जामुथि",
+      "pmDesignator": "बेलासे",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd-MM-yyyy",
+      "shortestDayNames": [
+        "र",
+        "स",
+        "मं",
+        "बु",
+        "बि",
+        "सु",
+        "स"
+      ],
+      "shortTimePattern": "tt नि h:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "ए.दि"
+      ],
+      "abbreviatedEraNames": [
+        "ए.दि"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd-MM-yyyy",
+          "d MMM, yyyy"
+        ],
+        "D": [
+          "d MMMM yyyy, dddd",
+          "d MMMM, yyyy"
+        ],
+        "t": [
+          "tt नि h:mm"
+        ],
+        "T": [
+          "tt h:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

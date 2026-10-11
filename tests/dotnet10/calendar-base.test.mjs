@@ -9,6 +9,7 @@ import {
   GregorianCalendarTypes,
   PersianCalendar,
   ThaiBuddhistCalendar,
+  KoreanCalendar,
   UmAlQuraCalendar,
 } from '@xobin/globalization';
 import { ArgumentOutOfRangeException } from '@xobin/core';
@@ -20,6 +21,7 @@ const createCalendar = {
   Gregorian: () => new GregorianCalendar(),
   Persian: () => new PersianCalendar(),
   ThaiBuddhist: () => new ThaiBuddhistCalendar(),
+  Korean: () => new KoreanCalendar(),
   UmAlQura: () => new UmAlQuraCalendar(),
 };
 
@@ -114,6 +116,7 @@ const supportedCalendarTests = [
   ['GregorianCalendarTransliteratedFrenchTests', () => new GregorianCalendar(GregorianCalendarTypes.TransliteratedFrench)],
   ['PersianCalendarTests', () => new PersianCalendar()],
   ['ThaiBuddhistCalendarTests', () => new ThaiBuddhistCalendar()],
+  ['KoreanCalendarTests', () => new KoreanCalendar()],
   ['UmAlQuraCalendarTests', () => new UmAlQuraCalendar()],
 ];
 

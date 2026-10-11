@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "nn", 
     lcid: 2068, 
     name: "nn-NO", 
@@ -40,29 +41,153 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "f.m.", 
-        dateSeparator: ".", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd d. MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd d. MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "d. MMMM", 
-        pmDesignator: "e.m.", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd.MM.yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["sø.", "må.", "ty.", "on.", "to.", "fr.", "la."], 
-        shortestDayNames: ["sø.", "må.", "ty.", "on.", "to.", "fr.", "la."], 
-        dayNames: ["søndag", "måndag", "tysdag", "onsdag", "torsdag", "fredag", "laurdag"], 
-        abbreviatedMonthNames: ["jan", "feb", "mar", "apr", "mai", "jun", "jul", "aug", "sep", "okt", "nov", "des", ""], 
-        monthNames: ["januar", "februar", "mars", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember", ""], 
-        nativeCalendarName: "gregoriansk kalender", 
-        abbreviatedMonthGenitiveNames: ["jan.", "feb.", "mars", "apr.", "mai", "juni", "juli", "aug.", "sep.", "okt.", "nov.", "des.", ""], 
-        monthGenitiveNames: ["januar", "februar", "mars", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "søn",
+        "mån",
+        "tys",
+        "ons",
+        "tor",
+        "fre",
+        "lau"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "jan.",
+        "feb.",
+        "mars",
+        "apr.",
+        "mai",
+        "juni",
+        "juli",
+        "aug.",
+        "sep.",
+        "okt.",
+        "nov.",
+        "des.",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "jan",
+        "feb",
+        "mar",
+        "apr",
+        "mai",
+        "jun",
+        "jul",
+        "aug",
+        "sep",
+        "okt",
+        "nov",
+        "des",
+        ""
+      ],
+      "amDesignator": "a.m.",
+      "dateSeparator": ".",
+      "dayNames": [
+        "søndag",
+        "måndag",
+        "tysdag",
+        "onsdag",
+        "torsdag",
+        "fredag",
+        "laurdag"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 2,
+      "fullDateTimePattern": "dddd d. MMMM yyyy HH:mm:ss",
+      "longDatePattern": "dddd d. MMMM yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "d. MMMM",
+      "monthGenitiveNames": [
+        "januar",
+        "februar",
+        "mars",
+        "april",
+        "mai",
+        "juni",
+        "juli",
+        "august",
+        "september",
+        "oktober",
+        "november",
+        "desember",
+        ""
+      ],
+      "monthNames": [
+        "januar",
+        "februar",
+        "mars",
+        "april",
+        "mai",
+        "juni",
+        "juli",
+        "august",
+        "september",
+        "oktober",
+        "november",
+        "desember",
+        ""
+      ],
+      "nativeCalendarName": "gregoriansk kalender",
+      "pmDesignator": "p.m.",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd.MM.yyyy",
+      "shortestDayNames": [
+        "S",
+        "M",
+        "T",
+        "O",
+        "T",
+        "F",
+        "L"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "e.Kr."
+      ],
+      "abbreviatedEraNames": [
+        "e.Kr."
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd.MM.yyyy",
+          "d. MMM yyyy",
+          "d.M.yyyy"
+        ],
+        "D": [
+          "dddd d. MMMM yyyy",
+          "d. MMMM yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "d. MMMM"
+        ],
+        "M": [
+          "d. MMMM"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

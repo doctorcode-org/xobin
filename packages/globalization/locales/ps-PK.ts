@@ -1,5 +1,6 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import { CultureData, GregorianCalendar, HijriCalendar } from '@xobin/globalization';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "ps", 
     lcid: 4096, 
     name: "ps-PK", 
@@ -40,29 +41,222 @@ export const cultureData: CultureData = {
         digitSubstitution: 2
     }, 
     dateTimeFormat: {
-        amDesignator: "غ.م.", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 0, 
-        fullDateTimePattern: "dddd د yyyy د MMMM d h:mm:ss tt", 
-        longDatePattern: "dddd د yyyy د MMMM d", 
-        longTimePattern: "h:mm:ss tt", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "غ.و.", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "yyyy/M/d", 
-        shortTimePattern: "h:mm tt", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "yyyy MMMM", 
-        abbreviatedDayNames: ["يونۍ", "دونۍ", "درېنۍ", "څلرنۍ", "پينځنۍ", "جمعه", "اونۍ"], 
-        shortestDayNames: ["يونۍ", "دونۍ", "درېنۍ", "څلرنۍ", "پينځنۍ", "جمعه", "اونۍ"], 
-        dayNames: ["يونۍ", "دونۍ", "درېنۍ", "څلرنۍ", "پينځنۍ", "جمعه", "اونۍ"], 
-        abbreviatedMonthNames: ["جنوري", "فبروري", "مارچ", "اپریل", "مۍ", "جون", "جولای", "اگست", "سپتمبر", "اکتوبر", "نومبر", "دسمبر", ""], 
-        monthNames: ["جنوري", "فېبروري", "مارچ", "اپریل", "مۍ", "جون", "جولای", "اگست", "سپتمبر", "اکتوبر", "نومبر", "دسمبر", ""], 
-        nativeCalendarName: "ګريګورين جنتري", 
-        abbreviatedMonthGenitiveNames: ["جنوري", "فبروري", "مارچ", "اپریل", "مۍ", "جون", "جولای", "اگست", "سېپتمبر", "اکتوبر", "نومبر", "دسمبر", ""], 
-        monthGenitiveNames: ["جنوري", "فبروري", "مارچ", "اپریل", "مۍ", "جون", "جولای", "اگست", "سېپتمبر", "اکتوبر", "نومبر", "دسمبر", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "يونۍ",
+        "دونۍ",
+        "درېنۍ",
+        "څلرنۍ",
+        "پينځنۍ",
+        "جمعه",
+        "اونۍ"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "جنوري",
+        "فبروري",
+        "مارچ",
+        "اپریل",
+        "مۍ",
+        "جون",
+        "جولای",
+        "اګست",
+        "سېپتمبر",
+        "اکتوبر",
+        "نومبر",
+        "دسمبر",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "جنوري",
+        "فبروري",
+        "مارچ",
+        "اپریل",
+        "مۍ",
+        "جون",
+        "جولای",
+        "اګست",
+        "سپتمبر",
+        "اکتوبر",
+        "نومبر",
+        "دسمبر",
+        ""
+      ],
+      "amDesignator": "غ.م.",
+      "dateSeparator": "/",
+      "dayNames": [
+        "يونۍ",
+        "دونۍ",
+        "درېنۍ",
+        "څلرنۍ",
+        "پينځنۍ",
+        "جمعه",
+        "اونۍ"
+      ],
+      "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd د yyyy د MMMM d h:mm:ss tt",
+      "longDatePattern": "dddd د yyyy د MMMM d",
+      "longTimePattern": "h:mm:ss tt",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "جنوري",
+        "فبروري",
+        "مارچ",
+        "اپریل",
+        "مۍ",
+        "جون",
+        "جولای",
+        "اګست",
+        "سېپتمبر",
+        "اکتوبر",
+        "نومبر",
+        "دسمبر",
+        ""
+      ],
+      "monthNames": [
+        "جنوري",
+        "فېبروري",
+        "مارچ",
+        "اپریل",
+        "مۍ",
+        "جون",
+        "جولای",
+        "اګست",
+        "سپتمبر",
+        "اکتوبر",
+        "نومبر",
+        "دسمبر",
+        ""
+      ],
+      "nativeCalendarName": "ګريګورين جنتري",
+      "pmDesignator": "غ.و.",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "yyyy/M/d",
+      "shortestDayNames": [
+        "S",
+        "M",
+        "T",
+        "W",
+        "T",
+        "F",
+        "S"
+      ],
+      "shortTimePattern": "h:mm tt",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "م."
+      ],
+      "abbreviatedEraNames": [
+        "م."
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "yyyy/M/d",
+          "yyyy MMM d",
+          "yyyy-MM-dd"
+        ],
+        "D": [
+          "dddd د yyyy د MMMM d",
+          "د yyyy د MMMM d"
+        ],
+        "t": [
+          "h:mm tt"
+        ],
+        "T": [
+          "h:mm:ss tt"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {},
+      "6": {
+        "eraNames": [
+          "بعد الهجرة"
+        ],
+        "abbreviatedEraNames": [
+          "هـ"
+        ],
+        "monthNames": [
+          "محرم",
+          "د صفرے د",
+          "ربيع",
+          "ربيع II",
+          "جماعه",
+          "جموما II",
+          "رجب",
+          "شعبان",
+          "رمضان",
+          "شوال",
+          "دالقاعده",
+          "ذي الحج",
+          ""
+        ],
+        "abbreviatedMonthNames": [
+          "محرم",
+          "صفر",
+          "ربيع",
+          "ربيع II",
+          "جماعه",
+          "جمادي ۲",
+          "رجب",
+          "شعبان",
+          "رمضان",
+          "شوال",
+          "دالقاعده",
+          "ذي الحج",
+          ""
+        ],
+        "monthGenitiveNames": [
+          "محرم",
+          "د صفرے د",
+          "ربيع",
+          "ربيع II",
+          "جماعه",
+          "جموما II",
+          "رجب",
+          "شعبان",
+          "رمضان",
+          "شوال",
+          "ذي القعده",
+          "ذي الحج",
+          ""
+        ],
+        "abbreviatedMonthGenitiveNames": [
+          "محرم",
+          "صفر",
+          "ربيع",
+          "ربيع II",
+          "جماد ۱",
+          "جماد ۲",
+          "رجب",
+          "شعبان",
+          "رمضان",
+          "شوال",
+          "دالقاعده",
+          "ذي الحج",
+          ""
+        ],
+        "nativeCalendarName": "اسلامي جنتري"
+      }
+    },
+    calendarFactories: [() => new GregorianCalendar(1), () => new HijriCalendar()],
+    calendar: new GregorianCalendar(1)
 };

@@ -15,6 +15,7 @@ export interface FormatContext {
 }
 
 export const invariantDateTimeFormat: DateTimeFormatData = {
+  "leapYearMonthNames": null,
   "abbreviatedDayNames": [
     "Sun",
     "Mon",
@@ -121,6 +122,12 @@ export const invariantDateTimeFormat: DateTimeFormatData = {
   "yearMonthPattern": "yyyy MMMM",
   "eraNames": [
     "A.D."
+  ],
+  "abbreviatedEraNames": [
+    "AD"
+  ],
+  "abbreviatedEnglishEraNames": [
+    "AD"
   ],
   "allDateTimePatterns": {
     "d": [

@@ -1,5 +1,6 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import { CultureData, GregorianCalendar, KoreanCalendar } from '@xobin/globalization';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "ko", 
     lcid: 1042, 
     name: "ko-KR", 
@@ -40,29 +41,161 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "오전", 
-        dateSeparator: "-", 
-        firstDayOfWeek: 0, 
-        fullDateTimePattern: "yyyy'년' M'월' d'일' dddd tt h:mm:ss", 
-        longDatePattern: "yyyy'년' M'월' d'일' dddd", 
-        longTimePattern: "tt h:mm:ss", 
-        monthDayPattern: "M월 d일", 
-        pmDesignator: "오후", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "yyyy-MM-dd", 
-        shortTimePattern: "tt h:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "yyyy'년' M'월'", 
-        abbreviatedDayNames: ["일", "월", "화", "수", "목", "금", "토"], 
-        shortestDayNames: ["일", "월", "화", "수", "목", "금", "토"], 
-        dayNames: ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"], 
-        abbreviatedMonthNames: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", ""], 
-        monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월", ""], 
-        nativeCalendarName: "서기(한글)", 
-        abbreviatedMonthGenitiveNames: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", ""], 
-        monthGenitiveNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "일",
+        "월",
+        "화",
+        "수",
+        "목",
+        "금",
+        "토"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "1월",
+        "2월",
+        "3월",
+        "4월",
+        "5월",
+        "6월",
+        "7월",
+        "8월",
+        "9월",
+        "10월",
+        "11월",
+        "12월",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "1월",
+        "2월",
+        "3월",
+        "4월",
+        "5월",
+        "6월",
+        "7월",
+        "8월",
+        "9월",
+        "10월",
+        "11월",
+        "12월",
+        ""
+      ],
+      "amDesignator": "오전",
+      "dateSeparator": ". ",
+      "dayNames": [
+        "일요일",
+        "월요일",
+        "화요일",
+        "수요일",
+        "목요일",
+        "금요일",
+        "토요일"
+      ],
+      "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "yyyy년 M월 d일 dddd tt h:mm:ss",
+      "longDatePattern": "yyyy년 M월 d일 dddd",
+      "longTimePattern": "tt h:mm:ss",
+      "monthDayPattern": "MMMM d일",
+      "monthGenitiveNames": [
+        "1월",
+        "2월",
+        "3월",
+        "4월",
+        "5월",
+        "6월",
+        "7월",
+        "8월",
+        "9월",
+        "10월",
+        "11월",
+        "12월",
+        ""
+      ],
+      "monthNames": [
+        "1월",
+        "2월",
+        "3월",
+        "4월",
+        "5월",
+        "6월",
+        "7월",
+        "8월",
+        "9월",
+        "10월",
+        "11월",
+        "12월",
+        ""
+      ],
+      "nativeCalendarName": "양력",
+      "pmDesignator": "오후",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "yyyy. M. d.",
+      "shortestDayNames": [
+        "일",
+        "월",
+        "화",
+        "수",
+        "목",
+        "금",
+        "토"
+      ],
+      "shortTimePattern": "tt h:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy년 MMMM",
+      "eraNames": [
+        "AD"
+      ],
+      "abbreviatedEraNames": [
+        "AD"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "yyyy. M. d.",
+          "yy. M. d."
+        ],
+        "D": [
+          "yyyy년 M월 d일 dddd",
+          "yyyy년 M월 d일"
+        ],
+        "t": [
+          "tt h:mm"
+        ],
+        "T": [
+          "tt h:mm:ss"
+        ],
+        "y": [
+          "yyyy년 MMMM"
+        ],
+        "Y": [
+          "yyyy년 MMMM"
+        ],
+        "m": [
+          "MMMM d일"
+        ],
+        "M": [
+          "MMMM d일"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {},
+      "5": {
+        "eraNames": [
+          "단기"
+        ],
+        "abbreviatedEraNames": [
+          "단기"
+        ],
+        "nativeCalendarName": "단기력"
+      }
+    },
+    calendarFactories: [() => new GregorianCalendar(1), () => new KoreanCalendar()],
+    calendar: new GregorianCalendar(1)
 };

@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "dsb", 
     lcid: 2094, 
     name: "dsb-DE", 
@@ -40,29 +41,152 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "", 
-        dateSeparator: ". ", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, d. MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd, d. MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "d. MMMM", 
-        pmDesignator: "", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "d. M. yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["nje", "pon", "wał", "srj", "stw", "pět", "sob"], 
-        shortestDayNames: ["n", "p", "w", "s", "s", "p", "s"], 
-        dayNames: ["njeźela", "ponjeźele", "wałtora", "srjoda", "stwórtk", "pětk", "sobota"], 
-        abbreviatedMonthNames: ["jan", "feb", "měr", "apr", "maj", "jun", "jul", "awg", "sep", "okt", "now", "dec", ""], 
-        monthNames: ["januar", "februar", "měrc", "apryl", "maj", "junij", "julij", "awgust", "september", "oktober", "nowember", "december", ""], 
-        nativeCalendarName: "gregorianska pratyja", 
-        abbreviatedMonthGenitiveNames: ["jan", "feb", "měr", "apr", "maj", "jun", "jul", "awg", "sep", "okt", "now", "dec", ""], 
-        monthGenitiveNames: ["januara", "februara", "měrca", "apryla", "maja", "junija", "julija", "awgusta", "septembra", "oktobra", "nowembra", "decembra", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "nje",
+        "pón",
+        "wał",
+        "srj",
+        "stw",
+        "pět",
+        "sob"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "jan.",
+        "feb.",
+        "měr.",
+        "apr.",
+        "maj.",
+        "jun.",
+        "jul.",
+        "awg.",
+        "sep.",
+        "okt.",
+        "now.",
+        "dec.",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "jan",
+        "feb",
+        "měr",
+        "apr",
+        "maj",
+        "jun",
+        "jul",
+        "awg",
+        "sep",
+        "okt",
+        "now",
+        "dec",
+        ""
+      ],
+      "amDesignator": "dopołdnja",
+      "dateSeparator": ".",
+      "dayNames": [
+        "njeźela",
+        "pónjeźele",
+        "wałtora",
+        "srjoda",
+        "stwórtk",
+        "pětk",
+        "sobota"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 2,
+      "fullDateTimePattern": "dddd, d. MMMM yyyy H:mm:ss",
+      "longDatePattern": "dddd, d. MMMM yyyy",
+      "longTimePattern": "H:mm:ss",
+      "monthDayPattern": "d. MMMM",
+      "monthGenitiveNames": [
+        "januara",
+        "februara",
+        "měrca",
+        "apryla",
+        "maja",
+        "junija",
+        "julija",
+        "awgusta",
+        "septembra",
+        "oktobra",
+        "nowembra",
+        "decembra",
+        ""
+      ],
+      "monthNames": [
+        "januar",
+        "februar",
+        "měrc",
+        "apryl",
+        "maj",
+        "junij",
+        "julij",
+        "awgust",
+        "september",
+        "oktober",
+        "nowember",
+        "december",
+        ""
+      ],
+      "nativeCalendarName": "gregoriański kalender",
+      "pmDesignator": "wótpołdnja",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "d.M.yyyy",
+      "shortestDayNames": [
+        "n",
+        "p",
+        "w",
+        "s",
+        "s",
+        "p",
+        "s"
+      ],
+      "shortTimePattern": "H:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "pó Chr.n."
+      ],
+      "abbreviatedEraNames": [
+        "pó Chr.n."
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "d.M.yyyy",
+          "d.M.yy"
+        ],
+        "D": [
+          "dddd, d. MMMM yyyy",
+          "d. MMMM yyyy"
+        ],
+        "t": [
+          "H:mm"
+        ],
+        "T": [
+          "H:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "d. MMMM"
+        ],
+        "M": [
+          "d. MMMM"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

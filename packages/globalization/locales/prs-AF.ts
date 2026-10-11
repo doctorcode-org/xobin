@@ -1,5 +1,6 @@
-import { CultureData, PersianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import { CultureData, PersianCalendar, GregorianCalendar, HijriCalendar } from '@xobin/globalization';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "prs", 
     lcid: 1164, 
     name: "prs-AF", 
@@ -40,29 +41,290 @@ export const cultureData: CultureData = {
         digitSubstitution: 2
     }, 
     dateTimeFormat: {
-        amDesignator: "غ.م", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 6, 
-        fullDateTimePattern: "dddd, d MMMM yyyy h:mm:ss tt", 
-        longDatePattern: "dddd, d MMMM yyyy", 
-        longTimePattern: "h:mm:ss tt", 
-        monthDayPattern: "d MMMM", 
-        pmDesignator: "غ.و", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "yyyy/M/d", 
-        shortTimePattern: "h:mm tt", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["یکشنبه", "دوشنبه", "سه‌ شنبه", "چهار شنبه", "پنجشنبه", "جمعه", "شنبه"], 
-        shortestDayNames: ["ی", "د", "س", "چ", "پ", "ج", "ش"], 
-        dayNames: ["یکشنبه", "دوشنبه", "سه‌ شنبه", "چهار شنبه", "پنجشنبه", "جمعه", "شنبه"], 
-        abbreviatedMonthNames: ["حمل", "ثور", "جوزا", "سرطان", "اسد", "سنبله", "میزان", "عقرب", "قوس", "جدی", "دلو", "حوت", ""], 
-        monthNames: ["حمل", "ثور", "جوزا", "سرطان", "اسد", "سنبله", "میزان", "عقرب", "قوس", "جدی", "دلو", "حوت", ""], 
-        nativeCalendarName: "Islamic Solar", 
-        abbreviatedMonthGenitiveNames: ["حمل", "ثور", "جوزا", "سرطان", "اسد", "سنبله", "میزان", "عقرب", "قوس", "جدی", "دلو", "حوت", ""], 
-        monthGenitiveNames: ["حمل", "ثور", "جوزا", "سرطان", "اسد", "سنبله", "میزان", "عقرب", "قوس", "جدی", "دلو", "حوت", ""]
-    }, 
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "یکشنبه",
+        "دوشنبه",
+        "سه‌شنبه",
+        "چهارشنبه",
+        "پنجشنبه",
+        "جمعه",
+        "شنبه"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "فروردین",
+        "اردیبهشت",
+        "خرداد",
+        "تیر",
+        "مرداد",
+        "شهریور",
+        "مهر",
+        "آبان",
+        "آذر",
+        "دی",
+        "بهمن",
+        "اسفند",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "فروردین",
+        "اردیبهشت",
+        "خرداد",
+        "تیر",
+        "مرداد",
+        "شهریور",
+        "مهر",
+        "آبان",
+        "آذر",
+        "دی",
+        "بهمن",
+        "اسفند",
+        ""
+      ],
+      "amDesignator": "قبل‌ازظهر",
+      "dateSeparator": "/",
+      "dayNames": [
+        "یکشنبه",
+        "دوشنبه",
+        "سه‌شنبه",
+        "چهارشنبه",
+        "پنجشنبه",
+        "جمعه",
+        "شنبه"
+      ],
+      "firstDayOfWeek": 6,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "yyyy MMMM d, dddd H:mm:ss",
+      "longDatePattern": "yyyy MMMM d, dddd",
+      "longTimePattern": "H:mm:ss",
+      "monthDayPattern": "d MMMM",
+      "monthGenitiveNames": [
+        "حمل",
+        "ثور",
+        "جوزا",
+        "سرطان",
+        "اسد",
+        "سنبلهٔ",
+        "میزان",
+        "عقرب",
+        "قوس",
+        "جدی",
+        "دلو",
+        "حوت",
+        ""
+      ],
+      "monthNames": [
+        "فروردین",
+        "اردیبهشت",
+        "خرداد",
+        "تیر",
+        "مرداد",
+        "شهریور",
+        "مهر",
+        "آبان",
+        "آذر",
+        "دی",
+        "بهمن",
+        "اسفند",
+        ""
+      ],
+      "nativeCalendarName": "تقویم هجری شمسی",
+      "pmDesignator": "بعدازظهر",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "yyyy/M/d",
+      "shortestDayNames": [
+        "ی",
+        "د",
+        "س",
+        "چ",
+        "پ",
+        "ج",
+        "ش"
+      ],
+      "shortTimePattern": "H:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "ه‍.ش."
+      ],
+      "abbreviatedEraNames": [
+        "ه‍.ش."
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "yyyy/M/d",
+          "d MMM yyyy"
+        ],
+        "D": [
+          "yyyy MMMM d, dddd",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "H:mm"
+        ],
+        "T": [
+          "H:mm:ss"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "d MMMM"
+        ],
+        "M": [
+          "d MMMM"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {
+        "eraNames": [
+          "م."
+        ],
+        "abbreviatedEraNames": [
+          "م."
+        ],
+        "monthNames": [
+          "جنوری",
+          "فبروری",
+          "مارچ",
+          "اپریل",
+          "می",
+          "جون",
+          "جولای",
+          "اگست",
+          "سپتمبر",
+          "اکتوبر",
+          "نومبر",
+          "دسمبر",
+          ""
+        ],
+        "abbreviatedMonthNames": [
+          "جنوری",
+          "فبروری",
+          "مارچ",
+          "اپریل",
+          "می",
+          "جون",
+          "جولای",
+          "اگست",
+          "سپتمبر",
+          "اکتوبر",
+          "نومبر",
+          "دسمبر",
+          ""
+        ],
+        "monthGenitiveNames": [
+          "جنوری",
+          "فبروری",
+          "مارچ",
+          "اپریل",
+          "می",
+          "جون",
+          "جولای",
+          "اگست",
+          "سپتمبر",
+          "اکتوبر",
+          "نومبر",
+          "دسمبر",
+          ""
+        ],
+        "abbreviatedMonthGenitiveNames": [
+          "جنو",
+          "فبروری",
+          "مارچ",
+          "اپریل",
+          "می",
+          "جون",
+          "جول",
+          "اگست",
+          "سپتمبر",
+          "اکتوبر",
+          "نومبر",
+          "دسم",
+          ""
+        ],
+        "nativeCalendarName": "تقویم میلادی"
+      },
+      "6": {
+        "eraNames": [
+          "بعد الهجرة"
+        ],
+        "abbreviatedEraNames": [
+          "هـ"
+        ],
+        "monthNames": [
+          "محرم",
+          "صفر",
+          "ربیع‌الاول",
+          "ربیع‌الثانی",
+          "جمادی‌الاول",
+          "جمادی‌الثانی",
+          "رجب",
+          "شعبان",
+          "رمضان",
+          "شوال",
+          "ذیقعده",
+          "ذیحجه",
+          ""
+        ],
+        "abbreviatedMonthNames": [
+          "محرم",
+          "صفر",
+          "ربیع‌الاول",
+          "ربیع‌الثانی",
+          "جمادی‌الاول",
+          "جمادی‌الثانی",
+          "رجب",
+          "شعبان",
+          "رمضان",
+          "شوال",
+          "ذیقعده",
+          "ذیحجه",
+          ""
+        ],
+        "monthGenitiveNames": [
+          "محرم",
+          "صفر",
+          "ربیع‌الاول",
+          "ربیع‌الثانی",
+          "جمادی‌الاول",
+          "جمادی‌الثانی",
+          "رجب",
+          "شعبان",
+          "رمضان",
+          "شوال",
+          "ذیقعدهٔ",
+          "ذیحجهٔ",
+          ""
+        ],
+        "abbreviatedMonthGenitiveNames": [
+          "محرم",
+          "صفر",
+          "ربیع‌الاول",
+          "ربیع‌الثانی",
+          "جمادی‌الاول",
+          "جمادی‌الثانی",
+          "رجب",
+          "شعبان",
+          "رمضان",
+          "شوال",
+          "ذیقعدهٔ",
+          "ذیحجهٔ",
+          ""
+        ],
+        "nativeCalendarName": "تقویم هجری قمری"
+      },
+      "22": {}
+    },
+    calendarFactories: [() => new PersianCalendar(), () => new GregorianCalendar(1), () => new HijriCalendar()],
     calendar: new PersianCalendar()
 };

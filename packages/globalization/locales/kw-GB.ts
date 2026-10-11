@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "kw", 
     lcid: 4096, 
     name: "kw-GB", 
@@ -40,29 +41,153 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "a.m.", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd d MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd d MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "p.m.", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "yyyy MMMM", 
-        abbreviatedDayNames: ["Sul", "Lun", "Mth", "Mhr", "Yow", "Gwe", "Sad"], 
-        shortestDayNames: ["Sul", "Lun", "Mth", "Mhr", "Yow", "Gwe", "Sad"], 
-        dayNames: ["dy Sul", "dy Lun", "dy Meurth", "dy Merher", "dy Yow", "dy Gwener", "dy Sadorn"], 
-        abbreviatedMonthNames: ["Gen", "Hwe", "Meu", "Ebr", "Me", "Met", "Gor", "Est", "Gwn", "Hed", "Du", "Kev", ""], 
-        monthNames: ["mis Genver", "mis Hwevrer", "mis Meurth", "mis Ebrel", "mis Me", "mis Metheven", "mis Gortheren", "mis Est", "mis Gwynngala", "mis Hedra", "mis Du", "mis Kevardhu", ""], 
-        nativeCalendarName: "Kalans gregorek", 
-        abbreviatedMonthGenitiveNames: ["Gen", "Hwe", "Meu", "Ebr", "Me", "Met", "Gor", "Est", "Gwn", "Hed", "Du", "Kev", ""], 
-        monthGenitiveNames: ["mis Genver", "mis Hwevrer", "mis Meurth", "mis Ebrel", "mis Me", "mis Metheven", "mis Gortheren", "mis Est", "mis Gwynngala", "mis Hedra", "mis Du", "mis Kevardhu", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Sul",
+        "Lun",
+        "Mth",
+        "Mhr",
+        "Yow",
+        "Gwe",
+        "Sad"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Gen",
+        "Hwe",
+        "Meu",
+        "Ebr",
+        "Me",
+        "Met",
+        "Gor",
+        "Est",
+        "Gwn",
+        "Hed",
+        "Du",
+        "Kev",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Gen",
+        "Hwe",
+        "Meu",
+        "Ebr",
+        "Me",
+        "Met",
+        "Gor",
+        "Est",
+        "Gwn",
+        "Hed",
+        "Du",
+        "Kev",
+        ""
+      ],
+      "amDesignator": "a.m.",
+      "dateSeparator": "-",
+      "dayNames": [
+        "dy Sul",
+        "dy Lun",
+        "dy Meurth",
+        "dy Merher",
+        "dy Yow",
+        "dy Gwener",
+        "dy Sadorn"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 2,
+      "fullDateTimePattern": "yyyy MMMM d, dddd HH:mm:ss",
+      "longDatePattern": "yyyy MMMM d, dddd",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "mis Genver",
+        "mis Hwevrer",
+        "mis Meurth",
+        "mis Ebrel",
+        "mis Me",
+        "mis Metheven",
+        "mis Gortheren",
+        "mis Est",
+        "mis Gwynngala",
+        "mis Hedra",
+        "mis Du",
+        "mis Kevardhu",
+        ""
+      ],
+      "monthNames": [
+        "mis Genver",
+        "mis Hwevrer",
+        "mis Meurth",
+        "mis Ebrel",
+        "mis Me",
+        "mis Metheven",
+        "mis Gortheren",
+        "mis Est",
+        "mis Gwynngala",
+        "mis Hedra",
+        "mis Du",
+        "mis Kevardhu",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "p.m.",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "yyyy-MM-dd",
+      "shortestDayNames": [
+        "S",
+        "M",
+        "T",
+        "W",
+        "T",
+        "F",
+        "S"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "AD"
+      ],
+      "abbreviatedEraNames": [
+        "AD"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "yyyy-MM-dd",
+          "yyyy MMM d",
+          "yyyy-M-d"
+        ],
+        "D": [
+          "yyyy MMMM d, dddd",
+          "yyyy MMMM d"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

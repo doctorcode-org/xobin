@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "so", 
     lcid: 4096, 
     name: "so-ET", 
@@ -40,29 +41,154 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "GH", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 0, 
-        fullDateTimePattern: "dddd, MMMM dd, yyyy h:mm:ss tt", 
-        longDatePattern: "dddd, MMMM dd, yyyy", 
-        longTimePattern: "h:mm:ss tt", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "GD", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "h:mm tt", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["Axd", "Isn", "Slsa", "Arbc", "Khms", "Jmc", "Sbti"], 
-        shortestDayNames: ["Axd", "Isn", "Slsa", "Arbc", "Khms", "Jmc", "Sbti"], 
-        dayNames: ["Axad", "Isniin", "Salaasa", "Arbaca", "Khamiis", "Jimce", "Sabti"], 
-        abbreviatedMonthNames: ["Jan", "Feb", "Mar", "Abr", "May", "Jun", "Lul", "Ogs", "Seb", "Okt", "Nof", "Dis", ""], 
-        monthNames: ["Jannaayo", "Febraayo", "Maarso", "Abriil", "May", "Juun", "Luuliyo", "Ogost", "Sebtembar", "Oktoobar", "Nofembar", "Desembar", ""], 
-        nativeCalendarName: "Habeetiriska Geregoriyaan", 
-        abbreviatedMonthGenitiveNames: ["Jan", "Feb", "Mar", "Abr", "May", "Jun", "Lul", "Ogs", "Seb", "Okt", "Nof", "Dis", ""], 
-        monthGenitiveNames: ["Bisha Koobaad", "Bisha Labaad", "Bisha Saddexaad", "Bisha Afraad", "Bisha Shanaad", "Bisha Lixaad", "Bisha Todobaad", "Bisha Sideedaad", "Bisha Sagaalaad", "Bisha Tobnaad", "Bisha Kow iyo Tobnaad", "Bisha Laba iyo Tobnaad", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Axd",
+        "Isn",
+        "Tldo",
+        "Arbc",
+        "Khms",
+        "Jmc",
+        "Sbti"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Abr",
+        "May",
+        "Jun",
+        "Lul",
+        "Ogs",
+        "Seb",
+        "Okt",
+        "Nof",
+        "Dis",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Abr",
+        "May",
+        "Jun",
+        "Lul",
+        "Ogs",
+        "Seb",
+        "Okt",
+        "Nof",
+        "Dis",
+        ""
+      ],
+      "amDesignator": "GH",
+      "dateSeparator": "/",
+      "dayNames": [
+        "Axad",
+        "Isniin",
+        "Talaado",
+        "Arbaco",
+        "Khamiis",
+        "Jimco",
+        "Sabti"
+      ],
+      "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, MMMM d, yyyy h:mm:ss tt",
+      "longDatePattern": "dddd, MMMM d, yyyy",
+      "longTimePattern": "h:mm:ss tt",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "Bisha Koobaad",
+        "Bisha Labaad",
+        "Bisha Saddexaad",
+        "Bisha Afraad",
+        "Bisha Shanaad",
+        "Bisha Lixaad",
+        "Bisha Todobaad",
+        "Bisha Sideedaad",
+        "Bisha Sagaalaad",
+        "Bisha Tobnaad",
+        "Bisha Kow iyo Tobnaad",
+        "Bisha Laba iyo Tobnaad",
+        ""
+      ],
+      "monthNames": [
+        "Jannaayo",
+        "Febraayo",
+        "Maarso",
+        "Abriil",
+        "May",
+        "Juun",
+        "Luuliyo",
+        "Ogosto",
+        "Sebteembar",
+        "Oktoobar",
+        "Noofeembar",
+        "Diseembar",
+        ""
+      ],
+      "nativeCalendarName": "Habeetiriska Geregoriyaan",
+      "pmDesignator": "GD",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd/MM/yyyy",
+      "shortestDayNames": [
+        "A",
+        "I",
+        "T",
+        "A",
+        "Kh",
+        "J",
+        "S"
+      ],
+      "shortTimePattern": "h:mm tt",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "AD"
+      ],
+      "abbreviatedEraNames": [
+        "A"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd/MM/yyyy",
+          "dd-MMM-yyyy",
+          "M/d/yyyy",
+          "dd/MM/yy"
+        ],
+        "D": [
+          "dddd, MMMM d, yyyy",
+          "MMMM d, yyyy"
+        ],
+        "t": [
+          "h:mm tt"
+        ],
+        "T": [
+          "h:mm:ss tt"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };

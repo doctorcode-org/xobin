@@ -1,5 +1,6 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
 import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "te", 
     lcid: 1098, 
     name: "te-IN", 
@@ -40,29 +41,154 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "AM", 
-        dateSeparator: "-", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "d, MMMM yyyy, dddd h:mm:ss tt", 
-        longDatePattern: "d, MMMM yyyy, dddd", 
-        longTimePattern: "h:mm:ss tt", 
-        monthDayPattern: "d MMMM", 
-        pmDesignator: "PM", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd-MM-yyyy", 
-        shortTimePattern: "h:mm tt", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["ఆది", "సోమ", "మంగళ", "బుధ", "గురు", "శుక్ర", "శని"], 
-        shortestDayNames: ["ఆది", "సోమ", "మం", "బుధ", "గురు", "శుక్ర", "శని"], 
-        dayNames: ["ఆదివారం", "సోమవారం", "మంగళవారం", "బుధవారం", "గురువారం", "శుక్రవారం", "శనివారం"], 
-        abbreviatedMonthNames: ["జన", "ఫిబ్ర", "మార్చి", "ఏప్రి", "మే", "జూన్", "జులై", "ఆగ", "సెప్టెం", "అక్టో", "నవం", "డిసెం", ""], 
-        monthNames: ["జనవరి", "ఫిబ్రవరి", "మార్చి", "ఏప్రిల్", "మే", "జూన్", "జులై", "ఆగస్టు", "సెప్టెంబర్", "అక్టోబర్", "నవంబర్", "డిసెంబర్", ""], 
-        nativeCalendarName: "గ్రేగోరియన్ క్యాలెండర్", 
-        abbreviatedMonthGenitiveNames: ["జన", "ఫిబ్ర", "మార్చి", "ఏప్రి", "మే", "జూన్", "జులై", "ఆగ", "సెప్టెం", "అక్టో", "నవం", "డిసెం", ""], 
-        monthGenitiveNames: ["జనవరి", "ఫిబ్రవరి", "మార్చి", "ఏప్రిల్", "మే", "జూన్", "జులై", "ఆగస్టు", "సెప్టెంబర్", "అక్టోబర్", "నవంబర్", "డిసెంబర్", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "ఆది",
+        "సోమ",
+        "మంగళ",
+        "బుధ",
+        "గురు",
+        "శుక్ర",
+        "శని"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "జన",
+        "ఫిబ్ర",
+        "మార్చి",
+        "ఏప్రి",
+        "మే",
+        "జూన్",
+        "జులై",
+        "ఆగ",
+        "సెప్టెం",
+        "అక్టో",
+        "నవం",
+        "డిసెం",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "జన",
+        "ఫిబ్ర",
+        "మార్చి",
+        "ఏప్రి",
+        "మే",
+        "జూన్",
+        "జులై",
+        "ఆగ",
+        "సెప్టెం",
+        "అక్టో",
+        "నవం",
+        "డిసెం",
+        ""
+      ],
+      "amDesignator": "AM",
+      "dateSeparator": "-",
+      "dayNames": [
+        "ఆదివారం",
+        "సోమవారం",
+        "మంగళవారం",
+        "బుధవారం",
+        "గురువారం",
+        "శుక్రవారం",
+        "శనివారం"
+      ],
+      "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "d, MMMM yyyy, dddd h:mm:ss tt",
+      "longDatePattern": "d, MMMM yyyy, dddd",
+      "longTimePattern": "h:mm:ss tt",
+      "monthDayPattern": "d MMMM",
+      "monthGenitiveNames": [
+        "జనవరి",
+        "ఫిబ్రవరి",
+        "మార్చి",
+        "ఏప్రిల్",
+        "మే",
+        "జూన్",
+        "జులై",
+        "ఆగస్టు",
+        "సెప్టెంబర్",
+        "అక్టోబర్",
+        "నవంబర్",
+        "డిసెంబర్",
+        ""
+      ],
+      "monthNames": [
+        "జనవరి",
+        "ఫిబ్రవరి",
+        "మార్చి",
+        "ఏప్రిల్",
+        "మే",
+        "జూన్",
+        "జులై",
+        "ఆగస్టు",
+        "సెప్టెంబర్",
+        "అక్టోబర్",
+        "నవంబర్",
+        "డిసెంబర్",
+        ""
+      ],
+      "nativeCalendarName": "గ్రేగోరియన్ క్యాలెండర్",
+      "pmDesignator": "PM",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd-MM-yyyy",
+      "shortestDayNames": [
+        "ఆ",
+        "సో",
+        "మ",
+        "బు",
+        "గు",
+        "శు",
+        "శ"
+      ],
+      "shortTimePattern": "h:mm tt",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "క్రీశ"
+      ],
+      "abbreviatedEraNames": [
+        "క్రీశ"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd-MM-yyyy",
+          "d MMM, yyyy",
+          "d/M/yyyy",
+          "dd-MM-yy"
+        ],
+        "D": [
+          "d, MMMM yyyy, dddd",
+          "d MMMM, yyyy"
+        ],
+        "t": [
+          "h:mm tt"
+        ],
+        "T": [
+          "h:mm:ss tt"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "d MMMM"
+        ],
+        "M": [
+          "d MMMM"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {}
+    },
+    calendarFactories: [() => new GregorianCalendar(1)],
+    calendar: new GregorianCalendar(1)
 };
