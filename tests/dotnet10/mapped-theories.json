@@ -276,5 +276,6 @@
   "TimeSpanTests.NamedMultiplication": "time-span-arithmetic.test.mjs",
   "TimeSpanTests.NamedDivision": "time-span-arithmetic.test.mjs",
   "TimeSpanTests.TestTotalMicroseconds": "time-span-arithmetic.test.mjs",
-  "TimeSpanTests.TestTotalNanoseconds": "time-span-arithmetic.test.mjs"
+  "TimeSpanTests.TestTotalNanoseconds": "time-span-arithmetic.test.mjs",
+  "DateOnlyTests.ConstructorsTest": "date-only-constructors.test.mjs"
 }

@@ -811,5 +811,7 @@
   "TimeSpanTests.NamedNaNMultiplication": "time-span-arithmetic.test.mjs",
   "TimeSpanTests.NamedDivideByZero": "time-span-arithmetic.test.mjs",
   "TimeSpanTests.NamedNaNDivision": "time-span-arithmetic.test.mjs",
-  "TimeSpanTests.ConvertToTimeSpanPrecisionTest": "time-span-arithmetic.test.mjs"
+  "TimeSpanTests.ConvertToTimeSpanPrecisionTest": "time-span-arithmetic.test.mjs",
+  "DateOnlyTests.MinMaxValuesTest": "date-only-constructors.test.mjs",
+  "DateOnlyTests.ConstructorsNegativeCasesTest": "date-only-constructors.test.mjs"
 }

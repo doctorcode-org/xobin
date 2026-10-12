@@ -1,0 +1,739 @@
+{
+  "runtime": "10.0.7",
+  "sourceTag": "v10.0.7",
+  "rows": [
+    {
+      "source": "DateOnlyTests.MinMaxValuesTest",
+      "operation": "min",
+      "arguments": [],
+      "result": {
+        "dayNumber": 0,
+        "year": 1,
+        "month": 1,
+        "day": 1
+      },
+      "error": null
+    },
+    {
+      "source": "DateOnlyTests.MinMaxValuesTest",
+      "operation": "max",
+      "arguments": [],
+      "result": {
+        "dayNumber": 3652058,
+        "year": 9999,
+        "month": 12,
+        "day": 31
+      },
+      "error": null
+    },
+    {
+      "source": "DateOnlyTests.ConstructorsTest",
+      "operation": "ctor",
+      "arguments": [
+        1,
+        1,
+        1
+      ],
+      "result": {
+        "dayNumber": 0,
+        "year": 1,
+        "month": 1,
+        "day": 1
+      },
+      "error": null
+    },
+    {
+      "source": "DateOnlyTests.ConstructorsTest",
+      "operation": "ctor",
+      "arguments": [
+        9999,
+        12,
+        31
+      ],
+      "result": {
+        "dayNumber": 3652058,
+        "year": 9999,
+        "month": 12,
+        "day": 31
+      },
+      "error": null
+    },
+    {
+      "source": "DateOnlyTests.ConstructorsTest",
+      "operation": "ctor",
+      "arguments": [
+        2001,
+        4,
+        7
+      ],
+      "result": {
+        "dayNumber": 730581,
+        "year": 2001,
+        "month": 4,
+        "day": 7
+      },
+      "error": null
+    },
+    {
+      "source": "DateOnlyTests.ConstructorsTest",
+      "operation": "calendar",
+      "arguments": [
+        1,
+        1,
+        1,
+        "HijriCalendar"
+      ],
+      "result": {
+        "dayNumber": 227013,
+        "year": 622,
+        "month": 7,
+        "day": 18
+      },
+      "error": null
+    },
+    {
+      "source": "DateOnlyTests.ConstructorsTest",
+      "operation": "calendar",
+      "arguments": [
+        1,
+        1,
+        1,
+        "JapaneseCalendar"
+      ],
+      "result": {
+        "dayNumber": 737059,
+        "year": 2019,
+        "month": 1,
+        "day": 1
+      },
+      "error": null
+    },
+    {
+      "source": "DateOnlyTests.ConstructorsNegativeCasesTest",
+      "operation": "ctor",
+      "arguments": [
+        10000,
+        1,
+        1
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Year, Month, and Day parameters describe an un-representable DateTime.",
+      "paramName": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateOnlyTests.ConstructorsNegativeCasesTest",
+      "operation": "ctor",
+      "arguments": [
+        -2021,
+        1,
+        1
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Year, Month, and Day parameters describe an un-representable DateTime.",
+      "paramName": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateOnlyTests.ConstructorsNegativeCasesTest",
+      "operation": "ctor",
+      "arguments": [
+        2020,
+        13,
+        1
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Year, Month, and Day parameters describe an un-representable DateTime.",
+      "paramName": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateOnlyTests.ConstructorsNegativeCasesTest",
+      "operation": "ctor",
+      "arguments": [
+        2020,
+        -1,
+        1
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Year, Month, and Day parameters describe an un-representable DateTime.",
+      "paramName": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateOnlyTests.ConstructorsNegativeCasesTest",
+      "operation": "ctor",
+      "arguments": [
+        2020,
+        0,
+        1
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Year, Month, and Day parameters describe an un-representable DateTime.",
+      "paramName": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateOnlyTests.ConstructorsNegativeCasesTest",
+      "operation": "ctor",
+      "arguments": [
+        2020,
+        1,
+        0
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Year, Month, and Day parameters describe an un-representable DateTime.",
+      "paramName": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateOnlyTests.ConstructorsNegativeCasesTest",
+      "operation": "ctor",
+      "arguments": [
+        2020,
+        1,
+        32
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Year, Month, and Day parameters describe an un-representable DateTime.",
+      "paramName": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateOnlyTests.ConstructorsNegativeCasesTest",
+      "operation": "ctor",
+      "arguments": [
+        2020,
+        1,
+        -1
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Year, Month, and Day parameters describe an un-representable DateTime.",
+      "paramName": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateOnlyTests.ConstructorsNegativeCasesTest",
+      "operation": "ctor",
+      "arguments": [
+        2003,
+        2,
+        29
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Year, Month, and Day parameters describe an un-representable DateTime.",
+      "paramName": null,
+      "actualValue": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "default",
+      "arguments": [],
+      "result": {
+        "dayNumber": 0,
+        "year": 1,
+        "month": 1,
+        "day": 1
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        2020,
+        1,
+        1,
+        null
+      ],
+      "result": null,
+      "error": "ArgumentNullException",
+      "message": "Value cannot be null. (Parameter \u0027calendar\u0027)",
+      "paramName": "calendar",
+      "actualValue": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        1,
+        1,
+        1,
+        "GregorianCalendar"
+      ],
+      "result": {
+        "dayNumber": 0,
+        "year": 1,
+        "month": 1,
+        "day": 1
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        9999,
+        12,
+        31,
+        "GregorianCalendar"
+      ],
+      "result": {
+        "dayNumber": 3652058,
+        "year": 9999,
+        "month": 12,
+        "day": 31
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        1,
+        1,
+        1,
+        "PersianCalendar"
+      ],
+      "result": {
+        "dayNumber": 226895,
+        "year": 622,
+        "month": 3,
+        "day": 22
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        9378,
+        10,
+        13,
+        "PersianCalendar"
+      ],
+      "result": {
+        "dayNumber": 3652058,
+        "year": 9999,
+        "month": 12,
+        "day": 31
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        544,
+        1,
+        1,
+        "ThaiBuddhistCalendar"
+      ],
+      "result": {
+        "dayNumber": 0,
+        "year": 1,
+        "month": 1,
+        "day": 1
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        10542,
+        12,
+        31,
+        "ThaiBuddhistCalendar"
+      ],
+      "result": {
+        "dayNumber": 3652058,
+        "year": 9999,
+        "month": 12,
+        "day": 31
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        1318,
+        1,
+        1,
+        "UmAlQuraCalendar"
+      ],
+      "result": {
+        "dayNumber": 693714,
+        "year": 1900,
+        "month": 4,
+        "day": 30
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        1500,
+        12,
+        30,
+        "UmAlQuraCalendar"
+      ],
+      "result": {
+        "dayNumber": 758563,
+        "year": 2077,
+        "month": 11,
+        "day": 16
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        1,
+        9,
+        8,
+        "JapaneseCalendar"
+      ],
+      "result": {
+        "dayNumber": 737309,
+        "year": 2019,
+        "month": 9,
+        "day": 8
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        7981,
+        12,
+        31,
+        "JapaneseCalendar"
+      ],
+      "result": {
+        "dayNumber": 3652058,
+        "year": 9999,
+        "month": 12,
+        "day": 31
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        2334,
+        1,
+        1,
+        "KoreanCalendar"
+      ],
+      "result": {
+        "dayNumber": 0,
+        "year": 1,
+        "month": 1,
+        "day": 1
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        12332,
+        12,
+        31,
+        "KoreanCalendar"
+      ],
+      "result": {
+        "dayNumber": 3652058,
+        "year": 9999,
+        "month": 12,
+        "day": 31
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        1,
+        1,
+        1,
+        "TaiwanCalendar"
+      ],
+      "result": {
+        "dayNumber": 697977,
+        "year": 1912,
+        "month": 1,
+        "day": 1
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        8088,
+        12,
+        31,
+        "TaiwanCalendar"
+      ],
+      "result": {
+        "dayNumber": 3652058,
+        "year": 9999,
+        "month": 12,
+        "day": 31
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        1,
+        1,
+        1,
+        "HijriCalendar"
+      ],
+      "result": {
+        "dayNumber": 227013,
+        "year": 622,
+        "month": 7,
+        "day": 18
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        9666,
+        4,
+        3,
+        "HijriCalendar"
+      ],
+      "result": {
+        "dayNumber": 3652058,
+        "year": 9999,
+        "month": 12,
+        "day": 31
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        5343,
+        4,
+        7,
+        "HebrewCalendar"
+      ],
+      "result": {
+        "dayNumber": 577813,
+        "year": 1583,
+        "month": 1,
+        "day": 1
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        5999,
+        13,
+        29,
+        "HebrewCalendar"
+      ],
+      "result": {
+        "dayNumber": 817683,
+        "year": 2239,
+        "month": 9,
+        "day": 29
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        1,
+        1,
+        3,
+        "JulianCalendar"
+      ],
+      "result": {
+        "dayNumber": 0,
+        "year": 1,
+        "month": 1,
+        "day": 1
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        9999,
+        10,
+        19,
+        "JulianCalendar"
+      ],
+      "result": {
+        "dayNumber": 3652058,
+        "year": 9999,
+        "month": 12,
+        "day": 31
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        1901,
+        1,
+        1,
+        "ChineseLunisolarCalendar"
+      ],
+      "result": {
+        "dayNumber": 694009,
+        "year": 1901,
+        "month": 2,
+        "day": 19
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        2100,
+        12,
+        29,
+        "ChineseLunisolarCalendar"
+      ],
+      "result": {
+        "dayNumber": 767036,
+        "year": 2101,
+        "month": 1,
+        "day": 28
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        35,
+        1,
+        1,
+        "JapaneseLunisolarCalendar"
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between 1 and 31, inclusive. (Parameter \u0027year\u0027)\r\nActual value was 2053.",
+      "paramName": "year",
+      "actualValue": 2053
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        31,
+        12,
+        29,
+        "JapaneseLunisolarCalendar"
+      ],
+      "result": {
+        "dayNumber": 748403,
+        "year": 2050,
+        "month": 1,
+        "day": 22
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        918,
+        1,
+        1,
+        "KoreanLunisolarCalendar"
+      ],
+      "result": {
+        "dayNumber": 334976,
+        "year": 918,
+        "month": 2,
+        "day": 19
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        2050,
+        13,
+        29,
+        "KoreanLunisolarCalendar"
+      ],
+      "result": {
+        "dayNumber": 748787,
+        "year": 2051,
+        "month": 2,
+        "day": 10
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        1,
+        1,
+        1,
+        "TaiwanLunisolarCalendar"
+      ],
+      "result": {
+        "dayNumber": 698025,
+        "year": 1912,
+        "month": 2,
+        "day": 18
+      },
+      "error": null
+    },
+    {
+      "source": "Supplemental.DateOnly.Constructors",
+      "operation": "calendar",
+      "arguments": [
+        139,
+        13,
+        29,
+        "TaiwanLunisolarCalendar"
+      ],
+      "result": {
+        "dayNumber": 748787,
+        "year": 2051,
+        "month": 2,
+        "day": 10
+      },
+      "error": null
+    }
+  ]
+}

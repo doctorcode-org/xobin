@@ -6,13 +6,34 @@ import { DayOfWeek } from './day_of_week';
 import { TimeOnly } from './time_only';
 import { TicksPerDay, DaysTo10000 } from './var';
 
-/** A Gregorian date with no time of day or time-zone Kind. */
+/**
+ * Represents a date from January 1, 0001 through December 31, 9999.
+ */
 export class DateOnly implements IComparable<DateOnly>, IEquatable<DateOnly> {
     private readonly _dayNumber: number;
 
+    /**
+     * Creates the earliest representable date.
+     */
     constructor();
+
+    /**
+     * Creates a date using the Gregorian calendar.
+     * @param year The year, from 1 through 9999.
+     * @param month The month, from 1 through 12.
+     * @param day The day of the month.
+     */
     constructor(year: number, month: number, day: number);
+
+    /**
+     * Creates a date using the specified calendar.
+     * @param year The year in the specified calendar.
+     * @param month The month in the specified calendar.
+     * @param day The day of the month.
+     * @param calendar The calendar used to interpret the date.
+     */
     constructor(year: number, month: number, day: number, calendar: Calendar);
+
     constructor(year = 1, month = 1, day = 1, calendar?: Calendar) {
         const date = arguments.length === 4 ? new DateTime(year, month, day, calendar!) : new DateTime(year, month, day);
         this._dayNumber = Number(date.ticks / TicksPerDay);
@@ -26,8 +47,19 @@ export class DateOnly implements IComparable<DateOnly>, IEquatable<DateOnly> {
     get dayOfWeek(): DayOfWeek { return this.equivalentDateTime.dayOfWeek; }
     private get equivalentDateTime(): DateTime { return new DateTime(BigInt(this._dayNumber) * TicksPerDay); }
 
-    static get minValue(): DateOnly { return getOrCreateValue(this, 'minValue', () => new DateOnly()); }
-    static get maxValue(): DateOnly { return getOrCreateValue(this, 'maxValue', () => new DateOnly(9999, 12, 31)); }
+    /**
+     * Gets the earliest representable date.
+     */
+    static get minValue(): DateOnly {
+        return getOrCreateValue(this, 'minValue', () => new DateOnly());
+    }
+
+    /**
+     * Gets the latest representable date.
+     */
+    static get maxValue(): DateOnly {
+        return getOrCreateValue(this, 'maxValue', () => new DateOnly(9999, 12, 31));
+    }
 
     static fromDayNumber(dayNumber: number): DateOnly {
         if (!Number.isInteger(dayNumber) || dayNumber < 0 || dayNumber >= DaysTo10000) {
