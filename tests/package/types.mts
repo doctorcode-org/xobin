@@ -60,3 +60,11 @@ export { dateOnly, timeOnly, combined, dateAndTime, dateParts, code, converted }
 
 // @ts-expect-error Gregorian locale metadata is not part of the CLR CultureInfo API.
 CultureInfo.invariantCulture.gregorianDateTimeFormat;
+
+import { ISOWeek as DirectISOWeek } from '@xobin/globalization/iso-week';
+const isoWeek: number = DirectISOWeek.getWeekOfYear(new DateTime(2021, 1, 1));
+const isoYear: number = DirectISOWeek.getYear(new DateOnly(2021, 1, 1));
+const isoStart: DateTime = DirectISOWeek.getYearStart(2020);
+void [isoWeek, isoYear, isoStart];
+// @ts-expect-error ISOWeek is a static type in the reference API
+new DirectISOWeek();

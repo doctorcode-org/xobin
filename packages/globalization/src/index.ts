@@ -32,3 +32,5 @@ export { ChineseLunisolarCalendar } from './lib/chinese_lunisolar_calendar';
 export { JapaneseLunisolarCalendar } from './lib/japanese_lunisolar_calendar';
 export { KoreanLunisolarCalendar } from './lib/korean_lunisolar_calendar';
 export { TaiwanLunisolarCalendar } from './lib/taiwan_lunisolar_calendar';
+
+export { ISOWeek } from './lib/iso_week';

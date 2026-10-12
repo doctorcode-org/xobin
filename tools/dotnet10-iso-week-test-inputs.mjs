@@ -1,0 +1,15 @@
+import { execFileSync } from 'node:child_process';
+import { readFileSync, writeFileSync } from 'node:fs';
+const runtime = process.argv[2], mode = process.argv[3] ?? '--check';
+if (!runtime || !['--write', '--check'].includes(mode)) throw new Error('Pass runtime path and --write or --check.');
+const git = (...args) => execFileSync('git', ['-C', runtime, ...args], { encoding: 'utf8' }).replaceAll('\r\n', '\n');
+const tag = 'v10.0.7';
+if (git('rev-parse', tag + '^{commit}').trim() !== '7706f546bac1a99b3d891afe3591dc88c67f0cc4') throw new Error('Reference commit changed.');
+const source = git('show', tag + ':src/libraries/System.Runtime/tests/System.Globalization.Calendars.Tests/ISOWeek/ISOWeekTests.cs');
+const providers = source.slice(source.indexOf('        private static readonly HashSet'), source.indexOf('        [Theory'));
+const structures = source.slice(source.indexOf('        private struct DateData'), source.lastIndexOf('\n    }'));
+const cycle = source.slice(source.indexOf('            for (int year = 0; year <= 400; year++)'), source.indexOf('        [Theory]', source.indexOf('public static void GetWeeksInYear()'))).trim().replace('Assert.Equal(expected, ISOWeek.GetWeeksInYear(2000 + year));', 'yield return new object[] { 2000 + year, expected };');
+const output = '// Derived from the official .NET 10.0.7 ISOWeek test input providers.\n// Licensed to the .NET Foundation under the MIT license.\nusing System.Globalization;\ninternal static class ISOWeekReferenceInputs {\n' + providers + 'public static IEnumerable<object[]> WeeksInYear_TestData() {\n' + cycle + '\n' + structures + '\n}\n';
+const path = 'tools/dotnet10-calendar-oracle/ISOWeekReferenceInputs.g.cs';
+if (mode === '--write') writeFileSync(path, output);
+else if (readFileSync(path, 'utf8') !== output) throw new Error('Generated ISOWeek provider differs.');

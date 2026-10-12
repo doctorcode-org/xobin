@@ -176,3 +176,9 @@ Shared CalendarsTests providers exercise all fourteen calendars, including the f
 EastAsianLunisolarCalendar and its Chinese, Japanese, Korean and Taiwan implementations preserve the intrinsic year tables from the pinned .NET source. Each implementation has a root export and an independent ESM entry point. Browser bundle tests inspect built-package source maps to verify that only the selected year table is retained; the abstract base retains none. Culture loading remains unchanged.
 
 The supplemental lunisolar oracle compares every supported Gregorian day, including date parts, era, sexagenary cycle, celestial stem, terrestrial branch and conversion back to DateTime. Per-year SHA-256 digests keep these fixtures compact. Additional rows verify arithmetic, invalid inputs, exact exceptions and default two-digit-year settings. Japanese era-transition edge cases and reference millisecond truncation in AddMonths/AddYears are preserved. Supplemental cases are not counted as official test mappings. Parsing remains deferred.
+
+### ISOWeek coverage
+
+ISO-01 implements the .NET-shaped static ISOWeek API for GetWeekOfYear and GetYear with both DateTime and DateOnly inputs, plus GetWeeksInYear, GetYearStart and GetYearEnd. Nine of the fourteen official ISOWeek test methods are mapped. Six dynamic input providers are extracted from the pinned source and their 98 rows are validated against the actual .NET 10.0.7 runtime. The official 401-year week-count fact, invalid-year cases and the year-9999 end-date exception also run against the reference fixture.
+
+Supplemental digest checks cover every supported ISO year (1–9999) and every Gregorian day of a complete 400-year cycle (146,097 days). The independent ESM entry is @xobin/globalization/iso-week. Browser tests for both root and subpath imports verify that unrelated calendar and culture data are eliminated. ToDateTime, ToDateOnly and their validation tests remain in ISO-02; parsing remains deferred.

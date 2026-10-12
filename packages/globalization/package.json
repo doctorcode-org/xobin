@@ -152,6 +152,11 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/taiwan_lunisolar_calendar.mjs",
       "require": "./dist/index.js"
+    },
+    "./iso-week": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/iso_week.mjs",
+      "require": "./dist/index.js"
     }
   },
   "sideEffects": false,

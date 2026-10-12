@@ -5,6 +5,13 @@ if (Environment.Version.ToString() != "10.0.7")
     throw new InvalidOperationException($"Expected .NET 10.0.7, got {Environment.Version}.");
 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
+if (args.Length >= 2 && args[0] == "--iso-week") {
+    string output = ISOWeekOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("ISOWeek fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
 if (args.Length >= 2 && args[0] == "--lunisolar") {
     string output = LunisolarOracle.Generate();
     if (args.Length == 3 && args[2] == "--check") {

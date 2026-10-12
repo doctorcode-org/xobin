@@ -783,5 +783,7 @@
   "CalendarsTests.ChineseLunisolarTest": "calendar-remaining.test.mjs",
   "CalendarsTests.KoreanLunisolarTest": "calendar-remaining.test.mjs",
   "CalendarsTests.TaiwanLunisolarTest": "calendar-remaining.test.mjs",
-  "CalendarsTests.CalendarErasTest": "calendar-remaining.test.mjs"
+  "CalendarsTests.CalendarErasTest": "calendar-remaining.test.mjs",
+  "ISOWeekTests.GetWeeksInYear": "iso-week.test.mjs",
+  "ISOWeekTests.GetYearEnd_ForYear9999_Throws": "iso-week.test.mjs"
 }

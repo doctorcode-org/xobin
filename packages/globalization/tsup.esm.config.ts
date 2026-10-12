@@ -9,6 +9,7 @@ export default defineConfig({
     date_time_format_info: 'src/date_time_format_info.ts',
     'internal/date_time_styles_validation': 'src/lib/date_time_styles_validation.ts',
     date_only: 'src/lib/date_only.ts',
+    iso_week: 'src/lib/iso_week.ts',
     time_only: 'src/lib/time_only.ts',
     korean_calendar: 'src/lib/korean_calendar.ts',
     taiwan_calendar: 'src/lib/taiwan_calendar.ts',

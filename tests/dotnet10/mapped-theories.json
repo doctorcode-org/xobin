@@ -221,5 +221,12 @@
   "CalendarsTests.CloningTest": "calendar-remaining.test.mjs",
   "CalendarsTests.GetLeapMonthTest": "calendar-remaining.test.mjs",
   "CalendarsTests.ReadOnlyTest": "calendar-remaining.test.mjs",
-  "CalendarsTests.AlgorithmTypeTest": "calendar-remaining.test.mjs"
+  "CalendarsTests.AlgorithmTypeTest": "calendar-remaining.test.mjs",
+  "ISOWeekTests.GetWeekOfYear": "iso-week.test.mjs",
+  "ISOWeekTests.GetWeekOfYearUsingDateOnly": "iso-week.test.mjs",
+  "ISOWeekTests.GetYear": "iso-week.test.mjs",
+  "ISOWeekTests.GetYearUsingDateOnly": "iso-week.test.mjs",
+  "ISOWeekTests.GetYearStart": "iso-week.test.mjs",
+  "ISOWeekTests.GetYearEnd": "iso-week.test.mjs",
+  "ISOWeekTests.GetWeeksInYear_WithInvalidYear_Throws": "iso-week.test.mjs"
 }

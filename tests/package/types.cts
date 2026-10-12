@@ -57,3 +57,7 @@ const dateParts: [number, number, number] = combined.deconstruct('date');
 const code: TypeCode = combined.getTypeCode();
 const converted: DateTime = combined.toType(DateTime);
 export { dateOnly, timeOnly, combined, dateAndTime, dateParts, code, converted };
+
+import { ISOWeek as DirectISOWeek } from '@xobin/globalization/iso-week';
+const isoWeeks: number = DirectISOWeek.getWeeksInYear(2020);
+void isoWeeks;

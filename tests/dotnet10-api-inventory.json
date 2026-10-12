@@ -10,12 +10,12 @@
   "summary": {
     "types": 29,
     "members": 807,
-    "present": 592,
+    "present": 599,
     "incomplete": 18,
-    "missing": 197,
-    "missingTypes": 1,
-    "missingRootExports": 1,
-    "missingSubpathExports": 6
+    "missing": 190,
+    "missingTypes": 0,
+    "missingRootExports": 0,
+    "missingSubpathExports": 5
   },
   "types": [
     {
@@ -12096,21 +12096,23 @@
       "local": {
         "file": "src/lib/iso_week.ts",
         "symbol": "ISOWeek",
-        "declarationKind": null,
+        "declarationKind": "class",
         "typeShape": {
-          "status": "missing",
-          "reason": "local type is missing"
+          "status": "present",
+          "reason": "a matching local declaration exists"
         },
-        "rootExported": false,
+        "rootExported": true,
         "expectedSubpath": "./iso-week",
-        "subpathExported": false
+        "subpathExported": true
       },
       "counts": {
-        "present": 0,
+        "present": 7,
         "incomplete": 0,
-        "missing": 9
+        "missing": 2
       },
-      "extraLocalMembers": [],
+      "extraLocalMembers": [
+        "constructor"
+      ],
       "members": [
         {
           "id": "System.Globalization.ISOWeek::method:GetWeekOfYear:static:value:DateOnly",
@@ -12130,10 +12132,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getWeekOfYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "ISO-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -12155,10 +12157,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getWeekOfYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "ISO-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -12180,10 +12182,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getWeeksInYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "ISO-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -12205,10 +12207,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "ISO-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -12230,10 +12232,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "ISO-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -12255,10 +12257,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getYearEnd",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "ISO-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -12280,10 +12282,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getYearStart",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "ISO-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -12317,10 +12319,10 @@
               }
             ]
           },
-          "jsMember": null,
+          "jsMember": "toDateOnly",
           "status": "missing",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "member is missing",
           "roadmapTask": "ISO-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -12354,10 +12356,10 @@
               }
             ]
           },
-          "jsMember": null,
+          "jsMember": "toDateTime",
           "status": "missing",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "member is missing",
           "roadmapTask": "ISO-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         }
