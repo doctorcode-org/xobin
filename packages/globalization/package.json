@@ -122,6 +122,36 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/hebrew_calendar.mjs",
       "require": "./dist/index.js"
+    },
+    "./julian-calendar": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/julian_calendar.mjs",
+      "require": "./dist/index.js"
+    },
+    "./east-asian-lunisolar-calendar": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/east_asian_lunisolar_calendar.mjs",
+      "require": "./dist/index.js"
+    },
+    "./chinese-lunisolar-calendar": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/chinese_lunisolar_calendar.mjs",
+      "require": "./dist/index.js"
+    },
+    "./japanese-lunisolar-calendar": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/japanese_lunisolar_calendar.mjs",
+      "require": "./dist/index.js"
+    },
+    "./korean-lunisolar-calendar": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/korean_lunisolar_calendar.mjs",
+      "require": "./dist/index.js"
+    },
+    "./taiwan-lunisolar-calendar": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/taiwan_lunisolar_calendar.mjs",
+      "require": "./dist/index.js"
     }
   },
   "sideEffects": false,

@@ -18,6 +18,15 @@ internal static class CalendarConversionOracle
             ("PersianCalendarTests", () => new PersianCalendar()),
             ("ThaiBuddhistCalendarTests", () => new ThaiBuddhistCalendar()),
             ("KoreanCalendarTests", () => new KoreanCalendar()),
+            ("TaiwanCalendarTests", () => new TaiwanCalendar()),
+            ("JapaneseCalendarTests", () => new JapaneseCalendar()),
+            ("JulianCalendarTests", () => new JulianCalendar()),
+            ("HijriCalendarTests", () => new HijriCalendar()),
+            ("HebrewCalendarTests", () => new HebrewCalendar()),
+            ("ChineseLunisolarCalendarTests", () => new ChineseLunisolarCalendar()),
+            ("JapaneseLunisolarTests", () => new JapaneseLunisolarCalendar()),
+            ("KoreanLunisolarCalendarTests", () => new KoreanLunisolarCalendar()),
+            ("TaiwanLunisolarTests", () => new TaiwanLunisolarCalendar()),
             ("UmAlQuraCalendarTests", () => new UmAlQuraCalendar()),
         };
 
@@ -43,8 +52,7 @@ internal static class CalendarConversionOracle
         foreach (var (name, make) in calendars)
         {
             Calendar calendar = make();
-            if (calendar.Eras.Length != 1)
-                throw new InvalidOperationException("This oracle requires a single-era calendar.");
+
             int era = calendar.Eras[0];
             int maxYear = calendar.GetYear(calendar.MaxSupportedDateTime);
             int minYear = calendar.GetYear(calendar.MinSupportedDateTime);
@@ -55,36 +63,45 @@ internal static class CalendarConversionOracle
                     [y, mo, d, h, mi, s, ms, e],
                     c => c.ToDateTime(y, mo, d, h, mi, s, ms, e), make);
 
-            // CalendarTestBase.ToDateTime_Invalid_ThrowsArgumentOutOfRangeException.
-            Date(-1, 1, 1, 1, 1, 1, 1, era);
-            Date(0, 1, 1, 1, 1, 1, 1, era);
-            Date(maxYear + 1, 1, 1, 1, 1, 1, 1, era);
-            Date(year, -1, 1, 1, 1, 1, 1, era);
-            Date(year, 0, 1, 1, 1, 1, 1, era);
-            Date(year, calendar.GetMonthsInYear(year, era) + 1, 1, 1, 1, 1, 1, era);
-            Date(year, 1, -1, 1, 1, 1, 1, era);
-            Date(year, 1, 0, 1, 1, 1, 1, era);
-            Date(year, 1, calendar.GetDaysInMonth(year, 1, era) + 1, 1, 1, 1, 1, era);
-            Date(year, 1, 1, -1, 1, 1, 1, era);
-            Date(year, 1, 1, 60, 1, 1, 1, era);
-            Date(year, 1, 1, 1, -1, 1, 1, era);
-            Date(year, 1, 1, 1, 60, 1, 1, era);
-            Date(year, 1, 1, 1, 1, -1, 1, era);
-            Date(year, 1, 1, 1, 1, 60, 1, era);
-            Date(year, 1, 1, 1, 1, 1, -1, era);
-            Date(year, 1, 1, 1, 1, 1, 1000, era);
-            Date(minYear - 1, 1, 1, 1, 1, 1, 1, era);
-            Date(maxYear, 1, 1, 1, 1, 1, 1, era - 2);
+            foreach (int currentEra in calendar.Eras)
+            {
+                era = currentEra;
+                year = CalendarReferenceInputs.MaxCalendarYearInEra(calendar, era) - 2;
+                // CalendarTestBase.ToDateTime_Invalid_ThrowsArgumentOutOfRangeException.
+                Date(-1, 1, 1, 1, 1, 1, 1, era);
+                Date(0, 1, 1, 1, 1, 1, 1, era);
+                Date(CalendarReferenceInputs.MaxCalendarYearInEras(calendar, era) + 1, 1, 1, 1, 1, 1, 1, era);
+                Date(year, -1, 1, 1, 1, 1, 1, era);
+                Date(year, 0, 1, 1, 1, 1, 1, era);
+                Date(year, calendar.GetMonthsInYear(year, era) + 1, 1, 1, 1, 1, 1, era);
+                Date(year, 1, -1, 1, 1, 1, 1, era);
+                Date(year, 1, 0, 1, 1, 1, 1, era);
+                Date(year, 1, calendar.GetDaysInMonth(year, 1, era) + 1, 1, 1, 1, 1, era);
+                Date(year, 1, 1, -1, 1, 1, 1, era);
+                Date(year, 1, 1, 60, 1, 1, 1, era);
+                Date(year, 1, 1, 1, -1, 1, 1, era);
+                Date(year, 1, 1, 1, 60, 1, 1, era);
+                Date(year, 1, 1, 1, 1, -1, 1, era);
+                Date(year, 1, 1, 1, 1, 60, 1, era);
+                Date(year, 1, 1, 1, 1, 1, -1, era);
+                Date(year, 1, 1, 1, 1, 1, 1000, era);
+            }
+            era = calendar.Eras[0];
+            int minEra = CalendarReferenceInputs.MinEra(calendar);
+            minYear = CalendarReferenceInputs.MinCalendarYearInEra(calendar, minEra);
+            Date(minYear - 1, 1, 1, 1, 1, 1, 1, minEra);
+            Date(maxYear, 1, 1, 1, 1, 1, 1, minEra - 2);
             Date(maxYear, 1, 1, 1, 1, 1, 1, era + 1);
-            Date(minYear - 1, calendar.MinSupportedDateTime.Month, calendar.MinSupportedDateTime.Day,
+            var minDate = CalendarReferenceInputs.GetCalendarMinSupportedDateTime(calendar);
+            Date(minYear - 1, minDate.Month, minDate.Day,
                 calendar.MinSupportedDateTime.Hour, calendar.MinSupportedDateTime.Minute,
-                calendar.MinSupportedDateTime.Second, calendar.MinSupportedDateTime.Millisecond, era);
+                calendar.MinSupportedDateTime.Second, calendar.MinSupportedDateTime.Millisecond, minEra);
             Date(maxYear + 1, calendar.MaxSupportedDateTime.Month, calendar.MaxSupportedDateTime.Day,
                 calendar.MaxSupportedDateTime.Hour, calendar.MaxSupportedDateTime.Minute,
                 calendar.MaxSupportedDateTime.Second, calendar.MaxSupportedDateTime.Millisecond, era);
 
             // CalendarTestBase.ToFourDigitYear_Invalid_ThrowsArgumentOutOfRangeException.
-            foreach (int value in new[] { -1, maxYear + 1, minYear - 2 })
+            foreach (int value in calendar is JapaneseLunisolarCalendar ? new[] { -1, maxYear + 1 } : new[] { -1, maxYear + 1, minYear - 2 })
                 Capture(name, "ToFourDigitYear_Invalid_ThrowsArgumentOutOfRangeException", [value],
                     c => c.ToFourDigitYear(value), make, "year");
 

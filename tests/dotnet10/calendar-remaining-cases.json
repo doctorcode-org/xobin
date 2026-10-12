@@ -1,0 +1,1918 @@
+{
+  "runtime": "10.0.7",
+  "sourceTag": "v10.0.7",
+  "hijriAdjustment": 0,
+  "japaneseEraData": [
+    {
+      "era": 5,
+      "ticks": "636922656000000000",
+      "yearOffset": 2018,
+      "minEraYear": 1,
+      "maxEraYear": 7981
+    },
+    {
+      "era": 4,
+      "ticks": "627358176000000000",
+      "yearOffset": 1988,
+      "minEraYear": 1,
+      "maxEraYear": 31
+    },
+    {
+      "era": 3,
+      "ticks": "607779936000000000",
+      "yearOffset": 1925,
+      "minEraYear": 1,
+      "maxEraYear": 64
+    },
+    {
+      "era": 2,
+      "ticks": "603234432000000000",
+      "yearOffset": 1911,
+      "minEraYear": 1,
+      "maxEraYear": 15
+    },
+    {
+      "era": 1,
+      "ticks": "589384512000000000",
+      "yearOffset": 1867,
+      "minEraYear": 1,
+      "maxEraYear": 45
+    }
+  ],
+  "rows": [
+    {
+      "source": "JapaneseCalendarAddMonths.AddMonths",
+      "calendar": "JapaneseCalendar",
+      "operation": "addMonths",
+      "arguments": [
+        "633002688000000000",
+        1,
+        "633028608000000000"
+      ],
+      "result": "633028608000000000",
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarAddMonths.AddMonths",
+      "calendar": "JapaneseCalendar",
+      "operation": "addMonths",
+      "arguments": [
+        "633002688000000000",
+        -1,
+        "632975904000000000"
+      ],
+      "result": "632975904000000000",
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarAddMonths.AddMonths",
+      "calendar": "JapaneseCalendar",
+      "operation": "addMonths",
+      "arguments": [
+        "633002688000000000",
+        0,
+        "633002688000000000"
+      ],
+      "result": "633002688000000000",
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarAddMonths.AddMonths",
+      "calendar": "JapaneseCalendar",
+      "operation": "addMonths",
+      "arguments": [
+        "633002688000000000",
+        1000,
+        "659299392000000000"
+      ],
+      "result": "659299392000000000",
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarAddMonths.AddMonths",
+      "calendar": "JapaneseCalendar",
+      "operation": "addMonths",
+      "arguments": [
+        "633005280000000000",
+        1,
+        "633032064000000000"
+      ],
+      "result": "633032064000000000",
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarAddMonths.AddMonths",
+      "calendar": "JapaneseCalendar",
+      "operation": "addMonths",
+      "arguments": [
+        "633032064000000000",
+        -1,
+        "633005280000000000"
+      ],
+      "result": "633005280000000000",
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarAddMonths.AddMonths",
+      "calendar": "JapaneseCalendar",
+      "operation": "addMonths",
+      "arguments": [
+        "589384512000000000",
+        1,
+        "589410432000000000"
+      ],
+      "result": "589410432000000000",
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarAddMonths.AddMonths",
+      "calendar": "JapaneseCalendar",
+      "operation": "addMonths",
+      "arguments": [
+        "589410432000000000",
+        -1,
+        "589384512000000000"
+      ],
+      "result": "589384512000000000",
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarAddMonths.AddMonths",
+      "calendar": "JapaneseCalendar",
+      "operation": "addMonths",
+      "arguments": [
+        "3155351328000000000",
+        1,
+        "3155377248000000000"
+      ],
+      "result": "3155377248000000000",
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarAddMonths.AddMonths",
+      "calendar": "JapaneseCalendar",
+      "operation": "addMonths",
+      "arguments": [
+        "3155377248000000000",
+        -1,
+        "3155351328000000000"
+      ],
+      "result": "3155351328000000000",
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarAddMonths.AddMonths",
+      "calendar": "JapaneseCalendar",
+      "operation": "addMonths",
+      "arguments": [
+        "3155378975999999999",
+        0,
+        "3155378975999999999"
+      ],
+      "result": "3155378975999999999",
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarAddMonths.AddMonths",
+      "calendar": "JapaneseCalendar",
+      "operation": "addMonths",
+      "arguments": [
+        "589384512000000000",
+        0,
+        "589384512000000000"
+      ],
+      "result": "589384512000000000",
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarAddMonths.AddMonths",
+      "calendar": "JapaneseCalendar",
+      "operation": "addMonths",
+      "arguments": [
+        "632978496000000000",
+        1,
+        "633004416000000000"
+      ],
+      "result": "633004416000000000",
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarAddMonths.AddMonths",
+      "calendar": "JapaneseCalendar",
+      "operation": "addMonths",
+      "arguments": [
+        "633031200000000000",
+        -1,
+        "633004416000000000"
+      ],
+      "result": "633004416000000000",
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarToFourDigitYear.ToFourDigitYear",
+      "calendar": "JapaneseCalendar",
+      "operation": "toFourDigitYear",
+      "arguments": [
+        1
+      ],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarToFourDigitYear.ToFourDigitYear",
+      "calendar": "JapaneseCalendar",
+      "operation": "toFourDigitYear",
+      "arguments": [
+        99
+      ],
+      "result": 99,
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarToFourDigitYear.ToFourDigitYear",
+      "calendar": "JapaneseCalendar",
+      "operation": "toFourDigitYear",
+      "arguments": [
+        2016
+      ],
+      "result": 2016,
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarTwoDigitYearMax.TwoDigitYearMax_Set",
+      "calendar": "JapaneseCalendar",
+      "operation": "setTwoDigitYearMax",
+      "arguments": [
+        200
+      ],
+      "result": 200,
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarTwoDigitYearMax.TwoDigitYearMax_Set",
+      "calendar": "JapaneseCalendar",
+      "operation": "setTwoDigitYearMax",
+      "arguments": [
+        99
+      ],
+      "result": 99,
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarTwoDigitYearMax.TwoDigitYearMax_Get",
+      "calendar": "JapaneseCalendar",
+      "operation": "twoDigitYearMax",
+      "arguments": [],
+      "result": 99,
+      "error": null
+    },
+    {
+      "source": "JapaneseCalendarTests.Eras_Get_ReturnsAtLeastFour",
+      "calendar": "JapaneseCalendar",
+      "operation": "eras",
+      "arguments": [],
+      "result": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "JapaneseLunisolarTests.Eras_Get_ReturnsAtLeastTwo",
+      "calendar": "JapaneseLunisolarCalendar",
+      "operation": "eras",
+      "arguments": [],
+      "result": [
+        5,
+        4,
+        3
+      ],
+      "error": null
+    },
+    {
+      "source": "ChineseLunisolarCalendarTests.OffByOneDay",
+      "calendar": "ChineseLunisolarCalendar",
+      "operation": "getDaysInMonth",
+      "arguments": [
+        2057,
+        8
+      ],
+      "result": 30,
+      "error": null
+    },
+    {
+      "source": "ChineseLunisolarCalendarTests.OffByOneDay",
+      "calendar": "ChineseLunisolarCalendar",
+      "operation": "getDaysInMonth",
+      "arguments": [
+        2057,
+        9
+      ],
+      "result": 29,
+      "error": null
+    },
+    {
+      "source": "ChineseLunisolarCalendarTests.OffByOneDay",
+      "calendar": "ChineseLunisolarCalendar",
+      "operation": "getDaysInMonth",
+      "arguments": [
+        2089,
+        7
+      ],
+      "result": 29,
+      "error": null
+    },
+    {
+      "source": "ChineseLunisolarCalendarTests.OffByOneDay",
+      "calendar": "ChineseLunisolarCalendar",
+      "operation": "getDaysInMonth",
+      "arguments": [
+        2089,
+        8
+      ],
+      "result": 30,
+      "error": null
+    },
+    {
+      "source": "ChineseLunisolarCalendarTests.OffByOneDay",
+      "calendar": "ChineseLunisolarCalendar",
+      "operation": "getDaysInMonth",
+      "arguments": [
+        2097,
+        6
+      ],
+      "result": 29,
+      "error": null
+    },
+    {
+      "source": "ChineseLunisolarCalendarTests.OffByOneDay",
+      "calendar": "ChineseLunisolarCalendar",
+      "operation": "getDaysInMonth",
+      "arguments": [
+        2097,
+        7
+      ],
+      "result": 30,
+      "error": null
+    },
+    {
+      "source": "ChineseLunisolarCalendarTests.OffByOneDay",
+      "calendar": "ChineseLunisolarCalendar",
+      "operation": "dateOnly",
+      "arguments": [
+        2057,
+        9,
+        1
+      ],
+      "result": 751210,
+      "error": null
+    },
+    {
+      "source": "ChineseLunisolarCalendarTests.OffByOneDay",
+      "calendar": "ChineseLunisolarCalendar",
+      "operation": "dateOnly",
+      "arguments": [
+        2089,
+        8,
+        1
+      ],
+      "result": 762873,
+      "error": null
+    },
+    {
+      "source": "ChineseLunisolarCalendarTests.OffByOneDay",
+      "calendar": "ChineseLunisolarCalendar",
+      "operation": "dateOnly",
+      "arguments": [
+        2097,
+        7,
+        1
+      ],
+      "result": 765767,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.ChineseLunisolarTest",
+      "calendar": "ChineseLunisolarCalendar",
+      "operation": "eraCount",
+      "arguments": [],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.KoreanLunisolarTest",
+      "calendar": "KoreanLunisolarCalendar",
+      "operation": "eraCount",
+      "arguments": [],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.TaiwanLunisolarTest",
+      "calendar": "TaiwanLunisolarCalendar",
+      "operation": "eraCount",
+      "arguments": [],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTests.Ctor_InvalidType_ThrowsArgumentOutOfRangeException",
+      "calendar": "GregorianCalendar",
+      "operation": "ctor",
+      "arguments": [
+        0
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between Localized and TransliteratedFrench, inclusive. (Parameter \u0027type\u0027)\r\nActual value was 0.",
+      "paramName": "type",
+      "actualValue": 0
+    },
+    {
+      "source": "GregorianCalendarTests.Ctor_InvalidType_ThrowsArgumentOutOfRangeException",
+      "calendar": "GregorianCalendar",
+      "operation": "ctor",
+      "arguments": [
+        13
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between Localized and TransliteratedFrench, inclusive. (Parameter \u0027type\u0027)\r\nActual value was 13.",
+      "paramName": "type",
+      "actualValue": 13
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Get_ReturnsExpected@GregorianCalendarDefaultTests",
+      "calendar": "GregorianCalendar",
+      "operation": "calendarType",
+      "arguments": [
+        1
+      ],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        1,
+        10
+      ],
+      "result": 10,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        1,
+        1
+      ],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        1,
+        9
+      ],
+      "result": 9,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        1,
+        11
+      ],
+      "result": 11,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        1,
+        12
+      ],
+      "result": 12,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        1,
+        2
+      ],
+      "result": 2,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_SetInvalidValue_ThrowsArgumentOutOfRangeException",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        1,
+        0
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between Localized and TransliteratedFrench, inclusive. (Parameter \u0027value\u0027)\r\nActual value was 0.",
+      "paramName": "value",
+      "actualValue": 0
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_SetInvalidValue_ThrowsArgumentOutOfRangeException",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        1,
+        13
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between Localized and TransliteratedFrench, inclusive. (Parameter \u0027value\u0027)\r\nActual value was 13.",
+      "paramName": "value",
+      "actualValue": 13
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Get_ReturnsExpected@GregorianCalendarArabicTests",
+      "calendar": "GregorianCalendar",
+      "operation": "calendarType",
+      "arguments": [
+        10
+      ],
+      "result": 10,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        10,
+        10
+      ],
+      "result": 10,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        10,
+        1
+      ],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        10,
+        9
+      ],
+      "result": 9,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        10,
+        11
+      ],
+      "result": 11,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        10,
+        12
+      ],
+      "result": 12,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        10,
+        2
+      ],
+      "result": 2,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_SetInvalidValue_ThrowsArgumentOutOfRangeException",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        10,
+        0
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between Localized and TransliteratedFrench, inclusive. (Parameter \u0027value\u0027)\r\nActual value was 0.",
+      "paramName": "value",
+      "actualValue": 0
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_SetInvalidValue_ThrowsArgumentOutOfRangeException",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        10,
+        13
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between Localized and TransliteratedFrench, inclusive. (Parameter \u0027value\u0027)\r\nActual value was 13.",
+      "paramName": "value",
+      "actualValue": 13
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Get_ReturnsExpected@GregorianCalendarLocalizedTests",
+      "calendar": "GregorianCalendar",
+      "operation": "calendarType",
+      "arguments": [
+        1
+      ],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        1,
+        10
+      ],
+      "result": 10,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        1,
+        1
+      ],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        1,
+        9
+      ],
+      "result": 9,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        1,
+        11
+      ],
+      "result": 11,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        1,
+        12
+      ],
+      "result": 12,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        1,
+        2
+      ],
+      "result": 2,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_SetInvalidValue_ThrowsArgumentOutOfRangeException",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        1,
+        0
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between Localized and TransliteratedFrench, inclusive. (Parameter \u0027value\u0027)\r\nActual value was 0.",
+      "paramName": "value",
+      "actualValue": 0
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_SetInvalidValue_ThrowsArgumentOutOfRangeException",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        1,
+        13
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between Localized and TransliteratedFrench, inclusive. (Parameter \u0027value\u0027)\r\nActual value was 13.",
+      "paramName": "value",
+      "actualValue": 13
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Get_ReturnsExpected@GregorianCalendarMiddleEastFrenchTests",
+      "calendar": "GregorianCalendar",
+      "operation": "calendarType",
+      "arguments": [
+        9
+      ],
+      "result": 9,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        9,
+        10
+      ],
+      "result": 10,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        9,
+        1
+      ],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        9,
+        9
+      ],
+      "result": 9,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        9,
+        11
+      ],
+      "result": 11,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        9,
+        12
+      ],
+      "result": 12,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        9,
+        2
+      ],
+      "result": 2,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_SetInvalidValue_ThrowsArgumentOutOfRangeException",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        9,
+        0
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between Localized and TransliteratedFrench, inclusive. (Parameter \u0027value\u0027)\r\nActual value was 0.",
+      "paramName": "value",
+      "actualValue": 0
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_SetInvalidValue_ThrowsArgumentOutOfRangeException",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        9,
+        13
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between Localized and TransliteratedFrench, inclusive. (Parameter \u0027value\u0027)\r\nActual value was 13.",
+      "paramName": "value",
+      "actualValue": 13
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Get_ReturnsExpected@GregorianCalendarTransliteratedEnglishTests",
+      "calendar": "GregorianCalendar",
+      "operation": "calendarType",
+      "arguments": [
+        11
+      ],
+      "result": 11,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        11,
+        10
+      ],
+      "result": 10,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        11,
+        1
+      ],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        11,
+        9
+      ],
+      "result": 9,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        11,
+        11
+      ],
+      "result": 11,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        11,
+        12
+      ],
+      "result": 12,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        11,
+        2
+      ],
+      "result": 2,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_SetInvalidValue_ThrowsArgumentOutOfRangeException",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        11,
+        0
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between Localized and TransliteratedFrench, inclusive. (Parameter \u0027value\u0027)\r\nActual value was 0.",
+      "paramName": "value",
+      "actualValue": 0
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_SetInvalidValue_ThrowsArgumentOutOfRangeException",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        11,
+        13
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between Localized and TransliteratedFrench, inclusive. (Parameter \u0027value\u0027)\r\nActual value was 13.",
+      "paramName": "value",
+      "actualValue": 13
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Get_ReturnsExpected@GregorianCalendarTransliteratedFrenchTests",
+      "calendar": "GregorianCalendar",
+      "operation": "calendarType",
+      "arguments": [
+        12
+      ],
+      "result": 12,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        12,
+        10
+      ],
+      "result": 10,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        12,
+        1
+      ],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        12,
+        9
+      ],
+      "result": 9,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        12,
+        11
+      ],
+      "result": 11,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        12,
+        12
+      ],
+      "result": 12,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        12,
+        2
+      ],
+      "result": 2,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_SetInvalidValue_ThrowsArgumentOutOfRangeException",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        12,
+        0
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between Localized and TransliteratedFrench, inclusive. (Parameter \u0027value\u0027)\r\nActual value was 0.",
+      "paramName": "value",
+      "actualValue": 0
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_SetInvalidValue_ThrowsArgumentOutOfRangeException",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        12,
+        13
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between Localized and TransliteratedFrench, inclusive. (Parameter \u0027value\u0027)\r\nActual value was 13.",
+      "paramName": "value",
+      "actualValue": 13
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Get_ReturnsExpected@GregorianCalendarUSEnglishTests",
+      "calendar": "GregorianCalendar",
+      "operation": "calendarType",
+      "arguments": [
+        2
+      ],
+      "result": 2,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        2,
+        10
+      ],
+      "result": 10,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        2,
+        1
+      ],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        2,
+        9
+      ],
+      "result": 9,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        2,
+        11
+      ],
+      "result": 11,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        2,
+        12
+      ],
+      "result": 12,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_Set",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        2,
+        2
+      ],
+      "result": 2,
+      "error": null
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_SetInvalidValue_ThrowsArgumentOutOfRangeException",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        2,
+        0
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between Localized and TransliteratedFrench, inclusive. (Parameter \u0027value\u0027)\r\nActual value was 0.",
+      "paramName": "value",
+      "actualValue": 0
+    },
+    {
+      "source": "GregorianCalendarTestBase.CalendarType_SetInvalidValue_ThrowsArgumentOutOfRangeException",
+      "calendar": "GregorianCalendar",
+      "operation": "setCalendarType",
+      "arguments": [
+        2,
+        13
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between Localized and TransliteratedFrench, inclusive. (Parameter \u0027value\u0027)\r\nActual value was 13.",
+      "paramName": "value",
+      "actualValue": 13
+    },
+    {
+      "source": "CalendarsTests.HijriTest",
+      "calendar": "HijriCalendar",
+      "operation": "hijriAdjustment",
+      "arguments": [],
+      "result": 0,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.UmAlQuraTest",
+      "calendar": "UmAlQuraCalendar",
+      "operation": "isLeapMonth",
+      "arguments": [
+        1400,
+        10
+      ],
+      "result": false,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.HebrewTest",
+      "calendar": "HebrewCalendar",
+      "operation": "isLeapMonth",
+      "arguments": [
+        5343,
+        4
+      ],
+      "result": false,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.JapaneseTest",
+      "calendar": "JapaneseCalendar",
+      "operation": "eras",
+      "arguments": [],
+      "result": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.JulianTest",
+      "calendar": "JulianCalendar",
+      "operation": "isLeapYear",
+      "arguments": [
+        1999
+      ],
+      "result": false,
+      "error": null
+    },
+    {
+      "source": "MiscCalendarsTests.HebrewTest",
+      "calendar": "HebrewCalendar",
+      "operation": "toDateTime",
+      "arguments": [
+        5360,
+        4,
+        14,
+        0,
+        0,
+        0,
+        0
+      ],
+      "result": "504595008000000000",
+      "error": null
+    },
+    {
+      "source": "MiscCalendarsTests.HebrewTest",
+      "calendar": "HebrewCalendar",
+      "operation": "toDateTime",
+      "arguments": [
+        0,
+        3,
+        25,
+        0,
+        0,
+        0,
+        0
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between 5343 and 5999, inclusive. (Parameter \u0027year\u0027)\r\nActual value was 0.",
+      "paramName": "year",
+      "actualValue": 0
+    },
+    {
+      "source": "MiscCalendarsTests.HebrewTest",
+      "calendar": "HebrewCalendar",
+      "operation": "toDateTime",
+      "arguments": [
+        10000,
+        3,
+        25,
+        0,
+        0,
+        0,
+        0
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between 5343 and 5999, inclusive. (Parameter \u0027year\u0027)\r\nActual value was 10000.",
+      "paramName": "year",
+      "actualValue": 10000
+    },
+    {
+      "source": "MiscCalendarsTests.HebrewTest",
+      "calendar": "HebrewCalendar",
+      "operation": "toDateTime",
+      "arguments": [
+        5000,
+        0,
+        25,
+        0,
+        0,
+        0,
+        0
+      ],
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "message": "Valid values are between 5343 and 5999, inclusive. (Parameter \u0027year\u0027)\r\nActual value was 5000.",
+      "paramName": "year",
+      "actualValue": 5000
+    },
+    {
+      "source": "MiscCalendarsTests.HijriTest",
+      "calendar": "HijriCalendar",
+      "operation": "toDateTime",
+      "arguments": [
+        1008,
+        6,
+        15,
+        0,
+        0,
+        0,
+        0
+      ],
+      "result": "504595008000000000",
+      "error": null
+    },
+    {
+      "source": "MiscCalendarsTests.JapaneseTest",
+      "calendar": "JapaneseCalendar",
+      "operation": "toDateTime",
+      "arguments": [
+        1,
+        1,
+        8,
+        0,
+        0,
+        0,
+        0,
+        4
+      ],
+      "result": "627358176000000000",
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.CloningTest",
+      "calendar": "ChineseLunisolarCalendar",
+      "operation": "cloneType",
+      "arguments": [],
+      "result": true,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.ReadOnlyTest",
+      "calendar": "ChineseLunisolarCalendar",
+      "operation": "readOnly",
+      "arguments": [],
+      "result": [
+        false,
+        true,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.AlgorithmTypeTest",
+      "calendar": "ChineseLunisolarCalendar",
+      "operation": "algorithmType",
+      "arguments": [],
+      "result": 3,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "ChineseLunisolarCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        2017
+      ],
+      "result": 7,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "ChineseLunisolarCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        2016
+      ],
+      "result": 0,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.CloningTest",
+      "calendar": "GregorianCalendar",
+      "operation": "cloneType",
+      "arguments": [],
+      "result": true,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.ReadOnlyTest",
+      "calendar": "GregorianCalendar",
+      "operation": "readOnly",
+      "arguments": [],
+      "result": [
+        false,
+        true,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.AlgorithmTypeTest",
+      "calendar": "GregorianCalendar",
+      "operation": "algorithmType",
+      "arguments": [],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "GregorianCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        2026
+      ],
+      "result": 0,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.CloningTest",
+      "calendar": "HebrewCalendar",
+      "operation": "cloneType",
+      "arguments": [],
+      "result": true,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.ReadOnlyTest",
+      "calendar": "HebrewCalendar",
+      "operation": "readOnly",
+      "arguments": [],
+      "result": [
+        false,
+        true,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.AlgorithmTypeTest",
+      "calendar": "HebrewCalendar",
+      "operation": "algorithmType",
+      "arguments": [],
+      "result": 3,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "HebrewCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        5345
+      ],
+      "result": 7,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "HebrewCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        5344
+      ],
+      "result": 0,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.CloningTest",
+      "calendar": "HijriCalendar",
+      "operation": "cloneType",
+      "arguments": [],
+      "result": true,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.ReadOnlyTest",
+      "calendar": "HijriCalendar",
+      "operation": "readOnly",
+      "arguments": [],
+      "result": [
+        false,
+        true,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.AlgorithmTypeTest",
+      "calendar": "HijriCalendar",
+      "operation": "algorithmType",
+      "arguments": [],
+      "result": 2,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "HijriCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        1448
+      ],
+      "result": 0,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.CloningTest",
+      "calendar": "JapaneseCalendar",
+      "operation": "cloneType",
+      "arguments": [],
+      "result": true,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.ReadOnlyTest",
+      "calendar": "JapaneseCalendar",
+      "operation": "readOnly",
+      "arguments": [],
+      "result": [
+        false,
+        true,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.AlgorithmTypeTest",
+      "calendar": "JapaneseCalendar",
+      "operation": "algorithmType",
+      "arguments": [],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "JapaneseCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        8
+      ],
+      "result": 0,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.CloningTest",
+      "calendar": "JapaneseLunisolarCalendar",
+      "operation": "cloneType",
+      "arguments": [],
+      "result": true,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.ReadOnlyTest",
+      "calendar": "JapaneseLunisolarCalendar",
+      "operation": "readOnly",
+      "arguments": [],
+      "result": [
+        false,
+        true,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.AlgorithmTypeTest",
+      "calendar": "JapaneseLunisolarCalendar",
+      "operation": "algorithmType",
+      "arguments": [],
+      "result": 3,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "JapaneseLunisolarCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        29
+      ],
+      "result": 6,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "JapaneseLunisolarCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        28
+      ],
+      "result": 0,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.CloningTest",
+      "calendar": "JulianCalendar",
+      "operation": "cloneType",
+      "arguments": [],
+      "result": true,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.ReadOnlyTest",
+      "calendar": "JulianCalendar",
+      "operation": "readOnly",
+      "arguments": [],
+      "result": [
+        false,
+        true,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.AlgorithmTypeTest",
+      "calendar": "JulianCalendar",
+      "operation": "algorithmType",
+      "arguments": [],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "JulianCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        2026
+      ],
+      "result": 0,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.CloningTest",
+      "calendar": "KoreanCalendar",
+      "operation": "cloneType",
+      "arguments": [],
+      "result": true,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.ReadOnlyTest",
+      "calendar": "KoreanCalendar",
+      "operation": "readOnly",
+      "arguments": [],
+      "result": [
+        false,
+        true,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.AlgorithmTypeTest",
+      "calendar": "KoreanCalendar",
+      "operation": "algorithmType",
+      "arguments": [],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "KoreanCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        4359
+      ],
+      "result": 0,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.CloningTest",
+      "calendar": "KoreanLunisolarCalendar",
+      "operation": "cloneType",
+      "arguments": [],
+      "result": true,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.ReadOnlyTest",
+      "calendar": "KoreanLunisolarCalendar",
+      "operation": "readOnly",
+      "arguments": [],
+      "result": [
+        false,
+        true,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.AlgorithmTypeTest",
+      "calendar": "KoreanLunisolarCalendar",
+      "operation": "algorithmType",
+      "arguments": [],
+      "result": 3,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "KoreanLunisolarCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        2017
+      ],
+      "result": 6,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "KoreanLunisolarCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        2016
+      ],
+      "result": 0,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.CloningTest",
+      "calendar": "PersianCalendar",
+      "operation": "cloneType",
+      "arguments": [],
+      "result": true,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.ReadOnlyTest",
+      "calendar": "PersianCalendar",
+      "operation": "readOnly",
+      "arguments": [],
+      "result": [
+        false,
+        true,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.AlgorithmTypeTest",
+      "calendar": "PersianCalendar",
+      "operation": "algorithmType",
+      "arguments": [],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "PersianCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        1405
+      ],
+      "result": 0,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.CloningTest",
+      "calendar": "TaiwanCalendar",
+      "operation": "cloneType",
+      "arguments": [],
+      "result": true,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.ReadOnlyTest",
+      "calendar": "TaiwanCalendar",
+      "operation": "readOnly",
+      "arguments": [],
+      "result": [
+        false,
+        true,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.AlgorithmTypeTest",
+      "calendar": "TaiwanCalendar",
+      "operation": "algorithmType",
+      "arguments": [],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "TaiwanCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        115
+      ],
+      "result": 0,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.CloningTest",
+      "calendar": "TaiwanLunisolarCalendar",
+      "operation": "cloneType",
+      "arguments": [],
+      "result": true,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.ReadOnlyTest",
+      "calendar": "TaiwanLunisolarCalendar",
+      "operation": "readOnly",
+      "arguments": [],
+      "result": [
+        false,
+        true,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.AlgorithmTypeTest",
+      "calendar": "TaiwanLunisolarCalendar",
+      "operation": "algorithmType",
+      "arguments": [],
+      "result": 3,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "TaiwanLunisolarCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        106
+      ],
+      "result": 7,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "TaiwanLunisolarCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        105
+      ],
+      "result": 0,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.CloningTest",
+      "calendar": "ThaiBuddhistCalendar",
+      "operation": "cloneType",
+      "arguments": [],
+      "result": true,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.ReadOnlyTest",
+      "calendar": "ThaiBuddhistCalendar",
+      "operation": "readOnly",
+      "arguments": [],
+      "result": [
+        false,
+        true,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.AlgorithmTypeTest",
+      "calendar": "ThaiBuddhistCalendar",
+      "operation": "algorithmType",
+      "arguments": [],
+      "result": 1,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "ThaiBuddhistCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        2569
+      ],
+      "result": 0,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.CloningTest",
+      "calendar": "UmAlQuraCalendar",
+      "operation": "cloneType",
+      "arguments": [],
+      "result": true,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.ReadOnlyTest",
+      "calendar": "UmAlQuraCalendar",
+      "operation": "readOnly",
+      "arguments": [],
+      "result": [
+        false,
+        true,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.AlgorithmTypeTest",
+      "calendar": "UmAlQuraCalendar",
+      "operation": "algorithmType",
+      "arguments": [],
+      "result": 2,
+      "error": null
+    },
+    {
+      "source": "CalendarsTests.GetLeapMonthTest",
+      "calendar": "UmAlQuraCalendar",
+      "operation": "getLeapMonth",
+      "arguments": [
+        1448
+      ],
+      "result": 0,
+      "error": null
+    }
+  ]
+}

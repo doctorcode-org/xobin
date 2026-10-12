@@ -5,9 +5,36 @@ if (Environment.Version.ToString() != "10.0.7")
     throw new InvalidOperationException($"Expected .NET 10.0.7, got {Environment.Version}.");
 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
+if (args.Length >= 2 && args[0] == "--lunisolar") {
+    string output = LunisolarOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Lunisolar fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--calendar-math") {
+    string output = CalendarMathOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Calendar math fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--calendar-remaining") {
+    string output = CalendarRemainingOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Calendar remaining fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
 if (args.Length >= 2 && args[0] == "--korean") {
     string output=KoreanOracle.Generate();
     if(args.Length==3 && args[2]=="--check") { if(File.ReadAllText(args[1])!=output) throw new InvalidOperationException("Korean fixture differs from reference."); }
+    else File.WriteAllText(args[1],output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--taiwan") {
+    string output=TaiwanOracle.Generate();
+    if(args.Length==3 && args[2]=="--check") { if(File.ReadAllText(args[1])!=output) throw new InvalidOperationException("Taiwan fixture differs from reference."); }
     else File.WriteAllText(args[1],output);
     return;
 }
@@ -501,6 +528,15 @@ var calendarFactories = new Dictionary<string, Func<Calendar>>
     ["Persian"] = () => new PersianCalendar(),
     ["ThaiBuddhist"] = () => new ThaiBuddhistCalendar(),
     ["Korean"] = () => new KoreanCalendar(),
+    ["Taiwan"] = () => new TaiwanCalendar(),
+    ["Japanese"] = () => new JapaneseCalendar(),
+    ["Julian"] = () => new JulianCalendar(),
+    ["Hijri"] = () => new HijriCalendar(),
+    ["Hebrew"] = () => new HebrewCalendar(),
+    ["ChineseLunisolar"] = () => new ChineseLunisolarCalendar(),
+    ["JapaneseLunisolar"] = () => new JapaneseLunisolarCalendar(),
+    ["KoreanLunisolar"] = () => new KoreanLunisolarCalendar(),
+    ["TaiwanLunisolar"] = () => new TaiwanLunisolarCalendar(),
     ["UmAlQura"] = () => new UmAlQuraCalendar(),
 };
 
@@ -532,7 +568,7 @@ foreach (var (name, makeCalendar) in calendarFactories)
         calendar.MinSupportedDateTime.Ticks,
         calendar.MaxSupportedDateTime.Ticks,
     };
-    if (name is "Gregorian" or "ThaiBuddhist" or "Korean")
+    if (name is "Gregorian" or "ThaiBuddhist" or "Korean" or "Julian")
     {
         foreach (var date in new[]
         {
@@ -543,7 +579,7 @@ foreach (var (name, makeCalendar) in calendarFactories)
     }
     else
     {
-        int[] sampleYears = name == "Persian" ? [1402, 1403, 1404] : [1400, 1445, 1499];
+        int[] sampleYears = name switch { "Persian" => [1402,1403,1404], "Japanese" => [1,31,100], "Hebrew" => [5344,5784,5999], "ChineseLunisolar" => [1902,2000,2100], "JapaneseLunisolar" => [1,10,31], "KoreanLunisolar" => [919,1445,2050], "TaiwanLunisolar" => [1,100,139], _ => [1400,1445,1499] };
         foreach (int year in sampleYears)
         {
             var first = calendar.ToDateTime(year, 1, 1, 0, 0, 0, 0);
@@ -618,6 +654,14 @@ foreach (var (name, makeCalendar) in calendarFactories)
         "Persian" => [1410, 1450],
         "ThaiBuddhist" => [2049, 2572],
         "Korean" => [2049, 4382],
+        "Taiwan" => [99, 8088],
+        "Japanese" => [99, 200],
+        "Julian" => [2049,2099],
+        "Hebrew" => [5343,5790],
+        "ChineseLunisolar" => [2049,2099],
+        "JapaneseLunisolar" => [99,2049],
+        "KoreanLunisolar" => [2049,2050],
+        "TaiwanLunisolar" => [99,139],
         _ => [99, 1451, 1499],
     };
     foreach (int max in maxValues)

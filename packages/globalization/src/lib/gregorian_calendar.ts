@@ -96,7 +96,7 @@ export class GregorianCalendar extends Calendar {
      * @param years The number of years to add.
      */
     addYears(time: DateTime, years: number): DateTime {
-        return this.addMonths(time, years * 12);
+        return this.addMonths(time, Math.imul(years, 12));
     }
 
     /**

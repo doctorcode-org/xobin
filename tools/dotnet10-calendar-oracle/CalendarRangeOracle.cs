@@ -17,6 +17,15 @@ internal static class CalendarRangeOracle
             ("PersianCalendarTests", () => new PersianCalendar()),
             ("ThaiBuddhistCalendarTests", () => new ThaiBuddhistCalendar()),
             ("KoreanCalendarTests", () => new KoreanCalendar()),
+            ("TaiwanCalendarTests", () => new TaiwanCalendar()),
+            ("JapaneseCalendarTests", () => new JapaneseCalendar()),
+            ("JulianCalendarTests", () => new JulianCalendar()),
+            ("HijriCalendarTests", () => new HijriCalendar()),
+            ("HebrewCalendarTests", () => new HebrewCalendar()),
+            ("ChineseLunisolarCalendarTests", () => new ChineseLunisolarCalendar()),
+            ("JapaneseLunisolarTests", () => new JapaneseLunisolarCalendar()),
+            ("KoreanLunisolarCalendarTests", () => new KoreanLunisolarCalendar()),
+            ("TaiwanLunisolarTests", () => new TaiwanLunisolarCalendar()),
             ("UmAlQuraCalendarTests", () => new UmAlQuraCalendar()),
         };
         string[] operations = ["GetEra", "GetYear", "GetMonth", "GetDayOfYear", "GetDayOfMonth", "GetDayOfWeek"];
@@ -48,8 +57,8 @@ internal static class CalendarRangeOracle
                             "GetDayOfWeek" => (int)calendar.GetDayOfWeek(date),
                             _ => throw new InvalidOperationException("Unknown operation."),
                         };
-                        if (operation != "GetDayOfWeek" ||
-                            calendar is not (PersianCalendar or UmAlQuraCalendar))
+                        if (!(operation == "GetEra" && calendar is HebrewCalendar or JapaneseLunisolarCalendar or TaiwanLunisolarCalendar) && (operation != "GetDayOfWeek" ||
+                            calendar is not (PersianCalendar or UmAlQuraCalendar or HijriCalendar or HebrewCalendar)))
                             throw new InvalidOperationException($"Expected an exception: {calendarName}/{operation}/{kind}.");
                         rows.Add(new { kind, ticks = date.Ticks.ToString(), result,
                             error = (string?)null, paramName = (string?)null,
@@ -58,7 +67,7 @@ internal static class CalendarRangeOracle
                     catch (ArgumentOutOfRangeException error)
                     {
                         if (operation == "GetDayOfWeek" &&
-                            calendar is PersianCalendar or UmAlQuraCalendar)
+                            calendar is PersianCalendar or UmAlQuraCalendar or HijriCalendar or HebrewCalendar)
                             throw new InvalidOperationException($"Expected a result: {calendarName}/{operation}/{kind}.");
                         if (operation != "GetEra" && error.ParamName != "time")
                             throw new InvalidOperationException($"Unexpected parameter: {calendarName}/{operation}/{kind}.");

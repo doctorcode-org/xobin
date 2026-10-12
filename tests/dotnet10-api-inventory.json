@@ -10,12 +10,12 @@
   "summary": {
     "types": 29,
     "members": 807,
-    "present": 528,
+    "present": 592,
     "incomplete": 18,
-    "missing": 261,
-    "missingTypes": 7,
-    "missingRootExports": 7,
-    "missingSubpathExports": 12
+    "missing": 197,
+    "missingTypes": 1,
+    "missingRootExports": 1,
+    "missingSubpathExports": 6
   },
   "types": [
     {
@@ -7420,21 +7420,31 @@
       "local": {
         "file": "src/lib/chinese_lunisolar_calendar.ts",
         "symbol": "ChineseLunisolarCalendar",
-        "declarationKind": null,
+        "declarationKind": "class",
         "typeShape": {
-          "status": "missing",
-          "reason": "local type is missing"
+          "status": "present",
+          "reason": "a matching local declaration exists"
         },
-        "rootExported": false,
+        "rootExported": true,
         "expectedSubpath": "./chinese-lunisolar-calendar",
-        "subpathExported": false
+        "subpathExported": true
       },
       "counts": {
-        "present": 0,
+        "present": 5,
         "incomplete": 0,
-        "missing": 6
+        "missing": 1
       },
-      "extraLocalMembers": [],
+      "extraLocalMembers": [
+        "ChineseEra",
+        "baseCalendarID",
+        "calEraInfo",
+        "daysInYearBeforeMinSupportedYear",
+        "getGregorianYear",
+        "getYearForDate",
+        "getYearInfo",
+        "maxCalendarYear",
+        "minCalendarYear"
+      ],
       "members": [
         {
           "id": "System.Globalization.ChineseLunisolarCalendar::constructor:.ctor:instance:",
@@ -7447,10 +7457,10 @@
             "signature": "ChineseLunisolarCalendar()",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "constructor",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -7465,10 +7475,10 @@
             "signature": "const int ChineseEra",
             "parameters": []
           },
-          "jsMember": null,
+          "jsMember": "chineseEra",
           "status": "missing",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "member is missing",
           "roadmapTask": "LUNI-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -7490,10 +7500,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getEra",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -7508,10 +7518,10 @@
             "signature": "int[] Eras { get;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "eras",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -7526,10 +7536,10 @@
             "signature": "DateTime MaxSupportedDateTime { get;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "maxSupportedDateTime",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -7544,10 +7554,10 @@
             "signature": "DateTime MinSupportedDateTime { get;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "minSupportedDateTime",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         }
@@ -9101,21 +9111,39 @@
       "local": {
         "file": "src/lib/east_asian_lunisolar_calendar.ts",
         "symbol": "EastAsianLunisolarCalendar",
-        "declarationKind": null,
+        "declarationKind": "class",
         "typeShape": {
-          "status": "missing",
-          "reason": "local type is missing"
+          "status": "present",
+          "reason": "a matching local declaration exists"
         },
-        "rootExported": false,
+        "rootExported": true,
         "expectedSubpath": "./east-asian-lunisolar-calendar",
-        "subpathExported": false
+        "subpathExported": true
       },
       "counts": {
-        "present": 0,
+        "present": 21,
         "incomplete": 0,
-        "missing": 21
+        "missing": 0
       },
-      "extraLocalMembers": [],
+      "extraLocalMembers": [
+        "baseCalendarID",
+        "calEraInfo",
+        "checkDay",
+        "checkTicksRange",
+        "checkYearMonthRange",
+        "checkYearRange",
+        "eraCalendarYear",
+        "getGregorianYear",
+        "getYearForDate",
+        "getYearInfo",
+        "internalGetDaysInMonth",
+        "internalIsLeapYear",
+        "lunarToGregorian",
+        "lunarToTime",
+        "maxCalendarYear",
+        "minCalendarYear",
+        "timeToLunar"
+      ],
       "members": [
         {
           "id": "System.Globalization.EastAsianLunisolarCalendar::method:AddMonths:instance:value:DateTime,value:int",
@@ -9141,10 +9169,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "addMonths",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9172,10 +9200,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "addYears",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9197,10 +9225,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getCelestialStem",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9222,10 +9250,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getDayOfMonth",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9247,10 +9275,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getDayOfWeek",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9272,10 +9300,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getDayOfYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9309,10 +9337,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getDaysInMonth",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9340,10 +9368,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getDaysInYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9371,10 +9399,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getLeapMonth",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9396,10 +9424,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getMonth",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9427,10 +9455,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getMonthsInYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9452,10 +9480,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getSexagenaryYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9477,10 +9505,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getTerrestrialBranch",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9502,10 +9530,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9545,10 +9573,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "isLeapDay",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9582,10 +9610,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "isLeapMonth",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9613,10 +9641,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "isLeapYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9680,10 +9708,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "toDateTime",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9705,10 +9733,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "toFourDigitYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9723,10 +9751,10 @@
             "signature": "CalendarAlgorithmType AlgorithmType { get;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "algorithmType",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9741,10 +9769,10 @@
             "signature": "int TwoDigitYearMax { get; set;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "twoDigitYearMax",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         }
@@ -13061,21 +13089,33 @@
       "local": {
         "file": "src/lib/japanese_lunisolar_calendar.ts",
         "symbol": "JapaneseLunisolarCalendar",
-        "declarationKind": null,
+        "declarationKind": "class",
         "typeShape": {
-          "status": "missing",
-          "reason": "local type is missing"
+          "status": "present",
+          "reason": "a matching local declaration exists"
         },
-        "rootExported": false,
+        "rootExported": true,
         "expectedSubpath": "./japanese-lunisolar-calendar",
-        "subpathExported": false
+        "subpathExported": true
       },
       "counts": {
-        "present": 0,
+        "present": 5,
         "incomplete": 0,
-        "missing": 6
+        "missing": 1
       },
-      "extraLocalMembers": [],
+      "extraLocalMembers": [
+        "JapaneseEra",
+        "_eraInfo",
+        "_helper",
+        "baseCalendarID",
+        "calEraInfo",
+        "daysInYearBeforeMinSupportedYear",
+        "getGregorianYear",
+        "getYearForDate",
+        "getYearInfo",
+        "maxCalendarYear",
+        "minCalendarYear"
+      ],
       "members": [
         {
           "id": "System.Globalization.JapaneseLunisolarCalendar::constructor:.ctor:instance:",
@@ -13088,10 +13128,10 @@
             "signature": "JapaneseLunisolarCalendar()",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "constructor",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-03",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13106,10 +13146,10 @@
             "signature": "const int JapaneseEra",
             "parameters": []
           },
-          "jsMember": null,
+          "jsMember": "japaneseEra",
           "status": "missing",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "member is missing",
           "roadmapTask": "LUNI-03",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13131,10 +13171,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getEra",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-03",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13149,10 +13189,10 @@
             "signature": "int[] Eras { get;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "eras",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-03",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13167,10 +13207,10 @@
             "signature": "DateTime MaxSupportedDateTime { get;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "maxSupportedDateTime",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-03",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13185,10 +13225,10 @@
             "signature": "DateTime MinSupportedDateTime { get;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "minSupportedDateTime",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-03",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         }
@@ -13202,21 +13242,23 @@
       "local": {
         "file": "src/lib/julian_calendar.ts",
         "symbol": "JulianCalendar",
-        "declarationKind": null,
+        "declarationKind": "class",
         "typeShape": {
-          "status": "missing",
-          "reason": "local type is missing"
+          "status": "present",
+          "reason": "a matching local declaration exists"
         },
-        "rootExported": false,
+        "rootExported": true,
         "expectedSubpath": "./julian-calendar",
-        "subpathExported": false
+        "subpathExported": true
       },
       "counts": {
-        "present": 0,
+        "present": 23,
         "incomplete": 0,
-        "missing": 24
+        "missing": 1
       },
-      "extraLocalMembers": [],
+      "extraLocalMembers": [
+        "JulianEra"
+      ],
       "members": [
         {
           "id": "System.Globalization.JulianCalendar::constructor:.ctor:instance:",
@@ -13229,10 +13271,10 @@
             "signature": "JulianCalendar()",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "constructor",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13247,10 +13289,10 @@
             "signature": "readonly int JulianEra",
             "parameters": []
           },
-          "jsMember": null,
+          "jsMember": "julianEra",
           "status": "missing",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "member is missing",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13278,10 +13320,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "addMonths",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13309,10 +13351,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "addYears",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13334,10 +13376,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getDayOfMonth",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13359,10 +13401,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getDayOfWeek",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13384,10 +13426,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getDayOfYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13421,10 +13463,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getDaysInMonth",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13452,10 +13494,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getDaysInYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13477,10 +13519,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getEra",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13508,10 +13550,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getLeapMonth",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13533,10 +13575,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getMonth",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13564,10 +13606,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getMonthsInYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13589,10 +13631,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13632,10 +13674,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "isLeapDay",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13669,10 +13711,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "isLeapMonth",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13700,10 +13742,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "isLeapYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13767,10 +13809,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "toDateTime",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13792,10 +13834,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "toFourDigitYear",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13810,10 +13852,10 @@
             "signature": "CalendarAlgorithmType AlgorithmType { get;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "algorithmType",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13828,10 +13870,10 @@
             "signature": "int[] Eras { get;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "eras",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13846,10 +13888,10 @@
             "signature": "DateTime MaxSupportedDateTime { get;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "maxSupportedDateTime",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13864,10 +13906,10 @@
             "signature": "DateTime MinSupportedDateTime { get;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "minSupportedDateTime",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13882,10 +13924,10 @@
             "signature": "int TwoDigitYearMax { get; set;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "twoDigitYearMax",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         }
@@ -14636,21 +14678,31 @@
       "local": {
         "file": "src/lib/korean_lunisolar_calendar.ts",
         "symbol": "KoreanLunisolarCalendar",
-        "declarationKind": null,
+        "declarationKind": "class",
         "typeShape": {
-          "status": "missing",
-          "reason": "local type is missing"
+          "status": "present",
+          "reason": "a matching local declaration exists"
         },
-        "rootExported": false,
+        "rootExported": true,
         "expectedSubpath": "./korean-lunisolar-calendar",
-        "subpathExported": false
+        "subpathExported": true
       },
       "counts": {
-        "present": 0,
+        "present": 5,
         "incomplete": 0,
-        "missing": 6
+        "missing": 1
       },
-      "extraLocalMembers": [],
+      "extraLocalMembers": [
+        "GregorianEra",
+        "baseCalendarID",
+        "calEraInfo",
+        "daysInYearBeforeMinSupportedYear",
+        "getGregorianYear",
+        "getYearForDate",
+        "getYearInfo",
+        "maxCalendarYear",
+        "minCalendarYear"
+      ],
       "members": [
         {
           "id": "System.Globalization.KoreanLunisolarCalendar::constructor:.ctor:instance:",
@@ -14663,10 +14715,10 @@
             "signature": "KoreanLunisolarCalendar()",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "constructor",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -14681,10 +14733,10 @@
             "signature": "const int GregorianEra",
             "parameters": []
           },
-          "jsMember": null,
+          "jsMember": "gregorianEra",
           "status": "missing",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "member is missing",
           "roadmapTask": "LUNI-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -14706,10 +14758,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getEra",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -14724,10 +14776,10 @@
             "signature": "int[] Eras { get;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "eras",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -14742,10 +14794,10 @@
             "signature": "DateTime MaxSupportedDateTime { get;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "maxSupportedDateTime",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -14760,10 +14812,10 @@
             "signature": "DateTime MinSupportedDateTime { get;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "minSupportedDateTime",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         }
@@ -16195,21 +16247,31 @@
       "local": {
         "file": "src/lib/taiwan_lunisolar_calendar.ts",
         "symbol": "TaiwanLunisolarCalendar",
-        "declarationKind": null,
+        "declarationKind": "class",
         "typeShape": {
-          "status": "missing",
-          "reason": "local type is missing"
+          "status": "present",
+          "reason": "a matching local declaration exists"
         },
-        "rootExported": false,
+        "rootExported": true,
         "expectedSubpath": "./taiwan-lunisolar-calendar",
-        "subpathExported": false
+        "subpathExported": true
       },
       "counts": {
-        "present": 0,
+        "present": 5,
         "incomplete": 0,
-        "missing": 5
+        "missing": 0
       },
-      "extraLocalMembers": [],
+      "extraLocalMembers": [
+        "_helper",
+        "baseCalendarID",
+        "calEraInfo",
+        "daysInYearBeforeMinSupportedYear",
+        "getGregorianYear",
+        "getYearForDate",
+        "getYearInfo",
+        "maxCalendarYear",
+        "minCalendarYear"
+      ],
       "members": [
         {
           "id": "System.Globalization.TaiwanLunisolarCalendar::constructor:.ctor:instance:",
@@ -16222,10 +16284,10 @@
             "signature": "TaiwanLunisolarCalendar()",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "constructor",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-05",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -16247,10 +16309,10 @@
               }
             ]
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "getEra",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-05",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -16265,10 +16327,10 @@
             "signature": "int[] Eras { get;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "eras",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-05",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -16283,10 +16345,10 @@
             "signature": "DateTime MaxSupportedDateTime { get;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "maxSupportedDateTime",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-05",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -16301,10 +16363,10 @@
             "signature": "DateTime MinSupportedDateTime { get;  }",
             "parameters": []
           },
-          "jsMember": null,
-          "status": "missing",
+          "jsMember": "minSupportedDateTime",
+          "status": "present",
           "adaptation": null,
-          "reason": "local type is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-05",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         }

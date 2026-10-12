@@ -154,7 +154,7 @@ export class HebrewCalendar extends Calendar {
      */
     addYears(time: DateTime, years: number): DateTime {
         let { year, month, day } = this.dateParts(time);
-        year += years;
+        year = (year + years) | 0;
         this.checkYear(year, 0, 'years');
         month = Math.min(month, this.getMonthsInYear(year));
         day = Math.min(day, this.getDaysInMonth(year, month));

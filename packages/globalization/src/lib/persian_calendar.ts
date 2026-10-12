@@ -123,7 +123,7 @@ export class PersianCalendar extends Calendar {
      * @param years The positive or negative number of years to add.
      */
     addYears(time: DateTime, years: number): DateTime {
-        return this.addMonths(time, years * 12);
+        return this.addMonths(time, Math.imul(years, 12));
     }
 
     /**

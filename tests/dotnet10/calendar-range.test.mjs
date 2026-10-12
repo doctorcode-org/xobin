@@ -3,12 +3,12 @@ import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import {
   DateTime, GregorianCalendar, GregorianCalendarTypes, PersianCalendar,
-  ThaiBuddhistCalendar, KoreanCalendar, UmAlQuraCalendar,
+  ThaiBuddhistCalendar, KoreanCalendar, TaiwanCalendar, JapaneseCalendar, JulianCalendar, HijriCalendar, HebrewCalendar, ChineseLunisolarCalendar, JapaneseLunisolarCalendar, KoreanLunisolarCalendar, TaiwanLunisolarCalendar, UmAlQuraCalendar,
 } from '@xobin/globalization';
 
 const fixture = JSON.parse(readFileSync(new URL('./calendar-range-cases.json', import.meta.url), 'utf8'));
 assert.equal(fixture.runtime, '10.0.7');
-assert.equal(fixture.cases.length, 66);
+assert.equal(fixture.cases.length, 120);
 
 const createCalendar = {
   'GregorianCalendarDefaultTests': () => new GregorianCalendar(),
@@ -21,6 +21,15 @@ const createCalendar = {
   'PersianCalendarTests': () => new PersianCalendar(),
   'ThaiBuddhistCalendarTests': () => new ThaiBuddhistCalendar(),
   'KoreanCalendarTests': () => new KoreanCalendar(),
+  'TaiwanCalendarTests': () => new TaiwanCalendar(),
+  'JapaneseCalendarTests': () => new JapaneseCalendar(),
+  'JulianCalendarTests': () => new JulianCalendar(),
+  'HijriCalendarTests': () => new HijriCalendar(),
+  'HebrewCalendarTests': () => new HebrewCalendar(),
+  'ChineseLunisolarCalendarTests': () => new ChineseLunisolarCalendar(),
+  'JapaneseLunisolarTests': () => new JapaneseLunisolarCalendar(),
+  'KoreanLunisolarCalendarTests': () => new KoreanLunisolarCalendar(),
+  'TaiwanLunisolarTests': () => new TaiwanLunisolarCalendar(),
   'UmAlQuraCalendarTests': () => new UmAlQuraCalendar(),
 };
 const operations = ['GetEra', 'GetYear', 'GetMonth', 'GetDayOfYear', 'GetDayOfMonth', 'GetDayOfWeek'];

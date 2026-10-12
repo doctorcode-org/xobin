@@ -36,6 +36,15 @@ internal static class CalendarStateOracle
             ("PersianCalendarTests", () => new PersianCalendar()),
             ("ThaiBuddhistCalendarTests", () => new ThaiBuddhistCalendar()),
             ("KoreanCalendarTests", () => new KoreanCalendar()),
+            ("TaiwanCalendarTests", () => new TaiwanCalendar()),
+            ("JapaneseCalendarTests", () => new JapaneseCalendar()),
+            ("JulianCalendarTests", () => new JulianCalendar()),
+            ("HijriCalendarTests", () => new HijriCalendar()),
+            ("HebrewCalendarTests", () => new HebrewCalendar()),
+            ("ChineseLunisolarCalendarTests", () => new ChineseLunisolarCalendar()),
+            ("JapaneseLunisolarTests", () => new JapaneseLunisolarCalendar()),
+            ("KoreanLunisolarCalendarTests", () => new KoreanLunisolarCalendar()),
+            ("TaiwanLunisolarTests", () => new TaiwanLunisolarCalendar()),
             ("UmAlQuraCalendarTests", () => new UmAlQuraCalendar()),
         };
 

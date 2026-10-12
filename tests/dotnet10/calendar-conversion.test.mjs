@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import {
   GregorianCalendar, GregorianCalendarTypes, PersianCalendar,
-  ThaiBuddhistCalendar, KoreanCalendar, UmAlQuraCalendar,
+  ThaiBuddhistCalendar, KoreanCalendar, TaiwanCalendar, JapaneseCalendar, JulianCalendar, HijriCalendar, HebrewCalendar, ChineseLunisolarCalendar, JapaneseLunisolarCalendar, KoreanLunisolarCalendar, TaiwanLunisolarCalendar, UmAlQuraCalendar,
 } from '@xobin/globalization';
 
 const fixture = JSON.parse(readFileSync(new URL('./calendar-conversion-cases.json', import.meta.url), 'utf8'));
@@ -20,6 +20,15 @@ const createCalendar = {
   'PersianCalendarTests': () => new PersianCalendar(),
   'ThaiBuddhistCalendarTests': () => new ThaiBuddhistCalendar(),
   'KoreanCalendarTests': () => new KoreanCalendar(),
+  'TaiwanCalendarTests': () => new TaiwanCalendar(),
+  'JapaneseCalendarTests': () => new JapaneseCalendar(),
+  'JulianCalendarTests': () => new JulianCalendar(),
+  'HijriCalendarTests': () => new HijriCalendar(),
+  'HebrewCalendarTests': () => new HebrewCalendar(),
+  'ChineseLunisolarCalendarTests': () => new ChineseLunisolarCalendar(),
+  'JapaneseLunisolarTests': () => new JapaneseLunisolarCalendar(),
+  'KoreanLunisolarCalendarTests': () => new KoreanLunisolarCalendar(),
+  'TaiwanLunisolarTests': () => new TaiwanLunisolarCalendar(),
   'UmAlQuraCalendarTests': () => new UmAlQuraCalendar(),
 };
 
@@ -51,10 +60,10 @@ function run(name, operation, expectedCount) {
 
 for (const name of Object.keys(createCalendar)) {
   test(`CalendarTestBase.ToDateTime_Invalid_ThrowsArgumentOutOfRangeException/${name}`, () => {
-    run(name, 'ToDateTime_Invalid_ThrowsArgumentOutOfRangeException', 22);
+    run(name, 'ToDateTime_Invalid_ThrowsArgumentOutOfRangeException', name === 'JapaneseCalendarTests' ? 90 : name === 'JapaneseLunisolarTests' ? 56 : 22);
   });
   test(`CalendarTestBase.ToFourDigitYear_Invalid_ThrowsArgumentOutOfRangeException/${name}`, () => {
-    run(name, 'ToFourDigitYear_Invalid_ThrowsArgumentOutOfRangeException', 3);
+    run(name, 'ToFourDigitYear_Invalid_ThrowsArgumentOutOfRangeException', name === 'JapaneseLunisolarTests' ? 2 : 3);
   });
   test(`CalendarTestBase.TwoDigitYearMax_Invalid_ThrowsArgumentOutOfRangeException/${name}`, () => {
     run(name, 'TwoDigitYearMax_Invalid_ThrowsArgumentOutOfRangeException', 2);

@@ -83,7 +83,7 @@ export class GregorianCalendarHelper {
     }
 
     addYears(time: DateTime, years: number): DateTime {
-        return this.addMonths(time, years * 12);
+        return this.addMonths(time, Math.imul(years, 12));
     }
 
     getDayOfMonth(time: DateTime): number {

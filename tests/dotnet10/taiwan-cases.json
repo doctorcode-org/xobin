@@ -1,0 +1,1721 @@
+{
+  "runtime": "10.0.7",
+  "sourceTag": "v10.0.7",
+  "rows": [
+    {
+      "source": "TaiwanCalendarIsLeapYear.IsLeapYear",
+      "arguments": [
+        8025
+      ],
+      "result": [
+        true,
+        true,
+        true
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarIsLeapYear.IsLeapYear",
+      "arguments": [
+        89
+      ],
+      "result": [
+        true,
+        true,
+        true
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarAddMonths.AddMonths",
+      "arguments": [
+        "2288143296000000000",
+        4617
+      ],
+      "result": [
+        "2409558624000000000"
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarAddMonths.AddMonths",
+      "arguments": [
+        "2288143296000000000",
+        -536
+      ],
+      "result": [
+        "2274046272000000000"
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarAddMonths.AddMonths",
+      "arguments": [
+        "3155378975999999999",
+        0
+      ],
+      "result": [
+        "3155378975999999999"
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarAddMonths.AddMonths",
+      "arguments": [
+        "603052128000000000",
+        0
+      ],
+      "result": [
+        "603052128000000000"
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarAddYears.AddYears",
+      "arguments": [
+        "1943706240000000000",
+        886
+      ],
+      "result": [
+        "2223300096000000000"
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarAddYears.AddYears",
+      "arguments": [
+        "1943706240000000000",
+        -190
+      ],
+      "result": [
+        "1883747232000000000"
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarAddYears.AddYears",
+      "arguments": [
+        "603052128000000000",
+        0
+      ],
+      "result": [
+        "603052128000000000"
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarAddYears.AddYears",
+      "arguments": [
+        "3155378975999999999",
+        0
+      ],
+      "result": [
+        "3155378975999999999"
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarAddYears.AddYears",
+      "arguments": [
+        "1943706240000000000",
+        0
+      ],
+      "result": [
+        "1943706240000000000"
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "603052128000000000"
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "3155378975999999999"
+      ],
+      "result": [
+        31
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "1504578240000000000"
+      ],
+      "result": [
+        27
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630849600000000000"
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630850464000000000"
+      ],
+      "result": [
+        2
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630851328000000000"
+      ],
+      "result": [
+        3
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630852192000000000"
+      ],
+      "result": [
+        4
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630853056000000000"
+      ],
+      "result": [
+        5
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630853920000000000"
+      ],
+      "result": [
+        6
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630854784000000000"
+      ],
+      "result": [
+        7
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630855648000000000"
+      ],
+      "result": [
+        8
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630856512000000000"
+      ],
+      "result": [
+        9
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630857376000000000"
+      ],
+      "result": [
+        10
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630858240000000000"
+      ],
+      "result": [
+        11
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630859104000000000"
+      ],
+      "result": [
+        12
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630859968000000000"
+      ],
+      "result": [
+        13
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630860832000000000"
+      ],
+      "result": [
+        14
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630861696000000000"
+      ],
+      "result": [
+        15
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630862560000000000"
+      ],
+      "result": [
+        16
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630863424000000000"
+      ],
+      "result": [
+        17
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630864288000000000"
+      ],
+      "result": [
+        18
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630865152000000000"
+      ],
+      "result": [
+        19
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630866016000000000"
+      ],
+      "result": [
+        20
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630866880000000000"
+      ],
+      "result": [
+        21
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630867744000000000"
+      ],
+      "result": [
+        22
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630868608000000000"
+      ],
+      "result": [
+        23
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630869472000000000"
+      ],
+      "result": [
+        24
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630870336000000000"
+      ],
+      "result": [
+        25
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630871200000000000"
+      ],
+      "result": [
+        26
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630872064000000000"
+      ],
+      "result": [
+        27
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630872928000000000"
+      ],
+      "result": [
+        28
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfMonth.GetDayOfMonth",
+      "arguments": [
+        "630873792000000000"
+      ],
+      "result": [
+        29
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfWeek.GetDayOfWeek",
+      "arguments": [
+        "603052128000000000"
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfWeek.GetDayOfWeek",
+      "arguments": [
+        "3155378975999999999"
+      ],
+      "result": [
+        5
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfWeek.GetDayOfWeek",
+      "arguments": [
+        "2518261920000000000"
+      ],
+      "result": [
+        3
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfYear.GetDayOfYear",
+      "arguments": [
+        "603052128000000000"
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfYear.GetDayOfYear",
+      "arguments": [
+        "3155378975999999999"
+      ],
+      "result": [
+        365
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfYear.GetDayOfYear",
+      "arguments": [
+        "1412267616000000000"
+      ],
+      "result": [
+        110
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDayOfYear.GetDayOfYear",
+      "arguments": [
+        "631138176000000000"
+      ],
+      "result": [
+        366
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDaysInMonth.GetDaysInMonth",
+      "arguments": [
+        1912,
+        1
+      ],
+      "result": [
+        31,
+        31,
+        31
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDaysInMonth.GetDaysInMonth",
+      "arguments": [
+        8088,
+        12
+      ],
+      "result": [
+        31,
+        31,
+        31
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDaysInMonth.GetDaysInMonth",
+      "arguments": [
+        2000,
+        12
+      ],
+      "result": [
+        31,
+        31,
+        31
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDaysInMonth.GetDaysInMonth",
+      "arguments": [
+        5372,
+        4
+      ],
+      "result": [
+        30,
+        30,
+        30
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDaysInYear.GetDaysInYear",
+      "arguments": [
+        1912
+      ],
+      "result": [
+        365,
+        365,
+        365
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDaysInYear.GetDaysInYear",
+      "arguments": [
+        8088
+      ],
+      "result": [
+        365,
+        365,
+        365
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDaysInYear.GetDaysInYear",
+      "arguments": [
+        2000
+      ],
+      "result": [
+        365,
+        365,
+        365
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetDaysInYear.GetDaysInYear",
+      "arguments": [
+        4689
+      ],
+      "result": [
+        365,
+        365,
+        365
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetEra.GetEra",
+      "arguments": [
+        "603052128000000000"
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetEra.GetEra",
+      "arguments": [
+        "3155378975999999999"
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetEra.GetEra",
+      "arguments": [
+        "1571835456000000000"
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetMonth.GetMonth",
+      "arguments": [
+        "603052128000000000"
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetMonth.GetMonth",
+      "arguments": [
+        "3155378975999999999"
+      ],
+      "result": [
+        12
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetMonth.GetMonth",
+      "arguments": [
+        "1867974912000000000"
+      ],
+      "result": [
+        5
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetMonthsInYear.GetMonthsInYear",
+      "arguments": [
+        1912
+      ],
+      "result": [
+        12,
+        12,
+        12
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetMonthsInYear.GetMonthsInYear",
+      "arguments": [
+        8088
+      ],
+      "result": [
+        12,
+        12,
+        12
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetMonthsInYear.GetMonthsInYear",
+      "arguments": [
+        4795
+      ],
+      "result": [
+        12,
+        12,
+        12
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        0,
+        0
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        0,
+        0
+      ],
+      "result": [
+        53
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "1175112576000000000",
+        0,
+        0
+      ],
+      "result": [
+        42
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        0,
+        1
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        0,
+        1
+      ],
+      "result": [
+        53
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "1160980128000000000",
+        0,
+        1
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        0,
+        2
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        0,
+        2
+      ],
+      "result": [
+        53
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "2463869664000000000",
+        0,
+        2
+      ],
+      "result": [
+        37
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        0,
+        3
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        0,
+        3
+      ],
+      "result": [
+        53
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "2259252000000000000",
+        0,
+        3
+      ],
+      "result": [
+        16
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        0,
+        4
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        0,
+        4
+      ],
+      "result": [
+        53
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "1224453888000000000",
+        0,
+        4
+      ],
+      "result": [
+        8
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        0,
+        5
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        0,
+        5
+      ],
+      "result": [
+        53
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "2525559264000000000",
+        0,
+        5
+      ],
+      "result": [
+        11
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        0,
+        6
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        0,
+        6
+      ],
+      "result": [
+        53
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "969940224000000000",
+        0,
+        6
+      ],
+      "result": [
+        34
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        1,
+        0
+      ],
+      "result": [
+        53
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        1,
+        0
+      ],
+      "result": [
+        52
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "2267759808000000000",
+        1,
+        0
+      ],
+      "result": [
+        13
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        1,
+        1
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        1,
+        1
+      ],
+      "result": [
+        52
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "648981504000000000",
+        1,
+        1
+      ],
+      "result": [
+        29
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        1,
+        2
+      ],
+      "result": [
+        52
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        1,
+        2
+      ],
+      "result": [
+        52
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "622990656000000000",
+        1,
+        2
+      ],
+      "result": [
+        9
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        1,
+        3
+      ],
+      "result": [
+        52
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        1,
+        3
+      ],
+      "result": [
+        52
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "1023110784000000000",
+        1,
+        3
+      ],
+      "result": [
+        5
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        1,
+        4
+      ],
+      "result": [
+        52
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        1,
+        4
+      ],
+      "result": [
+        52
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "1091047968000000000",
+        1,
+        4
+      ],
+      "result": [
+        20
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        1,
+        5
+      ],
+      "result": [
+        52
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        1,
+        5
+      ],
+      "result": [
+        53
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "1641730464000000000",
+        1,
+        5
+      ],
+      "result": [
+        23
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        1,
+        6
+      ],
+      "result": [
+        52
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        1,
+        6
+      ],
+      "result": [
+        52
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "1127137248000000000",
+        1,
+        6
+      ],
+      "result": [
+        40
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        2,
+        0
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        2,
+        0
+      ],
+      "result": [
+        52
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "1960472160000000000",
+        2,
+        0
+      ],
+      "result": [
+        26
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        2,
+        1
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        2,
+        1
+      ],
+      "result": [
+        52
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "2332469952000000000",
+        2,
+        1
+      ],
+      "result": [
+        16
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        2,
+        2
+      ],
+      "result": [
+        52
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        2,
+        2
+      ],
+      "result": [
+        53
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "1100755008000000000",
+        2,
+        2
+      ],
+      "result": [
+        9
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        2,
+        3
+      ],
+      "result": [
+        52
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        2,
+        3
+      ],
+      "result": [
+        53
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "1984424832000000000",
+        2,
+        3
+      ],
+      "result": [
+        21
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        2,
+        4
+      ],
+      "result": [
+        53
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        2,
+        4
+      ],
+      "result": [
+        53
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "990589824000000000",
+        2,
+        4
+      ],
+      "result": [
+        3
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        2,
+        5
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        2,
+        5
+      ],
+      "result": [
+        53
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "1477215360000000000",
+        2,
+        5
+      ],
+      "result": [
+        7
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "603052128000000000",
+        2,
+        6
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "3155378975999999999",
+        2,
+        6
+      ],
+      "result": [
+        52
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear",
+      "arguments": [
+        "2514903552000000000",
+        2,
+        6
+      ],
+      "result": [
+        22
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetYear.GetYear",
+      "arguments": [
+        "603052128000000000"
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetYear.GetYear",
+      "arguments": [
+        "3155378975999999999"
+      ],
+      "result": [
+        8088
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetYear.GetYear",
+      "arguments": [
+        "1310971392000000000"
+      ],
+      "result": [
+        2244
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarIsLeapDay.IsLeapDay",
+      "arguments": [
+        89,
+        2,
+        28,
+        false
+      ],
+      "result": [
+        false,
+        false,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarIsLeapDay.IsLeapDay",
+      "arguments": [
+        89,
+        2,
+        29,
+        true
+      ],
+      "result": [
+        true,
+        true,
+        true
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarIsLeapDay.IsLeapDay",
+      "arguments": [
+        89,
+        3,
+        1,
+        false
+      ],
+      "result": [
+        false,
+        false,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarIsLeapDay.IsLeapDay",
+      "arguments": [
+        90,
+        2,
+        28,
+        false
+      ],
+      "result": [
+        false,
+        false,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarToDateTime.ToDateTime",
+      "arguments": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "result": [
+        "603052128000000000",
+        "603052128000000000",
+        "603052128000000000"
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarToDateTime.ToDateTime",
+      "arguments": [
+        8088,
+        12,
+        31,
+        23,
+        59,
+        59,
+        999
+      ],
+      "result": [
+        "3155378975999990000",
+        "3155378975999990000",
+        "3155378975999990000"
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarToDateTime.ToDateTime",
+      "arguments": [
+        7670,
+        6,
+        27,
+        5,
+        17,
+        2,
+        623
+      ],
+      "result": [
+        "3023308990226230000",
+        "3023308990226230000",
+        "3023308990226230000"
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarToFourDigitYear.ToFourDigitYear",
+      "arguments": [
+        3718
+      ],
+      "result": [
+        3718
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarToFourDigitYear.ToFourDigitYear",
+      "arguments": [
+        1
+      ],
+      "result": [
+        1
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarToFourDigitYear.ToFourDigitYear",
+      "arguments": [
+        8088
+      ],
+      "result": [
+        8088
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarTwoDigitYearMax.TwoDigitYearMax_Get",
+      "arguments": [],
+      "result": [
+        99
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarTwoDigitYearMax.TwoDigitYearMax_Set",
+      "arguments": [
+        4649
+      ],
+      "result": [
+        4649
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarGetWeekOfYear.GetWeekOfYear_LastDayOfYear",
+      "arguments": [
+        "736852896000000000"
+      ],
+      "result": [
+        53
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarIsLeapMonth.IsLeapMonth_ReturnsFalse",
+      "arguments": [
+        2123,
+        1,
+        4713,
+        10,
+        6356,
+        1
+      ],
+      "result": [
+        false,
+        false,
+        false
+      ],
+      "error": null
+    },
+    {
+      "source": "TaiwanCalendarDaysAndMonths.DayNames_MonthNames",
+      "arguments": [],
+      "result": [
+        [
+          "\u661F\u671F\u65E5",
+          "\u661F\u671F\u4E00",
+          "\u661F\u671F\u4E8C",
+          "\u661F\u671F\u4E09",
+          "\u661F\u671F\u56DB",
+          "\u661F\u671F\u4E94",
+          "\u661F\u671F\u516D"
+        ],
+        [
+          "1\u6708",
+          "2\u6708",
+          "3\u6708",
+          "4\u6708",
+          "5\u6708",
+          "6\u6708",
+          "7\u6708",
+          "8\u6708",
+          "9\u6708",
+          "10\u6708",
+          "11\u6708",
+          "12\u6708",
+          ""
+        ]
+      ],
+      "error": null
+    }
+  ]
+}

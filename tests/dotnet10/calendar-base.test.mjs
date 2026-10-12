@@ -9,7 +9,7 @@ import {
   GregorianCalendarTypes,
   PersianCalendar,
   ThaiBuddhistCalendar,
-  KoreanCalendar,
+  KoreanCalendar, TaiwanCalendar, JapaneseCalendar, JulianCalendar, HijriCalendar, HebrewCalendar, ChineseLunisolarCalendar, JapaneseLunisolarCalendar, KoreanLunisolarCalendar, TaiwanLunisolarCalendar,
   UmAlQuraCalendar,
 } from '@xobin/globalization';
 import { ArgumentOutOfRangeException } from '@xobin/core';
@@ -22,6 +22,15 @@ const createCalendar = {
   Persian: () => new PersianCalendar(),
   ThaiBuddhist: () => new ThaiBuddhistCalendar(),
   Korean: () => new KoreanCalendar(),
+  Taiwan: () => new TaiwanCalendar(),
+  Japanese: () => new JapaneseCalendar(),
+  Julian: () => new JulianCalendar(),
+  Hijri: () => new HijriCalendar(),
+  Hebrew: () => new HebrewCalendar(),
+  ChineseLunisolar: () => new ChineseLunisolarCalendar(),
+  JapaneseLunisolar: () => new JapaneseLunisolarCalendar(),
+  KoreanLunisolar: () => new KoreanLunisolarCalendar(),
+  TaiwanLunisolar: () => new TaiwanLunisolarCalendar(),
   UmAlQura: () => new UmAlQuraCalendar(),
 };
 
@@ -117,6 +126,15 @@ const supportedCalendarTests = [
   ['PersianCalendarTests', () => new PersianCalendar()],
   ['ThaiBuddhistCalendarTests', () => new ThaiBuddhistCalendar()],
   ['KoreanCalendarTests', () => new KoreanCalendar()],
+  ['TaiwanCalendarTests', () => new TaiwanCalendar()],
+  ['JapaneseCalendarTests', () => new JapaneseCalendar()],
+  ['JulianCalendarTests', () => new JulianCalendar()],
+  ['HijriCalendarTests', () => new HijriCalendar()],
+  ['HebrewCalendarTests', () => new HebrewCalendar()],
+  ['ChineseLunisolarCalendarTests', () => new ChineseLunisolarCalendar()],
+  ['JapaneseLunisolarTests', () => new JapaneseLunisolarCalendar()],
+  ['KoreanLunisolarCalendarTests', () => new KoreanLunisolarCalendar()],
+  ['TaiwanLunisolarTests', () => new TaiwanLunisolarCalendar()],
   ['UmAlQuraCalendarTests', () => new UmAlQuraCalendar()],
 ];
 
@@ -130,7 +148,7 @@ for (const [name, make] of supportedCalendarTests) {
       [CalendarWeekRule.FirstDay, DayOfWeek.Sunday - 1, 'firstDayOfWeek'],
       [CalendarWeekRule.FirstDay, DayOfWeek.Saturday + 1, 'firstDayOfWeek'],
     ]) {
-      const calendarName = name.slice(0, name.indexOf('Calendar'));
+      const calendarName = name.includes('Lunisolar') ? name.slice(0, name.indexOf('Lunisolar') + 'Lunisolar'.length) : name.slice(0, name.indexOf('Calendar'));
       const expected = fixture.invalidWeeks.find((row) => row.calendar === calendarName
         && row.rule === rule && row.firstDay === day);
       assert.ok(expected);

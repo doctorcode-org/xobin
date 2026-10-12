@@ -187,14 +187,14 @@ test('a literal dynamic locale import creates a separate browser chunk', async (
   assert.deepEqual(locales, ['packages/globalization/dist/locales/fa-IR.mjs']);
 });
 
-for (const [name, subpath] of [['JapaneseCalendar', 'japanese-calendar'], ['TaiwanCalendar', 'taiwan-calendar'], ['KoreanCalendar', 'korean-calendar'], ['HijriCalendar', 'hijri-calendar'], ['HebrewCalendar', 'hebrew-calendar']]) {
+for (const [name, subpath] of [['JulianCalendar', 'julian-calendar'], ['JapaneseCalendar', 'japanese-calendar'], ['TaiwanCalendar', 'taiwan-calendar'], ['KoreanCalendar', 'korean-calendar'], ['HijriCalendar', 'hijri-calendar'], ['HebrewCalendar', 'hebrew-calendar']]) {
   test(name + ' resolves from ESM and CommonJS subpaths and excludes unrelated calendars', async () => {
     const root = await import('@xobin/globalization');
     const direct = await import('@xobin/globalization/' + subpath);
     assert.strictEqual(root[name], direct[name]);
     assert.strictEqual(require('@xobin/globalization')[name], require('@xobin/globalization/' + subpath)[name]);
     const output = await bundle("import { " + name + " } from '@xobin/globalization/" + subpath + "'; globalThis.value = new " + name + "();");
-    for (const other of ['JapaneseCalendar', 'TaiwanCalendar', 'KoreanCalendar', 'HijriCalendar', 'HebrewCalendar', 'PersianCalendar', 'ThaiBuddhistCalendar', 'UmAlQuraCalendar']) {
+    for (const other of ['JulianCalendar', 'JapaneseCalendar', 'TaiwanCalendar', 'KoreanCalendar', 'HijriCalendar', 'HebrewCalendar', 'PersianCalendar', 'ThaiBuddhistCalendar', 'UmAlQuraCalendar']) {
       if (other !== name) assert.equal(output.includes(other), false, other + ' remained in the ' + name + ' bundle');
     }
   });

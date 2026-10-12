@@ -158,3 +158,21 @@ Japanese first-era-year formatting, Japanese/Taiwan year digit rules, Hebrew cal
 Calendar dependency fixtures are supplemental differential checks, not a claim that every official calendar test has been ported. Five remaining official DateTimeFormatInfo methods contain parsing assertions and remain unmapped until parsing is agreed: both genitive parsing tests, Hebrew month round trips, Japanese first-era-year round trips, and French Canada time parsing. Their formatting portions have supplemental coverage.
 
 KoreanCalendar now has equivalents for all 20 direct official test methods and 30 of its 31 inherited CalendarTestBase methods. Input providers, including seeded random inputs, are generated from the pinned official sources. Its 71 direct oracle rows include 55 MemberData rows. The remaining inherited Japanese date-parsing test is deliberately unmapped while parsing is deferred; no full CAL-07 completion is claimed.
+
+TaiwanCalendar has equivalents for all 21 direct official test methods and 30 of its 31 inherited CalendarTestBase methods. Its 148 direct oracle rows include 143 rows from the 16 official MemberData providers, with the original shared seeded random generator and Taiwan utility preserved. Day/month names use the reference environment's zh-TW data. The inherited Japanese date-parsing test remains unmapped while parsing is deferred; no full CAL-08 completion is claimed.
+
+### CAL task coverage
+
+The non-parsing work in CAL-01 through CAL-12 is implemented and mapped against .NET 10.0.7. JulianCalendar is a TypeScript implementation with a documented .NET-shaped API, a root export and an individual ESM subpath. It preserves Julian leap-year rules, the Julian 0001-01-03 lower date and 9999-10-19 upper date, and the reference AddMonths clamping behavior. Browser bundle tests check that unrelated calendars are eliminated.
+
+All ten concrete calendars in these tasks (including all seven Gregorian configurations) have equivalents for 30 of their 31 inherited CalendarTestBase methods. Japanese input generation now includes every era, using the official era-range helpers from the pinned source. Gregorian CalendarType constructor, getter, valid setters and invalid setters have official equivalents for every configuration. The remaining inherited method performs Japanese date parsing and is deliberately unmapped for every configuration. Japanese direct tests and the independent Hijri, Hebrew, Julian and UmAlQura miscellaneous tests are also mapped.
+
+There are 8,041 supplemental differential math cases for conversion, date parts, month/year arithmetic, era boundaries, leap months, Hijri adjustment and signed 32-bit AddYears overflow. They do not count as official source coverage. Japanese era definitions and the Hijri default adjustment follow the pinned reference environment; the fixtures record .NET version, Japanese era numbers, start ticks, offsets and year bounds, and Hijri adjustment.
+
+Shared CalendarsTests providers exercise all fourteen calendars, including the four East Asian lunisolar calendars. CloningTest, GetLeapMonthTest, ReadOnlyTest, AlgorithmTypeTest and CalendarErasTest now have complete non-parsing equivalents. Vietnamese and Japanese parsing tests remain deferred. No claim of complete Calendar-suite coverage is made.
+
+### LUNI task coverage
+
+EastAsianLunisolarCalendar and its Chinese, Japanese, Korean and Taiwan implementations preserve the intrinsic year tables from the pinned .NET source. Each implementation has a root export and an independent ESM entry point. Browser bundle tests inspect built-package source maps to verify that only the selected year table is retained; the abstract base retains none. Culture loading remains unchanged.
+
+The supplemental lunisolar oracle compares every supported Gregorian day, including date parts, era, sexagenary cycle, celestial stem, terrestrial branch and conversion back to DateTime. Per-year SHA-256 digests keep these fixtures compact. Additional rows verify arithmetic, invalid inputs, exact exceptions and default two-digit-year settings. Japanese era-transition edge cases and reference millisecond truncation in AddMonths/AddYears are preserved. Supplemental cases are not counted as official test mappings. Parsing remains deferred.

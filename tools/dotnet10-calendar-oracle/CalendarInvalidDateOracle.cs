@@ -6,32 +6,10 @@ internal static class CalendarInvalidDateOracle
     private static IEnumerable<(int year, int month, int day, int era, string parameter)> TestData(
         Calendar calendar, bool includeMonth, bool includeDay)
     {
-        // These fixture inputs select single-era calendars.
-        if (calendar.Eras.Length != 1)
-            throw new InvalidOperationException("This oracle requires a single-era calendar.");
-
-        int era = calendar.Eras[0];
-        int year = calendar.GetYear(calendar.MaxSupportedDateTime) - 2;
-        yield return (-1, 1, 1, era, "year");
-        yield return (0, 1, 1, era, "year");
-        yield return (calendar.GetYear(calendar.MaxSupportedDateTime) + 1, 1, 1, era, "year");
-
-        if (includeMonth)
-        {
-            yield return (year, -1, 1, era, "month");
-            yield return (year, 0, 1, era, "month");
-            yield return (year, calendar.GetMonthsInYear(year, era) + 1, 1, era, "month");
-        }
-        if (includeDay)
-        {
-            yield return (year, 1, -1, era, "day");
-            yield return (year, 1, 0, era, "day");
-            yield return (year, 1, calendar.GetDaysInMonth(year, 1, era) + 1, era, "day");
-        }
-
-        yield return (calendar.GetYear(calendar.MinSupportedDateTime) - 1, 1, 1, era, "year");
-        yield return (calendar.GetYear(calendar.MaxSupportedDateTime), 1, 1, era - 2, "era");
-        yield return (calendar.GetYear(calendar.MaxSupportedDateTime), 1, 1, era + 1, "era");
+        var type = CalendarReferenceInputs.DataType.Year;
+        if (includeMonth) type |= CalendarReferenceInputs.DataType.Month;
+        if (includeDay) type |= CalendarReferenceInputs.DataType.Day;
+        return CalendarReferenceInputs.Year_Month_Day_Era_TestData(calendar, type);
     }
 
     internal static string Generate()
@@ -49,6 +27,15 @@ internal static class CalendarInvalidDateOracle
             ("PersianCalendarTests", () => new PersianCalendar()),
             ("ThaiBuddhistCalendarTests", () => new ThaiBuddhistCalendar()),
             ("KoreanCalendarTests", () => new KoreanCalendar()),
+            ("TaiwanCalendarTests", () => new TaiwanCalendar()),
+            ("JapaneseCalendarTests", () => new JapaneseCalendar()),
+            ("JulianCalendarTests", () => new JulianCalendar()),
+            ("HijriCalendarTests", () => new HijriCalendar()),
+            ("HebrewCalendarTests", () => new HebrewCalendar()),
+            ("ChineseLunisolarCalendarTests", () => new ChineseLunisolarCalendar()),
+            ("JapaneseLunisolarTests", () => new JapaneseLunisolarCalendar()),
+            ("KoreanLunisolarCalendarTests", () => new KoreanLunisolarCalendar()),
+            ("TaiwanLunisolarTests", () => new TaiwanLunisolarCalendar()),
             ("UmAlQuraCalendarTests", () => new UmAlQuraCalendar()),
         };
         var operations = new (string name, bool month, bool day)[]

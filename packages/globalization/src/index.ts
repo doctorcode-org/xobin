@@ -25,3 +25,10 @@ export { TaiwanCalendar } from './lib/taiwan_calendar';
 export { JapaneseCalendar } from './lib/japanese_calendar';
 export { HijriCalendar } from './lib/hijri_calendar';
 export { HebrewCalendar } from './lib/hebrew_calendar';
+
+export { JulianCalendar } from './lib/julian_calendar';
+export { EastAsianLunisolarCalendar } from './lib/east_asian_lunisolar_calendar';
+export { ChineseLunisolarCalendar } from './lib/chinese_lunisolar_calendar';
+export { JapaneseLunisolarCalendar } from './lib/japanese_lunisolar_calendar';
+export { KoreanLunisolarCalendar } from './lib/korean_lunisolar_calendar';
+export { TaiwanLunisolarCalendar } from './lib/taiwan_lunisolar_calendar';
