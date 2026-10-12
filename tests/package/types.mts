@@ -101,3 +101,26 @@ const onlyCombinedKind: DateTime = dateOnly.toDateTime(timeOnly, DateTimeKind.ut
 void [onlyFromNumber,onlyFromDateTime,onlyDateParts,onlyComparison,onlyObjectComparison,onlyNullComparison,onlyEquality,onlyObjectEquality,onlyHash,onlyPrimitive,onlyAdjusted,onlyCombined,onlyCombinedKind];
 // @ts-expect-error DateOnly requires the project's DateTimeKind enum wrapper.
 dateOnly.toDateTime(timeOnly, 1);
+
+import { OutParam } from '@xobin/core';
+const wrappedDays: OutParam<number> = { result: 0 };
+const adjustedTime: TimeOnly = timeOnly.add(new TimeSpan(1n), wrappedDays).addHours(-1.5, wrappedDays).addMinutes(90, wrappedDays);
+const timeDifference: TimeSpan = timeOnly.subtract(adjustedTime);
+const within: boolean = timeOnly.isBetween(TimeOnly.minValue, TimeOnly.maxValue);
+const timeComparison: number = timeOnly.compareTo({});
+const timeEquality: boolean = timeOnly.equals(null);
+const timePrimitive: bigint = timeOnly.valueOf();
+const timeHash: number = timeOnly.getHashCode();
+const timeInterval: TimeSpan = timeOnly.toTimeSpan();
+const restoredTime: TimeOnly = TimeOnly.fromTimeSpan(timeInterval);
+const dateTimeTime: TimeOnly = TimeOnly.fromDateTime(combined);
+const timeParts: OutParam<number>[] = Array.from({ length: 5 }, () => ({ result: 0 }));
+timeOnly.deconstruct(timeParts[0]!, timeParts[1]!);
+timeOnly.deconstruct(timeParts[0]!, timeParts[1]!, timeParts[2]!);
+timeOnly.deconstruct(timeParts[0]!, timeParts[1]!, timeParts[2]!, timeParts[3]!);
+timeOnly.deconstruct(timeParts[0]!, timeParts[1]!, timeParts[2]!, timeParts[3]!, timeParts[4]!);
+void [adjustedTime,timeDifference,within,timeComparison,timeEquality,timePrimitive,timeHash,restoredTime,dateTimeTime];
+// @ts-expect-error A wrapped-day output uses the existing OutParam contract.
+timeOnly.addHours(1, 0);
+// @ts-expect-error TimeOnly tick constructors require exact bigint ticks.
+new TimeOnly(1);

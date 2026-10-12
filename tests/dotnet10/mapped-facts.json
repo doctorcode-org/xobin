@@ -822,5 +822,16 @@
   "DateOnlyTests.OperatorsTest": "date-only-core.test.mjs",
   "DateOnlyTests.DateTimeConversionTest": "date-only-core.test.mjs",
   "DateOnlyTests.ComparisonsTest": "date-only-core.test.mjs",
-  "DateOnlyTests.GetHashCodeTest": "date-only-core.test.mjs"
+  "DateOnlyTests.GetHashCodeTest": "date-only-core.test.mjs",
+  "TimeOnlyTests.MinMaxValuesTest": "time-only-core.test.mjs",
+  "TimeOnlyTests.ConstructorsTest": "time-only-core.test.mjs",
+  "TimeOnlyTests.DeconstructionTest_Hour_Minute_Second_Millisecond_Microsecond_Now": "time-only-core.test.mjs",
+  "TimeOnlyTests.AddTest": "time-only-core.test.mjs",
+  "TimeOnlyTests.IsBetweenTest": "time-only-core.test.mjs",
+  "TimeOnlyTests.CompareOperatorsTest": "time-only-core.test.mjs",
+  "TimeOnlyTests.SubtractOperatorTest": "time-only-core.test.mjs",
+  "TimeOnlyTests.FromToTimeSpanTest": "time-only-core.test.mjs",
+  "TimeOnlyTests.FromDateTimeTest": "time-only-core.test.mjs",
+  "TimeOnlyTests.ComparisonsTest": "time-only-core.test.mjs",
+  "TimeOnlyTests.GetHashCodeTest": "time-only-core.test.mjs"
 }

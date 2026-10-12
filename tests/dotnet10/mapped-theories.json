@@ -278,5 +278,9 @@
   "TimeSpanTests.TestTotalMicroseconds": "time-span-arithmetic.test.mjs",
   "TimeSpanTests.TestTotalNanoseconds": "time-span-arithmetic.test.mjs",
   "DateOnlyTests.ConstructorsTest": "date-only-constructors.test.mjs",
-  "DateOnlyTests.DeconstructionTest": "date-only-core.test.mjs"
+  "DateOnlyTests.DeconstructionTest": "date-only-core.test.mjs",
+  "TimeOnlyTests.DeconstructionTest_Hour_Minute": "time-only-core.test.mjs",
+  "TimeOnlyTests.DeconstructionTest_Hour_Minute_Second": "time-only-core.test.mjs",
+  "TimeOnlyTests.DeconstructionTest_Hour_Minute_Second_Millisecond": "time-only-core.test.mjs",
+  "TimeOnlyTests.DeconstructionTest_Hour_Minute_Second_Millisecond_Microsecond": "time-only-core.test.mjs"
 }

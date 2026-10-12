@@ -57,6 +57,14 @@ const onlyParts: [number, number, number] = dateOnly.addDays(1).addMonths(-1).ad
 const onlyDayNumber: number = DateOnly.fromDayNumber(100).valueOf();
 void [onlyComparison,onlyEquality,onlyHash,onlyParts,onlyDayNumber];
 const timeOnly: TimeOnly = new TimeOnly(863999999999n);
+const wrappedDays = { result: 0 };
+const adjustedTime: TimeOnly = timeOnly.addHours(1, wrappedDays).addMinutes(-60, wrappedDays).add(new TimeSpan(1n), wrappedDays);
+const timeDifference: TimeSpan = timeOnly.subtract(adjustedTime);
+const timePrimitive: bigint = timeOnly.valueOf();
+const timeComparison: number = timeOnly.compareTo(null);
+const timeHour = { result: 0 }, timeMinute = { result: 0 };
+timeOnly.deconstruct(timeHour, timeMinute);
+void [adjustedTime,timeDifference,timePrimitive,timeComparison];
 const combined: DateTime = new DateTime(dateOnly, timeOnly, DateTimeKind.utc);
 const dateAndTime: [DateOnly, TimeOnly] = combined.deconstruct();
 const dateParts: [number, number, number] = combined.deconstruct('date');
