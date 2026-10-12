@@ -68,3 +68,7 @@ const isoStart: DateTime = DirectISOWeek.getYearStart(2020);
 void [isoWeek, isoYear, isoStart];
 // @ts-expect-error ISOWeek is a static type in the reference API
 new DirectISOWeek();
+
+const isoDateTime: DateTime = DirectISOWeek.toDateTime(2020, 53, 0);
+const isoDateOnly: DateOnly = DirectISOWeek.toDateOnly(2020, 53, 0);
+void [isoDateTime, isoDateOnly];

@@ -228,5 +228,10 @@
   "ISOWeekTests.GetYearUsingDateOnly": "iso-week.test.mjs",
   "ISOWeekTests.GetYearStart": "iso-week.test.mjs",
   "ISOWeekTests.GetYearEnd": "iso-week.test.mjs",
-  "ISOWeekTests.GetWeeksInYear_WithInvalidYear_Throws": "iso-week.test.mjs"
+  "ISOWeekTests.GetWeeksInYear_WithInvalidYear_Throws": "iso-week.test.mjs",
+  "ISOWeekTests.ToDateTime": "iso-week.test.mjs",
+  "ISOWeekTests.ToDateOnly": "iso-week.test.mjs",
+  "ISOWeekTests.ToDateTime_WithInvalidYear_Throws": "iso-week.test.mjs",
+  "ISOWeekTests.ToDateTime_WithInvalidWeek_Throws": "iso-week.test.mjs",
+  "ISOWeekTests.ToDateTime_WithInvalidDayOfWeek_Throws": "iso-week.test.mjs"
 }

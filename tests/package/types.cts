@@ -61,3 +61,6 @@ export { dateOnly, timeOnly, combined, dateAndTime, dateParts, code, converted }
 import { ISOWeek as DirectISOWeek } from '@xobin/globalization/iso-week';
 const isoWeeks: number = DirectISOWeek.getWeeksInYear(2020);
 void isoWeeks;
+
+const isoConverted: DateTime = DirectISOWeek.toDateTime(2020, 53, 0);
+void isoConverted;

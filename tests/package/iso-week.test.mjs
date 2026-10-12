@@ -13,6 +13,10 @@ test('ISOWeek resolves from ESM and CommonJS subpaths', () => {
     assert.equal(ISOWeek, DirectISOWeek);
     assert.equal(require('@xobin/globalization/iso-week').ISOWeek.getWeekOfYear(new DateTime(2021,1,1)), 53);
     assert.equal(DirectISOWeek.getYear(new DateOnly(2021,1,1)), 2020);
+    assert.equal(DirectISOWeek.toDateTime(2020,53,7).ticks, new DateTime(2021,1,3).ticks);
+    assert.equal(DirectISOWeek.toDateOnly(2020,53,0).dayNumber, new DateOnly(2021,1,3).dayNumber);
+    assert.equal(require('@xobin/globalization/iso-week').ISOWeek.toDateTime(2020,53,0).ticks, new DateTime(2021,1,3).ticks);
+    assert.equal(require('@xobin/globalization/iso-week').ISOWeek.toDateOnly(2020,53,7).dayNumber, new DateOnly(2021,1,3).dayNumber);
 });
 for (const entry of ['@xobin/globalization', '@xobin/globalization/iso-week']) test(`ISOWeek browser excludes calendar and culture tables/${entry}`, async () => {
     const result = await build({ stdin: { contents: `import { ISOWeek } from '${entry}'; console.log(ISOWeek.getWeeksInYear(2020));`, resolveDir: repositoryRoot, loader: 'js' }, bundle: true, format: 'esm', platform: 'browser', treeShaking: true, write: false, metafile: true, logLevel: 'silent' });

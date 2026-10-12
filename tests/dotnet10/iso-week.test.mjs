@@ -7,7 +7,7 @@ const fixture = JSON.parse(readFileSync(new URL('./iso-week-cases.json', import.
 assert.equal(fixture.runtime, '10.0.7');
 function run(row) {
     const invoke = () => {
-        const dateOnly = row.operation.endsWith('DateOnly');
+        const dateOnly = ['getWeekOfYearDateOnly', 'getYearDateOnly'].includes(row.operation);
         const operation = dateOnly ? row.operation.slice(0, -8) : row.operation;
         const args = operation === 'getWeekOfYear' || operation === 'getYear'
             ? [dateOnly ? DateOnly.fromDayNumber(row.arguments[0]) : new DateTime(BigInt(row.arguments[0]))] : row.arguments;
@@ -16,6 +16,7 @@ function run(row) {
             assert.equal(result.kind, DateTimeKind.unspecified);
             return result.ticks.toString();
         }
+        if (result instanceof DateOnly) return result.dayNumber;
         return result;
     };
     if (row.error) assert.throws(invoke, error => {
@@ -58,6 +59,27 @@ for (const row of fixture.days) test(`Supplemental.ISOWeek/every-day/${row.year}
         const dateOnly = DateOnly.fromDateTime(date);
         hash.update([date.ticks, ISOWeek.getWeekOfYear(date), ISOWeek.getYear(date), ISOWeek.getWeekOfYear(dateOnly), ISOWeek.getYear(dateOnly)].join('|') + '\n');
         count++;
+    }
+    assert.equal(count, row.count);
+    assert.equal(hash.digest('hex'), row.sha256);
+});
+
+for (const row of fixture.conversions) test(`Supplemental.ISOWeek/every-conversion/${row.year}`, () => {
+    const hash = createHash('sha256');
+    let count = 0;
+    for (let week = 1; week <= 53; week++) {
+        for (let day = 0; day <= 7; day++) {
+            let dateTime, dateOnly;
+            try {
+                const result = ISOWeek.toDateTime(row.year, week, day);
+                assert.equal(result.kind, DateTimeKind.unspecified);
+                dateTime = result.ticks.toString();
+            } catch (error) { dateTime = errorText(error); }
+            try { dateOnly = ISOWeek.toDateOnly(row.year, week, day).dayNumber.toString(); }
+            catch (error) { dateOnly = errorText(error); }
+            hash.update([row.year, week, day, dateTime, dateOnly].join('|') + '\n');
+            count++;
+        }
     }
     assert.equal(count, row.count);
     assert.equal(hash.digest('hex'), row.sha256);

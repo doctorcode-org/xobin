@@ -2,7 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 import { ArgumentOutOfRangeException } from '@xobin/core';
-import type { DateOnly } from './date_only';
+import { DateOnly } from './date_only';
 import { DateTime } from './date_time';
 import { DayOfWeek } from './day_of_week';
 import { TicksPerDay } from './var';
@@ -45,8 +45,7 @@ export class ISOWeek {
      * @param year The ISO week-numbering year.
      */
     static getYearStart(year: number): DateTime {
-        checkYear(year);
-        return getDate(year, 1, DayOfWeek.Monday);
+        return ISOWeek.toDateTime(year, 1, DayOfWeek.Monday);
     }
 
     /**
@@ -54,7 +53,7 @@ export class ISOWeek {
      * @param year The ISO week-numbering year.
      */
     static getYearEnd(year: number): DateTime {
-        return getDate(year, ISOWeek.getWeeksInYear(year), DayOfWeek.Sunday);
+        return ISOWeek.toDateTime(year, ISOWeek.getWeeksInYear(year), DayOfWeek.Sunday);
     }
 
     /**
@@ -64,6 +63,36 @@ export class ISOWeek {
     static getWeeksInYear(year: number): number {
         checkYear(year);
         return yearWeekday(year) === 4 || yearWeekday(year - 1) === 3 ? 53 : 52;
+    }
+
+    /**
+     * Converts an ISO week date to the equivalent Gregorian date and time.
+     * @param year The ISO week-numbering year.
+     * @param week The ISO week number, from 1 through 53.
+     * @param dayOfWeek The day of the week. Both 0 and 7 represent Sunday.
+     */
+    static toDateTime(year: number, week: number, dayOfWeek: DayOfWeek): DateTime {
+        checkYear(year);
+        if (week < 1 || week > 53) {
+            throw new ArgumentOutOfRangeException('week', 'The week parameter must be in the range 1 through 53.');
+        }
+        if (dayOfWeek < 0 || dayOfWeek > 7) {
+            throw new ArgumentOutOfRangeException('dayOfWeek', 'The DayOfWeek enumeration must be in the range 0 through 6.');
+        }
+        const jan4 = new DateTime(year, 1, 4);
+        const correction = getWeekday(jan4.dayOfWeek) + 3;
+        const ordinal = week * 7 + getWeekday(dayOfWeek) - correction;
+        return jan4.addTicks(BigInt(ordinal - 4) * TicksPerDay);
+    }
+
+    /**
+     * Converts an ISO week date to the equivalent Gregorian date.
+     * @param year The ISO week-numbering year.
+     * @param week The ISO week number, from 1 through 53.
+     * @param dayOfWeek The day of the week. Both 0 and 7 represent Sunday.
+     */
+    static toDateOnly(year: number, week: number, dayOfWeek: DayOfWeek): DateOnly {
+        return DateOnly.fromDateTime(ISOWeek.toDateTime(year, week, dayOfWeek));
     }
 }
 
@@ -84,11 +113,4 @@ function getWeekday(dayOfWeek: DayOfWeek): number {
 
 function getWeekNumber(date: DateTime | DateOnly): number {
     return Math.trunc((date.dayOfYear - getWeekday(date.dayOfWeek) + 10) / 7);
-}
-
-function getDate(year: number, week: number, dayOfWeek: DayOfWeek): DateTime {
-    const jan4 = new DateTime(year, 1, 4);
-    const correction = getWeekday(jan4.dayOfWeek) + 3;
-    const ordinal = week * 7 + getWeekday(dayOfWeek) - correction;
-    return jan4.addTicks(BigInt(ordinal - 4) * TicksPerDay);
 }

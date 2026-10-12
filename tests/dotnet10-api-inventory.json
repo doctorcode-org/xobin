@@ -10,9 +10,9 @@
   "summary": {
     "types": 29,
     "members": 807,
-    "present": 599,
+    "present": 601,
     "incomplete": 18,
-    "missing": 190,
+    "missing": 188,
     "missingTypes": 0,
     "missingRootExports": 0,
     "missingSubpathExports": 5
@@ -12106,9 +12106,9 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 7,
+        "present": 9,
         "incomplete": 0,
-        "missing": 2
+        "missing": 0
       },
       "extraLocalMembers": [
         "constructor"
@@ -12320,9 +12320,9 @@
             ]
           },
           "jsMember": "toDateOnly",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "ISO-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -12357,9 +12357,9 @@
             ]
           },
           "jsMember": "toDateTime",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "ISO-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         }
