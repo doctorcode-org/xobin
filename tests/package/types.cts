@@ -64,3 +64,10 @@ void isoWeeks;
 
 const isoConverted: DateTime = DirectISOWeek.toDateTime(2020, 53, 0);
 void isoConverted;
+
+const integerSpan: TimeSpan = DirectTimeSpan.fromDays(1, 2, 3n);
+const floatingSpan: TimeSpan = DirectTimeSpan.fromMicroseconds(1.5);
+const multipliedSpan: TimeSpan = integerSpan.multiply(0.5);
+const ratio: number = integerSpan.divide(floatingSpan);
+const tickScale: bigint = DirectTimeSpan.ticksPerMicrosecond;
+void [integerSpan,floatingSpan,multipliedSpan,ratio,tickScale];

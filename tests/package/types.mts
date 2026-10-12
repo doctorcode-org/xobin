@@ -72,3 +72,15 @@ new DirectISOWeek();
 const isoDateTime: DateTime = DirectISOWeek.toDateTime(2020, 53, 0);
 const isoDateOnly: DateOnly = DirectISOWeek.toDateOnly(2020, 53, 0);
 void [isoDateTime, isoDateOnly];
+
+const spanProduct: TimeSpan = span.multiply(0.5);
+const spanQuotient: TimeSpan = span.divide(2);
+const spanRatio: number = span.divide(new DirectTimeSpan(2n));
+const spanHash: number = span.getHashCode();
+const integerDays: TimeSpan = DirectTimeSpan.fromDays(1n);
+const integerParts: TimeSpan = DirectTimeSpan.fromDays(1, 2, 3n, 4n, 5n, 6n);
+const integerSeconds: TimeSpan = DirectTimeSpan.fromSeconds(101n, 832n);
+const integerMicroseconds: TimeSpan = DirectTimeSpan.fromMicroseconds(1n);
+const floatingMicroseconds: TimeSpan = DirectTimeSpan.fromMicroseconds(1.5);
+const ticksPerDay: bigint = DirectTimeSpan.ticksPerDay;
+void [spanProduct,spanQuotient,spanRatio,spanHash,integerDays,integerParts,integerSeconds,integerMicroseconds,floatingMicroseconds,ticksPerDay];

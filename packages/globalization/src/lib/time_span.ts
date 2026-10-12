@@ -28,6 +28,116 @@ import {
  * Represents a time interval stored as signed 100-nanosecond ticks.
  */
 export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
+    /**
+     * Gets the number of nanoseconds per tick.
+     */
+    static readonly nanosecondsPerTick = 100n;
+
+    /**
+     * Gets the number of ticks per microsecond.
+     */
+    static readonly ticksPerMicrosecond = 10n;
+
+    /**
+     * Gets the number of ticks per millisecond.
+     */
+    static readonly ticksPerMillisecond = TicksPerMicrosecond * 1000n;
+
+    /**
+     * Gets the number of ticks per second.
+     */
+    static readonly ticksPerSecond = TicksPerMillisecond * 1000n;
+
+    /**
+     * Gets the number of ticks per minute.
+     */
+    static readonly ticksPerMinute = TicksPerSecond * 60n;
+
+    /**
+     * Gets the number of ticks per hour.
+     */
+    static readonly ticksPerHour = TicksPerMinute * 60n;
+
+    /**
+     * Gets the number of ticks per day.
+     */
+    static readonly ticksPerDay = TicksPerHour * 24n;
+
+    /**
+     * Gets the number of microseconds per millisecond.
+     */
+    static readonly microsecondsPerMillisecond = TicksPerMillisecond / TicksPerMicrosecond;
+
+    /**
+     * Gets the number of microseconds per second.
+     */
+    static readonly microsecondsPerSecond = TicksPerSecond / TicksPerMicrosecond;
+
+    /**
+     * Gets the number of microseconds per minute.
+     */
+    static readonly microsecondsPerMinute = TicksPerMinute / TicksPerMicrosecond;
+
+    /**
+     * Gets the number of microseconds per hour.
+     */
+    static readonly microsecondsPerHour = TicksPerHour / TicksPerMicrosecond;
+
+    /**
+     * Gets the number of microseconds per day.
+     */
+    static readonly microsecondsPerDay = TicksPerDay / TicksPerMicrosecond;
+
+    /**
+     * Gets the number of milliseconds per second.
+     */
+    static readonly millisecondsPerSecond = TicksPerSecond / TicksPerMillisecond;
+
+    /**
+     * Gets the number of milliseconds per minute.
+     */
+    static readonly millisecondsPerMinute = TicksPerMinute / TicksPerMillisecond;
+
+    /**
+     * Gets the number of milliseconds per hour.
+     */
+    static readonly millisecondsPerHour = TicksPerHour / TicksPerMillisecond;
+
+    /**
+     * Gets the number of milliseconds per day.
+     */
+    static readonly millisecondsPerDay = TicksPerDay / TicksPerMillisecond;
+
+    /**
+     * Gets the number of seconds per minute.
+     */
+    static readonly secondsPerMinute = TicksPerMinute / TicksPerSecond;
+
+    /**
+     * Gets the number of seconds per hour.
+     */
+    static readonly secondsPerHour = TicksPerHour / TicksPerSecond;
+
+    /**
+     * Gets the number of seconds per day.
+     */
+    static readonly secondsPerDay = TicksPerDay / TicksPerSecond;
+
+    /**
+     * Gets the number of minutes per hour.
+     */
+    static readonly minutesPerHour = TicksPerHour / TicksPerMinute;
+
+    /**
+     * Gets the number of minutes per day.
+     */
+    static readonly minutesPerDay = TicksPerDay / TicksPerMinute;
+
+    /**
+     * Gets the number of hours per day.
+     */
+    static readonly hoursPerDay = 24;
+
     private readonly _ticks: bigint;
 
     /**
@@ -217,49 +327,171 @@ export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
         return getOrCreateValue(this, 'maxValue', () => new TimeSpan(LongMaxValue));
     }
 
+    /**
+     * Adds the specified interval to this interval.
+     */
     add(value: TimeSpan): TimeSpan {
         return new TimeSpan(checkTicks(this._ticks + value.ticks));
     }
 
+    /**
+     * Subtracts the specified interval from this interval.
+     */
     subtract(value: TimeSpan): TimeSpan {
         return new TimeSpan(checkTicks(this._ticks - value.ticks));
     }
 
+    /**
+     * Gets the absolute value of this interval.
+     */
     duration(): TimeSpan {
-        if (this._ticks === LongMinValue) throw new OverflowException('Overflow_Duration');
+        if (this._ticks === LongMinValue) throw new OverflowException('The duration cannot be returned for TimeSpan.MinValue because the absolute value of TimeSpan.MinValue exceeds the value of TimeSpan.MaxValue.');
         return new TimeSpan(this._ticks < 0n ? -this._ticks : this._ticks);
     }
 
+    /**
+     * Gets an interval with the negated value of this interval.
+     */
     negate(): TimeSpan {
-        if (this._ticks === LongMinValue) throw new OverflowException('Overflow_NegateTwosCompNum');
+        if (this._ticks === LongMinValue) throw new OverflowException('Negating the minimum value of a twos complement number is invalid.');
         return new TimeSpan(-this._ticks);
     }
 
-    equals(other: TimeSpan): boolean {
+    /**
+     * Determines whether the specified value equals this interval.
+     */
+    equals(other: Nullable<object>): boolean;
+    equals(other: TimeSpan): boolean;
+    equals(other: Nullable<object>): boolean {
         return other instanceof TimeSpan && this._ticks === other.ticks;
     }
 
+    /**
+     * Compares this interval with the specified value.
+     */
     compareTo(otherValue: Nullable<object>): number;
     compareTo(otherValue: TimeSpan): number;
     compareTo(otherValue: TimeSpan | Nullable<object>): number {
         if (otherValue == null) return 1;
-        if (!(otherValue instanceof TimeSpan)) throw new ArgumentException('Arg_MustBeTimeSpan');
+        if (!(otherValue instanceof TimeSpan)) throw new ArgumentException('Object must be of type TimeSpan.');
         return this._ticks > otherValue.ticks ? 1 : this._ticks < otherValue.ticks ? -1 : 0;
     }
 
+    /**
+     * Gets the hash code of this interval.
+     */
+    getHashCode(): number {
+        return Number(BigInt.asIntN(32, this._ticks ^ (this._ticks >> 32n)));
+    }
+
+    /**
+     * Multiplies this interval by the specified factor.
+     * @param factor The floating-point multiplier.
+     */
+    multiply(factor: number): TimeSpan {
+        if (Number.isNaN(factor)) throw new ArgumentException('TimeSpan does not accept floating point Not-a-Number values.', 'factor');
+        return intervalFromDoubleTicks(roundToEven(Number(this._ticks) * factor));
+    }
+
+    /**
+     * Divides this interval by a number or another interval.
+     * @param divisor The divisor.
+     */
+    divide(divisor: number): TimeSpan;
+    divide(divisor: TimeSpan): number;
+    divide(divisor: number | TimeSpan): TimeSpan | number {
+        if (divisor instanceof TimeSpan) return Number(this._ticks) / Number(divisor.ticks);
+        if (Number.isNaN(divisor)) throw new ArgumentException('TimeSpan does not accept floating point Not-a-Number values.', 'divisor');
+        return intervalFromDoubleTicks(roundToEven(Number(this._ticks) / divisor));
+    }
+
+    /**
+     * Gets the ticks for JavaScript numeric comparisons.
+     */
     valueOf(): bigint { return this._ticks; }
 
-    static fromDays(value: number): TimeSpan { return interval(value, TicksPerDay); }
-    static fromHours(value: number): TimeSpan { return interval(value, TicksPerHour); }
-    static fromMinutes(value: number): TimeSpan { return interval(value, TicksPerMinute); }
-    static fromSeconds(value: number): TimeSpan { return interval(value, TicksPerSecond); }
-    static fromMilliseconds(value: number): TimeSpan { return interval(value, TicksPerMillisecond); }
-    static fromTicks(value: bigint): TimeSpan { return new TimeSpan(value); }
+    /**
+     * Creates an interval from days. A number selects floating-point conversion; bigint selects integer conversion.
+     */
+    static fromDays(value: number): TimeSpan;
+    static fromDays(value: bigint): TimeSpan;
+    static fromDays(days: number | bigint, hours?: number | bigint, minutes?: number | bigint, seconds?: number | bigint, milliseconds?: number | bigint, microseconds?: number | bigint): TimeSpan;
+    static fromDays(value: number | bigint, ...components: Array<number | bigint | undefined>): TimeSpan {
+        if (components.length === 0 && typeof value === 'number') return interval(value, TicksPerDay);
+        return integerInterval([value, ...components], 0);
+    }
 
+    /**
+     * Creates an interval from hours. A number selects floating-point conversion; bigint selects integer conversion.
+     */
+    static fromHours(value: number): TimeSpan;
+    static fromHours(value: bigint): TimeSpan;
+    static fromHours(hours: number | bigint, minutes?: number | bigint, seconds?: number | bigint, milliseconds?: number | bigint, microseconds?: number | bigint): TimeSpan;
+    static fromHours(value: number | bigint, ...components: Array<number | bigint | undefined>): TimeSpan {
+        if (components.length === 0 && typeof value === 'number') return interval(value, TicksPerHour);
+        return integerInterval([value, ...components], 1);
+    }
+
+    /**
+     * Creates an interval from minutes. A number selects floating-point conversion; bigint selects integer conversion.
+     */
+    static fromMinutes(value: number): TimeSpan;
+    static fromMinutes(value: bigint): TimeSpan;
+    static fromMinutes(minutes: number | bigint, seconds?: number | bigint, milliseconds?: number | bigint, microseconds?: number | bigint): TimeSpan;
+    static fromMinutes(value: number | bigint, ...components: Array<number | bigint | undefined>): TimeSpan {
+        if (components.length === 0 && typeof value === 'number') return interval(value, TicksPerMinute);
+        return integerInterval([value, ...components], 2);
+    }
+
+    /**
+     * Creates an interval from seconds. A number selects floating-point conversion; bigint selects integer conversion.
+     */
+    static fromSeconds(value: number): TimeSpan;
+    static fromSeconds(value: bigint): TimeSpan;
+    static fromSeconds(seconds: number | bigint, milliseconds?: number | bigint, microseconds?: number | bigint): TimeSpan;
+    static fromSeconds(value: number | bigint, ...components: Array<number | bigint | undefined>): TimeSpan {
+        if (components.length === 0 && typeof value === 'number') return interval(value, TicksPerSecond);
+        return integerInterval([value, ...components], 3);
+    }
+
+    /**
+     * Creates an interval from milliseconds. A number selects floating-point conversion; bigint selects integer conversion.
+     */
+    static fromMilliseconds(value: number): TimeSpan;
+    static fromMilliseconds(value: bigint): TimeSpan;
+    static fromMilliseconds(milliseconds: number | bigint, microseconds?: number | bigint): TimeSpan;
+    static fromMilliseconds(value: number | bigint, ...components: Array<number | bigint | undefined>): TimeSpan {
+        if (components.length === 0 && typeof value === 'number') return interval(value, TicksPerMillisecond);
+        return integerInterval([value, ...components], 4);
+    }
+
+    /**
+     * Creates an interval from microseconds. A number selects floating-point conversion; bigint selects integer conversion.
+     */
+    static fromMicroseconds(value: number): TimeSpan;
+    static fromMicroseconds(value: bigint): TimeSpan;
+    static fromMicroseconds(value: number | bigint, ...components: Array<number | bigint | undefined>): TimeSpan {
+        if (components.length === 0 && typeof value === 'number') return interval(value, TicksPerMicrosecond);
+        return integerInterval([value, ...components], 5);
+    }
+
+    /**
+     * Creates an interval from the specified number of 100-nanosecond ticks.
+     */
+    static fromTicks(value: bigint): TimeSpan {
+        return new TimeSpan(value);
+    }
+
+    /**
+     * Compares two intervals by their tick values.
+     */
     static compare(first: TimeSpan, second: TimeSpan): number {
         return first.ticks > second.ticks ? 1 : first.ticks < second.ticks ? -1 : 0;
     }
 
+    /**
+     * Determines whether two intervals have equal tick values.
+     */
     static equals(first: TimeSpan, second: TimeSpan): boolean {
         return first.ticks === second.ticks;
     }
@@ -273,7 +505,7 @@ export function timeToTicks(hour: number, minute: number, second: number): bigin
     return totalSeconds * TicksPerSecond;
 }
 
-function int32(value: number | bigint | undefined): number {
+function int32(value?: number | bigint): number {
     if (typeof value !== 'number' || !Number.isInteger(value) || value < -2147483648 || value > 2147483647) {
         throw new ArgumentOutOfRangeException('Integer component out of range');
     }
@@ -281,16 +513,46 @@ function int32(value: number | bigint | undefined): number {
 }
 
 function checkTicks(ticks: bigint): bigint {
-    if (ticks < LongMinValue || ticks > LongMaxValue) throw new OverflowException('Overflow_TimeSpanTooLong');
+    if (ticks < LongMinValue || ticks > LongMaxValue) throw new OverflowException('TimeSpan overflowed because the duration is too long.');
     return ticks;
 }
 
 function interval(value: number, scale: bigint): TimeSpan {
-    if (Number.isNaN(value)) throw new ArgumentException('Arg_CannotBeNaN');
-    const ticks = value * Number(scale);
+    if (Number.isNaN(value)) throw new ArgumentException('TimeSpan does not accept floating point Not-a-Number values.');
+    return intervalFromDoubleTicks(value * Number(scale));
+}
+
+function intervalFromDoubleTicks(ticks: number): TimeSpan {
     if (!Number.isFinite(ticks) || ticks > Number(LongMaxValue) || ticks < Number(LongMinValue)) {
-        throw new OverflowException('Overflow_TimeSpanTooLong');
+        throw new OverflowException('TimeSpan overflowed because the duration is too long.');
     }
     if (ticks === Number(LongMaxValue)) return TimeSpan.maxValue;
     return new TimeSpan(BigInt(Math.trunc(ticks)));
+}
+
+function roundToEven(value: number): number {
+    if (!Number.isFinite(value)) return value;
+    const floor = Math.floor(value);
+    const fraction = value - floor;
+    return fraction < 0.5 ? floor : fraction > 0.5 ? floor + 1 : floor % 2 === 0 ? floor : floor + 1;
+}
+
+function integerInterval(components: Array<number | bigint | undefined>, start: number): TimeSpan {
+    const scales = [86400000000n, 3600000000n, 60000000n, 1000000n, 1000n, 1n];
+    let microseconds = 0n;
+    for (let i = 0; i < components.length; i++) {
+        const input = components[i] ?? 0n;
+        if (typeof input === 'number' && !Number.isSafeInteger(input)) {
+            throw new ArgumentOutOfRangeException(undefined, 'TimeSpan overflowed because the duration is too long.');
+        }
+        const value = BigInt(input);
+        if (value < LongMinValue || value > LongMaxValue || (start + i < 2 && (value < -2147483648n || value > 2147483647n))) {
+            throw new ArgumentOutOfRangeException(undefined, 'TimeSpan overflowed because the duration is too long.');
+        }
+        microseconds += value * scales[start + i]!;
+    }
+    if (microseconds < MinMicroseconds || microseconds > MaxMicroseconds) {
+        throw new ArgumentOutOfRangeException(undefined, 'TimeSpan overflowed because the duration is too long.');
+    }
+    return new TimeSpan(microseconds * TicksPerMicrosecond);
 }

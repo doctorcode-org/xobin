@@ -10,9 +10,9 @@
   "summary": {
     "types": 29,
     "members": 807,
-    "present": 601,
-    "incomplete": 18,
-    "missing": 188,
+    "present": 638,
+    "incomplete": 13,
+    "missing": 156,
     "missingTypes": 0,
     "missingRootExports": 0,
     "missingSubpathExports": 5
@@ -20179,9 +20179,9 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 54,
-        "incomplete": 5,
-        "missing": 58
+        "present": 91,
+        "incomplete": 0,
+        "missing": 26
       },
       "extraLocalMembers": [
         "_ticks"
@@ -20408,9 +20408,9 @@
             "parameters": []
           },
           "jsMember": "hoursPerDay",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20444,9 +20444,9 @@
             "parameters": []
           },
           "jsMember": "microsecondsPerDay",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-06",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20462,9 +20462,9 @@
             "parameters": []
           },
           "jsMember": "microsecondsPerHour",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-06",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20480,9 +20480,9 @@
             "parameters": []
           },
           "jsMember": "microsecondsPerMillisecond",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-06",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20498,9 +20498,9 @@
             "parameters": []
           },
           "jsMember": "microsecondsPerMinute",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-06",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20516,9 +20516,9 @@
             "parameters": []
           },
           "jsMember": "microsecondsPerSecond",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-06",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20534,9 +20534,9 @@
             "parameters": []
           },
           "jsMember": "millisecondsPerDay",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20552,9 +20552,9 @@
             "parameters": []
           },
           "jsMember": "millisecondsPerHour",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20570,9 +20570,9 @@
             "parameters": []
           },
           "jsMember": "millisecondsPerMinute",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20588,9 +20588,9 @@
             "parameters": []
           },
           "jsMember": "millisecondsPerSecond",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20624,9 +20624,9 @@
             "parameters": []
           },
           "jsMember": "minutesPerDay",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20642,9 +20642,9 @@
             "parameters": []
           },
           "jsMember": "minutesPerHour",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20660,9 +20660,9 @@
             "parameters": []
           },
           "jsMember": "nanosecondsPerTick",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-06",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20678,9 +20678,9 @@
             "parameters": []
           },
           "jsMember": "secondsPerDay",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20696,9 +20696,9 @@
             "parameters": []
           },
           "jsMember": "secondsPerHour",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20714,9 +20714,9 @@
             "parameters": []
           },
           "jsMember": "secondsPerMinute",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20732,9 +20732,9 @@
             "parameters": []
           },
           "jsMember": "ticksPerDay",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20750,9 +20750,9 @@
             "parameters": []
           },
           "jsMember": "ticksPerHour",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20768,9 +20768,9 @@
             "parameters": []
           },
           "jsMember": "ticksPerMicrosecond",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20786,9 +20786,9 @@
             "parameters": []
           },
           "jsMember": "ticksPerMillisecond",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20804,9 +20804,9 @@
             "parameters": []
           },
           "jsMember": "ticksPerMinute",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20822,9 +20822,9 @@
             "parameters": []
           },
           "jsMember": "ticksPerSecond",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20971,9 +20971,9 @@
             ]
           },
           "jsMember": "divide",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-05",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20996,9 +20996,9 @@
             ]
           },
           "jsMember": "divide",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-05",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -21200,9 +21200,9 @@
             ]
           },
           "jsMember": "fromDays",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "member exists but static/instance shape or arity differs",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -21299,9 +21299,9 @@
             ]
           },
           "jsMember": "fromHours",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "member exists but static/instance shape or arity differs",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -21324,9 +21324,9 @@
             ]
           },
           "jsMember": "fromMicroseconds",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -21349,9 +21349,9 @@
             ]
           },
           "jsMember": "fromMicroseconds",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -21430,9 +21430,9 @@
             ]
           },
           "jsMember": "fromMilliseconds",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "member exists but static/instance shape or arity differs",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -21523,9 +21523,9 @@
             ]
           },
           "jsMember": "fromMinutes",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "member exists but static/instance shape or arity differs",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -21610,9 +21610,9 @@
             ]
           },
           "jsMember": "fromSeconds",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "member exists but static/instance shape or arity differs",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -21653,9 +21653,9 @@
             "parameters": []
           },
           "jsMember": "getHashCode",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-03",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -21678,9 +21678,9 @@
             ]
           },
           "jsMember": "multiply",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-05",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -22780,9 +22780,9 @@
             ]
           },
           "jsMember": "divide",
-          "status": "missing",
+          "status": "present",
           "adaptation": "operator via divide",
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-05",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -22811,9 +22811,9 @@
             ]
           },
           "jsMember": "divide",
-          "status": "missing",
+          "status": "present",
           "adaptation": "operator via divide",
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-05",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -23028,9 +23028,9 @@
             ]
           },
           "jsMember": "multiply",
-          "status": "missing",
+          "status": "present",
           "adaptation": "operator via multiply",
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-05",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -23059,9 +23059,9 @@
             ]
           },
           "jsMember": "multiply",
-          "status": "missing",
+          "status": "present",
           "adaptation": "operator via multiply",
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "TS-05",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
