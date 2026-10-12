@@ -233,5 +233,7 @@
   "ISOWeekTests.ToDateOnly": "iso-week.test.mjs",
   "ISOWeekTests.ToDateTime_WithInvalidYear_Throws": "iso-week.test.mjs",
   "ISOWeekTests.ToDateTime_WithInvalidWeek_Throws": "iso-week.test.mjs",
-  "ISOWeekTests.ToDateTime_WithInvalidDayOfWeek_Throws": "iso-week.test.mjs"
+  "ISOWeekTests.ToDateTime_WithInvalidDayOfWeek_Throws": "iso-week.test.mjs",
+  "TimeSpanTests.Ctor_Int_Int_Int_Int_Int_Int_WithNanosecond": "time-span-core.test.mjs",
+  "TimeSpanTests.Total_Days_Hours_Minutes_Seconds_Milliseconds": "time-span-core.test.mjs"
 }

@@ -24,15 +24,36 @@ import {
     OverflowException
 } from '@xobin/core';
 
-/** A time interval stored as signed 100-nanosecond ticks. */
+/**
+ * Represents a time interval stored as signed 100-nanosecond ticks.
+ */
 export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
     private readonly _ticks: bigint;
 
+    /**
+     * Initializes an interval of zero duration.
+     */
     constructor();
+    /**
+     * Initializes an interval with the specified number of 100-nanosecond ticks.
+     * @param ticks The number of ticks.
+     */
     constructor(ticks: bigint);
+    /**
+     * Initializes an interval with the specified hours, minutes and seconds.
+     */
     constructor(hours: number, minutes: number, seconds: number);
+    /**
+     * Initializes an interval with the specified days, hours, minutes and seconds.
+     */
     constructor(days: number, hours: number, minutes: number, seconds: number);
+    /**
+     * Initializes an interval with the specified days, hours, minutes, seconds and milliseconds.
+     */
     constructor(days: number, hours: number, minutes: number, seconds: number, milliseconds: number);
+    /**
+     * Initializes an interval with the specified days, hours, minutes, seconds, milliseconds and microseconds.
+     */
     constructor(days: number, hours: number, minutes: number, seconds: number, milliseconds: number, microseconds: number);
     constructor(first?: bigint | number, second?: number, third?: number, fourth?: number, fifth?: number, sixth?: number) {
         switch (arguments.length) {
@@ -56,10 +77,10 @@ export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
                 const seconds = BigInt(int32(fourth));
                 const milliseconds = arguments.length >= 5 ? BigInt(int32(fifth)) : 0n;
                 const microseconds = arguments.length === 6 ? BigInt(int32(sixth)) : 0n;
-                const totalMicroseconds = days * 86400000000n + hours * 3600000000n + minutes * 60000000n
-                    + seconds * 1000000n + milliseconds * 1000n + microseconds;
+                const totalMicroseconds = BigInt.asIntN(64, days * 86400000000n + hours * 3600000000n + minutes * 60000000n
+                    + seconds * 1000000n + milliseconds * 1000n + microseconds);
                 if (totalMicroseconds > MaxMicroseconds || totalMicroseconds < MinMicroseconds) {
-                    throw new ArgumentOutOfRangeException('Overflow_TimeSpanTooLong');
+                    throw new ArgumentOutOfRangeException(undefined, 'TimeSpan overflowed because the duration is too long.');
                 }
                 this._ticks = totalMicroseconds * TicksPerMicrosecond;
                 break;
@@ -69,34 +90,129 @@ export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
         }
     }
 
-    get ticks(): bigint { return this._ticks; }
-    get days(): number { return Number(this._ticks / TicksPerDay); }
-    get hours(): number { return Number((this._ticks / TicksPerHour) % 24n); }
-    get minutes(): number { return Number((this._ticks / TicksPerMinute) % 60n); }
-    get seconds(): number { return Number((this._ticks / TicksPerSecond) % 60n); }
-    get milliseconds(): number { return Number((this._ticks / TicksPerMillisecond) % 1000n); }
-    get microseconds(): number { return Number((this._ticks / TicksPerMicrosecond) % 1000n); }
-    get nanoseconds(): number { return Number(this._ticks % TicksPerMicrosecond) * 100; }
+    /**
+     * Gets the number of 100-nanosecond ticks in this interval.
+     */
+    get ticks(): bigint {
+        return this._ticks;
+    }
 
-    get totalDays(): number { return Number(this._ticks) / Number(TicksPerDay); }
-    get totalHours(): number { return Number(this._ticks) / Number(TicksPerHour); }
-    get totalMinutes(): number { return Number(this._ticks) / Number(TicksPerMinute); }
-    get totalSeconds(): number { return Number(this._ticks) / Number(TicksPerSecond); }
+    /**
+     * Gets the days component of this interval.
+     */
+    get days(): number {
+        return Number(this._ticks / TicksPerDay);
+    }
+
+    /**
+     * Gets the hours component of this interval.
+     */
+    get hours(): number {
+        return Number((this._ticks / TicksPerHour) % 24n);
+    }
+
+    /**
+     * Gets the minutes component of this interval.
+     */
+    get minutes(): number {
+        return Number((this._ticks / TicksPerMinute) % 60n);
+    }
+
+    /**
+     * Gets the seconds component of this interval.
+     */
+    get seconds(): number {
+        return Number((this._ticks / TicksPerSecond) % 60n);
+    }
+
+    /**
+     * Gets the milliseconds component of this interval.
+     */
+    get milliseconds(): number {
+        return Number((this._ticks / TicksPerMillisecond) % 1000n);
+    }
+
+    /**
+     * Gets the microseconds component of this interval.
+     */
+    get microseconds(): number {
+        return Number((this._ticks / TicksPerMicrosecond) % 1000n);
+    }
+
+    /**
+     * Gets the nanoseconds component of this interval.
+     */
+    get nanoseconds(): number {
+        return Number(this._ticks % TicksPerMicrosecond) * 100;
+    }
+
+    /**
+     * Gets the total interval expressed in whole and fractional days.
+     */
+    get totalDays(): number {
+        return Number(this._ticks) / Number(TicksPerDay);
+    }
+
+    /**
+     * Gets the total interval expressed in whole and fractional hours.
+     */
+    get totalHours(): number {
+        return Number(this._ticks) / Number(TicksPerHour);
+    }
+
+    /**
+     * Gets the total interval expressed in whole and fractional minutes.
+     */
+    get totalMinutes(): number {
+        return Number(this._ticks) / Number(TicksPerMinute);
+    }
+
+    /**
+     * Gets the total interval expressed in whole and fractional seconds.
+     */
+    get totalSeconds(): number {
+        return Number(this._ticks) / Number(TicksPerSecond);
+    }
+
+    /**
+     * Gets the total interval expressed in whole and fractional milliseconds.
+     */
     get totalMilliseconds(): number {
         const value = Number(this._ticks) / Number(TicksPerMillisecond);
         return Math.max(Number(MinMilliseconds), Math.min(Number(MaxMilliseconds), value));
     }
-    get totalMicroseconds(): number { return Number(this._ticks) / Number(TicksPerMicrosecond); }
-    get totalNanoseconds(): number { return Number(this._ticks) * 100; }
 
+    /**
+     * Gets the total interval expressed in whole and fractional microseconds.
+     */
+    get totalMicroseconds(): number {
+        return Number(this._ticks) / Number(TicksPerMicrosecond);
+    }
+
+    /**
+     * Gets the total interval expressed in whole and fractional nanoseconds.
+     */
+    get totalNanoseconds(): number {
+        return Number(this._ticks) * 100;
+    }
+
+    /**
+     * Gets an interval of zero duration.
+     */
     static get zero(): TimeSpan {
         return getOrCreateValue(this, 'zero', () => new TimeSpan(0n));
     }
 
+    /**
+     * Gets the smallest supported interval.
+     */
     static get minValue(): TimeSpan {
         return getOrCreateValue(this, 'minValue', () => new TimeSpan(LongMinValue));
     }
 
+    /**
+     * Gets the largest supported interval.
+     */
     static get maxValue(): TimeSpan {
         return getOrCreateValue(this, 'maxValue', () => new TimeSpan(LongMaxValue));
     }
@@ -152,7 +268,7 @@ export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
 export function timeToTicks(hour: number, minute: number, second: number): bigint {
     const totalSeconds = BigInt(int32(hour)) * 3600n + BigInt(int32(minute)) * 60n + BigInt(int32(second));
     if (totalSeconds > MaxSeconds || totalSeconds < MinSeconds) {
-        throw new ArgumentOutOfRangeException('Overflow_TimeSpanTooLong');
+        throw new ArgumentOutOfRangeException(undefined, 'TimeSpan overflowed because the duration is too long.');
     }
     return totalSeconds * TicksPerSecond;
 }
