@@ -165,6 +165,7 @@ function readLocalType(file, symbol) {
       static: hasModifier(member, ts.SyntaxKind.StaticKeyword),
       minimum: range.minimum,
       maximum: Number.isFinite(range.maximum) ? range.maximum : null,
+      tupleReturnLength: member.type && ts.isTupleTypeNode(member.type) ? member.type.elements.length : null,
     });
     if ('body' in member && member.body) {
       const body = member.body.getText(source);
@@ -257,14 +258,17 @@ function matchMember(type, member, local) {
   if (!local) return { status: 'missing', jsMember: null, adaptation: null, reason: 'local type is missing' };
   const alias = memberAliases.get(`${type.fullName}::${member.name}`);
   const adapter = member.kind === 'method' ? operatorAdapter(member.name) : null;
+  const tupleDeconstruction = type.fullName === 'System.DateOnly' && member.name === 'Deconstruct'
+    && member.parameters.every(parameter => parameter.modifier === 'out');
   const jsName = member.name === '.ctor' ? 'constructor'
     : alias ?? adapter ?? (type.kind === 'enum' ? member.name : lowerFirst(member.name));
-  const expectedArguments = adapter === 'valueOf' ? 0
+  const expectedArguments = adapter === 'valueOf' || tupleDeconstruction ? 0
     : adapter ? Math.max(0, member.parameters.length - 1) : member.parameters.length;
   const sameName = local.members.filter(candidate => candidate.name === jsName);
   const candidates = adapter ? sameName : sameName.filter(candidate => candidate.static === member.static);
   const exact = candidates.find(candidate => candidate.minimum <= expectedArguments
-    && (candidate.maximum === null || candidate.maximum >= expectedArguments));
+    && (candidate.maximum === null || candidate.maximum >= expectedArguments)
+    && (!tupleDeconstruction || candidate.tupleReturnLength === member.parameters.length));
   if (!exact) {
     return {
       status: sameName.length > 0 ? 'incomplete' : 'missing',
@@ -282,7 +286,7 @@ function matchMember(type, member, local) {
   return {
     status: 'present',
     jsMember: jsName,
-    adaptation: adapter ? `operator via ${jsName}` : null,
+    adaptation: tupleDeconstruction ? 'out parameters returned as a tuple' : adapter ? `operator via ${jsName}` : null,
     reason: 'matching TypeScript surface exists; behavioral parity is tracked separately',
   };
 }

@@ -813,5 +813,14 @@
   "TimeSpanTests.NamedNaNDivision": "time-span-arithmetic.test.mjs",
   "TimeSpanTests.ConvertToTimeSpanPrecisionTest": "time-span-arithmetic.test.mjs",
   "DateOnlyTests.MinMaxValuesTest": "date-only-constructors.test.mjs",
-  "DateOnlyTests.ConstructorsNegativeCasesTest": "date-only-constructors.test.mjs"
+  "DateOnlyTests.ConstructorsNegativeCasesTest": "date-only-constructors.test.mjs",
+  "DateOnlyTests.FromDayNumberTest": "date-only-core.test.mjs",
+  "DateOnlyTests.DayOfWeekAndDayOfYearTest": "date-only-core.test.mjs",
+  "DateOnlyTests.AddDaysTest": "date-only-core.test.mjs",
+  "DateOnlyTests.AddMonthsTest": "date-only-core.test.mjs",
+  "DateOnlyTests.AddYearsTest": "date-only-core.test.mjs",
+  "DateOnlyTests.OperatorsTest": "date-only-core.test.mjs",
+  "DateOnlyTests.DateTimeConversionTest": "date-only-core.test.mjs",
+  "DateOnlyTests.ComparisonsTest": "date-only-core.test.mjs",
+  "DateOnlyTests.GetHashCodeTest": "date-only-core.test.mjs"
 }

@@ -84,3 +84,20 @@ const integerMicroseconds: TimeSpan = DirectTimeSpan.fromMicroseconds(1n);
 const floatingMicroseconds: TimeSpan = DirectTimeSpan.fromMicroseconds(1.5);
 const ticksPerDay: bigint = DirectTimeSpan.ticksPerDay;
 void [spanProduct,spanQuotient,spanRatio,spanHash,integerDays,integerParts,integerSeconds,integerMicroseconds,floatingMicroseconds,ticksPerDay];
+
+const onlyFromNumber: DateOnly = DateOnly.fromDayNumber(100);
+const onlyFromDateTime: DateOnly = DateOnly.fromDateTime(combined);
+const onlyDateParts: [number, number, number] = dateOnly.deconstruct();
+const onlyComparison: number = dateOnly.compareTo(dateOnly);
+const onlyObjectComparison: number = dateOnly.compareTo({});
+const onlyNullComparison: number = dateOnly.compareTo(null);
+const onlyEquality: boolean = dateOnly.equals(dateOnly);
+const onlyObjectEquality: boolean = dateOnly.equals({});
+const onlyHash: number = dateOnly.getHashCode();
+const onlyPrimitive: number = dateOnly.valueOf();
+const onlyAdjusted: DateOnly = dateOnly.addDays(1).addMonths(1).addYears(1);
+const onlyCombined: DateTime = dateOnly.toDateTime(timeOnly);
+const onlyCombinedKind: DateTime = dateOnly.toDateTime(timeOnly, DateTimeKind.utc);
+void [onlyFromNumber,onlyFromDateTime,onlyDateParts,onlyComparison,onlyObjectComparison,onlyNullComparison,onlyEquality,onlyObjectEquality,onlyHash,onlyPrimitive,onlyAdjusted,onlyCombined,onlyCombinedKind];
+// @ts-expect-error DateOnly requires the project's DateTimeKind enum wrapper.
+dateOnly.toDateTime(timeOnly, 1);

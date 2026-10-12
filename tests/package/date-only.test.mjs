@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import { build } from 'esbuild';
 import { DateOnly } from '@xobin/globalization';
+import { DateTime, DateTimeKind, TimeOnly } from '@xobin/globalization';
 import { DateOnly as DirectDateOnly } from '@xobin/globalization/date-only';
 
 const require = createRequire(import.meta.url);
@@ -16,6 +17,22 @@ test('DateOnly constructors resolve from ESM and CommonJS subpaths', () => {
   assert.equal(new CommonDateOnly().dayNumber, 0);
   assert.equal(new DirectDateOnly(2000, 2, 29).dayNumber, new CommonDateOnly(2000, 2, 29).dayNumber);
   assert.equal(CommonDateOnly.maxValue.dayNumber, 3652058);
+  for (const DateType of [DateOnly, DirectDateOnly, CommonDateOnly]) {
+    const leap = new DateType(2024, 2, 29);
+    assert.deepEqual(leap.addYears(1).deconstruct(), [2025, 2, 28]);
+    assert.deepEqual(leap.addMonths(1).deconstruct(), [2024, 3, 29]);
+    assert.equal(leap.addDays(1) > leap, true);
+    assert.equal(leap.compareTo(null), 1);
+    assert.equal(leap.equals({}), false);
+    assert.equal(leap.getHashCode(), leap.dayNumber);
+  }
+});
+test('DateOnly conversions preserve time ticks and requested Kind', () => {
+  const date = DateOnly.fromDateTime(new DateTime(2024, 2, 29));
+  const time = new TimeOnly(123456789n);
+  assert.equal(date.toDateTime(time).kind.value, 0);
+  assert.equal(date.toDateTime(time, DateTimeKind.utc).ticks, new DateTime(2024, 2, 29).ticks + time.ticks);
+  assert.equal(date.toDateTime(time, DateTimeKind.local).kind.value, 2);
 });
 for (const entry of ['@xobin/globalization', '@xobin/globalization/date-only']) {
   test(`DateOnly constructors exclude culture and calendar data/${entry}`, async () => {
