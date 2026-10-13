@@ -12,6 +12,16 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
+    },
+    "./internal/exception-format": {
+      "types": "./dist/internal/exception_format.d.ts",
+      "import": "./dist/internal/exception_format.mjs",
+      "require": "./dist/internal/exception_format.js"
+    },
+    "./internal/exception-resources": {
+      "types": "./dist/internal/exception_resources.d.ts",
+      "import": "./dist/internal/exception_resources.mjs",
+      "require": "./dist/internal/exception_resources.js"
     }
   },
   "sideEffects": false,

@@ -1,3 +1,5 @@
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
 import type { FormatEmitter } from './format_buffer';
 import { FormatException } from '@xobin/core';
 import type { IFormatProvider } from '@xobin/core';
@@ -7,10 +9,10 @@ import { formatDateTime, formatInvariantDateTime } from './date_time_format';
 /** Validates restricted date-only and time-only tokens before using the common formatter. */
 export function formatDateOnlyTimeOnly(date: DateTime, format: string | null | undefined, provider: IFormatProvider | null | undefined, dateOnly: boolean, tryFormat: boolean = false, emit?: FormatEmitter): string {
     format ||= dateOnly ? 'd' : 't';
-    const invalid = (): never => { throw new FormatException('Input string was not in a correct format.'); };
+    const invalid = (): never => { throw new FormatException(SR.Format_InvalidString); };
     if (format.length === 1) {
         if (!(dateOnly ? 'dDmMyYoOrR' : 'tToOrR').includes(format)) {
-            if (tryFormat) throw new FormatException('Format specifier was invalid.');
+            if (tryFormat) throw new FormatException(SR.Argument_BadFormatSpecifier);
             invalid();
         }
         const standard = format.toLowerCase();
@@ -19,7 +21,7 @@ export function formatDateOnlyTimeOnly(date: DateTime, format: string | null | u
     } else {
         const rejected = dateOnly ? ':tfFhHmszK' : 'dMy/zk';
         const invalidCustom = (): never => {
-            if (tryFormat) throw new FormatException("String '" + format + "' contains parts which are not specific to the " + (dateOnly ? 'DateOnly' : 'TimeOnly') + '.');
+            if (tryFormat) throw new FormatException(formatExceptionResource(SR.Format_DateTimeOnlyContainsNoneDateParts, format, dateOnly ? 'DateOnly' : 'TimeOnly'));
             return invalid();
         };
         for (let i = 0; i < format.length; i++) {
@@ -29,7 +31,7 @@ export function formatDateOnlyTimeOnly(date: DateTime, format: string | null | u
                 const end = format.indexOf(token, i + 1);
                 if (end < 0) {
                     if (tryFormat) invalidCustom();
-                    throw new FormatException("Cannot find a matching quote character for the character '" + token + "'.");
+                    throw new FormatException(formatExceptionResource(SR.Format_BadQuote, token));
                 }
                 i = end;
             } else if (rejected.includes(token)) invalidCustom();

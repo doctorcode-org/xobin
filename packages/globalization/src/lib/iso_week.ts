@@ -1,3 +1,4 @@
+import * as SR from '@xobin/core/internal/exception-resources';
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
@@ -74,10 +75,10 @@ export class ISOWeek {
     static toDateTime(year: number, week: number, dayOfWeek: DayOfWeek): DateTime {
         checkYear(year);
         if (week < 1 || week > 53) {
-            throw new ArgumentOutOfRangeException('week', 'The week parameter must be in the range 1 through 53.');
+            throw new ArgumentOutOfRangeException('week', SR.ArgumentOutOfRange_Week_ISO);
         }
         if (dayOfWeek < 0 || dayOfWeek > 7) {
-            throw new ArgumentOutOfRangeException('dayOfWeek', 'The DayOfWeek enumeration must be in the range 0 through 6.');
+            throw new ArgumentOutOfRangeException('dayOfWeek', SR.ArgumentOutOfRange_DayOfWeek);
         }
         const jan4 = new DateTime(year, 1, 4);
         const correction = getWeekday(jan4.dayOfWeek) + 3;
@@ -98,7 +99,7 @@ export class ISOWeek {
 
 function checkYear(year: number): void {
     if (year < 1 || year > 9999) {
-        throw new ArgumentOutOfRangeException('year', 'Year must be between 1 and 9999.');
+        throw new ArgumentOutOfRangeException('year', SR.ArgumentOutOfRange_Year);
     }
 }
 

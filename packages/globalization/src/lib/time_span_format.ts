@@ -1,3 +1,5 @@
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
 import type { FormatEmitter } from './format_buffer';
 import { FormatException } from '@xobin/core';
 import type { IFormatProvider } from '@xobin/core';
@@ -16,7 +18,7 @@ export function formatTimeSpan(ticks: bigint, format?: string | null, provider?:
     const seconds = absolute / TicksPerSecond % 60n;
     const fraction = (absolute % TicksPerSecond).toString().padStart(7, '0');
     const pad = (value: bigint, count: number) => value.toString().padStart(count, '0');
-    const invalid = (): never => { throw new FormatException('Input string was not in a correct format.'); };
+    const invalid = (): never => { throw new FormatException(SR.Format_InvalidString); };
     if (format.length === 1) {
         if (!'ctTgG'.includes(format)) invalid();
         const constant = 'ctT'.includes(format);
@@ -49,7 +51,7 @@ export function formatTimeSpan(ticks: bigint, format?: string | null, provider?:
                         append(pattern[i]!, 'escaped');
                     } else append(literal, 'char');
                 }
-                if (!closed) throw new FormatException("Cannot find a matching quote character for the character '" + token + "'.");
+                if (!closed) throw new FormatException(formatExceptionResource(SR.Format_BadQuote, token));
             } else if (token === '\\') {
                 if (++i === pattern.length) invalid();
                 append(pattern[i]!, 'escaped');

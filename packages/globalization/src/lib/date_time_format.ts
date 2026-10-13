@@ -1,3 +1,5 @@
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
 import type { FormatEmitter } from './format_buffer';
 import { formatHebrewNumber } from './hebrew_number';
 import type { Calendar } from './calendar';
@@ -216,10 +218,10 @@ function quote(pattern: string, start: number, emit?: FormatEmitter): { text: st
             emit?.(pattern[i]!, 'escaped');
         } else { text += c; emit?.(c, 'char'); }
     }
-    throw new FormatException(`Cannot find a matching quote character for the character '${pattern[start]}'.`);
+    throw new FormatException(formatExceptionResource(SR.Format_BadQuote, pattern[start]));
 }
 
-function invalidFormat(): FormatException { return new FormatException('Input string was not in a correct format.'); }
+function invalidFormat(): FormatException { return new FormatException(SR.Format_InvalidString); }
 
 /** Formats invariant date-only and time-only patterns without loading culture implementations. */
 export function formatInvariantDateTime(date: DateTime, pattern: string, emit?: FormatEmitter): string {

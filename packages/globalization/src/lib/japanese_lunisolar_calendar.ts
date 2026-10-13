@@ -1,3 +1,4 @@
+import * as SR from '@xobin/core/internal/exception-resources';
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
@@ -101,7 +102,7 @@ export class JapaneseLunisolarCalendar extends EastAsianLunisolarCalendar {
      */
     protected override getYearForDate(year: number, time: DateTime): number {
         const info = this._helper.eraInfo.find(item => time.ticks >= item.ticks && year > item.yearOffset);
-        if (!info) throw new ArgumentException('No era exists for the specified date.');
+        if (!info) throw new ArgumentException(SR.Argument_NoEra);
         return year - info.yearOffset;
     }
 

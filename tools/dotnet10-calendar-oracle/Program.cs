@@ -5,6 +5,20 @@ if (Environment.Version.ToString() != "10.0.7")
     throw new InvalidOperationException($"Expected .NET 10.0.7, got {Environment.Version}.");
 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
+if (args.Length >= 2 && args[0] == "--exception-consumers") {
+    string output = ExceptionConsumersOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Exception consumers fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--exception-contracts") {
+    string output = ExceptionContractsOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Exception contracts fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
 if (args.Length >= 2 && args[0] == "--exception-types") {
     string output = ExceptionTypesOracle.Generate();
     if (args.Length == 3 && args[2] == "--check") {

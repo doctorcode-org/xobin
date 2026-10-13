@@ -1,16 +1,18 @@
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
 import { ArgumentOutOfRangeException } from '@xobin/core';
 import type { DateTime } from './date_time';
 
 export function calendarRangeMessage(min: number | string, max: number | string): string {
-    return `Valid values are between ${min} and ${max}, inclusive.`;
+    return formatExceptionResource(SR.ArgumentOutOfRange_Range, min, max);
 }
 
 export function throwIfNegativeYear(year: number): never {
-    throw new ArgumentOutOfRangeException('year', year, `year ('${year}') must be a non-negative value.`);
+    throw new ArgumentOutOfRangeException('year', year, formatExceptionResource(SR.ArgumentOutOfRange_Generic_MustBeNonNegative, 'year', year));
 }
 
 export function throwIfYearGreaterThan(year: number, maxYear: number): never {
-    throw new ArgumentOutOfRangeException('year', year, `year ('${year}') must be less than or equal to '${maxYear}'.`);
+    throw new ArgumentOutOfRangeException('year', year, formatExceptionResource(SR.ArgumentOutOfRange_Generic_MustBeLessOrEqual, 'year', year, maxYear));
 }
 
 export function formatGregorianDateTime(value: DateTime): string {

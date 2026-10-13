@@ -1,3 +1,6 @@
+import { TicksMustBeBigInt, InvalidArguments } from './javascript_exception_resources';
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
 import {
     MinTicks,
     MaxTicks,
@@ -212,7 +215,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
 
             case 1:
                 ticks = arguments[0];
-                if (typeof ticks !== 'bigint') throw new ArgumentException('Ticks must be a bigint.');
+                if (typeof ticks !== 'bigint') throw new ArgumentException(TicksMustBeBigInt);
                 if (ticks < MinTicks || ticks > MaxTicks)
                     throwTicksOutOfRange();
 
@@ -225,7 +228,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
                 }
                 ticks = arguments[0];
                 kind = arguments[1];
-                if (typeof ticks !== 'bigint') throw new ArgumentException('Ticks must be a bigint.');
+                if (typeof ticks !== 'bigint') throw new ArgumentException(TicksMustBeBigInt);
 
                 if (ticks < MinTicks || ticks > MaxTicks) {
                     throwTicksOutOfRange();
@@ -295,18 +298,15 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
                 }
                 else if (typeof arg6 === 'number') {
                     millisecond = arg6;
-                    checkMillisecond(millisecond);
-
                     ticks = dateToTicks(year, month, day) + timeToTicks(hour, minute, second);
+                    checkMillisecond(millisecond);
                     ticks += BigInt(millisecond) * TicksPerMillisecond;
-                    if (ticks < MinTicks || ticks > MaxTicks)
-                        throw new ArgumentException("Arg_DateTimeRange");
                 }
                 else if (arg6 == null) {
                     throw new ArgumentNullException('calendar');
                 }
                 else {
-                    throw new ArgumentException('Invalid arguments');
+                    throw new ArgumentException(InvalidArguments);
                 }
 
                 break;
@@ -320,16 +320,11 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
                 second = arguments[5];
                 millisecond = arguments[6];
 
-                checkMillisecond(millisecond);
-
                 let arg7: DateTimeKind | Calendar | number = arguments[7];
                 if (arg7 instanceof Calendar) {
                     calendar = arg7;
 
-                    ticks = calendar.toDateTime(year, month, day, hour, minute, second, 0).ticks;
-                    ticks += BigInt(millisecond) * TicksPerMillisecond;
-                    if (ticks < MinTicks || ticks > MaxTicks)
-                        throw new ArgumentException(/*SR.Arg_DateTimeRange*/);
+                    ticks = calendar.toDateTime(year, month, day, hour, minute, second, millisecond).ticks;
                 }
                 else if (arg7 instanceof DateTimeKind) {
                     kind = arg7;
@@ -338,20 +333,21 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
                     }
 
                     ticks = dateToTicks(year, month, day) + timeToTicks(hour, minute, second);
+                    checkMillisecond(millisecond);
                     ticks += BigInt(millisecond) * TicksPerMillisecond;
-                    if (ticks < MinTicks || ticks > MaxTicks)
-                        throw new ArgumentException(/*SR.Arg_DateTimeRange*/);
                 }
                 else if (typeof arg7 === 'number') {
+                    ticks = dateToTicks(year, month, day) + timeToTicks(hour, minute, second);
+                    checkMillisecond(millisecond);
+                    ticks += BigInt(millisecond) * TicksPerMillisecond;
                     checkMicrosecond(arg7);
-                    ticks = dateToTicks(year, month, day) + timeToTicks(hour, minute, second)
-                        + BigInt(millisecond) * TicksPerMillisecond + BigInt(arg7) * TicksPerMicrosecond;
+                    ticks += BigInt(arg7) * TicksPerMicrosecond;
                 }
                 else if (arg7 == null) {
                     throw new ArgumentNullException('calendar');
                 }
                 else {
-                    throw new ArgumentException('Invalid arguments');
+                    throw new ArgumentException(InvalidArguments);
                 }
 
                 break;
@@ -360,21 +356,22 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
                 if (typeof arguments[7] === 'number') {
                     const microsecond: number = arguments[7];
                     const extra: DateTimeKind | Calendar = arguments[8];
-                    checkMillisecond(arguments[6]);
-                    checkMicrosecond(microsecond);
+                    if (extra == null) throw new ArgumentNullException('calendar');
                     if (extra instanceof Calendar) {
+                        checkMillisecond(arguments[6]);
                         ticks = extra.toDateTime(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5], arguments[6]).ticks;
                     }
                     else if (extra instanceof DateTimeKind) {
                         if (extra.value < DateTimeKind.unspecified.value || extra.value > DateTimeKind.local.value)
                             throwInvalidKind();
                         ticks = dateToTicks(arguments[0], arguments[1], arguments[2])
-                            + timeToTicks(arguments[3], arguments[4], arguments[5])
-                            + BigInt(arguments[6]) * TicksPerMillisecond;
+                            + timeToTicks(arguments[3], arguments[4], arguments[5]);
+                        checkMillisecond(arguments[6]);
+                        ticks += BigInt(arguments[6]) * TicksPerMillisecond;
                         kind = extra;
                     }
-                    else if (extra == null) throw new ArgumentNullException('calendar');
-                    else throw new ArgumentException('Invalid arguments');
+                    else throw new ArgumentException(InvalidArguments);
+                    checkMicrosecond(microsecond);
                     ticks += BigInt(microsecond) * TicksPerMicrosecond;
                     break;
                 }
@@ -397,10 +394,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
                     throwInvalidKind();
                 }
 
-                ticks = calendar.toDateTime(year, month, day, hour, minute, second, 0).ticks;
-                ticks += BigInt(millisecond) * TicksPerMillisecond;
-                if (ticks < MinTicks || ticks > MaxTicks)
-                    throw new ArgumentException(/*SR.Arg_DateTimeRange*/);
+                ticks = calendar.toDateTime(year, month, day, hour, minute, second, millisecond).ticks;
 
                 break;
 
@@ -409,17 +403,17 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
                 calendar = arguments[8];
                 kind = arguments[9];
                 if (!(calendar instanceof Calendar)) throw new ArgumentNullException('calendar');
+                checkMillisecond(arguments[6]);
                 if (!(kind instanceof DateTimeKind) || kind.value < DateTimeKind.unspecified.value || kind.value > DateTimeKind.local.value)
                     throwInvalidKind();
-                checkMillisecond(arguments[6]);
+                ticks = calendar.toDateTime(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5], arguments[6]).ticks;
                 checkMicrosecond(microsecond);
-                ticks = calendar.toDateTime(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5], arguments[6]).ticks
-                    + BigInt(microsecond) * TicksPerMicrosecond;
+                ticks += BigInt(microsecond) * TicksPerMicrosecond;
                 break;
             }
 
             default:
-                throw new Error('Invalid arguments');
+                throw new Error(InvalidArguments);
         }
 
         setValue(this, 'ticks', ticks);
@@ -600,13 +594,13 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      */
     addYears(value: number): DateTime {
         if (value < -10000 || value > 10000) {
-            throw new ArgumentOutOfRangeException('value', 'Years value must be between +/-10000.');
+            throw new ArgumentOutOfRangeException('value', SR.ArgumentOutOfRange_DateTimeBadYears);
         }
 
         let { year, month, day } = getDate.call(this);
         year += value;
         if (year < 1 || year > 9999) {
-            throw new ArgumentOutOfRangeException('value', 'The added or subtracted value results in an un-representable DateTime.');
+            throw new ArgumentOutOfRangeException('value', SR.ArgumentOutOfRange_DateArithmetic);
         }
         if (month === 2 && day === 29 && !DateTime.isLeapYear(year)) {
             day = 28;
@@ -620,7 +614,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      */
     addMonths(months: number): DateTime {
         if (months < -120000 || months > 120000)
-            throw new ArgumentOutOfRangeException('months', 'Months value must be between +/-120000.');
+            throw new ArgumentOutOfRangeException('months', SR.ArgumentOutOfRange_DateTimeBadMonths);
 
         let { year, month, day } = getDate.call(this);
 
@@ -635,7 +629,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         }
 
         if (year < 1 || year > 9999) {
-            throw new ArgumentOutOfRangeException('months', 'The added or subtracted value results in an un-representable DateTime.');
+            throw new ArgumentOutOfRangeException('months', SR.ArgumentOutOfRange_DateArithmetic);
         }
         const days = DateTime.daysInMonth(year, month);
         if (day > days) day = days;
@@ -686,7 +680,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
     addTicks(value: bigint): DateTime {
         const ticks = this.ticks;
         if (value > MaxTicks - ticks || value < MinTicks - ticks) {
-            throw new ArgumentOutOfRangeException('value', 'The added or subtracted value results in an un-representable DateTime.');
+            throw new ArgumentOutOfRangeException('value', SR.ArgumentOutOfRange_DateArithmetic);
         }
         return preserveLocalKind(this, ticks + value);
     }
@@ -709,7 +703,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         const ticks = this.ticks;
         const valueTicks = value.ticks;
         if (ticks - MinTicks < valueTicks || ticks - MaxTicks > valueTicks) {
-            throw new ArgumentOutOfRangeException('value', 'The added or subtracted value results in an un-representable DateTime.');
+            throw new ArgumentOutOfRangeException('value', SR.ArgumentOutOfRange_DateArithmetic);
         }
         return preserveLocalKind(this, ticks - valueTicks);
     }
@@ -727,14 +721,14 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         const ticks = this.ticks + offset.ticks;
         if (ticks > MaxTicks) {
             if (throwOnOverflow)
-                throw new ArgumentException('The added or subtracted value results in an un-representable DateTime.');
+                throw new ArgumentException(SR.ArgumentOutOfRange_DateArithmetic);
             else
                 return new DateTime(MaxTicks, DateTimeKind.local);
         }
 
         if (ticks < MinTicks) {
             if (throwOnOverflow)
-                throw new ArgumentException(/*SR.Arg_ArgumentOutOfRangeException*/);
+                throw new ArgumentException(SR.ArgumentOutOfRange_DateArithmetic);
             else
                 return new DateTime(MinTicks, DateTimeKind.local);
         }
@@ -766,7 +760,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         if (ticks === 0n) return 0;
         if (ticks < TicksPerDay) ticks += DoubleDateOffset;
         if (ticks < OADateMinAsTicks) {
-            throw new OverflowException('Not a legal OleAut date.');
+            throw new OverflowException(SR.Arg_OleAutDateInvalid);
         }
 
         let milliseconds = (ticks - DoubleDateOffset) / TicksPerMillisecond;
@@ -806,7 +800,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         const ticks = this.kind.value === DateTimeKind.local.value ? this.toUniversalTime().ticks : this.ticks;
         const fileTime = ticks - FileTimeOffset;
         if (fileTime < 0n) {
-            throw new ArgumentOutOfRangeException(undefined, 'Not a valid Win32 FileTime.');
+            throw new ArgumentOutOfRangeException(undefined, SR.ArgumentOutOfRange_FileTimeInvalid);
         }
         return fileTime;
     }
@@ -845,7 +839,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         if (conversionType === Boolean) return this.toBoolean(provider);
         if (conversionType === Number) return this.toDouble(provider);
         if (conversionType === BigInt) return this.toInt64(provider);
-        throw new InvalidCastException(`Invalid cast from 'DateTime' to '${conversionType.name}'.`);
+        throw new InvalidCastException(formatExceptionResource(SR.InvalidCast_FromTo, 'DateTime', conversionType.name));
     }
 
     /** A SerializationInfo adapter receives the exact unsigned 64-bit dateData. */
@@ -974,7 +968,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         }
 
         if (!(value instanceof DateTime)) {
-            throw new ArgumentException('Object must be of type DateTime.');
+            throw new ArgumentException(SR.Arg_MustBeDateTime);
         }
 
         const ticks1 = this.ticks;
@@ -1022,7 +1016,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
     static isLeapYear(year: number): boolean {
         if (year < 1 || year > 9999) {
             throw new ArgumentOutOfRangeException('year',
-                'Year must be between 1 and 9999.');
+                SR.ArgumentOutOfRange_Year);
         }
         return (year & 3) == 0 && ((year & 15) == 0 || (year % 25) != 0);
     }
@@ -1046,7 +1040,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
     static daysInMonth(year: number, month: number): number {
         if (month < 1 || month > 12)
             throw new ArgumentOutOfRangeException('month', month,
-                'Month must be between one and twelve.');
+                SR.ArgumentOutOfRange_Month);
 
         // IsLeapYear checks the year argument
         const days = this.isLeapYear(year) ? s_daysToMonth366 : s_daysToMonth365;
@@ -1068,7 +1062,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      */
     static fromOADate(value: number): DateTime {
         if (!(value < OADateMaxAsDouble) || !(value > OADateMinAsDouble)) {
-            throw new ArgumentException('Not a legal OleAut date.');
+            throw new ArgumentException(SR.Arg_OleAutDateInvalid);
         }
 
         let milliseconds = Math.trunc(value * MillisecondsPerDay + (value >= 0 ? 0.5 : -0.5));
@@ -1077,7 +1071,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         }
         milliseconds += Number(DoubleDateOffset / TicksPerMillisecond);
         if (milliseconds < 0 || milliseconds > MaxMillis) {
-            throw new ArgumentException('OleAut date did not convert to a DateTime correctly.');
+            throw new ArgumentException(SR.Arg_OleAutDateScale);
         }
         return new DateTime(BigInt(milliseconds) * TicksPerMillisecond, DateTimeKind.unspecified);
     }
@@ -1119,7 +1113,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      */
     static fromFileTimeUtc(fileTime: bigint): DateTime {
         if (fileTime < 0n || fileTime > MaxTicks - FileTimeOffset) {
-            throw new ArgumentOutOfRangeException('fileTime', 'Not a valid Win32 FileTime.');
+            throw new ArgumentOutOfRangeException('fileTime', SR.ArgumentOutOfRange_FileTimeInvalid);
         }
         return new DateTime(fileTime + FileTimeOffset, DateTimeKind.utc);
     }
@@ -1150,7 +1144,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
 
 function addUnits(date: DateTime, value: number, scale: bigint): DateTime {
     if (Math.abs(value) > Number(MaxTicks / scale))
-        throw new ArgumentOutOfRangeException('value', 'Value to add was out of range.');
+        throw new ArgumentOutOfRangeException('value', SR.ArgumentOutOfRange_AddValue);
     if (Number.isNaN(value))
         return date.addTicks(0n);
     const whole = Math.trunc(value);
@@ -1190,40 +1184,40 @@ function localOffsetTicks(value: DateTime): bigint {
 
 function throwTicksOutOfRange(): never {
     throw new ArgumentOutOfRangeException('ticks',
-        'Ticks must be between DateTime.MinValue.Ticks and DateTime.MaxValue.Ticks.');
+        SR.ArgumentOutOfRange_DateTimeBadTicks);
 }
 
 function throwInvalidKind(): never {
-    throw new ArgumentException('Invalid DateTimeKind value.', 'kind');
+    throw new ArgumentException(SR.Argument_InvalidDateTimeKind, 'kind');
 }
 
 function throwBadBinaryData(): never {
     throw new ArgumentException(
-        'The binary data must result in a DateTime with ticks between DateTime.MinValue.Ticks and DateTime.MaxValue.Ticks.',
+        SR.Argument_DateTimeBadBinaryData,
         'dateData');
 }
 
 function throwInvalidDate(): never {
     throw new ArgumentOutOfRangeException(undefined,
-        'Year, Month, and Day parameters describe an un-representable DateTime.');
+        SR.ArgumentOutOfRange_BadYearMonthDay);
 }
 
 function throwInvalidTime(): never {
     throw new ArgumentOutOfRangeException(undefined,
-        'Hour, Minute, and Second parameters describe an un-representable DateTime.');
+        SR.ArgumentOutOfRange_BadHourMinuteSecond);
 }
 
 function checkMillisecond(value: number): void {
     if (!Number.isInteger(value) || value < 0 || value >= MillisPerSecond) {
         throw new ArgumentOutOfRangeException('millisecond',
-            'Valid values are between 0 and 999, inclusive.');
+            formatExceptionResource(SR.ArgumentOutOfRange_Range, 0, 999));
     }
 }
 
 function checkMicrosecond(value: number): void {
     if (!Number.isInteger(value) || value < 0 || value >= 1000) {
         throw new ArgumentOutOfRangeException('microsecond',
-            'Valid values are between 0 and 999, inclusive.');
+            formatExceptionResource(SR.ArgumentOutOfRange_Range, 0, 999));
     }
 }
 
@@ -1340,7 +1334,7 @@ function preserveLocalKind(source: DateTime, ticks: bigint): DateTime {
 }
 
 function invalidDateTimeCast(type: string): never {
-    throw new InvalidCastException(`Invalid cast from 'DateTime' to '${type}'.`);
+    throw new InvalidCastException(formatExceptionResource(SR.InvalidCast_FromTo, 'DateTime', type));
 }
 
 /** Internal formatter access preserves the ambiguous local DST flag. */

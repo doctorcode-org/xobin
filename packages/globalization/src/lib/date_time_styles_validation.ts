@@ -1,3 +1,4 @@
+import * as SR from '@xobin/core/internal/exception-resources';
 import { ArgumentException } from '@xobin/core';
 import { DateTimeStyles } from './date_time_styles';
 
@@ -17,9 +18,9 @@ export function validateDateTimeStyles(style: DateTimeStyles, styles = false): v
         DateTimeStyles.AdjustToUniversal)) > DateTimeStyles.RoundtripKind;
 
     if (invalid || conflictingAssumptions || conflictingRoundtrip) {
-        const message = invalid ? 'An undefined DateTimeStyles value is being used.'
-            : conflictingAssumptions ? 'The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together.'
-            : 'The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal.';
+        const message = invalid ? SR.Argument_InvalidDateTimeStyles
+            : conflictingAssumptions ? SR.Argument_ConflictingDateTimeStyles
+            : SR.Argument_ConflictingDateTimeRoundtripStyles;
         throw new ArgumentException(message, styles ? 'styles' : 'style');
     }
 }

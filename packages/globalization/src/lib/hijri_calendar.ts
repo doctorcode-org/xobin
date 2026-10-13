@@ -1,3 +1,5 @@
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
@@ -65,7 +67,7 @@ export class HijriCalendar extends Calendar {
 
     set hijriAdjustment(value: number) {
         if (value < -2 || value > 2) {
-            throw new ArgumentOutOfRangeException('value', value, 'Argument must be between -2 and 2.');
+            throw new ArgumentOutOfRangeException('value', value, formatExceptionResource(SR.ArgumentOutOfRange_Bounds_Lower_Upper, -2, 2));
         }
         this.verifyWritable();
         setValue(this, 'hijriAdjustment', value);
@@ -88,7 +90,7 @@ export class HijriCalendar extends Calendar {
 
     private checkYear(year: number, era: number): void {
         if (era !== 0 && era !== HijriCalendar.HijriEra) {
-            throw new ArgumentOutOfRangeException('era', era, 'Era value was not valid.');
+            throw new ArgumentOutOfRangeException('era', era, SR.ArgumentOutOfRange_InvalidEraValue);
         }
         if (year < 1 || year > 9666) {
             throw new ArgumentOutOfRangeException('year', calendarRangeMessage(1, 9666));
@@ -101,16 +103,14 @@ export class HijriCalendar extends Calendar {
             throw new ArgumentOutOfRangeException('month', month, calendarRangeMessage(1, 4));
         }
         if (month < 1 || month > 12) {
-            throw new ArgumentOutOfRangeException('month', month, 'Month must be between one and twelve.');
+            throw new ArgumentOutOfRangeException('month', month, SR.ArgumentOutOfRange_Month);
         }
     }
 
     private checkTime(time: DateTime): void {
         if (time.ticks < this.minSupportedDateTime.ticks || time.ticks > this.maxSupportedDateTime.ticks) {
             throw new ArgumentOutOfRangeException('time', time.ticks,
-                `Specified time is not supported in this calendar. It should be between `
-                + `${formatGregorianDateTime(this.minSupportedDateTime)} (Gregorian date) and `
-                + `${formatGregorianDateTime(this.maxSupportedDateTime)} (Gregorian date), inclusive.`);
+                formatExceptionResource(SR.ArgumentOutOfRange_CalendarRange, formatGregorianDateTime(this.minSupportedDateTime), formatGregorianDateTime(this.maxSupportedDateTime)));
         }
     }
 
@@ -305,7 +305,7 @@ export class HijriCalendar extends Calendar {
     private checkDay(year: number, month: number, day: number, era: number): void {
         const maximum = this.getDaysInMonth(year, month, era);
         if (day < 1 || day > maximum) {
-            throw new ArgumentOutOfRangeException('day', day, `Day must be between 1 and ${maximum} for month ${month}.`);
+            throw new ArgumentOutOfRangeException('day', day, formatExceptionResource(SR.ArgumentOutOfRange_Day, maximum, month));
         }
     }
 

@@ -1,3 +1,6 @@
+import { TicksMustBeBigInt } from './javascript_exception_resources';
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
 import type { IFormatProvider } from '@xobin/core';
 import { formatDateOnlyTimeOnly } from './date_only_time_only_format';
 import { tryWriteFormatted } from './format_buffer';
@@ -63,15 +66,15 @@ export class TimeOnly implements IComparable<TimeOnly>, IEquatable<TimeOnly> {
             if (!Number.isInteger(hour) || hour < 0 || hour >= 24
                 || !Number.isInteger(minute) || minute < 0 || minute >= 60
                 || !Number.isInteger(second) || second < 0 || second >= 60) {
-                throw new ArgumentOutOfRangeException(undefined, 'Hour, Minute, and Second parameters describe an un-representable DateTime.');
+                throw new ArgumentOutOfRangeException(undefined, SR.ArgumentOutOfRange_BadHourMinuteSecond);
             }
 
             if (!Number.isInteger(millisecond) || millisecond < 0 || millisecond >= 1000) {
-                throw new ArgumentOutOfRangeException('millisecond', 'Valid values are between 0 and 999, inclusive.');
+                throw new ArgumentOutOfRangeException('millisecond', formatExceptionResource(SR.ArgumentOutOfRange_Range, 0, 999));
             }
 
             if (!Number.isInteger(microsecond) || microsecond < 0 || microsecond >= 1000) {
-                throw new ArgumentOutOfRangeException('microsecond', 'Valid values are between 0 and 999, inclusive.');
+                throw new ArgumentOutOfRangeException('microsecond', formatExceptionResource(SR.ArgumentOutOfRange_Range, 0, 999));
             }
 
             this._ticks = BigInt(hour) * TicksPerHour + BigInt(minute) * TicksPerMinute
@@ -79,9 +82,9 @@ export class TimeOnly implements IComparable<TimeOnly>, IEquatable<TimeOnly> {
                 + BigInt(microsecond) * TicksPerMicrosecond;
         } else {
             const ticks = arguments.length === 0 ? 0n : first;
-            if (typeof ticks !== 'bigint') throw new ArgumentException('Ticks must be a bigint.');
+            if (typeof ticks !== 'bigint') throw new ArgumentException(TicksMustBeBigInt);
             if (ticks < 0n || ticks >= TicksPerDay) {
-                throw new ArgumentOutOfRangeException('ticks', 'Ticks must be between 0 and and TimeOnly.MaxValue.Ticks.');
+                throw new ArgumentOutOfRangeException('ticks', SR.ArgumentOutOfRange_TimeOnlyBadTicks);
             }
             this._ticks = ticks;
         }
@@ -262,7 +265,7 @@ export class TimeOnly implements IComparable<TimeOnly>, IEquatable<TimeOnly> {
         }
 
         if (!(value instanceof TimeOnly)) {
-            throw new ArgumentException('Object must be of type TimeOnly.');
+            throw new ArgumentException(SR.Arg_MustBeTimeOnly);
         }
 
         return this._ticks === value._ticks ? 0 : this._ticks < value._ticks ? -1 : 1;

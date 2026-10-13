@@ -1,3 +1,6 @@
+import { InvalidCultureInfo } from './javascript_exception_resources';
+import * as SR from '@xobin/core/internal/exception-resources';
+import { setExceptionNumberFormat } from '@xobin/core/internal/exception-format';
 import { invariantDateTimeFormat, setCurrentFormatContext } from './date_time_format_context';
 import { Calendar } from './calendar';
 import { DateTimeFormatInfo, createDateTimeFormatInfo } from './date_time_format_info';
@@ -88,7 +91,7 @@ export class CultureInfo {
     }
 
     set dateTimeFormat(value: DateTimeFormatInfo) {
-        if (READ_ONLY_CULTURES.has(this)) throw new InvalidOperationException('Instance is read-only.');
+        if (READ_ONLY_CULTURES.has(this)) throw new InvalidOperationException(SR.InvalidOperation_ReadOnly);
         if (value == null) throw new ArgumentNullException('value');
         setValue(this, 'dateTimeFormat', value);
     }
@@ -149,9 +152,10 @@ export class CultureInfo {
      */
     constructor(name: CultureName) {
 
+        if (name == null) throw new ArgumentNullException('name');
         const cultureData: any = CULTURES_DATA[name.toLocaleLowerCase()];
         if (!cultureData) {
-            throw new CultureNotFoundException(name);
+            throw new CultureNotFoundException('name', name, null);
         }
 
         Object.keys(cultureData)
@@ -207,11 +211,12 @@ export class CultureInfo {
 
     static set currentCulture(culture: CultureInfo) {
         if (!(culture instanceof CultureInfo)) {
-            throw new Error("Invalid CultureInfo instance.");
+            throw new Error(InvalidCultureInfo);
         }
 
         setValue(this, "currentCulture", culture);
         setCurrentFormatContext(culture);
+        setExceptionNumberFormat(culture.numberFormat);
     }
 
     /**
@@ -223,7 +228,7 @@ export class CultureInfo {
 
     static set currentUICulture(culture: CultureInfo) {
         if (!(culture instanceof CultureInfo)) {
-            throw new Error("Invalid CultureInfo instance.");
+            throw new Error(InvalidCultureInfo);
         }
 
         setValue(this, "currentUICulture", culture);

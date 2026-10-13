@@ -1,3 +1,5 @@
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
 import { registerCalendarIdentity } from './calendar_identity';
 ﻿import { Calendar, checkAddResult, timeToTicks } from './calendar';
 import { DateTime } from './date_time';
@@ -102,7 +104,7 @@ export class PersianCalendar extends Calendar {
         const daysInMonth = this.getDaysInMonth(year, month, era);
         if (day < 1 || day > daysInMonth) {
             throw new ArgumentOutOfRangeException('day', day,
-                `Day must be between 1 and ${daysInMonth} for month ${month}.`);
+                formatExceptionResource(SR.ArgumentOutOfRange_Day, daysInMonth, month));
         }
 
         return this.isLeapYear(year, era) && month == 12 && day == 30;
@@ -282,14 +284,14 @@ export class PersianCalendar extends Calendar {
         const daysInMonth = this.getDaysInMonth(year, month, era);
         if (day < 1 || day > daysInMonth) {
             throw new ArgumentOutOfRangeException('day', day,
-                `Day must be between 1 and ${daysInMonth} for month ${month}.`);
+                formatExceptionResource(SR.ArgumentOutOfRange_Day, daysInMonth, month));
         }
 
         const lDate = getAbsoluteDatePersian(year, month, day);
 
         if (lDate < 0) {
             throw new ArgumentOutOfRangeException(undefined,
-                'Year, Month, and Day parameters describe an un-representable DateTime.');
+                SR.ArgumentOutOfRange_BadYearMonthDay);
         }
 
         return new DateTime(BigInt(lDate) * TicksPerDay + timeToTicks(hour, minute, second, millisecond));
@@ -308,9 +310,7 @@ export class PersianCalendar extends Calendar {
 function checkTicksRange(this: Calendar, ticks: bigint) {
     if (ticks < this.minSupportedDateTime.ticks || ticks > this.maxSupportedDateTime.ticks) {
         throw new ArgumentOutOfRangeException('time', ticks,
-            `Specified time is not supported in this calendar. It should be between `
-            + `${formatGregorianDateTime(this.minSupportedDateTime)} (Gregorian date) and `
-            + `${formatGregorianDateTime(this.maxSupportedDateTime)} (Gregorian date), inclusive.`);
+            formatExceptionResource(SR.ArgumentOutOfRange_CalendarRange, formatGregorianDateTime(this.minSupportedDateTime), formatGregorianDateTime(this.maxSupportedDateTime)));
     }
 }
 
@@ -347,12 +347,12 @@ function getDatePart(this: Calendar, ticks: bigint, part: number): number {
     }
 
     // Incorrect part value.
-    throw new InvalidOperationException('Internal Error in DateTime and Calendar operations.');
+    throw new InvalidOperationException(SR.InvalidOperation_DateTimeParsing);
 }
 
 function checkEraRange(era: number): void {
     if (era !== 0 && era !== PersianCalendar.PersianEra) {
-        throw new ArgumentOutOfRangeException('era', era, 'Era value was not valid.');
+        throw new ArgumentOutOfRangeException('era', era, SR.ArgumentOutOfRange_InvalidEraValue);
     }
 }
 
@@ -367,7 +367,7 @@ function checkYearRange(year: number, era: number = 0) {
 function getAbsoluteDatePersian(year: number, month: number, day: number) {
     if (year < 1 || year > MaxCalendarYear || month < 1 || month > 12) {
         throw new ArgumentOutOfRangeException(undefined,
-            'Year, Month, and Day parameters describe an un-representable DateTime.');
+            SR.ArgumentOutOfRange_BadYearMonthDay);
     }
 
     // day is one based, make 0 based since this will be the number of days we add to beginning of year below
@@ -389,7 +389,7 @@ function checkYearMonthRange(year: number, month: number, era: number = 0): void
 
     if (month < 1 || month > 12) {
         throw new ArgumentOutOfRangeException('month', month,
-            'Month must be between one and twelve.');
+            SR.ArgumentOutOfRange_Month);
     }
 }
 

@@ -1,3 +1,5 @@
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
 import { ArgumentException, ArgumentNullException, ArgumentOutOfRangeException, InvalidOperationException, IFormatProvider } from '@xobin/core';
 import { Calendar } from './calendar';
 import { GregorianCalendar } from './gregorian_calendar';
@@ -120,7 +122,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
         if (value == null) throw new ArgumentNullException('value');
         if (value === this.calendar) return;
         const data = getCalendarFormatData(this.state, getCalendarIdentity(value).id);
-        if (!data) throw new ArgumentOutOfRangeException('value', value, 'Not a valid calendar for the given culture.');
+        if (!data) throw new ArgumentOutOfRangeException('value', value, SR.Argument_InvalidCalendar);
         this.state.data = data;
         this.state.calendar = value;
     }
@@ -191,7 +193,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set calendarWeekRule(value: CalendarWeekRule) {
         this.verifyWritable();
         if (!Number.isInteger(value) || value < CalendarWeekRule.FirstDay || value > CalendarWeekRule.FirstFourDayWeek) {
-            throw new ArgumentOutOfRangeException('value', value, 'Valid values are between FirstDay and FirstFourDayWeek, inclusive.');
+            throw new ArgumentOutOfRangeException('value', value, formatExceptionResource(SR.ArgumentOutOfRange_Range, 'FirstDay', 'FirstFourDayWeek'));
         }
         this.state.data.calendarWeekRule = value;
     }
@@ -234,7 +236,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
     set firstDayOfWeek(value: DayOfWeek) {
         this.verifyWritable();
         if (!Number.isInteger(value) || value < DayOfWeek.Sunday || value > DayOfWeek.Saturday) {
-            throw new ArgumentOutOfRangeException('value', value, 'Valid values are between Sunday and Saturday, inclusive.');
+            throw new ArgumentOutOfRangeException('value', value, formatExceptionResource(SR.ArgumentOutOfRange_Range, 'Sunday', 'Saturday'));
         }
         this.state.data.firstDayOfWeek = value;
     }
@@ -481,7 +483,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
         const calendarData = this.state.calendarFormats.get(getCalendarIdentity(this.calendar).id);
         const selected = era === 0 ? calendarData?.eraNames?.length || 1 : era;
         if (!Number.isInteger(selected) || selected < 1 || selected > names.length) {
-            throw new ArgumentOutOfRangeException('era', selected, 'Era value was not valid.');
+            throw new ArgumentOutOfRangeException('era', selected, SR.ArgumentOutOfRange_InvalidEraValue);
         }
         return names[selected - 1]!;
     }
@@ -554,7 +556,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
             case 'f': case 'F': case 'g': case 'G': case 'U':
                 return patterns(format === 'g' || format === 'G' ? 'd' : 'D')
                     .flatMap(date => patterns(format === 'f' || format === 'g' ? 't' : 'T').map(time => date + ' ' + time));
-            default: throw new ArgumentException(`Format specifier '${format}' was invalid.`, 'format');
+            default: throw new ArgumentException(formatExceptionResource(SR.Format_BadFormatSpecifier, format), 'format');
         }
     }
 
@@ -566,12 +568,12 @@ export class DateTimeFormatInfo implements IFormatProvider {
     setAllDateTimePatterns(patterns: string[], format: string): void {
         this.verifyWritable();
         if (patterns == null) throw new ArgumentNullException('patterns');
-        if (patterns.length === 0) throw new ArgumentException('Array must not be of length zero.', 'patterns');
+        if (patterns.length === 0) throw new ArgumentException(SR.Arg_ArrayZeroError, 'patterns');
         for (let i = 0; i < patterns.length; i++) {
-            if (patterns[i] == null) throw new ArgumentNullException(`patterns[${i}]`, 'Found a null value within an array.');
+            if (patterns[i] == null) throw new ArgumentNullException(`patterns[${i}]`, SR.ArgumentNull_ArrayValue);
         }
         if (format.length !== 1 || !'dDtTyY'.includes(format)) {
-            throw new ArgumentException(`Format specifier '${format}' was invalid.`, 'format');
+            throw new ArgumentException(formatExceptionResource(SR.Format_BadFormatSpecifier, format), 'format');
         }
         const key = format === 'Y' ? 'y' : format;
         this.state.data.allDateTimePatterns = { ...this.state.data.allDateTimePatterns, [key]: patterns };
@@ -590,7 +592,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
      */
     private getDayNameFromArray(day: DayOfWeek, paramName: string, names: ReadonlyArray<string>): string {
         if (!Number.isInteger(day) || day < 0 || day > 6) {
-            throw new ArgumentOutOfRangeException(paramName, day, 'Valid values are between Sunday and Saturday, inclusive.');
+            throw new ArgumentOutOfRangeException(paramName, day, formatExceptionResource(SR.ArgumentOutOfRange_Range, 'Sunday', 'Saturday'));
         }
         return names[day]!;
     }
@@ -602,7 +604,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
      */
     private getMonthNameFromArray(month: number, names: ReadonlyArray<string>): string {
         if (!Number.isInteger(month) || month < 1 || month > 13) {
-            throw new ArgumentOutOfRangeException('month', month, 'Valid values are between 1 and 13, inclusive.');
+            throw new ArgumentOutOfRangeException('month', month, formatExceptionResource(SR.ArgumentOutOfRange_Range, 1, 13));
         }
         return names[month - 1]!;
     }
@@ -618,7 +620,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
      * Rejects changes to a read-only instance.
      */
     private verifyWritable(): void {
-        if (this.isReadOnly) throw new InvalidOperationException('Instance is read-only.');
+        if (this.isReadOnly) throw new InvalidOperationException(SR.InvalidOperation_ReadOnly);
     }
 
     /**
@@ -627,9 +629,9 @@ export class DateTimeFormatInfo implements IFormatProvider {
      */
     private verifyDayNames(value: string[]): void {
         if (value == null) throw new ArgumentNullException('value');
-        if (value.length !== 7) throw new ArgumentException('Length of the array must be 7.', 'value');
+        if (value.length !== 7) throw new ArgumentException(formatExceptionResource(SR.Argument_InvalidArrayLength, 7), 'value');
         for (let i = 0; i < value.length; i++) {
-            if (value[i] == null) throw new ArgumentNullException('value', 'Found a null value within an array.');
+            if (value[i] == null) throw new ArgumentNullException('value', SR.ArgumentNull_ArrayValue);
         }
     }
 
@@ -639,9 +641,9 @@ export class DateTimeFormatInfo implements IFormatProvider {
      */
     private verifyMonthNames(value: string[]): void {
         if (value == null) throw new ArgumentNullException('value');
-        if (value.length !== 13) throw new ArgumentException('Length of the array must be 13.', 'value');
+        if (value.length !== 13) throw new ArgumentException(formatExceptionResource(SR.Argument_InvalidArrayLength, 13), 'value');
         for (let i = 0; i < 12; i++) {
-            if (value[i] == null) throw new ArgumentNullException('value', 'Found a null value within an array.');
+            if (value[i] == null) throw new ArgumentNullException('value', SR.ArgumentNull_ArrayValue);
         }
     }
 }

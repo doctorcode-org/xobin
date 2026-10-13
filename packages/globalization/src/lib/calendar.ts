@@ -1,3 +1,5 @@
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
 ﻿import { DateTime } from './date_time';
 import { CalendarAlgorithmType } from './calendar_algorithm_type';
 import { ArgumentOutOfRangeException, ArgumentException, ArgumentNullException, InvalidOperationException, copyValues, getOrCreateValue, int } from '@xobin/core';
@@ -66,7 +68,7 @@ export abstract class Calendar {
 
     protected verifyWritable(): void {
         if (this._isReadOnly) {
-            throw new InvalidOperationException('Instance is read-only.');
+            throw new InvalidOperationException(SR.InvalidOperation_ReadOnly);
         }
     }
 
@@ -366,7 +368,7 @@ function add(this: Calendar, time: DateTime, value: number, scale: number): Date
     // before attempting a cast. Otherwise, the result is undefined.
     const tempMillis = (value * scale + (value >= 0 ? 0.5 : -0.5));
     if (!((tempMillis > -MaxMillis) && (tempMillis < MaxMillis))) {
-        throw new ArgumentOutOfRangeException('value', value, 'Value to add was out of range.');
+        throw new ArgumentOutOfRangeException('value', value, SR.ArgumentOutOfRange_AddValue);
     }
 
     const millis = int(tempMillis);
@@ -377,16 +379,14 @@ function add(this: Calendar, time: DateTime, value: number, scale: number): Date
 
 export function checkAddResult(ticks: bigint, minValue: DateTime, maxValue: DateTime) {
     if (ticks < minValue.ticks || ticks > maxValue.ticks) {
-        throw new ArgumentException('The result is out of the supported range for this calendar. '
-            + `The result should be between ${formatGregorianDateTime(minValue)} (Gregorian date) and `
-            + `${formatGregorianDateTime(maxValue)} (Gregorian date), inclusive.`);
+        throw new ArgumentException(formatExceptionResource(SR.Argument_ResultCalendarRange, formatGregorianDateTime(minValue), formatGregorianDateTime(maxValue)));
     }
 }
 
 export function timeToTicks(hour: number, minute: number, second: number, millisecond: number): bigint {
     if (hour < 0 || hour >= 24 || minute < 0 || minute >= 60 || second < 0 || second >= 60) {
         throw new ArgumentOutOfRangeException(undefined,
-            'Hour, Minute, and Second parameters describe an un-representable DateTime.');
+            SR.ArgumentOutOfRange_BadHourMinuteSecond);
     }
 
     if (millisecond < 0 || millisecond >= MillisPerSecond) {

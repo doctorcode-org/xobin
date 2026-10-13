@@ -1,3 +1,5 @@
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
@@ -248,7 +250,7 @@ export class JulianCalendar extends Calendar {
             throw new ArgumentOutOfRangeException('millisecond', millisecond, calendarRangeMessage(0, 999));
         }
         if (hour < 0 || hour >= 24 || minute < 0 || minute >= 60 || second < 0 || second >= 60) {
-            throw new ArgumentOutOfRangeException(undefined, 'Hour, Minute, and Second parameters describe an un-representable DateTime.');
+            throw new ArgumentOutOfRangeException(undefined, SR.ArgumentOutOfRange_BadHourMinuteSecond);
         }
         return new DateTime(dateToTicks(year, month, day)
             + BigInt(hour * 3600 + minute * 60 + second) * TicksPerSecond
@@ -262,7 +264,7 @@ export class JulianCalendar extends Calendar {
     override toFourDigitYear(year: number): number {
         if (year < 0) throwIfNegativeYear(year);
         if (year > 9999) {
-            throw new ArgumentOutOfRangeException('year', year, 'Argument must be between 1 and 9999.');
+            throw new ArgumentOutOfRangeException('year', year, formatExceptionResource(SR.ArgumentOutOfRange_Bounds_Lower_Upper, 1, 9999));
         }
         return super.toFourDigitYear(year);
     }
@@ -270,7 +272,7 @@ export class JulianCalendar extends Calendar {
 
 function checkYearEra(year: number, era: number): void {
     if (era !== 0 && era !== JulianCalendar.JulianEra) {
-        throw new ArgumentOutOfRangeException('era', era, 'Era value was not valid.');
+        throw new ArgumentOutOfRangeException('era', era, SR.ArgumentOutOfRange_InvalidEraValue);
     }
     if (year <= 0 || year > 9999) {
         throw new ArgumentOutOfRangeException('year', year, calendarRangeMessage(1, 9999));
@@ -279,13 +281,13 @@ function checkYearEra(year: number, era: number): void {
 
 function checkMonth(month: number): void {
     if (month < 1 || month > 12) {
-        throw new ArgumentOutOfRangeException('month', month, 'Month must be between one and twelve.');
+        throw new ArgumentOutOfRangeException('month', month, SR.ArgumentOutOfRange_Month);
     }
 }
 
 function checkDay(year: number, month: number, day: number): void {
     if (year === 1 && month === 1 && day < 3) {
-        throw new ArgumentOutOfRangeException(undefined, 'Year, Month, and Day parameters describe an un-representable DateTime.');
+        throw new ArgumentOutOfRangeException(undefined, SR.ArgumentOutOfRange_BadYearMonthDay);
     }
     const days = year % 4 === 0 ? daysToMonth366 : daysToMonth365;
     const max = days[month]! - days[month - 1]!;

@@ -1,3 +1,5 @@
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
 import { ArgumentException, ArgumentOutOfRangeException, int } from '@xobin/core';
 import { Calendar, checkAddResult, timeToTicks } from './calendar';
 import { calendarRangeMessage, formatGregorianDateTime } from './calendar_exception';
@@ -21,14 +23,14 @@ export class GregorianCalendarHelper {
 
     private getYearOffset(year: number, era: number): number {
         if (year < 0) {
-            throw new ArgumentOutOfRangeException('year', 'Non-negative number required.');
+            throw new ArgumentOutOfRangeException('year', SR.ArgumentOutOfRange_NeedNonNegNum);
         }
 
         const currentEra = this.eraInfo[0]!.era;
         if (era === 0) era = currentEra;
         const info = this.eraInfo.find(item => item.era === era);
         if (!info) {
-            throw new ArgumentOutOfRangeException('era', 'Era value was not valid.');
+            throw new ArgumentOutOfRangeException('era', SR.ArgumentOutOfRange_InvalidEraValue);
         }
         if (year > info.maxEraYear) {
             let remainingYears = year - info.maxEraYear;
@@ -52,9 +54,7 @@ export class GregorianCalendarHelper {
     private checkTicksRange(ticks: bigint): void {
         if (ticks < this.cal.minSupportedDateTime.ticks || ticks > this.cal.maxSupportedDateTime.ticks) {
             throw new ArgumentOutOfRangeException('time',
-                `Specified time is not supported in this calendar. It should be between `
-                + `${formatGregorianDateTime(this.cal.minSupportedDateTime)} (Gregorian date) and `
-                + `${formatGregorianDateTime(this.cal.maxSupportedDateTime)} (Gregorian date), inclusive.`);
+                formatExceptionResource(SR.ArgumentOutOfRange_CalendarRange, formatGregorianDateTime(this.cal.minSupportedDateTime), formatGregorianDateTime(this.cal.maxSupportedDateTime)));
         }
     }
 
@@ -104,7 +104,7 @@ export class GregorianCalendarHelper {
     getDaysInMonth(year: number, month: number, era: number = 0): number {
         year = this.getGregorianYear(year, era);
         if (month < 1 || month > 12) {
-            throw new ArgumentOutOfRangeException('month', month, 'Month must be between one and twelve.');
+            throw new ArgumentOutOfRangeException('month', month, SR.ArgumentOutOfRange_Month);
         }
         const days = isGregorianLeapYear(year) ? DaysToMonth366 : DaysToMonth365;
         return days[month]! - days[month - 1]!;
@@ -117,7 +117,7 @@ export class GregorianCalendarHelper {
     getEra(time: DateTime): number {
         const info = this.eraInfo.find(item => time.ticks >= item.ticks);
         if (!info) {
-            throw new ArgumentOutOfRangeException('time', 'Time value was out of era range.');
+            throw new ArgumentOutOfRangeException('time', SR.ArgumentOutOfRange_Era);
         }
         return info.era;
     }
@@ -139,7 +139,7 @@ export class GregorianCalendarHelper {
     getYear(time: DateTime): number {
         this.checkTicksRange(time.ticks);
         const info = this.eraInfo.find(item => time.ticks >= item.ticks);
-        if (!info) throw new ArgumentException('No era exists for the specified date.');
+        if (!info) throw new ArgumentException(SR.Argument_NoEra);
         return time.year - info.yearOffset;
     }
 
@@ -176,7 +176,7 @@ export class GregorianCalendarHelper {
     toFourDigitYear(year: number, twoDigitYearMax: number): number {
         if (year < 0) {
             throw new ArgumentOutOfRangeException('year', year,
-                `year ('${year}') must be a non-negative value.`);
+                formatExceptionResource(SR.ArgumentOutOfRange_Generic_MustBeNonNegative, 'year', year));
         }
         if (year < 100) {
             return (int(twoDigitYearMax / 100) - (year > twoDigitYearMax % 100 ? 1 : 0)) * 100 + year;

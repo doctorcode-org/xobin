@@ -123,3 +123,23 @@ for (const Type of [FormatException, InvalidCastException, SerializationExceptio
     const innerException: Exception | null = nestedException.innerException;
     void [defaultException, customException, innerException];
 }
+
+import { SystemException, ArithmeticException, ArgumentException, ArgumentNullException, ArgumentOutOfRangeException, OverflowException, NullReferenceException, NotImplementedException, AmbiguousMatchException, InvalidOperationException, IndexOutOfRangeException, InvalidProgramException, NotSupportedException } from '@xobin/core';
+import { CultureNotFoundException } from '@xobin/globalization';
+const systemError: SystemException = new ArithmeticException(null, exceptionCause);
+const argumentError: ArgumentException = new ArgumentException('', 'value', exceptionCause);
+const argumentInner: ArgumentException = new ArgumentException('', exceptionCause);
+const nullError: ArgumentNullException = new ArgumentNullException(null, exceptionCause);
+const rangeError: ArgumentOutOfRangeException = new ArgumentOutOfRangeException(null, 42n, null);
+const rangeInner: ArgumentOutOfRangeException = new ArgumentOutOfRangeException(null, exceptionCause);
+const cultureNameError: CultureNotFoundException = new CultureNotFoundException('name', 'abcd', null);
+const cultureIdError: CultureNotFoundException = new CultureNotFoundException(null, 1033, exceptionCause);
+const cultureInvalidName: string | null = cultureNameError.invalidCultureName;
+const cultureInvalidId: number | null = cultureIdError.invalidCultureId;
+argumentError.hResult = -42;
+const hResult: number = argumentError.hResult;
+const customCast = new InvalidCastException(null, -42);
+for (const Type of [OverflowException, NullReferenceException, NotImplementedException, AmbiguousMatchException, InvalidOperationException, IndexOutOfRangeException, InvalidProgramException, NotSupportedException]) {
+    void [new Type(), new Type(null), new Type('', exceptionCause)];
+}
+void [systemError, argumentError, argumentInner, nullError, rangeError, rangeInner, cultureInvalidName, cultureInvalidId, hResult, customCast];

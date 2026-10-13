@@ -1,3 +1,4 @@
+import * as SR from '@xobin/core/internal/exception-resources';
 ﻿import { ArgumentOutOfRangeException } from '@xobin/core';
 
 export const LongMaxValue = 9223372036854775807n;
@@ -63,6 +64,6 @@ export function timeToTicks(hour: number, minute: number, second: number): bigin
     // which is less than 2^44, meaning we won't overflow totalSeconds.
     const totalSeconds = BigInt(hour) * 3600n + BigInt(minute) * 60n + BigInt(second);
     if (totalSeconds > MaxSeconds || totalSeconds < MinSeconds)
-        throw new ArgumentOutOfRangeException(/*null, SR.Overflow_TimeSpanTooLong*/);
+        throw new ArgumentOutOfRangeException(null, SR.Overflow_TimeSpanTooLong);
     return totalSeconds * TicksPerSecond;
 }

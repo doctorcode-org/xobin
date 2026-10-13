@@ -1,3 +1,4 @@
+import * as SR from '@xobin/core/internal/exception-resources';
 import { registerCalendarIdentity } from './calendar_identity';
 ﻿import { Calendar, checkAddResult } from './calendar';
 import { GregorianCalendarTypes } from './gregorian_calendar_types';
@@ -20,7 +21,7 @@ export class GregorianCalendar extends Calendar {
 
     private checkEra(era: number): void {
         if (era !== 0 && era !== GregorianCalendar.ADEra) {
-            throw new ArgumentOutOfRangeException('era', era, 'Era value was not valid.');
+            throw new ArgumentOutOfRangeException('era', era, SR.ArgumentOutOfRange_InvalidEraValue);
         }
     }
 
@@ -188,10 +189,10 @@ export class GregorianCalendar extends Calendar {
     getDaysInMonth(year: number, month: number, era: number = 0): number {
         this.checkEra(era);
         if (month < 1 || month > 12) {
-            throw new ArgumentOutOfRangeException('month', month, 'Month must be between one and twelve.');
+            throw new ArgumentOutOfRangeException('month', month, SR.ArgumentOutOfRange_Month);
         }
         if (year < 1 || year > MaxYear) {
-            throw new ArgumentOutOfRangeException('year', 'Year must be between 1 and 9999.');
+            throw new ArgumentOutOfRangeException('year', SR.ArgumentOutOfRange_Year);
         }
 
         const days = ((year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? DaysToMonth366 : DaysToMonth365);
@@ -205,7 +206,7 @@ export class GregorianCalendar extends Calendar {
     getDaysInYear(year: number, era: number = 0): number {
         this.checkEra(era);
         if (year < 1 || year > MaxYear) {
-            throw new ArgumentOutOfRangeException('year', 'Year must be between 1 and 9999.');
+            throw new ArgumentOutOfRangeException('year', SR.ArgumentOutOfRange_Year);
         }
 
         return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? 366 : 365;
@@ -271,7 +272,7 @@ export class GregorianCalendar extends Calendar {
     isLeapYear(year: number, era: number = 0): boolean {
         this.checkEra(era);
         if (year < 1 || year > MaxYear) {
-            throw new ArgumentOutOfRangeException('year', 'Year must be between 1 and 9999.');
+            throw new ArgumentOutOfRangeException('year', SR.ArgumentOutOfRange_Year);
         }
 
         return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
@@ -321,11 +322,11 @@ export class GregorianCalendar extends Calendar {
             || day > (this.isLeapYear(year) ? DaysToMonth366[month]! - DaysToMonth366[month - 1]!
                 : DaysToMonth365[month]! - DaysToMonth365[month - 1]!)) {
             throw new ArgumentOutOfRangeException(undefined,
-                'Year, Month, and Day parameters describe an un-representable DateTime.');
+                SR.ArgumentOutOfRange_BadYearMonthDay);
         }
         if (hour < 0 || hour >= 24 || minute < 0 || minute >= 60 || second < 0 || second >= 60) {
             throw new ArgumentOutOfRangeException(undefined,
-                'Hour, Minute, and Second parameters describe an un-representable DateTime.');
+                SR.ArgumentOutOfRange_BadHourMinuteSecond);
         }
         if (millisecond < 0 || millisecond >= 1000) {
             throw new ArgumentOutOfRangeException('millisecond', calendarRangeMessage(0, 999));
@@ -350,7 +351,7 @@ export function getAbsoluteDate(year: number, month: number, day: number): numbe
     }
 
     throw new ArgumentOutOfRangeException(undefined,
-        'Year, Month, and Day parameters describe an un-representable DateTime.');
+        SR.ArgumentOutOfRange_BadYearMonthDay);
 }
 
 registerCalendarIdentity(GregorianCalendar.prototype, 'System.Globalization.GregorianCalendar', calendar => (calendar as GregorianCalendar).calendarType, true);

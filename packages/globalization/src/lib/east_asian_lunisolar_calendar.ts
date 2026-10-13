@@ -1,3 +1,5 @@
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
@@ -313,7 +315,7 @@ export abstract class EastAsianLunisolarCalendar extends Calendar {
     protected checkTicksRange(ticks: bigint): void {
         if (ticks < this.minSupportedDateTime.ticks || ticks > this.maxSupportedDateTime.ticks) {
             throw new ArgumentOutOfRangeException('time', ticks,
-                `Specified time is not supported in this calendar. It should be between ${formatGregorianDateTime(this.minSupportedDateTime)} (Gregorian date) and ${formatGregorianDateTime(this.maxSupportedDateTime)} (Gregorian date), inclusive.`);
+                formatExceptionResource(SR.ArgumentOutOfRange_CalendarRange, formatGregorianDateTime(this.minSupportedDateTime), formatGregorianDateTime(this.maxSupportedDateTime)));
         }
     }
 
@@ -324,14 +326,14 @@ export abstract class EastAsianLunisolarCalendar extends Calendar {
         const date = minimum ? this.minSupportedDateTime : this.maxSupportedDateTime;
         if (era === this.getEra(date)) return this.getYearForDate(minimum ? this.minCalendarYear : this.maxCalendarYear, date);
         const found = info.find(item => item.era === era);
-        if (!found) throw new ArgumentOutOfRangeException('era', era, 'Era value was not valid.');
+        if (!found) throw new ArgumentOutOfRangeException('era', era, SR.ArgumentOutOfRange_InvalidEraValue);
         return minimum ? found.minEraYear : found.maxEraYear;
     }
 
     private checkYearRange(year: number, era: number): number {
         const currentEra = era === 0 ? this.eras[0]! : era;
         if (currentEra < this.getEra(this.minSupportedDateTime) || currentEra > this.getEra(this.maxSupportedDateTime)) {
-            throw new ArgumentOutOfRangeException('era', currentEra, 'Era value was not valid.');
+            throw new ArgumentOutOfRangeException('era', currentEra, SR.ArgumentOutOfRange_InvalidEraValue);
         }
         year = this.getGregorianYear(year, era);
         if (year < this.minCalendarYear || year > this.maxCalendarYear) {
@@ -344,7 +346,7 @@ export abstract class EastAsianLunisolarCalendar extends Calendar {
     private checkYearMonthRange(year: number, month: number, era: number): number {
         year = this.checkYearRange(year, era);
         if (month < 1 || month > 13 || month === 13 && !this.internalIsLeapYear(year)) {
-            throw new ArgumentOutOfRangeException('month', month, 'Month must be between one and twelve.');
+            throw new ArgumentOutOfRangeException('month', month, SR.ArgumentOutOfRange_Month);
         }
         return year;
     }
@@ -352,7 +354,7 @@ export abstract class EastAsianLunisolarCalendar extends Calendar {
     private checkDay(year: number, month: number, day: number): void {
         const max = this.internalGetDaysInMonth(year, month);
         if (day < 1 || day > max) {
-            throw new ArgumentOutOfRangeException('day', day, `Day must be between 1 and ${max} for month ${month}.`);
+            throw new ArgumentOutOfRangeException('day', day, formatExceptionResource(SR.ArgumentOutOfRange_Day, max, month));
         }
     }
 

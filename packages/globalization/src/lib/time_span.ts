@@ -1,3 +1,5 @@
+import { TicksMustBeBigInt, InvalidArguments, IntegerComponentOutOfRange } from './javascript_exception_resources';
+import * as SR from '@xobin/core/internal/exception-resources';
 import type { IFormatProvider, OutParam } from '@xobin/core';
 import { formatTimeSpan } from './time_span_format';
 import { tryWriteFormatted } from './format_buffer';
@@ -174,7 +176,7 @@ export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
                 this._ticks = 0n;
                 break;
             case 1:
-                if (typeof first !== 'bigint') throw new ArgumentException('Ticks must be a bigint.');
+                if (typeof first !== 'bigint') throw new ArgumentException(TicksMustBeBigInt);
                 checkTicks(first);
                 this._ticks = first;
                 break;
@@ -193,13 +195,13 @@ export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
                 const totalMicroseconds = BigInt.asIntN(64, days * 86400000000n + hours * 3600000000n + minutes * 60000000n
                     + seconds * 1000000n + milliseconds * 1000n + microseconds);
                 if (totalMicroseconds > MaxMicroseconds || totalMicroseconds < MinMicroseconds) {
-                    throw new ArgumentOutOfRangeException(undefined, 'TimeSpan overflowed because the duration is too long.');
+                    throw new ArgumentOutOfRangeException(undefined, SR.Overflow_TimeSpanTooLong);
                 }
                 this._ticks = totalMicroseconds * TicksPerMicrosecond;
                 break;
             }
             default:
-                throw new ArgumentException('Invalid arguments');
+                throw new ArgumentException(InvalidArguments);
         }
     }
 
@@ -348,7 +350,7 @@ export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
      * Gets the absolute value of this interval.
      */
     duration(): TimeSpan {
-        if (this._ticks === LongMinValue) throw new OverflowException('The duration cannot be returned for TimeSpan.MinValue because the absolute value of TimeSpan.MinValue exceeds the value of TimeSpan.MaxValue.');
+        if (this._ticks === LongMinValue) throw new OverflowException(SR.Overflow_Duration);
         return new TimeSpan(this._ticks < 0n ? -this._ticks : this._ticks);
     }
 
@@ -356,7 +358,7 @@ export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
      * Gets an interval with the negated value of this interval.
      */
     negate(): TimeSpan {
-        if (this._ticks === LongMinValue) throw new OverflowException('Negating the minimum value of a twos complement number is invalid.');
+        if (this._ticks === LongMinValue) throw new OverflowException(SR.Overflow_NegateTwosCompNum);
         return new TimeSpan(-this._ticks);
     }
 
@@ -376,7 +378,7 @@ export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
     compareTo(otherValue: TimeSpan): number;
     compareTo(otherValue: TimeSpan | Nullable<object>): number {
         if (otherValue == null) return 1;
-        if (!(otherValue instanceof TimeSpan)) throw new ArgumentException('Object must be of type TimeSpan.');
+        if (!(otherValue instanceof TimeSpan)) throw new ArgumentException(SR.Arg_MustBeTimeSpan);
         return this._ticks > otherValue.ticks ? 1 : this._ticks < otherValue.ticks ? -1 : 0;
     }
 
@@ -392,7 +394,7 @@ export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
      * @param factor The floating-point multiplier.
      */
     multiply(factor: number): TimeSpan {
-        if (Number.isNaN(factor)) throw new ArgumentException('TimeSpan does not accept floating point Not-a-Number values.', 'factor');
+        if (Number.isNaN(factor)) throw new ArgumentException(SR.Arg_CannotBeNaN, 'factor');
         return intervalFromDoubleTicks(roundToEven(Number(this._ticks) * factor));
     }
 
@@ -404,7 +406,7 @@ export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
     divide(divisor: TimeSpan): number;
     divide(divisor: number | TimeSpan): TimeSpan | number {
         if (divisor instanceof TimeSpan) return Number(this._ticks) / Number(divisor.ticks);
-        if (Number.isNaN(divisor)) throw new ArgumentException('TimeSpan does not accept floating point Not-a-Number values.', 'divisor');
+        if (Number.isNaN(divisor)) throw new ArgumentException(SR.Arg_CannotBeNaN, 'divisor');
         return intervalFromDoubleTicks(roundToEven(Number(this._ticks) / divisor));
     }
 
@@ -536,31 +538,31 @@ export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
 export function timeToTicks(hour: number, minute: number, second: number): bigint {
     const totalSeconds = BigInt(int32(hour)) * 3600n + BigInt(int32(minute)) * 60n + BigInt(int32(second));
     if (totalSeconds > MaxSeconds || totalSeconds < MinSeconds) {
-        throw new ArgumentOutOfRangeException(undefined, 'TimeSpan overflowed because the duration is too long.');
+        throw new ArgumentOutOfRangeException(undefined, SR.Overflow_TimeSpanTooLong);
     }
     return totalSeconds * TicksPerSecond;
 }
 
 function int32(value?: number | bigint): number {
     if (typeof value !== 'number' || !Number.isInteger(value) || value < -2147483648 || value > 2147483647) {
-        throw new ArgumentOutOfRangeException('Integer component out of range');
+        throw new ArgumentOutOfRangeException(IntegerComponentOutOfRange);
     }
     return value;
 }
 
 function checkTicks(ticks: bigint): bigint {
-    if (ticks < LongMinValue || ticks > LongMaxValue) throw new OverflowException('TimeSpan overflowed because the duration is too long.');
+    if (ticks < LongMinValue || ticks > LongMaxValue) throw new OverflowException(SR.Overflow_TimeSpanTooLong);
     return ticks;
 }
 
 function interval(value: number, scale: bigint): TimeSpan {
-    if (Number.isNaN(value)) throw new ArgumentException('TimeSpan does not accept floating point Not-a-Number values.');
+    if (Number.isNaN(value)) throw new ArgumentException(SR.Arg_CannotBeNaN);
     return intervalFromDoubleTicks(value * Number(scale));
 }
 
 function intervalFromDoubleTicks(ticks: number): TimeSpan {
     if (!Number.isFinite(ticks) || ticks > Number(LongMaxValue) || ticks < Number(LongMinValue)) {
-        throw new OverflowException('TimeSpan overflowed because the duration is too long.');
+        throw new OverflowException(SR.Overflow_TimeSpanTooLong);
     }
     if (ticks === Number(LongMaxValue)) return TimeSpan.maxValue;
     return new TimeSpan(BigInt(Math.trunc(ticks)));
@@ -579,16 +581,16 @@ function integerInterval(components: Array<number | bigint | undefined>, start: 
     for (let i = 0; i < components.length; i++) {
         const input = components[i] ?? 0n;
         if (typeof input === 'number' && !Number.isSafeInteger(input)) {
-            throw new ArgumentOutOfRangeException(undefined, 'TimeSpan overflowed because the duration is too long.');
+            throw new ArgumentOutOfRangeException(undefined, SR.Overflow_TimeSpanTooLong);
         }
         const value = BigInt(input);
         if (value < LongMinValue || value > LongMaxValue || (start + i < 2 && (value < -2147483648n || value > 2147483647n))) {
-            throw new ArgumentOutOfRangeException(undefined, 'TimeSpan overflowed because the duration is too long.');
+            throw new ArgumentOutOfRangeException(undefined, SR.Overflow_TimeSpanTooLong);
         }
         microseconds += value * scales[start + i]!;
     }
     if (microseconds < MinMicroseconds || microseconds > MaxMicroseconds) {
-        throw new ArgumentOutOfRangeException(undefined, 'TimeSpan overflowed because the duration is too long.');
+        throw new ArgumentOutOfRangeException(undefined, SR.Overflow_TimeSpanTooLong);
     }
     return new TimeSpan(microseconds * TicksPerMicrosecond);
 }

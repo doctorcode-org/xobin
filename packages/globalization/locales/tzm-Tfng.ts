@@ -30,7 +30,7 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
         numberDecimalSeparator: ",", 
         numberGroupSeparator: " ", 
         currencyPositivePattern: 3, 
-        positiveInfinitySymbol: "+∞", 
+        positiveInfinitySymbol: "∞",
         positiveSign: "+", 
         percentDecimalDigits: 2, 
         percentDecimalSeparator: ",", 

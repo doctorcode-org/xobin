@@ -1,3 +1,4 @@
+import * as SR from '@xobin/core/internal/exception-resources';
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
@@ -96,7 +97,7 @@ export class ChineseLunisolarCalendar extends EastAsianLunisolarCalendar {
      */
     protected override getGregorianYear(year: number, era: number): number {
         if (era !== 0 && era !== 1) {
-            throw new ArgumentOutOfRangeException('era', era, 'Era value was not valid.');
+            throw new ArgumentOutOfRangeException('era', era, SR.ArgumentOutOfRange_InvalidEraValue);
         }
         if (year < 1901 || year > 2100) {
             throw new ArgumentOutOfRangeException('year', year, calendarRangeMessage(1901, 2100));

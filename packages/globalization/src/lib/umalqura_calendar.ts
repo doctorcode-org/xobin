@@ -1,3 +1,5 @@
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
 import { registerCalendarIdentity } from './calendar_identity';
 ﻿import { Calendar, checkAddResult, timeToTicks } from './calendar';
 import { DateTime, getDate } from './date_time';
@@ -305,7 +307,7 @@ export class UmAlQuraCalendar extends Calendar {
         const daysInMonth = this.getDaysInMonth(year, month, era);
         if (day < 1 || day > daysInMonth) {
             throw new ArgumentOutOfRangeException('day', day,
-                `Day must be between 1 and ${daysInMonth} for month ${month}.`);
+                formatExceptionResource(SR.ArgumentOutOfRange_Day, daysInMonth, month));
         }
         return false;
     }
@@ -477,7 +479,7 @@ export class UmAlQuraCalendar extends Calendar {
             const lDate = getAbsoluteDateUmAlQura(year, month, day);
             if (lDate < 0) {
                 throw new ArgumentOutOfRangeException(undefined,
-                    'Year, Month, and Day parameters describe an un-representable DateTime.');
+                    SR.ArgumentOutOfRange_BadYearMonthDay);
             }
 
             return new DateTime(BigInt(lDate) * TicksPerDay + timeToTicks(hour, minute, second, millisecond));
@@ -488,13 +490,13 @@ export class UmAlQuraCalendar extends Calendar {
 
         if (day < 1 || day > daysInMonth) {
             throw new ArgumentOutOfRangeException('day', day,
-                `Day must be between 1 and ${daysInMonth} for month ${month}.`);
+                formatExceptionResource(SR.ArgumentOutOfRange_Day, daysInMonth, month));
         }
 
         const lDate = getAbsoluteDateUmAlQura(year, month, day);
         if (lDate < 0) {
             throw new ArgumentOutOfRangeException(undefined,
-                'Year, Month, and Day parameters describe an un-representable DateTime.');
+                SR.ArgumentOutOfRange_BadYearMonthDay);
         }
 
         return new DateTime(BigInt(lDate) * TicksPerDay + timeToTicks(hour, minute, second, millisecond));
@@ -530,7 +532,7 @@ function getDatePart(time: DateTime, part: number): number {
     }
 
     // Incorrect part value.
-    throw new InvalidOperationException('Internal Error in DateTime and Calendar operations.');
+    throw new InvalidOperationException(SR.InvalidOperation_DateTimeParsing);
 }
 
 function convertGregorianToHijri(time: DateTime) {
@@ -582,7 +584,7 @@ function realGetDaysInYear(year: number): number {
 
 function checkEraRange(era: number): void {
     if (era !== 0 && era !== UmAlQuraCalendar.UmAlQuraEra) {
-        throw new ArgumentOutOfRangeException('era', era, 'Era value was not valid.');
+        throw new ArgumentOutOfRangeException('era', era, SR.ArgumentOutOfRange_InvalidEraValue);
     }
 }
 
@@ -597,16 +599,14 @@ function checkYearRange(year: number, era: number = 0): void {
 function checkYearMonthRange(year: number, month: number, era: number = 0): void {
     checkYearRange(year, era);
     if (month < 1 || month > 12) {
-        throw new ArgumentOutOfRangeException('month', month, 'Month must be between one and twelve.');
+        throw new ArgumentOutOfRangeException('month', month, SR.ArgumentOutOfRange_Month);
     }
 }
 
 function checkTicksRange(ticks: bigint): void {
     if (ticks < MinDate.ticks || ticks > MaxDate.ticks) {
         throw new ArgumentOutOfRangeException('time', ticks,
-            `Specified time is not supported in this calendar. It should be between `
-            + `${formatGregorianDateTime(MinDate)} (Gregorian date) and `
-            + `${formatGregorianDateTime(MaxDate)} (Gregorian date), inclusive.`);
+            formatExceptionResource(SR.ArgumentOutOfRange_CalendarRange, formatGregorianDateTime(MinDate), formatGregorianDateTime(MaxDate)));
     }
 }
 

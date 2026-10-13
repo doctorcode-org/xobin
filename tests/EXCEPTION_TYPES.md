@@ -1,29 +1,96 @@
-# Exception types — ERR-01
+# Exception contracts and resources — ERR-01 through ERR-03
 
-The constructors of `Exception`, `FormatException`, `InvalidCastException`, and
-`SerializationException` are checked against the real .NET 10.0.7 runtime.
-The source reference is runtime tag `v10.0.7`, commit
-`7706f546bac1a99b3d891afe3591dc88c67f0cc4`.
+The constructor contracts used by the temporal and globalization library are
+checked against the real .NET 10.0.7 runtime. The pinned reference is runtime tag
+`v10.0.7`, commit `7706f546bac1a99b3d891afe3591dc88c67f0cc4`.
 
-`ExceptionTypesOracle.cs` directly creates the System exception instances. Its
-48 supplemental cases cover the default constructor, null/empty/custom/Unicode
-messages, and the message-plus-inner-exception overload. JavaScript tests run
-against the built package and also check inner-exception identity.
+## Runtime contracts
 
-These are supplemental constructor checks, not new mappings of official
-DateTime/calendar test methods. The existing official conversion and formatting
-mappings continue to exercise InvalidCastException and FormatException.
-SerializationException is exported as specified by ERR-01; this task introduces
-no serialization or parsing algorithm. Legacy formatter constructors, HResult,
-and the broader exception-contract audit are outside this task (ERR-02).
+The core exceptions preserve null versus empty messages, the invalid parameter
+name, the actual argument value, inner-exception identity and signed HRESULT.
+`SystemException` and `ArithmeticException` supply the reference inheritance
+hierarchy. `InvalidCastException` also supports the message/error-code overload.
+`CultureNotFoundException` now follows the reference constructor order and
+exposes `invalidCultureName` and `invalidCultureId`; its identifier suffix uses
+invariant decimal and hexadecimal formatting.
 
-Regenerate or check the fixture:
+The number in an exception message is formatted when the message is read, using
+the current culture's decimal separator, signs and special-value symbols. The
+number formatter imports no culture data. Updating `CultureInfo.currentCulture`
+updates the internal shared numeric context in ESM and CommonJS. Resource text
+is the pinned English UI text. The reference fixture records the Windows
+platform and CRLF line ending; JavaScript messages retain that reference ending.
+
+Different C# nullable overloads can have identical JavaScript argument shapes.
+For ArgumentNullException, ArgumentOutOfRangeException and CultureNotFoundException,
+a null second or third argument selects the parameter/message overload. An
+Exception instance selects the inner-exception overload. A C# cast such as
+`(Exception)null` has no runtime representation in JavaScript; no extra public
+overload-selection API is introduced.
+
+Legacy BinaryFormatter constructors and serialization APIs, runtime stack
+introspection, Data, HelpLink and Source are not added by these tasks. Parsing
+remains postponed.
+
+## Source and execution coverage
+
+`dotnet10-exception-inputs.mjs` extracts 62 official constructor method bodies
+and their InlineData inputs from the pinned source. The generated C# executes
+those bodies, including the original shared assertion helper, on System types.
+The observer records constructor arguments and reference results. Source paths,
+method identifiers and source hashes are in `exception-constructor-sources.json`.
+
+JavaScript replays the ERR-02 constructor contracts on the built package: type,
+message, HRESULT, parameter, actual value, inner-exception identity and invalid
+culture identifiers. Shared-helper assertions for Data, HelpLink, Source and
+StackTrace are outside the JavaScript coverage scope. These rows are named
+`constructor-contract` and are not added as fully mapped methods to the temporal
+inventory. The direct culture/serialization constructor assertions are also
+checked by the replay. The manifest states the coverage scope explicitly.
+
+The contract fixture contains 1324 recorded constructor operations, including
+boundary numbers, negative zero, NaN, infinities, long limits, 128 deterministic
+double bit patterns, culture symbols and custom symbols. A separate 146-row
+consumer fixture checks CultureInfo's null/invalid-name errors and DateTime
+validation ordering. A custom calendar verifies that the millisecond value is
+passed to Calendar.ToDateTime exactly once.
+
+## Resource layout
+
+`exception_resources.ts` is generated from the original CoreLib Strings.resx.
+Every resource is a separate named export, referenced with the original SR key.
+There is no runtime dictionary containing the complete catalog. The internal
+package paths share the formatter state while leaving root public exports free
+of resource/helper APIs. The generator's check rejects copied inline .NET
+messages and detects missing or altered resource text.
+
+The existing JavaScript-specific argument-shape guards use a separate internal
+module; their messages are not presented as .NET resources. The old placeholder
+messages and incorrect calendar-era message were removed. DateTime overloads
+now delegate milliseconds to the calendar and follow the reference's validation
+order when several arguments are invalid.
+
+Consumer tests cover TypeScript, Node ESM, CommonJS and browser bundling. They
+verify that unrelated exception classes and resource strings are removed, and
+that numeric symbols remain shared between cultures and exceptions.
+
+## Reproduction
 
 ```powershell
-dotnet run --project tools/dotnet10-calendar-oracle -- --exception-types tests/dotnet10/exception-types-cases.json
+node tools/dotnet10-exception-inputs.mjs D:/source/runtime --check
+node tools/dotnet10-exception-resources.mjs D:/source/runtime --check
 dotnet run --project tools/dotnet10-calendar-oracle -- --exception-types tests/dotnet10/exception-types-cases.json --check
+dotnet run --project tools/dotnet10-calendar-oracle -- --exception-contracts tests/dotnet10/exception-contracts-cases.json --check
+dotnet run --project tools/dotnet10-calendar-oracle -- --exception-consumers tests/dotnet10/exception-consumers-cases.json --check
 ```
 
-Packaging checks cover Node ESM, CommonJS, TypeScript consumers, and browser
-bundles. Importing one of the three exception types excludes the other exception
-classes from the browser bundle.
+Use `--write` for the source/resource generators or omit `--check` for an oracle
+to regenerate its output. Tests execute the built package rather than TS source.
+
+## Final verification
+
+The final suite passed all 89,957 tests with zero failures or skips. Source and
+consumer type checks, ESM/CommonJS builds, all 938 culture-symbol checks, the
+resource/source generators, real .NET fixture checks, inventory checks and
+`git diff --check` passed. ERR-01 was approved and committed as `b520dad`;
+ERR-02/ERR-03 were completed and approved for commit.

@@ -1,3 +1,5 @@
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
@@ -66,7 +68,7 @@ export class HebrewCalendar extends Calendar {
 
     private checkYear(year: number, era: number, parameter: string = 'year'): void {
         if (era !== 0 && era !== HebrewCalendar.HebrewEra) {
-            throw new ArgumentOutOfRangeException('era', era, 'Era value was not valid.');
+            throw new ArgumentOutOfRangeException('era', era, SR.ArgumentOutOfRange_InvalidEraValue);
         }
         if (year < 5343 || year > 5999) {
             throw new ArgumentOutOfRangeException(parameter, year, calendarRangeMessage(5343, 5999));
@@ -83,9 +85,7 @@ export class HebrewCalendar extends Calendar {
     private checkTime(time: DateTime): void {
         if (time.ticks < this.minSupportedDateTime.ticks || time.ticks > this.maxSupportedDateTime.ticks) {
             throw new ArgumentOutOfRangeException('time', time.ticks,
-                `Specified time is not supported in this calendar. It should be between `
-                + `${formatGregorianDateTime(this.minSupportedDateTime)} (Gregorian date) and `
-                + `${formatGregorianDateTime(this.maxSupportedDateTime)} (Gregorian date), inclusive.`);
+                formatExceptionResource(SR.ArgumentOutOfRange_CalendarRange, formatGregorianDateTime(this.minSupportedDateTime), formatGregorianDateTime(this.maxSupportedDateTime)));
         }
     }
 
@@ -143,7 +143,7 @@ export class HebrewCalendar extends Calendar {
             return new DateTime(this.toDateTime(year, index, day, 0, 0, 0, 0).ticks + time.ticks % TicksPerDay);
         } catch (error) {
             if (!(error instanceof ArgumentException)) throw error;
-            throw new ArgumentOutOfRangeException('months', months, 'Value to add was out of range.');
+            throw new ArgumentOutOfRangeException('months', months, SR.ArgumentOutOfRange_AddValue);
         }
     }
 

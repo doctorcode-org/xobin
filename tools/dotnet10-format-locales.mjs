@@ -44,10 +44,13 @@ for (const [name, data] of Object.entries(fixture.cultures)) {
   // This extra field is generator metadata, not a member of CultureData or CultureInfo.
   const declaration = 'export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {';
   output = output.replace(/^export const cultureData: .* = \{$/m, declaration);
-  // TimeSpan's DateTimeFormatInfo decimal separator uses the culture's original number data.
-  const decimalSeparator = JSON.stringify(data.localeInfo.numberFormat.numberDecimalSeparator);
-  output = output.replace(/^(\s*numberDecimalSeparator:\s*)("(?:[^"\\]|\\.)*"),[ \t]*$/m,
-    (line, prefix, value) => value === decimalSeparator ? line : prefix + decimalSeparator + ',');
+  // Interval formatting and exception messages use these existing numeric symbols.
+  for (const property of ['numberDecimalSeparator', 'negativeSign', 'positiveSign', 'naNSymbol', 'negativeInfinitySymbol', 'positiveInfinitySymbol']) {
+    const expected = JSON.stringify(data.localeInfo.numberFormat[property]);
+    const pattern = new RegExp('^(\\s*(?:' + property + '|"' + property + '"):\\s*)("(?:[^"\\\\]|\\\\.)*"),[ \\t]*$', 'm');
+    if (!pattern.test(output)) throw new Error('Missing number symbol: ' + name + '/' + property);
+    output = output.replace(pattern, (line, prefix, value) => value === expected ? line : prefix + expected + ',');
+  }
   if (!output.startsWith(header)) output = header + output;
   if (mode === '--write') writeFileSync(file, output);
   else if (output !== source) throw new Error(`Locale differs from reference format data: ${name}`);

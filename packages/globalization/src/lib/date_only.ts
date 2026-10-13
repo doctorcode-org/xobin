@@ -1,3 +1,4 @@
+import * as SR from '@xobin/core/internal/exception-resources';
 import type { IFormatProvider, OutParam } from '@xobin/core';
 import { formatDateOnlyTimeOnly } from './date_only_time_only_format';
 import { tryWriteFormatted } from './format_buffer';
@@ -108,7 +109,7 @@ export class DateOnly implements IComparable<DateOnly>, IEquatable<DateOnly> {
      */
     static fromDayNumber(dayNumber: number): DateOnly {
         if (!Number.isInteger(dayNumber) || dayNumber < 0 || dayNumber >= DaysTo10000) {
-            throw new ArgumentOutOfRangeException('dayNumber', dayNumber, 'Day number must be between 0 and DateOnly.MaxValue.DayNumber.');
+            throw new ArgumentOutOfRangeException('dayNumber', dayNumber, SR.ArgumentOutOfRange_DayNumber);
         }
         return DateOnly.fromDateTime(new DateTime(BigInt(dayNumber) * TicksPerDay));
     }
@@ -145,7 +146,7 @@ export class DateOnly implements IComparable<DateOnly>, IEquatable<DateOnly> {
     addDays(value: number): DateOnly {
         const day = this._dayNumber + value;
         if (!Number.isInteger(value) || day < 0 || day >= DaysTo10000) {
-            throw new ArgumentOutOfRangeException('value', 'Value to add was out of range.');
+            throw new ArgumentOutOfRangeException('value', SR.ArgumentOutOfRange_AddValue);
         }
         return DateOnly.fromDayNumber(day);
     }
@@ -185,7 +186,7 @@ export class DateOnly implements IComparable<DateOnly>, IEquatable<DateOnly> {
         }
 
         if (!(value instanceof DateOnly)) {
-            throw new ArgumentException('Object must be of type DateOnly.');
+            throw new ArgumentException(SR.Arg_MustBeDateOnly);
         }
 
         return Math.sign(this._dayNumber - value._dayNumber);

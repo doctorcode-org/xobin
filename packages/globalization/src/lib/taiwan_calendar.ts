@@ -1,3 +1,5 @@
+import * as SR from '@xobin/core/internal/exception-resources';
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
 import { registerCalendarIdentity } from './calendar_identity';
 import { Calendar } from './calendar';
 import { DateTime } from './date_time';
@@ -201,7 +203,7 @@ export class TaiwanCalendar extends Calendar {
      */
     override toFourDigitYear(year: number): number {
         if (year <= 0) {
-            throw new ArgumentOutOfRangeException('year', year, `year ('${year}') must be a non-negative and non-zero value.`);
+            throw new ArgumentOutOfRangeException('year', year, formatExceptionResource(SR.ArgumentOutOfRange_Generic_MustBeNonNegativeNonZero, 'year', year));
         }
         if (year > this._helper.maxYear) {
             throwIfYearGreaterThan(year, this._helper.maxYear);

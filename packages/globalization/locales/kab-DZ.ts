@@ -19,7 +19,7 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
         percentGroupSizes: [3], 
         currencyGroupSeparator: " ", 
         currencySymbol: "DA", 
-        naNSymbol: "MdM", 
+        naNSymbol: "NaN",
         currencyNegativePattern: 5, 
         numberNegativePattern: 1, 
         percentPositivePattern: 1, 
