@@ -85,3 +85,31 @@ const multipliedSpan: TimeSpan = integerSpan.multiply(0.5);
 const ratio: number = integerSpan.divide(floatingSpan);
 const tickScale: bigint = DirectTimeSpan.ticksPerMicrosecond;
 void [integerSpan,floatingSpan,multipliedSpan,ratio,tickScale];
+
+// DateOnly and TimeOnly expose the reference's formatting overloads and helpers.
+import { DateOnly as FormatDateOnly } from '@xobin/globalization/date-only';
+import { TimeOnly as FormatTimeOnly } from '@xobin/globalization/time-only';
+const formatDate: FormatDateOnly = new FormatDateOnly(2024, 2, 29);
+const formatTime: FormatTimeOnly = new FormatTimeOnly(123456789n);
+const formatWritten = { result: 0 };
+for (const value of [formatDate, formatTime]) {
+    const text: string = value.toString();
+    const byFormat: string = value.toString('O');
+    const byProvider: string = value.toString(formatInfo);
+    const formatted: string = value.toString('R', formatInfo);
+    const utf16: boolean = value.tryFormat(new Uint16Array(30), formatWritten, 'O', formatInfo);
+    const utf8: boolean = value.tryFormat(new Uint8Array(30), formatWritten);
+    const chars: boolean = value.tryFormat(Array<string>(30), formatWritten, null, null);
+    void [text, byFormat, byProvider, formatted, utf16, utf8, chars];
+}
+const dateHelpers: string[] = [formatDate.toLongDateString(), formatDate.toShortDateString()];
+const timeHelpers: string[] = [formatTime.toLongTimeString(), formatTime.toShortTimeString()];
+const spanFormatted: string = span.toString('g', formatInfo);
+const spanBuffer: boolean = span.tryFormat(new Uint8Array(30), formatWritten, 'G', formatInfo);
+void [dateHelpers, timeHelpers, spanFormatted, spanBuffer];
+// @ts-expect-error The output uses the existing OutParam contract.
+formatDate.tryFormat(new Uint16Array(30), 0);
+// @ts-expect-error TimeSpan has no provider-only ToString overload.
+span.toString(formatInfo);
+// @ts-expect-error TimeSpan's decimal separator remains private format-info state.
+formatInfo.decimalSeparator;

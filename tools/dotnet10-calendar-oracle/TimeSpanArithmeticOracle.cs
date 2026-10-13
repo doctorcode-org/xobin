@@ -10,6 +10,7 @@ internal static class Assert {
     internal static void True(bool value,string? message=null) {if(!value)throw new InvalidOperationException(message??"True assertion failed.");}
     internal static void False(bool value) => True(!value);
     internal static void Throws<T>(Action invoke) where T:Exception {try {invoke();}catch(T){return;}throw new InvalidOperationException("Expected exception missing.");}
+    internal static void Throws<T>(Func<string> invoke) where T:Exception => Throws<T>((Action)(()=>{invoke();}));
     internal static void Throws<T>(Func<ObservedTimeSpan> invoke) where T:Exception => Throws<T>((Action)(()=>{invoke();}));
 }
 internal static class AssertExtensions {

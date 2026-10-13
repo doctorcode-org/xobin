@@ -1,3 +1,4 @@
+import { dateTimeFormatStates } from './date_time_format_data';
 import type { DateTime } from './date_time';
 import type { DateTimeFormatInfo } from './date_time_format_info';
 import type { DateTimeFormatData } from './date_time_format_data';
@@ -168,13 +169,13 @@ export const gregorianFormatCalendar: FormatCalendar = {
     getEra: () => 1,
 };
 const invariantContext: FormatContext = { dateTimeFormat: invariantDateTimeFormat, calendar: gregorianFormatCalendar };
-let currentContext = invariantContext;
+let currentContext: FormatContext | undefined;
 
 /**
  * Gets the formatting context of the current culture.
  */
 export function getCurrentFormatContext(): FormatContext {
-    return currentContext;
+    return currentContext ?? invariantContext;
 }
 
 /**
@@ -183,4 +184,9 @@ export function getCurrentFormatContext(): FormatContext {
  */
 export function setCurrentFormatContext(context: FormatContext): void {
     currentContext = context;
+}
+
+/** Gets the current culture's private interval separator without retaining invariant date format tables. */
+export function getCurrentTimeSpanDecimalSeparator(): string {
+    return currentContext ? dateTimeFormatStates.get(currentContext.dateTimeFormat)?.decimalSeparator ?? '.' : '.';
 }

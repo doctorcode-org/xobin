@@ -1,3 +1,6 @@
+import type { IFormatProvider, OutParam } from '@xobin/core';
+import { formatTimeSpan } from './time_span_format';
+import { tryWriteFormatted } from './format_buffer';
 import {
     LongMaxValue,
     LongMinValue,
@@ -494,6 +497,39 @@ export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
      */
     static equals(first: TimeSpan, second: TimeSpan): boolean {
         return first.ticks === second.ticks;
+    }
+
+    /**
+     * Converts this interval to its invariant constant string representation.
+     */
+    toString(): string;
+
+    /**
+     * Converts this interval using the specified standard or custom format.
+     * @param format The standard or custom interval format string.
+     */
+    toString(format: string | null): string;
+
+    /**
+     * Converts this interval using the specified format and formatting information.
+     * @param format The standard or custom interval format string.
+     * @param provider The provider supplying culture-specific formatting information.
+     */
+    toString(format: string | null, provider: IFormatProvider | null): string;
+    toString(format?: string | null, provider?: IFormatProvider | null): string {
+        return formatTimeSpan(this.ticks, format, provider);
+    }
+
+    /**
+     * Tries to format this interval into a UTF-16 character buffer or UTF-8 byte buffer.
+     * @param destination The buffer that receives the formatted interval.
+     * @param charsWritten Receives the number of code units or bytes written; zero if the buffer is too small.
+     * @param format The standard or custom interval format string.
+     * @param provider The provider supplying culture-specific formatting information.
+     * @returns True if the destination has enough space; otherwise, false.
+     */
+    tryFormat(destination: string[] | Uint16Array | Uint8Array, charsWritten: OutParam<number>, format?: string | null, provider?: IFormatProvider | null): boolean {
+        return tryWriteFormatted(emit => formatTimeSpan(this.ticks, format, provider, emit), destination, charsWritten, false);
     }
 }
 

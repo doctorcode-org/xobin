@@ -27,7 +27,7 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
         negativeInfinitySymbol: "-∞", 
         negativeSign: "-", 
         numberDecimalDigits: 2, 
-        numberDecimalSeparator: ",", 
+        numberDecimalSeparator: "٫",
         numberGroupSeparator: ".", 
         currencyPositivePattern: 0, 
         positiveInfinitySymbol: "∞", 

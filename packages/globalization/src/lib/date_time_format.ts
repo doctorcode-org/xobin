@@ -1,3 +1,4 @@
+import type { FormatEmitter } from './format_buffer';
 import { formatHebrewNumber } from './hebrew_number';
 import type { Calendar } from './calendar';
 import { getCalendarIdentity } from './calendar_identity';
@@ -31,47 +32,7 @@ export class DateTimeFormat {
      * @param provider An object that supplies culture-specific formatting information.
      */
     static format(date: DateTime, format?: string | null, provider?: IFormatProvider | null): string {
-        const candidate = provider as (IFormatProvider & Partial<FormatContext>) | null | undefined;
-        const culture = candidate?.dateTimeFormat && candidate.calendar ? candidate as FormatContext : getCurrentFormatContext();
-        const source = getProviderDateTimeFormat(provider) ?? culture.dateTimeFormat;
-        let info: FormatInfo = getDateTimeFormatData(source);
-        let calendar = (source as { calendar?: FormatCalendar }).calendar ?? culture.calendar;
-        format = format || (date.ticks < 864000000000n && (calendar.minSupportedDateTime?.ticks ?? 0n) > date.ticks ? 's' : 'G');
-        if (format.length === 1) {
-            switch (format) {
-                case 'o': case 'O':
-                    info = invariantDateTimeFormat;
-                    calendar = gregorianFormatCalendar;
-                    format = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK";
-                    break;
-                case 'r': case 'R': case 's': case 'u': {
-                    const standard = format;
-                    info = invariantDateTimeFormat;
-                    calendar = gregorianFormatCalendar;
-                    format = standard === 's' ? info.sortableDateTimePattern
-                        : standard === 'u' ? info.universalSortableDateTimePattern : info.rfC1123Pattern;
-                    break;
-                }
-                case 'U':
-                    date = date.toUniversalTime();
-                    info = getUniversalDateTimeFormatData(source);
-                    calendar = gregorianFormatCalendar;
-                    format = info.fullDateTimePattern;
-                    break;
-                case 'd': format = info.shortDatePattern; break;
-                case 'D': format = info.longDatePattern; break;
-                case 't': format = info.shortTimePattern; break;
-                case 'T': format = info.longTimePattern; break;
-                case 'f': format = info.longDatePattern + ' ' + info.shortTimePattern; break;
-                case 'F': format = info.fullDateTimePattern; break;
-                case 'g': format = info.shortDatePattern + ' ' + info.shortTimePattern; break;
-                case 'G': format = info.shortDatePattern + ' ' + info.longTimePattern; break;
-                case 'm': case 'M': format = info.monthDayPattern; break;
-                case 'y': case 'Y': format = info.yearMonthPattern; break;
-                default: throw invalidFormat();
-            }
-        }
-        return customized(date, format, info, calendar);
+        return formatDateTime(date, format, provider);
     }
 
     /**
@@ -113,28 +74,29 @@ export class DateTimeFormat {
     }
 }
 
-function customized(date: DateTime, pattern: string, info: FormatInfo, calendar: FormatCalendar): string {
+function customized(date: DateTime, pattern: string, info: FormatInfo, calendar: FormatCalendar, emit?: FormatEmitter): string {
     let output = '';
+    const append = (text: string, kind: 'text' | 'char' | 'escaped' = 'text') => { output += text; emit?.(text, kind); };
     let timeOnly = true;
     const calendarId = getCalendarIdentity(calendar as Calendar).id;
     for (let i = 0; i < pattern.length;) {
         const c = pattern[i]!;
         if (c === "'" || c === '"') {
-            const quoted = quote(pattern, i);
+            const quoted = quote(pattern, i, emit);
             output += quoted.text;
             i = quoted.end + 1;
             continue;
         }
         if (c === '\\') {
             if (++i === pattern.length) throw invalidFormat();
-            output += pattern[i++];
+            append(pattern[i++]!, 'escaped');
             continue;
         }
         if (c === '%') {
             if (++i === pattern.length || pattern[i] === '%') throw invalidFormat();
             const token = pattern[i++]!;
-            const formatted = customized(date, token, info, calendar);
-            if (token === 'F' && !formatted && output.endsWith('.')) output = output.slice(0, -1);
+            const formatted = customized(date, token, info, calendar, emit);
+            if (token === 'F' && !formatted && output.endsWith('.')) { output = output.slice(0, -1); emit?.('', 'remove'); }
             if ('yMd'.includes(token)) timeOnly = false;
             output += formatted;
             continue;
@@ -148,64 +110,64 @@ function customized(date: DateTime, pattern: string, info: FormatInfo, calendar:
                 const year = calendar.getYear(date);
                 if (calendarId === 3 && year === 1 && (pattern[i + count] === '年'
                     || pattern[i + count] === "'" && pattern[i + count + 1] === '年')) {
-                    output += '元';
+                    append('元', 'char');
                 } else if (calendarId === 3 || calendarId === 4) {
-                    output += pad(year, Math.min(count, 2));
-                } else output += calendarId === 8 ? formatHebrewNumber(year) : pad(count <= 2 ? year % 100 : year);
+                    append(pad(year, Math.min(count, 2)));
+                } else append(calendarId === 8 ? formatHebrewNumber(year) : pad(count <= 2 ? year % 100 : year));
                 break;
             }
             case 'M': {
                 timeOnly = false;
                 let month = calendar.getMonth(date);
                 if (calendarId === 8) {
-                    if (count <= 2) output += formatHebrewNumber(month);
+                    if (count <= 2) append(formatHebrewNumber(month));
                     else if ((calendar as Calendar).isLeapYear(calendar.getYear(date))) {
-                        output += info.leapYearMonthNames?.[month - 1] ?? info.monthNames[month - 1] ?? '';
+                        append(info.leapYearMonthNames?.[month - 1] ?? info.monthNames[month - 1] ?? '');
                     } else {
                         if (month >= 7) month++;
-                        output += (count === 3 ? info.abbreviatedMonthNames : info.monthNames)[month - 1] ?? '';
+                        append((count === 3 ? info.abbreviatedMonthNames : info.monthNames)[month - 1] ?? '');
                     }
                     break;
                 }
                 const genitive = count >= 3 && getMonthFormatFlags(info).useGenitiveMonth && usesGenitiveMonth(pattern, i, count);
-                output += count <= 2 ? pad(month)
+                append(count <= 2 ? pad(month)
                     : (count === 3 ? genitive ? info.abbreviatedMonthGenitiveNames : info.abbreviatedMonthNames
-                        : genitive ? info.monthGenitiveNames : info.monthNames)[month - 1] ?? '';
+                        : genitive ? info.monthGenitiveNames : info.monthNames)[month - 1] ?? '');
                 break;
             }
             case 'd':
                 timeOnly = false;
-                output += count <= 2 ? calendarId === 8 ? formatHebrewNumber(calendar.getDayOfMonth(date)) : pad(calendar.getDayOfMonth(date))
-                    : (count === 3 ? info.abbreviatedDayNames : info.dayNames)[date.dayOfWeek] ?? '';
+                append(count <= 2 ? calendarId === 8 ? formatHebrewNumber(calendar.getDayOfMonth(date)) : pad(calendar.getDayOfMonth(date))
+                    : (count === 3 ? info.abbreviatedDayNames : info.dayNames)[date.dayOfWeek] ?? '');
                 break;
-            case 'H': output += pad(date.hour, Math.min(count, 2)); break;
-            case 'h': output += pad(date.hour % 12 || 12, Math.min(count, 2)); break;
-            case 'm': output += pad(date.minute, Math.min(count, 2)); break;
-            case 's': output += pad(date.second, Math.min(count, 2)); break;
+            case 'H': append(pad(date.hour, Math.min(count, 2))); break;
+            case 'h': append(pad(date.hour % 12 || 12, Math.min(count, 2))); break;
+            case 'm': append(pad(date.minute, Math.min(count, 2))); break;
+            case 's': append(pad(date.second, Math.min(count, 2))); break;
             case 'f': case 'F': {
                 if (count > 7) throw invalidFormat();
                 let fraction = (date.ticks % TicksPerSecond).toString().padStart(7, '0').slice(0, count);
                 if (c === 'F') fraction = fraction.replace(/0+$/, '');
-                if (!fraction && output.endsWith('.')) output = output.slice(0, -1);
-                output += fraction;
+                if (!fraction && output.endsWith('.')) { output = output.slice(0, -1); emit?.('', 'remove'); }
+                append(fraction);
                 break;
             }
             case 't': {
                 const designator = date.hour < 12 ? info.amDesignator : info.pmDesignator;
-                output += count === 1 ? designator.slice(0, 1) : designator;
+                append(count === 1 ? designator.slice(0, 1) : designator, count === 1 ? 'char' : 'text');
                 break;
             }
             case 'z': {
                 const offset = timeOnly && date.ticks < 864000000000n ? getDateTimeOffset(DateTime.now)
                     : date.kind.value === 1 ? 0n : getDateTimeOffset(date);
-                output += offsetText(offset, count);
+                append(offsetText(offset, count));
                 break;
             }
-            case 'K': output += date.kind.value === 1 ? 'Z' : date.kind.value === 2 ? offsetText(getDateTimeOffset(date), 3) : ''; break;
-            case 'g': output += info.eraNames?.[calendar.getEra(date) - 1] ?? 'A.D.'; break;
-            case ':': output += info.timeSeparator; break;
-            case '/': output += info.dateSeparator; break;
-            default: output += c;
+            case 'K': append(date.kind.value === 1 ? 'Z' : date.kind.value === 2 ? offsetText(getDateTimeOffset(date), 3) : ''); break;
+            case 'g': append(info.eraNames?.[calendar.getEra(date) - 1] ?? 'A.D.'); break;
+            case ':': append(info.timeSeparator); break;
+            case '/': append(info.dateSeparator); break;
+            default: append(c, 'char');
         }
         i += count;
     }
@@ -243,7 +205,7 @@ function offsetText(offset: bigint, count: number): string {
         + (count >= 3 ? ':' + (minutes % 60).toString().padStart(2, '0') : '');
 }
 
-function quote(pattern: string, start: number): { text: string; end: number } {
+function quote(pattern: string, start: number, emit?: FormatEmitter): { text: string; end: number } {
     let text = '';
     for (let i = start + 1; i < pattern.length; i++) {
         const c = pattern[i]!;
@@ -251,9 +213,60 @@ function quote(pattern: string, start: number): { text: string; end: number } {
         if (c === '\\') {
             if (++i === pattern.length) throw invalidFormat();
             text += pattern[i];
-        } else text += c;
+            emit?.(pattern[i]!, 'escaped');
+        } else { text += c; emit?.(c, 'char'); }
     }
     throw new FormatException(`Cannot find a matching quote character for the character '${pattern[start]}'.`);
 }
 
 function invalidFormat(): FormatException { return new FormatException('Input string was not in a correct format.'); }
+
+/** Formats invariant date-only and time-only patterns without loading culture implementations. */
+export function formatInvariantDateTime(date: DateTime, pattern: string, emit?: FormatEmitter): string {
+    return customized(date, pattern, invariantDateTimeFormat, gregorianFormatCalendar, emit);
+}
+
+/** Internal formatting entry point that preserves individual reference buffer writes. */
+export function formatDateTime(date: DateTime, format?: string | null, provider?: IFormatProvider | null, emit?: FormatEmitter): string {
+    const candidate = provider as (IFormatProvider & Partial<FormatContext>) | null | undefined;
+    const culture = candidate?.dateTimeFormat && candidate.calendar ? candidate as FormatContext : getCurrentFormatContext();
+    const source = getProviderDateTimeFormat(provider) ?? culture.dateTimeFormat;
+    let info: FormatInfo = getDateTimeFormatData(source);
+    let calendar = (source as { calendar?: FormatCalendar }).calendar ?? culture.calendar;
+    format = format || (date.ticks < 864000000000n && (calendar.minSupportedDateTime?.ticks ?? 0n) > date.ticks ? 's' : 'G');
+    if (format.length === 1) {
+        switch (format) {
+            case 'o': case 'O':
+                info = invariantDateTimeFormat;
+                calendar = gregorianFormatCalendar;
+                format = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK";
+                break;
+            case 'r': case 'R': case 's': case 'u': {
+                const standard = format;
+                info = invariantDateTimeFormat;
+                calendar = gregorianFormatCalendar;
+                format = standard === 's' ? info.sortableDateTimePattern
+                    : standard === 'u' ? info.universalSortableDateTimePattern : info.rfC1123Pattern;
+                break;
+            }
+            case 'U':
+                date = date.toUniversalTime();
+                info = getUniversalDateTimeFormatData(source);
+                calendar = gregorianFormatCalendar;
+                format = info.fullDateTimePattern;
+                break;
+            case 'd': format = info.shortDatePattern; break;
+            case 'D': format = info.longDatePattern; break;
+            case 't': format = info.shortTimePattern; break;
+            case 'T': format = info.longTimePattern; break;
+            case 'f': format = info.longDatePattern + ' ' + info.shortTimePattern; break;
+            case 'F': format = info.fullDateTimePattern; break;
+            case 'g': format = info.shortDatePattern + ' ' + info.shortTimePattern; break;
+            case 'G': format = info.shortDatePattern + ' ' + info.longTimePattern; break;
+            case 'm': case 'M': format = info.monthDayPattern; break;
+            case 'y': case 'Y': format = info.yearMonthPattern; break;
+            default: throw invalidFormat();
+        }
+    }
+    return customized(date, format, info, calendar, emit);
+}

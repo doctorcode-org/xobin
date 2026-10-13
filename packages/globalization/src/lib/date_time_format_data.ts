@@ -45,6 +45,7 @@ export interface DateTimeFormatState {
     calendar: FormatCalendar;
     isReadOnly: boolean;
     cultureName: string;
+    decimalSeparator: string;
     calendarFormats: ReadonlyMap<number, DateTimeFormatData>;
 }
 

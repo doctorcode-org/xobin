@@ -22,6 +22,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
             calendar: new GregorianCalendar(),
             isReadOnly: false,
             cultureName: '',
+            decimalSeparator: '.',
             calendarFormats: new Map([[1, copyFormatData(invariantDateTimeFormat)]]),
         });
     }
@@ -74,6 +75,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
             isReadOnly: false,
             calendarFormats: this.state.calendarFormats,
             cultureName: this.state.cultureName,
+            decimalSeparator: this.state.decimalSeparator,
         });
         copyMonthFormatFlags(this.state.data, clone.state.data);
         return clone;
@@ -93,6 +95,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
             isReadOnly: true,
             calendarFormats: dtfi.state.calendarFormats,
             cultureName: dtfi.state.cultureName,
+            decimalSeparator: dtfi.state.decimalSeparator,
         });
         copyMonthFormatFlags(dtfi.state.data, copy.state.data);
         return copy;
@@ -651,15 +654,16 @@ registerDateTimeFormatInfoType(DateTimeFormatInfo);
  * @param calendar The culture's calendar instance.
  * @param calendarFormats The optional calendars and their format-data overrides from the locale oracle.
  * @param cultureName The culture used for linguistic era-name comparison.
+ * @param decimalSeparator The culture's original decimal separator for TimeSpan formatting.
  * @internal
  */
 export function createDateTimeFormatInfo(data: DateTimeFormatData, calendar: Calendar,
-    calendarFormats?: Readonly<Record<number, Partial<DateTimeFormatData>>>, cultureName: string = ''): DateTimeFormatInfo {
+    calendarFormats?: Readonly<Record<number, Partial<DateTimeFormatData>>>, cultureName: string = '', decimalSeparator: string = '.'): DateTimeFormatInfo {
     const info = new DateTimeFormatInfo();
     const formats = new Map<number, DateTimeFormatData>(Object.entries(calendarFormats ?? {})
         .map(([id, overrides]) => [Number(id), copyFormatData({ ...data, ...overrides })]));
     formats.set(getCalendarIdentity(calendar).id, copyFormatData(data));
-    dateTimeFormatStates.set(info, { data: copyFormatData(data), calendar, isReadOnly: false, calendarFormats: formats, cultureName });
+    dateTimeFormatStates.set(info, { data: copyFormatData(data), calendar, isReadOnly: false, calendarFormats: formats, cultureName, decimalSeparator });
     return info;
 }
 

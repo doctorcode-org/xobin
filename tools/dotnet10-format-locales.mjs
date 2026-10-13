@@ -44,6 +44,10 @@ for (const [name, data] of Object.entries(fixture.cultures)) {
   // This extra field is generator metadata, not a member of CultureData or CultureInfo.
   const declaration = 'export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {';
   output = output.replace(/^export const cultureData: .* = \{$/m, declaration);
+  // TimeSpan's DateTimeFormatInfo decimal separator uses the culture's original number data.
+  const decimalSeparator = JSON.stringify(data.localeInfo.numberFormat.numberDecimalSeparator);
+  output = output.replace(/^(\s*numberDecimalSeparator:\s*)("(?:[^"\\]|\\.)*"),[ \t]*$/m,
+    (line, prefix, value) => value === decimalSeparator ? line : prefix + decimalSeparator + ',');
   if (!output.startsWith(header)) output = header + output;
   if (mode === '--write') writeFileSync(file, output);
   else if (output !== source) throw new Error(`Locale differs from reference format data: ${name}`);

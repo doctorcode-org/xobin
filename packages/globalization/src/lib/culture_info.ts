@@ -175,7 +175,7 @@ export class CultureInfo {
         optionalCalendarFactories.set(this, cultureData.calendarFactories ?? [() => this.calendar.clone()]);
         const calendarFormats = cultureData.calendarFormats ?? (cultureData.gregorianDateTimeFormat
             ? { 1: cultureData.gregorianDateTimeFormat } : undefined);
-        this.dateTimeFormat = createDateTimeFormatInfo(cultureData.dateTimeFormat, this.calendar, calendarFormats, name);
+        this.dateTimeFormat = createDateTimeFormatInfo(cultureData.dateTimeFormat, this.calendar, calendarFormats, name, cultureData.numberFormat.numberDecimalSeparator);
     }
 
     /**

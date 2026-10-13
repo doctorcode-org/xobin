@@ -1,3 +1,6 @@
+import type { IFormatProvider, OutParam } from '@xobin/core';
+import { formatDateOnlyTimeOnly } from './date_only_time_only_format';
+import { tryWriteFormatted } from './format_buffer';
 import { ArgumentException, ArgumentOutOfRangeException, getOrCreateValue, IComparable, IEquatable } from '@xobin/core';
 import { Calendar } from './calendar';
 import { DateTime } from './date_time';
@@ -224,4 +227,58 @@ export class DateOnly implements IComparable<DateOnly>, IEquatable<DateOnly> {
     deconstruct(): [number, number, number] {
         return [this.year, this.month, this.day];
     }
+    /**
+     * Converts this instance using the current culture's short date format.
+     */
+    toString(): string;
+
+    /**
+     * Converts this instance using a standard or custom date format.
+     * @param format The standard or custom format string.
+     */
+    toString(format: string | null): string;
+
+    /**
+     * Converts this instance using the specified formatting information.
+     * @param provider The provider supplying culture-specific formatting information.
+     */
+    toString(provider: IFormatProvider | null): string;
+
+    /**
+     * Converts this instance using the specified format and formatting information.
+     * @param format The standard or custom format string.
+     * @param provider The provider supplying culture-specific formatting information.
+     */
+    toString(format: string | null, provider: IFormatProvider | null): string;
+    toString(format?: string | IFormatProvider | null, provider?: IFormatProvider | null): string {
+        if (typeof format === 'object' && format !== null) { provider = format; format = null; }
+        return formatDateOnlyTimeOnly(this.equivalentDateTime, format, provider, true);
+    }
+
+    /**
+     * Converts this instance to a long date string using the current culture.
+     */
+    toLongDateString(): string {
+        return this.toString('D');
+    }
+
+    /**
+     * Converts this instance to a short date string using the current culture.
+     */
+    toShortDateString(): string {
+        return this.toString();
+    }
+
+    /**
+     * Tries to format this instance into a UTF-16 character buffer or UTF-8 byte buffer.
+     * @param destination The buffer that receives the formatted value.
+     * @param charsWritten Receives the number of code units or bytes written; zero if the buffer is too small.
+     * @param format The standard or custom format string.
+     * @param provider The provider supplying culture-specific formatting information.
+     * @returns True if the destination has enough space; otherwise, false.
+     */
+    tryFormat(destination: string[] | Uint16Array | Uint8Array, charsWritten: OutParam<number>, format?: string | null, provider?: IFormatProvider | null): boolean {
+        return tryWriteFormatted(emit => formatDateOnlyTimeOnly(this.equivalentDateTime, format, provider, true, true, emit), destination, charsWritten, true);
+    }
+
 }

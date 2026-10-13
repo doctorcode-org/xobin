@@ -833,5 +833,7 @@
   "TimeOnlyTests.FromToTimeSpanTest": "time-only-core.test.mjs",
   "TimeOnlyTests.FromDateTimeTest": "time-only-core.test.mjs",
   "TimeOnlyTests.ComparisonsTest": "time-only-core.test.mjs",
-  "TimeOnlyTests.GetHashCodeTest": "time-only-core.test.mjs"
+  "TimeOnlyTests.GetHashCodeTest": "time-only-core.test.mjs",
+  "DateOnlyTests.TryFormatTest": "temporal-format.test.mjs",
+  "TimeOnlyTests.TryFormatTest": "temporal-format.test.mjs"
 }

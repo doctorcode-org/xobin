@@ -282,5 +282,9 @@
   "TimeOnlyTests.DeconstructionTest_Hour_Minute": "time-only-core.test.mjs",
   "TimeOnlyTests.DeconstructionTest_Hour_Minute_Second": "time-only-core.test.mjs",
   "TimeOnlyTests.DeconstructionTest_Hour_Minute_Second_Millisecond": "time-only-core.test.mjs",
-  "TimeOnlyTests.DeconstructionTest_Hour_Minute_Second_Millisecond_Microsecond": "time-only-core.test.mjs"
+  "TimeOnlyTests.DeconstructionTest_Hour_Minute_Second_Millisecond_Microsecond": "time-only-core.test.mjs",
+  "TimeSpanTests.ToString_Valid": "temporal-format.test.mjs",
+  "TimeSpanTests.ToString_InvalidFormat_ThrowsFormatException": "temporal-format.test.mjs",
+  "TimeSpanTests.TryFormat_Valid": "temporal-format.test.mjs",
+  "TimeSpanTests.TryFormat_InvalidFormat_ThrowsFormatException": "temporal-format.test.mjs"
 }
