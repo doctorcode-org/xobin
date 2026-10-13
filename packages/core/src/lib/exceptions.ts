@@ -15,9 +15,32 @@ export class Exception extends Error {
      * Initializes a new instance of the Exception class with a specified error message.
      * @param message The message that describes the error.
      */
-    constructor(message: string);
-    constructor(message?: string) {
-        super(message);
+    constructor(message: string | null);
+
+    /**
+     * Initializes an exception with a message and the exception that caused it.
+     * @param message The message that describes the error.
+     * @param innerException The exception that caused the current exception.
+     */
+    constructor(message: string | null, innerException: Exception | null);
+    constructor(message?: string | null, innerException: Exception | null = null) {
+        super();
+        setValue(this, 'message', message ?? "Exception of type 'System.Exception' was thrown.");
+        setValue(this, 'innerException', innerException);
+    }
+
+    /**
+     * Gets the message that describes the current exception.
+     */
+    override get message(): string {
+        return getValue(this, 'message');
+    }
+
+    /**
+     * Gets the exception that caused the current exception.
+     */
+    get innerException(): Exception | null {
+        return getValue(this, 'innerException');
     }
 }
 
@@ -34,16 +57,85 @@ export class NullReferenceException extends Exception {
     }
 }
 
-/** The exception thrown when a conversion is not supported. */
+/**
+ * The exception thrown when a conversion is not supported.
+ */
 export class InvalidCastException extends Exception {
-    constructor(message = 'Specified cast is not valid.') {
-        super(message);
+
+    /**
+     * Initializes an instance with the default error message.
+     */
+    constructor();
+
+    /**
+     * Initializes an instance with a specified error message.
+     * @param message The message that describes the error.
+     */
+    constructor(message: string | null);
+
+    /**
+     * Initializes an instance with a message and the exception that caused it.
+     * @param message The message that describes the error.
+     * @param innerException The exception that caused the current exception.
+     */
+    constructor(message: string | null, innerException: Exception | null);
+    constructor(message?: string | null, innerException: Exception | null = null) {
+        super(message ?? 'Specified cast is not valid.', innerException);
     }
 }
 
-/** The exception thrown when a format string or input has an invalid form. */
+/**
+ * The exception thrown when a format string or input has an invalid form.
+ */
 export class FormatException extends Exception {
-    constructor(message = 'One of the identified items was in an invalid format.') { super(message); }
+
+    /**
+     * Initializes an instance with the default error message.
+     */
+    constructor();
+
+    /**
+     * Initializes an instance with a specified error message.
+     * @param message The message that describes the error.
+     */
+    constructor(message: string | null);
+
+    /**
+     * Initializes an instance with a message and the exception that caused it.
+     * @param message The message that describes the error.
+     * @param innerException The exception that caused the current exception.
+     */
+    constructor(message: string | null, innerException: Exception | null);
+    constructor(message?: string | null, innerException: Exception | null = null) {
+        super(message ?? 'One of the identified items was in an invalid format.', innerException);
+    }
+}
+
+/**
+ * The exception thrown when serialization or deserialization fails.
+ */
+export class SerializationException extends Exception {
+
+    /**
+     * Initializes an instance with the default error message.
+     */
+    constructor();
+
+    /**
+     * Initializes an instance with a specified error message.
+     * @param message The message that describes the error.
+     */
+    constructor(message: string | null);
+
+    /**
+     * Initializes an instance with a message and the exception that caused it.
+     * @param message The message that describes the error.
+     * @param innerException The exception that caused the current exception.
+     */
+    constructor(message: string | null, innerException: Exception | null);
+    constructor(message?: string | null, innerException: Exception | null = null) {
+        super(message ?? 'Serialization error.', innerException);
+    }
 }
 
 /** 

@@ -113,3 +113,13 @@ formatDate.tryFormat(new Uint16Array(30), 0);
 span.toString(formatInfo);
 // @ts-expect-error TimeSpan's decimal separator remains private format-info state.
 formatInfo.decimalSeparator;
+
+import { Exception, FormatException, InvalidCastException, SerializationException } from '@xobin/core';
+const exceptionCause: Exception = new Exception('cause');
+for (const Type of [FormatException, InvalidCastException, SerializationException]) {
+    const defaultException: Exception = new Type();
+    const customException: Exception = new Type(null);
+    const nestedException: Exception = new Type('', exceptionCause);
+    const innerException: Exception | null = nestedException.innerException;
+    void [defaultException, customException, innerException];
+}
