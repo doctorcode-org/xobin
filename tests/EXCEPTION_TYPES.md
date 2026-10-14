@@ -7,9 +7,12 @@ checked against the real .NET 10.0.7 runtime. The pinned reference is runtime ta
 ## Runtime contracts
 
 The core exceptions preserve null versus empty messages, the invalid parameter
-name, the actual argument value, inner-exception identity and signed HRESULT.
+name, the actual argument value and inner-exception identity.
 `SystemException` and `ArithmeticException` supply the reference inheritance
-hierarchy. `InvalidCastException` also supports the message/error-code overload.
+hierarchy. CLR HRESULT state and the `InvalidCastException(message, errorCode)`
+overload are deliberately excluded from the JavaScript API. Null messages on
+`ArgumentException` use the default argument message without HRESULT-dependent
+mutation behavior.
 `CultureNotFoundException` now follows the reference constructor order and
 exposes `invalidCultureName` and `invalidCultureId`; its identifier suffix uses
 invariant decimal and hexadecimal formatting.
@@ -41,12 +44,21 @@ The observer records constructor arguments and reference results. Source paths,
 method identifiers and source hashes are in `exception-constructor-sources.json`.
 
 JavaScript replays the ERR-02 constructor contracts on the built package: type,
-message, HRESULT, parameter, actual value, inner-exception identity and invalid
+message, parameter, actual value, inner-exception identity and invalid
 culture identifiers. Shared-helper assertions for Data, HelpLink, Source and
 StackTrace are outside the JavaScript coverage scope. These rows are named
 `constructor-contract` and are not added as fully mapped methods to the temporal
 inventory. The direct culture/serialization constructor assertions are also
-checked by the replay. The manifest states the coverage scope explicitly.
+checked by the replay.
+
+The JavaScript replay now covers 61 of the 62 extracted constructor methods.
+`InvalidCastExceptionTests.Ctor_String_Int32` is intentionally excluded because
+its error-code overload is CLR-only. The replay also omits three supplemental
+error-code constructor rows and six HRESULT mutation rows, for 1314 executed
+operations out of the 1324 recorded operations. It does not assert HRESULT on
+any remaining row or on inner exceptions. The original reference fixtures and
+their historical scope metadata remain unchanged; the current JavaScript scope
+is defined by `exception-contracts.test.mjs` and this document.
 
 The contract fixture contains 1324 recorded constructor operations, including
 boundary numbers, negative zero, NaN, infinities, long limits, 128 deterministic
@@ -87,10 +99,16 @@ dotnet run --project tools/dotnet10-calendar-oracle -- --exception-consumers tes
 Use `--write` for the source/resource generators or omit `--check` for an oracle
 to regenerate its output. Tests execute the built package rather than TS source.
 
-## Final verification
+## Previous refactor verification
 
-The final suite passed all 89,957 tests with zero failures or skips. Source and
+Before CLR HRESULT removal, the final suite passed all 89,957 tests with zero
+failures or skips. Source and
 consumer type checks, ESM/CommonJS builds, all 938 culture-symbol checks, the
 resource/source generators, real .NET fixture checks, inventory checks and
 `git diff --check` passed. ERR-01 was approved and committed as `b520dad`;
 ERR-02/ERR-03 were completed and approved for commit.
+
+After removing CLR-only temporal and HRESULT contracts, the rebuilt full suite
+passes 89,824 tests with zero failures or skips. The supported exception
+constructor and consumer contracts, culture-symbol checks and both package
+formats are included. The removal batch has been reviewed and approved.

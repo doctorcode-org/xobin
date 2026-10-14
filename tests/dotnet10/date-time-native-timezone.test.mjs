@@ -26,8 +26,6 @@ test('DateTime.NativeTimezone.UtcConversionsMatchHostComponents', () => {
         [native.getFullYear(), native.getMonth() + 1, native.getDate(), native.getHours(), native.getMinutes(), native.getSeconds()], zone);
       assert.equal(local.ticks % 10000n, 9999n, zone);
       assert.equal(local.toUniversalTime().ticks, ticks, zone);
-      assert.equal(DateTime.fromBinary(local.toBinary()).toUniversalTime().ticks, ticks, zone);
-      assert.equal(DateTime.fromFileTime(local.toFileTime()).ticks, local.ticks, zone);
     }
   });
 });
@@ -43,7 +41,6 @@ test('DateTime.NativeTimezone.OverlapsPreserveBothInstants', () => {
       const local = new DateTime(ticks, DateTimeKind.utc).toLocalTime();
       assert.equal(local.toUniversalTime().ticks, ticks);
       assert.equal(local.addTicks(0n).toUniversalTime().ticks, ticks);
-      assert.equal(DateTime.fromBinary(local.toBinary()).toUniversalTime().ticks, ticks);
       return local;
     });
     assert.equal(locals[0].ticks, locals[1].ticks);
@@ -72,8 +69,6 @@ test('DateTime.NativeTimezone.RangeBoundariesAreClamped', () => {
     for (const ticks of [0n, DateTime.maxValue.ticks]) {
       const local = new DateTime(ticks, DateTimeKind.utc).toLocalTime();
       assert.ok(local.ticks >= 0n && local.ticks <= DateTime.maxValue.ticks);
-      const restored = DateTime.fromBinary(local.toBinary());
-      assert.equal(restored.ticks, local.ticks);
     }
   });
 });

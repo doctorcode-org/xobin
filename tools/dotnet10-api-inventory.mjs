@@ -254,7 +254,13 @@ function roadmapTask(type, member) {
   throw new Error(`No roadmap task for ${type.fullName}.${name}`);
 }
 
+const excludedScope = JSON.parse(readFileSync(resolve(repository, 'tests/dotnet10/excluded-members.json'), 'utf8'));
+const excludedMembers = new Set(excludedScope.apiMembers);
+
 function matchMember(type, member, local) {
+  if (excludedMembers.has(`${type.fullName}::${member.name}`)) {
+    return { status: 'excluded', jsMember: lowerFirst(member.name), adaptation: null, reason: excludedScope.reason };
+  }
   if (!local) return { status: 'missing', jsMember: null, adaptation: null, reason: 'local type is missing' };
   const alias = memberAliases.get(`${type.fullName}::${member.name}`);
   const adapter = member.kind === 'method' ? operatorAdapter(member.name) : null;
@@ -312,7 +318,7 @@ for (const type of reference.types) {
       verification: 'tracked by tests/dotnet10-test-inventory.json',
     };
   });
-  const counts = Object.fromEntries(['present', 'incomplete', 'missing'].map(status =>
+  const counts = Object.fromEntries(['present', 'incomplete', 'missing', 'excluded'].map(status =>
     [status, members.filter(member => member.status === status).length]));
   const uniqueLocalNames = [...new Set(local?.members.map(member => member.name) ?? [])].sort();
   const typeShape = !local ? { status: 'missing', reason: 'local type is missing' }
@@ -351,6 +357,7 @@ const summary = {
   present: allMembers.filter(member => member.status === 'present').length,
   incomplete: allMembers.filter(member => member.status === 'incomplete').length,
   missing: allMembers.filter(member => member.status === 'missing').length,
+  excluded: allMembers.filter(member => member.status === 'excluded').length,
   missingTypes: types.filter(type => type.local.declarationKind === null).length,
   missingRootExports: types.filter(type => !type.local.rootExported).length,
   missingSubpathExports: types.filter(type => !type.local.subpathExported).length,
@@ -363,6 +370,7 @@ const inventory = {
     present: 'A matching TypeScript surface or documented JavaScript operator adapter exists. This does not claim behavioral parity.',
     incomplete: 'A related TypeScript surface exists, but its shape, arity, static form, class behavior, or implementation is incomplete.',
     missing: 'No matching TypeScript surface exists.',
+    excluded: 'Intentionally omitted from the approved JavaScript API scope.',
   },
   summary,
   types,

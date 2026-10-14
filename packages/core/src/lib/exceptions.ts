@@ -28,7 +28,6 @@ export class Exception extends Error {
         super();
         setValue(this, 'message', message as string);
         setValue(this, 'innerException', innerException);
-        this.hResult = -2146233088;
     }
 
     /**
@@ -43,17 +42,6 @@ export class Exception extends Error {
      */
     get innerException(): Exception | null {
         return getValue(this, 'innerException');
-    }
-
-    /**
-     * Gets or sets the HRESULT value assigned to the exception.
-     */
-    get hResult(): number {
-        return getValue(this, 'hResult');
-    }
-
-    set hResult(value: number) {
-        setValue(this, 'hResult', value);
     }
 }
 
@@ -81,7 +69,6 @@ export class SystemException extends Exception {
     constructor(message: string | null, innerException: Exception | null);
     constructor(message?: string | null, innerException: Exception | null = null) {
         super(arguments.length === 0 ? SR.Arg_SystemException : message ?? null, innerException);
-        this.hResult = -2146233087;
     }
 }
 
@@ -109,7 +96,6 @@ export class ArithmeticException extends SystemException {
     constructor(message: string | null, innerException: Exception | null);
     constructor(message?: string | null, innerException: Exception | null = null) {
         super(message ?? SR.Arg_ArithmeticException, innerException);
-        this.hResult = -2147024362;
     }
 }
 
@@ -137,7 +123,6 @@ export class NullReferenceException extends SystemException {
     constructor(message: string | null, innerException: Exception | null);
     constructor(message?: string | null, innerException: Exception | null = null) {
         super(message ?? SR.Arg_NullReferenceException, innerException);
-        this.hResult = -2147467261;
     }
 }
 
@@ -163,16 +148,8 @@ export class InvalidCastException extends SystemException {
      * @param innerException The exception that caused the current exception.
      */
     constructor(message: string | null, innerException: Exception | null);
-
-    /**
-     * Initializes an instance with a specified message and HRESULT error code.
-     * @param message The message that describes the error.
-     * @param errorCode The HRESULT value assigned to the exception.
-     */
-    constructor(message: string | null, errorCode: number);
-    constructor(message?: string | null, innerExceptionOrErrorCode: Exception | number | null = null) {
-        super(message ?? SR.Arg_InvalidCastException, innerExceptionOrErrorCode instanceof Exception ? innerExceptionOrErrorCode : null);
-        this.hResult = typeof innerExceptionOrErrorCode === 'number' ? innerExceptionOrErrorCode : -2147467262;
+    constructor(message?: string | null, innerException: Exception | null = null) {
+        super(message ?? SR.Arg_InvalidCastException, innerException);
     }
 }
 
@@ -200,7 +177,6 @@ export class FormatException extends SystemException {
     constructor(message: string | null, innerException: Exception | null);
     constructor(message?: string | null, innerException: Exception | null = null) {
         super(message ?? SR.Arg_FormatException, innerException);
-        this.hResult = -2146233033;
     }
 }
 
@@ -228,7 +204,6 @@ export class SerializationException extends SystemException {
     constructor(message: string | null, innerException: Exception | null);
     constructor(message?: string | null, innerException: Exception | null = null) {
         super(message ?? SR.SerializationException, innerException);
-        this.hResult = -2146233076;
     }
 }
 
@@ -256,7 +231,6 @@ export class NotImplementedException extends SystemException {
     constructor(message: string | null, innerException: Exception | null);
     constructor(message?: string | null, innerException: Exception | null = null) {
         super(message ?? SR.Arg_NotImplementedException, innerException);
-        this.hResult = -2147467263;
     }
 }
 
@@ -284,7 +258,6 @@ export class AmbiguousMatchException extends SystemException {
     constructor(message: string | null, innerException: Exception | null);
     constructor(message?: string | null, innerException: Exception | null = null) {
         super(message ?? SR.Arg_AmbiguousMatchException_NoMessage, innerException);
-        this.hResult = -2147475171;
     }
 }
 
@@ -312,7 +285,6 @@ export class InvalidOperationException extends SystemException {
     constructor(message: string | null, innerException: Exception | null);
     constructor(message?: string | null, innerException: Exception | null = null) {
         super(message ?? SR.Arg_InvalidOperationException, innerException);
-        this.hResult = -2146233079;
     }
 }
 
@@ -340,7 +312,6 @@ export class IndexOutOfRangeException extends SystemException {
     constructor(message: string | null, innerException: Exception | null);
     constructor(message?: string | null, innerException: Exception | null = null) {
         super(message ?? SR.Arg_IndexOutOfRangeException, innerException);
-        this.hResult = -2146233080;
     }
 }
 
@@ -368,7 +339,6 @@ export class InvalidProgramException extends SystemException {
     constructor(message: string | null, innerException: Exception | null);
     constructor(message?: string | null, innerException: Exception | null = null) {
         super(message ?? SR.InvalidProgram_Default, innerException);
-        this.hResult = -2146233030;
     }
 }
 
@@ -396,7 +366,6 @@ export class NotSupportedException extends SystemException {
     constructor(message: string | null, innerException: Exception | null);
     constructor(message?: string | null, innerException: Exception | null = null) {
         super(message ?? SR.Arg_NotSupportedException, innerException);
-        this.hResult = -2146233067;
     }
 }
 
@@ -424,7 +393,6 @@ export class OverflowException extends ArithmeticException {
     constructor(message: string | null, innerException: Exception | null);
     constructor(message?: string | null, innerException: Exception | null = null) {
         super(message ?? SR.Arg_OverflowException, innerException);
-        this.hResult = -2146233066;
     }
 }
 
@@ -469,7 +437,6 @@ export class ArgumentException extends SystemException {
         super(arguments.length === 0 ? SR.Arg_ArgumentException : message ?? null,
             paramNameOrInnerException instanceof Exception ? paramNameOrInnerException : innerException);
         setValue(this, 'paramName', typeof paramNameOrInnerException === 'string' ? paramNameOrInnerException : null);
-        this.hResult = -2147024809;
     }
 
     /**
@@ -483,10 +450,7 @@ export class ArgumentException extends SystemException {
      * Gets the error message followed by the invalid parameter name, if present.
      */
     override get message(): string {
-        if (getValue(this, 'message') == null && this.hResult === -2147024809) {
-            setValue(this, 'message', SR.Arg_ArgumentException);
-        }
-        const message = super.message;
+        const message = getValue(this, 'message') ?? SR.Arg_ArgumentException;
         return this.paramName ? message + ' ' + formatExceptionResource(SR.Arg_ParamName_Name, this.paramName) : message;
     }
 }
@@ -525,7 +489,6 @@ export class ArgumentNullException extends ArgumentException {
         super(innerException ? paramNameOrMessage ?? SR.ArgumentNull_Generic
             : messageOrInnerException as string | null | undefined ?? SR.ArgumentNull_Generic,
             innerException ? null : paramNameOrMessage ?? null, innerException);
-        this.hResult = -2147467261;
     }
 }
 
@@ -573,7 +536,6 @@ export class ArgumentOutOfRangeException extends ArgumentException {
             : messageOrActualValue as string | null | undefined) ?? SR.Arg_ArgumentOutOfRangeException,
             innerException ? null : paramNameOrMessage ?? null, innerException);
         setValue(this, 'actualValue', hasActualValue ? messageOrActualValue ?? null : null);
-        this.hResult = -2146233086;
     }
 
     /**

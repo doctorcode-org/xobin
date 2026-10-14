@@ -28,13 +28,10 @@ for (const [index, row] of fixture.rows.entries()) {
 
     if (row.source === 'DateTimeTests.Equals_Invoke_ReturnsExpected') {
       assert.equal(date.equals(other), row.instanceEquals);
-      assert.equal(date.getHashCode(), row.dateHashCode);
       if (other instanceof DateTime) {
         assert.equal(DateTime.equals(date, other), row.staticEquals);
-        assert.equal(date.getHashCode() === other.getHashCode(), row.hashCodesEqual);
         assert.equal(date.valueOf() === other.valueOf(), row.equalOperator);
         assert.equal(date.valueOf() !== other.valueOf(), row.notEqualOperator);
-        assert.equal(other.getHashCode(), row.otherHashCode);
       }
       return;
     }

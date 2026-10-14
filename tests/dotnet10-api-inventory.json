@@ -5,14 +5,16 @@
   "statusDefinitions": {
     "present": "A matching TypeScript surface or documented JavaScript operator adapter exists. This does not claim behavioral parity.",
     "incomplete": "A related TypeScript surface exists, but its shape, arity, static form, class behavior, or implementation is incomplete.",
-    "missing": "No matching TypeScript surface exists."
+    "missing": "No matching TypeScript surface exists.",
+    "excluded": "Intentionally omitted from the approved JavaScript API scope."
   },
   "summary": {
     "types": 29,
     "members": 807,
-    "present": 680,
-    "incomplete": 12,
+    "present": 662,
+    "incomplete": 10,
     "missing": 115,
+    "excluded": 20,
     "missingTypes": 0,
     "missingRootExports": 0,
     "missingSubpathExports": 5
@@ -36,9 +38,10 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 37,
+        "present": 35,
         "incomplete": 0,
-        "missing": 26
+        "missing": 26,
+        "excluded": 2
       },
       "extraLocalMembers": [
         "_dayNumber",
@@ -281,9 +284,9 @@
             ]
           },
           "jsMember": "deconstruct",
-          "status": "present",
-          "adaptation": "out parameters returned as a tuple",
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "status": "excluded",
+          "adaptation": null,
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "DO-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -399,9 +402,9 @@
             "parameters": []
           },
           "jsMember": "getHashCode",
-          "status": "present",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "DO-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -2024,28 +2027,12 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 95,
-        "incomplete": 2,
-        "missing": 20
+        "present": 85,
+        "incomplete": 0,
+        "missing": 20,
+        "excluded": 12
       },
-      "extraLocalMembers": [
-        "getObjectData",
-        "toBoolean",
-        "toByte",
-        "toChar",
-        "toDateTime",
-        "toDecimal",
-        "toDouble",
-        "toInt16",
-        "toInt32",
-        "toInt64",
-        "toSByte",
-        "toSingle",
-        "toType",
-        "toUInt16",
-        "toUInt32",
-        "toUInt64"
-      ],
+      "extraLocalMembers": [],
       "members": [
         {
           "id": "System.DateTime::constructor:.ctor:instance:value:DateOnly,value:TimeOnly",
@@ -3429,9 +3416,9 @@
             ]
           },
           "jsMember": "deconstruct",
-          "status": "incomplete",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "member exists but static/instance shape or arity differs",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "DT-11",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -3466,9 +3453,9 @@
             ]
           },
           "jsMember": "deconstruct",
-          "status": "incomplete",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "member exists but static/instance shape or arity differs",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "DT-11",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -3572,9 +3559,9 @@
             ]
           },
           "jsMember": "fromBinary",
-          "status": "present",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "DT-09",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -3597,9 +3584,9 @@
             ]
           },
           "jsMember": "fromFileTime",
-          "status": "present",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "DT-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -3622,9 +3609,9 @@
             ]
           },
           "jsMember": "fromFileTimeUtc",
-          "status": "present",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "DT-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -3647,9 +3634,9 @@
             ]
           },
           "jsMember": "fromOADate",
-          "status": "present",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "DT-08",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -3764,9 +3751,9 @@
             "parameters": []
           },
           "jsMember": "getHashCode",
-          "status": "present",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "DT-11",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -3782,9 +3769,9 @@
             "parameters": []
           },
           "jsMember": "getTypeCode",
-          "status": "present",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "DT-11",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -4294,9 +4281,9 @@
             "parameters": []
           },
           "jsMember": "toBinary",
-          "status": "present",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "DT-09",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -4312,9 +4299,9 @@
             "parameters": []
           },
           "jsMember": "toFileTime",
-          "status": "present",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "DT-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -4330,9 +4317,9 @@
             "parameters": []
           },
           "jsMember": "toFileTimeUtc",
-          "status": "present",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "DT-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -4402,9 +4389,9 @@
             "parameters": []
           },
           "jsMember": "toOADate",
-          "status": "present",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "DT-08",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -5690,7 +5677,8 @@
       "counts": {
         "present": 3,
         "incomplete": 0,
-        "missing": 0
+        "missing": 0,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "constructor",
@@ -5773,7 +5761,8 @@
       "counts": {
         "present": 7,
         "incomplete": 0,
-        "missing": 0
+        "missing": 0,
+        "excluded": 0
       },
       "extraLocalMembers": [],
       "members": [
@@ -5925,7 +5914,8 @@
       "counts": {
         "present": 36,
         "incomplete": 8,
-        "missing": 1
+        "missing": 1,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "_isReadOnly",
@@ -7254,7 +7244,8 @@
       "counts": {
         "present": 4,
         "incomplete": 0,
-        "missing": 0
+        "missing": 0,
+        "excluded": 0
       },
       "extraLocalMembers": [],
       "members": [
@@ -7352,7 +7343,8 @@
       "counts": {
         "present": 3,
         "incomplete": 0,
-        "missing": 0
+        "missing": 0,
+        "excluded": 0
       },
       "extraLocalMembers": [],
       "members": [
@@ -7432,7 +7424,8 @@
       "counts": {
         "present": 5,
         "incomplete": 0,
-        "missing": 1
+        "missing": 1,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "ChineseEra",
@@ -7583,7 +7576,8 @@
       "counts": {
         "present": 9,
         "incomplete": 2,
-        "missing": 5
+        "missing": 5,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "englishName",
@@ -7991,7 +7985,8 @@
       "counts": {
         "present": 42,
         "incomplete": 0,
-        "missing": 2
+        "missing": 2,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "_invariantInfo",
@@ -8917,7 +8912,8 @@
       "counts": {
         "present": 10,
         "incomplete": 0,
-        "missing": 0
+        "missing": 0,
+        "excluded": 0
       },
       "extraLocalMembers": [],
       "members": [
@@ -9123,7 +9119,8 @@
       "counts": {
         "present": 21,
         "incomplete": 0,
-        "missing": 0
+        "missing": 0,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "baseCalendarID",
@@ -9798,7 +9795,8 @@
       "counts": {
         "present": 23,
         "incomplete": 0,
-        "missing": 3
+        "missing": 3,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "ADEra",
@@ -10542,7 +10540,8 @@
       "counts": {
         "present": 6,
         "incomplete": 0,
-        "missing": 0
+        "missing": 0,
+        "excluded": 0
       },
       "extraLocalMembers": [],
       "members": [
@@ -10676,7 +10675,8 @@
       "counts": {
         "present": 23,
         "incomplete": 0,
-        "missing": 1
+        "missing": 1,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "HebrewEra",
@@ -11383,7 +11383,8 @@
       "counts": {
         "present": 24,
         "incomplete": 0,
-        "missing": 1
+        "missing": 1,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "HijriEra",
@@ -12108,7 +12109,8 @@
       "counts": {
         "present": 9,
         "incomplete": 0,
-        "missing": 0
+        "missing": 0,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "constructor"
@@ -12385,7 +12387,8 @@
       "counts": {
         "present": 24,
         "incomplete": 0,
-        "missing": 0
+        "missing": 0,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "_helper"
@@ -13103,7 +13106,8 @@
       "counts": {
         "present": 5,
         "incomplete": 0,
-        "missing": 1
+        "missing": 1,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "JapaneseEra",
@@ -13256,7 +13260,8 @@
       "counts": {
         "present": 23,
         "incomplete": 0,
-        "missing": 1
+        "missing": 1,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "JulianEra"
@@ -13955,7 +13960,8 @@
       "counts": {
         "present": 24,
         "incomplete": 0,
-        "missing": 1
+        "missing": 1,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "KoreanEra",
@@ -14692,7 +14698,8 @@
       "counts": {
         "present": 5,
         "incomplete": 0,
-        "missing": 1
+        "missing": 1,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "GregorianEra",
@@ -14843,7 +14850,8 @@
       "counts": {
         "present": 23,
         "incomplete": 0,
-        "missing": 1
+        "missing": 1,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "PersianEra"
@@ -15542,7 +15550,8 @@
       "counts": {
         "present": 24,
         "incomplete": 0,
-        "missing": 0
+        "missing": 0,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "TaiwanEra",
@@ -16261,7 +16270,8 @@
       "counts": {
         "present": 5,
         "incomplete": 0,
-        "missing": 0
+        "missing": 0,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "_helper",
@@ -16394,7 +16404,8 @@
       "counts": {
         "present": 24,
         "incomplete": 0,
-        "missing": 1
+        "missing": 1,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "ThaiBuddhistEra",
@@ -17131,7 +17142,8 @@
       "counts": {
         "present": 22,
         "incomplete": 0,
-        "missing": 2
+        "missing": 2,
+        "excluded": 0
       },
       "extraLocalMembers": [
         "UmAlQuraEra",
@@ -17829,9 +17841,10 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 48,
+        "present": 43,
         "incomplete": 0,
-        "missing": 26
+        "missing": 26,
+        "excluded": 5
       },
       "extraLocalMembers": [
         "_ticks",
@@ -18267,9 +18280,9 @@
             ]
           },
           "jsMember": "deconstruct",
-          "status": "present",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "TO-01/TO-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -18304,9 +18317,9 @@
             ]
           },
           "jsMember": "deconstruct",
-          "status": "present",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "TO-01/TO-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -18347,9 +18360,9 @@
             ]
           },
           "jsMember": "deconstruct",
-          "status": "present",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "TO-01/TO-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -18396,9 +18409,9 @@
             ]
           },
           "jsMember": "deconstruct",
-          "status": "present",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "TO-01/TO-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -18514,9 +18527,9 @@
             "parameters": []
           },
           "jsMember": "getHashCode",
-          "status": "present",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "TO-05",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -20181,9 +20194,10 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 96,
+        "present": 95,
         "incomplete": 0,
-        "missing": 21
+        "missing": 21,
+        "excluded": 1
       },
       "extraLocalMembers": [
         "_ticks"
@@ -21655,9 +21669,9 @@
             "parameters": []
           },
           "jsMember": "getHashCode",
-          "status": "present",
+          "status": "excluded",
           "adaptation": null,
-          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
+          "reason": "Removed by the approved JavaScript API scope; full .NET API equality is no longer required.",
           "roadmapTask": "TS-03",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },

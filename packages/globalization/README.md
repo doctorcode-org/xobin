@@ -6,6 +6,14 @@ Usage information and reference details can be found in [Xobin documentation](ht
 
 License: MIT
 
+## JavaScript API scope
+
+The .NET reference verifies selected behavior; full CLR API equality is not a goal.
+Binary/OADate/FileTime, CLR conversions, TypeCode, SerializationInfo, temporal
+hash/deconstruction and exception HRESULT contracts have been removed.
+Formatting and exact ticks remain supported. See [API scope](../../tests/JAVASCRIPT_API_SCOPE.md).
+Parsing remains deferred.
+
 ## Browser culture loading
 
 Import each required culture explicitly. Importing a locale does not register it
@@ -49,7 +57,7 @@ differ from Windows. Bigint arithmetic preserves all 100-nanosecond ticks.
 
 For overlapping local times, a newly constructed value selects the later UTC
 occurrence. Values converted from UTC preserve their original occurrence through
-conversion, arithmetic and binary roundtrips. Nonexistent spring-forward times
+conversion and arithmetic. Nonexistent spring-forward times
 use Date's native resolution with the offset before the transition.
 
 Date does not expose a daylight-saving flag. IsDaylightSavingTime estimates it by
@@ -58,26 +66,11 @@ year. This covers ordinary seasonal clock changes, but cannot distinguish every
 political base-offset change, permanent DST or negative-DST rule. Exact Windows
 classification is not promised.
 
-The .NET formatting, FileTime and binary fixtures use UTC as the local zone in
+The .NET formatting fixtures use UTC as the local zone in
 both runtimes, preserving direct comparison of the official test inputs. Native
 zone tests separately verify local components, sub-millisecond precision, gaps,
 overlaps and roundtrips using the zones supported by the test runtime. The oracle
 pins UTC only inside its isolated process; it does not change the host's zone.
-
-## CLR conversion adapters
-
-`DateTime.getTypeCode()` returns `TypeCode.dateTime` from `@xobin/core`, with
-the CLR numeric value 16. The primitive conversion methods throw
-`InvalidCastException` with the reference message. `toType` accepts JavaScript
-constructor tokens: `DateTime` and `Object` return the instance, `String` uses
-the DateTime formatter, `Boolean`, `Number`, and `BigInt` request Boolean,
-Double, and Int64 conversions.
-
-`getObjectData(info, context)` accepts an adapter with
-`addValue(name: string, value: bigint)`. It writes `ticks` and the unsigned
-64-bit `dateData`, including Kind and the hidden ambiguous-DST bit. These are
-the fields used by the CLR serializer; this API does not produce a JSON string
-or emulate .NET's binary serializer.
 
 ## DateTime formatting
 
@@ -193,7 +186,7 @@ Constructor accumulation uses signed 64-bit arithmetic with bigint, including th
 
 TS-02 through TS-06 complete the non-formatting, non-parsing TimeSpan core. All 82 official methods in that scope are mapped: 68 additional methods are executed directly from generated copies of the pinned .NET test bodies and providers. A private oracle observer delegates calculations to System.TimeSpan, records each operation and exception, and validates the original assertions before saving the fixture. The JavaScript equivalents replay those checks against the built package. The dynamic mappings count original provider inputs, not internal operation traces.
 
-Add, Subtract, Duration, Negate, comparisons, object equality, GetHashCode, Multiply and both Divide overloads preserve reference results and exception details. Floating-point multiplication and division round to the nearest tick with ties to even. Division by another TimeSpan returns the reference double ratio, including infinities and NaN. All 22 public unit constants use the project's camel-case member naming; long constants are bigint, while HoursPerDay is number.
+Add, Subtract, Duration, Negate, comparisons, object equality, Multiply and both Divide overloads preserve reference results and exception details. Floating-point multiplication and division round to the nearest tick with ties to even. Division by another TimeSpan returns the reference double ratio, including infinities and NaN. All 22 public unit constants use the project's camel-case member naming; long constants are bigint, while HoursPerDay is number.
 
 A single number argument selects a factory's double overload; a single bigint argument selects its integer overload. For example, TimeSpan.fromMicroseconds(1.5) uses floating-point conversion and TimeSpan.fromMicroseconds(1n) uses integer conversion. Supplying component arguments selects the integer component overload, with optional trailing components. Use bigint for long components to retain their full range. Multi-component factories accumulate exactly before checking the final range, matching .NET's Int128 arithmetic. They preserve cancellation between components and reject intermediate-wrap examples covered by the official tests.
 
@@ -201,6 +194,6 @@ The existing constructor fixture still checks every component and Total property
 
 DO-01 validates DateOnly constructors and MinValue/MaxValue against .NET 10.0.7. Three official methods are extracted from the pinned source and their original assertions execute in the oracle. The constructor provider has five official rows. Supplemental cases cover the default constructor, a null calendar and both supported boundaries of all fourteen calendars; exceptions are compared by type, message, parameter and actual value. No parsing is implemented.
 
-DO-02 through DO-05 complete DateOnly properties, arithmetic, comparison, hashing, deconstruction and DateTime conversions. All thirteen official non-formatting/non-parsing DateOnly test methods are mapped. Ten newly extracted method bodies execute their original assertions against System.DateOnly through an observer; Today is supplied as the fixed leap day 2024-02-29 for reproducibility. Fourteen official input rows and eleven supplemental sets contain 1109 observed calls. A reference SHA-256 digest also verifies the date components, weekday and day-of-year of all 146097 days of a Gregorian 400-year cycle. Supplemental conversion checks preserve single-tick precision and Kind and compare exact errors at the range boundaries. Relational operators use valueOf, following DateTime and TimeSpan; value equality uses equals because JavaScript object equality compares identity. Deconstruct returns the existing typed tuple instead of CLR out parameters. Formatting and parsing remain separate tasks.
+DateOnly supports properties, arithmetic, comparison and DateTime conversions. Reference replay covers these retained operations; hash and deconstruction are excluded by the JavaScript API scope. A SHA-256 reference digest verifies all 146097 days of a Gregorian 400-year cycle. Conversion checks retain single-tick precision, Kind and exact range errors. Relational operators use valueOf; value equality uses equals.
 
-TO-01 through TO-06 complete the TimeOnly core. All fifteen official methods independent of formatting and parsing are mapped. Extracted test bodies execute their original assertions against System.TimeOnly; Now and Today use a fixed timestamp with sub-microsecond ticks for reproducibility. Twenty-three official input rows and nine supplemental sets contain 1476 observed operations. Constructors validate hour/minute/second before millisecond and microsecond, preserving exact reference errors. Add, AddHours and AddMinutes support the existing OutParam<number> contract for wrappedDays; all four Deconstruct overloads use the same contract. Arithmetic preserves bigint ticks, wraps across midnight and truncates fractional ticks. Unchecked double-to-long conversion follows .NET 10 saturation, including NaN and infinities. IsBetween uses an inclusive start and exclusive end, supports midnight-crossing intervals and treats equal endpoints as empty. Subtract adapts the .NET subtraction operator to a nonnegative circular-clock interval. Relational operators use valueOf; value equality uses equals. Formatting and parsing remain separate tasks.
+TimeOnly supports constructors, components, arithmetic, comparison and DateTime/TimeSpan conversions. Reference replay covers these retained operations; hash and deconstruction are excluded by the JavaScript API scope. Constructors retain ordered input validation and exact range errors. Arithmetic preserves bigint ticks and wraps across midnight; OutParam<number> remains available for wrappedDays. IsBetween and circular-clock subtraction retain their behavior. Relational operators use valueOf; value equality uses equals.

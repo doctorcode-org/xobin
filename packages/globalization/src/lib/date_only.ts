@@ -209,24 +209,10 @@ export class DateOnly implements IComparable<DateOnly>, IEquatable<DateOnly> {
     }
 
     /**
-     * Gets the signed 32-bit hash code for this date.
-     */
-    getHashCode(): number {
-        return this._dayNumber;
-    }
-
-    /**
      * Returns the day number for JavaScript relational comparisons.
      */
     valueOf(): number {
         return this._dayNumber;
-    }
-
-    /**
-     * Deconstructs this date into its year, month, and day components.
-     */
-    deconstruct(): [number, number, number] {
-        return [this.year, this.month, this.day];
     }
     /**
      * Converts this instance using the current culture's short date format.

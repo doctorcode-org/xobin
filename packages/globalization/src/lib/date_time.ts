@@ -12,9 +12,6 @@ import {
     DaysPer100Years,
     DaysPer4Years,
     DaysPerYear,
-    DaysTo1601,
-    DaysTo1899,
-    MaxMillis,
     TicksPerHour,
     TicksPerMinute,
     TicksPerSecond,
@@ -40,27 +37,14 @@ import {
     int,
     IFormatProvider,
     ArgumentNullException,
-    OverflowException,
     IComparable,
     IEquatable,
-    InvalidCastException,
-    TypeCode,
     OutParam
 } from '@xobin/core';
 
 
 const s_daysToMonth365 = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365];
 const s_daysToMonth366 = [0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366];
-const MillisecondsPerDay = 86400000;
-const DoubleDateOffset = BigInt(DaysTo1899) * TicksPerDay;
-const OADateMinAsTicks = BigInt(DaysPer100Years - DaysPerYear) * TicksPerDay;
-const OADateMinAsDouble = -657435;
-const OADateMaxAsDouble = 2958466;
-const TicksMask = 0x3fffffffffffffffn;
-const TicksCeiling = 0x4000000000000000n;
-const KindUtc = 0x4000000000000000n;
-const KindLocal = 0x8000000000000000n;
-const FileTimeOffset = BigInt(DaysTo1601) * TicksPerDay;
 const ambiguousLocalDaylight = new WeakSet<DateTime>();
 
 /**
@@ -753,104 +737,6 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
     }
 
     /**
-     * Converts this value to an OLE Automation date.
-     */
-    toOADate(): number {
-        let ticks = this.ticks;
-        if (ticks === 0n) return 0;
-        if (ticks < TicksPerDay) ticks += DoubleDateOffset;
-        if (ticks < OADateMinAsTicks) {
-            throw new OverflowException(SR.Arg_OleAutDateInvalid);
-        }
-
-        let milliseconds = (ticks - DoubleDateOffset) / TicksPerMillisecond;
-        if (milliseconds < 0n) {
-            const fraction = milliseconds % BigInt(MillisecondsPerDay);
-            if (fraction !== 0n) {
-                milliseconds -= (BigInt(MillisecondsPerDay) + fraction) * 2n;
-            }
-        }
-        return Number(milliseconds) / MillisecondsPerDay;
-    }
-
-    /**
-     * Serializes this value, including its DateTimeKind, into a signed 64-bit integer.
-     */
-    toBinary(): bigint {
-        if (this.kind.value === DateTimeKind.local.value) {
-            const offsetTicks = localOffsetTicks(this);
-            let storedTicks = this.ticks - offsetTicks;
-            if (storedTicks < 0n) storedTicks += TicksCeiling;
-            return BigInt.asIntN(64, storedTicks | KindLocal);
-        }
-        return BigInt.asIntN(64, this.ticks | BigInt(this.kind.value) << 62n);
-    }
-
-    /**
-     * Converts this value to a Windows file time, treating unspecified values as local.
-     */
-    toFileTime(): bigint {
-        return this.toUniversalTime().toFileTimeUtc();
-    }
-
-    /**
-     * Converts this value to a Windows file time, treating unspecified values as UTC.
-     */
-    toFileTimeUtc(): bigint {
-        const ticks = this.kind.value === DateTimeKind.local.value ? this.toUniversalTime().ticks : this.ticks;
-        const fileTime = ticks - FileTimeOffset;
-        if (fileTime < 0n) {
-            throw new ArgumentOutOfRangeException(undefined, SR.ArgumentOutOfRange_FileTimeInvalid);
-        }
-        return fileTime;
-    }
-
-    getTypeCode(): TypeCode { return TypeCode.dateTime; }
-
-    deconstruct(): [DateOnly, TimeOnly];
-    deconstruct(parts: 'date'): [number, number, number];
-    deconstruct(parts?: 'date'): [DateOnly, TimeOnly] | [number, number, number] {
-        return parts === 'date' ? [this.year, this.month, this.day]
-            : [DateOnly.fromDateTime(this), TimeOnly.fromDateTime(this)];
-    }
-
-    toBoolean(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Boolean'); }
-    toChar(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Char'); }
-    toSByte(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('SByte'); }
-    toByte(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Byte'); }
-    toInt16(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Int16'); }
-    toUInt16(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('UInt16'); }
-    toInt32(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Int32'); }
-    toUInt32(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('UInt32'); }
-    toInt64(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Int64'); }
-    toUInt64(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('UInt64'); }
-    toSingle(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Single'); }
-    toDouble(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Double'); }
-    toDecimal(_provider?: IFormatProvider | null): never { return invalidDateTimeCast('Decimal'); }
-    toDateTime(_provider?: IFormatProvider | null): DateTime { return this; }
-
-    /** JavaScript constructor tokens represent CLR Type values. */
-    toType(conversionType: typeof DateTime, provider?: IFormatProvider | null): DateTime;
-    toType(conversionType: Function | null, provider?: IFormatProvider | null): unknown;
-    toType(conversionType: Function | null, provider?: IFormatProvider | null): unknown {
-        if (conversionType == null) throw new ArgumentNullException('conversionType');
-        if (conversionType === DateTime || conversionType === Object) return this;
-        if (conversionType === String) return provider ? this.toString(provider) : this.toString();
-        if (conversionType === Boolean) return this.toBoolean(provider);
-        if (conversionType === Number) return this.toDouble(provider);
-        if (conversionType === BigInt) return this.toInt64(provider);
-        throw new InvalidCastException(formatExceptionResource(SR.InvalidCast_FromTo, 'DateTime', conversionType.name));
-    }
-
-    /** A SerializationInfo adapter receives the exact unsigned 64-bit dateData. */
-    getObjectData(info: { addValue(name: string, value: bigint): void } | null, _context?: unknown): void {
-        if (info == null) throw new ArgumentNullException('info');
-        const kind = ambiguousLocalDaylight.has(this) ? 3n : BigInt(this.kind.value);
-        info.addValue('ticks', this.ticks);
-        info.addValue('dateData', this.ticks | kind << 62n);
-    }
-
-    /**
      * Converts the value of the current DateTime object to its equivalent string representation using the formatting conventions of the current culture.
      */
     toString(): string;
@@ -997,14 +883,6 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         return false;
     }
 
-    /**
-     * Returns the hash code for this instance.
-     */
-    getHashCode(): number {
-        const ticks = this.ticks;
-        return Number(BigInt.asIntN(32, ticks ^ (ticks >> 32n)));
-    }
-
     valueOf(): bigint {
         return this.ticks;
     }
@@ -1055,67 +933,6 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      */
     static specifyKind(value: DateTime, kind: DateTimeKind): DateTime {
         return new DateTime(value.ticks, kind);
-    }
-
-    /**
-     * Returns a DateTime equivalent to the specified OLE Automation date.
-     */
-    static fromOADate(value: number): DateTime {
-        if (!(value < OADateMaxAsDouble) || !(value > OADateMinAsDouble)) {
-            throw new ArgumentException(SR.Arg_OleAutDateInvalid);
-        }
-
-        let milliseconds = Math.trunc(value * MillisecondsPerDay + (value >= 0 ? 0.5 : -0.5));
-        if (milliseconds < 0) {
-            milliseconds -= (milliseconds % MillisecondsPerDay) * 2;
-        }
-        milliseconds += Number(DoubleDateOffset / TicksPerMillisecond);
-        if (milliseconds < 0 || milliseconds > MaxMillis) {
-            throw new ArgumentException(SR.Arg_OleAutDateScale);
-        }
-        return new DateTime(BigInt(milliseconds) * TicksPerMillisecond, DateTimeKind.unspecified);
-    }
-
-    /**
-     * Deserializes a value produced by toBinary.
-     */
-    static fromBinary(dateData: bigint): DateTime {
-        const data = BigInt.asUintN(64, dateData);
-        if ((data & KindLocal) !== 0n) {
-            let ticks = data & TicksMask;
-            if (ticks > TicksCeiling - TicksPerDay) ticks -= TicksCeiling;
-
-            const boundary = ticks < MinTicks ? DateTime.minValue : ticks > MaxTicks ? DateTime.maxValue : new DateTime(ticks, DateTimeKind.utc);
-            const offset = localTimeOffset(boundary.ticks, true);
-            ticks += offset.ticks;
-            if (ticks < 0n) ticks += TicksPerDay;
-            if (ticks > MaxTicks) throwBadBinaryData();
-            const result = new DateTime(ticks, DateTimeKind.local);
-            if (offset.ambiguousDaylight) ambiguousLocalDaylight.add(result);
-            return result;
-        }
-
-        const ticks = data & TicksMask;
-        if (ticks > MaxTicks) throwBadBinaryData();
-        const kind = (data & KindUtc) !== 0n ? DateTimeKind.utc : DateTimeKind.unspecified;
-        return new DateTime(ticks, kind);
-    }
-
-    /**
-     * Creates a local DateTime from a Windows file time.
-     */
-    static fromFileTime(fileTime: bigint): DateTime {
-        return DateTime.fromFileTimeUtc(fileTime).toLocalTime();
-    }
-
-    /**
-     * Creates a UTC DateTime from a Windows file time.
-     */
-    static fromFileTimeUtc(fileTime: bigint): DateTime {
-        if (fileTime < 0n || fileTime > MaxTicks - FileTimeOffset) {
-            throw new ArgumentOutOfRangeException('fileTime', SR.ArgumentOutOfRange_FileTimeInvalid);
-        }
-        return new DateTime(fileTime + FileTimeOffset, DateTimeKind.utc);
     }
 
     /**
@@ -1178,10 +995,6 @@ function timeToTicks(hour: number, minute: number, second: number): bigint {
     return TimeSpanTimeToTicks(hour, minute, second);
 }
 
-function localOffsetTicks(value: DateTime): bigint {
-    return localTimeOffset(value.ticks, false, ambiguousLocalDaylight.has(value)).ticks;
-}
-
 function throwTicksOutOfRange(): never {
     throw new ArgumentOutOfRangeException('ticks',
         SR.ArgumentOutOfRange_DateTimeBadTicks);
@@ -1189,12 +1002,6 @@ function throwTicksOutOfRange(): never {
 
 function throwInvalidKind(): never {
     throw new ArgumentException(SR.Argument_InvalidDateTimeKind, 'kind');
-}
-
-function throwBadBinaryData(): never {
-    throw new ArgumentException(
-        SR.Argument_DateTimeBadBinaryData,
-        'dateData');
 }
 
 function throwInvalidDate(): never {
@@ -1314,27 +1121,10 @@ function getDatePart(this: DateTime, part: number): number {
 }
 
 
-
-/*
- https://stackoverflow.com/questions/13360653/datetime-comparing-by-internal-ticks
-
- The dateData field is used like a bit field to store multiple values in a compact format.
-
-The top two bits store the DateTimeKind, which has one of four possible values: Unspecified,
-Local (internally there are two variants), or Utc. These four values can be stored in two bits.
-
-The bottom 62 bits store the ticks. The operation x & 0x3fffffffffffffffL is a bitwise-and operation,
-also sometimes called masking. It returns only the bits that correspond to the ticks.
- */
-
 function preserveLocalKind(source: DateTime, ticks: bigint): DateTime {
     const result = new DateTime(ticks, source.kind);
     if (ambiguousLocalDaylight.has(source)) ambiguousLocalDaylight.add(result);
     return result;
-}
-
-function invalidDateTimeCast(type: string): never {
-    throw new InvalidCastException(formatExceptionResource(SR.InvalidCast_FromTo, 'DateTime', type));
 }
 
 /** Internal formatter access preserves the ambiguous local DST flag. */

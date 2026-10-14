@@ -383,13 +383,6 @@ export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
     }
 
     /**
-     * Gets the hash code of this interval.
-     */
-    getHashCode(): number {
-        return Number(BigInt.asIntN(32, this._ticks ^ (this._ticks >> 32n)));
-    }
-
-    /**
      * Multiplies this interval by the specified factor.
      * @param factor The floating-point multiplier.
      */

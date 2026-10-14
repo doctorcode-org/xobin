@@ -288,59 +288,10 @@ export class TimeOnly implements IComparable<TimeOnly>, IEquatable<TimeOnly> {
     }
 
     /**
-     * Gets the signed 32-bit hash code for this time.
-     */
-    getHashCode(): number {
-        return Number(BigInt.asIntN(32, this._ticks ^ this._ticks >> 32n));
-    }
-
-    /**
      * Returns the ticks for JavaScript relational comparisons.
      */
     valueOf(): bigint {
         return this._ticks;
-    }
-
-    /**
-     * Deconstructs this time into its hour and minute components.
-     * @param hour Receives the hour.
-     * @param minute Receives the minute.
-     */
-    deconstruct(hour: OutParam<number>, minute: OutParam<number>): void;
-
-    /**
-     * Deconstructs this time into its hour, minute, and second components.
-     * @param hour Receives the hour.
-     * @param minute Receives the minute.
-     * @param second Receives the second.
-     */
-    deconstruct(hour: OutParam<number>, minute: OutParam<number>, second: OutParam<number>): void;
-
-    /**
-     * Deconstructs this time including its millisecond component.
-     * @param hour Receives the hour.
-     * @param minute Receives the minute.
-     * @param second Receives the second.
-     * @param millisecond Receives the millisecond.
-     */
-    deconstruct(hour: OutParam<number>, minute: OutParam<number>, second: OutParam<number>, millisecond: OutParam<number>): void;
-
-    /**
-     * Deconstructs this time including its microsecond component.
-     * @param hour Receives the hour.
-     * @param minute Receives the minute.
-     * @param second Receives the second.
-     * @param millisecond Receives the millisecond.
-     * @param microsecond Receives the microsecond.
-     */
-    deconstruct(hour: OutParam<number>, minute: OutParam<number>, second: OutParam<number>, millisecond: OutParam<number>, microsecond: OutParam<number>): void;
-
-    deconstruct(hour: OutParam<number>, minute: OutParam<number>, second?: OutParam<number>, millisecond?: OutParam<number>, microsecond?: OutParam<number>): void {
-        hour.result = this.hour;
-        minute.result = this.minute;
-        if (second) second.result = this.second;
-        if (millisecond) millisecond.result = this.millisecond;
-        if (microsecond) microsecond.result = this.microsecond;
     }
 
     /**

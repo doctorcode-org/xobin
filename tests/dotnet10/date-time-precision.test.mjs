@@ -20,13 +20,6 @@ for (const [index, row] of fixture.rows.entries()) {
   });
 }
 
-test('DateTimeTests.TestRoundTrippingDateTimeAndFileTime', () => {
-  const utc = DateTime.utcNow;
-  assert.equal(DateTime.fromFileTimeUtc(utc.toFileTimeUtc()).ticks, utc.ticks);
-  const local = DateTime.now;
-  assert.equal(DateTime.fromFileTime(local.toFileTime()).ticks, local.ticks);
-});
-
 test('DateTimeTests.UnixEpoch', () => {
   const epoch = DateTime.unixEpoch;
   assert.deepEqual([epoch.year, epoch.month, epoch.day, epoch.hour, epoch.minute, epoch.second, epoch.millisecond, epoch.kind.value],

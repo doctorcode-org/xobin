@@ -35,10 +35,6 @@ export const DaysPer100Years = DaysPer4Years * 25 - 1;  // 36524
 // Number of days in 400 years
 export const DaysPer400Years = DaysPer100Years * 4 + 1; // 146097
 
-// Number of days from 1/1/0001 to 12/31/1600
-export const DaysTo1601 = DaysPer400Years * 4;          // 584388
-// Number of days from 1/1/0001 to 12/30/1899
-export const DaysTo1899 = DaysPer400Years * 4 + DaysPer100Years * 3 - 367;
 // Number of days from 1/1/0001 to 12/31/1969
 export const DaysTo1970 = DaysPer400Years * 4 + DaysPer100Years * 3 + DaysPer4Years * 17 + DaysPerYear; // 719,162
 // Number of days from 1/1/0001 to 12/31/9999

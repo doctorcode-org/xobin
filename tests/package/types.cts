@@ -48,29 +48,21 @@ export const localeName: string = cultureData.name;
 import { DateOnly } from '@xobin/globalization/date-only';
 import { TimeOnly } from '@xobin/globalization/time-only';
 import { DateTimeKind } from '@xobin/globalization';
-import { TypeCode } from '@xobin/core';
 const dateOnly: DateOnly = new DateOnly(2024, 2, 29);
 const onlyComparison: number = dateOnly.compareTo({});
 const onlyEquality: boolean = dateOnly.equals(null);
-const onlyHash: number = dateOnly.getHashCode();
-const onlyParts: [number, number, number] = dateOnly.addDays(1).addMonths(-1).addYears(1).deconstruct();
+const onlyAdjusted: DateOnly = dateOnly.addDays(1).addMonths(-1).addYears(1);
 const onlyDayNumber: number = DateOnly.fromDayNumber(100).valueOf();
-void [onlyComparison,onlyEquality,onlyHash,onlyParts,onlyDayNumber];
+void [onlyComparison,onlyEquality,onlyAdjusted,onlyDayNumber];
 const timeOnly: TimeOnly = new TimeOnly(863999999999n);
 const wrappedDays = { result: 0 };
 const adjustedTime: TimeOnly = timeOnly.addHours(1, wrappedDays).addMinutes(-60, wrappedDays).add(new TimeSpan(1n), wrappedDays);
 const timeDifference: TimeSpan = timeOnly.subtract(adjustedTime);
 const timePrimitive: bigint = timeOnly.valueOf();
 const timeComparison: number = timeOnly.compareTo(null);
-const timeHour = { result: 0 }, timeMinute = { result: 0 };
-timeOnly.deconstruct(timeHour, timeMinute);
 void [adjustedTime,timeDifference,timePrimitive,timeComparison];
 const combined: DateTime = new DateTime(dateOnly, timeOnly, DateTimeKind.utc);
-const dateAndTime: [DateOnly, TimeOnly] = combined.deconstruct();
-const dateParts: [number, number, number] = combined.deconstruct('date');
-const code: TypeCode = combined.getTypeCode();
-const converted: DateTime = combined.toType(DateTime);
-export { dateOnly, timeOnly, combined, dateAndTime, dateParts, code, converted };
+export { dateOnly, timeOnly, combined };
 
 import { ISOWeek as DirectISOWeek } from '@xobin/globalization/iso-week';
 const isoWeeks: number = DirectISOWeek.getWeeksInYear(2020);
@@ -136,10 +128,8 @@ const cultureNameError: CultureNotFoundException = new CultureNotFoundException(
 const cultureIdError: CultureNotFoundException = new CultureNotFoundException(null, 1033, exceptionCause);
 const cultureInvalidName: string | null = cultureNameError.invalidCultureName;
 const cultureInvalidId: number | null = cultureIdError.invalidCultureId;
-argumentError.hResult = -42;
-const hResult: number = argumentError.hResult;
-const customCast = new InvalidCastException(null, -42);
+const customCast = new InvalidCastException(null, exceptionCause);
 for (const Type of [OverflowException, NullReferenceException, NotImplementedException, AmbiguousMatchException, InvalidOperationException, IndexOutOfRangeException, InvalidProgramException, NotSupportedException]) {
     void [new Type(), new Type(null), new Type('', exceptionCause)];
 }
-void [systemError, argumentError, argumentInner, nullError, rangeError, rangeInner, cultureInvalidName, cultureInvalidId, hResult, customCast];
+void [systemError, argumentError, argumentInner, nullError, rangeError, rangeInner, cultureInvalidName, cultureInvalidId, customCast];

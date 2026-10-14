@@ -22,9 +22,7 @@ test('TimeOnly core resolves from ESM and CommonJS subpaths', () => {
     assert.equal(new TimeType(1n) > new TimeType(), true);
     assert.equal(time.subtract(new TimeType(23, 0)).ticks, 18000000000n);
     assert.equal(time.isBetween(new TimeType(23, 0), new TimeType(1, 0)), true);
-    const hour = { result: 0 }, minute = { result: 0 }, second = { result: 0 }, millisecond = { result: 0 }, microsecond = { result: 0 };
-    time.deconstruct(hour, minute, second, millisecond, microsecond);
-    assert.deepEqual([hour.result, minute.result, second.result, millisecond.result, microsecond.result], [23, 30, 0, 0, 0]);
+    assert.deepEqual([time.hour, time.minute, time.second, time.millisecond, time.microsecond], [23, 30, 0, 0, 0]);
   }
   const time = new TimeOnly(123456789101n);
   assert.equal(TimeOnly.fromTimeSpan(time.toTimeSpan()).ticks, time.ticks);

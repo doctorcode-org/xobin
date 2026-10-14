@@ -9,6 +9,8 @@ const mode = process.argv[3] ?? '--check';
 const output = resolve(dirname(fileURLToPath(import.meta.url)), '../tests/dotnet10-test-inventory.json');
 const mappedFacts = new Map(Object.entries(JSON.parse(readFileSync(resolve(dirname(output), 'dotnet10/mapped-facts.json'), 'utf8'))));
 const mappedTheories = new Map(Object.entries(JSON.parse(readFileSync(resolve(dirname(output), 'dotnet10/mapped-theories.json'), 'utf8'))));
+const excludedScope = JSON.parse(readFileSync(resolve(dirname(output), 'dotnet10/excluded-members.json'), 'utf8'));
+const excludedMethods = new Set(excludedScope.testMethods);
 const usedMappings = new Set();
 const usedTheoryMappings = new Set();
 const fixtureCache = new Map();
@@ -190,6 +192,7 @@ for (const file of selected) {
         const cases = [];
         if (test[1].endsWith('Theory')) {
             const mappingKey = `${cls}.${declaration.name}`;
+            const excluded = excludedMethods.has(mappingKey);
             const mappedFile = mappedTheories.get(mappingKey);
             const mappedDetails = mappedFile ? mappedTheoryDetails(mappingKey, mappedFile) : null;
             if (mappedFile) {
@@ -210,8 +213,9 @@ for (const file of selected) {
                         dataLine: source.line,
                         dataAttribute: source.raw,
                         expansion: source.kind === 'InlineData' ? 'one-row' : 'unexpanded',
-                        status: mappedFile ? (source.kind === 'InlineData' ? 'mapped' : 'mapped-source') : (old?.status ?? 'unmapped'),
-                        jsTest: mappedFile ? `tests/dotnet10/${mappedFile}#${mappingKey}` : (old?.jsTest ?? null),
+                        status: excluded ? 'excluded' : mappedFile ? (source.kind === 'InlineData' ? 'mapped' : 'mapped-source') : (old?.status ?? 'unmapped'),
+                        jsTest: excluded ? null : mappedFile ? `tests/dotnet10/${mappedFile}#${mappingKey}` : (old?.jsTest ?? null),
+                        ...(excluded ? { reason: excludedScope.reason } : {}),
                         ...(dataSourceId ? { dataSourceId } : {})
                     });
                     if (isDynamic) {
@@ -226,7 +230,8 @@ for (const file of selected) {
                             sourceFile: file,
                             attributeLine: source.line,
                             attribute: source.raw,
-                            status: mappedDetails ? 'mapped' : 'unmapped',
+                            status: excluded ? 'excluded' : mappedDetails ? 'mapped' : 'unmapped',
+                            ...(excluded ? { reason: excludedScope.reason } : {}),
                             oracle: mappedDetails ? {
                                 fixture: mappedDetails.fixture,
                                 selector: mappedDetails.selector,
@@ -245,6 +250,7 @@ for (const file of selected) {
                 const id = `${methodId}#Fact@${testClass}`;
                 const old = previousCases.get(id);
                 const mappingKey = `${cls}.${declaration.name}`;
+                const excluded = excludedMethods.has(mappingKey);
                 const scopedKey = `${mappingKey}@${testClass}`;
                 const scopedMapping = mappedFacts.has(scopedKey);
                 const mappedFile = mappedFacts.get(scopedKey) ?? mappedFacts.get(mappingKey);
@@ -268,8 +274,9 @@ for (const file of selected) {
                     dataLine: null,
                     dataAttribute: null,
                     expansion: 'one-row',
-                    status: mappedFile ? 'mapped' : (old?.status ?? 'unmapped'),
-                    jsTest: mappedFile ? `tests/dotnet10/${mappedFile}#${mappedTitle}` : (old?.jsTest ?? null)
+                    status: excluded ? 'excluded' : mappedFile ? 'mapped' : (old?.status ?? 'unmapped'),
+                    jsTest: excluded ? null : mappedFile ? `tests/dotnet10/${mappedFile}#${mappedTitle}` : (old?.jsTest ?? null),
+                    ...(excluded ? { reason: excludedScope.reason } : {})
                 });
             }
         }
@@ -324,6 +331,7 @@ const byGroup = Object.fromEntries([...new Set(methods.map(method => method.grou
         unexpandedDataSources: groupCases.filter(testCase => testCase.expansion === 'unexpanded').length,
         mappedCases: groupCases.filter(testCase => testCase.status === 'mapped' && testCase.jsTest).length,
         mappedDataSources: groupCases.filter(testCase => testCase.status === 'mapped-source' && testCase.jsTest).length,
+        excludedCases: groupCases.filter(testCase => testCase.status === 'excluded').length,
         mappedOracleRows: dynamicDataSources.filter(source => source.status === 'mapped'
             && groupMethods.some(method => method.id === source.consumerMethod))
             .reduce((sum, source) => sum + source.oracle.rowCount, 0)
@@ -339,6 +347,8 @@ const summary = {
         .filter(testCase => testCase.status === 'mapped' && testCase.jsTest).length,
     mappedDataSources: methods.flatMap(method => method.cases)
         .filter(testCase => testCase.status === 'mapped-source' && testCase.jsTest).length,
+    excludedCases: methods.flatMap(method => method.cases)
+        .filter(testCase => testCase.status === 'excluded').length,
     mappedOracleRows: dynamicDataSources.filter(source => source.status === 'mapped')
         .reduce((sum, source) => sum + source.oracle.rowCount, 0),
     dataSourcesWithoutOracle: dynamicDataSources.filter(source => source.oracle === null).length,
@@ -350,6 +360,7 @@ const inventory = {
     sourceCommit,
     selection: 'DateTimeTests, TimeSpanTests, DateOnlyTests, TimeOnlyTests, full Calendars suite (ISOWeek flagged as adjacent), full DateTimeFormatInfo suite, CultureInfoCalendar and CultureInfoDateTimeFormat',
     interpretation: 'Cases are expanded for concrete Calendar test subclasses. A Fact or InlineData record is one case. Each dynamic MemberData, ClassData, or unresolved source has a dataSources record. A mapped source is valid only when its .NET 10 oracle fixture, exact row count, and JavaScript test are recorded.',
+    excludedScope: excludedScope.reason,
     summary,
     supportFiles,
     dataSources: dynamicDataSources,

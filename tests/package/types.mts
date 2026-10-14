@@ -48,15 +48,10 @@ export const localeName: string = cultureData.name;
 import { DateOnly } from '@xobin/globalization/date-only';
 import { TimeOnly } from '@xobin/globalization/time-only';
 import { CultureInfo, DateTimeKind } from '@xobin/globalization';
-import { TypeCode } from '@xobin/core';
 const dateOnly: DateOnly = new DateOnly(2024, 2, 29);
 const timeOnly: TimeOnly = new TimeOnly(863999999999n);
 const combined: DateTime = new DateTime(dateOnly, timeOnly, DateTimeKind.utc);
-const dateAndTime: [DateOnly, TimeOnly] = combined.deconstruct();
-const dateParts: [number, number, number] = combined.deconstruct('date');
-const code: TypeCode = combined.getTypeCode();
-const converted: DateTime = combined.toType(DateTime);
-export { dateOnly, timeOnly, combined, dateAndTime, dateParts, code, converted };
+export { dateOnly, timeOnly, combined };
 
 // @ts-expect-error Gregorian locale metadata is not part of the CLR CultureInfo API.
 CultureInfo.invariantCulture.gregorianDateTimeFormat;
@@ -76,29 +71,26 @@ void [isoDateTime, isoDateOnly];
 const spanProduct: TimeSpan = span.multiply(0.5);
 const spanQuotient: TimeSpan = span.divide(2);
 const spanRatio: number = span.divide(new DirectTimeSpan(2n));
-const spanHash: number = span.getHashCode();
 const integerDays: TimeSpan = DirectTimeSpan.fromDays(1n);
 const integerParts: TimeSpan = DirectTimeSpan.fromDays(1, 2, 3n, 4n, 5n, 6n);
 const integerSeconds: TimeSpan = DirectTimeSpan.fromSeconds(101n, 832n);
 const integerMicroseconds: TimeSpan = DirectTimeSpan.fromMicroseconds(1n);
 const floatingMicroseconds: TimeSpan = DirectTimeSpan.fromMicroseconds(1.5);
 const ticksPerDay: bigint = DirectTimeSpan.ticksPerDay;
-void [spanProduct,spanQuotient,spanRatio,spanHash,integerDays,integerParts,integerSeconds,integerMicroseconds,floatingMicroseconds,ticksPerDay];
+void [spanProduct,spanQuotient,spanRatio,integerDays,integerParts,integerSeconds,integerMicroseconds,floatingMicroseconds,ticksPerDay];
 
 const onlyFromNumber: DateOnly = DateOnly.fromDayNumber(100);
 const onlyFromDateTime: DateOnly = DateOnly.fromDateTime(combined);
-const onlyDateParts: [number, number, number] = dateOnly.deconstruct();
 const onlyComparison: number = dateOnly.compareTo(dateOnly);
 const onlyObjectComparison: number = dateOnly.compareTo({});
 const onlyNullComparison: number = dateOnly.compareTo(null);
 const onlyEquality: boolean = dateOnly.equals(dateOnly);
 const onlyObjectEquality: boolean = dateOnly.equals({});
-const onlyHash: number = dateOnly.getHashCode();
 const onlyPrimitive: number = dateOnly.valueOf();
 const onlyAdjusted: DateOnly = dateOnly.addDays(1).addMonths(1).addYears(1);
 const onlyCombined: DateTime = dateOnly.toDateTime(timeOnly);
 const onlyCombinedKind: DateTime = dateOnly.toDateTime(timeOnly, DateTimeKind.utc);
-void [onlyFromNumber,onlyFromDateTime,onlyDateParts,onlyComparison,onlyObjectComparison,onlyNullComparison,onlyEquality,onlyObjectEquality,onlyHash,onlyPrimitive,onlyAdjusted,onlyCombined,onlyCombinedKind];
+void [onlyFromNumber,onlyFromDateTime,onlyComparison,onlyObjectComparison,onlyNullComparison,onlyEquality,onlyObjectEquality,onlyPrimitive,onlyAdjusted,onlyCombined,onlyCombinedKind];
 // @ts-expect-error DateOnly requires the project's DateTimeKind enum wrapper.
 dateOnly.toDateTime(timeOnly, 1);
 
@@ -110,16 +102,10 @@ const within: boolean = timeOnly.isBetween(TimeOnly.minValue, TimeOnly.maxValue)
 const timeComparison: number = timeOnly.compareTo({});
 const timeEquality: boolean = timeOnly.equals(null);
 const timePrimitive: bigint = timeOnly.valueOf();
-const timeHash: number = timeOnly.getHashCode();
 const timeInterval: TimeSpan = timeOnly.toTimeSpan();
 const restoredTime: TimeOnly = TimeOnly.fromTimeSpan(timeInterval);
 const dateTimeTime: TimeOnly = TimeOnly.fromDateTime(combined);
-const timeParts: OutParam<number>[] = Array.from({ length: 5 }, () => ({ result: 0 }));
-timeOnly.deconstruct(timeParts[0]!, timeParts[1]!);
-timeOnly.deconstruct(timeParts[0]!, timeParts[1]!, timeParts[2]!);
-timeOnly.deconstruct(timeParts[0]!, timeParts[1]!, timeParts[2]!, timeParts[3]!);
-timeOnly.deconstruct(timeParts[0]!, timeParts[1]!, timeParts[2]!, timeParts[3]!, timeParts[4]!);
-void [adjustedTime,timeDifference,within,timeComparison,timeEquality,timePrimitive,timeHash,restoredTime,dateTimeTime];
+void [adjustedTime,timeDifference,within,timeComparison,timeEquality,timePrimitive,restoredTime,dateTimeTime];
 // @ts-expect-error A wrapped-day output uses the existing OutParam contract.
 timeOnly.addHours(1, 0);
 // @ts-expect-error TimeOnly tick constructors require exact bigint ticks.
@@ -175,10 +161,8 @@ const cultureNameError: CultureNotFoundException = new CultureNotFoundException(
 const cultureIdError: CultureNotFoundException = new CultureNotFoundException(null, 1033, exceptionCause);
 const cultureInvalidName: string | null = cultureNameError.invalidCultureName;
 const cultureInvalidId: number | null = cultureIdError.invalidCultureId;
-argumentError.hResult = -42;
-const hResult: number = argumentError.hResult;
-const customCast = new InvalidCastException(null, -42);
+const customCast = new InvalidCastException(null, exceptionCause);
 for (const Type of [OverflowException, NullReferenceException, NotImplementedException, AmbiguousMatchException, InvalidOperationException, IndexOutOfRangeException, InvalidProgramException, NotSupportedException]) {
     void [new Type(), new Type(null), new Type('', exceptionCause)];
 }
-void [systemError, argumentError, argumentInner, nullError, rangeError, rangeInner, cultureInvalidName, cultureInvalidId, hResult, customCast];
+void [systemError, argumentError, argumentInner, nullError, rangeError, rangeInner, cultureInvalidName, cultureInvalidId, customCast];

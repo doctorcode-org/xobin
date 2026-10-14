@@ -19,12 +19,12 @@ test('DateOnly constructors resolve from ESM and CommonJS subpaths', () => {
   assert.equal(CommonDateOnly.maxValue.dayNumber, 3652058);
   for (const DateType of [DateOnly, DirectDateOnly, CommonDateOnly]) {
     const leap = new DateType(2024, 2, 29);
-    assert.deepEqual(leap.addYears(1).deconstruct(), [2025, 2, 28]);
-    assert.deepEqual(leap.addMonths(1).deconstruct(), [2024, 3, 29]);
+    const nextYear = leap.addYears(1), nextMonth = leap.addMonths(1);
+    assert.deepEqual([nextYear.year, nextYear.month, nextYear.day], [2025, 2, 28]);
+    assert.deepEqual([nextMonth.year, nextMonth.month, nextMonth.day], [2024, 3, 29]);
     assert.equal(leap.addDays(1) > leap, true);
     assert.equal(leap.compareTo(null), 1);
     assert.equal(leap.equals({}), false);
-    assert.equal(leap.getHashCode(), leap.dayNumber);
   }
 });
 test('DateOnly conversions preserve time ticks and requested Kind', () => {
