@@ -1,5 +1,5 @@
 // Date format data generated from the pinned .NET 10.0.7 formatting oracle.
-import { CultureData, GregorianCalendar, HijriCalendar } from '@xobin/globalization';
+import { CultureData, GregorianCalendar } from '@xobin/globalization';
 export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 32, 
@@ -185,78 +185,6 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
         ]
       }
     },
-    calendarFormats: {
-      "1": {},
-      "6": {
-        "eraNames": [
-          "بعد الهجرة"
-        ],
-        "abbreviatedEraNames": [
-          "هـ"
-        ],
-        "monthNames": [
-          "محرم",
-          "صفر",
-          "ر بیع الاول",
-          "ر بیع الثانی",
-          "جمادی الاول",
-          "جمادی الثانی",
-          "رجب",
-          "شعبان",
-          "رمضان",
-          "شوال",
-          "ذوالقعدۃ",
-          "ذوالحجۃ",
-          ""
-        ],
-        "abbreviatedMonthNames": [
-          "محرم",
-          "صفر",
-          "ربیع الاوّل",
-          "ربیع الثّانی",
-          "جمادی الاوّل",
-          "جمادی الثّانی",
-          "رجب",
-          "شعبان",
-          "رمضان",
-          "شوال",
-          "ذوالقعدۃ",
-          "ذوالحجۃ",
-          ""
-        ],
-        "monthGenitiveNames": [
-          "محرم",
-          "صفر",
-          "ر بیع الاول",
-          "ر بیع الثانی",
-          "جمادی الاول",
-          "جمادی الثانی",
-          "رجب",
-          "شعبان",
-          "رمضان",
-          "شوال",
-          "ذوالقعدۃ",
-          "ذوالحجۃ",
-          ""
-        ],
-        "abbreviatedMonthGenitiveNames": [
-          "محرم",
-          "صفر",
-          "ربیع الاوّل",
-          "ربیع الثانی",
-          "جمادی الاوّل",
-          "جمادی الثانی",
-          "رجب",
-          "شعبان",
-          "رمضان",
-          "شوال",
-          "ذوالقعدۃ",
-          "ذوالحجۃ",
-          ""
-        ],
-        "nativeCalendarName": "اسلامی کیلنڈر"
-      }
-    },
-    calendarFactories: [() => new GregorianCalendar(1), () => new HijriCalendar()],
+    calendarFormats: {},
     calendar: new GregorianCalendar(1)
 };

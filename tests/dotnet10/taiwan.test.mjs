@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { DateTime, TaiwanCalendar, GregorianCalendar, CultureInfo } from '@xobin/globalization';
-import { cultureData } from '@xobin/globalization/locales/zh-TW';
+import { cultureData } from '@xobin/globalization/locales/zh-TW/full';
 
 CultureInfo.loadCultureInfo('zh-TW', cultureData);
 const fixture = JSON.parse(readFileSync(new URL('./taiwan-cases.json', import.meta.url), 'utf8'));

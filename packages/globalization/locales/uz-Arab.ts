@@ -1,5 +1,5 @@
 // Date format data generated from the pinned .NET 10.0.7 formatting oracle.
-import { CultureData, PersianCalendar, GregorianCalendar, HijriCalendar } from '@xobin/globalization';
+import { CultureData, PersianCalendar } from '@xobin/globalization';
 export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "uz", 
     lcid: 4096, 
@@ -253,78 +253,7 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
           ""
         ],
         "nativeCalendarName": "gregorian"
-      },
-      "6": {
-        "eraNames": [
-          "بعد الهجرة"
-        ],
-        "abbreviatedEraNames": [
-          "هـ"
-        ],
-        "monthNames": [
-          "Muharram",
-          "Safar",
-          "Rabiʻ I",
-          "Rabiʻ II",
-          "Jumada I",
-          "Jumada II",
-          "Rajab",
-          "Shaʻban",
-          "Ramadan",
-          "Shawwal",
-          "Dhuʻl-Qiʻdah",
-          "Dhuʻl-Hijjah",
-          ""
-        ],
-        "abbreviatedMonthNames": [
-          "Muh.",
-          "Saf.",
-          "Rab. I",
-          "Rab. II",
-          "Jum. I",
-          "Jum. II",
-          "Raj.",
-          "Sha.",
-          "Ram.",
-          "Shaw.",
-          "Dhuʻl-Q.",
-          "Dhuʻl-H.",
-          ""
-        ],
-        "monthGenitiveNames": [
-          "Muharram",
-          "Safar",
-          "Rabiʻ I",
-          "Rabiʻ II",
-          "Jumada I",
-          "Jumada II",
-          "Rajab",
-          "Shaʻban",
-          "Ramadan",
-          "Shawwal",
-          "Dhuʻl-Qiʻdah",
-          "Dhuʻl-Hijjah",
-          ""
-        ],
-        "abbreviatedMonthGenitiveNames": [
-          "Muh.",
-          "Saf.",
-          "Rab. I",
-          "Rab. II",
-          "Jum. I",
-          "Jum. II",
-          "Raj.",
-          "Sha.",
-          "Ram.",
-          "Shaw.",
-          "Dhuʻl-Q.",
-          "Dhuʻl-H.",
-          ""
-        ],
-        "nativeCalendarName": "islamic"
-      },
-      "22": {}
+      }
     },
-    calendarFactories: [() => new PersianCalendar(), () => new GregorianCalendar(1), () => new HijriCalendar()],
     calendar: new PersianCalendar()
 };

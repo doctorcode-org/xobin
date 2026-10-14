@@ -4,6 +4,7 @@ import { PersianCalendar as DirectPersianCalendar } from '@xobin/globalization/p
 import { ThaiBuddhistCalendar as DirectThaiBuddhistCalendar } from '@xobin/globalization/thai-buddhist-calendar';
 import { UmAlQuraCalendar as DirectUmAlQuraCalendar } from '@xobin/globalization/um-al-qura-calendar';
 import { cultureData } from '@xobin/globalization/locales/fa-IR';
+import { cultureData as fullCultureData } from '@xobin/globalization/locales/fa-IR/full';
 import { DateTimeStyles } from '@xobin/globalization/date-time-styles';
 import { DateTimeFormatInfo } from '@xobin/globalization/date-time-format-info';
 
@@ -44,6 +45,7 @@ const readOnlyFlag: boolean = readOnlyPersian.isReadOnly;
 export { span, calendar, ticks, persianEra, persianEras, persianDate, thaiCalendar, thaiEra, thaiEras, thaiDate,
   umAlQuraCalendar, umAlQuraEra, umAlQuraEras, umAlQuraDate, readOnlyPersian, clonedPersian, readOnlyFlag };
 export const localeName: string = cultureData.name;
+export const fullLocaleName: string = fullCultureData.name;
 
 import { DateOnly } from '@xobin/globalization/date-only';
 import { TimeOnly } from '@xobin/globalization/time-only';

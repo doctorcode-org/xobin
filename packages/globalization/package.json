@@ -157,6 +157,26 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/iso_week.mjs",
       "require": "./dist/index.js"
+    },
+    "./locales/ca-ES-VALENCIA": {
+      "types": "./dist/locales/ca-ES-valencia.d.ts",
+      "import": "./dist/locales/ca-ES-valencia.mjs",
+      "require": "./dist/locales/ca-ES-valencia.js"
+    },
+    "./dist/locales/ca-ES-VALENCIA": {
+      "types": "./dist/locales/ca-ES-valencia.d.ts",
+      "import": "./dist/locales/ca-ES-valencia.mjs",
+      "require": "./dist/locales/ca-ES-valencia.js"
+    },
+    "./locales/ca-ES-valencia/full": {
+      "types": "./dist/locales/ca-ES-VALENCIA/full.d.ts",
+      "import": "./dist/locales/ca-ES-VALENCIA/full.mjs",
+      "require": "./dist/locales/ca-ES-VALENCIA/full.js"
+    },
+    "./dist/locales/ca-ES-valencia/full": {
+      "types": "./dist/locales/ca-ES-VALENCIA/full.d.ts",
+      "import": "./dist/locales/ca-ES-VALENCIA/full.mjs",
+      "require": "./dist/locales/ca-ES-VALENCIA/full.js"
     }
   },
   "sideEffects": false,

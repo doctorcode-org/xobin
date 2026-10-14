@@ -1,5 +1,5 @@
 // Date format data generated from the pinned .NET 10.0.7 formatting oracle.
-import { CultureData, ThaiBuddhistCalendar, GregorianCalendar } from '@xobin/globalization';
+import { CultureData, ThaiBuddhistCalendar } from '@xobin/globalization';
 export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 30, 
@@ -194,9 +194,7 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
           "ค.ศ."
         ],
         "nativeCalendarName": "ปฏิทินเกรกอเรียน"
-      },
-      "7": {}
+      }
     },
-    calendarFactories: [() => new ThaiBuddhistCalendar(), () => new GregorianCalendar(1)],
     calendar: new ThaiBuddhistCalendar()
 };

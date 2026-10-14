@@ -20,7 +20,9 @@ for (const [name, data] of Object.entries(fixture.cultures)) {
     ...CultureInfo.invariantCulture, parent: '', name,
     calendar: data.calendar === 'GregorianCalendar' ? new GregorianCalendar(data.calendarId) : new calendars[data.calendar](),
     dateTimeFormat: data.formatInfo,
-    calendarFormats: data.calendarFormats,
+    // Ordinary formatting needs the default calendar and Gregorian data for 'U'.
+    calendarFormats: Object.fromEntries(Object.entries(data.calendarFormats)
+      .filter(([id]) => Number(id) === data.calendarId || Number(id) === 1)),
   });
 }
 

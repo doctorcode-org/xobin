@@ -1,7 +1,7 @@
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-  entry: ['locales/*.ts'],
+  entry: ['locales/**/*.ts'],
   format: ['esm'],
   outDir: 'dist/locales',
   target: 'es2022',

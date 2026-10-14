@@ -47,6 +47,9 @@ export interface DateTimeFormatState {
     cultureName: string;
     decimalSeparator: string;
     calendarFormats: ReadonlyMap<number, DateTimeFormatData>;
+
+    /** Calendar identities explicitly available for selection; format-only data does not grant access. */
+    supportedCalendarIds: ReadonlySet<number>;
 }
 
 export const dateTimeFormatStates = new WeakMap<object, DateTimeFormatState>();

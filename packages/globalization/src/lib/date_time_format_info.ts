@@ -26,6 +26,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
             cultureName: '',
             decimalSeparator: '.',
             calendarFormats: new Map([[1, copyFormatData(invariantDateTimeFormat)]]),
+            supportedCalendarIds: new Set([1]),
         });
     }
 
@@ -76,6 +77,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
             calendar: this.calendar.clone(),
             isReadOnly: false,
             calendarFormats: this.state.calendarFormats,
+            supportedCalendarIds: this.state.supportedCalendarIds,
             cultureName: this.state.cultureName,
             decimalSeparator: this.state.decimalSeparator,
         });
@@ -96,6 +98,7 @@ export class DateTimeFormatInfo implements IFormatProvider {
             calendar: Calendar.readOnly(dtfi.calendar),
             isReadOnly: true,
             calendarFormats: dtfi.state.calendarFormats,
+            supportedCalendarIds: dtfi.state.supportedCalendarIds,
             cultureName: dtfi.state.cultureName,
             decimalSeparator: dtfi.state.decimalSeparator,
         });
@@ -121,7 +124,8 @@ export class DateTimeFormatInfo implements IFormatProvider {
         this.verifyWritable();
         if (value == null) throw new ArgumentNullException('value');
         if (value === this.calendar) return;
-        const data = getCalendarFormatData(this.state, getCalendarIdentity(value).id);
+        const id = getCalendarIdentity(value).id;
+        const data = this.state.supportedCalendarIds.has(id) ? getCalendarFormatData(this.state, id) : undefined;
         if (!data) throw new ArgumentOutOfRangeException('value', value, SR.Argument_InvalidCalendar);
         this.state.data = data;
         this.state.calendar = value;
@@ -657,15 +661,25 @@ registerDateTimeFormatInfoType(DateTimeFormatInfo);
  * @param calendarFormats The optional calendars and their format-data overrides from the locale oracle.
  * @param cultureName The culture used for linguistic era-name comparison.
  * @param decimalSeparator The culture's original decimal separator for TimeSpan formatting.
+ * @param supportedCalendarIds The calendar identities explicitly loaded for selection.
  * @internal
  */
 export function createDateTimeFormatInfo(data: DateTimeFormatData, calendar: Calendar,
-    calendarFormats?: Readonly<Record<number, Partial<DateTimeFormatData>>>, cultureName: string = '', decimalSeparator: string = '.'): DateTimeFormatInfo {
+    calendarFormats?: Readonly<Record<number, Partial<DateTimeFormatData>>>, cultureName: string = '', decimalSeparator: string = '.',
+    supportedCalendarIds?: ReadonlySet<number>): DateTimeFormatInfo {
     const info = new DateTimeFormatInfo();
     const formats = new Map<number, DateTimeFormatData>(Object.entries(calendarFormats ?? {})
         .map(([id, overrides]) => [Number(id), copyFormatData({ ...data, ...overrides })]));
     formats.set(getCalendarIdentity(calendar).id, copyFormatData(data));
-    dateTimeFormatStates.set(info, { data: copyFormatData(data), calendar, isReadOnly: false, calendarFormats: formats, cultureName, decimalSeparator });
+    dateTimeFormatStates.set(info, {
+        data: copyFormatData(data),
+        calendar,
+        isReadOnly: false,
+        calendarFormats: formats,
+        supportedCalendarIds: new Set(supportedCalendarIds ?? formats.keys()),
+        cultureName,
+        decimalSeparator,
+    });
     return info;
 }
 

@@ -5,7 +5,7 @@ import { KoreanCalendar, TaiwanCalendar, JapaneseCalendar, HijriCalendar, Hebrew
 const fixture = JSON.parse(readFileSync(new URL('./calendar-dependencies-cases.json', import.meta.url), 'utf8'));
 assert.equal(fixture.runtime, '10.0.7');
 for (const name of ['ja-JP', 'zh-TW', 'ko-KR', 'ar-SA', 'he-IL']) {
-    const { cultureData } = await import('@xobin/globalization/locales/' + name);
+    const { cultureData } = await import('@xobin/globalization/locales/' + name + '/full');
     CultureInfo.loadCultureInfo(name, cultureData);
 }
 const constructors = { KoreanCalendar, TaiwanCalendar, JapaneseCalendar, HijriCalendar, HebrewCalendar };

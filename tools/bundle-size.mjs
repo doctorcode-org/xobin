@@ -17,6 +17,7 @@ const scenarios = [
   { name: 'format-fa-IR', types: ['DateTime', 'CultureInfo'], locale: 'fa-IR', expression: "new DateTime(2024, 3, 20, 13, 45, 0).toString('yyyy/MM/dd HH:mm', culture)" },
   { name: 'format-en-US', types: ['DateTime', 'CultureInfo'], locale: 'en-US', expression: "new DateTime(2024, 3, 20, 13, 45, 0).toString('yyyy/MM/dd HH:mm', culture)", expected: '2024/03/20 13:45' },
   { name: 'typical-fa-IR', types: ['DateTime', 'DateOnly', 'TimeOnly', 'TimeSpan', 'CultureInfo'], locale: 'fa-IR', expression: "[new DateTime(2024, 3, 20, 13, 45, 0).toString('G', culture), new DateOnly(2024, 3, 20).toString('D', culture), new TimeOnly(13, 45).toString('T', culture), TimeSpan.fromHours(2).toString('g', culture)]" },
+  { name: 'typical-fa-IR-full', types: ['DateTime', 'DateOnly', 'TimeOnly', 'TimeSpan', 'CultureInfo'], locale: 'fa-IR', full: true, expression: "[new DateTime(2024, 3, 20, 13, 45, 0).toString('G', culture), new DateOnly(2024, 3, 20).toString('D', culture), new TimeOnly(13, 45).toString('T', culture), TimeSpan.fromHours(2).toString('g', culture)]" },
 ];
 const subpaths = { TimeSpan: 'time-span', DateTime: 'date-time', DateOnly: 'date-only', TimeOnly: 'time-only', CultureInfo: 'culture-info', PersianCalendar: 'persian-calendar' };
 const rows = [];
@@ -28,7 +29,8 @@ for (const scenario of scenarios) {
       const imports = entry === 'root'
         ? commonjs ? `const {${scenario.types}} = require('@xobin/globalization');` : `import {${scenario.types}} from '@xobin/globalization';`
         : scenario.types.map(type => commonjs ? `const {${type}} = require('@xobin/globalization/${subpaths[type]}');` : `import {${type}} from '@xobin/globalization/${subpaths[type]}';`).join('\n');
-      const locale = scenario.locale ? `${commonjs ? `const {cultureData} = require('@xobin/globalization/locales/${scenario.locale}');` : `import {cultureData} from '@xobin/globalization/locales/${scenario.locale}';`}\nconst culture = CultureInfo.loadCultureInfo('${scenario.locale}', cultureData);` : '';
+      const localePath = `@xobin/globalization/locales/${scenario.locale}${scenario.full ? '/full' : ''}`;
+      const locale = scenario.locale ? `${commonjs ? `const {cultureData} = require('${localePath}');` : `import {cultureData} from '${localePath}';`}\nconst culture = CultureInfo.loadCultureInfo('${scenario.locale}', cultureData);` : '';
       const result = await build({ stdin: { contents: `${imports}\n${locale}\nglobalThis.bundleSizeResult = ${scenario.expression};`, resolveDir: root, sourcefile: 'size-consumer.mjs' }, bundle: true, minify: true, treeShaking: true, platform: mode.startsWith('browser') ? 'browser' : 'node', format: commonjs ? 'cjs' : 'esm', target: 'es2020', write: false, metafile: true, legalComments: 'none', logLevel: 'silent' });
       const bytes = result.outputFiles[0].contents;
       const context = { Intl, Date, TextEncoder, TextDecoder };
@@ -38,8 +40,11 @@ for (const scenario of scenarios) {
       if (reference === undefined) reference = actual;
       else assert.deepEqual(actual, reference, `${scenario.name}/${entry}/${mode}`);
       const inputs = Object.entries(Object.values(result.metafile.outputs)[0].inputs).filter(([, info]) => info.bytesInOutput > 0).map(([input, info]) => ({ input, bytesInOutput: info.bytesInOutput }));
-      const locales = inputs.filter(({ input }) => /[/\\]locales[/\\]/.test(input)).map(({ input }) => path.basename(input));
-      assert.ok(locales.every(name => name === `${scenario.locale}.${commonjs ? 'js' : 'mjs'}`), `unrelated locale: ${locales}`);
+      const localeInputs = inputs.filter(({ input }) => /[/\\]locales[/\\]/.test(input)).map(({ input }) => input.replaceAll('\\', '/'));
+      const extension = commonjs ? 'js' : 'mjs';
+      assert.ok(localeInputs.every(input => input.endsWith(`/locales/${scenario.locale}.${extension}`)
+        || scenario.full && input.endsWith(`/locales/${scenario.locale}/full.${extension}`)), `unrelated locale: ${localeInputs}`);
+      const locales = localeInputs.map(input => path.basename(input));
       const filename = `${scenario.name}-${entry}-${mode}`;
       await writeFile(path.join(outputDirectory, `${filename}.${commonjs ? 'cjs' : 'mjs'}`), bytes);
       rows.push({ scenario: scenario.name, entry, mode, bytes: bytes.length, gzip: gzipSync(bytes, { level: 9 }).length, brotli: brotliCompressSync(bytes, { params: { [constants.BROTLI_PARAM_QUALITY]: 11 } }).length, result: actual, locales, inputs });

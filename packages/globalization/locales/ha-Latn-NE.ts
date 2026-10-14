@@ -1,5 +1,5 @@
 // Date format data generated from the pinned .NET 10.0.7 formatting oracle.
-import { CultureData, GregorianCalendar, HijriCalendar } from '@xobin/globalization';
+import { CultureData, GregorianCalendar } from '@xobin/globalization';
 export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "ha-Latn", 
     lcid: 4096, 
@@ -186,78 +186,6 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
         ]
       }
     },
-    calendarFormats: {
-      "1": {},
-      "6": {
-        "eraNames": [
-          "بعد الهجرة"
-        ],
-        "abbreviatedEraNames": [
-          "هـ"
-        ],
-        "monthNames": [
-          "Muharram",
-          "Safar",
-          "Rabiʻ I",
-          "Rabiʻ II",
-          "Jumada I",
-          "Jumada II",
-          "Rajab",
-          "Shaʼaban",
-          "Ramadan",
-          "Shawwal",
-          "Dhuʻl-Qiʻdah",
-          "Dhuʻl-Hijjah",
-          ""
-        ],
-        "abbreviatedMonthNames": [
-          "Muh.",
-          "Saf.",
-          "Rab. I",
-          "Rab. II",
-          "Jum. I",
-          "Jum. II",
-          "Raj.",
-          "Sha.",
-          "Ram.",
-          "Shaw.",
-          "Dhuʻl-Q.",
-          "Dhuʻl-H.",
-          ""
-        ],
-        "monthGenitiveNames": [
-          "Muharram",
-          "Safar",
-          "Rabiʻ I",
-          "Rabiʻ II",
-          "Jumada I",
-          "Jumada II",
-          "Rajab",
-          "Shaʼaban",
-          "Ramadan",
-          "Shawwal",
-          "Dhuʻl-Qiʻdah",
-          "Dhuʻl-Hijjah",
-          ""
-        ],
-        "abbreviatedMonthGenitiveNames": [
-          "Muh.",
-          "Saf.",
-          "Rab. I",
-          "Rab. II",
-          "Jum. I",
-          "Jum. II",
-          "Raj.",
-          "Sha.",
-          "Ram.",
-          "Shaw.",
-          "Dhuʻl-Q.",
-          "Dhuʻl-H.",
-          ""
-        ],
-        "nativeCalendarName": "Kalandar Musulunci"
-      }
-    },
-    calendarFactories: [() => new GregorianCalendar(1), () => new HijriCalendar()],
+    calendarFormats: {},
     calendar: new GregorianCalendar(1)
 };

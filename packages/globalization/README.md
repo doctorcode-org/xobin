@@ -16,6 +16,27 @@ Parsing remains deferred.
 
 ## Browser culture loading
 
+The default locale module loads its default calendar only. Gregorian overrides
+required by the standard `U` format remain as data; they do not permit selecting
+an alternate calendar. The `loadCultureInfo` name, arguments and synchronous
+return value are unchanged.
+
+To enable all alternate calendars supported by a culture, explicitly import its
+`full` module instead:
+
+```ts
+import { CultureInfo, HijriCalendar } from '@xobin/globalization';
+import { cultureData } from '@xobin/globalization/locales/fa-IR/full';
+
+const culture = CultureInfo.loadCultureInfo('fa-IR', cultureData);
+culture.dateTimeFormat.calendar = new HijriCalendar();
+```
+
+Both paths work in ESM and CommonJS. Importing `full` only exports data; it does
+not register the culture or change `currentCulture`. Loading new data for a name
+affects subsequently created instances. Existing instances and `currentCulture`
+keep their existing calendars and format state.
+
 Import each required culture explicitly. Importing a locale does not register it
 or load the other locale modules. The loader's name, arguments and synchronous
 return value are unchanged:
@@ -82,13 +103,14 @@ count to an `OutParam<number>` object (`{ result: 0 }`). Too-small buffers retur
 false with a zero count.
 
 Formatting data for invariant and every shipped culture module is generated
-from the .NET reference, including optional-calendar differences and Gregorian
-variants for `U`. The catalog includes all cultures enumerated by the pinned
+from the .NET reference. Default modules retain Gregorian variants required by
+`U`; explicit `full` modules add alternate-calendar data and factories.
+The catalog includes all cultures enumerated by the pinned
 reference environment. `tools/dotnet10-format-locales.mjs --check` verifies
 the profile data and culture-name union against the oracle. Every culture
 remains an independent module, including newly added reference cultures.
-Non-default calendars without an implementation and parsing remain roadmap
-dependencies; matching default-culture formatting does not claim their parity.
+Parsing remains deferred. Tests cover default formatting separately from
+explicit alternate-calendar selection and formatting.
 
 ## DateTimeFormatInfo
 

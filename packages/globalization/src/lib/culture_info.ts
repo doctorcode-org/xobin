@@ -9,6 +9,7 @@ import { getOrCreateValue, PlainObject, setValue, ArgumentNullException, Invalid
 import { CultureData } from './culture_data';
 import { CultureNotFoundException } from './exceptions';
 import { GregorianCalendar } from './gregorian_calendar';
+import { getCalendarIdentity } from './calendar_identity';
 
 const optionalCalendarFactories = new WeakMap<CultureInfo, readonly (() => Calendar)[]>();
 
@@ -176,10 +177,19 @@ export class CultureInfo {
                     });
                 }                
             });
-        optionalCalendarFactories.set(this, cultureData.calendarFactories ?? [() => this.calendar.clone()]);
+        const calendarFactories: readonly (() => Calendar)[] = cultureData.calendarFactories ?? [() => this.calendar.clone()];
+        optionalCalendarFactories.set(this, calendarFactories);
+        // Gregorian data used by the universal format does not make that calendar selectable.
+        const supportedCalendarIds = new Set([getCalendarIdentity(this.calendar).id]);
+        if (cultureData.calendarFactories) {
+            for (const createCalendar of calendarFactories) {
+                supportedCalendarIds.add(getCalendarIdentity(createCalendar()).id);
+            }
+        }
         const calendarFormats = cultureData.calendarFormats ?? (cultureData.gregorianDateTimeFormat
             ? { 1: cultureData.gregorianDateTimeFormat } : undefined);
-        this.dateTimeFormat = createDateTimeFormatInfo(cultureData.dateTimeFormat, this.calendar, calendarFormats, name, cultureData.numberFormat.numberDecimalSeparator);
+        this.dateTimeFormat = createDateTimeFormatInfo(cultureData.dateTimeFormat, this.calendar, calendarFormats, name,
+            cultureData.numberFormat.numberDecimalSeparator, supportedCalendarIds);
     }
 
     /**

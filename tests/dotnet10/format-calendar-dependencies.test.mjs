@@ -7,7 +7,7 @@ const fixture = JSON.parse(readFileSync(new URL('./format-calendar-dependencies-
 assert.equal(fixture.runtime, '10.0.7');
 for (const row of fixture.optional) {
     if (row.name) {
-        const { cultureData } = await import('@xobin/globalization/locales/' + row.name);
+        const { cultureData } = await import('@xobin/globalization/locales/' + row.name + '/full');
         CultureInfo.loadCultureInfo(row.name, cultureData);
     }
 }

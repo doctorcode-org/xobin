@@ -203,9 +203,6 @@ export const cultureData: CultureData & { calendarFormats?: Readonly<Record<numb
         ]
       }
     },
-    calendarFormats: {
-      "1": {}
-    },
-    calendarFactories: [() => new GregorianCalendar(1)],
+    calendarFormats: {},
     calendar: new GregorianCalendar(1)
 };

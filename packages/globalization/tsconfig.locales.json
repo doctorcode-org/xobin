@@ -3,7 +3,10 @@
   "compilerOptions": {
     "outDir": "./dist/locales",
     "rootDir": "./locales",
-    "target": "es5",
+    "target": "es2022",
+    "paths": {
+      "@xobin/globalization/locales/*": ["./locales/*"]
+    },
     "sourceMap": false
   },
   "include": ["./locales/**/*.ts"]

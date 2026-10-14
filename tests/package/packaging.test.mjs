@@ -201,8 +201,8 @@ for (const [name, subpath] of [['JulianCalendar', 'julian-calendar'], ['Japanese
   });
 }
 
-test('a selected Japanese culture includes its optional calendar and excludes other calendar data', async () => {
-  const output = await bundle("import { CultureInfo } from '@xobin/globalization'; import { cultureData } from '@xobin/globalization/locales/ja-JP'; CultureInfo.loadCultureInfo('ja-JP', cultureData); globalThis.value = new CultureInfo('ja-JP').optionalCalendars;");
+test('a full Japanese culture includes its optional calendar and excludes other calendar data', async () => {
+  const output = await bundle("import { CultureInfo } from '@xobin/globalization'; import { cultureData } from '@xobin/globalization/locales/ja-JP/full'; CultureInfo.loadCultureInfo('ja-JP', cultureData); globalThis.value = new CultureInfo('ja-JP').optionalCalendars;");
   assert.match(output, /JapaneseCalendar/);
   for (const other of ['HebrewCalendar', 'HijriCalendar', 'KoreanCalendar', 'TaiwanCalendar', 'PersianCalendar', 'UmAlQuraCalendar']) assert.equal(output.includes(other), false);
 });

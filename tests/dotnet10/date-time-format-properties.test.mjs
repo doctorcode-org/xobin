@@ -5,9 +5,9 @@ import { CultureInfo, DateTimeFormatInfo, DateTime, DateTimeKind, GregorianCalen
 import { cultureData as locale0 } from '@xobin/globalization/locales/en-US';
 import { cultureData as locale1 } from '@xobin/globalization/locales/fr-FR';
 import { cultureData as locale2 } from '@xobin/globalization/locales/ru-RU';
-import { cultureData as locale3 } from '@xobin/globalization/locales/fa-IR';
-import { cultureData as locale4 } from '@xobin/globalization/locales/ar-SA';
-import { cultureData as locale5 } from '@xobin/globalization/locales/th-TH';
+import { cultureData as locale3 } from '@xobin/globalization/locales/fa-IR/full';
+import { cultureData as locale4 } from '@xobin/globalization/locales/ar-SA/full';
+import { cultureData as locale5 } from '@xobin/globalization/locales/th-TH/full';
 import { cultureData as locale6 } from '@xobin/globalization/locales/br-FR';
 CultureInfo.loadCultureInfo('en-US', locale0);
 CultureInfo.loadCultureInfo('fr-FR', locale1);
