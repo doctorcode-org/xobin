@@ -1,11 +1,13 @@
 {
   "name": "xobin-source",
   "private": true,
-  "description": "The xobin is a framework for developing faster, easier and modular modern web applications.",
-  "homepage": "https://www.xobinjs.com",
-  "bugs": "",
+  "description": "Xobin TypeScript libraries for exact dates, times, calendars and culture-aware formatting.",
+  "homepage": "https://github.com/doctorcode-org/xobin",
+  "bugs": {
+    "url": "https://github.com/doctorcode-org/xobin/issues"
+  },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "author": "DoctorCode Team",
   "license": "MIT",
@@ -15,40 +17,32 @@
   },
   "scripts": {
     "build": "npm run build --workspace @xobin/core && npm run build --workspace @xobin/globalization",
-    "test": "npm run build && npm run test:types && node --test tests/package/*.test.mjs tests/dotnet10/*.test.mjs",
-    "test:types": "tsc --project tests/package/tsconfig.json"
+    "test": "npm run build && npm run test:types && npm run test:unit",
+    "test:types": "tsc --project tests/package/tsconfig.json",
+    "test:unit": "node tools/test.mjs",
+    "test:browser": "node tools/browser-tests.mjs",
+    "test:packed": "node tools/release.mjs test-packed",
+    "test:size": "node tools/bundle-size.mjs && node tools/bundle-size-budget.mjs",
+    "check:generated": "node tools/dotnet10-format-locales.mjs --check && node tools/dotnet10-api-inventory.mjs --local --check",
+    "release:check": "node tools/release.mjs check",
+    "release:pack": "npm run build && node tools/release.mjs pack",
+    "release:prepare": "npm test && npm run check:generated && npm run test:browser && npm run test:packed && npm run test:size && npm run release:check",
+    "browser:install": "node tools/browser-tests.mjs install",
+    "release:publish": "node tools/publish.mjs"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.0.6",
-    "@rollup/plugin-sucrase": "^4.0.1",
-    "@rollup/plugin-typescript": "^6.0.0",
-    "@types/glob": "^7.2.0",
-    "@types/jasmine": "^3.10.0",
-    "@types/karma": "^6.3.1",
-    "@types/rollup-plugin-node-builtins": "^2.1.2",
-    "@types/rollup-plugin-node-globals": "^1.4.1",
-    "esbuild": "^0.28.2",
-    "gulp": "^4.0.2",
-    "jasmine-core": "^3.10.0",
-    "karma": "^6.3.5",
-    "karma-chrome-launcher": "^3.1.0",
-    "karma-jasmine": "^4.0.1",
-    "karma-jasmine-html-reporter": "^1.7.0",
-    "karma-rollup-plugin": "^0.2.4",
-    "karma-rollup-preprocessor": "^7.0.7",
-    "karma-spec-reporter": "0.0.32",
-    "lerna": "^4.0.0",
-    "rollup": "^2.58.0",
-    "rollup-plugin-node-builtins": "^2.1.2",
-    "rollup-plugin-node-globals": "^1.4.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "ts-node": "^10.3.0",
-    "tsup": "^8.5.1",
-    "typescript": "^5.9.3",
-    "rollup-plugin-typescript2": "^0.30.0"
+    "@playwright/test": "1.64.1",
+    "esbuild": "0.28.2",
+    "tsup": "8.5.1",
+    "typescript": "5.9.3"
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "packageManager": "npm@11.13.0",
+  "overrides": {
+    "tsup": {
+      "esbuild": "0.28.2"
+    }
+  }
 }

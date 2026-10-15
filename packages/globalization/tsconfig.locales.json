@@ -5,9 +5,15 @@
     "rootDir": "./locales",
     "target": "es2022",
     "paths": {
-      "@xobin/globalization/locales/*": ["./locales/*"]
+      "@xobin/globalization/locales/*": [
+        "./locales/*"
+      ]
     },
-    "sourceMap": false
+    "sourceMap": false,
+    "module": "Node16",
+    "moduleResolution": "Node16"
   },
-  "include": ["./locales/**/*.ts"]
+  "include": [
+    "./locales/**/*.ts"
+  ]
 }

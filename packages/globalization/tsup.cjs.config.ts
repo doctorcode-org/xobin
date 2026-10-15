@@ -1,11 +1,8 @@
 import { defineConfig } from 'tsup';
+import { entry } from './tsup.entries';
 
 export default defineConfig({
-  entry: {
-    index: 'src/index.ts',
-    date_time_styles: 'src/lib/date_time_styles.ts',
-    date_time_format_info: 'src/date_time_format_info.ts',
-  },
+  entry,
   format: ['cjs'],
   outDir: 'dist',
   target: 'es2022',

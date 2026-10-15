@@ -1,221 +1,193 @@
-# `Xobin`
+# @xobin/globalization
 
-The sources for this package are in the main [Xobin](https://github.com/doctorcode-org/xobin) repo. Please file issues and pull requests against that repo.
+Exact date/time arithmetic, fourteen concrete calendars and culture-aware date/time
+formatting for modern browsers and Node.js. Implemented in TypeScript with ESM and
+CommonJS entries. The calendar and formatting reference is .NET 10.0.7.
 
-Usage information and reference details can be found in [Xobin documentation](https://xobinjs.com/docs).
+## Install
 
-License: MIT
-
-## JavaScript API scope
-
-The .NET reference verifies selected behavior; full CLR API equality is not a goal.
-Binary/OADate/FileTime, CLR conversions, TypeCode, SerializationInfo, temporal
-hash/deconstruction and exception HRESULT contracts have been removed.
-Formatting and exact ticks remain supported. See [API scope](../../tests/JAVASCRIPT_API_SCOPE.md).
-Parsing remains deferred.
-
-## Browser culture loading
-
-The default locale module loads its default calendar only. Gregorian overrides
-required by the standard `U` format remain as data; they do not permit selecting
-an alternate calendar. The `loadCultureInfo` name, arguments and synchronous
-return value are unchanged.
-
-To enable all alternate calendars supported by a culture, explicitly import its
-`full` module instead:
-
-```ts
-import { CultureInfo, HijriCalendar } from '@xobin/globalization';
-import { cultureData } from '@xobin/globalization/locales/fa-IR/full';
-
-const culture = CultureInfo.loadCultureInfo('fa-IR', cultureData);
-culture.dateTimeFormat.calendar = new HijriCalendar();
+```sh
+npm install @xobin/globalization
 ```
 
-Both paths work in ESM and CommonJS. Importing `full` only exports data; it does
-not register the culture or change `currentCulture`. Loading new data for a name
-affects subsequently created instances. Existing instances and `currentCulture`
-keep their existing calendars and format state.
+The matching @xobin/core dependency is installed automatically.
 
-Import each required culture explicitly. Importing a locale does not register it
-or load the other locale modules. The loader's name, arguments and synchronous
-return value are unchanged:
+## User documentation
+
+Read the [usage guide](docs/USAGE.md) for complete, runnable examples of date/time
+arithmetic, DateOnly/TimeOnly, durations, cultures, all calendar imports, ISO weeks,
+native Date integration and server request cultures. The
+[formatting reference](docs/FORMATTING.md) explains standard and custom formats,
+DateTimeFormatInfo, literal escaping and UTF-8/UTF-16 buffers.
+Both guides are included in this npm package as well as the source repository.
+
+## Date and time
 
 ```ts
-import { CultureInfo } from '@xobin/globalization';
+import { DateTime, DateTimeKind, TimeSpan } from '@xobin/globalization';
+
+const date = new DateTime(2024, 3, 20, 13, 45, 0);
+const later = date.add(TimeSpan.fromMinutes(30));
+console.log(later.toString('yyyy-MM-dd HH:mm')); // 2024-03-20 14:15
+
+const exact = new DateTime(638464896000000001n, DateTimeKind.utc);
+console.log(exact.ticks); // bigint, one tick is 100 nanoseconds
+```
+
+Calendar component constructors use numbers; constructors that accept a tick count
+require bigint. DateTimeKind is the existing enum wrapper: use its named values,
+not a JavaScript number. Equality is value-based through equals; JavaScript ===
+compares object identity. Comparison operators use the types' valueOf adapters.
+
+## DateOnly and TimeOnly
+
+```ts
+import { DateOnly, TimeOnly, DateTime } from '@xobin/globalization';
+
+const date = new DateOnly(2024, 3, 20);
+const time = new TimeOnly(13, 45);
+const combined = new DateTime(date, time);
+const day = DateOnly.fromDateTime(combined);
+const clock = TimeOnly.fromDateTime(combined);
+```
+
+Conversions remain on the classes. No extensions import or registration is needed.
+
+## Selective cultures
+
+```ts
+import { CultureInfo, DateTime } from '@xobin/globalization';
 import { cultureData } from '@xobin/globalization/locales/fa-IR';
 
 const culture = CultureInfo.loadCultureInfo('fa-IR', cultureData);
-CultureInfo.currentCulture = culture;
-CultureInfo.currentUICulture = culture;
+new DateTime(2024, 3, 20).toString('yyyy/MM/dd', culture); // 1403/01/01
 ```
 
-The existing application path `@xobin/globalization/dist/locales/fa-IR` resolves
-to the same module. Prefer `@xobin/globalization/locales/fa-IR` in new code.
-For deferred loading, use a literal import so the browser bundler can create a
-separate chunk without including every locale:
+A locale import exports data without registering it or changing currentCulture.
+Import only the cultures you need. Default culture modules load only their default
+calendar. For alternate calendars import the explicit full module instead:
+
+```ts
+import { cultureData } from '@xobin/globalization/locales/fa-IR/full';
+```
+
+Use the same CultureInfo.loadCultureInfo call. The default Persian module supports
+PersianCalendar; full also enables GregorianCalendar and HijriCalendar. Gregorian
+pattern data needed for the standard U format remains available in the default
+module without enabling a selectable Gregorian calendar.
+
+Use literal imports for lazy loading, so bundlers can create a separate chunk:
 
 ```ts
 const { cultureData } = await import('@xobin/globalization/locales/en-US');
 const culture = CultureInfo.loadCultureInfo('en-US', cultureData);
 ```
 
-If an application accesses `culture.parent`, explicitly import and register the
-parent culture as well (for example `fa` for `fa-IR`). Parent data is not
-automatically downloaded. Each CultureInfo instance has independent date/number
-format data and calendar state; changing an instance does not modify the imported
-locale data or another instance.
+Import and register parent data explicitly before accessing culture.parent; for
+fa-IR this means loading fa as well. Loading replacement data affects subsequent
+instances, not existing instances. Format and calendar state is copied per instance.
 
-The DateTimeFormatInfo class and its reference setter/read-only behavior remain
-outstanding; this loading change does not claim to complete them.
+## Formatting
 
-## Local time reference
+DateTime, DateOnly, TimeOnly and TimeSpan keep toString and tryFormat methods.
+DateTimeFormatInfo is a class supporting mutable/readonly state, providers and
+cloning. DateTime formatting accepts the .NET standard and custom patterns in the
+retained API. DateOnly/TimeOnly reject tokens and standard specifiers that do not
+apply to their type. TimeSpan supports constant, general and custom interval formats.
 
-DateTime local conversions use the host's native Date time-zone database.
-No Windows time-zone table or IANA alias table is shipped. Historical offsets,
-including offsets with seconds, follow the browser or Node.js runtime and may
-differ from Windows. Bigint arithmetic preserves all 100-nanosecond ticks.
+```ts
+import { DateTime } from '@xobin/globalization';
 
-For overlapping local times, a newly constructed value selects the later UTC
-occurrence. Values converted from UTC preserve their original occurrence through
-conversion and arithmetic. Nonexistent spring-forward times
-use Date's native resolution with the offset before the transition.
-
-Date does not expose a daylight-saving flag. IsDaylightSavingTime estimates it by
-comparing the selected offset with the smallest offset sampled monthly in that
-year. This covers ordinary seasonal clock changes, but cannot distinguish every
-political base-offset change, permanent DST or negative-DST rule. Exact Windows
-classification is not promised.
-
-The .NET formatting fixtures use UTC as the local zone in
-both runtimes, preserving direct comparison of the official test inputs. Native
-zone tests separately verify local components, sub-millisecond precision, gaps,
-overlaps and roundtrips using the zones supported by the test runtime. The oracle
-pins UTC only inside its isolated process; it does not change the host's zone.
-
-## DateTime formatting
-
-`toString` supports standard and custom .NET DateTime formats, and the long/short
-date/time helpers use the same formatter. `getDateTimeFormats` preserves the
-reference pattern order and duplicates. `tryFormat` accepts a `string[]` or
-`Uint16Array` character buffer, or a `Uint8Array` UTF-8 buffer, and writes the
-count to an `OutParam<number>` object (`{ result: 0 }`). Too-small buffers return
-false with a zero count.
-
-Formatting data for invariant and every shipped culture module is generated
-from the .NET reference. Default modules retain Gregorian variants required by
-`U`; explicit `full` modules add alternate-calendar data and factories.
-The catalog includes all cultures enumerated by the pinned
-reference environment. `tools/dotnet10-format-locales.mjs --check` verifies
-the profile data and culture-name union against the oracle. Every culture
-remains an independent module, including newly added reference cultures.
-Parsing remains deferred. Tests cover default formatting separately from
-explicit alternate-calendar selection and formatting.
-
-## DateTimeFormatInfo
-
-`DateTimeFormatInfo` is a class. Its constructor creates writable invariant
-formatting information. `invariantInfo` is a shared read-only instance;
-`currentInfo` follows `CultureInfo.currentCulture`. `clone()` produces a writable
-copy with an independent calendar. `readOnly(info)` returns a read-only copy,
-including its calendar, or the same instance when it is already read-only.
-
-```typescript
-import { DateTimeFormatInfo } from '@xobin/globalization/date-time-format-info';
-
-const info = DateTimeFormatInfo.invariantInfo.clone();
-info.shortDatePattern = 'yyyy/MM/dd';
-const readOnlyInfo = DateTimeFormatInfo.readOnly(info);
+const date = new DateTime(2024, 3, 20, 13, 45, 0);
+const text = date.toString('O');
+const written = { result: 0 };
+const destination = new Uint8Array(64);
+const success = date.tryFormat(destination, written, 'yyyy-MM-dd');
 ```
 
-`getInstance(provider)` accepts a format-info instance or queries
-`provider.getFormat(DateTimeFormatInfo)`, using the constructor as the type token.
-A null provider or an unsupported result falls back to `currentInfo`.
-`CultureInfo.loadCultureInfo(name, data)` retains its synchronous registration
-signature and constructs a format-info instance from the explicitly loaded data.
+tryFormat supports string[], Uint16Array and Uint8Array. The written count is UTF-16
+code units or UTF-8 bytes. An undersized buffer returns false with a zero count.
+DateOnly/TimeOnly follow the reference builder's partial-write behavior; do not
+assume those destination buffers remain unchanged on failure.
 
-Locale era names and pattern collections are internal data, not additional
-properties of this class. The RFC property is `rfc1123Pattern`. Designator,
-first-day and week-rule validation, read-only checks, and calendar changes follow
-the reference. Assigning a different calendar resets calendar-dependent date
-data while preserving custom time patterns and designators. Assigning the same
-calendar object preserves the current data.
+## Calendars
 
-Optional-calendar data is stored as compact differences in the selected locale
-module. Each selected locale imports only the implementations of its optional calendars. The generated
-profiles all have their calendar overrides and week rules regenerated from the reference. Day-name arrays require exactly seven
-non-null entries. Their getters return copies, while setters retain the supplied
-array, matching .NET (including subsequent caller mutations). All four month-name
-arrays require thirteen entries, with non-null values in the first twelve; the
-thirteenth entry may be empty, non-empty, or null. Getters copy the arrays and
-setters retain the supplied references. Era names and abbreviations come from
-the selected culture's data. `getEra`, `getEraName`, and
-`getAbbreviatedEraName` support the current calendar; era-name comparison uses
-the host's native `Intl.Collator` with case ignored and accents preserved.
-Day/month name lookup methods validate their indexes without copying arrays.
+The concrete calendars are Gregorian, Persian, ThaiBuddhist, UmAlQura, Korean,
+Taiwan, Japanese, Hijri, Hebrew, Julian, ChineseLunisolar, JapaneseLunisolar,
+KoreanLunisolar and TaiwanLunisolar. Import their classes and ISOWeek by name from
+@xobin/globalization, like DateTime and TimeSpan.
+Respect each calendar's supported date range. Default TwoDigitYearMax values follow
+the pinned reference environment, not the user's operating-system settings.
 
-`getAllDateTimePatterns` returns copies with the current default pattern first,
-preserving reference order and duplicates. `setAllDateTimePatterns` accepts
-`d`, `D`, `t`, `T`, `y`, or `Y`, retains its input array, and updates the default
-and derived patterns. Tests check all default cultures and 59,094 DateTime
-format-collection cases against the reference. The offset-zero DateTimeOffset
-cache-invalidation assertions are exercised through the shared DateTime
-formatter with an explicit offset pattern; no DateTimeOffset API is claimed.
-Official tests containing parsing assertions remain pending; the complete official test
-inventory has not yet reached full coverage.
+## Browser and server imports
 
-### Formatting calendar prerequisites
+Use named imports from @xobin/globalization. Browser bundlers can tree-shake unused
+exports from the ESM entry. Keep ESM imports through the bundling step; converting
+them to require first can prevent that optimization. Culture data remains a
+separate, selective import.
 
-JapaneseCalendar, TaiwanCalendar, KoreanCalendar, HijriCalendar and HebrewCalendar are TypeScript implementations with individual ESM entry points. CultureInfo.optionalCalendars creates fresh calendar instances in the pinned runtime's order. Locale modules carry private construction callbacks for their optional calendars; loadCultureInfo(name, data) remains synchronous. These callbacks are not public CultureData or CultureInfo properties. Importing a locale includes only its related calendar implementations.
+On a CommonJS server, use the same root package with require. Loading the complete
+API on the server is supported:
 
-Japanese first-era-year formatting, Japanese/Taiwan year digit rules, Hebrew calendar numbers and Hebrew leap/non-leap month names are compared with the actual .NET 10.0.7 runtime. HebrewCalendar contains only its intrinsic calendar translation data from the MIT-licensed .NET source. No time-zone database is added. Default two-digit-year settings follow the pinned reference environment.
+```js
+const { DateTime, CultureInfo } = require('@xobin/globalization');
+const { cultureData } = require('@xobin/globalization/locales/fa-IR');
+```
 
-Calendar dependency fixtures are supplemental differential checks, not a claim that every official calendar test has been ported. Five remaining official DateTimeFormatInfo methods contain parsing assertions and remain unmapped until parsing is agreed: both genitive parsing tests, Hebrew month round trips, Japanese first-era-year round trips, and French Canada time parsing. Their formatting portions have supplemental coverage.
+Optional direct paths remain available, but application code does not need them.
+Root and direct paths share class identity and current-culture state within each
+module format. ESM and CommonJS are separate module graphs; keep one format when
+passing instances between providers and calendars.
 
-KoreanCalendar now has equivalents for all 20 direct official test methods and 30 of its 31 inherited CalendarTestBase methods. Input providers, including seeded random inputs, are generated from the pinned official sources. Its 71 direct oracle rows include 55 MemberData rows. The remaining inherited Japanese date-parsing test is deliberately unmapped while parsing is deferred; no full CAL-07 completion is claimed.
+CultureInfo.currentCulture is shared state in the module, not per-request async
+storage. On servers pass each request's culture explicitly to toString/tryFormat.
+Do not mutate currentCulture to implement simultaneous requests in different cultures.
 
-TaiwanCalendar has equivalents for all 21 direct official test methods and 30 of its 31 inherited CalendarTestBase methods. Its 148 direct oracle rows include 143 rows from the 16 official MemberData providers, with the original shared seeded random generator and Taiwan utility preserved. Day/month names use the reference environment's zh-TW data. The inherited Japanese date-parsing test remains unmapped while parsing is deferred; no full CAL-08 completion is claimed.
+## JSON transport
 
-### CAL task coverage
+Do not serialize temporal instances directly. DateTime currently serializes as {},
+DateOnly exposes its internal day field, and bigint-based values can throw. Use an
+explicit wire representation with string ticks and a numeric Kind:
 
-The non-parsing work in CAL-01 through CAL-12 is implemented and mapped against .NET 10.0.7. JulianCalendar is a TypeScript implementation with a documented .NET-shaped API, a root export and an individual ESM subpath. It preserves Julian leap-year rules, the Julian 0001-01-03 lower date and 9999-10-19 upper date, and the reference AddMonths clamping behavior. Browser bundle tests check that unrelated calendars are eliminated.
+```ts
+import { DateTime, DateTimeKind } from '@xobin/globalization';
 
-All ten concrete calendars in these tasks (including all seven Gregorian configurations) have equivalents for 30 of their 31 inherited CalendarTestBase methods. Japanese input generation now includes every era, using the official era-range helpers from the pinned source. Gregorian CalendarType constructor, getter, valid setters and invalid setters have official equivalents for every configuration. The remaining inherited method performs Japanese date parsing and is deliberately unmapped for every configuration. Japanese direct tests and the independent Hijri, Hebrew, Julian and UmAlQura miscellaneous tests are also mapped.
+const exact = new DateTime(638464896000000001n, DateTimeKind.utc);
+const payload = JSON.stringify({ ticks: exact.ticks.toString(), kind: exact.kind.value });
+const data = JSON.parse(payload);
+const restored = new DateTime(BigInt(data.ticks), new DateTimeKind(data.kind));
+```
 
-There are 8,041 supplemental differential math cases for conversion, date parts, month/year arithmetic, era boundaries, leap months, Hijri adjustment and signed 32-bit AddYears overflow. They do not count as official source coverage. Japanese era definitions and the Hijri default adjustment follow the pinned reference environment; the fixtures record .NET version, Japanese era numbers, start ticks, offsets and year bounds, and Hijri adjustment.
+Validate untrusted wire data before constructing values. For DateOnly, dayNumber
+can be transported as a number and restored with fromDayNumber. TimeOnly and
+TimeSpan ticks must be strings to retain their complete precision. No new toJSON
+contract is introduced in this release.
 
-Shared CalendarsTests providers exercise all fourteen calendars, including the four East Asian lunisolar calendars. CloningTest, GetLeapMonthTest, ReadOnlyTest, AlgorithmTypeTest and CalendarErasTest now have complete non-parsing equivalents. Vietnamese and Japanese parsing tests remain deferred. No claim of complete Calendar-suite coverage is made.
+## Local time
 
-### LUNI task coverage
+Local conversions use the host's native Date time-zone database; no Windows/IANA
+timezone table is shipped. Historical offsets can differ across hosts. UTC ticks
+retain single-tick precision. UTC-to-local conversions preserve the selected
+occurrence of an overlapping local time; constructing an ambiguous local wall time
+selects the later UTC occurrence. Gaps use native Date resolution.
 
-EastAsianLunisolarCalendar and its Chinese, Japanese, Korean and Taiwan implementations preserve the intrinsic year tables from the pinned .NET source. Each implementation has a root export and an independent ESM entry point. Browser bundle tests inspect built-package source maps to verify that only the selected year table is retained; the abstract base retains none. Culture loading remains unchanged.
+Date has no DST flag. isDaylightSavingTime estimates it from monthly offset samples
+and cannot classify all historical base-offset changes, permanent DST or negative
+DST rules exactly as Windows does.
 
-The supplemental lunisolar oracle compares every supported Gregorian day, including date parts, era, sexagenary cycle, celestial stem, terrestrial branch and conversion back to DateTime. Per-year SHA-256 digests keep these fixtures compact. Additional rows verify arithmetic, invalid inputs, exact exceptions and default two-digit-year settings. Japanese era-transition edge cases and reference millisecond truncation in AddMonths/AddYears are preserved. Supplemental cases are not counted as official test mappings. Parsing remains deferred.
+## Supported scope
 
-### ISOWeek coverage
+Modern ES2022 browsers and Node.js 22/24 are the release target. bigint, Intl,
+TextEncoder and TextDecoder must be available. TypeScript 5.9 is the tested type
+consumer. Chromium, Firefox and WebKit are in the release CI matrix.
 
-ISO-01 and ISO-02 implement the complete .NET-shaped static ISOWeek API: GetWeekOfYear and GetYear with both DateTime and DateOnly inputs, GetWeeksInYear, GetYearStart, GetYearEnd, ToDateTime and ToDateOnly. All fourteen official ISOWeek test methods are mapped. Eight dynamic input providers are extracted from the pinned source and their 140 rows are validated against the actual .NET 10.0.7 runtime. The official 401-year week-count fact, every inline invalid-year/week/weekday case for both conversion methods, and the year-9999 end-date exception also run against the reference fixture.
+Parsing is not implemented. Binary/OADate/FileTime, CLR conversions, TypeCode,
+SerializationInfo, temporal getHashCode/deconstruct and exception hResult are
+intentionally absent. NumberFormatInfo is a data interface; numeric formatting
+and the full .NET CultureInfo API are not promised.
 
-Supplemental digest checks cover every supported ISO year (1–9999) and every Gregorian day of a complete 400-year cycle (146,097 days). The independent ESM entry is @xobin/globalization/iso-week. Browser tests for both root and subpath imports verify that unrelated calendar and culture data are eliminated. Conversion checks additionally cover all 170,448 combinations of weeks 1–53 and weekdays 0–7 across a full 400-year cycle and years 1 and 9999, including date-range failures. Sunday values 0 and 7 are equivalent. Week 53 is accepted in a 52-week year, as in .NET. Validation order, exception messages and the unspecified DateTime kind match the reference. Parsing remains deferred.
+See [migration](MIGRATION.md) and [changelog](CHANGELOG.md).
 
-### TimeSpan core constructors and components
+## License
 
-TS-01 validates every constructor and component test against .NET 10.0.7. The official constructor test bodies and the total-value MemberData provider are extracted from the pinned source. The oracle executes them and records constructor arguments, exact ticks, all seven components, all seven Total properties and exception details. The five dynamic total-value rows are mapped, as are the three nanosecond InlineData cases. The fourteen official methods in this task have JavaScript equivalents against the built package.
-
-Constructor accumulation uses signed 64-bit arithmetic with bigint, including the reference's unchecked wrap before validating the microsecond range. Constructor overflow has the reference message and no parameter name. Supplemental cases cover negative components, both tick extremes, 1,000 seeded full-range tick values and 600 seeded Int32 component combinations. Thirty-eight of those combinations distinguish the corrected wrap behavior from the previous implementation. Arithmetic, comparisons, factories and formatting remain separate TimeSpan tasks; parsing remains deferred.
-
-### TimeSpan arithmetic, factories and precision
-
-TS-02 through TS-06 complete the non-formatting, non-parsing TimeSpan core. All 82 official methods in that scope are mapped: 68 additional methods are executed directly from generated copies of the pinned .NET test bodies and providers. A private oracle observer delegates calculations to System.TimeSpan, records each operation and exception, and validates the original assertions before saving the fixture. The JavaScript equivalents replay those checks against the built package. The dynamic mappings count original provider inputs, not internal operation traces.
-
-Add, Subtract, Duration, Negate, comparisons, object equality, Multiply and both Divide overloads preserve reference results and exception details. Floating-point multiplication and division round to the nearest tick with ties to even. Division by another TimeSpan returns the reference double ratio, including infinities and NaN. All 22 public unit constants use the project's camel-case member naming; long constants are bigint, while HoursPerDay is number.
-
-A single number argument selects a factory's double overload; a single bigint argument selects its integer overload. For example, TimeSpan.fromMicroseconds(1.5) uses floating-point conversion and TimeSpan.fromMicroseconds(1n) uses integer conversion. Supplying component arguments selects the integer component overload, with optional trailing components. Use bigint for long components to retain their full range. Multi-component factories accumulate exactly before checking the final range, matching .NET's Int128 arithmetic. They preserve cancellation between components and reject intermediate-wrap examples covered by the official tests.
-
-The existing constructor fixture still checks every component and Total property across seeded full-range ticks. Additional reference checks cover half-tick rounding, values beyond JavaScript's exact integer range, both tick extremes, NaN, infinities and zero divisors. Root and independent ESM/CommonJS entries and browser tree shaking are verified. The 17 remaining official TimeSpan methods belong to formatting or parsing; FORMAT-07 remains separate and parsing is deferred.
-
-DO-01 validates DateOnly constructors and MinValue/MaxValue against .NET 10.0.7. Three official methods are extracted from the pinned source and their original assertions execute in the oracle. The constructor provider has five official rows. Supplemental cases cover the default constructor, a null calendar and both supported boundaries of all fourteen calendars; exceptions are compared by type, message, parameter and actual value. No parsing is implemented.
-
-DateOnly supports properties, arithmetic, comparison and DateTime conversions. Reference replay covers these retained operations; hash and deconstruction are excluded by the JavaScript API scope. A SHA-256 reference digest verifies all 146097 days of a Gregorian 400-year cycle. Conversion checks retain single-tick precision, Kind and exact range errors. Relational operators use valueOf; value equality uses equals.
-
-TimeOnly supports constructors, components, arithmetic, comparison and DateTime/TimeSpan conversions. Reference replay covers these retained operations; hash and deconstruction are excluded by the JavaScript API scope. Constructors retain ordered input validation and exact range errors. Arithmetic preserves bigint ticks and wraps across midnight; OutParam<number> remains available for wrappedDays. IsBetween and circular-clock subtraction retain their behavior. Relational operators use valueOf; value equality uses equals.
+[MIT](LICENSE). [Third-party notices](THIRD_PARTY_NOTICES.md).

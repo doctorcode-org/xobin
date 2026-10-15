@@ -1,0 +1,72 @@
+name: Publish npm
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Exact reviewed version from both package manifests
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: npm-publication
+  cancel-in-progress: false
+
+jobs:
+  version:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      RELEASE_VERSION: ${{ inputs.version }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Check the reviewed version
+        run: |
+          node --input-type=module -e "import assert from 'node:assert/strict'; import fs from 'node:fs'; const version=process.env.RELEASE_VERSION; assert.match(version,/^\d+\.\d+\.\d+$/); for(const name of ['core','globalization']) assert.equal(JSON.parse(fs.readFileSync('packages/'+name+'/package.json')).version,version);"
+
+  verify:
+    if: github.ref == 'refs/heads/main'
+    needs: version
+    uses: ./.github/workflows/ci.yml
+
+  publish:
+    if: github.ref == 'refs/heads/main'
+    needs: verify
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      RELEASE_VERSION: ${{ inputs.version }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm install --global npm@11.13.0
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test:packed
+      - run: npm run release:check
+      - name: Publish verified tarballs with npm OIDC
+        run: npm run release:publish
+      - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        if: always()
+        with:
+          name: release-manifests
+          path: |
+            dist/release/SHA256SUMS
+            dist/release/pack-report.json
+          retention-days: 7
+          if-no-files-found: ignore

@@ -160,7 +160,7 @@ export class CultureInfo {
         }
 
         Object.keys(cultureData)
-            .filter(property => !['dateTimeFormat', 'calendarFormats', 'gregorianDateTimeFormat', 'calendarFactories'].includes(property))
+            .filter(property => !['dateTimeFormat', 'calendarFormats', 'calendarFactories'].includes(property))
             .forEach(property => {
                 const propertyValue = cultureData[property];
                 if (property === 'parent') {
@@ -186,8 +186,7 @@ export class CultureInfo {
                 supportedCalendarIds.add(getCalendarIdentity(createCalendar()).id);
             }
         }
-        const calendarFormats = cultureData.calendarFormats ?? (cultureData.gregorianDateTimeFormat
-            ? { 1: cultureData.gregorianDateTimeFormat } : undefined);
+        const calendarFormats = cultureData.calendarFormats;
         this.dateTimeFormat = createDateTimeFormatInfo(cultureData.dateTimeFormat, this.calendar, calendarFormats, name,
             cultureData.numberFormat.numberDecimalSeparator, supportedCalendarIds);
     }

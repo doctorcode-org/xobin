@@ -1,6 +1,6 @@
 {
   "name": "@xobin/core",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "The package contains shared classes, types, functions and utils.",
   "author": "DoctorCode Team",
   "license": "MIT",
@@ -25,12 +25,12 @@
     }
   },
   "sideEffects": false,
-  "directories": {
-    "lib": "dist",
-    "test": "tests"
-  },
   "files": [
-    "dist"
+    "dist",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "MIGRATION.md",
+    "CHANGELOG.md"
   ],
   "repository": {
     "type": "git",
@@ -38,13 +38,24 @@
     "directory": "packages/core"
   },
   "scripts": {
-    "build": "tsup --config tsup.config.ts"
+    "build": "tsup --config tsup.config.ts",
+    "prepack": "npm run build",
+    "prepublishOnly": "node ../../tools/release.mjs check core"
   },
   "bugs": {
     "url": "https://github.com/doctorcode-org/xobin/issues"
   },
-  "dependencies": {
-    "tslib": "^2.3.1"
+  "engines": {
+    "node": ">=22"
   },
-  "gitHead": "decd7897807915712df0d5f8301c378eae2115ec"
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "homepage": "https://github.com/doctorcode-org/xobin#readme",
+  "keywords": [
+    "xobin",
+    "typescript",
+    "exceptions"
+  ]
 }

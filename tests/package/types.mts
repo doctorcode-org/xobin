@@ -50,6 +50,9 @@ export const fullLocaleName: string = fullCultureData.name;
 import { DateOnly } from '@xobin/globalization/date-only';
 import { TimeOnly } from '@xobin/globalization/time-only';
 import { CultureInfo, DateTimeKind } from '@xobin/globalization';
+const loadedDefaultCulture: CultureInfo = CultureInfo.loadCultureInfo('fa-IR', cultureData);
+const loadedFullCulture: CultureInfo = CultureInfo.loadCultureInfo('fa-IR', fullCultureData);
+void [loadedDefaultCulture, loadedFullCulture];
 const dateOnly: DateOnly = new DateOnly(2024, 2, 29);
 const timeOnly: TimeOnly = new TimeOnly(863999999999n);
 const combined: DateTime = new DateTime(dateOnly, timeOnly, DateTimeKind.utc);
@@ -168,3 +171,10 @@ for (const Type of [OverflowException, NullReferenceException, NotImplementedExc
     void [new Type(), new Type(null), new Type('', exceptionCause)];
 }
 void [systemError, argumentError, argumentInner, nullError, rangeError, rangeInner, cultureInvalidName, cultureInvalidId, customCast];
+
+// The base calendar accepts the same optional era as its concrete implementations.
+const eraCalendar: Calendar = new PersianCalendar();
+const eraDays: number = eraCalendar.getDaysInMonth(1403, 1, PersianCalendar.PersianEra);
+const eraYear: boolean = eraCalendar.isLeapYear(1403, PersianCalendar.PersianEra);
+const eraDate: DateTime = eraCalendar.toDateTime(1403, 1, 1, 0, 0, 0, 0, PersianCalendar.PersianEra);
+void [eraDays, eraYear, eraDate];

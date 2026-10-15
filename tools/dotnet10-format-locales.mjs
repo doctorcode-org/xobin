@@ -9,6 +9,7 @@ const mode = process.argv[2];
 if (!['--write', '--check'].includes(mode)) throw new Error('Pass --write or --check.');
 const header = '// Date format data generated from the pinned .NET 10.0.7 formatting oracle.\n';
 const calendarTypes = { 1: 'GregorianCalendar', 3: 'JapaneseCalendar', 4: 'TaiwanCalendar', 5: 'KoreanCalendar', 6: 'HijriCalendar', 7: 'ThaiBuddhistCalendar', 8: 'HebrewCalendar', 22: 'PersianCalendar', 23: 'UmAlQuraCalendar' };
+const calendarImport = name => `import { ${name} } from '@xobin/globalization/${name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()}';\n`;
 const declaration = 'export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {';
 const existingLocaleFiles = new Map(readdirSync(path.join(root, 'packages/globalization/locales'))
   .filter(file => file.endsWith('.ts')).map(file => [file.slice(0, -3).toLowerCase(), file.slice(0, -3)]));
@@ -43,8 +44,8 @@ for (const [name, data] of Object.entries(fixture.cultures)) {
   if (!['GregorianCalendar', 'ThaiBuddhistCalendar', 'PersianCalendar', 'UmAlQuraCalendar'].includes(data.calendar)) {
     throw new Error('Default calendar implementation is missing: ' + name + '/' + data.calendar);
   }
-  output = output.replace(/^import \{ CultureData, .* \} from '@xobin\/globalization';$/m,
-    `import { CultureData, ${data.calendar} } from '@xobin/globalization';`);
+  output = output.replace(/^(?:import[^\n]*\n)+/m,
+    "import type { CultureData } from '@xobin/globalization';\n" + calendarImport(data.calendar));
   output = output.replace(/^    calendar: .*$/m,
     `    calendar: new ${data.calendar}(${data.calendar === 'GregorianCalendar' ? data.calendarId : ''})`);
   // This extra field is generator metadata, not a member of CultureData or CultureInfo.
@@ -67,7 +68,8 @@ for (const [name, data] of Object.entries(fixture.cultures)) {
   const extraFields = Object.entries(extraFormats).map(([id, value]) => `        ${JSON.stringify(id)}: ${render(value).replaceAll('\n', '\n    ')}`);
   const factories = ids.map(id => '() => new ' + calendarTypes[id] + '(' + (id === 1 ? id : '') + ')').join(', ');
   const fullOutput = header
-    + `import { CultureData, ${[...new Set(ids.map(id => calendarTypes[id]))].join(', ')} } from '@xobin/globalization';\n`
+    + "import type { CultureData } from '@xobin/globalization';\n"
+    + [...new Set(ids.map(id => calendarTypes[id]))].map(calendarImport).join('')
     + `import { cultureData as defaultCultureData } from '@xobin/globalization/locales/${moduleName}';\n`
     + declaration + '\n'
     + '    ...defaultCultureData,\n'

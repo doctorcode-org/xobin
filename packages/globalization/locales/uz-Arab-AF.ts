@@ -1,5 +1,6 @@
 // Date format data generated from the pinned .NET 10.0.7 formatting oracle.
-import { CultureData, PersianCalendar } from '@xobin/globalization';
+import type { CultureData } from '@xobin/globalization';
+import { PersianCalendar } from '@xobin/globalization/persian-calendar';
 export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "uz-Arab", 
     lcid: 4096, 

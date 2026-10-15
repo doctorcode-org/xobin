@@ -6,6 +6,7 @@ import ts from 'typescript';
 
 const sourceTag = 'v10.0.7';
 const runtime = process.argv[2];
+const localReference = runtime === '--local';
 const mode = process.argv[3] ?? '--check';
 if (!runtime || !['--check', '--write'].includes(mode)) {
   throw new Error('Usage: node tools/dotnet10-api-inventory.mjs <dotnet/runtime directory> [--check|--write]');
@@ -28,7 +29,7 @@ function git(...args) {
   }).trimEnd();
 }
 
-const sourceCommit = git('rev-parse', `${sourceTag}^{commit}`);
+const sourceCommit = localReference ? '7706f546bac1a99b3d891afe3591dc88c67f0cc4' : git('rev-parse', `${sourceTag}^{commit}`);
 if (sourceCommit !== '7706f546bac1a99b3d891afe3591dc88c67f0cc4') {
   throw new Error(`Unexpected ${sourceTag} commit: ${sourceCommit}`);
 }
@@ -89,6 +90,8 @@ const memberAliases = new Map([
   ['System.DateTimeKind::Utc', 'utc'],
   ['System.DateTimeKind::Local', 'local'],
   ['System.Globalization.DateTimeFormatInfo::RFC1123Pattern', 'rfc1123Pattern'],
+  ['System.Globalization.DateTimeFormatInfo::AMDesignator', 'amDesignator'],
+  ['System.Globalization.DateTimeFormatInfo::PMDesignator', 'pmDesignator'],
 ]);
 
 function lowerFirst(value) {
@@ -156,7 +159,7 @@ function readLocalType(file, symbol) {
     } else if (ts.isGetAccessorDeclaration(member) || ts.isSetAccessorDeclaration(member)) {
       kind = 'property';
     }
-    if (!name) continue;
+    if (!name || hasModifier(member, ts.SyntaxKind.PrivateKeyword) || hasModifier(member, ts.SyntaxKind.ProtectedKeyword)) continue;
     const parameters = 'parameters' in member ? member.parameters : [];
     const range = parameterRange(parameters);
     members.push({
@@ -172,6 +175,19 @@ function readLocalType(file, symbol) {
       if (/return\s+["']{2};/.test(body)
           || /throw\s+new\s+NotImplementedException/.test(body)) stubNames.add(name);
     }
+  }
+  const parentName = declaration.heritageClauses?.find(clause => clause.token === ts.SyntaxKind.ExtendsKeyword)?.types[0]?.expression.getText(source);
+  const parentConfig = [...localTypes.values()].find(([, name]) => name === parentName);
+  if (parentConfig) {
+    const parent = readLocalType(parentConfig[0], parentConfig[1]);
+    for (const member of parent?.members ?? []) {
+      if (member.name !== 'constructor' && !members.some(own => own.name === member.name && own.static === member.static)) members.push(member);
+    }
+  }
+  // A class without an explicit constructor exposes a default zero-argument constructor.
+  if (declarationKind === 'class' && !hasModifier(declaration, ts.SyntaxKind.AbstractKeyword)
+      && !members.some(member => member.name === 'constructor')) {
+    members.push({ name: 'constructor', kind: 'constructor', static: false, minimum: 0, maximum: 0, tupleReturnLength: null });
   }
   return { file, symbol, declarationKind, members, stubNames: [...stubNames].sort() };
 }
@@ -267,7 +283,8 @@ function matchMember(type, member, local) {
   const tupleDeconstruction = type.fullName === 'System.DateOnly' && member.name === 'Deconstruct'
     && member.parameters.every(parameter => parameter.modifier === 'out');
   const jsName = member.name === '.ctor' ? 'constructor'
-    : alias ?? adapter ?? (type.kind === 'enum' ? member.name : lowerFirst(member.name));
+    : alias ?? adapter ?? (type.kind === 'enum' || (member.kind === 'field' && member.static
+      && local.members.some(candidate => candidate.name === member.name && candidate.static)) ? member.name : lowerFirst(member.name));
   const expectedArguments = adapter === 'valueOf' || tupleDeconstruction ? 0
     : adapter ? Math.max(0, member.parameters.length - 1) : member.parameters.length;
   const sameName = local.members.filter(candidate => candidate.name === jsName);

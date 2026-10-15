@@ -12,6 +12,7 @@ await mkdir(outputDirectory, { recursive: true });
 const scenarios = [
   { name: 'time-span', types: ['TimeSpan'], expression: "TimeSpan.fromHours(2).add(TimeSpan.fromMinutes(30)).toString('c')", expected: '02:30:00' },
   { name: 'date-time', types: ['DateTime'], expression: "new DateTime(2024, 2, 29).addDays(1).toString('yyyy-MM-dd')", expected: '2024-03-01' },
+  { name: 'date-time-time-span', types: ['DateTime', 'TimeSpan'], expression: "new DateTime(2024, 3, 20, 13, 45, 0).add(TimeSpan.fromMinutes(30)).toString('s')", expected: '2024-03-20T14:15:00' },
   { name: 'date-only-time-only', types: ['DateOnly', 'TimeOnly'], expression: "new DateOnly(2024, 2, 29).toString('O') + ' ' + new TimeOnly(13, 45).toString('HH:mm')", expected: '2024-02-29 13:45' },
   { name: 'persian-calendar', types: ['PersianCalendar', 'DateTime'], expression: 'new PersianCalendar().getYear(new DateTime(2024, 3, 20))', expected: 1403 },
   { name: 'format-fa-IR', types: ['DateTime', 'CultureInfo'], locale: 'fa-IR', expression: "new DateTime(2024, 3, 20, 13, 45, 0).toString('yyyy/MM/dd HH:mm', culture)" },

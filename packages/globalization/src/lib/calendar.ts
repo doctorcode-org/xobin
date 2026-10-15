@@ -238,15 +238,16 @@ export abstract class Calendar {
     /**
      * Calculates the leap month for a specified year.
      * @param year A year.
+     * @param era The era to use; omission selects the current era.
      */
-    getLeapMonth(year: number): number {
-        if (!this.isLeapYear(year)) {
+    getLeapMonth(year: number, era = 0): number {
+        if (!this.isLeapYear(year, era)) {
             return 0;
         }
 
-        const monthsCount = this.getMonthsInYear(year);
+        const monthsCount = this.getMonthsInYear(year, era);
         for (let month = 1; month <= monthsCount; month++) {
-            if (this.isLeapMonth(year, month)) {
+            if (this.isLeapMonth(year, month, era)) {
                 return month;
             }
         }
@@ -257,23 +258,26 @@ export abstract class Calendar {
     /**
      * When overridden in a derived class, determines whether a year is a leap year.
      * @param year An integer that represents the year.
+     * @param era The era to use; omission selects the current era.
      */
-    abstract isLeapYear(year: number): boolean;
+    abstract isLeapYear(year: number, era?: number): boolean;
 
     /**
      * When overridden in a derived class, determines whether a month is a leap month.
      * @param year An integer that represents the year.
      * @param month A positive integer that represents the month.
+     * @param era The era to use; omission selects the current era.
      */
-    abstract isLeapMonth(year: number, month: number): boolean;
+    abstract isLeapMonth(year: number, month: number, era?: number): boolean;
 
     /**
      * When overridden in a derived class, determines whether a date is a leap day.
      * @param year An integer that represents the year.
      * @param month A positive integer that represents the month.
      * @param day A positive integer that represents the day.
+     * @param era The era to use; omission selects the current era.
      */
-    abstract isLeapDay(year: number, month: number, day: number): boolean;
+    abstract isLeapDay(year: number, month: number, day: number, era?: number): boolean;
 
     /**
      * When overridden in a derived class, returns a DateTime that is the specified number of years away from the specified DateTime.
@@ -328,21 +332,24 @@ export abstract class Calendar {
     /**
      * When overridden in a derived class, returns the number of months in the specified year.
      * @param year An integer that represents the year.
+     * @param era The era to use; omission selects the current era.
      */
-    abstract getMonthsInYear(year: number): number;
+    abstract getMonthsInYear(year: number, era?: number): number;
 
     /**
      * When overridden in a derived class, returns the number of days in the specified year.
      * @param year An integer that represents the year.
+     * @param era The era to use; omission selects the current era.
      */
-    abstract getDaysInYear(year: number): number;
+    abstract getDaysInYear(year: number, era?: number): number;
 
     /**
      * When overridden in a derived class, returns the number of days in the specified month.
      * @param year An integer that represents the year.
      * @param month A positive integer that represents the month.
+     * @param era The era to use; omission selects the current era.
      */
-    abstract getDaysInMonth(year: number, month: number): number;
+    abstract getDaysInMonth(year: number, month: number, era?: number): number;
 
     /**
      * When overridden in a derived class, returns a DateTime that is set to the specified date and time.
@@ -353,8 +360,9 @@ export abstract class Calendar {
      * @param minute An integer from 0 to 59 that represents the minute.
      * @param second An integer from 0 to 59 that represents the second.
      * @param millisecond An integer from 0 to 999 that represents the millisecond.
+     * @param era The era to use; omission selects the current era.
      */
-    abstract toDateTime(year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number): DateTime;
+    abstract toDateTime(year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number, era?: number): DateTime;
 }
 
 //internal

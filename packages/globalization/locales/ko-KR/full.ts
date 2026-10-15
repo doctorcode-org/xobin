@@ -1,5 +1,7 @@
 // Date format data generated from the pinned .NET 10.0.7 formatting oracle.
-import { CultureData, GregorianCalendar, KoreanCalendar } from '@xobin/globalization';
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+import { KoreanCalendar } from '@xobin/globalization/korean-calendar';
 import { cultureData as defaultCultureData } from '@xobin/globalization/locales/ko-KR';
 export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     ...defaultCultureData,

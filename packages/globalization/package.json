@@ -1,7 +1,7 @@
 {
   "name": "@xobin/globalization",
-  "version": "1.0.0",
-  "description": "The package contains classes that define culture-related information, including language, country/region, calendars in use, format patterns for dates, currency, and numbers, and sort order for strings. These classes are useful for writing globalized (internationalized) applications.",
+  "version": "2.0.0",
+  "description": "DateTime, DateOnly, TimeOnly, TimeSpan, calendars and selective culture-aware date/time formatting for browsers and Node.js.",
   "author": "DoctorCode Team",
   "license": "MIT",
   "main": "./dist/index.js",
@@ -9,14 +9,24 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
     },
     "./time-span": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/time_span.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/time_span.d.mts",
+        "default": "./dist/time_span.mjs"
+      },
+      "require": {
+        "types": "./dist/time_span.d.ts",
+        "default": "./dist/time_span.js"
+      }
     },
     "./date-time-styles": {
       "import": {
@@ -39,153 +49,344 @@
       }
     },
     "./date-time": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/date_time.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/date_time.d.mts",
+        "default": "./dist/date_time.mjs"
+      },
+      "require": {
+        "types": "./dist/date_time.d.ts",
+        "default": "./dist/date_time.js"
+      }
     },
     "./calendar": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/calendar.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/calendar.d.mts",
+        "default": "./dist/calendar.mjs"
+      },
+      "require": {
+        "types": "./dist/calendar.d.ts",
+        "default": "./dist/calendar.js"
+      }
     },
     "./gregorian-calendar": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/gregorian_calendar.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/gregorian_calendar.d.mts",
+        "default": "./dist/gregorian_calendar.mjs"
+      },
+      "require": {
+        "types": "./dist/gregorian_calendar.d.ts",
+        "default": "./dist/gregorian_calendar.js"
+      }
     },
     "./persian-calendar": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/persian_calendar.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/persian_calendar.d.mts",
+        "default": "./dist/persian_calendar.mjs"
+      },
+      "require": {
+        "types": "./dist/persian_calendar.d.ts",
+        "default": "./dist/persian_calendar.js"
+      }
     },
     "./thai-buddhist-calendar": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/thaibuddhist_calendar.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/thaibuddhist_calendar.d.mts",
+        "default": "./dist/thaibuddhist_calendar.mjs"
+      },
+      "require": {
+        "types": "./dist/thaibuddhist_calendar.d.ts",
+        "default": "./dist/thaibuddhist_calendar.js"
+      }
     },
     "./um-al-qura-calendar": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/umalqura_calendar.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/umalqura_calendar.d.mts",
+        "default": "./dist/umalqura_calendar.mjs"
+      },
+      "require": {
+        "types": "./dist/umalqura_calendar.d.ts",
+        "default": "./dist/umalqura_calendar.js"
+      }
     },
     "./culture-info": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/culture_info.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/culture_info.d.mts",
+        "default": "./dist/culture_info.mjs"
+      },
+      "require": {
+        "types": "./dist/culture_info.d.ts",
+        "default": "./dist/culture_info.js"
+      }
     },
     "./date-time-format": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/date_time_format.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/date_time_format.d.mts",
+        "default": "./dist/date_time_format.mjs"
+      },
+      "require": {
+        "types": "./dist/date_time_format.d.ts",
+        "default": "./dist/date_time_format.js"
+      }
     },
     "./locales/*": {
-      "types": "./dist/locales/*.d.ts",
-      "import": "./dist/locales/*.mjs",
-      "require": "./dist/locales/*.js"
+      "import": {
+        "types": "./dist/locales/*.d.mts",
+        "default": "./dist/locales/*.mjs"
+      },
+      "require": {
+        "types": "./dist/locales/*.d.ts",
+        "default": "./dist/locales/*.js"
+      }
     },
     "./dist/locales/*": {
-      "types": "./dist/locales/*.d.ts",
-      "import": "./dist/locales/*.mjs",
-      "require": "./dist/locales/*.js"
+      "import": {
+        "types": "./dist/locales/*.d.mts",
+        "default": "./dist/locales/*.mjs"
+      },
+      "require": {
+        "types": "./dist/locales/*.d.ts",
+        "default": "./dist/locales/*.js"
+      }
     },
     "./date-only": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/date_only.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/date_only.d.mts",
+        "default": "./dist/date_only.mjs"
+      },
+      "require": {
+        "types": "./dist/date_only.d.ts",
+        "default": "./dist/date_only.js"
+      }
     },
     "./time-only": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/time_only.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/time_only.d.mts",
+        "default": "./dist/time_only.mjs"
+      },
+      "require": {
+        "types": "./dist/time_only.d.ts",
+        "default": "./dist/time_only.js"
+      }
     },
     "./korean-calendar": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/korean_calendar.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/korean_calendar.d.mts",
+        "default": "./dist/korean_calendar.mjs"
+      },
+      "require": {
+        "types": "./dist/korean_calendar.d.ts",
+        "default": "./dist/korean_calendar.js"
+      }
     },
     "./taiwan-calendar": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/taiwan_calendar.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/taiwan_calendar.d.mts",
+        "default": "./dist/taiwan_calendar.mjs"
+      },
+      "require": {
+        "types": "./dist/taiwan_calendar.d.ts",
+        "default": "./dist/taiwan_calendar.js"
+      }
     },
     "./japanese-calendar": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/japanese_calendar.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/japanese_calendar.d.mts",
+        "default": "./dist/japanese_calendar.mjs"
+      },
+      "require": {
+        "types": "./dist/japanese_calendar.d.ts",
+        "default": "./dist/japanese_calendar.js"
+      }
     },
     "./hijri-calendar": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/hijri_calendar.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/hijri_calendar.d.mts",
+        "default": "./dist/hijri_calendar.mjs"
+      },
+      "require": {
+        "types": "./dist/hijri_calendar.d.ts",
+        "default": "./dist/hijri_calendar.js"
+      }
     },
     "./hebrew-calendar": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/hebrew_calendar.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/hebrew_calendar.d.mts",
+        "default": "./dist/hebrew_calendar.mjs"
+      },
+      "require": {
+        "types": "./dist/hebrew_calendar.d.ts",
+        "default": "./dist/hebrew_calendar.js"
+      }
     },
     "./julian-calendar": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/julian_calendar.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/julian_calendar.d.mts",
+        "default": "./dist/julian_calendar.mjs"
+      },
+      "require": {
+        "types": "./dist/julian_calendar.d.ts",
+        "default": "./dist/julian_calendar.js"
+      }
     },
     "./east-asian-lunisolar-calendar": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/east_asian_lunisolar_calendar.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/east_asian_lunisolar_calendar.d.mts",
+        "default": "./dist/east_asian_lunisolar_calendar.mjs"
+      },
+      "require": {
+        "types": "./dist/east_asian_lunisolar_calendar.d.ts",
+        "default": "./dist/east_asian_lunisolar_calendar.js"
+      }
     },
     "./chinese-lunisolar-calendar": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/chinese_lunisolar_calendar.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/chinese_lunisolar_calendar.d.mts",
+        "default": "./dist/chinese_lunisolar_calendar.mjs"
+      },
+      "require": {
+        "types": "./dist/chinese_lunisolar_calendar.d.ts",
+        "default": "./dist/chinese_lunisolar_calendar.js"
+      }
     },
     "./japanese-lunisolar-calendar": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/japanese_lunisolar_calendar.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/japanese_lunisolar_calendar.d.mts",
+        "default": "./dist/japanese_lunisolar_calendar.mjs"
+      },
+      "require": {
+        "types": "./dist/japanese_lunisolar_calendar.d.ts",
+        "default": "./dist/japanese_lunisolar_calendar.js"
+      }
     },
     "./korean-lunisolar-calendar": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/korean_lunisolar_calendar.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/korean_lunisolar_calendar.d.mts",
+        "default": "./dist/korean_lunisolar_calendar.mjs"
+      },
+      "require": {
+        "types": "./dist/korean_lunisolar_calendar.d.ts",
+        "default": "./dist/korean_lunisolar_calendar.js"
+      }
     },
     "./taiwan-lunisolar-calendar": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/taiwan_lunisolar_calendar.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/taiwan_lunisolar_calendar.d.mts",
+        "default": "./dist/taiwan_lunisolar_calendar.mjs"
+      },
+      "require": {
+        "types": "./dist/taiwan_lunisolar_calendar.d.ts",
+        "default": "./dist/taiwan_lunisolar_calendar.js"
+      }
     },
     "./iso-week": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/iso_week.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/iso_week.d.mts",
+        "default": "./dist/iso_week.mjs"
+      },
+      "require": {
+        "types": "./dist/iso_week.d.ts",
+        "default": "./dist/iso_week.js"
+      }
     },
     "./locales/ca-ES-VALENCIA": {
-      "types": "./dist/locales/ca-ES-valencia.d.ts",
-      "import": "./dist/locales/ca-ES-valencia.mjs",
-      "require": "./dist/locales/ca-ES-valencia.js"
+      "import": {
+        "types": "./dist/locales/ca-ES-valencia.d.mts",
+        "default": "./dist/locales/ca-ES-valencia.mjs"
+      },
+      "require": {
+        "types": "./dist/locales/ca-ES-valencia.d.ts",
+        "default": "./dist/locales/ca-ES-valencia.js"
+      }
     },
     "./dist/locales/ca-ES-VALENCIA": {
-      "types": "./dist/locales/ca-ES-valencia.d.ts",
-      "import": "./dist/locales/ca-ES-valencia.mjs",
-      "require": "./dist/locales/ca-ES-valencia.js"
+      "import": {
+        "types": "./dist/locales/ca-ES-valencia.d.mts",
+        "default": "./dist/locales/ca-ES-valencia.mjs"
+      },
+      "require": {
+        "types": "./dist/locales/ca-ES-valencia.d.ts",
+        "default": "./dist/locales/ca-ES-valencia.js"
+      }
     },
     "./locales/ca-ES-valencia/full": {
-      "types": "./dist/locales/ca-ES-VALENCIA/full.d.ts",
-      "import": "./dist/locales/ca-ES-VALENCIA/full.mjs",
-      "require": "./dist/locales/ca-ES-VALENCIA/full.js"
+      "import": {
+        "types": "./dist/locales/ca-ES-VALENCIA/full.d.mts",
+        "default": "./dist/locales/ca-ES-VALENCIA/full.mjs"
+      },
+      "require": {
+        "types": "./dist/locales/ca-ES-VALENCIA/full.d.ts",
+        "default": "./dist/locales/ca-ES-VALENCIA/full.js"
+      }
     },
     "./dist/locales/ca-ES-valencia/full": {
-      "types": "./dist/locales/ca-ES-VALENCIA/full.d.ts",
-      "import": "./dist/locales/ca-ES-VALENCIA/full.mjs",
-      "require": "./dist/locales/ca-ES-VALENCIA/full.js"
+      "import": {
+        "types": "./dist/locales/ca-ES-VALENCIA/full.d.mts",
+        "default": "./dist/locales/ca-ES-VALENCIA/full.mjs"
+      },
+      "require": {
+        "types": "./dist/locales/ca-ES-VALENCIA/full.d.ts",
+        "default": "./dist/locales/ca-ES-VALENCIA/full.js"
+      }
+    },
+    "./date-time-kind": {
+      "import": {
+        "types": "./dist/date_time_kind.d.mts",
+        "default": "./dist/date_time_kind.mjs"
+      },
+      "require": {
+        "types": "./dist/date_time_kind.d.ts",
+        "default": "./dist/date_time_kind.js"
+      }
+    },
+    "./day-of-week": {
+      "import": {
+        "types": "./dist/day_of_week.d.mts",
+        "default": "./dist/day_of_week.mjs"
+      },
+      "require": {
+        "types": "./dist/day_of_week.d.ts",
+        "default": "./dist/day_of_week.js"
+      }
+    },
+    "./calendar-algorithm-type": {
+      "import": {
+        "types": "./dist/calendar_algorithm_type.d.mts",
+        "default": "./dist/calendar_algorithm_type.mjs"
+      },
+      "require": {
+        "types": "./dist/calendar_algorithm_type.d.ts",
+        "default": "./dist/calendar_algorithm_type.js"
+      }
+    },
+    "./calendar-week-rule": {
+      "import": {
+        "types": "./dist/calendar_week_rule.d.mts",
+        "default": "./dist/calendar_week_rule.mjs"
+      },
+      "require": {
+        "types": "./dist/calendar_week_rule.d.ts",
+        "default": "./dist/calendar_week_rule.js"
+      }
+    },
+    "./gregorian-calendar-types": {
+      "import": {
+        "types": "./dist/gregorian_calendar_types.d.mts",
+        "default": "./dist/gregorian_calendar_types.mjs"
+      },
+      "require": {
+        "types": "./dist/gregorian_calendar_types.d.ts",
+        "default": "./dist/gregorian_calendar_types.js"
+      }
     }
   },
   "sideEffects": false,
-  "directories": {
-    "lib": "dist",
-    "test": "tests"
-  },
   "files": [
-    "dist"
+    "dist",
+    "docs",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "MIGRATION.md",
+    "CHANGELOG.md"
   ],
   "repository": {
     "type": "git",
@@ -193,14 +394,31 @@
     "directory": "packages/globalization"
   },
   "scripts": {
-    "build": "tsup --config tsup.esm.config.ts && tsup --config tsup.cjs.config.ts && tsc --project tsconfig.locales.json && tsup --config tsup.locales.config.ts"
+    "build": "tsup --config tsup.esm.config.ts && tsup --config tsup.cjs.config.ts && tsc --project tsconfig.locales.json && tsup --config tsup.locales.config.ts",
+    "prepack": "npm run build",
+    "prepublishOnly": "node ../../tools/release.mjs check globalization"
   },
   "bugs": {
     "url": "https://github.com/doctorcode-org/xobin/issues"
   },
   "dependencies": {
-    "@xobin/core": "^1.0.1",
-    "tslib": "^2.3.1"
+    "@xobin/core": "^2.0.0"
   },
-  "gitHead": "decd7897807915712df0d5f8301c378eae2115ec"
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "homepage": "https://github.com/doctorcode-org/xobin#readme",
+  "keywords": [
+    "xobin",
+    "datetime",
+    "timespan",
+    "calendar",
+    "persian",
+    "globalization",
+    "typescript"
+  ]
 }

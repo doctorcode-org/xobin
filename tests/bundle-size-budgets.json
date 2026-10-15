@@ -1,0 +1,37 @@
+[
+  {
+    "scenario": "time-span",
+    "entry": "root",
+    "mode": "browser-esm",
+    "maxBytes": 11700,
+    "maxGzipBytes": 4400
+  },
+  {
+    "scenario": "date-time",
+    "entry": "root",
+    "mode": "browser-esm",
+    "maxBytes": 41600,
+    "maxGzipBytes": 13300
+  },
+  {
+    "scenario": "date-time-time-span",
+    "entry": "root",
+    "mode": "browser-esm",
+    "maxBytes": 42000,
+    "maxGzipBytes": 13500
+  },
+  {
+    "scenario": "typical-fa-IR",
+    "entry": "root",
+    "mode": "browser-esm",
+    "maxBytes": 77100,
+    "maxGzipBytes": 22300
+  },
+  {
+    "scenario": "typical-fa-IR-full",
+    "entry": "root",
+    "mode": "browser-esm",
+    "maxBytes": 83400,
+    "maxGzipBytes": 23300
+  }
+]

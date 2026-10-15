@@ -11,13 +11,13 @@
   "summary": {
     "types": 29,
     "members": 807,
-    "present": 662,
-    "incomplete": 10,
-    "missing": 115,
+    "present": 686,
+    "incomplete": 2,
+    "missing": 99,
     "excluded": 20,
     "missingTypes": 0,
     "missingRootExports": 0,
-    "missingSubpathExports": 5
+    "missingSubpathExports": 0
   },
   "types": [
     {
@@ -43,10 +43,7 @@
         "missing": 26,
         "excluded": 2
       },
-      "extraLocalMembers": [
-        "_dayNumber",
-        "equivalentDateTime"
-      ],
+      "extraLocalMembers": [],
       "members": [
         {
           "id": "System.DateOnly::constructor:.ctor:instance:value:int,value:int,value:int",
@@ -5672,7 +5669,7 @@
         },
         "rootExported": true,
         "expectedSubpath": "./date-time-kind",
-        "subpathExported": false
+        "subpathExported": true
       },
       "counts": {
         "present": 3,
@@ -5756,7 +5753,7 @@
         },
         "rootExported": true,
         "expectedSubpath": "./day-of-week",
-        "subpathExported": false
+        "subpathExported": true
       },
       "counts": {
         "present": 7,
@@ -5912,17 +5909,13 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 36,
-        "incomplete": 8,
+        "present": 44,
+        "incomplete": 0,
         "missing": 1,
         "excluded": 0
       },
       "extraLocalMembers": [
-        "_isReadOnly",
-        "daysInYearBeforeMinSupportedYear",
-        "memberwiseClone",
-        "toString",
-        "verifyWritable"
+        "toString"
       ],
       "members": [
         {
@@ -6346,9 +6339,9 @@
             ]
           },
           "jsMember": "getDaysInMonth",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "member exists but static/instance shape or arity differs",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -6402,9 +6395,9 @@
             ]
           },
           "jsMember": "getDaysInYear",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "member exists but static/instance shape or arity differs",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -6508,9 +6501,9 @@
             ]
           },
           "jsMember": "getLeapMonth",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "member exists but static/instance shape or arity differs",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -6639,9 +6632,9 @@
             ]
           },
           "jsMember": "getMonthsInYear",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "member exists but static/instance shape or arity differs",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -6806,9 +6799,9 @@
             ]
           },
           "jsMember": "isLeapDay",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "member exists but static/instance shape or arity differs",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -6874,9 +6867,9 @@
             ]
           },
           "jsMember": "isLeapMonth",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "member exists but static/instance shape or arity differs",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -6930,9 +6923,9 @@
             ]
           },
           "jsMember": "isLeapYear",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "member exists but static/instance shape or arity differs",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -7083,9 +7076,9 @@
             ]
           },
           "jsMember": "toDateTime",
-          "status": "incomplete",
+          "status": "present",
           "adaptation": null,
-          "reason": "member exists but static/instance shape or arity differs",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-01",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -7239,7 +7232,7 @@
         },
         "rootExported": true,
         "expectedSubpath": "./calendar-algorithm-type",
-        "subpathExported": false
+        "subpathExported": true
       },
       "counts": {
         "present": 4,
@@ -7338,7 +7331,7 @@
         },
         "rootExported": true,
         "expectedSubpath": "./calendar-week-rule",
-        "subpathExported": false
+        "subpathExported": true
       },
       "counts": {
         "present": 3,
@@ -7422,21 +7415,48 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 5,
+        "present": 6,
         "incomplete": 0,
-        "missing": 1,
+        "missing": 0,
         "excluded": 0
       },
       "extraLocalMembers": [
-        "ChineseEra",
-        "baseCalendarID",
-        "calEraInfo",
-        "daysInYearBeforeMinSupportedYear",
-        "getGregorianYear",
-        "getYearForDate",
-        "getYearInfo",
-        "maxCalendarYear",
-        "minCalendarYear"
+        "addDays",
+        "addHours",
+        "addMilliseconds",
+        "addMinutes",
+        "addMonths",
+        "addSeconds",
+        "addWeeks",
+        "addYears",
+        "algorithmType",
+        "clone",
+        "getCelestialStem",
+        "getDayOfMonth",
+        "getDayOfWeek",
+        "getDayOfYear",
+        "getDaysInMonth",
+        "getDaysInYear",
+        "getHour",
+        "getLeapMonth",
+        "getMilliseconds",
+        "getMinute",
+        "getMonth",
+        "getMonthsInYear",
+        "getSecond",
+        "getSexagenaryYear",
+        "getTerrestrialBranch",
+        "getWeekOfYear",
+        "getYear",
+        "isLeapDay",
+        "isLeapMonth",
+        "isLeapYear",
+        "isReadOnly",
+        "readOnly",
+        "toDateTime",
+        "toFourDigitYear",
+        "toString",
+        "twoDigitYearMax"
       ],
       "members": [
         {
@@ -7468,10 +7488,10 @@
             "signature": "const int ChineseEra",
             "parameters": []
           },
-          "jsMember": "chineseEra",
-          "status": "missing",
+          "jsMember": "ChineseEra",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-02",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -7983,23 +8003,12 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 42,
+        "present": 44,
         "incomplete": 0,
-        "missing": 2,
+        "missing": 0,
         "excluded": 0
       },
-      "extraLocalMembers": [
-        "_invariantInfo",
-        "amDesignator",
-        "getDayNameFromArray",
-        "getEraNameFromArray",
-        "getMonthNameFromArray",
-        "pmDesignator",
-        "state",
-        "verifyDayNames",
-        "verifyMonthNames",
-        "verifyWritable"
-      ],
+      "extraLocalMembers": [],
       "members": [
         {
           "id": "System.Globalization.DateTimeFormatInfo::constructor:.ctor:instance:",
@@ -8397,10 +8406,10 @@
             "signature": "string AMDesignator { get; set;  }",
             "parameters": []
           },
-          "jsMember": "aMDesignator",
-          "status": "missing",
+          "jsMember": "amDesignator",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-03",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -8739,10 +8748,10 @@
             "signature": "string PMDesignator { get; set;  }",
             "parameters": []
           },
-          "jsMember": "pMDesignator",
-          "status": "missing",
+          "jsMember": "pmDesignator",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "FMT-03",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -9123,23 +9132,25 @@
         "excluded": 0
       },
       "extraLocalMembers": [
-        "baseCalendarID",
-        "calEraInfo",
-        "checkDay",
-        "checkTicksRange",
-        "checkYearMonthRange",
-        "checkYearRange",
-        "eraCalendarYear",
-        "getGregorianYear",
-        "getYearForDate",
-        "getYearInfo",
-        "internalGetDaysInMonth",
-        "internalIsLeapYear",
-        "lunarToGregorian",
-        "lunarToTime",
-        "maxCalendarYear",
-        "minCalendarYear",
-        "timeToLunar"
+        "addDays",
+        "addHours",
+        "addMilliseconds",
+        "addMinutes",
+        "addSeconds",
+        "addWeeks",
+        "clone",
+        "eras",
+        "getEra",
+        "getHour",
+        "getMilliseconds",
+        "getMinute",
+        "getSecond",
+        "getWeekOfYear",
+        "isReadOnly",
+        "maxSupportedDateTime",
+        "minSupportedDateTime",
+        "readOnly",
+        "toString"
       ],
       "members": [
         {
@@ -9793,15 +9804,28 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 23,
+        "present": 26,
         "incomplete": 0,
-        "missing": 3,
+        "missing": 0,
         "excluded": 0
       },
       "extraLocalMembers": [
-        "ADEra",
-        "checkEra",
-        "defaultInstance"
+        "addDays",
+        "addHours",
+        "addMilliseconds",
+        "addMinutes",
+        "addSeconds",
+        "addWeeks",
+        "clone",
+        "defaultInstance",
+        "getHour",
+        "getMilliseconds",
+        "getMinute",
+        "getSecond",
+        "getWeekOfYear",
+        "isReadOnly",
+        "readOnly",
+        "toString"
       ],
       "members": [
         {
@@ -9858,10 +9882,10 @@
             "signature": "const int ADEra",
             "parameters": []
           },
-          "jsMember": "aDEra",
-          "status": "missing",
+          "jsMember": "ADEra",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-02/CAL-03",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -10476,9 +10500,9 @@
             "parameters": []
           },
           "jsMember": "maxSupportedDateTime",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-02/CAL-03",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -10494,9 +10518,9 @@
             "parameters": []
           },
           "jsMember": "minSupportedDateTime",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-02/CAL-03",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -10535,7 +10559,7 @@
         },
         "rootExported": true,
         "expectedSubpath": "./gregorian-calendar-types",
-        "subpathExported": false
+        "subpathExported": true
       },
       "counts": {
         "present": 6,
@@ -10673,21 +10697,27 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 23,
+        "present": 24,
         "incomplete": 0,
-        "missing": 1,
+        "missing": 0,
         "excluded": 0
       },
       "extraLocalMembers": [
-        "HebrewEra",
-        "absoluteDate",
-        "checkDay",
-        "checkMonth",
-        "checkTime",
-        "checkYear",
-        "dateParts",
-        "yearStart",
-        "yearType"
+        "addDays",
+        "addHours",
+        "addMilliseconds",
+        "addMinutes",
+        "addSeconds",
+        "addWeeks",
+        "clone",
+        "getHour",
+        "getMilliseconds",
+        "getMinute",
+        "getSecond",
+        "getWeekOfYear",
+        "isReadOnly",
+        "readOnly",
+        "toString"
       ],
       "members": [
         {
@@ -10719,10 +10749,10 @@
             "signature": "readonly int HebrewEra",
             "parameters": []
           },
-          "jsMember": "hebrewEra",
-          "status": "missing",
+          "jsMember": "HebrewEra",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-12",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -11381,21 +11411,27 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 24,
+        "present": 25,
         "incomplete": 0,
-        "missing": 1,
+        "missing": 0,
         "excluded": 0
       },
       "extraLocalMembers": [
-        "HijriEra",
-        "absoluteDate",
-        "checkDay",
-        "checkMonth",
-        "checkTime",
-        "checkYear",
-        "dateParts",
-        "daysInYearBeforeMinSupportedYear",
-        "daysUpToYear"
+        "addDays",
+        "addHours",
+        "addMilliseconds",
+        "addMinutes",
+        "addSeconds",
+        "addWeeks",
+        "clone",
+        "getHour",
+        "getMilliseconds",
+        "getMinute",
+        "getSecond",
+        "getWeekOfYear",
+        "isReadOnly",
+        "readOnly",
+        "toString"
       ],
       "members": [
         {
@@ -11427,10 +11463,10 @@
             "signature": "readonly int HijriEra",
             "parameters": []
           },
-          "jsMember": "hijriEra",
-          "status": "missing",
+          "jsMember": "HijriEra",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-11",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -12391,7 +12427,20 @@
         "excluded": 0
       },
       "extraLocalMembers": [
-        "_helper"
+        "addDays",
+        "addHours",
+        "addMilliseconds",
+        "addMinutes",
+        "addSeconds",
+        "addWeeks",
+        "clone",
+        "getHour",
+        "getMilliseconds",
+        "getMinute",
+        "getSecond",
+        "isReadOnly",
+        "readOnly",
+        "toString"
       ],
       "members": [
         {
@@ -13104,23 +13153,48 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 5,
+        "present": 6,
         "incomplete": 0,
-        "missing": 1,
+        "missing": 0,
         "excluded": 0
       },
       "extraLocalMembers": [
-        "JapaneseEra",
-        "_eraInfo",
-        "_helper",
-        "baseCalendarID",
-        "calEraInfo",
-        "daysInYearBeforeMinSupportedYear",
-        "getGregorianYear",
-        "getYearForDate",
-        "getYearInfo",
-        "maxCalendarYear",
-        "minCalendarYear"
+        "addDays",
+        "addHours",
+        "addMilliseconds",
+        "addMinutes",
+        "addMonths",
+        "addSeconds",
+        "addWeeks",
+        "addYears",
+        "algorithmType",
+        "clone",
+        "getCelestialStem",
+        "getDayOfMonth",
+        "getDayOfWeek",
+        "getDayOfYear",
+        "getDaysInMonth",
+        "getDaysInYear",
+        "getHour",
+        "getLeapMonth",
+        "getMilliseconds",
+        "getMinute",
+        "getMonth",
+        "getMonthsInYear",
+        "getSecond",
+        "getSexagenaryYear",
+        "getTerrestrialBranch",
+        "getWeekOfYear",
+        "getYear",
+        "isLeapDay",
+        "isLeapMonth",
+        "isLeapYear",
+        "isReadOnly",
+        "readOnly",
+        "toDateTime",
+        "toFourDigitYear",
+        "toString",
+        "twoDigitYearMax"
       ],
       "members": [
         {
@@ -13152,10 +13226,10 @@
             "signature": "const int JapaneseEra",
             "parameters": []
           },
-          "jsMember": "japaneseEra",
-          "status": "missing",
+          "jsMember": "JapaneseEra",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-03",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13258,13 +13332,27 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 23,
+        "present": 24,
         "incomplete": 0,
-        "missing": 1,
+        "missing": 0,
         "excluded": 0
       },
       "extraLocalMembers": [
-        "JulianEra"
+        "addDays",
+        "addHours",
+        "addMilliseconds",
+        "addMinutes",
+        "addSeconds",
+        "addWeeks",
+        "clone",
+        "getHour",
+        "getMilliseconds",
+        "getMinute",
+        "getSecond",
+        "getWeekOfYear",
+        "isReadOnly",
+        "readOnly",
+        "toString"
       ],
       "members": [
         {
@@ -13296,10 +13384,10 @@
             "signature": "readonly int JulianEra",
             "parameters": []
           },
-          "jsMember": "julianEra",
-          "status": "missing",
+          "jsMember": "JulianEra",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-10",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -13958,14 +14046,26 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 24,
+        "present": 25,
         "incomplete": 0,
-        "missing": 1,
+        "missing": 0,
         "excluded": 0
       },
       "extraLocalMembers": [
-        "KoreanEra",
-        "_helper"
+        "addDays",
+        "addHours",
+        "addMilliseconds",
+        "addMinutes",
+        "addSeconds",
+        "addWeeks",
+        "clone",
+        "getHour",
+        "getMilliseconds",
+        "getMinute",
+        "getSecond",
+        "isReadOnly",
+        "readOnly",
+        "toString"
       ],
       "members": [
         {
@@ -13997,10 +14097,10 @@
             "signature": "const int KoreanEra",
             "parameters": []
           },
-          "jsMember": "koreanEra",
-          "status": "missing",
+          "jsMember": "KoreanEra",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-07",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -14696,21 +14796,48 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 5,
+        "present": 6,
         "incomplete": 0,
-        "missing": 1,
+        "missing": 0,
         "excluded": 0
       },
       "extraLocalMembers": [
-        "GregorianEra",
-        "baseCalendarID",
-        "calEraInfo",
-        "daysInYearBeforeMinSupportedYear",
-        "getGregorianYear",
-        "getYearForDate",
-        "getYearInfo",
-        "maxCalendarYear",
-        "minCalendarYear"
+        "addDays",
+        "addHours",
+        "addMilliseconds",
+        "addMinutes",
+        "addMonths",
+        "addSeconds",
+        "addWeeks",
+        "addYears",
+        "algorithmType",
+        "clone",
+        "getCelestialStem",
+        "getDayOfMonth",
+        "getDayOfWeek",
+        "getDayOfYear",
+        "getDaysInMonth",
+        "getDaysInYear",
+        "getHour",
+        "getLeapMonth",
+        "getMilliseconds",
+        "getMinute",
+        "getMonth",
+        "getMonthsInYear",
+        "getSecond",
+        "getSexagenaryYear",
+        "getTerrestrialBranch",
+        "getWeekOfYear",
+        "getYear",
+        "isLeapDay",
+        "isLeapMonth",
+        "isLeapYear",
+        "isReadOnly",
+        "readOnly",
+        "toDateTime",
+        "toFourDigitYear",
+        "toString",
+        "twoDigitYearMax"
       ],
       "members": [
         {
@@ -14742,10 +14869,10 @@
             "signature": "const int GregorianEra",
             "parameters": []
           },
-          "jsMember": "gregorianEra",
-          "status": "missing",
+          "jsMember": "GregorianEra",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "LUNI-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -14848,13 +14975,27 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 23,
+        "present": 24,
         "incomplete": 0,
-        "missing": 1,
+        "missing": 0,
         "excluded": 0
       },
       "extraLocalMembers": [
-        "PersianEra"
+        "addDays",
+        "addHours",
+        "addMilliseconds",
+        "addMinutes",
+        "addSeconds",
+        "addWeeks",
+        "clone",
+        "getHour",
+        "getMilliseconds",
+        "getMinute",
+        "getSecond",
+        "getWeekOfYear",
+        "isReadOnly",
+        "readOnly",
+        "toString"
       ],
       "members": [
         {
@@ -14886,10 +15027,10 @@
             "signature": "readonly int PersianEra",
             "parameters": []
           },
-          "jsMember": "persianEra",
-          "status": "missing",
+          "jsMember": "PersianEra",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-04",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -15555,7 +15696,20 @@
       },
       "extraLocalMembers": [
         "TaiwanEra",
-        "_helper"
+        "addDays",
+        "addHours",
+        "addMilliseconds",
+        "addMinutes",
+        "addSeconds",
+        "addWeeks",
+        "clone",
+        "getHour",
+        "getMilliseconds",
+        "getMinute",
+        "getSecond",
+        "isReadOnly",
+        "readOnly",
+        "toString"
       ],
       "members": [
         {
@@ -16274,15 +16428,42 @@
         "excluded": 0
       },
       "extraLocalMembers": [
-        "_helper",
-        "baseCalendarID",
-        "calEraInfo",
-        "daysInYearBeforeMinSupportedYear",
-        "getGregorianYear",
-        "getYearForDate",
-        "getYearInfo",
-        "maxCalendarYear",
-        "minCalendarYear"
+        "addDays",
+        "addHours",
+        "addMilliseconds",
+        "addMinutes",
+        "addMonths",
+        "addSeconds",
+        "addWeeks",
+        "addYears",
+        "algorithmType",
+        "clone",
+        "getCelestialStem",
+        "getDayOfMonth",
+        "getDayOfWeek",
+        "getDayOfYear",
+        "getDaysInMonth",
+        "getDaysInYear",
+        "getHour",
+        "getLeapMonth",
+        "getMilliseconds",
+        "getMinute",
+        "getMonth",
+        "getMonthsInYear",
+        "getSecond",
+        "getSexagenaryYear",
+        "getTerrestrialBranch",
+        "getWeekOfYear",
+        "getYear",
+        "isLeapDay",
+        "isLeapMonth",
+        "isLeapYear",
+        "isReadOnly",
+        "readOnly",
+        "toDateTime",
+        "toFourDigitYear",
+        "toString",
+        "twoDigitYearMax"
       ],
       "members": [
         {
@@ -16402,14 +16583,26 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 24,
+        "present": 25,
         "incomplete": 0,
-        "missing": 1,
+        "missing": 0,
         "excluded": 0
       },
       "extraLocalMembers": [
-        "ThaiBuddhistEra",
-        "_helper"
+        "addDays",
+        "addHours",
+        "addMilliseconds",
+        "addMinutes",
+        "addSeconds",
+        "addWeeks",
+        "clone",
+        "getHour",
+        "getMilliseconds",
+        "getMinute",
+        "getSecond",
+        "isReadOnly",
+        "readOnly",
+        "toString"
       ],
       "members": [
         {
@@ -16441,10 +16634,10 @@
             "signature": "const int ThaiBuddhistEra",
             "parameters": []
           },
-          "jsMember": "thaiBuddhistEra",
-          "status": "missing",
+          "jsMember": "ThaiBuddhistEra",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-05",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -17140,14 +17333,27 @@
         "subpathExported": true
       },
       "counts": {
-        "present": 22,
+        "present": 24,
         "incomplete": 0,
-        "missing": 2,
+        "missing": 0,
         "excluded": 0
       },
       "extraLocalMembers": [
-        "UmAlQuraEra",
-        "daysInYearBeforeMinSupportedYear"
+        "addDays",
+        "addHours",
+        "addMilliseconds",
+        "addMinutes",
+        "addSeconds",
+        "addWeeks",
+        "clone",
+        "getHour",
+        "getMilliseconds",
+        "getMinute",
+        "getSecond",
+        "getWeekOfYear",
+        "isReadOnly",
+        "readOnly",
+        "toString"
       ],
       "members": [
         {
@@ -17162,9 +17368,9 @@
             "parameters": []
           },
           "jsMember": "constructor",
-          "status": "missing",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-06",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -17179,10 +17385,10 @@
             "signature": "const int UmAlQuraEra",
             "parameters": []
           },
-          "jsMember": "umAlQuraEra",
-          "status": "missing",
+          "jsMember": "UmAlQuraEra",
+          "status": "present",
           "adaptation": null,
-          "reason": "member is missing",
+          "reason": "matching TypeScript surface exists; behavioral parity is tracked separately",
           "roadmapTask": "CAL-06",
           "verification": "tracked by tests/dotnet10-test-inventory.json"
         },
@@ -17846,11 +18052,7 @@
         "missing": 26,
         "excluded": 5
       },
-      "extraLocalMembers": [
-        "_ticks",
-        "addTicks",
-        "intervalTicks"
-      ],
+      "extraLocalMembers": [],
       "members": [
         {
           "id": "System.TimeOnly::constructor:.ctor:instance:value:int,value:int",
@@ -20199,9 +20401,7 @@
         "missing": 21,
         "excluded": 1
       },
-      "extraLocalMembers": [
-        "_ticks"
-      ],
+      "extraLocalMembers": [],
       "members": [
         {
           "id": "System.TimeSpan::constructor:.ctor:instance:value:int,value:int,value:int,value:int",
