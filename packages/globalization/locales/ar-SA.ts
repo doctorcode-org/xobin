@@ -1,5 +1,7 @@
-import { CultureData, UmAlQuraCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { UmAlQuraCalendar } from '@xobin/globalization/um-al-qura-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "ar", 
     lcid: 1025, 
     name: "ar-SA", 
@@ -18,19 +20,19 @@ export const cultureData: CultureData = {
         percentGroupSizes: [3], 
         currencyGroupSeparator: ",", 
         currencySymbol: "ر.س.‏", 
-        naNSymbol: "ليس رقمًا", 
+        naNSymbol: "ليس رقم",
         currencyNegativePattern: 8, 
         numberNegativePattern: 1, 
         percentPositivePattern: 0, 
         percentNegativePattern: 0, 
-        negativeInfinitySymbol: "-∞", 
-        negativeSign: "-", 
+        negativeInfinitySymbol: "؜-∞",
+        negativeSign: "؜-",
         numberDecimalDigits: 2, 
-        numberDecimalSeparator: ".", 
+        numberDecimalSeparator: "٫",
         numberGroupSeparator: ",", 
         currencyPositivePattern: 3, 
         positiveInfinitySymbol: "∞", 
-        positiveSign: "+", 
+        positiveSign: "؜+",
         percentDecimalDigits: 2, 
         percentDecimalSeparator: ".", 
         percentGroupSeparator: ",", 
@@ -40,29 +42,220 @@ export const cultureData: CultureData = {
         digitSubstitution: 0
     }, 
     dateTimeFormat: {
-        amDesignator: "ص", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 0, 
-        fullDateTimePattern: "dd/MMMM/yyyy hh:mm:ss tt", 
-        longDatePattern: "dd/MMMM/yyyy", 
-        longTimePattern: "hh:mm:ss tt", 
-        monthDayPattern: "dd MMMM", 
-        pmDesignator: "م", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yy", 
-        shortTimePattern: "hh:mm tt", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM, yyyy", 
-        abbreviatedDayNames: ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"], 
-        shortestDayNames: ["ح", "ن", "ث", "ر", "خ", "ج", "س"], 
-        dayNames: ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"], 
-        abbreviatedMonthNames: ["محرم", "صفر", "ربيع الأول", "ربيع الثاني", "جمادى الأولى", "جمادى الثانية", "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة", ""], 
-        monthNames: ["محرم", "صفر", "ربيع الأول", "ربيع الثاني", "جمادى الأولى", "جمادى الثانية", "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة", ""], 
-        nativeCalendarName: "تقويم ام القرى", 
-        abbreviatedMonthGenitiveNames: ["محرم", "صفر", "ربيع الأول", "ربيع الثاني", "جمادى الأولى", "جمادى الثانية", "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة", ""], 
-        monthGenitiveNames: ["محرم", "صفر", "ربيع الأول", "ربيع الثاني", "جمادى الأولى", "جمادى الثانية", "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة", ""]
-    }, 
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "الأحد",
+        "الاثنين",
+        "الثلاثاء",
+        "الأربعاء",
+        "الخميس",
+        "الجمعة",
+        "السبت"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "محرم",
+        "صفر",
+        "ربيع الأول",
+        "ربيع الآخر",
+        "جمادى الأولى",
+        "جمادى الآخرة",
+        "رجب",
+        "شعبان",
+        "رمضان",
+        "شوال",
+        "ذو القعدة",
+        "ذو الحجة",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "محرم",
+        "صفر",
+        "ربيع الأول",
+        "ربيع الآخر",
+        "جمادى الأولى",
+        "جمادى الآخرة",
+        "رجب",
+        "شعبان",
+        "رمضان",
+        "شوال",
+        "ذو القعدة",
+        "ذو الحجة",
+        ""
+      ],
+      "amDesignator": "ص",
+      "dateSeparator": "‏/",
+      "dayNames": [
+        "الأحد",
+        "الاثنين",
+        "الثلاثاء",
+        "الأربعاء",
+        "الخميس",
+        "الجمعة",
+        "السبت"
+      ],
+      "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd، d MMMM yyyy g h:mm:ss tt",
+      "longDatePattern": "dddd، d MMMM yyyy g",
+      "longTimePattern": "h:mm:ss tt",
+      "monthDayPattern": "d MMMM",
+      "monthGenitiveNames": [
+        "محرم",
+        "صفر",
+        "ربيع الأول",
+        "ربيع الآخر",
+        "جمادى الأولى",
+        "جمادى الآخرة",
+        "رجب",
+        "شعبان",
+        "رمضان",
+        "شوال",
+        "ذو القعدة",
+        "ذو الحجة",
+        ""
+      ],
+      "monthNames": [
+        "محرم",
+        "صفر",
+        "ربيع الأول",
+        "ربيع الآخر",
+        "جمادى الأولى",
+        "جمادى الآخرة",
+        "رجب",
+        "شعبان",
+        "رمضان",
+        "شوال",
+        "ذو القعدة",
+        "ذو الحجة",
+        ""
+      ],
+      "nativeCalendarName": "التقويم الإسلامي (أم القرى)",
+      "pmDesignator": "م",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "d‏/M‏/yyyy g",
+      "shortestDayNames": [
+        "ح",
+        "ن",
+        "ث",
+        "ر",
+        "خ",
+        "ج",
+        "س"
+      ],
+      "shortTimePattern": "h:mm tt",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy g",
+      "eraNames": [
+        "بعد الهجرة"
+      ],
+      "abbreviatedEraNames": [
+        "هـ"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "d‏/M‏/yyyy g",
+          "d MMM yyyy g",
+          "d‏/M‏/yyyy g"
+        ],
+        "D": [
+          "dddd، d MMMM yyyy g",
+          "d MMMM yyyy g"
+        ],
+        "t": [
+          "h:mm tt"
+        ],
+        "T": [
+          "h:mm:ss tt"
+        ],
+        "y": [
+          "MMMM yyyy g"
+        ],
+        "Y": [
+          "MMMM yyyy g"
+        ],
+        "m": [
+          "d MMMM"
+        ],
+        "M": [
+          "d MMMM"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {
+        "eraNames": [
+          "م"
+        ],
+        "abbreviatedEraNames": [
+          "م"
+        ],
+        "monthNames": [
+          "يناير",
+          "فبراير",
+          "مارس",
+          "أبريل",
+          "مايو",
+          "يونيو",
+          "يوليو",
+          "أغسطس",
+          "سبتمبر",
+          "أكتوبر",
+          "نوفمبر",
+          "ديسمبر",
+          ""
+        ],
+        "abbreviatedMonthNames": [
+          "يناير",
+          "فبراير",
+          "مارس",
+          "أبريل",
+          "مايو",
+          "يونيو",
+          "يوليو",
+          "أغسطس",
+          "سبتمبر",
+          "أكتوبر",
+          "نوفمبر",
+          "ديسمبر",
+          ""
+        ],
+        "monthGenitiveNames": [
+          "يناير",
+          "فبراير",
+          "مارس",
+          "أبريل",
+          "مايو",
+          "يونيو",
+          "يوليو",
+          "أغسطس",
+          "سبتمبر",
+          "أكتوبر",
+          "نوفمبر",
+          "ديسمبر",
+          ""
+        ],
+        "abbreviatedMonthGenitiveNames": [
+          "يناير",
+          "فبراير",
+          "مارس",
+          "أبريل",
+          "مايو",
+          "يونيو",
+          "يوليو",
+          "أغسطس",
+          "سبتمبر",
+          "أكتوبر",
+          "نوفمبر",
+          "ديسمبر",
+          ""
+        ],
+        "nativeCalendarName": "التقويم الميلادي"
+      }
+    },
     calendar: new UmAlQuraCalendar()
 };

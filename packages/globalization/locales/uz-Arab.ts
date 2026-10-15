@@ -1,5 +1,7 @@
-import { CultureData, PersianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { PersianCalendar } from '@xobin/globalization/persian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "uz", 
     lcid: 4096, 
     name: "uz-Arab", 
@@ -23,14 +25,14 @@ export const cultureData: CultureData = {
         numberNegativePattern: 1, 
         percentPositivePattern: 1, 
         percentNegativePattern: 1, 
-        negativeInfinitySymbol: "-∞", 
-        negativeSign: "-", 
+        negativeInfinitySymbol: "‎-‎∞",
+        negativeSign: "‎-‎",
         numberDecimalDigits: 2, 
-        numberDecimalSeparator: ",", 
+        numberDecimalSeparator: "٫",
         numberGroupSeparator: ".", 
         currencyPositivePattern: 3, 
         positiveInfinitySymbol: "∞", 
-        positiveSign: "+", 
+        positiveSign: "‎+‎",
         percentDecimalDigits: 2, 
         percentDecimalSeparator: ",", 
         percentGroupSeparator: ".", 
@@ -40,29 +42,219 @@ export const cultureData: CultureData = {
         digitSubstitution: 2
     }, 
     dateTimeFormat: {
-        amDesignator: "AM", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 6, 
-        fullDateTimePattern: "dddd d MMMM yyyy H:mm:ss", 
-        longDatePattern: "dddd d MMMM yyyy", 
-        longTimePattern: "H:mm:ss", 
-        monthDayPattern: "d-MMMM", 
-        pmDesignator: "PM", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM yyyy", 
-        shortTimePattern: "H:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["ی.", "د.", "س.", "چ.", "پ.", "ج.", "ش."], 
-        shortestDayNames: ["ی.", "د.", "س.", "چ.", "پ.", "ج.", "ش."], 
-        dayNames: ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه"], 
-        abbreviatedMonthNames: ["حمل", "ثور", "جوزا", "سرطان", "اسد", "سنبله", "میزان", "عقرب", "قوس", "جدی", "دلو", "حوت", ""], 
-        monthNames: ["حمل", "ثور", "جوزا", "سرطان", "اسد", "سنبله", "میزان", "عقرب", "قوس", "جدی", "دلو", "حوت", ""], 
-        nativeCalendarName: "Persian Calendar", 
-        abbreviatedMonthGenitiveNames: ["حمل", "ثور", "جوزا", "سرطان", "اسد", "سنبله", "میزان", "عقرب", "قوس", "جدی", "دلو", "حوت", ""], 
-        monthGenitiveNames: ["حمل", "ثور", "جوزا", "سرطان", "اسد", "سنبله", "میزان", "عقرب", "قوس", "جدی", "دلو", "حوت", ""]
-    }, 
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "ی.",
+        "د.",
+        "س.",
+        "چ.",
+        "پ.",
+        "ج.",
+        "ش."
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Farvardin",
+        "Ordibehesht",
+        "Khordad",
+        "Tir",
+        "Mordad",
+        "Shahrivar",
+        "Mehr",
+        "Aban",
+        "Azar",
+        "Dey",
+        "Bahman",
+        "Esfand",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Farvardin",
+        "Ordibehesht",
+        "Khordad",
+        "Tir",
+        "Mordad",
+        "Shahrivar",
+        "Mehr",
+        "Aban",
+        "Azar",
+        "Dey",
+        "Bahman",
+        "Esfand",
+        ""
+      ],
+      "amDesignator": "AM",
+      "dateSeparator": "-",
+      "dayNames": [
+        "یکشنبه",
+        "دوشنبه",
+        "سه‌شنبه",
+        "چهارشنبه",
+        "پنجشنبه",
+        "جمعه",
+        "شنبه"
+      ],
+      "firstDayOfWeek": 6,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "g yyyy MMMM d, dddd HH:mm:ss",
+      "longDatePattern": "g yyyy MMMM d, dddd",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "Farvardin",
+        "Ordibehesht",
+        "Khordad",
+        "Tir",
+        "Mordad",
+        "Shahrivar",
+        "Mehr",
+        "Aban",
+        "Azar",
+        "Dey",
+        "Bahman",
+        "Esfand",
+        ""
+      ],
+      "monthNames": [
+        "Farvardin",
+        "Ordibehesht",
+        "Khordad",
+        "Tir",
+        "Mordad",
+        "Shahrivar",
+        "Mehr",
+        "Aban",
+        "Azar",
+        "Dey",
+        "Bahman",
+        "Esfand",
+        ""
+      ],
+      "nativeCalendarName": "persian",
+      "pmDesignator": "PM",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "g yyyy-MM-dd",
+      "shortestDayNames": [
+        "S",
+        "M",
+        "T",
+        "W",
+        "T",
+        "F",
+        "S"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "g yyyy MMMM",
+      "eraNames": [
+        "AP"
+      ],
+      "abbreviatedEraNames": [
+        "AP"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "g yyyy-MM-dd",
+          "g yyyy MMM d"
+        ],
+        "D": [
+          "g yyyy MMMM d, dddd",
+          "g yyyy MMMM d"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "g yyyy MMMM"
+        ],
+        "Y": [
+          "g yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {
+      "1": {
+        "eraNames": [
+          "CE"
+        ],
+        "abbreviatedEraNames": [
+          "CE"
+        ],
+        "monthNames": [
+          "جنوری",
+          "فبروری",
+          "مارچ",
+          "اپریل",
+          "می",
+          "جون",
+          "جولای",
+          "اگست",
+          "سپتمبر",
+          "اکتوبر",
+          "نومبر",
+          "دسمبر",
+          ""
+        ],
+        "abbreviatedMonthNames": [
+          "جنو",
+          "فبر",
+          "مار",
+          "اپر",
+          "می",
+          "جون",
+          "جول",
+          "اگس",
+          "سپت",
+          "اکت",
+          "نوم",
+          "دسم",
+          ""
+        ],
+        "monthGenitiveNames": [
+          "جنوری",
+          "فبروری",
+          "مارچ",
+          "اپریل",
+          "می",
+          "جون",
+          "جولای",
+          "اگست",
+          "سپتمبر",
+          "اکتوبر",
+          "نومبر",
+          "دسمبر",
+          ""
+        ],
+        "abbreviatedMonthGenitiveNames": [
+          "جنو",
+          "فبر",
+          "مار",
+          "اپر",
+          "می",
+          "جون",
+          "جول",
+          "اگس",
+          "سپت",
+          "اکت",
+          "نوم",
+          "دسم",
+          ""
+        ],
+        "nativeCalendarName": "gregorian"
+      }
+    },
     calendar: new PersianCalendar()
 };

@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "arn", 
     lcid: 1146, 
     name: "arn-CL", 
@@ -18,18 +20,18 @@ export const cultureData: CultureData = {
         percentGroupSizes: [3], 
         currencyGroupSeparator: ".", 
         currencySymbol: "$", 
-        naNSymbol: "NeuN", 
+        naNSymbol: "NaN",
         currencyNegativePattern: 9, 
         numberNegativePattern: 1, 
         percentPositivePattern: 0, 
         percentNegativePattern: 0, 
-        negativeInfinitySymbol: "-Infinito", 
+        negativeInfinitySymbol: "-∞",
         negativeSign: "-", 
         numberDecimalDigits: 2, 
-        numberDecimalSeparator: ",", 
+        numberDecimalSeparator: ".",
         numberGroupSeparator: ".", 
         currencyPositivePattern: 2, 
-        positiveInfinitySymbol: "Infinito", 
+        positiveInfinitySymbol: "∞",
         positiveSign: "+", 
         percentDecimalDigits: 2, 
         percentDecimalSeparator: ",", 
@@ -40,29 +42,150 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "", 
-        dateSeparator: "-", 
-        firstDayOfWeek: 0, 
-        fullDateTimePattern: "dddd, dd' de 'MMMM' de 'yyyy H:mm:ss", 
-        longDatePattern: "dddd, dd' de 'MMMM' de 'yyyy", 
-        longTimePattern: "H:mm:ss", 
-        monthDayPattern: "d 'de' MMMM", 
-        pmDesignator: "", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd-MM-yyyy", 
-        shortTimePattern: "H:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM' de 'yyyy", 
-        abbreviatedDayNames: ["Kiñe", "Epu", "Kila", "Meli", "Kechu", "Cayu", "Regle"], 
-        shortestDayNames: ["kñ", "ep", "kl", "me", "ke", "ca", "re"], 
-        dayNames: ["Kiñe Ante", "Epu Ante", "Kila Ante", "Meli Ante", "Kechu Ante", "Cayu Ante", "Regle Ante"], 
-        abbreviatedMonthNames: ["Kiñe Tripantu", "Epu", "Kila", "Meli", "Kechu", "Cayu", "Regle", "Purha", "Aiya", "Marhi", "Marhi Kiñe", "Marhi Epu", ""], 
-        monthNames: ["Kiñe Tripantu", "Epu", "Kila", "Meli", "Kechu", "Cayu", "Regle", "Purha", "Aiya", "Marhi", "Marhi Kiñe", "Marhi Epu", ""], 
-        nativeCalendarName: "calendario gregoriano", 
-        abbreviatedMonthGenitiveNames: ["Kiñe Tripantu", "Epu", "Kila", "Meli", "Kechu", "Cayu", "Regle", "Purha", "Aiya", "Marhi", "Marhi Kiñe", "Marhi Epu", ""], 
-        monthGenitiveNames: ["Kiñe Tripantu", "Epu", "Kila", "Meli", "Kechu", "Cayu", "Regle", "Purha", "Aiya", "Marhi", "Marhi Kiñe", "Marhi Epu", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M05",
+        "M06",
+        "M07",
+        "M08",
+        "M09",
+        "M10",
+        "M11",
+        "M12",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M05",
+        "M06",
+        "M07",
+        "M08",
+        "M09",
+        "M10",
+        "M11",
+        "M12",
+        ""
+      ],
+      "amDesignator": "AM",
+      "dateSeparator": "-",
+      "dayNames": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "yyyy MMMM d, dddd HH:mm:ss",
+      "longDatePattern": "yyyy MMMM d, dddd",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M05",
+        "M06",
+        "M07",
+        "M08",
+        "M09",
+        "M10",
+        "M11",
+        "M12",
+        ""
+      ],
+      "monthNames": [
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M05",
+        "M06",
+        "M07",
+        "M08",
+        "M09",
+        "M10",
+        "M11",
+        "M12",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "PM",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "yyyy-MM-dd",
+      "shortestDayNames": [
+        "S",
+        "M",
+        "T",
+        "W",
+        "T",
+        "F",
+        "S"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "CE"
+      ],
+      "abbreviatedEraNames": [
+        "CE"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "yyyy-MM-dd",
+          "yyyy MMM d",
+          "yyyy-M-d"
+        ],
+        "D": [
+          "yyyy MMMM d, dddd",
+          "yyyy MMMM d"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

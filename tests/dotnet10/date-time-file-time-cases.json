@@ -1,0 +1,336 @@
+{
+  "runtime": "10.0.7",
+  "timeZone": "UTC",
+  "rows": [
+    {
+      "source": "DateTimeTests.ToFileTime_Invoke_ReturnsExpected",
+      "operation": "toFileTime",
+      "inputTicks": "504911232000000000",
+      "inputKind": 1,
+      "fileTime": null,
+      "result": "0",
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.ToFileTime_Invoke_ReturnsExpected",
+      "operation": "toFileTime",
+      "inputTicks": "504911232000000001",
+      "inputKind": 1,
+      "fileTime": null,
+      "result": "1",
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.ToFileTime_Invoke_ReturnsExpected",
+      "operation": "toFileTime",
+      "inputTicks": "636812064000000000",
+      "inputKind": 1,
+      "fileTime": null,
+      "result": "131900832000000000",
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.ToFileTime_Invoke_ReturnsExpected",
+      "operation": "toFileTime",
+      "inputTicks": "636786790500120000",
+      "inputKind": 1,
+      "fileTime": null,
+      "result": "131875558500120000",
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.ToFileTime_Invoke_ReturnsExpected",
+      "operation": "toFileTime",
+      "inputTicks": "636812064000000000",
+      "inputKind": 2,
+      "fileTime": null,
+      "result": "131900832000000000",
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.ToFileTime_Invoke_ReturnsExpected",
+      "operation": "toFileTime",
+      "inputTicks": "636786790500120000",
+      "inputKind": 2,
+      "fileTime": null,
+      "result": "131875558500120000",
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.ToFileTimeUtc_Invoke_ReturnsExpected",
+      "operation": "toFileTimeUtc",
+      "inputTicks": "504911232000000000",
+      "inputKind": 0,
+      "fileTime": null,
+      "result": "0",
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.ToFileTimeUtc_Invoke_ReturnsExpected",
+      "operation": "toFileTimeUtc",
+      "inputTicks": "504911232000000001",
+      "inputKind": 0,
+      "fileTime": null,
+      "result": "1",
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.ToFileTimeUtc_Invoke_ReturnsExpected",
+      "operation": "toFileTimeUtc",
+      "inputTicks": "636812064000000000",
+      "inputKind": 0,
+      "fileTime": null,
+      "result": "131900832000000000",
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.ToFileTimeUtc_Invoke_ReturnsExpected",
+      "operation": "toFileTimeUtc",
+      "inputTicks": "636812064000000000",
+      "inputKind": 2,
+      "fileTime": null,
+      "result": "131900832000000000",
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.ToFileTimeUtc_Invoke_ReturnsExpected",
+      "operation": "toFileTimeUtc",
+      "inputTicks": "636786790500120000",
+      "inputKind": 0,
+      "fileTime": null,
+      "result": "131875558500120000",
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.ToFileTimeUtc_Invoke_ReturnsExpected",
+      "operation": "toFileTimeUtc",
+      "inputTicks": "3155378975999999999",
+      "inputKind": 0,
+      "fileTime": null,
+      "result": "2650467743999999999",
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.ToFileTime_SmallDate_ThrowsArgumentOutOfRangeException",
+      "operation": "toFileTime",
+      "inputTicks": "0",
+      "inputKind": 0,
+      "fileTime": null,
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": null,
+      "message": "Not a valid Win32 FileTime.",
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.ToFileTime_SmallDate_ThrowsArgumentOutOfRangeException",
+      "operation": "toFileTime",
+      "inputTicks": "504910368000000000",
+      "inputKind": 0,
+      "fileTime": null,
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": null,
+      "message": "Not a valid Win32 FileTime.",
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.ToFileTimeUtc_SmallDate_ThrowsArgumentOutOfRangeException",
+      "operation": "toFileTimeUtc",
+      "inputTicks": "0",
+      "inputKind": 0,
+      "fileTime": null,
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": null,
+      "message": "Not a valid Win32 FileTime.",
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.ToFileTimeUtc_SmallDate_ThrowsArgumentOutOfRangeException",
+      "operation": "toFileTimeUtc",
+      "inputTicks": "504910368000000000",
+      "inputKind": 0,
+      "fileTime": null,
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": null,
+      "message": "Not a valid Win32 FileTime.",
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.FromFileTime_Invoke_ReturnsExpected",
+      "operation": "fromFileTime",
+      "inputTicks": null,
+      "inputKind": null,
+      "fileTime": "0",
+      "result": {
+        "ticks": "504911232000000000",
+        "kind": 2
+      },
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.FromFileTime_Invoke_ReturnsExpected",
+      "operation": "fromFileTime",
+      "inputTicks": null,
+      "inputKind": null,
+      "fileTime": "2650467743999999999",
+      "result": {
+        "ticks": "3155378975999999999",
+        "kind": 2
+      },
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.FromFileTime_Invoke_ReturnsExpected",
+      "operation": "fromFileTime",
+      "inputTicks": null,
+      "inputKind": null,
+      "fileTime": "131875558500120000",
+      "result": {
+        "ticks": "636786790500120000",
+        "kind": 2
+      },
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.FromFileTime_OutOfRange_ThrowsArgumentOutOfRangeException",
+      "operation": "fromFileTime",
+      "inputTicks": null,
+      "inputKind": null,
+      "fileTime": "-1",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "fileTime",
+      "message": "Not a valid Win32 FileTime. (Parameter \u0027fileTime\u0027)",
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.FromFileTime_OutOfRange_ThrowsArgumentOutOfRangeException",
+      "operation": "fromFileTime",
+      "inputTicks": null,
+      "inputKind": null,
+      "fileTime": "2650467744000000000",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "fileTime",
+      "message": "Not a valid Win32 FileTime. (Parameter \u0027fileTime\u0027)",
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.FromFileTimeUtc_Invoke_ReturnsExpected",
+      "operation": "fromFileTimeUtc",
+      "inputTicks": null,
+      "inputKind": null,
+      "fileTime": "0",
+      "result": {
+        "ticks": "504911232000000000",
+        "kind": 1
+      },
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.FromFileTimeUtc_Invoke_ReturnsExpected",
+      "operation": "fromFileTimeUtc",
+      "inputTicks": null,
+      "inputKind": null,
+      "fileTime": "2650467743999999999",
+      "result": {
+        "ticks": "3155378975999999999",
+        "kind": 1
+      },
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.FromFileTimeUtc_Invoke_ReturnsExpected",
+      "operation": "fromFileTimeUtc",
+      "inputTicks": null,
+      "inputKind": null,
+      "fileTime": "131875558500120000",
+      "result": {
+        "ticks": "636786790500120000",
+        "kind": 1
+      },
+      "error": null,
+      "paramName": null,
+      "message": null,
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.FromFileTimeUtc_OutOfRange_ThrowsArgumentOutOfRangeException",
+      "operation": "fromFileTimeUtc",
+      "inputTicks": null,
+      "inputKind": null,
+      "fileTime": "-1",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "fileTime",
+      "message": "Not a valid Win32 FileTime. (Parameter \u0027fileTime\u0027)",
+      "actualValue": null
+    },
+    {
+      "source": "DateTimeTests.FromFileTimeUtc_OutOfRange_ThrowsArgumentOutOfRangeException",
+      "operation": "fromFileTimeUtc",
+      "inputTicks": null,
+      "inputKind": null,
+      "fileTime": "2650467744000000000",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "fileTime",
+      "message": "Not a valid Win32 FileTime. (Parameter \u0027fileTime\u0027)",
+      "actualValue": null
+    }
+  ]
+}

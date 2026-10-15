@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "quz", 
     lcid: 2155, 
     name: "quz-EC", 
@@ -26,7 +28,7 @@ export const cultureData: CultureData = {
         negativeInfinitySymbol: "-∞", 
         negativeSign: "-", 
         numberDecimalDigits: 2, 
-        numberDecimalSeparator: ",", 
+        numberDecimalSeparator: ".",
         numberGroupSeparator: ".", 
         currencyPositivePattern: 2, 
         positiveInfinitySymbol: "∞", 
@@ -40,29 +42,150 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 0, 
-        fullDateTimePattern: "dddd, dd' de 'MMMM' de 'yyyy H:mm:ss", 
-        longDatePattern: "dddd, dd' de 'MMMM' de 'yyyy", 
-        longTimePattern: "H:mm:ss", 
-        monthDayPattern: "d 'de' MMMM", 
-        pmDesignator: "", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "H:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM' de 'yyyy", 
-        abbreviatedDayNames: ["int", "awk", "wan", "chy", "kuk", "cha", "wak"], 
-        shortestDayNames: ["in", "aw", "wn", "cy", "ku", "ck", "wk"], 
-        dayNames: ["inti", "awaki", "wanra", "chillay", "kullka", "chaska", "wakma"], 
-        abbreviatedMonthNames: ["kull", "pan", "paw", "ayr", "aym", "ray", "sit", "kar", "kus", "way", "sas", "kap", ""], 
-        monthNames: ["kulla", "panchi", "pawkar", "ayriwa", "aymuray", "raymi", "sitwa", "karwa", "kuski", "wayru", "sasi", "kapak", ""], 
-        nativeCalendarName: "calendario gregoriano", 
-        abbreviatedMonthGenitiveNames: ["kull", "pan", "paw", "ayr", "aym", "ray", "sit", "kar", "kus", "way", "sas", "kap", ""], 
-        monthGenitiveNames: ["kulla", "panchi", "pawkar", "ayriwa", "aymuray", "raymi", "sitwa", "karwa", "kuski", "wayru", "sasi", "kapak", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Dom",
+        "Lun",
+        "Mar",
+        "Mié",
+        "Jue",
+        "Vie",
+        "Sab"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Ene",
+        "Feb",
+        "Mar",
+        "Abr",
+        "May",
+        "Jun",
+        "Jul",
+        "Ago",
+        "Set",
+        "Oct",
+        "Nov",
+        "Dic",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Ene",
+        "Feb",
+        "Mar",
+        "Abr",
+        "May",
+        "Jun",
+        "Jul",
+        "Ago",
+        "Set",
+        "Oct",
+        "Nov",
+        "Dic",
+        ""
+      ],
+      "amDesignator": "a.m.",
+      "dateSeparator": "/",
+      "dayNames": [
+        "Domingo",
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves",
+        "Viernes",
+        "Sábado"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, d MMMM, yyyy HH:mm:ss",
+      "longDatePattern": "dddd, d MMMM, yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "d MMMM",
+      "monthGenitiveNames": [
+        "Enero",
+        "Febrero",
+        "Marzo",
+        "Abril",
+        "Mayo",
+        "Junio",
+        "Julio",
+        "Agosto",
+        "Setiembre",
+        "Octubre",
+        "Noviembre",
+        "Diciembre",
+        ""
+      ],
+      "monthNames": [
+        "Enero",
+        "Febrero",
+        "Marzo",
+        "Abril",
+        "Mayo",
+        "Junio",
+        "Julio",
+        "Agosto",
+        "Setiembre",
+        "Octubre",
+        "Noviembre",
+        "Diciembre",
+        ""
+      ],
+      "nativeCalendarName": "Gregoriano Intiwatana",
+      "pmDesignator": "p.m.",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd/MM/yyyy",
+      "shortestDayNames": [
+        "D",
+        "L",
+        "M",
+        "X",
+        "J",
+        "V",
+        "S"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "d.C."
+      ],
+      "abbreviatedEraNames": [
+        "dC"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd/MM/yyyy",
+          "d MMM yyyy",
+          "dd-MM-yyyy"
+        ],
+        "D": [
+          "dddd, d MMMM, yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "d MMMM"
+        ],
+        "M": [
+          "d MMMM"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

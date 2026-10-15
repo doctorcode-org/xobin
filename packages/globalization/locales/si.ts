@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 91, 
     name: "si", 
@@ -40,29 +42,150 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "පෙ.ව.", 
-        dateSeparator: "-", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "yyyy MMMM d, dddd HH.mm.ss", 
-        longDatePattern: "yyyy MMMM d, dddd", 
-        longTimePattern: "HH.mm.ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "ප.ව.", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "yyyy-MM-dd", 
-        shortTimePattern: "HH.mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ".", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "yyyy MMMM", 
-        abbreviatedDayNames: ["ඉරිදා", "සඳුදා", "අඟහ", "බදාදා", "බ්‍රහස්", "සිකු", "සෙන"], 
-        shortestDayNames: ["ඉරි", "සඳු", "අඟ", "බදා", "බ්‍රහ", "සිකු", "සෙන"], 
-        dayNames: ["ඉරිදා", "සඳුදා", "අඟහරුවාදා", "බදාදා", "බ්‍රහස්පතින්දා", "සිකුරාදා", "සෙනසුරාදා"], 
-        abbreviatedMonthNames: ["ජන", "පෙබ", "මාර්", "අප්‍රේල්", "මැයි", "ජූනි", "ජූලි", "අගෝ", "සැප්", "ඔක්", "නොවැ", "දෙසැ", ""], 
-        monthNames: ["ජනවාරි", "පෙබරවාරි", "මාර්තු", "අප්‍රේල්", "මැයි", "ජූනි", "ජූලි", "අගෝස්තු", "සැප්තැම්බර්", "ඔක්තෝබර්", "නොවැම්බර්", "දෙසැම්බර්", ""], 
-        nativeCalendarName: "ග්‍රෙගරියානු දින දර්ශනය", 
-        abbreviatedMonthGenitiveNames: ["ජන", "පෙබ", "මාර්තු", "අප්‍රේල්", "මැයි", "ජූනි", "ජූලි", "අගෝ", "සැප්", "ඔක්", "නොවැ", "දෙසැ", ""], 
-        monthGenitiveNames: ["ජනවාරි", "පෙබරවාරි", "මාර්තු", "අප්‍රේල්", "මැයි", "ජූනි", "ජූලි", "අගෝස්තු", "සැප්තැම්බර්", "ඔක්තෝබර්", "නොවැම්බර්", "දෙසැම්බර්", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "ඉරිදා",
+        "සඳුදා",
+        "අඟහ",
+        "බදාදා",
+        "බ්‍රහස්",
+        "සිකු",
+        "සෙන"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "ජන",
+        "පෙබ",
+        "මාර්තු",
+        "අප්‍රේල්",
+        "මැයි",
+        "ජූනි",
+        "ජූලි",
+        "අගෝ",
+        "සැප්",
+        "ඔක්",
+        "නොවැ",
+        "දෙසැ",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "ජන",
+        "පෙබ",
+        "මාර්",
+        "අප්‍රේල්",
+        "මැයි",
+        "ජූනි",
+        "ජූලි",
+        "අගෝ",
+        "සැප්",
+        "ඔක්",
+        "නොවැ",
+        "දෙසැ",
+        ""
+      ],
+      "amDesignator": "පෙ.ව.",
+      "dateSeparator": "-",
+      "dayNames": [
+        "ඉරිදා",
+        "සඳුදා",
+        "අඟහරුවාදා",
+        "බදාදා",
+        "බ්‍රහස්පතින්දා",
+        "සිකුරාදා",
+        "සෙනසුරාදා"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "yyyy MMMM d, dddd HH.mm.ss",
+      "longDatePattern": "yyyy MMMM d, dddd",
+      "longTimePattern": "HH.mm.ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "ජනවාරි",
+        "පෙබරවාරි",
+        "මාර්තු",
+        "අප්‍රේල්",
+        "මැයි",
+        "ජූනි",
+        "ජූලි",
+        "අගෝස්තු",
+        "සැප්තැම්බර්",
+        "ඔක්තෝබර්",
+        "නොවැම්බර්",
+        "දෙසැම්බර්",
+        ""
+      ],
+      "monthNames": [
+        "ජනවාරි",
+        "පෙබරවාරි",
+        "මාර්තු",
+        "අප්‍රේල්",
+        "මැයි",
+        "ජූනි",
+        "ජූලි",
+        "අගෝස්තු",
+        "සැප්තැම්බර්",
+        "ඔක්තෝබර්",
+        "නොවැම්බර්",
+        "දෙසැම්බර්",
+        ""
+      ],
+      "nativeCalendarName": "ග්‍රෙගරියානු දින දර්ශනය",
+      "pmDesignator": "ප.ව.",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "yyyy-MM-dd",
+      "shortestDayNames": [
+        "ඉ",
+        "ස",
+        "අ",
+        "බ",
+        "බ්‍ර",
+        "සි",
+        "සෙ"
+      ],
+      "shortTimePattern": "HH.mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ".",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "ක්‍රි.ව."
+      ],
+      "abbreviatedEraNames": [
+        "ක්‍රි.ව."
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "yyyy-MM-dd",
+          "yyyy MMM d",
+          "yyyy-M-d"
+        ],
+        "D": [
+          "yyyy MMMM d, dddd",
+          "yyyy MMMM d"
+        ],
+        "t": [
+          "HH.mm"
+        ],
+        "T": [
+          "HH.mm.ss"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

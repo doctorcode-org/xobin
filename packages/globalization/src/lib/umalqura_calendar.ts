@@ -1,3 +1,6 @@
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
+import { registerCalendarIdentity } from './calendar_identity';
 ﻿import { Calendar, checkAddResult, timeToTicks } from './calendar';
 import { DateTime, getDate } from './date_time';
 import { getOrCreateValue, InvalidOperationException, ArgumentOutOfRangeException, setValue, int, Lazy } from '@xobin/core';
@@ -5,6 +8,7 @@ import { CalendarAlgorithmType } from './calendar_algorithm_type';
 import { DayOfWeek } from './day_of_week';
 import { DatePartDay, DatePartYear, DatePartMonth, DatePartDayOfYear, TicksPerDay } from './var';
 import { getAbsoluteDate } from './gregorian_calendar';
+import { calendarRangeMessage, formatGregorianDateTime, throwIfNegativeYear } from './calendar_exception';
 
 const MinCalendarYear = 1318;
 const MaxCalendarYear = 1500;
@@ -206,7 +210,7 @@ const HijriYearInfo = new Lazy(() => {
     ];
     const mapping: Array<DateMapping> = [];
 
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < rawData.length / 4; i++) {
         mapping.push({
             hijriMonthsLengthFlags: rawData[i * 4]!,
             gregorianDate: new DateTime(rawData[i * 4 + 1]!, rawData[i * 4 + 2]!, rawData[i * 4 + 3]!)
@@ -217,12 +221,17 @@ const HijriYearInfo = new Lazy(() => {
 });
 
 const MinDate = new DateTime(1900, 4, 30);
-const MaxDate = new DateTime(2077, 11, 16, 23, 59, 59, 999);
+const MaxDate = new DateTime(new DateTime(2077, 11, 16, 23, 59, 59, 999).ticks + 9999n);
 
 /**
  * Represents the Saudi Hijri (Um Al Qura) calendar.
  */
 export class UmAlQuraCalendar extends Calendar {
+    static readonly UmAlQuraEra = 1;
+
+    protected override get daysInYearBeforeMinSupportedYear(): number {
+        return 355;
+    }
 
     /**
      * Gets the earliest date and time supported by this calendar.
@@ -254,14 +263,12 @@ export class UmAlQuraCalendar extends Calendar {
 
     override set twoDigitYearMax(value) {
         if (value != 99 && (value < MinCalendarYear || value > MaxCalendarYear)) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(value),
-                //value,
-                //SR.Format(SR.ArgumentOutOfRange_Range, MinCalendarYear, MaxCalendarYear)
-            );
+            throw new ArgumentOutOfRangeException('value', value,
+                calendarRangeMessage(MinCalendarYear, MaxCalendarYear));
         }
 
         // We allow year 99 to be set so that one can make ToFourDigitYearMax a no-op by setting TwoDigitYearMax to 99.
+        this.verifyWritable();
         setValue(this, "twoDigitYearMax", value);
     }
 
@@ -269,8 +276,8 @@ export class UmAlQuraCalendar extends Calendar {
      * 
      * @param year
      */
-    isLeapYear(year: number): boolean {
-        checkYearRange(year);
+    isLeapYear(year: number, era: number = 0): boolean {
+        checkYearRange(year, era);
         return realGetDaysInYear(year) == 355;
     }
 
@@ -279,8 +286,8 @@ export class UmAlQuraCalendar extends Calendar {
      * @param year
      * @param month
      */
-    isLeapMonth(year: number, month: number): boolean {
-        checkYearMonthRange(year, month);
+    isLeapMonth(year: number, month: number, era: number = 0): boolean {
+        checkYearMonthRange(year, month, era);
         return false;
     }
 
@@ -290,20 +297,17 @@ export class UmAlQuraCalendar extends Calendar {
      * @param month
      * @param day
      */
-    isLeapDay(year: number, month: number, day: number): boolean {
+    isLeapDay(year: number, month: number, day: number, era: number = 0): boolean {
         if (day >= 1 && day <= 29) {
-            checkYearMonthRange(year, month);
+            checkYearMonthRange(year, month, era);
             return false;
         }
 
         // The year/month/era value checking is done in GetDaysInMonth().
-        const daysInMonth = this.getDaysInMonth(year, month);
+        const daysInMonth = this.getDaysInMonth(year, month, era);
         if (day < 1 || day > daysInMonth) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(day),
-                //day,
-                //SR.Format(SR.ArgumentOutOfRange_Day, daysInMonth, month)
-            );
+            throw new ArgumentOutOfRangeException('day', day,
+                formatExceptionResource(SR.ArgumentOutOfRange_Day, daysInMonth, month));
         }
         return false;
     }
@@ -314,7 +318,7 @@ export class UmAlQuraCalendar extends Calendar {
      * @param years
      */
     addYears(time: DateTime, years: number): DateTime {
-        return this.addMonths(time, years * 12);
+        return this.addMonths(time, Math.imul(years, 12));
     }
 
     /**
@@ -324,11 +328,8 @@ export class UmAlQuraCalendar extends Calendar {
      */
     addMonths(time: DateTime, months: number): DateTime {
         if (months < -120000 || months > 120000) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(months),
-                //months,
-                //SR.Format(SR.ArgumentOutOfRange_Range, -120000, 120000)
-            );
+            throw new ArgumentOutOfRangeException('months', months,
+                calendarRangeMessage(-120000, 120000));
         }
 
         // Get the date in UmAlQura calendar.
@@ -339,11 +340,11 @@ export class UmAlQuraCalendar extends Calendar {
 
         if (i >= 0) {
             m = i % 12 + 1;
-            y += i / 12;
+            y += int(i / 12);
         }
         else {
             m = 12 + (i + 1) % 12;
-            y += (i - 11) / 12;
+            y += int((i - 11) / 12);
         }
 
         if (d > 29) {
@@ -354,7 +355,7 @@ export class UmAlQuraCalendar extends Calendar {
         }
 
         checkYearRange(y);
-        const dt = new DateTime(getAbsoluteDateUmAlQura(y, m, d) * TicksPerDay + time.ticks % TicksPerDay);
+        const dt = new DateTime(BigInt(getAbsoluteDateUmAlQura(y, m, d)) * TicksPerDay + time.ticks % TicksPerDay);
         checkAddResult(dt.ticks, this.minSupportedDateTime, this.maxSupportedDateTime);
         return dt;
     }
@@ -372,7 +373,7 @@ export class UmAlQuraCalendar extends Calendar {
      * @param time
      */
     getDayOfWeek(time: DateTime): DayOfWeek {
-        return int((time.ticks / TicksPerDay + 1) % 7);
+        return Number((time.ticks / TicksPerDay + 1n) % 7n);
     }
 
     /**
@@ -403,8 +404,8 @@ export class UmAlQuraCalendar extends Calendar {
      * 
      * @param year
      */
-    getMonthsInYear(year: number): number {
-        checkYearRange(year);
+    getMonthsInYear(year: number, era: number = 0): number {
+        checkYearRange(year, era);
         return 12;
     }
 
@@ -412,8 +413,8 @@ export class UmAlQuraCalendar extends Calendar {
      * 
      * @param year
      */
-    getDaysInYear(year: number): number {
-        checkYearRange(year);
+    getDaysInYear(year: number, era: number = 0): number {
+        checkYearRange(year, era);
         return realGetDaysInYear(year);
     }
 
@@ -422,8 +423,8 @@ export class UmAlQuraCalendar extends Calendar {
      * @param year
      * @param month
      */
-    getDaysInMonth(year: number, month: number): number {
-        checkYearMonthRange(year, month);
+    getDaysInMonth(year: number, month: number, era: number = 0): number {
+        checkYearMonthRange(year, month, era);
 
         if ((HijriYearInfo.value[year - MinCalendarYear]!.hijriMonthsLengthFlags & (1 << month - 1)) == 0) {
             return 29;
@@ -437,8 +438,8 @@ export class UmAlQuraCalendar extends Calendar {
      * 
      * @param year
      */
-    override getLeapMonth(year: number): number {
-        checkYearRange(year);
+    override getLeapMonth(year: number, era: number = 0): number {
+        checkYearRange(year, era);
         return 0;
     }
 
@@ -448,7 +449,7 @@ export class UmAlQuraCalendar extends Calendar {
      */
     override toFourDigitYear(year: number): number {
         if (year < 0) {
-            throw new ArgumentOutOfRangeException(/*nameof(year), year, SR.ArgumentOutOfRange_NeedNonNegNum*/);
+            throwIfNegativeYear(year);
         }
 
         if (year < 100) {
@@ -456,11 +457,7 @@ export class UmAlQuraCalendar extends Calendar {
         }
 
         if (year < MinCalendarYear || year > MaxCalendarYear) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(year),
-                //year,
-                //SR.Format(SR.ArgumentOutOfRange_Range, MinCalendarYear, MaxCalendarYear)
-            );
+            throw new ArgumentOutOfRangeException('year', year, calendarRangeMessage(MinCalendarYear, MaxCalendarYear));
         }
 
         return year;
@@ -476,34 +473,42 @@ export class UmAlQuraCalendar extends Calendar {
      * @param second
      * @param millisecond
      */
-    toDateTime(year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number): DateTime {
+    toDateTime(year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number, era: number = 0): DateTime {
         if (day >= 1 && day <= 29) {
-            checkYearMonthRange(year, month);
+            checkYearMonthRange(year, month, era);
             const lDate = getAbsoluteDateUmAlQura(year, month, day);
             if (lDate < 0) {
-                throw new ArgumentOutOfRangeException(/*null, SR.ArgumentOutOfRange_BadYearMonthDay*/);
+                throw new ArgumentOutOfRangeException(undefined,
+                    SR.ArgumentOutOfRange_BadYearMonthDay);
             }
 
-            return new DateTime(lDate * TicksPerDay + timeToTicks(hour, minute, second, millisecond));
+            return new DateTime(BigInt(lDate) * TicksPerDay + timeToTicks(hour, minute, second, millisecond));
         }
 
         // The year/month/era value checking is done in GetDaysInMonth().
-        const daysInMonth = this.getDaysInMonth(year, month);
+        const daysInMonth = this.getDaysInMonth(year, month, era);
 
         if (day < 1 || day > daysInMonth) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(day),
-                //day,
-                //SR.Format(SR.ArgumentOutOfRange_Day, daysInMonth, month)
-            );
+            throw new ArgumentOutOfRangeException('day', day,
+                formatExceptionResource(SR.ArgumentOutOfRange_Day, daysInMonth, month));
         }
 
         const lDate = getAbsoluteDateUmAlQura(year, month, day);
         if (lDate < 0) {
-            throw new ArgumentOutOfRangeException(/*null, SR.ArgumentOutOfRange_BadYearMonthDay*/);
+            throw new ArgumentOutOfRangeException(undefined,
+                SR.ArgumentOutOfRange_BadYearMonthDay);
         }
 
-        return new DateTime(lDate * TicksPerDay + timeToTicks(hour, minute, second, millisecond));
+        return new DateTime(BigInt(lDate) * TicksPerDay + timeToTicks(hour, minute, second, millisecond));
+    }
+
+    getEra(time: DateTime): number {
+        checkTicksRange(time.ticks);
+        return UmAlQuraCalendar.UmAlQuraEra;
+    }
+
+    get eras(): number[] {
+        return [UmAlQuraCalendar.UmAlQuraEra];
     }
 }
 
@@ -527,14 +532,14 @@ function getDatePart(time: DateTime, part: number): number {
     }
 
     // Incorrect part value.
-    throw new InvalidOperationException(/*SR.InvalidOperation_DateTimeParsing*/);
+    throw new InvalidOperationException(SR.InvalidOperation_DateTimeParsing);
 }
 
 function convertGregorianToHijri(time: DateTime) {
     // Find the index where we should start our search by quessing the Hijri year that we will be in HijriYearInfo.
     // A Hijri year is 354 or 355 days.  Use 355 days so that we will search from a lower index.
 
-    let index = int((time.ticks - MinDate.ticks) / TicksPerDay) / 355;
+    let index = Math.trunc(Number((time.ticks - MinDate.ticks) / TicksPerDay) / 355);
     do {
     } while (time.compareTo(HijriYearInfo.value[++index]!.gregorianDate) > 0); // while greater
 
@@ -577,34 +582,31 @@ function realGetDaysInYear(year: number): number {
     return days;
 }
 
-function checkYearRange(year: number): void {
+function checkEraRange(era: number): void {
+    if (era !== 0 && era !== UmAlQuraCalendar.UmAlQuraEra) {
+        throw new ArgumentOutOfRangeException('era', era, SR.ArgumentOutOfRange_InvalidEraValue);
+    }
+}
+
+function checkYearRange(year: number, era: number = 0): void {
+    checkEraRange(era);
     if (year < MinCalendarYear || year > MaxCalendarYear) {
-        throw new ArgumentOutOfRangeException(
-            //nameof(year),
-            //year,
-            //SR.Format(SR.ArgumentOutOfRange_Range, MinCalendarYear, MaxCalendarYear)
-        );
+        throw new ArgumentOutOfRangeException('year', year,
+            calendarRangeMessage(MinCalendarYear, MaxCalendarYear));
     }
 }
 
-function checkYearMonthRange(year: number, month: number): void {
-    checkYearRange(year);
+function checkYearMonthRange(year: number, month: number, era: number = 0): void {
+    checkYearRange(year, era);
     if (month < 1 || month > 12) {
-        throw new ArgumentOutOfRangeException(/*nameof(month), month, SR.ArgumentOutOfRange_Month*/);
+        throw new ArgumentOutOfRangeException('month', month, SR.ArgumentOutOfRange_Month);
     }
 }
 
-function checkTicksRange(ticks: number): void {
+function checkTicksRange(ticks: bigint): void {
     if (ticks < MinDate.ticks || ticks > MaxDate.ticks) {
-        throw new ArgumentOutOfRangeException(
-            //"time",
-            //ticks,
-            //SR.Format(
-            //    CultureInfo.InvariantCulture,
-            //    SR.ArgumentOutOfRange_CalendarRange,
-            //    s_minDate,
-            //    s_maxDate)
-        );
+        throw new ArgumentOutOfRangeException('time', ticks,
+            formatExceptionResource(SR.ArgumentOutOfRange_CalendarRange, formatGregorianDateTime(MinDate), formatGregorianDateTime(MaxDate)));
     }
 }
 
@@ -629,3 +631,5 @@ function convertHijriToGregorian(HijriYear: number, HijriMonth: number, HijriDay
     dt = dt.addDays(nDays);
     return getDate.call(dt);
 }
+
+registerCalendarIdentity(UmAlQuraCalendar.prototype, 'System.Globalization.UmAlQuraCalendar', () => 23);

@@ -1,30 +1,33 @@
-﻿import {
+import { TicksMustBeBigInt, InvalidArguments } from './javascript_exception_resources';
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
+import {
     MinTicks,
     MaxTicks,
     TicksPerDay,
     MillisPerSecond,
     TicksPerMillisecond,
-    MaxMillis,
-    MillisPerDay,
-    MillisPerMinute,
+    TicksPerMicrosecond,
     DaysPer400Years,
     DaysPer100Years,
     DaysPer4Years,
     DaysPerYear,
-    MillisPerHour,
     TicksPerHour,
     TicksPerMinute,
     TicksPerSecond,
     DatePartYear,
     DatePartDayOfYear,
     DatePartMonth,
-    DatePartDay,
-    getTimezoneOffset
+    DatePartDay
 } from "./var";
 import { Calendar } from "./calendar";
 import { TimeSpan, timeToTicks as TimeSpanTimeToTicks } from "./time_span";
 import { DayOfWeek } from './day_of_week';
 import { DateTimeKind } from './date_time_kind';
+import { DateOnly } from './date_only';
+import { TimeOnly } from './time_only';
+import { DateTimeFormat } from './date_time_format';
+import { localTimeOffset } from './local_time_zone';
 import {
     ArgumentOutOfRangeException,
     ArgumentException,
@@ -35,12 +38,14 @@ import {
     IFormatProvider,
     ArgumentNullException,
     IComparable,
-    IEquatable
+    IEquatable,
+    OutParam
 } from '@xobin/core';
 
 
 const s_daysToMonth365 = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365];
 const s_daysToMonth366 = [0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366];
+const ambiguousLocalDaylight = new WeakSet<DateTime>();
 
 /**
  * Represents an instant in time, typically expressed as a date and time of day.
@@ -54,16 +59,18 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
 
     /**
      * Initializes a new instance of the DateTime structure to a specified number of ticks.
-     * @param ticks A date and time expressed in the number of millisecond intervals that have elapsed since January 1, 0001 at 00:00:00.000 in the Gregorian calendar.
+     * @param ticks A date and time expressed in 100-nanosecond intervals since January 1, 0001.
      */
-    constructor(ticks: number);
+    constructor(ticks: bigint);
 
     /**
      * Initializes a new instance of the DateTime structure to a specified number of ticks and to Coordinated Universal Time (UTC) or local time.
      * @param ticks A date and time expressed in the number of 100-nanosecond intervals that have elapsed since January 1, 0001 at 00:00:00.000 in the Gregorian calendar.
      * @param kind One of the enumeration values that indicates whether ticks specifies a local time, Coordinated Universal Time (UTC), or neither.
      */
-    constructor(ticks: number, kind: DateTimeKind);
+    constructor(ticks: bigint, kind: DateTimeKind);
+    constructor(date: DateOnly, time: TimeOnly);
+    constructor(date: DateOnly, time: TimeOnly, kind: DateTimeKind);
 
     /**
      * Initializes a new instance of the DateTime structure to the specified year, month, and day.
@@ -168,9 +175,13 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * @param kind One of the enumeration values that indicates whether year, month, day, hour, minute, second, and millisecond specify a local time, Coordinated Universal Time (UTC), or neither.
      */
     constructor(year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number, calendar: Calendar, kind: DateTimeKind);
+    constructor(year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number, microsecond: number);
+    constructor(year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number, microsecond: number, kind: DateTimeKind);
+    constructor(year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number, microsecond: number, calendar: Calendar);
+    constructor(year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number, microsecond: number, calendar: Calendar, kind: DateTimeKind);
     constructor() {
 
-        let ticks: number,
+        let ticks: bigint,
             year: number,
             month: number,
             day: number,
@@ -188,25 +199,37 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
 
             case 1:
                 ticks = arguments[0];
+                if (typeof ticks !== 'bigint') throw new ArgumentException(TicksMustBeBigInt);
                 if (ticks < MinTicks || ticks > MaxTicks)
-                    throw new ArgumentOutOfRangeException('ArgumentOutOfRange_DateTimeBadTicks');
+                    throwTicksOutOfRange();
 
                 break;
 
             case 2:
+                if (arguments[0] instanceof DateOnly && arguments[1] instanceof TimeOnly) {
+                    ticks = BigInt(arguments[0].dayNumber) * TicksPerDay + arguments[1].ticks;
+                    break;
+                }
                 ticks = arguments[0];
                 kind = arguments[1];
+                if (typeof ticks !== 'bigint') throw new ArgumentException(TicksMustBeBigInt);
 
                 if (ticks < MinTicks || ticks > MaxTicks) {
-                    throw new ArgumentOutOfRangeException('ArgumentOutOfRange_DateTimeBadTicks');
+                    throwTicksOutOfRange();
                 }
                 if (kind.value < DateTimeKind.unspecified.value || kind.value > DateTimeKind.local.value) {
-                    throw new ArgumentException('Argument_InvalidDateTimeKind');
+                    throwInvalidKind();
                 }
 
                 break;
 
             case 3:
+                if (arguments[0] instanceof DateOnly && arguments[1] instanceof TimeOnly) {
+                    kind = arguments[2];
+                    if (kind.value < DateTimeKind.unspecified.value || kind.value > DateTimeKind.local.value) throwInvalidKind();
+                    ticks = BigInt(arguments[0].dayNumber) * TicksPerDay + arguments[1].ticks;
+                    break;
+                }
                 year = arguments[0];
                 month = arguments[1];
                 day = arguments[2];
@@ -252,24 +275,22 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
                 else if (arg6 instanceof DateTimeKind) {
                     kind = arg6;
                     if (kind.value < DateTimeKind.unspecified.value || kind.value > DateTimeKind.local.value) {
-                        throw new ArgumentException("Argument_InvalidDateTimeKind");
+                        throwInvalidKind();
                     }
 
                     ticks = dateToTicks(year, month, day) + timeToTicks(hour, minute, second);
                 }
                 else if (typeof arg6 === 'number') {
                     millisecond = arg6;
-                    if (millisecond < 0 || millisecond >= MillisPerSecond) {
-                        throw new ArgumentOutOfRangeException("ArgumentOutOfRange_Range");
-                    }
-
                     ticks = dateToTicks(year, month, day) + timeToTicks(hour, minute, second);
-                    ticks += millisecond * TicksPerMillisecond;
-                    if (ticks < MinTicks || ticks > MaxTicks)
-                        throw new ArgumentException("Arg_DateTimeRange");
+                    checkMillisecond(millisecond);
+                    ticks += BigInt(millisecond) * TicksPerMillisecond;
+                }
+                else if (arg6 == null) {
+                    throw new ArgumentNullException('calendar');
                 }
                 else {
-                    throw new ArgumentException('Invalid arguments');
+                    throw new ArgumentException(InvalidArguments);
                 }
 
                 break;
@@ -283,37 +304,61 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
                 second = arguments[5];
                 millisecond = arguments[6];
 
-                if (millisecond < 0 || millisecond >= MillisPerSecond) {
-                    throw new ArgumentOutOfRangeException(/*nameof(millisecond), SR.Format(SR.ArgumentOutOfRange_Range, 0, MillisPerSecond - 1)*/);
-                }
-
-                let arg7: DateTimeKind | Calendar = arguments[7];
+                let arg7: DateTimeKind | Calendar | number = arguments[7];
                 if (arg7 instanceof Calendar) {
                     calendar = arg7;
 
-                    ticks = calendar.toDateTime(year, month, day, hour, minute, second, 0).ticks;
-                    ticks += millisecond * TicksPerMillisecond;
-                    if (ticks < MinTicks || ticks > MaxTicks)
-                        throw new ArgumentException(/*SR.Arg_DateTimeRange*/);
+                    ticks = calendar.toDateTime(year, month, day, hour, minute, second, millisecond).ticks;
                 }
                 else if (arg7 instanceof DateTimeKind) {
                     kind = arg7;
                     if (kind.value < DateTimeKind.unspecified.value || kind.value > DateTimeKind.local.value) {
-                        throw new ArgumentException("Argument_InvalidDateTimeKind");
+                        throwInvalidKind();
                     }
 
                     ticks = dateToTicks(year, month, day) + timeToTicks(hour, minute, second);
-                    ticks += millisecond * TicksPerMillisecond;
-                    if (ticks < MinTicks || ticks > MaxTicks)
-                        throw new ArgumentException(/*SR.Arg_DateTimeRange*/);
+                    checkMillisecond(millisecond);
+                    ticks += BigInt(millisecond) * TicksPerMillisecond;
+                }
+                else if (typeof arg7 === 'number') {
+                    ticks = dateToTicks(year, month, day) + timeToTicks(hour, minute, second);
+                    checkMillisecond(millisecond);
+                    ticks += BigInt(millisecond) * TicksPerMillisecond;
+                    checkMicrosecond(arg7);
+                    ticks += BigInt(arg7) * TicksPerMicrosecond;
+                }
+                else if (arg7 == null) {
+                    throw new ArgumentNullException('calendar');
                 }
                 else {
-                    throw new ArgumentException('Invalid arguments');
+                    throw new ArgumentException(InvalidArguments);
                 }
 
                 break;
 
             case 9:
+                if (typeof arguments[7] === 'number') {
+                    const microsecond: number = arguments[7];
+                    const extra: DateTimeKind | Calendar = arguments[8];
+                    if (extra == null) throw new ArgumentNullException('calendar');
+                    if (extra instanceof Calendar) {
+                        checkMillisecond(arguments[6]);
+                        ticks = extra.toDateTime(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5], arguments[6]).ticks;
+                    }
+                    else if (extra instanceof DateTimeKind) {
+                        if (extra.value < DateTimeKind.unspecified.value || extra.value > DateTimeKind.local.value)
+                            throwInvalidKind();
+                        ticks = dateToTicks(arguments[0], arguments[1], arguments[2])
+                            + timeToTicks(arguments[3], arguments[4], arguments[5]);
+                        checkMillisecond(arguments[6]);
+                        ticks += BigInt(arguments[6]) * TicksPerMillisecond;
+                        kind = extra;
+                    }
+                    else throw new ArgumentException(InvalidArguments);
+                    checkMicrosecond(microsecond);
+                    ticks += BigInt(microsecond) * TicksPerMicrosecond;
+                    break;
+                }
                 year = arguments[0];
                 month = arguments[1];
                 day = arguments[2];
@@ -327,23 +372,32 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
                 if (!(calendar instanceof Calendar))
                     throw new ArgumentNullException("calendar");
 
-                if (millisecond < 0 || millisecond >= MillisPerSecond) {
-                    throw new ArgumentOutOfRangeException(/*nameof(millisecond), SR.Format(SR.ArgumentOutOfRange_Range, 0, MillisPerSecond - 1)*/);
-                }
+                checkMillisecond(millisecond);
 
                 if (kind.value < DateTimeKind.unspecified.value || kind.value > DateTimeKind.local.value) {
-                    throw new ArgumentException("Argument_InvalidDateTimeKind");
+                    throwInvalidKind();
                 }
 
-                ticks = calendar.toDateTime(year, month, day, hour, minute, second, 0).ticks;
-                ticks += millisecond * TicksPerMillisecond;
-                if (ticks < MinTicks || ticks > MaxTicks)
-                    throw new ArgumentException(/*SR.Arg_DateTimeRange*/);
+                ticks = calendar.toDateTime(year, month, day, hour, minute, second, millisecond).ticks;
 
                 break;
 
+            case 10: {
+                const microsecond: number = arguments[7];
+                calendar = arguments[8];
+                kind = arguments[9];
+                if (!(calendar instanceof Calendar)) throw new ArgumentNullException('calendar');
+                checkMillisecond(arguments[6]);
+                if (!(kind instanceof DateTimeKind) || kind.value < DateTimeKind.unspecified.value || kind.value > DateTimeKind.local.value)
+                    throwInvalidKind();
+                ticks = calendar.toDateTime(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5], arguments[6]).ticks;
+                checkMicrosecond(microsecond);
+                ticks += BigInt(microsecond) * TicksPerMicrosecond;
+                break;
+            }
+
             default:
-                throw new Error('Invalid arguments');
+                throw new Error(InvalidArguments);
         }
 
         setValue(this, 'ticks', ticks);
@@ -355,15 +409,14 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      */
     get date(): DateTime {
         const ticks = this.ticks;
-        //return new DateTime(uint(ticks - int(ticks % TicksPerDay)), this.kind);
-        return new DateTime(ticks - int(ticks % TicksPerDay), this.kind);
+        return preserveLocalKind(this, ticks - ticks % TicksPerDay);
     }
 
     /**
      * Gets the day of the week represented by this instance.
      */
     get dayOfWeek(): DayOfWeek {
-        return (int(this.ticks / TicksPerDay) + 1) % 7;
+        return Number((this.ticks / TicksPerDay + 1n) % 7n);
     }
 
     /**
@@ -398,35 +451,43 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * Gets the hour component of the date represented by this instance.
      */
     get hour(): number {
-        return int(this.ticks / TicksPerHour) % 24;
+        return Number((this.ticks / TicksPerHour) % 24n);
     }
 
     /**
      * Gets the minute component of the date represented by this instance.
      */
     get minute(): number {
-        return int(this.ticks / TicksPerMinute) % 60;
+        return Number((this.ticks / TicksPerMinute) % 60n);
     }
 
     /**
      * Gets the seconds component of the date represented by this instance.
      */
     get second(): number {
-        return int(this.ticks / TicksPerSecond) % 60;
+        return Number((this.ticks / TicksPerSecond) % 60n);
     }
 
     /**
      * Gets the milliseconds component of the date represented by this instance.
      */
     get millisecond(): number {
-        return int(this.ticks / TicksPerMillisecond) % 1000;
+        return Number((this.ticks / TicksPerMillisecond) % 1000n);
+    }
+
+    get microsecond(): number {
+        return Number((this.ticks / TicksPerMicrosecond) % 1000n);
+    }
+
+    get nanosecond(): number {
+        return Number(this.ticks % TicksPerMicrosecond) * 100;
     }
 
     /**
      * Gets the number of ticks that represent the date and time of this instance.
      */
-    get ticks(): number {
-        return getOrCreateValue(this, 'ticks', () => 0);
+    get ticks(): bigint {
+        return getOrCreateValue(this, 'ticks', () => 0n);
     }
 
     /**
@@ -447,17 +508,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * Gets a DateTime object that is set to the current date and time on this computer, expressed as the local time.
      */
     static get now(): DateTime {
-        const d = new Date();
-        return new DateTime(
-            d.getFullYear(),
-            d.getMonth() + 1,
-            d.getDate(),
-            d.getHours(),
-            d.getMinutes(),
-            d.getSeconds(),
-            d.getMilliseconds(),
-            DateTimeKind.local
-        );
+        return DateTime.utcNow.toLocalTime();
     }
 
     /**
@@ -509,25 +560,8 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * Returns a new DateTime that adds the value of the specified TimeSpan to the value of this instance.
      * @param value A positive or negative time interval.
      */
-    add(value: TimeSpan): DateTime;
-    /**
-     * 
-     * @param value
-     * @param scale
-     */
-    add(value: number, scale: number): DateTime;
-    add(value: TimeSpan | number, scale?: number): DateTime {
-        if (value instanceof TimeSpan) {
-            return this.addTicks(value.ticks);
-        }
-        else {
-            const millis_double = value * scale! + (value >= 0 ? 0.5 : -0.5);
-
-            if (millis_double <= -MaxMillis || millis_double >= MaxMillis)
-                throw new ArgumentOutOfRangeException(/*nameof(value), SR.ArgumentOutOfRange_AddValue*/);
-
-            return this.addTicks(int(millis_double) * TicksPerMillisecond);
-        }
+    add(value: TimeSpan): DateTime {
+        return this.addTicks(value.ticks);
     }
 
     /**
@@ -535,7 +569,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * @param value A number of whole and fractional days. The value parameter can be negative or positive.
      */
     addDays(value: number): DateTime {
-        return this.add(value, MillisPerDay);
+        return addUnits(this, value, TicksPerDay);
     }
 
     /**
@@ -544,10 +578,18 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      */
     addYears(value: number): DateTime {
         if (value < -10000 || value > 10000) {
-            throw new Error('ArgumentOutOfRange_DateTimeBadYears');
+            throw new ArgumentOutOfRangeException('value', SR.ArgumentOutOfRange_DateTimeBadYears);
         }
 
-        return this.addMonths(value * 12);
+        let { year, month, day } = getDate.call(this);
+        year += value;
+        if (year < 1 || year > 9999) {
+            throw new ArgumentOutOfRangeException('value', SR.ArgumentOutOfRange_DateArithmetic);
+        }
+        if (month === 2 && day === 29 && !DateTime.isLeapYear(year)) {
+            day = 28;
+        }
+        return preserveLocalKind(this, dateToTicks(year, month, day) + this.ticks % TicksPerDay);
     }
 
     /**
@@ -556,7 +598,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      */
     addMonths(months: number): DateTime {
         if (months < -120000 || months > 120000)
-            throw new Error('ArgumentOutOfRange_DateTimeBadMonths');
+            throw new ArgumentOutOfRangeException('months', SR.ArgumentOutOfRange_DateTimeBadMonths);
 
         let { year, month, day } = getDate.call(this);
 
@@ -571,12 +613,12 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         }
 
         if (year < 1 || year > 9999) {
-            throw new Error('ArgumentOutOfRange_DateArithmetic');
+            throw new ArgumentOutOfRangeException('months', SR.ArgumentOutOfRange_DateArithmetic);
         }
         const days = DateTime.daysInMonth(year, month);
         if (day > days) day = days;
 
-        return new DateTime(dateToTicks(year, month, day) + int(this.ticks % TicksPerDay), this.kind);
+        return preserveLocalKind(this, dateToTicks(year, month, day) + this.ticks % TicksPerDay);
     }
 
     /**
@@ -584,7 +626,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * @param value A number of whole and fractional hours. The value parameter can be negative or positive.
      */
     addHours(value: number): DateTime {
-        return this.add(value, MillisPerHour);
+        return addUnits(this, value, TicksPerHour);
     }
 
     /**
@@ -592,7 +634,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * @param value A number of whole and fractional minutes. The value parameter can be negative or positive.
      */
     addMinutes(value: number): DateTime {
-        return this.add(value, MillisPerMinute);
+        return addUnits(this, value, TicksPerMinute);
     }
 
     /**
@@ -600,27 +642,31 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * @param value A number of whole and fractional seconds. The value parameter can be negative or positive.
      */
     addSeconds(value: number): DateTime {
-        return this.add(value, MillisPerSecond);
+        return addUnits(this, value, TicksPerSecond);
     }
 
     /**
      * Returns a new DateTime that adds the specified number of milliseconds to the value of this instance.
-     * @param value A number of whole and fractional milliseconds. The value parameter can be negative or positive. Note that this value is rounded to the nearest integer.
+     * @param value A number of whole and fractional milliseconds. The value parameter can be negative or positive.
      */
     addMilliseconds(value: number): DateTime {
-        return this.add(value, 1);
+        return addUnits(this, value, TicksPerMillisecond);
+    }
+
+    addMicroseconds(value: number): DateTime {
+        return addUnits(this, value, TicksPerMicrosecond);
     }
 
     /**
      * Returns a new DateTime that adds the specified number of ticks to the value of this instance.
      * @param value A number of 100-nanosecond ticks. The value parameter can be positive or negative.
      */
-    addTicks(value: number): DateTime {
+    addTicks(value: bigint): DateTime {
         const ticks = this.ticks;
         if (value > MaxTicks - ticks || value < MinTicks - ticks) {
-            throw new ArgumentOutOfRangeException(/*nameof(value), SR.ArgumentOutOfRange_DateArithmetic*/);
+            throw new ArgumentOutOfRangeException('value', SR.ArgumentOutOfRange_DateArithmetic);
         }
-        return new DateTime(ticks + value, this.kind);
+        return preserveLocalKind(this, ticks + value);
     }
 
     /**
@@ -639,11 +685,11 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         }
 
         const ticks = this.ticks;
-        let valueTicks = value.ticks;
+        const valueTicks = value.ticks;
         if (ticks - MinTicks < valueTicks || ticks - MaxTicks > valueTicks) {
-            throw new ArgumentOutOfRangeException(/*nameof(value), SR.ArgumentOutOfRange_DateArithmetic*/);
+            throw new ArgumentOutOfRangeException('value', SR.ArgumentOutOfRange_DateArithmetic);
         }
-        return new DateTime(ticks - valueTicks, this.kind);
+        return preserveLocalKind(this, ticks - valueTicks);
     }
 
     /**
@@ -651,39 +697,42 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * @param throwOnOverflow
      */
     toLocalTime(throwOnOverflow?: boolean): DateTime {
-        if (this.kind == DateTimeKind.local) {
+        if (this.kind.value === DateTimeKind.local.value) {
             return this;
         }
 
-        const offset = getTimezoneOffset();
-        const ticks = this.ticks + (offset * TicksPerMinute);
+        const offset = localTimeOffset(this.ticks, true);
+        const ticks = this.ticks + offset.ticks;
         if (ticks > MaxTicks) {
             if (throwOnOverflow)
-                throw new ArgumentException(/*SR.Arg_ArgumentOutOfRangeException*/);
+                throw new ArgumentException(SR.ArgumentOutOfRange_DateArithmetic);
             else
                 return new DateTime(MaxTicks, DateTimeKind.local);
         }
 
         if (ticks < MinTicks) {
             if (throwOnOverflow)
-                throw new ArgumentException(/*SR.Arg_ArgumentOutOfRangeException*/);
+                throw new ArgumentException(SR.ArgumentOutOfRange_DateArithmetic);
             else
                 return new DateTime(MinTicks, DateTimeKind.local);
         }
 
-        return new DateTime(ticks, DateTimeKind.local);
+        const result = new DateTime(ticks, DateTimeKind.local);
+        if (offset.ambiguousDaylight) ambiguousLocalDaylight.add(result);
+        return result;
     }
 
     /**
      * Converts the value of the current DateTime object to Coordinated Universal Time (UTC).
      */
     toUniversalTime(): DateTime {
-        if (this.kind == DateTimeKind.utc) {
+        if (this.kind.value === DateTimeKind.utc.value) {
             return this;
         }
 
-        const offset = getTimezoneOffset();
-        const ticks = this.ticks - (offset * TicksPerMinute);
+        const ticks = this.ticks - localTimeOffset(this.ticks, false, ambiguousLocalDaylight.has(this)).ticks;
+        if (ticks < MinTicks) return new DateTime(MinTicks, DateTimeKind.utc);
+        if (ticks > MaxTicks) return new DateTime(MaxTicks, DateTimeKind.utc);
         return new DateTime(ticks, DateTimeKind.utc);
     }
 
@@ -695,21 +744,105 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      * Converts the value of the current DateTime object to its equivalent string representation using the specified format and the formatting conventions of the current culture.
      * @param format A standard or custom date and time format string.
      */
-    toString(format: string): string;
+    toString(format: string | null): string;
     /**
      * Converts the value of the current DateTime object to its equivalent string representation using the specified culture-specific format information.
      * @param provider An object that supplies culture-specific formatting information.
      */
-    toString(provider: IFormatProvider): string;
+    toString(provider: IFormatProvider | null): string;
     /**
      * Converts the value of the current DateTime object to its equivalent string representation using the specified format and culture-specific format information.
      * @param format A standard or custom date and time format string.
      * @param provider An object that supplies culture-specific formatting information.
      */
-    toString(format: string, provider: IFormatProvider): string;
-    toString(/*format?: string | IFormatProvider, provider?: IFormatProvider*/): string {
-        //return `${format}_${provider}`;
-        return "";
+    toString(format: string | null, provider: IFormatProvider | null): string;
+    toString(format?: string | IFormatProvider | null, provider?: IFormatProvider | null): string {
+        return typeof format === 'object' && format !== null
+            ? DateTimeFormat.format(this, null, format) : DateTimeFormat.format(this, format, provider);
+    }
+
+    /**
+     * Returns the invariant round-trip string used by JSON.stringify, preserving all ticks and the Kind suffix.
+     * @returns A Gregorian date and time with seven fractional-second digits and its UTC or local suffix, if specified.
+     */
+    toJSON(): string {
+        return this.toString('O');
+    }
+
+    /**
+     * Converts this instance to a long date string using the current culture.
+     */
+    toLongDateString(): string {
+        return this.toString('D');
+    }
+
+    /**
+     * Converts this instance to a long time string using the current culture.
+     */
+    toLongTimeString(): string {
+        return this.toString('T');
+    }
+
+    /**
+     * Converts this instance to a short date string using the current culture.
+     */
+    toShortDateString(): string {
+        return this.toString('d');
+    }
+
+    /**
+     * Converts this instance to a short time string using the current culture.
+     */
+    toShortTimeString(): string {
+        return this.toString('t');
+    }
+
+    /**
+     * Returns all standard string representations using the current culture.
+     */
+    getDateTimeFormats(): string[];
+
+    /**
+     * Returns all standard string representations using the specified format provider.
+     * @param provider An object that supplies culture-specific formatting information.
+     */
+    getDateTimeFormats(provider: IFormatProvider | null): string[];
+
+    /**
+     * Returns all string representations associated with a standard format specifier.
+     * @param format A single standard date and time format specifier.
+     * @param provider An object that supplies culture-specific formatting information.
+     */
+    getDateTimeFormats(format: string, provider?: IFormatProvider | null): string[];
+    getDateTimeFormats(format?: string | IFormatProvider | null, provider?: IFormatProvider | null): string[] {
+        return typeof format === 'object' && format !== null
+            ? DateTimeFormat.getAllFormats(this, null, format) : DateTimeFormat.getAllFormats(this, format, provider);
+    }
+
+    /**
+     * Tries to format this instance into a UTF-16 character buffer or UTF-8 byte buffer.
+     * @param destination The buffer that receives the formatted date and time.
+     * @param charsWritten Receives the number of UTF-16 code units or UTF-8 bytes written; zero if the buffer is too small.
+     * @param format A standard or custom date and time format string.
+     * @param provider An object that supplies culture-specific formatting information.
+     * @returns True if the destination has enough space; otherwise, false.
+     */
+    tryFormat(destination: string[] | Uint16Array | Uint8Array, charsWritten: OutParam<number>, format?: string | null, provider?: IFormatProvider | null): boolean {
+        const text = DateTimeFormat.format(this, format, provider);
+        if (destination instanceof Uint8Array) {
+            const bytes = new TextEncoder().encode(text);
+            if (bytes.length > destination.length) { charsWritten.result = 0; return false; }
+            destination.set(bytes);
+            charsWritten.result = bytes.length;
+        } else {
+            if (text.length > destination.length) { charsWritten.result = 0; return false; }
+            for (let i = 0; i < text.length; i++) {
+                if (destination instanceof Uint16Array) destination[i] = text.charCodeAt(i);
+                else destination[i] = text[i]!;
+            }
+            charsWritten.result = text.length;
+        }
+        return true;
     }
 
     /**
@@ -729,7 +862,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         }
 
         if (!(value instanceof DateTime)) {
-            throw new ArgumentException(/*SR.Arg_MustBeDateTime*/);
+            throw new ArgumentException(SR.Arg_MustBeDateTime);
         }
 
         const ticks1 = this.ticks;
@@ -758,7 +891,7 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
         return false;
     }
 
-    valueOf(): number {
+    valueOf(): bigint {
         return this.ticks;
     }
 
@@ -768,9 +901,21 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      */
     static isLeapYear(year: number): boolean {
         if (year < 1 || year > 9999) {
-            throw new Error('ThrowArgumentOutOfRange_Year');
+            throw new ArgumentOutOfRangeException('year',
+                SR.ArgumentOutOfRange_Year);
         }
         return (year & 3) == 0 && ((year & 15) == 0 || (year % 25) != 0);
+    }
+
+    /**
+     * Indicates whether this instance is within the daylight saving time range for the current time zone.
+     */
+    isDaylightSavingTime(): boolean {
+        if (this.kind.value === DateTimeKind.utc.value) {
+            return false;
+        }
+
+        return localTimeOffset(this.ticks, false, ambiguousLocalDaylight.has(this)).daylight;
     }
 
     /**
@@ -780,7 +925,8 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
      */
     static daysInMonth(year: number, month: number): number {
         if (month < 1 || month > 12)
-            throw new Error('ArgumentOutOfRange_Month');
+            throw new ArgumentOutOfRangeException('month', month,
+                SR.ArgumentOutOfRange_Month);
 
         // IsLeapYear checks the year argument
         const days = this.isLeapYear(year) ? s_daysToMonth366 : s_daysToMonth365;
@@ -821,36 +967,79 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
     }
 }
 
-function dateToTicks(year: number, month: number, day: number): number {
+function addUnits(date: DateTime, value: number, scale: bigint): DateTime {
+    if (Math.abs(value) > Number(MaxTicks / scale))
+        throw new ArgumentOutOfRangeException('value', SR.ArgumentOutOfRange_AddValue);
+    if (Number.isNaN(value))
+        return date.addTicks(0n);
+    const whole = Math.trunc(value);
+    const ticks = BigInt(whole) * scale + BigInt(Math.trunc((value - whole) * Number(scale)));
+    return date.addTicks(ticks);
+}
+
+function dateToTicks(year: number, month: number, day: number): bigint {
     if (year < 1 || year > 9999 || month < 1 || month > 12 || day < 1) {
-        throw new ArgumentOutOfRangeException('ThrowArgumentOutOfRange_BadYearMonthDay');
+        throwInvalidDate();
     }
 
     const days = DateTime.isLeapYear(year) ? s_daysToMonth366 : s_daysToMonth365;
     if (day > days[month]! - days[month - 1]!) {
-        throw new ArgumentOutOfRangeException('ThrowArgumentOutOfRange_BadYearMonthDay');
+        throwInvalidDate();
     }
 
     const y = year - 1;
     const n = int(y * 365) + int(y / 4) - int(y / 100) + int(y / 400) + days[month - 1]! + day - 1;
-    return int(n * TicksPerDay);
+    return BigInt(n) * TicksPerDay;
 }
 
-function timeToTicks(hour: number, minute: number, second: number): number {
+function timeToTicks(hour: number, minute: number, second: number): bigint {
     // TimeSpan.TimeToTicks is a family access function which does no error checking, 
     // so we need to put some error checking out here.
 
     if (uint(hour) >= 24 || uint(minute) >= 60 || uint(second) >= 60) {
-        throw new ArgumentOutOfRangeException('ThrowArgumentOutOfRange_BadHourMinuteSecond');
+        throwInvalidTime();
     }
 
     return TimeSpanTimeToTicks(hour, minute, second);
 }
 
+function throwTicksOutOfRange(): never {
+    throw new ArgumentOutOfRangeException('ticks',
+        SR.ArgumentOutOfRange_DateTimeBadTicks);
+}
+
+function throwInvalidKind(): never {
+    throw new ArgumentException(SR.Argument_InvalidDateTimeKind, 'kind');
+}
+
+function throwInvalidDate(): never {
+    throw new ArgumentOutOfRangeException(undefined,
+        SR.ArgumentOutOfRange_BadYearMonthDay);
+}
+
+function throwInvalidTime(): never {
+    throw new ArgumentOutOfRangeException(undefined,
+        SR.ArgumentOutOfRange_BadHourMinuteSecond);
+}
+
+function checkMillisecond(value: number): void {
+    if (!Number.isInteger(value) || value < 0 || value >= MillisPerSecond) {
+        throw new ArgumentOutOfRangeException('millisecond',
+            formatExceptionResource(SR.ArgumentOutOfRange_Range, 0, 999));
+    }
+}
+
+function checkMicrosecond(value: number): void {
+    if (!Number.isInteger(value) || value < 0 || value >= 1000) {
+        throw new ArgumentOutOfRangeException('microsecond',
+            formatExceptionResource(SR.ArgumentOutOfRange_Range, 0, 999));
+    }
+}
+
 export function getDate(this: DateTime) {
     const ticks = this.ticks;
     // n = number of days since 1/1/0001
-    let n = int(ticks / TicksPerDay);
+    let n = Number(ticks / TicksPerDay);
     // y400 = number of whole 400-year periods since 1/1/0001
     const y400 = int(n / DaysPer400Years);
     // n = day number within 400-year period
@@ -897,7 +1086,7 @@ export function getDate(this: DateTime) {
 function getDatePart(this: DateTime, part: number): number {
     const ticks = this.ticks;
     // n = number of days since 1/1/0001
-    let n = int(ticks / TicksPerDay);
+    let n = Number(ticks / TicksPerDay);
     // y400 = number of whole 400-year periods since 1/1/0001
     const y400 = int(n / DaysPer400Years);
     // n = day number within 400-year period
@@ -940,15 +1129,13 @@ function getDatePart(this: DateTime, part: number): number {
 }
 
 
+function preserveLocalKind(source: DateTime, ticks: bigint): DateTime {
+    const result = new DateTime(ticks, source.kind);
+    if (ambiguousLocalDaylight.has(source)) ambiguousLocalDaylight.add(result);
+    return result;
+}
 
-/*
- https://stackoverflow.com/questions/13360653/datetime-comparing-by-internal-ticks
-
- The dateData field is used like a bit field to store multiple values in a compact format.
-
-The top two bits store the DateTimeKind, which has one of four possible values: Unspecified,
-Local (internally there are two variants), or Utc. These four values can be stored in two bits.
-
-The bottom 62 bits store the ticks. The operation x & 0x3fffffffffffffffL is a bitwise-and operation,
-also sometimes called masking. It returns only the bits that correspond to the ticks.
- */
+/** Internal formatter access preserves the ambiguous local DST flag. */
+export function getDateTimeOffset(value: DateTime): bigint {
+    return localTimeOffset(value.ticks, false, ambiguousLocalDaylight.has(value)).ticks;
+}

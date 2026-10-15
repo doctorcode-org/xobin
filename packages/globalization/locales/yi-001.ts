@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "yi", 
     lcid: 1085, 
     name: "yi-001", 
@@ -40,29 +42,151 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "פֿאַרמיטאָג", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, dטן MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd, dטן MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "נאָכמיטאָג", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["זונטיק", "מאָנטיק", "דינסטיק", "מיטוואך", "דאנערשטיק", "פֿרײַטיק", "שבת"], 
-        shortestDayNames: ["זונטיק", "מאָנטיק", "דינסטיק", "מיטוואך", "דאנערשטיק", "פֿרײַטיק", "שבת"], 
-        dayNames: ["זונטיק", "מאָנטיק", "דינסטיק", "מיטוואך", "דאנערשטיק", "פֿרײַטיק", "שבת"], 
-        abbreviatedMonthNames: ["יאַנ", "פֿעב", "מערץ", "אַפּר", "מיי", "יוני", "יולי", "אויג", "סעפּ", "אקט", "נאוו", "דעצ", ""], 
-        monthNames: ["יאַנואַר", "פֿעברואַר", "מערץ", "אַפּריל", "מיי", "יוני", "יולי", "אויגוסט", "סעפּטעמבער", "אקטאבער", "נאוועמבער", "דעצעמבער", ""], 
-        nativeCalendarName: "גרעגארישער קאַלענדאַר", 
-        abbreviatedMonthGenitiveNames: ["יאַנואַר", "פֿעברואַר", "מערץ", "אַפּריל", "מיי", "יוני", "יולי", "אויגוסט", "סעפּטעמבער", "אקטאבער", "נאוועמבער", "דעצעמבער", ""], 
-        monthGenitiveNames: ["יאַנואַר", "פֿעברואַר", "מערץ", "אַפּריל", "מיי", "יוני", "יולי", "אויגוסט", "סעפּטעמבער", "אקטאבער", "נאוועמבער", "דעצעמבער", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "זונטיק",
+        "מאָנטיק",
+        "דינסטיק",
+        "מיטוואך",
+        "דאנערשטיק",
+        "פֿרײַטיק",
+        "שבת"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "יאַנואַר",
+        "פֿעברואַר",
+        "מערץ",
+        "אַפּריל",
+        "מיי",
+        "יוני",
+        "יולי",
+        "אויגוסט",
+        "סעפּטעמבער",
+        "אקטאבער",
+        "נאוועמבער",
+        "דעצעמבער",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "יאַנ",
+        "פֿעב",
+        "מערץ",
+        "אַפּר",
+        "מיי",
+        "יוני",
+        "יולי",
+        "אויג",
+        "סעפּ",
+        "אקט",
+        "נאוו",
+        "דעצ",
+        ""
+      ],
+      "amDesignator": "פֿאַרמיטאָג",
+      "dateSeparator": "/",
+      "dayNames": [
+        "זונטיק",
+        "מאָנטיק",
+        "דינסטיק",
+        "מיטוואך",
+        "דאנערשטיק",
+        "פֿרײַטיק",
+        "שבת"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, dטן MMMM yyyy HH:mm:ss",
+      "longDatePattern": "dddd, dטן MMMM yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "יאַנואַר",
+        "פֿעברואַר",
+        "מערץ",
+        "אַפּריל",
+        "מיי",
+        "יוני",
+        "יולי",
+        "אויגוסט",
+        "סעפּטעמבער",
+        "אקטאבער",
+        "נאוועמבער",
+        "דעצעמבער",
+        ""
+      ],
+      "monthNames": [
+        "יאַנואַר",
+        "פֿעברואַר",
+        "מערץ",
+        "אַפּריל",
+        "מיי",
+        "יוני",
+        "יולי",
+        "אויגוסט",
+        "סעפּטעמבער",
+        "אקטאבער",
+        "נאוועמבער",
+        "דעצעמבער",
+        ""
+      ],
+      "nativeCalendarName": "גרעגארישער קאַלענדאַר",
+      "pmDesignator": "נאָכמיטאָג",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd/MM/yyyy",
+      "shortestDayNames": [
+        "S",
+        "M",
+        "T",
+        "W",
+        "T",
+        "F",
+        "S"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "CE"
+      ],
+      "abbreviatedEraNames": [
+        "CE"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd/MM/yyyy",
+          "dטן MMM yyyy",
+          "d-M-yyyy",
+          "dd/MM/yy"
+        ],
+        "D": [
+          "dddd, dטן MMMM yyyy",
+          "dטן MMMM yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

@@ -1,0 +1,143 @@
+{
+  "runtime": "10.0.7",
+  "timeZone": "UTC",
+  "rows": [
+    {
+      "source": "DateTimeTests.ToBinary_Invoke_ReturnsExpected",
+      "operation": "toBinary",
+      "input": "123456789101112:1",
+      "result": "4611809475216489016",
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToBinary_Invoke_ReturnsExpected",
+      "operation": "toBinary",
+      "input": "123456789101112:0",
+      "result": "123456789101112",
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToBinary_Invoke_ReturnsExpected",
+      "operation": "toBinary",
+      "input": "123456789101112:2",
+      "result": "-9223248580065674696",
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToBinary_Invoke_ReturnsExpected",
+      "operation": "toBinary",
+      "input": "3155378975999999999:0",
+      "result": "3155378975999999999",
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToBinary_Invoke_ReturnsExpected",
+      "operation": "toBinary",
+      "input": "0:0",
+      "result": "0",
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.FromBinary_Invoke_ReturnsExpected",
+      "operation": "roundtrip",
+      "input": "636812696700120000:0",
+      "result": {
+        "binary": "636812696700120000",
+        "ticks": "636812696700120000",
+        "kind": 0
+      },
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.FromBinary_Invoke_ReturnsExpected",
+      "operation": "roundtrip",
+      "input": "636812696700120000:2",
+      "result": {
+        "binary": "-8586559340154655808",
+        "ticks": "636812696700120000",
+        "kind": 2
+      },
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.FromBinary_Invoke_ReturnsExpected",
+      "operation": "roundtrip",
+      "input": "today",
+      "result": {
+        "binary": null,
+        "ticks": null,
+        "kind": 2
+      },
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.FromBinary_Invoke_ReturnsExpected",
+      "operation": "roundtrip",
+      "input": "0:0",
+      "result": {
+        "binary": "0",
+        "ticks": "0",
+        "kind": 0
+      },
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.FromBinary_Invoke_ReturnsExpected",
+      "operation": "roundtrip",
+      "input": "3155378975999999999:0",
+      "result": {
+        "binary": "3155378975999999999",
+        "ticks": "3155378975999999999",
+        "kind": 0
+      },
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.FromBinary_OutOfRangeTicks_ThrowsArgumentException",
+      "operation": "fromBinary",
+      "input": "3155378976000000000",
+      "result": null,
+      "error": "ArgumentException",
+      "paramName": "dateData",
+      "message": "The binary data must result in a DateTime with ticks between DateTime.MinValue.Ticks and DateTime.MaxValue.Ticks. (Parameter \u0027dateData\u0027)"
+    },
+    {
+      "source": "DateTimeTests.FromBinary_OutOfRangeTicks_ThrowsArgumentException",
+      "operation": "fromBinary",
+      "input": "9223372036854775807",
+      "result": null,
+      "error": "ArgumentException",
+      "paramName": "dateData",
+      "message": "The binary data must result in a DateTime with ticks between DateTime.MinValue.Ticks and DateTime.MaxValue.Ticks. (Parameter \u0027dateData\u0027)"
+    },
+    {
+      "source": "DateTimeTests.FromBinary_OutOfRangeTicks_ThrowsArgumentException",
+      "operation": "fromBinary",
+      "input": "7767064994427387904",
+      "result": null,
+      "error": "ArgumentException",
+      "paramName": "dateData",
+      "message": "The binary data must result in a DateTime with ticks between DateTime.MinValue.Ticks and DateTime.MaxValue.Ticks. (Parameter \u0027dateData\u0027)"
+    }
+  ]
+}

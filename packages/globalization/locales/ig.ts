@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 112, 
     name: "ig", 
@@ -40,29 +42,150 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "A.M.", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, d MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd, d MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "d MMMM", 
-        pmDesignator: "P.M.", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "d/M/yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["Ụka", "Mọn", "Tiu", "Wen", "Tọọ", "Fraị", "Satọdee"], 
-        shortestDayNames: ["Ụka", "Mọn", "Tiu", "Wen", "Tọọ", "Fraị", "Sat"], 
-        dayNames: ["Ụbọchị Ụka", "Mọnde", "Tiuzdee", "Wenezdee", "Tọọzdee", "Fraịdee", "Satọdee"], 
-        abbreviatedMonthNames: ["Jen", "Feb", "Maa", "Epr", "Mee", "Juu", "Jul", "Ọgọ", "Sep", "Ọkt", "Nov", "Dis", ""], 
-        monthNames: ["Jenụwarị", "Febrụwarị", "Maachị", "Epreel", "Mee", "Juun", "Julaị", "Ọgọọst", "Septemba", "Ọktoba", "Novemba", "Disemba", ""], 
-        nativeCalendarName: "Kalenda Gregory", 
-        abbreviatedMonthGenitiveNames: ["Jen", "Feb", "Maa", "Epr", "Mee", "Juu", "Jul", "Ọgọ", "Sep", "Ọkt", "Nov", "Dis", ""], 
-        monthGenitiveNames: ["Jenụwarị", "Febrụwarị", "Maachị", "Epreel", "Mee", "Juun", "Julaị", "Ọgọọst", "Septemba", "Ọktoba", "Novemba", "Disemba", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Sọn",
+        "Mọn",
+        "Tiu",
+        "Wen",
+        "Tọọ",
+        "Fraị",
+        "Sat"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Jen",
+        "Feb",
+        "Maa",
+        "Epr",
+        "Mee",
+        "Juu",
+        "Jul",
+        "Ọgọ",
+        "Sep",
+        "Ọkt",
+        "Nov",
+        "Dis",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Jen",
+        "Feb",
+        "Maa",
+        "Epr",
+        "Mee",
+        "Juu",
+        "Jul",
+        "Ọgọ",
+        "Sep",
+        "Ọkt",
+        "Nov",
+        "Dis",
+        ""
+      ],
+      "amDesignator": "N’ụtụtụ",
+      "dateSeparator": "/",
+      "dayNames": [
+        "Sọndee",
+        "Mọnde",
+        "Tiuzdee",
+        "Wenezdee",
+        "Tọọzdee",
+        "Fraịdee",
+        "Satọdee"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, d MMMM yyyy HH:mm:ss",
+      "longDatePattern": "dddd, d MMMM yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "d MMMM",
+      "monthGenitiveNames": [
+        "Jenụwarị",
+        "Febrụwarị",
+        "Maachị",
+        "Epreel",
+        "Mee",
+        "Juun",
+        "Julaị",
+        "Ọgọọst",
+        "Septemba",
+        "Ọktoba",
+        "Novemba",
+        "Disemba",
+        ""
+      ],
+      "monthNames": [
+        "Jenụwarị",
+        "Febrụwarị",
+        "Maachị",
+        "Epreel",
+        "Mee",
+        "Juun",
+        "Julaị",
+        "Ọgọọst",
+        "Septemba",
+        "Ọktoba",
+        "Novemba",
+        "Disemba",
+        ""
+      ],
+      "nativeCalendarName": "Kalenda Gregory",
+      "pmDesignator": "N’abali",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "d/M/yyyy",
+      "shortestDayNames": [
+        "S",
+        "M",
+        "T",
+        "W",
+        "T",
+        "F",
+        "S"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "A.K."
+      ],
+      "abbreviatedEraNames": [
+        "A.K."
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "d/M/yyyy",
+          "d MMM yyyy",
+          "d/M/yy"
+        ],
+        "D": [
+          "dddd, d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "d MMMM"
+        ],
+        "M": [
+          "d MMMM"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

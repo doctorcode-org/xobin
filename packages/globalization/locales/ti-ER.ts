@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "ti", 
     lcid: 2163, 
     name: "ti-ER", 
@@ -40,29 +42,151 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "ንጉሆ ሰዓተ", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd፣ dd MMMM መዓልቲ yyyy gg h:mm:ss tt", 
-        longDatePattern: "dddd፣ dd MMMM መዓልቲ yyyy gg", 
-        longTimePattern: "h:mm:ss tt", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "ድሕር ሰዓት", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "h:mm tt", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["ሰን", "ሰኑ", "ሰሉ", "ረቡ", "ሓሙ", "ዓር", "ቀዳ"], 
-        shortestDayNames: ["ሰን", "ሰኑ", "ሰሉ", "ረቡ", "ሓሙ", "ዓር", "ቀዳ"], 
-        dayNames: ["ሰንበት", "ሰኑይ", "ሠሉስ", "ረቡዕ", "ኃሙስ", "ዓርቢ", "ቀዳም"], 
-        abbreviatedMonthNames: ["ጥሪ", "ለካ", "መጋ", "ሚያ", "ግን", "ሰነ", "ሓም", "ነሓ", "መስ", "ጥቅ", "ሕዳ", "ታሕ", ""], 
-        monthNames: ["ጥሪ", "ለካቲት", "መጋቢት", "ሚያዝያ", "ግንቦት", "ሰነ", "ሓምለ", "ነሓሰ", "መስከረም", "ጥቅምቲ", "ሕዳር", "ታሕሳስ", ""], 
-        nativeCalendarName: "Gregorian Calendar", 
-        abbreviatedMonthGenitiveNames: ["ጥሪ", "ለካ", "መጋ", "ሚያ", "ግን", "ሰነ", "ሓም", "ነሓ", "መስ", "ጥቅ", "ሕዳ", "ታሕ", ""], 
-        monthGenitiveNames: ["ጥሪ", "ለካቲት", "መጋቢት", "ሚያዝያ", "ግንቦት", "ሰነ", "ሓምለ", "ነሓሰ", "መስከረም", "ጥቅምቲ", "ሕዳር", "ታሕሳስ", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "ሰን",
+        "ሰኑ",
+        "ሰሉ",
+        "ረቡ",
+        "ሓሙ",
+        "ዓር",
+        "ቀዳ"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "ጥሪ",
+        "ለካ",
+        "መጋ",
+        "ሚያ",
+        "ግን",
+        "ሰነ",
+        "ሓም",
+        "ነሓ",
+        "መስ",
+        "ጥቅ",
+        "ሕዳ",
+        "ታሕ",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "ጥሪ",
+        "ለካ",
+        "መጋ",
+        "ሚያ",
+        "ግን",
+        "ሰነ",
+        "ሓም",
+        "ነሓ",
+        "መስ",
+        "ጥቅ",
+        "ሕዳ",
+        "ታሕ",
+        ""
+      ],
+      "amDesignator": "ቅ.ቀ.",
+      "dateSeparator": "/",
+      "dayNames": [
+        "ሰንበት",
+        "ሰኑይ",
+        "ሰሉስ",
+        "ረቡዕ",
+        "ሓሙስ",
+        "ዓርቢ",
+        "ቀዳም"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd፣ d MMMM yyyy h:mm:ss tt",
+      "longDatePattern": "dddd፣ d MMMM yyyy",
+      "longTimePattern": "h:mm:ss tt",
+      "monthDayPattern": "d MMMM",
+      "monthGenitiveNames": [
+        "ጥሪ",
+        "ለካቲት",
+        "መጋቢት",
+        "ሚያዝያ",
+        "ግንቦት",
+        "ሰነ",
+        "ሓምለ",
+        "ነሓሰ",
+        "መስከረም",
+        "ጥቅምቲ",
+        "ሕዳር",
+        "ታሕሳስ",
+        ""
+      ],
+      "monthNames": [
+        "ጥሪ",
+        "ለካቲት",
+        "መጋቢት",
+        "ሚያዝያ",
+        "ግንቦት",
+        "ሰነ",
+        "ሓምለ",
+        "ነሓሰ",
+        "መስከረም",
+        "ጥቅምቲ",
+        "ሕዳር",
+        "ታሕሳስ",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "ድ.ቀ.",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd/MM/yyyy",
+      "shortestDayNames": [
+        "ሰ",
+        "ሰ",
+        "ሰ",
+        "ረ",
+        "ሓ",
+        "ዓ",
+        "ቀ"
+      ],
+      "shortTimePattern": "h:mm tt",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "ዓ/ም"
+      ],
+      "abbreviatedEraNames": [
+        "ዓ/ም"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd/MM/yyyy",
+          "d MMM yyyy",
+          "d/M/yyyy",
+          "dd/MM/yy"
+        ],
+        "D": [
+          "dddd፣ d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "h:mm tt"
+        ],
+        "T": [
+          "h:mm:ss tt"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "d MMMM"
+        ],
+        "M": [
+          "d MMMM"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

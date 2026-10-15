@@ -1,10 +1,17 @@
-﻿import { Calendar } from './calendar';
-import { DateTimeFormatInfo } from './date_time_format_info';
+import { InvalidCultureInfo } from './javascript_exception_resources';
+import * as SR from '@xobin/core/internal/exception-resources';
+import { setExceptionNumberFormat } from '@xobin/core/internal/exception-format';
+import { invariantDateTimeFormat, setCurrentFormatContext } from './date_time_format_context';
+import { Calendar } from './calendar';
+import { DateTimeFormatInfo, createDateTimeFormatInfo } from './date_time_format_info';
 import { NumberFormatInfo } from './number_format_info';
-import { getOrCreateValue, PlainObject, setValue, ArgumentNullException, getValue } from '@xobin/core';
+import { getOrCreateValue, PlainObject, setValue, ArgumentNullException, InvalidOperationException, getValue } from '@xobin/core';
 import { CultureData } from './culture_data';
 import { CultureNotFoundException } from './exceptions';
 import { GregorianCalendar } from './gregorian_calendar';
+import { getCalendarIdentity } from './calendar_identity';
+
+const optionalCalendarFactories = new WeakMap<CultureInfo, readonly (() => Calendar)[]>();
 
 const CULTURES_DATA: PlainObject<CultureData> = {
     '': {
@@ -47,34 +54,11 @@ const CULTURES_DATA: PlainObject<CultureData> = {
             nativeDigits: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
             digitSubstitution: 1
         },
-        dateTimeFormat: {
-            amDesignator: "AM",
-            dateSeparator: "/",
-            firstDayOfWeek: 0,
-            fullDateTimePattern: "dddd, dd MMMM yyyy HH:mm:ss",
-            longDatePattern: "dddd, dd MMMM yyyy",
-            longTimePattern: "HH:mm:ss",
-            monthDayPattern: "MMMM dd",
-            pmDesignator: "PM",
-            rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
-            shortDatePattern: "MM/dd/yyyy",
-            shortTimePattern: "HH:mm",
-            sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
-            timeSeparator: ":",
-            universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
-            yearMonthPattern: "yyyy MMMM",
-            abbreviatedDayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-            shortestDayNames: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
-            dayNames: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            abbreviatedMonthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", ""],
-            monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", ""],
-            nativeCalendarName: "Gregorian Calendar",
-            abbreviatedMonthGenitiveNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", ""],
-            monthGenitiveNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", ""]
-        },
+        dateTimeFormat: invariantDateTimeFormat,
         calendar: new GregorianCalendar()
     }
 };
+const READ_ONLY_CULTURES = new WeakSet<CultureInfo>();
 
 /**
  * Represents a type of standard culture name.
@@ -86,6 +70,14 @@ export type CultureName = (keyof CultureCollection);
  * The information includes the names for the culture, the writing system, the calendar used, the sort order of strings, and formatting for dates and numbers.
  */
 export class CultureInfo {
+    /**
+     * Gets an object that defines the format of the specified type.
+     * @param formatType The type of formatting information to retrieve.
+     */
+    getFormat(formatType: unknown): object | null {
+        return formatType === DateTimeFormatInfo || formatType === 'DateTimeFormatInfo' ? this.dateTimeFormat
+            : formatType === 'NumberFormatInfo' ? this.numberFormat : null;
+    }
 
     /**
      * Gets the default calendar used by the culture.
@@ -95,7 +87,15 @@ export class CultureInfo {
     /**
      * Gets or sets a DateTimeFormatInfo that defines the culturally appropriate format of displaying dates and times.
      */
-    readonly dateTimeFormat!: DateTimeFormatInfo;
+    get dateTimeFormat(): DateTimeFormatInfo {
+        return getValue(this, 'dateTimeFormat');
+    }
+
+    set dateTimeFormat(value: DateTimeFormatInfo) {
+        if (READ_ONLY_CULTURES.has(this)) throw new InvalidOperationException(SR.InvalidOperation_ReadOnly);
+        if (value == null) throw new ArgumentNullException('value');
+        setValue(this, 'dateTimeFormat', value);
+    }
 
     /**
      * Gets the culture name in the format languagefull [country/regionfull] in English.
@@ -153,12 +153,14 @@ export class CultureInfo {
      */
     constructor(name: CultureName) {
 
+        if (name == null) throw new ArgumentNullException('name');
         const cultureData: any = CULTURES_DATA[name.toLocaleLowerCase()];
         if (!cultureData) {
-            throw new CultureNotFoundException(name);
+            throw new CultureNotFoundException('name', name, null);
         }
 
         Object.keys(cultureData)
+            .filter(property => !['dateTimeFormat', 'calendarFormats', 'calendarFactories'].includes(property))
             .forEach(property => {
                 const propertyValue = cultureData[property];
                 if (property === 'parent') {
@@ -169,10 +171,31 @@ export class CultureInfo {
                         configurable: true,
                         enumerable: true,
                         writable: false,
-                        value: propertyValue
+                        value: property === 'numberFormat'
+                            ? cloneFormatInfo(propertyValue)
+                            : property === 'calendar' ? propertyValue.clone() : propertyValue
                     });
                 }                
             });
+        const calendarFactories: readonly (() => Calendar)[] = cultureData.calendarFactories ?? [() => this.calendar.clone()];
+        optionalCalendarFactories.set(this, calendarFactories);
+        // Gregorian data used by the universal format does not make that calendar selectable.
+        const supportedCalendarIds = new Set([getCalendarIdentity(this.calendar).id]);
+        if (cultureData.calendarFactories) {
+            for (const createCalendar of calendarFactories) {
+                supportedCalendarIds.add(getCalendarIdentity(createCalendar()).id);
+            }
+        }
+        const calendarFormats = cultureData.calendarFormats;
+        this.dateTimeFormat = createDateTimeFormatInfo(cultureData.dateTimeFormat, this.calendar, calendarFormats, name,
+            cultureData.numberFormat.numberDecimalSeparator, supportedCalendarIds);
+    }
+
+    /**
+     * Gets the calendars that can be used by the culture.
+     */
+    get optionalCalendars(): Calendar[] {
+        return optionalCalendarFactories.get(this)!.map(createCalendar => createCalendar());
     }
 
     /**
@@ -197,10 +220,12 @@ export class CultureInfo {
 
     static set currentCulture(culture: CultureInfo) {
         if (!(culture instanceof CultureInfo)) {
-            throw new Error("Invalid CultureInfo instance.");
+            throw new Error(InvalidCultureInfo);
         }
 
         setValue(this, "currentCulture", culture);
+        setCurrentFormatContext(culture);
+        setExceptionNumberFormat(culture.numberFormat);
     }
 
     /**
@@ -212,7 +237,7 @@ export class CultureInfo {
 
     static set currentUICulture(culture: CultureInfo) {
         if (!(culture instanceof CultureInfo)) {
-            throw new Error("Invalid CultureInfo instance.");
+            throw new Error(InvalidCultureInfo);
         }
 
         setValue(this, "currentUICulture", culture);
@@ -222,7 +247,13 @@ export class CultureInfo {
      * Gets the CultureInfo object that is culture-independent (invariant).
      */
     static get invariantCulture(): CultureInfo {
-        return getOrCreateValue(this, "invariantCulture", () => new CultureInfo(""));
+        return getOrCreateValue(this, "invariantCulture", () => {
+            const culture = new CultureInfo('');
+            culture.dateTimeFormat = DateTimeFormatInfo.invariantInfo;
+            Object.defineProperty(culture, 'calendar', { value: DateTimeFormatInfo.invariantInfo.calendar });
+            READ_ONLY_CULTURES.add(culture);
+            return culture;
+        });
     }
 
     /**
@@ -233,9 +264,10 @@ export class CultureInfo {
     }
 
     /**
-     * 
-     * @param name
-     * @param data
+     * Registers explicitly imported culture data and returns a culture initialized from that data.
+     * @param name The name of the culture to register.
+     * @param data The culture data imported from its individual locale module.
+     * @returns A new CultureInfo for the registered culture.
      */
     static loadCultureInfo(name: CultureName, data: CultureData): CultureInfo {
         if (!name) {
@@ -246,6 +278,24 @@ export class CultureInfo {
         return new CultureInfo(name);
     }
 
+}
+
+/**
+ * Copies format data so culture instances do not share mutable arrays or pattern collections.
+ * @param info The date or number format data to copy.
+ */
+function cloneFormatInfo<T extends object>(info: T): T {
+    const copy = { ...info };
+    for (const key of Object.keys(info) as Array<keyof T>) {
+        const value = info[key];
+        if (Array.isArray(value)) {
+            copy[key] = value.slice() as T[keyof T];
+        }
+        else if (value !== null && typeof value === 'object') {
+            copy[key] = cloneFormatInfo(value) as T[keyof T];
+        }
+    }
+    return copy;
 }
 
 interface CultureCollection {
@@ -316,11 +366,16 @@ interface CultureCollection {
     "bez-TZ": CultureInfo;
     "bg": CultureInfo;
     "bg-BG": CultureInfo;
+    "bgc": CultureInfo;
+    "bgc-IN": CultureInfo;
+    "bho": CultureInfo;
+    "bho-IN": CultureInfo;
     "bin": CultureInfo;
     "bin-NG": CultureInfo;
     "bm": CultureInfo;
     "bm-Latn": CultureInfo;
     "bm-Latn-ML": CultureInfo;
+    "bm-ML": CultureInfo;
     "bn": CultureInfo;
     "bn-BD": CultureInfo;
     "bn-IN": CultureInfo;
@@ -341,22 +396,38 @@ interface CultureCollection {
     "ca": CultureInfo;
     "ca-AD": CultureInfo;
     "ca-ES": CultureInfo;
-    "ca-ES-valencia": CultureInfo;
+    "ca-ES-VALENCIA": CultureInfo;
     "ca-FR": CultureInfo;
     "ca-IT": CultureInfo;
+    "ccp": CultureInfo;
+    "ccp-BD": CultureInfo;
+    "ccp-Cakm": CultureInfo;
+    "ccp-Cakm-BD": CultureInfo;
+    "ccp-Cakm-IN": CultureInfo;
+    "ccp-IN": CultureInfo;
     "ce": CultureInfo;
     "ce-RU": CultureInfo;
+    "ceb": CultureInfo;
+    "ceb-Latn": CultureInfo;
+    "ceb-Latn-PH": CultureInfo;
+    "ceb-PH": CultureInfo;
     "cgg": CultureInfo;
     "cgg-UG": CultureInfo;
     "chr": CultureInfo;
     "chr-Cher": CultureInfo;
     "chr-Cher-US": CultureInfo;
+    "chr-US": CultureInfo;
+    "ckb": CultureInfo;
+    "ckb-IQ": CultureInfo;
+    "ckb-IR": CultureInfo;
     "co": CultureInfo;
     "co-FR": CultureInfo;
     "cs": CultureInfo;
     "cs-CZ": CultureInfo;
     "cu": CultureInfo;
     "cu-RU": CultureInfo;
+    "cv": CultureInfo;
+    "cv-RU": CultureInfo;
     "cy": CultureInfo;
     "cy-GB": CultureInfo;
     "da": CultureInfo;
@@ -374,6 +445,8 @@ interface CultureCollection {
     "de-LU": CultureInfo;
     "dje": CultureInfo;
     "dje-NE": CultureInfo;
+    "doi": CultureInfo;
+    "doi-IN": CultureInfo;
     "dsb": CultureInfo;
     "dsb-DE": CultureInfo;
     "dua": CultureInfo;
@@ -396,6 +469,7 @@ interface CultureCollection {
     "en-001": CultureInfo;
     "en-029": CultureInfo;
     "en-150": CultureInfo;
+    "en-AE": CultureInfo;
     "en-AG": CultureInfo;
     "en-AI": CultureInfo;
     "en-AS": CultureInfo;
@@ -454,6 +528,7 @@ interface CultureCollection {
     "en-MS": CultureInfo;
     "en-MT": CultureInfo;
     "en-MU": CultureInfo;
+    "en-MV": CultureInfo;
     "en-MW": CultureInfo;
     "en-MY": CultureInfo;
     "en-NA": CultureInfo;
@@ -490,6 +565,7 @@ interface CultureCollection {
     "en-UG": CultureInfo;
     "en-UM": CultureInfo;
     "en-US": CultureInfo;
+    "en-US-POSIX": CultureInfo;
     "en-VC": CultureInfo;
     "en-VG": CultureInfo;
     "en-VI": CultureInfo;
@@ -534,14 +610,35 @@ interface CultureCollection {
     "ewo": CultureInfo;
     "ewo-CM": CultureInfo;
     "fa": CultureInfo;
+    "fa-AF": CultureInfo;
     "fa-IR": CultureInfo;
     "ff": CultureInfo;
-    "ff-CM": CultureInfo;
-    "ff-GN": CultureInfo;
+    "ff-Adlm": CultureInfo;
+    "ff-Adlm-BF": CultureInfo;
+    "ff-Adlm-CM": CultureInfo;
+    "ff-Adlm-GH": CultureInfo;
+    "ff-Adlm-GM": CultureInfo;
+    "ff-Adlm-GN": CultureInfo;
+    "ff-Adlm-GW": CultureInfo;
+    "ff-Adlm-LR": CultureInfo;
+    "ff-Adlm-MR": CultureInfo;
+    "ff-Adlm-NE": CultureInfo;
+    "ff-Adlm-NG": CultureInfo;
+    "ff-Adlm-SL": CultureInfo;
+    "ff-Adlm-SN": CultureInfo;
     "ff-Latn": CultureInfo;
+    "ff-Latn-BF": CultureInfo;
+    "ff-Latn-CM": CultureInfo;
+    "ff-Latn-GH": CultureInfo;
+    "ff-Latn-GM": CultureInfo;
+    "ff-Latn-GN": CultureInfo;
+    "ff-Latn-GW": CultureInfo;
+    "ff-Latn-LR": CultureInfo;
+    "ff-Latn-MR": CultureInfo;
+    "ff-Latn-NE": CultureInfo;
+    "ff-Latn-NG": CultureInfo;
+    "ff-Latn-SL": CultureInfo;
     "ff-Latn-SN": CultureInfo;
-    "ff-MR": CultureInfo;
-    "ff-NG": CultureInfo;
     "fi": CultureInfo;
     "fi-FI": CultureInfo;
     "fil": CultureInfo;
@@ -602,6 +699,7 @@ interface CultureCollection {
     "fy": CultureInfo;
     "fy-NL": CultureInfo;
     "ga": CultureInfo;
+    "ga-GB": CultureInfo;
     "ga-IE": CultureInfo;
     "gd": CultureInfo;
     "gd-GB": CultureInfo;
@@ -620,16 +718,21 @@ interface CultureCollection {
     "gv": CultureInfo;
     "gv-IM": CultureInfo;
     "ha": CultureInfo;
+    "ha-GH": CultureInfo;
     "ha-Latn": CultureInfo;
     "ha-Latn-GH": CultureInfo;
     "ha-Latn-NE": CultureInfo;
     "ha-Latn-NG": CultureInfo;
+    "ha-NE": CultureInfo;
+    "ha-NG": CultureInfo;
     "haw": CultureInfo;
     "haw-US": CultureInfo;
     "he": CultureInfo;
     "he-IL": CultureInfo;
     "hi": CultureInfo;
     "hi-IN": CultureInfo;
+    "hi-Latn": CultureInfo;
+    "hi-Latn-IN": CultureInfo;
     "hr": CultureInfo;
     "hr-BA": CultureInfo;
     "hr-HR": CultureInfo;
@@ -641,7 +744,6 @@ interface CultureCollection {
     "hy-AM": CultureInfo;
     "ia": CultureInfo;
     "ia-001": CultureInfo;
-    "ia-FR": CultureInfo;
     "ibb": CultureInfo;
     "ibb-NG": CultureInfo;
     "id": CultureInfo;
@@ -658,6 +760,7 @@ interface CultureCollection {
     "it-SM": CultureInfo;
     "it-VA": CultureInfo;
     "iu": CultureInfo;
+    "iu-CA": CultureInfo;
     "iu-Cans": CultureInfo;
     "iu-Cans-CA": CultureInfo;
     "iu-Latn": CultureInfo;
@@ -669,6 +772,7 @@ interface CultureCollection {
     "jmc": CultureInfo;
     "jmc-TZ": CultureInfo;
     "jv": CultureInfo;
+    "jv-ID": CultureInfo;
     "jv-Java": CultureInfo;
     "jv-Java-ID": CultureInfo;
     "jv-Latn": CultureInfo;
@@ -683,6 +787,8 @@ interface CultureCollection {
     "kde-TZ": CultureInfo;
     "kea": CultureInfo;
     "kea-CV": CultureInfo;
+    "kgp": CultureInfo;
+    "kgp-BR": CultureInfo;
     "khq": CultureInfo;
     "khq-ML": CultureInfo;
     "ki": CultureInfo;
@@ -705,7 +811,8 @@ interface CultureCollection {
     "kok": CultureInfo;
     "kok-IN": CultureInfo;
     "kr": CultureInfo;
-    "kr-NG": CultureInfo;
+    "kr-Latn": CultureInfo;
+    "kr-Latn-NG": CultureInfo;
     "ks": CultureInfo;
     "ks-Arab": CultureInfo;
     "ks-Arab-IN": CultureInfo;
@@ -727,6 +834,7 @@ interface CultureCollection {
     "ky-KG": CultureInfo;
     "la": CultureInfo;
     "la-001": CultureInfo;
+    "la-VA": CultureInfo;
     "lag": CultureInfo;
     "lag-TZ": CultureInfo;
     "lb": CultureInfo;
@@ -755,6 +863,8 @@ interface CultureCollection {
     "luy-KE": CultureInfo;
     "lv": CultureInfo;
     "lv-LV": CultureInfo;
+    "mai": CultureInfo;
+    "mai-IN": CultureInfo;
     "mas": CultureInfo;
     "mas-KE": CultureInfo;
     "mas-TZ": CultureInfo;
@@ -781,6 +891,8 @@ interface CultureCollection {
     "mn-Mong-CN": CultureInfo;
     "mn-Mong-MN": CultureInfo;
     "mni": CultureInfo;
+    "mni-Beng": CultureInfo;
+    "mni-Beng-IN": CultureInfo;
     "mni-IN": CultureInfo;
     "moh": CultureInfo;
     "moh-CA": CultureInfo;
@@ -788,6 +900,7 @@ interface CultureCollection {
     "mr-IN": CultureInfo;
     "ms": CultureInfo;
     "ms-BN": CultureInfo;
+    "ms-ID": CultureInfo;
     "ms-MY": CultureInfo;
     "ms-SG": CultureInfo;
     "mt": CultureInfo;
@@ -837,6 +950,7 @@ interface CultureCollection {
     "nyn": CultureInfo;
     "nyn-UG": CultureInfo;
     "oc": CultureInfo;
+    "oc-ES": CultureInfo;
     "oc-FR": CultureInfo;
     "om": CultureInfo;
     "om-ET": CultureInfo;
@@ -850,9 +964,12 @@ interface CultureCollection {
     "pa-Arab": CultureInfo;
     "pa-Arab-PK": CultureInfo;
     "pa-Guru": CultureInfo;
+    "pa-Guru-IN": CultureInfo;
     "pa-IN": CultureInfo;
     "pap": CultureInfo;
     "pap-029": CultureInfo;
+    "pcm": CultureInfo;
+    "pcm-NG": CultureInfo;
     "pl": CultureInfo;
     "pl-PL": CultureInfo;
     "prg": CultureInfo;
@@ -861,6 +978,7 @@ interface CultureCollection {
     "prs-AF": CultureInfo;
     "ps": CultureInfo;
     "ps-AF": CultureInfo;
+    "ps-PK": CultureInfo;
     "pt": CultureInfo;
     "pt-AO": CultureInfo;
     "pt-BR": CultureInfo;
@@ -874,13 +992,20 @@ interface CultureCollection {
     "pt-PT": CultureInfo;
     "pt-ST": CultureInfo;
     "pt-TL": CultureInfo;
+    "qu": CultureInfo;
+    "qu-BO": CultureInfo;
+    "qu-EC": CultureInfo;
+    "qu-PE": CultureInfo;
     "quc": CultureInfo;
+    "quc-GT": CultureInfo;
     "quc-Latn": CultureInfo;
     "quc-Latn-GT": CultureInfo;
     "quz": CultureInfo;
     "quz-BO": CultureInfo;
     "quz-EC": CultureInfo;
     "quz-PE": CultureInfo;
+    "raj": CultureInfo;
+    "raj-IN": CultureInfo;
     "rm": CultureInfo;
     "rm-CH": CultureInfo;
     "rn": CultureInfo;
@@ -907,8 +1032,13 @@ interface CultureCollection {
     "sah-RU": CultureInfo;
     "saq": CultureInfo;
     "saq-KE": CultureInfo;
+    "sat": CultureInfo;
+    "sat-Olck": CultureInfo;
+    "sat-Olck-IN": CultureInfo;
     "sbp": CultureInfo;
     "sbp-TZ": CultureInfo;
+    "sc": CultureInfo;
+    "sc-IT": CultureInfo;
     "sd": CultureInfo;
     "sd-Arab": CultureInfo;
     "sd-Arab-PK": CultureInfo;
@@ -948,6 +1078,7 @@ interface CultureCollection {
     "sn": CultureInfo;
     "sn-Latn": CultureInfo;
     "sn-Latn-ZW": CultureInfo;
+    "sn-ZW": CultureInfo;
     "so": CultureInfo;
     "so-DJ": CultureInfo;
     "so-ET": CultureInfo;
@@ -976,6 +1107,9 @@ interface CultureCollection {
     "st": CultureInfo;
     "st-LS": CultureInfo;
     "st-ZA": CultureInfo;
+    "su": CultureInfo;
+    "su-Latn": CultureInfo;
+    "su-Latn-ID": CultureInfo;
     "sv": CultureInfo;
     "sv-AX": CultureInfo;
     "sv-FI": CultureInfo;
@@ -1000,6 +1134,7 @@ interface CultureCollection {
     "tg": CultureInfo;
     "tg-Cyrl": CultureInfo;
     "tg-Cyrl-TJ": CultureInfo;
+    "tg-TJ": CultureInfo;
     "th": CultureInfo;
     "th-TH": CultureInfo;
     "ti": CultureInfo;
@@ -1026,9 +1161,11 @@ interface CultureCollection {
     "tzm": CultureInfo;
     "tzm-Arab": CultureInfo;
     "tzm-Arab-MA": CultureInfo;
+    "tzm-DZ": CultureInfo;
     "tzm-Latn": CultureInfo;
     "tzm-Latn-DZ": CultureInfo;
     "tzm-Latn-MA": CultureInfo;
+    "tzm-MA": CultureInfo;
     "tzm-Tfng": CultureInfo;
     "tzm-Tfng-MA": CultureInfo;
     "ug": CultureInfo;
@@ -1075,19 +1212,29 @@ interface CultureCollection {
     "yo": CultureInfo;
     "yo-BJ": CultureInfo;
     "yo-NG": CultureInfo;
+    "yrl": CultureInfo;
+    "yrl-BR": CultureInfo;
+    "yrl-CO": CultureInfo;
+    "yrl-VE": CultureInfo;
     "zgh": CultureInfo;
+    "zgh-MA": CultureInfo;
     "zgh-Tfng": CultureInfo;
     "zgh-Tfng-MA": CultureInfo;
     "zh": CultureInfo;
     "zh-CN": CultureInfo;
+    "zh-HK": CultureInfo;
     "zh-Hans": CultureInfo;
+    "zh-Hans-CN": CultureInfo;
     "zh-Hans-HK": CultureInfo;
     "zh-Hans-MO": CultureInfo;
+    "zh-Hans-SG": CultureInfo;
     "zh-Hant": CultureInfo;
-    "zh-HK": CultureInfo;
+    "zh-Hant-HK": CultureInfo;
+    "zh-Hant-MO": CultureInfo;
+    "zh-Hant-TW": CultureInfo;
     "zh-MO": CultureInfo;
     "zh-SG": CultureInfo;
     "zh-TW": CultureInfo;
     "zu": CultureInfo;
-    "zu-ZA": CultureInfo
+    "zu-ZA": CultureInfo;
 }

@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 4096, 
     name: "ast", 
@@ -40,29 +42,150 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "AM", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, d MMMM 'de' yyyy HH:mm:ss", 
-        longDatePattern: "dddd, d MMMM 'de' yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "d MMMM", 
-        pmDesignator: "PM", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "d/M/yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM 'de' yyyy", 
-        abbreviatedDayNames: ["dom", "llu", "mar", "mié", "xue", "vie", "sáb"], 
-        shortestDayNames: ["do", "ll", "ma", "mi", "xu", "vi", "sá"], 
-        dayNames: ["domingu", "llunes", "martes", "miércoles", "xueves", "vienres", "sábadu"], 
-        abbreviatedMonthNames: ["Xin", "Feb", "Mar", "Abr", "May", "Xun", "Xnt", "Ago", "Set", "Och", "Pay", "Avi", ""], 
-        monthNames: ["xineru", "febreru", "marzu", "abril", "mayu", "xunu", "xunetu", "agostu", "setiembre", "ochobre", "payares", "avientu", ""], 
-        nativeCalendarName: "calendariu gregorianu", 
-        abbreviatedMonthGenitiveNames: ["xin", "feb", "mar", "abr", "may", "xun", "xnt", "ago", "set", "och", "pay", "avi", ""], 
-        monthGenitiveNames: ["de xineru", "de febreru", "de marzu", "d’abril", "de mayu", "de xunu", "de xunetu", "d’agostu", "de setiembre", "d’ochobre", "de payares", "d’avientu", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "dom",
+        "llu",
+        "mar",
+        "mié",
+        "xue",
+        "vie",
+        "sáb"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "xin",
+        "feb",
+        "mar",
+        "abr",
+        "may",
+        "xun",
+        "xnt",
+        "ago",
+        "set",
+        "och",
+        "pay",
+        "avi",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Xin",
+        "Feb",
+        "Mar",
+        "Abr",
+        "May",
+        "Xun",
+        "Xnt",
+        "Ago",
+        "Set",
+        "Och",
+        "Pay",
+        "Avi",
+        ""
+      ],
+      "amDesignator": "de la mañana",
+      "dateSeparator": "/",
+      "dayNames": [
+        "domingu",
+        "llunes",
+        "martes",
+        "miércoles",
+        "xueves",
+        "vienres",
+        "sábadu"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 2,
+      "fullDateTimePattern": "dddd, d MMMM 'de' yyyy HH:mm:ss",
+      "longDatePattern": "dddd, d MMMM 'de' yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "d MMMM",
+      "monthGenitiveNames": [
+        "de xineru",
+        "de febreru",
+        "de marzu",
+        "d’abril",
+        "de mayu",
+        "de xunu",
+        "de xunetu",
+        "d’agostu",
+        "de setiembre",
+        "d’ochobre",
+        "de payares",
+        "d’avientu",
+        ""
+      ],
+      "monthNames": [
+        "xineru",
+        "febreru",
+        "marzu",
+        "abril",
+        "mayu",
+        "xunu",
+        "xunetu",
+        "agostu",
+        "setiembre",
+        "ochobre",
+        "payares",
+        "avientu",
+        ""
+      ],
+      "nativeCalendarName": "calendariu gregorianu",
+      "pmDesignator": "de la tarde",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "d/M/yyyy",
+      "shortestDayNames": [
+        "D",
+        "L",
+        "M",
+        "M",
+        "X",
+        "V",
+        "S"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM 'de' yyyy",
+      "eraNames": [
+        "d.C."
+      ],
+      "abbreviatedEraNames": [
+        "d.C."
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "d/M/yyyy",
+          "d MMM yyyy",
+          "d/M/yy"
+        ],
+        "D": [
+          "dddd, d MMMM 'de' yyyy",
+          "d MMMM 'de' yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "MMMM 'de' yyyy"
+        ],
+        "Y": [
+          "MMMM 'de' yyyy"
+        ],
+        "m": [
+          "d MMMM"
+        ],
+        "M": [
+          "d MMMM"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

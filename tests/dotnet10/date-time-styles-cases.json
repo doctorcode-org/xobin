@@ -1,0 +1,3714 @@
+{
+  "runtime": "10.0.7",
+  "source": "DateTimeFormatInfo.ValidateStyles",
+  "values": {
+    "None": 0,
+    "AllowLeadingWhite": 1,
+    "AllowTrailingWhite": 2,
+    "AllowInnerWhite": 4,
+    "AllowWhiteSpaces": 7,
+    "NoCurrentDateDefault": 8,
+    "AdjustToUniversal": 16,
+    "AssumeLocal": 32,
+    "AssumeUniversal": 64,
+    "RoundtripKind": 128
+  },
+  "rows": [
+    {
+      "value": 0,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 0,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 1,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 1,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 2,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 2,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 3,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 3,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 4,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 4,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 5,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 5,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 6,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 6,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 7,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 7,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 8,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 8,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 9,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 9,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 10,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 10,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 11,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 11,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 12,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 12,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 13,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 13,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 14,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 14,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 15,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 15,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 16,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 16,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 17,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 17,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 18,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 18,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 19,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 19,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 20,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 20,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 21,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 21,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 22,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 22,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 23,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 23,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 24,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 24,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 25,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 25,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 26,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 26,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 27,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 27,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 28,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 28,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 29,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 29,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 30,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 30,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 31,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 31,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 32,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 32,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 33,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 33,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 34,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 34,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 35,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 35,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 36,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 36,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 37,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 37,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 38,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 38,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 39,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 39,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 40,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 40,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 41,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 41,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 42,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 42,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 43,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 43,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 44,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 44,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 45,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 45,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 46,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 46,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 47,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 47,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 48,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 48,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 49,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 49,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 50,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 50,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 51,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 51,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 52,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 52,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 53,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 53,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 54,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 54,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 55,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 55,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 56,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 56,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 57,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 57,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 58,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 58,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 59,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 59,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 60,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 60,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 61,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 61,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 62,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 62,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 63,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 63,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 64,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 64,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 65,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 65,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 66,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 66,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 67,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 67,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 68,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 68,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 69,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 69,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 70,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 70,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 71,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 71,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 72,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 72,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 73,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 73,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 74,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 74,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 75,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 75,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 76,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 76,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 77,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 77,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 78,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 78,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 79,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 79,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 80,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 80,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 81,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 81,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 82,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 82,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 83,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 83,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 84,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 84,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 85,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 85,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 86,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 86,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 87,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 87,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 88,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 88,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 89,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 89,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 90,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 90,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 91,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 91,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 92,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 92,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 93,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 93,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 94,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 94,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 95,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 95,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 96,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 96,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 97,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 97,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 98,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 98,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 99,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 99,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 100,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 100,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 101,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 101,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 102,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 102,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 103,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 103,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 104,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 104,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 105,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 105,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 106,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 106,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 107,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 107,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 108,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 108,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 109,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 109,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 110,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 110,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 111,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 111,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 112,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 112,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 113,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 113,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 114,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 114,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 115,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 115,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 116,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 116,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 117,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 117,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 118,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 118,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 119,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 119,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 120,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 120,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 121,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 121,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 122,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 122,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 123,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 123,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 124,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 124,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 125,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 125,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 126,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 126,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 127,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 127,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 128,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 128,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 129,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 129,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 130,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 130,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 131,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 131,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 132,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 132,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 133,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 133,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 134,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 134,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 135,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 135,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 136,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 136,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 137,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 137,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 138,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 138,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 139,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 139,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 140,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 140,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 141,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 141,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 142,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 142,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 143,
+      "styles": false,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 143,
+      "styles": true,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "value": 144,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 144,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 145,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 145,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 146,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 146,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 147,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 147,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 148,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 148,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 149,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 149,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 150,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 150,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 151,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 151,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 152,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 152,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 153,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 153,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 154,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 154,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 155,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 155,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 156,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 156,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 157,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 157,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 158,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 158,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 159,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 159,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 160,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 160,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 161,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 161,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 162,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 162,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 163,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 163,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 164,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 164,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 165,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 165,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 166,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 166,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 167,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 167,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 168,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 168,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 169,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 169,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 170,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 170,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 171,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 171,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 172,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 172,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 173,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 173,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 174,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 174,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 175,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 175,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 176,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 176,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 177,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 177,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 178,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 178,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 179,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 179,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 180,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 180,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 181,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 181,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 182,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 182,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 183,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 183,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 184,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 184,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 185,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 185,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 186,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 186,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 187,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 187,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 188,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 188,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 189,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 189,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 190,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 190,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 191,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 191,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 192,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 192,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 193,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 193,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 194,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 194,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 195,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 195,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 196,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 196,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 197,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 197,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 198,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 198,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 199,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 199,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 200,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 200,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 201,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 201,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 202,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 202,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 203,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 203,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 204,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 204,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 205,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 205,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 206,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 206,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 207,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 207,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 208,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 208,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 209,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 209,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 210,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 210,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 211,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 211,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 212,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 212,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 213,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 213,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 214,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 214,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 215,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 215,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 216,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 216,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 217,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 217,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 218,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 218,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 219,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 219,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 220,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 220,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 221,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 221,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 222,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 222,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 223,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 223,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles value RoundtripKind cannot be used with the values AssumeLocal, AssumeUniversal or AdjustToUniversal. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 224,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 224,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 225,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 225,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 226,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 226,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 227,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 227,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 228,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 228,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 229,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 229,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 230,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 230,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 231,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 231,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 232,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 232,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 233,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 233,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 234,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 234,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 235,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 235,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 236,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 236,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 237,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 237,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 238,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 238,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 239,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 239,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 240,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 240,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 241,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 241,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 242,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 242,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 243,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 243,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 244,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 244,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 245,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 245,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 246,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 246,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 247,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 247,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 248,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 248,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 249,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 249,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 250,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 250,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 251,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 251,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 252,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 252,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 253,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 253,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 254,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 254,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 255,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 255,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": -1,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "An undefined DateTimeStyles value is being used. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": -1,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "An undefined DateTimeStyles value is being used. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": -2147483648,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "An undefined DateTimeStyles value is being used. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": -2147483648,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "An undefined DateTimeStyles value is being used. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 2147483647,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "An undefined DateTimeStyles value is being used. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 2147483647,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "An undefined DateTimeStyles value is being used. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 256,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "An undefined DateTimeStyles value is being used. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 256,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "An undefined DateTimeStyles value is being used. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 257,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "An undefined DateTimeStyles value is being used. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 257,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "An undefined DateTimeStyles value is being used. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 511,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "An undefined DateTimeStyles value is being used. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 511,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "An undefined DateTimeStyles value is being used. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 512,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "An undefined DateTimeStyles value is being used. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 512,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "An undefined DateTimeStyles value is being used. (Parameter \u0027styles\u0027)"
+    },
+    {
+      "value": 1024,
+      "styles": false,
+      "error": "ArgumentException",
+      "paramName": "style",
+      "message": "An undefined DateTimeStyles value is being used. (Parameter \u0027style\u0027)"
+    },
+    {
+      "value": 1024,
+      "styles": true,
+      "error": "ArgumentException",
+      "paramName": "styles",
+      "message": "An undefined DateTimeStyles value is being used. (Parameter \u0027styles\u0027)"
+    }
+  ]
+}

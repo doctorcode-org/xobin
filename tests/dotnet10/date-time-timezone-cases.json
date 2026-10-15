@@ -1,0 +1,8 @@
+{
+  "runtime": "10.0.7",
+  "rows": [
+    {"source":"DateTimeTests.IsDaylightSavingTime_Invoke_ReturnsExpected","ticks":"636786144000000000","kind":1,"expected":false},
+    {"source":"DateTimeTests.IsDaylightSavingTime_Invoke_ReturnsExpected","ticks":"0","kind":0,"expected":false},
+    {"source":"DateTimeTests.IsDaylightSavingTime_Invoke_ReturnsExpected","ticks":"3155378975999999999","kind":0,"expected":false}
+  ]
+}

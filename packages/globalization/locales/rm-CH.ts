@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "rm", 
     lcid: 1047, 
     name: "rm-CH", 
@@ -23,8 +25,8 @@ export const cultureData: CultureData = {
         numberNegativePattern: 1, 
         percentPositivePattern: 0, 
         percentNegativePattern: 0, 
-        negativeInfinitySymbol: "-∞", 
-        negativeSign: "-", 
+        negativeInfinitySymbol: "−∞",
+        negativeSign: "−",
         numberDecimalDigits: 2, 
         numberDecimalSeparator: ".", 
         numberGroupSeparator: "’", 
@@ -40,29 +42,149 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "AM", 
-        dateSeparator: "-", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, 'ils' d 'da' MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd, 'ils' d 'da' MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "d. MMMM", 
-        pmDesignator: "PM", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd-MM-yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "yyyy MMMM", 
-        abbreviatedDayNames: ["du", "gli", "ma", "me", "gie", "ve", "so"], 
-        shortestDayNames: ["du", "gli", "ma", "me", "gie", "ve", "so"], 
-        dayNames: ["dumengia", "glindesdi", "mardi", "mesemna", "gievgia", "venderdi", "sonda"], 
-        abbreviatedMonthNames: ["schan.", "favr.", "mars", "avr.", "matg", "zercl.", "fan.", "avust", "sett.", "oct.", "nov.", "dec.", ""], 
-        monthNames: ["schaner", "favrer", "mars", "avrigl", "matg", "zercladur", "fanadur", "avust", "settember", "october", "november", "december", ""], 
-        nativeCalendarName: "chalender gregorian", 
-        abbreviatedMonthGenitiveNames: ["schan.", "favr.", "mars", "avr.", "matg", "zercl.", "fan.", "avust", "sett.", "oct.", "nov.", "dec.", ""], 
-        monthGenitiveNames: ["schaner", "favrer", "mars", "avrigl", "matg", "zercladur", "fanadur", "avust", "settember", "october", "november", "december", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "du",
+        "gli",
+        "ma",
+        "me",
+        "gie",
+        "ve",
+        "so"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "schan.",
+        "favr.",
+        "mars",
+        "avr.",
+        "matg",
+        "zercl.",
+        "fan.",
+        "avust",
+        "sett.",
+        "oct.",
+        "nov.",
+        "dec.",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "schan.",
+        "favr.",
+        "mars",
+        "avr.",
+        "matg",
+        "zercl.",
+        "fan.",
+        "avust",
+        "sett.",
+        "oct.",
+        "nov.",
+        "dec.",
+        ""
+      ],
+      "amDesignator": "AM",
+      "dateSeparator": "-",
+      "dayNames": [
+        "dumengia",
+        "glindesdi",
+        "mardi",
+        "mesemna",
+        "gievgia",
+        "venderdi",
+        "sonda"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 2,
+      "fullDateTimePattern": "dddd, 'ils' d MMMM yyyy HH:mm:ss",
+      "longDatePattern": "dddd, 'ils' d MMMM yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "d MMMM",
+      "monthGenitiveNames": [
+        "da schaner",
+        "da favrer",
+        "da mars",
+        "d’avrigl",
+        "da matg",
+        "da zercladur",
+        "da fanadur",
+        "d’avust",
+        "da settember",
+        "d’october",
+        "da november",
+        "da december",
+        ""
+      ],
+      "monthNames": [
+        "schaner",
+        "favrer",
+        "mars",
+        "avrigl",
+        "matg",
+        "zercladur",
+        "fanadur",
+        "avust",
+        "settember",
+        "october",
+        "november",
+        "december",
+        ""
+      ],
+      "nativeCalendarName": "chalender gregorian",
+      "pmDesignator": "PM",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd-MM-yyyy",
+      "shortestDayNames": [
+        "D",
+        "G",
+        "M",
+        "M",
+        "G",
+        "V",
+        "S"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "s. Cr."
+      ],
+      "abbreviatedEraNames": [
+        "s. Cr."
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd-MM-yyyy",
+          "dd-MM-yy"
+        ],
+        "D": [
+          "dddd, 'ils' d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "d MMMM"
+        ],
+        "M": [
+          "d MMMM"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

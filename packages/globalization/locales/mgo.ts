@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 4096, 
     name: "mgo", 
@@ -40,29 +42,150 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "AM", 
-        dateSeparator: "-", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, yyyy MMMM dd HH:mm:ss", 
-        longDatePattern: "dddd, yyyy MMMM dd", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "PM", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "yyyy-MM-dd", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "yyyy MMMM", 
-        abbreviatedDayNames: ["Aneg 1", "Aneg 2", "Aneg 3", "Aneg 4", "Aneg 5", "Aneg 6", "Aneg 7"], 
-        shortestDayNames: ["1", "2", "3", "4", "5", "6", "7"], 
-        dayNames: ["Aneg 1", "Aneg 2", "Aneg 3", "Aneg 4", "Aneg 5", "Aneg 6", "Aneg 7"], 
-        abbreviatedMonthNames: ["mbegtug", "imeg àbùbì", "imeg mbəŋchubi", "iməg ngwə̀t", "iməg fog", "iməg ichiibɔd", "iməg àdùmbə̀ŋ", "iməg ichika", "iməg kud", "iməg tèsiʼe", "iməg zò", "iməg krizmed", ""], 
-        monthNames: ["iməg mbegtug", "imeg àbùbì", "imeg mbəŋchubi", "iməg ngwə̀t", "iməg fog", "iməg ichiibɔd", "iməg àdùmbə̀ŋ", "iməg ichika", "iməg kud", "iməg tèsiʼe", "iməg zò", "iməg krizmed", ""], 
-        nativeCalendarName: "ngàb mə̀kala", 
-        abbreviatedMonthGenitiveNames: ["mbegtug", "imeg àbùbì", "imeg mbəŋchubi", "iməg ngwə̀t", "iməg fog", "iməg ichiibɔd", "iməg àdùmbə̀ŋ", "iməg ichika", "iməg kud", "iməg tèsiʼe", "iməg zò", "iməg krizmed", ""], 
-        monthGenitiveNames: ["iməg mbegtug", "imeg àbùbì", "imeg mbəŋchubi", "iməg ngwə̀t", "iməg fog", "iməg ichiibɔd", "iməg àdùmbə̀ŋ", "iməg ichika", "iməg kud", "iməg tèsiʼe", "iməg zò", "iməg krizmed", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Aneg 1",
+        "Aneg 2",
+        "Aneg 3",
+        "Aneg 4",
+        "Aneg 5",
+        "Aneg 6",
+        "Aneg 7"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "mbegtug",
+        "imeg àbùbì",
+        "imeg mbəŋchubi",
+        "iməg ngwə̀t",
+        "iməg fog",
+        "iməg ichiibɔd",
+        "iməg àdùmbə̀ŋ",
+        "iməg ichika",
+        "iməg kud",
+        "iməg tèsiʼe",
+        "iməg zò",
+        "iməg krizmed",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "mbegtug",
+        "imeg àbùbì",
+        "imeg mbəŋchubi",
+        "iməg ngwə̀t",
+        "iməg fog",
+        "iməg ichiibɔd",
+        "iməg àdùmbə̀ŋ",
+        "iməg ichika",
+        "iməg kud",
+        "iməg tèsiʼe",
+        "iməg zò",
+        "iməg krizmed",
+        ""
+      ],
+      "amDesignator": "AM",
+      "dateSeparator": "-",
+      "dayNames": [
+        "Aneg 1",
+        "Aneg 2",
+        "Aneg 3",
+        "Aneg 4",
+        "Aneg 5",
+        "Aneg 6",
+        "Aneg 7"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, yyyy MMMM dd HH:mm:ss",
+      "longDatePattern": "dddd, yyyy MMMM dd",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "iməg mbegtug",
+        "imeg àbùbì",
+        "imeg mbəŋchubi",
+        "iməg ngwə̀t",
+        "iməg fog",
+        "iməg ichiibɔd",
+        "iməg àdùmbə̀ŋ",
+        "iməg ichika",
+        "iməg kud",
+        "iməg tèsiʼe",
+        "iməg zò",
+        "iməg krizmed",
+        ""
+      ],
+      "monthNames": [
+        "iməg mbegtug",
+        "imeg àbùbì",
+        "imeg mbəŋchubi",
+        "iməg ngwə̀t",
+        "iməg fog",
+        "iməg ichiibɔd",
+        "iməg àdùmbə̀ŋ",
+        "iməg ichika",
+        "iməg kud",
+        "iməg tèsiʼe",
+        "iməg zò",
+        "iməg krizmed",
+        ""
+      ],
+      "nativeCalendarName": "ngàb mə̀kala",
+      "pmDesignator": "PM",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "yyyy-MM-dd",
+      "shortestDayNames": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "CE"
+      ],
+      "abbreviatedEraNames": [
+        "CE"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "yyyy-MM-dd",
+          "yyyy MMM d",
+          "yyyy-M-d"
+        ],
+        "D": [
+          "dddd, yyyy MMMM dd",
+          "yyyy MMMM d"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

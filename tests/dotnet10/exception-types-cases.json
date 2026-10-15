@@ -1,0 +1,342 @@
+{
+  "runtime": "10.0.7",
+  "sourceTag": "v10.0.7",
+  "rows": [
+    {
+      "type": "Exception",
+      "overload": 0,
+      "message": null,
+      "expectedMessage": "Exception of type \u0027System.Exception\u0027 was thrown.",
+      "innerMessage": null
+    },
+    {
+      "type": "Exception",
+      "overload": 1,
+      "message": null,
+      "expectedMessage": "Exception of type \u0027System.Exception\u0027 was thrown.",
+      "innerMessage": null
+    },
+    {
+      "type": "Exception",
+      "overload": 2,
+      "message": null,
+      "expectedMessage": "Exception of type \u0027System.Exception\u0027 was thrown.",
+      "innerMessage": "inner error"
+    },
+    {
+      "type": "Exception",
+      "overload": 0,
+      "message": "",
+      "expectedMessage": "Exception of type \u0027System.Exception\u0027 was thrown.",
+      "innerMessage": null
+    },
+    {
+      "type": "Exception",
+      "overload": 1,
+      "message": "",
+      "expectedMessage": "",
+      "innerMessage": null
+    },
+    {
+      "type": "Exception",
+      "overload": 2,
+      "message": "",
+      "expectedMessage": "",
+      "innerMessage": "inner error"
+    },
+    {
+      "type": "Exception",
+      "overload": 0,
+      "message": "custom message",
+      "expectedMessage": "Exception of type \u0027System.Exception\u0027 was thrown.",
+      "innerMessage": null
+    },
+    {
+      "type": "Exception",
+      "overload": 1,
+      "message": "custom message",
+      "expectedMessage": "custom message",
+      "innerMessage": null
+    },
+    {
+      "type": "Exception",
+      "overload": 2,
+      "message": "custom message",
+      "expectedMessage": "custom message",
+      "innerMessage": "inner error"
+    },
+    {
+      "type": "Exception",
+      "overload": 0,
+      "message": "\u062E\u0637\u0627",
+      "expectedMessage": "Exception of type \u0027System.Exception\u0027 was thrown.",
+      "innerMessage": null
+    },
+    {
+      "type": "Exception",
+      "overload": 1,
+      "message": "\u062E\u0637\u0627",
+      "expectedMessage": "\u062E\u0637\u0627",
+      "innerMessage": null
+    },
+    {
+      "type": "Exception",
+      "overload": 2,
+      "message": "\u062E\u0637\u0627",
+      "expectedMessage": "\u062E\u0637\u0627",
+      "innerMessage": "inner error"
+    },
+    {
+      "type": "FormatException",
+      "overload": 0,
+      "message": null,
+      "expectedMessage": "One of the identified items was in an invalid format.",
+      "innerMessage": null
+    },
+    {
+      "type": "FormatException",
+      "overload": 1,
+      "message": null,
+      "expectedMessage": "One of the identified items was in an invalid format.",
+      "innerMessage": null
+    },
+    {
+      "type": "FormatException",
+      "overload": 2,
+      "message": null,
+      "expectedMessage": "One of the identified items was in an invalid format.",
+      "innerMessage": "inner error"
+    },
+    {
+      "type": "FormatException",
+      "overload": 0,
+      "message": "",
+      "expectedMessage": "One of the identified items was in an invalid format.",
+      "innerMessage": null
+    },
+    {
+      "type": "FormatException",
+      "overload": 1,
+      "message": "",
+      "expectedMessage": "",
+      "innerMessage": null
+    },
+    {
+      "type": "FormatException",
+      "overload": 2,
+      "message": "",
+      "expectedMessage": "",
+      "innerMessage": "inner error"
+    },
+    {
+      "type": "FormatException",
+      "overload": 0,
+      "message": "custom message",
+      "expectedMessage": "One of the identified items was in an invalid format.",
+      "innerMessage": null
+    },
+    {
+      "type": "FormatException",
+      "overload": 1,
+      "message": "custom message",
+      "expectedMessage": "custom message",
+      "innerMessage": null
+    },
+    {
+      "type": "FormatException",
+      "overload": 2,
+      "message": "custom message",
+      "expectedMessage": "custom message",
+      "innerMessage": "inner error"
+    },
+    {
+      "type": "FormatException",
+      "overload": 0,
+      "message": "\u062E\u0637\u0627",
+      "expectedMessage": "One of the identified items was in an invalid format.",
+      "innerMessage": null
+    },
+    {
+      "type": "FormatException",
+      "overload": 1,
+      "message": "\u062E\u0637\u0627",
+      "expectedMessage": "\u062E\u0637\u0627",
+      "innerMessage": null
+    },
+    {
+      "type": "FormatException",
+      "overload": 2,
+      "message": "\u062E\u0637\u0627",
+      "expectedMessage": "\u062E\u0637\u0627",
+      "innerMessage": "inner error"
+    },
+    {
+      "type": "InvalidCastException",
+      "overload": 0,
+      "message": null,
+      "expectedMessage": "Specified cast is not valid.",
+      "innerMessage": null
+    },
+    {
+      "type": "InvalidCastException",
+      "overload": 1,
+      "message": null,
+      "expectedMessage": "Specified cast is not valid.",
+      "innerMessage": null
+    },
+    {
+      "type": "InvalidCastException",
+      "overload": 2,
+      "message": null,
+      "expectedMessage": "Specified cast is not valid.",
+      "innerMessage": "inner error"
+    },
+    {
+      "type": "InvalidCastException",
+      "overload": 0,
+      "message": "",
+      "expectedMessage": "Specified cast is not valid.",
+      "innerMessage": null
+    },
+    {
+      "type": "InvalidCastException",
+      "overload": 1,
+      "message": "",
+      "expectedMessage": "",
+      "innerMessage": null
+    },
+    {
+      "type": "InvalidCastException",
+      "overload": 2,
+      "message": "",
+      "expectedMessage": "",
+      "innerMessage": "inner error"
+    },
+    {
+      "type": "InvalidCastException",
+      "overload": 0,
+      "message": "custom message",
+      "expectedMessage": "Specified cast is not valid.",
+      "innerMessage": null
+    },
+    {
+      "type": "InvalidCastException",
+      "overload": 1,
+      "message": "custom message",
+      "expectedMessage": "custom message",
+      "innerMessage": null
+    },
+    {
+      "type": "InvalidCastException",
+      "overload": 2,
+      "message": "custom message",
+      "expectedMessage": "custom message",
+      "innerMessage": "inner error"
+    },
+    {
+      "type": "InvalidCastException",
+      "overload": 0,
+      "message": "\u062E\u0637\u0627",
+      "expectedMessage": "Specified cast is not valid.",
+      "innerMessage": null
+    },
+    {
+      "type": "InvalidCastException",
+      "overload": 1,
+      "message": "\u062E\u0637\u0627",
+      "expectedMessage": "\u062E\u0637\u0627",
+      "innerMessage": null
+    },
+    {
+      "type": "InvalidCastException",
+      "overload": 2,
+      "message": "\u062E\u0637\u0627",
+      "expectedMessage": "\u062E\u0637\u0627",
+      "innerMessage": "inner error"
+    },
+    {
+      "type": "SerializationException",
+      "overload": 0,
+      "message": null,
+      "expectedMessage": "Serialization error.",
+      "innerMessage": null
+    },
+    {
+      "type": "SerializationException",
+      "overload": 1,
+      "message": null,
+      "expectedMessage": "Serialization error.",
+      "innerMessage": null
+    },
+    {
+      "type": "SerializationException",
+      "overload": 2,
+      "message": null,
+      "expectedMessage": "Serialization error.",
+      "innerMessage": "inner error"
+    },
+    {
+      "type": "SerializationException",
+      "overload": 0,
+      "message": "",
+      "expectedMessage": "Serialization error.",
+      "innerMessage": null
+    },
+    {
+      "type": "SerializationException",
+      "overload": 1,
+      "message": "",
+      "expectedMessage": "",
+      "innerMessage": null
+    },
+    {
+      "type": "SerializationException",
+      "overload": 2,
+      "message": "",
+      "expectedMessage": "",
+      "innerMessage": "inner error"
+    },
+    {
+      "type": "SerializationException",
+      "overload": 0,
+      "message": "custom message",
+      "expectedMessage": "Serialization error.",
+      "innerMessage": null
+    },
+    {
+      "type": "SerializationException",
+      "overload": 1,
+      "message": "custom message",
+      "expectedMessage": "custom message",
+      "innerMessage": null
+    },
+    {
+      "type": "SerializationException",
+      "overload": 2,
+      "message": "custom message",
+      "expectedMessage": "custom message",
+      "innerMessage": "inner error"
+    },
+    {
+      "type": "SerializationException",
+      "overload": 0,
+      "message": "\u062E\u0637\u0627",
+      "expectedMessage": "Serialization error.",
+      "innerMessage": null
+    },
+    {
+      "type": "SerializationException",
+      "overload": 1,
+      "message": "\u062E\u0637\u0627",
+      "expectedMessage": "\u062E\u0637\u0627",
+      "innerMessage": null
+    },
+    {
+      "type": "SerializationException",
+      "overload": 2,
+      "message": "\u062E\u0637\u0627",
+      "expectedMessage": "\u062E\u0637\u0627",
+      "innerMessage": "inner error"
+    }
+  ]
+}

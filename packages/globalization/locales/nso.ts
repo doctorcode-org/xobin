@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 108, 
     name: "nso", 
@@ -40,29 +42,149 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "AM", 
-        dateSeparator: "-", 
-        firstDayOfWeek: 0, 
-        fullDateTimePattern: "yyyy MMMM d, dddd HH:mm:ss", 
-        longDatePattern: "yyyy MMMM d, dddd", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "PM", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "yyyy-MM-dd", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "yyyy MMMM", 
-        abbreviatedDayNames: ["Lam", "Mos", "Bed", "Rar", "Ne", "Hla", "Mok"], 
-        shortestDayNames: ["Lam", "Mos", "Bed", "Rar", "Ne", "Hla", "Mok"], 
-        dayNames: ["Lamorena", "Musopologo", "Labobedi", "Laboraro", "Labone", "Labohlano", "Mokibelo"], 
-        abbreviatedMonthNames: ["Phere", "Dibo", "Hlak", "Mora", "Mopi", "Phupu", "Mose", "Phato", "Lewe", "Dipha", "Diba", "Manth", ""], 
-        monthNames: ["Pherekgong", "Dibokwane", "Hlakola", "Moranang", "Mopitlo", "Phupu", "Mosegemanye", "Phato", "Lewedi", "Diphalane", "Dibatsela", "Manthole", ""], 
-        nativeCalendarName: "Gregorian Calendar", 
-        abbreviatedMonthGenitiveNames: ["Phere", "Dibo", "Hlak", "Mora", "Mopi", "Phupu", "Mose", "Phato", "Lewe", "Dipha", "Diba", "Manth", ""], 
-        monthGenitiveNames: ["Pherekgong", "Dibokwane", "Hlakola", "Moranang", "Mopitlo", "Phupu", "Mosegemanye", "Phato", "Lewedi", "Diphalane", "Dibatsela", "Manthole", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Lam",
+        "Mos",
+        "Bed",
+        "Rar",
+        "Ne",
+        "Hla",
+        "Mok"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Phere",
+        "Dibo",
+        "Hlak",
+        "Mora",
+        "Mopi",
+        "Phupu",
+        "Mose",
+        "Phato",
+        "Lewe",
+        "Dipha",
+        "Diba",
+        "Manth",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Phere",
+        "Dibo",
+        "Hlak",
+        "Mora",
+        "Mopi",
+        "Phupu",
+        "Mose",
+        "Phato",
+        "Lewe",
+        "Dipha",
+        "Diba",
+        "Manth",
+        ""
+      ],
+      "amDesignator": "AM",
+      "dateSeparator": "-",
+      "dayNames": [
+        "Lamorena",
+        "Musopologo",
+        "Labobedi",
+        "Laboraro",
+        "Labone",
+        "Labohlano",
+        "Mokibelo"
+      ],
+      "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "yyyy MMMM d, dddd HH:mm:ss",
+      "longDatePattern": "yyyy MMMM d, dddd",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "Pherekgong",
+        "Dibokwane",
+        "Hlakola",
+        "Moranang",
+        "Mopitlo",
+        "Phupu",
+        "Mosegemanye",
+        "Phato",
+        "Lewedi",
+        "Diphalane",
+        "Dibatsela",
+        "Manthole",
+        ""
+      ],
+      "monthNames": [
+        "Pherekgong",
+        "Dibokwane",
+        "Hlakola",
+        "Moranang",
+        "Mopitlo",
+        "Phupu",
+        "Mosegemanye",
+        "Phato",
+        "Lewedi",
+        "Diphalane",
+        "Dibatsela",
+        "Manthole",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "PM",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "yyyy-MM-dd",
+      "shortestDayNames": [
+        "L",
+        "M",
+        "B",
+        "R",
+        "N",
+        "H",
+        "M"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "AD"
+      ],
+      "abbreviatedEraNames": [
+        "AD"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "yyyy-MM-dd",
+          "yyyy MMM d"
+        ],
+        "D": [
+          "yyyy MMMM d, dddd",
+          "yyyy MMMM d"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

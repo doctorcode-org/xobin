@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 146, 
     name: "ku", 
@@ -23,14 +25,14 @@ export const cultureData: CultureData = {
         numberNegativePattern: 1, 
         percentPositivePattern: 1, 
         percentNegativePattern: 1, 
-        negativeInfinitySymbol: "-∞", 
-        negativeSign: "-", 
+        negativeInfinitySymbol: "‏-∞",
+        negativeSign: "‏-",
         numberDecimalDigits: 2, 
-        numberDecimalSeparator: ".", 
+        numberDecimalSeparator: "٫",
         numberGroupSeparator: ",", 
         currencyPositivePattern: 0, 
         positiveInfinitySymbol: "∞", 
-        positiveSign: "+", 
+        positiveSign: "‏+",
         percentDecimalDigits: 2, 
         percentDecimalSeparator: ".", 
         percentGroupSeparator: ",", 
@@ -40,29 +42,150 @@ export const cultureData: CultureData = {
         digitSubstitution: 0
     }, 
     dateTimeFormat: {
-        amDesignator: "پ.ن", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 0, 
-        fullDateTimePattern: "dddd, dd MMMM, yyyy hh:mm:ss tt", 
-        longDatePattern: "dddd, dd MMMM, yyyy", 
-        longTimePattern: "hh:mm:ss tt", 
-        monthDayPattern: "d MMMM", 
-        pmDesignator: "د.ن", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "yyyy/MM/dd", 
-        shortTimePattern: "hh:mm tt", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM, yyyy", 
-        abbreviatedDayNames: ["یەکشەممە", "دووشەممە", "سێشەممە", "چوارشەممە", "پێنجشەممە", "ھەینی", "شەممە"], 
-        shortestDayNames: ["ی", "د", "س", "چ", "پ", "ھ", "ش"], 
-        dayNames: ["یەکشەممە", "دووشەممە", "سێشەممە", "چوارشەممە", "پێنجشەممە", "ھەینی", "شەممە"], 
-        abbreviatedMonthNames: ["کانوونی دووەم", "شوبات", "ئازار", "نیسان", "ئایار", "حوزەیران", "تەمووز", "ئاب", "ئەیلوول", "تشرینی یەکەم", "تشرینی دووەم", "کانونی یەکەم", ""], 
-        monthNames: ["کانوونی دووەم", "شوبات", "ئازار", "نیسان", "ئایار", "حوزەیران", "تەمووز", "ئاب", "ئەیلوول", "تشرینی یەکەم", "تشرینی دووەم", "کانونی یەکەم", ""], 
-        nativeCalendarName: "ڕۆژژمێری زایینی", 
-        abbreviatedMonthGenitiveNames: ["کانوونی دووەم", "شوبات", "ئازار", "نیسان", "ئایار", "حوزەیران", "تەمووز", "ئاب", "ئەیلوول", "تشرینی یەکەم", "تشرینی دووەم", "کانونی یەکەم", ""], 
-        monthGenitiveNames: ["کانوونی دووەم", "شوبات", "ئازار", "نیسان", "ئایار", "حوزەیران", "تەمووز", "ئاب", "ئەیلوول", "تشرینی یەکەم", "تشرینی دووەم", "کانونی یەکەم", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "یەکشەممە",
+        "دووشەممە",
+        "سێشەممە",
+        "چوارشەممە",
+        "پێنجشەممە",
+        "ھەینی",
+        "شەممە"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "کانوونی دووەم",
+        "شوبات",
+        "ئازار",
+        "نیسان",
+        "ئایار",
+        "حوزەیران",
+        "تەمووز",
+        "ئاب",
+        "ئەیلوول",
+        "تشرینی یەکەم",
+        "تشرینی دووەم",
+        "کانونی یەکەم",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "کانوونی دووەم",
+        "شوبات",
+        "ئازار",
+        "نیسان",
+        "ئایار",
+        "حوزەیران",
+        "تەمووز",
+        "ئاب",
+        "ئەیلوول",
+        "تشرینی یەکەم",
+        "تشرینی دووەم",
+        "کانونی یەکەم",
+        ""
+      ],
+      "amDesignator": "ب.ن",
+      "dateSeparator": "-",
+      "dayNames": [
+        "یەکشەممە",
+        "دووشەممە",
+        "سێشەممە",
+        "چوارشەممە",
+        "پێنجشەممە",
+        "ھەینی",
+        "شەممە"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "yyyy MMMM d, dddd HH:mm:ss",
+      "longDatePattern": "yyyy MMMM d, dddd",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "کانوونی دووەم",
+        "شوبات",
+        "ئازار",
+        "نیسان",
+        "ئایار",
+        "حوزەیران",
+        "تەمووز",
+        "ئاب",
+        "ئەیلوول",
+        "تشرینی یەکەم",
+        "تشرینی دووەم",
+        "کانونی یەکەم",
+        ""
+      ],
+      "monthNames": [
+        "کانوونی دووەم",
+        "شوبات",
+        "ئازار",
+        "نیسان",
+        "ئایار",
+        "حوزەیران",
+        "تەمووز",
+        "ئاب",
+        "ئەیلوول",
+        "تشرینی یەکەم",
+        "تشرینی دووەم",
+        "کانونی یەکەم",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "د.ن",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "yyyy-MM-dd",
+      "shortestDayNames": [
+        "ی",
+        "د",
+        "س",
+        "چ",
+        "پ",
+        "ھ",
+        "ش"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "زایینی"
+      ],
+      "abbreviatedEraNames": [
+        "زایینی"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "yyyy-MM-dd",
+          "yyyy MMM d",
+          "d/M/yyyy"
+        ],
+        "D": [
+          "yyyy MMMM d, dddd",
+          "dی MMMMی yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

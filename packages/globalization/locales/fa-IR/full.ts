@@ -1,0 +1,82 @@
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { PersianCalendar } from '@xobin/globalization/persian-calendar';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+import { HijriCalendar } from '@xobin/globalization/hijri-calendar';
+import { cultureData as defaultCultureData } from '@xobin/globalization/locales/fa-IR';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
+    ...defaultCultureData,
+    calendarFormats: {
+        ...defaultCultureData.calendarFormats,
+        "6": {
+          "eraNames": [
+            "بعد الهجرة"
+          ],
+          "abbreviatedEraNames": [
+            "هـ"
+          ],
+          "monthNames": [
+            "محرم",
+            "صفر",
+            "ربیع‌الاول",
+            "ربیع‌الثانی",
+            "جمادی‌الاول",
+            "جمادی‌الثانی",
+            "رجب",
+            "شعبان",
+            "رمضان",
+            "شوال",
+            "ذیقعده",
+            "ذیحجه",
+            ""
+          ],
+          "abbreviatedMonthNames": [
+            "محرم",
+            "صفر",
+            "ربیع‌الاول",
+            "ربیع‌الثانی",
+            "جمادی‌الاول",
+            "جمادی‌الثانی",
+            "رجب",
+            "شعبان",
+            "رمضان",
+            "شوال",
+            "ذیقعده",
+            "ذیحجه",
+            ""
+          ],
+          "monthGenitiveNames": [
+            "محرم",
+            "صفر",
+            "ربیع‌الاول",
+            "ربیع‌الثانی",
+            "جمادی‌الاول",
+            "جمادی‌الثانی",
+            "رجب",
+            "شعبان",
+            "رمضان",
+            "شوال",
+            "ذیقعدهٔ",
+            "ذیحجهٔ",
+            ""
+          ],
+          "abbreviatedMonthGenitiveNames": [
+            "محرم",
+            "صفر",
+            "ربیع‌الاول",
+            "ربیع‌الثانی",
+            "جمادی‌الاول",
+            "جمادی‌الثانی",
+            "رجب",
+            "شعبان",
+            "رمضان",
+            "شوال",
+            "ذیقعدهٔ",
+            "ذیحجهٔ",
+            ""
+          ],
+          "nativeCalendarName": "تقویم هجری قمری"
+        }
+    },
+    calendarFactories: [() => new PersianCalendar(), () => new GregorianCalendar(1), () => new HijriCalendar()]
+};

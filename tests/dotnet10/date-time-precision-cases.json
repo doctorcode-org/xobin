@@ -1,0 +1,255 @@
+{
+  "runtime": "10.0.7",
+  "rows": [
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addMicroseconds",
+      "value": 0.9999999,
+      "inputTicks": "0",
+      "result": "9",
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addMicroseconds",
+      "value": 0.9999999,
+      "inputTicks": "3155378975999999999",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "The added or subtracted value results in an un-representable DateTime. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addMilliseconds",
+      "value": 0.9999999,
+      "inputTicks": "3155378975999999999",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "The added or subtracted value results in an un-representable DateTime. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addSeconds",
+      "value": 0.9999999,
+      "inputTicks": "3155378975999999999",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "The added or subtracted value results in an un-representable DateTime. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addMinutes",
+      "value": 0.9999999,
+      "inputTicks": "3155378975999999999",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "The added or subtracted value results in an un-representable DateTime. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addHours",
+      "value": 0.9999999,
+      "inputTicks": "3155378975999999999",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "The added or subtracted value results in an un-representable DateTime. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addDays",
+      "value": 0.9999999,
+      "inputTicks": "3155378975999999999",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "The added or subtracted value results in an un-representable DateTime. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addMicroseconds",
+      "value": -0.9999999,
+      "inputTicks": "0",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "The added or subtracted value results in an un-representable DateTime. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addMilliseconds",
+      "value": -0.9999999,
+      "inputTicks": "0",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "The added or subtracted value results in an un-representable DateTime. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addSeconds",
+      "value": -0.9999999,
+      "inputTicks": "0",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "The added or subtracted value results in an un-representable DateTime. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addMinutes",
+      "value": -0.9999999,
+      "inputTicks": "0",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "The added or subtracted value results in an un-representable DateTime. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addHours",
+      "value": -0.9999999,
+      "inputTicks": "0",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "The added or subtracted value results in an un-representable DateTime. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addDays",
+      "value": -0.9999999,
+      "inputTicks": "0",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "The added or subtracted value results in an un-representable DateTime. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addMicroseconds",
+      "value": 3.1553789759999994E+17,
+      "inputTicks": "0",
+      "result": "3155378975999999360",
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addMicroseconds",
+      "value": 3.1553789759999995E+18,
+      "inputTicks": "0",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "Value to add was out of range. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addMilliseconds",
+      "value": 315537897599999,
+      "inputTicks": "0",
+      "result": "3155378975999990000",
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addMilliseconds",
+      "value": 315537897600000,
+      "inputTicks": "0",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "Value to add was out of range. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addSeconds",
+      "value": 315537897599,
+      "inputTicks": "0",
+      "result": "3155378975990000000",
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addSeconds",
+      "value": 315537897600,
+      "inputTicks": "0",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "Value to add was out of range. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addMinutes",
+      "value": 5258964959,
+      "inputTicks": "0",
+      "result": "3155378975400000000",
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addMinutes",
+      "value": 5258964960,
+      "inputTicks": "0",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "Value to add was out of range. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addHours",
+      "value": 87649415,
+      "inputTicks": "0",
+      "result": "3155378940000000000",
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addHours",
+      "value": 87649416,
+      "inputTicks": "0",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "Value to add was out of range. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addDays",
+      "value": 3652058,
+      "inputTicks": "0",
+      "result": "3155378112000000000",
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.TestDateTimeCalculationPrecision",
+      "operation": "addDays",
+      "value": 3652059,
+      "inputTicks": "0",
+      "result": null,
+      "error": "ArgumentOutOfRangeException",
+      "paramName": "value",
+      "message": "Value to add was out of range. (Parameter \u0027value\u0027)"
+    }
+  ]
+}

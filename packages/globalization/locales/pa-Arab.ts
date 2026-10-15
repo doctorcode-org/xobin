@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "pa", 
     lcid: 31814, 
     name: "pa-Arab", 
@@ -23,14 +25,14 @@ export const cultureData: CultureData = {
         numberNegativePattern: 2, 
         percentPositivePattern: 1, 
         percentNegativePattern: 1, 
-        negativeInfinitySymbol: "-∞", 
-        negativeSign: "-", 
+        negativeInfinitySymbol: "‎-‎∞",
+        negativeSign: "‎-‎",
         numberDecimalDigits: 2, 
-        numberDecimalSeparator: ".", 
+        numberDecimalSeparator: "٫",
         numberGroupSeparator: ",", 
         currencyPositivePattern: 2, 
         positiveInfinitySymbol: "∞", 
-        positiveSign: "+", 
+        positiveSign: "‎+‎",
         percentDecimalDigits: 2, 
         percentDecimalSeparator: ".", 
         percentGroupSeparator: ",", 
@@ -40,29 +42,150 @@ export const cultureData: CultureData = {
         digitSubstitution: 2
     }, 
     dateTimeFormat: {
-        amDesignator: "AM", 
-        dateSeparator: "-", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dd MMMM yyyy dddd h.mm.ss tt", 
-        longDatePattern: "dd MMMM yyyy dddd", 
-        longTimePattern: "h.mm.ss tt", 
-        monthDayPattern: "dd MMMM", 
-        pmDesignator: "PM", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd-MM-yy", 
-        shortTimePattern: "h.mm tt", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ".", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM, yyyy", 
-        abbreviatedDayNames: ["پير", "منگل", "بدھ", "جمعرات", "جمعه", "هفته", "اتوار"], 
-        shortestDayNames: ["پ", "م", "ب", "ج", "ج", "ه", "ا"], 
-        dayNames: ["پير", "منگل", "بدھ", "جمعرات", "جمعه", "هفته", "اتوار"], 
-        abbreviatedMonthNames: ["جنوری", "فروری", "مارچ", "اپریل", "مئی", "جون", "جولائی", "اگست", "ستمبر", "اکتوبر", "نومبر", "دسمبر", ""], 
-        monthNames: ["جنوری", "فروری", "مارچ", "اپریل", "مئی", "جون", "جولائی", "اگست", "ستمبر", "اکتوبر", "نومبر", "دسمبر", ""], 
-        nativeCalendarName: "عیسوی", 
-        abbreviatedMonthGenitiveNames: ["جنوری", "فروری", "مارچ", "اپریل", "مئی", "جون", "جولائی", "اگست", "ستمبر", "اکتوبر", "نومبر", "دسمبر", ""], 
-        monthGenitiveNames: ["جنوری", "فروری", "مارچ", "اپریل", "مئی", "جون", "جولائی", "اگست", "ستمبر", "اکتوبر", "نومبر", "دسمبر", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "اتوار",
+        "پیر",
+        "منگل",
+        "بُدھ",
+        "جمعرات",
+        "جمعہ",
+        "ہفتہ"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "جنوری",
+        "فروری",
+        "مارچ",
+        "اپریل",
+        "مئ",
+        "جون",
+        "جولائی",
+        "اگست",
+        "ستمبر",
+        "اکتوبر",
+        "نومبر",
+        "دسمبر",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "جنوری",
+        "فروری",
+        "مارچ",
+        "اپریل",
+        "مئ",
+        "جون",
+        "جولائی",
+        "اگست",
+        "ستمبر",
+        "اکتوبر",
+        "نومبر",
+        "دسمبر",
+        ""
+      ],
+      "amDesignator": "AM",
+      "dateSeparator": "/",
+      "dayNames": [
+        "اتوار",
+        "پیر",
+        "منگل",
+        "بُدھ",
+        "جمعرات",
+        "جمعہ",
+        "ہفتہ"
+      ],
+      "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, dd MMMM yyyy h:mm:ss tt",
+      "longDatePattern": "dddd, dd MMMM yyyy",
+      "longTimePattern": "h:mm:ss tt",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "جنوری",
+        "فروری",
+        "مارچ",
+        "اپریل",
+        "مئ",
+        "جون",
+        "جولائی",
+        "اگست",
+        "ستمبر",
+        "اکتوبر",
+        "نومبر",
+        "دسمبر",
+        ""
+      ],
+      "monthNames": [
+        "جنوری",
+        "فروری",
+        "مارچ",
+        "اپریل",
+        "مئ",
+        "جون",
+        "جولائی",
+        "اگست",
+        "ستمبر",
+        "اکتوبر",
+        "نومبر",
+        "دسمبر",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "PM",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd/MM/yyyy",
+      "shortestDayNames": [
+        "S",
+        "M",
+        "T",
+        "W",
+        "T",
+        "F",
+        "S"
+      ],
+      "shortTimePattern": "h:mm tt",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "سں"
+      ],
+      "abbreviatedEraNames": [
+        "سں"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd/MM/yyyy",
+          "d MMM yyyy",
+          "d/M/yyyy"
+        ],
+        "D": [
+          "dddd, dd MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "h:mm tt"
+        ],
+        "T": [
+          "h:mm:ss tt"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

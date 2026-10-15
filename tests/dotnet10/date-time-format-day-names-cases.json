@@ -1,0 +1,1619 @@
+{
+  "runtime": "10.0.7",
+  "sourceTag": "v10.0.7",
+  "rows": [
+    {
+      "source": "DateTimeFormatInfoDayNames.DayNames_GetInvariantInfo_ReturnsExpected",
+      "property": "DayNames",
+      "culture": "invariant",
+      "set": false,
+      "value": null,
+      "result": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeFormatInfoDayNames.DayNames_Get_ReturnsExpected_ICU",
+      "property": "DayNames",
+      "culture": "en-US",
+      "set": false,
+      "value": null,
+      "result": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeFormatInfoDayNames.DayNames_Get_ReturnsExpected_ICU",
+      "property": "DayNames",
+      "culture": "fr-FR",
+      "set": false,
+      "value": null,
+      "result": [
+        "dimanche",
+        "lundi",
+        "mardi",
+        "mercredi",
+        "jeudi",
+        "vendredi",
+        "samedi"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeFormatInfoDayNames.DayNames_Set_GetReturnsExpected",
+      "property": "DayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "result": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "getterCopies": true,
+      "afterMutation": [
+        null,
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeFormatInfoDayNames.DayNames_Set_GetReturnsExpected",
+      "property": "DayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "result": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "getterCopies": true,
+      "afterMutation": [
+        null,
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeFormatInfoDayNames.DayNames_SetNulValue_ThrowsArgumentNullException",
+      "property": "DayNames",
+      "culture": "new",
+      "set": true,
+      "value": null,
+      "result": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Value cannot be null. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeFormatInfoDayNames.DayNames_SetNulValueInValue_ThrowsArgumentNullException",
+      "property": "DayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "1",
+        "2",
+        "3",
+        null,
+        "5",
+        "6",
+        "7"
+      ],
+      "result": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeFormatInfoDayNames.DayNames_SetInvalidLength_ThrowsArgumentException",
+      "property": "DayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "Sun"
+      ],
+      "result": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentException",
+      "paramName": "value",
+      "message": "Length of the array must be 7. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeFormatInfoDayNames.DayNames_SetInvalidLength_ThrowsArgumentException",
+      "property": "DayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Additional"
+      ],
+      "result": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentException",
+      "paramName": "value",
+      "message": "Length of the array must be 7. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeFormatInfoDayNames.DayNames_SetReadOnly_ThrowsInvalidOperationException",
+      "property": "DayNames",
+      "culture": "invariant",
+      "set": true,
+      "value": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "result": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "InvalidOperationException",
+      "paramName": null,
+      "message": "Instance is read-only."
+    },
+    {
+      "source": "Supplementary.DayNames",
+      "property": "DayNames",
+      "culture": "invariant",
+      "set": true,
+      "value": null,
+      "result": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "InvalidOperationException",
+      "paramName": null,
+      "message": "Instance is read-only."
+    },
+    {
+      "source": "Supplementary.DayNames",
+      "property": "DayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        null
+      ],
+      "result": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentException",
+      "paramName": "value",
+      "message": "Length of the array must be 7. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.DayNames",
+      "property": "DayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        null,
+        "day",
+        "day",
+        "day",
+        "day",
+        "day",
+        "day"
+      ],
+      "result": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.DayNames",
+      "property": "DayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        null,
+        "day",
+        "day",
+        "day",
+        "day",
+        "day"
+      ],
+      "result": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.DayNames",
+      "property": "DayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        "day",
+        null,
+        "day",
+        "day",
+        "day",
+        "day"
+      ],
+      "result": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.DayNames",
+      "property": "DayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        "day",
+        "day",
+        null,
+        "day",
+        "day",
+        "day"
+      ],
+      "result": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.DayNames",
+      "property": "DayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        "day",
+        "day",
+        "day",
+        null,
+        "day",
+        "day"
+      ],
+      "result": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.DayNames",
+      "property": "DayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        "day",
+        "day",
+        "day",
+        "day",
+        null,
+        "day"
+      ],
+      "result": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.DayNames",
+      "property": "DayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        "day",
+        "day",
+        "day",
+        "day",
+        "day",
+        null
+      ],
+      "result": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeFormatInfoAbbreviatedDayNames.AbbreviatedDayNames_GetInvariantInfo_ReturnsExpected",
+      "property": "AbbreviatedDayNames",
+      "culture": "invariant",
+      "set": false,
+      "value": null,
+      "result": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeFormatInfoAbbreviatedDayNames.AbbreviatedDayNames_Get_ReturnsExpected_ICU",
+      "property": "AbbreviatedDayNames",
+      "culture": "en-US",
+      "set": false,
+      "value": null,
+      "result": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeFormatInfoAbbreviatedDayNames.AbbreviatedDayNames_Get_ReturnsExpected_ICU",
+      "property": "AbbreviatedDayNames",
+      "culture": "fr-FR",
+      "set": false,
+      "value": null,
+      "result": [
+        "dim.",
+        "lun.",
+        "mar.",
+        "mer.",
+        "jeu.",
+        "ven.",
+        "sam."
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeFormatInfoAbbreviatedDayNames.AbbreviatedDayNames_Set_GetReturnsExpected",
+      "property": "AbbreviatedDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "result": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "getterCopies": true,
+      "afterMutation": [
+        null,
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeFormatInfoAbbreviatedDayNames.AbbreviatedDayNames_Set_GetReturnsExpected",
+      "property": "AbbreviatedDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "result": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "getterCopies": true,
+      "afterMutation": [
+        null,
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeFormatInfoAbbreviatedDayNames.AbbreviatedDayNames_SetNulValue_ThrowsArgumentNullException",
+      "property": "AbbreviatedDayNames",
+      "culture": "new",
+      "set": true,
+      "value": null,
+      "result": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Value cannot be null. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeFormatInfoAbbreviatedDayNames.AbbreviatedDayNames_SetNulValueInValue_ThrowsArgumentNullException",
+      "property": "AbbreviatedDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "1",
+        "2",
+        "3",
+        null,
+        "5",
+        "6",
+        "7"
+      ],
+      "result": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeFormatInfoAbbreviatedDayNames.AbbreviatedDayNames_SetInvalidLength_ThrowsArgumentException",
+      "property": "AbbreviatedDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "Sun"
+      ],
+      "result": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentException",
+      "paramName": "value",
+      "message": "Length of the array must be 7. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeFormatInfoAbbreviatedDayNames.AbbreviatedDayNames_SetInvalidLength_ThrowsArgumentException",
+      "property": "AbbreviatedDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Additional"
+      ],
+      "result": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentException",
+      "paramName": "value",
+      "message": "Length of the array must be 7. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeFormatInfoAbbreviatedDayNames.AbbreviatedDayNames_SetReadOnly_ThrowsInvalidOperationException",
+      "property": "AbbreviatedDayNames",
+      "culture": "invariant",
+      "set": true,
+      "value": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "result": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "InvalidOperationException",
+      "paramName": null,
+      "message": "Instance is read-only."
+    },
+    {
+      "source": "Supplementary.AbbreviatedDayNames",
+      "property": "AbbreviatedDayNames",
+      "culture": "invariant",
+      "set": true,
+      "value": null,
+      "result": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "InvalidOperationException",
+      "paramName": null,
+      "message": "Instance is read-only."
+    },
+    {
+      "source": "Supplementary.AbbreviatedDayNames",
+      "property": "AbbreviatedDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        null
+      ],
+      "result": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentException",
+      "paramName": "value",
+      "message": "Length of the array must be 7. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.AbbreviatedDayNames",
+      "property": "AbbreviatedDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        null,
+        "day",
+        "day",
+        "day",
+        "day",
+        "day",
+        "day"
+      ],
+      "result": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.AbbreviatedDayNames",
+      "property": "AbbreviatedDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        null,
+        "day",
+        "day",
+        "day",
+        "day",
+        "day"
+      ],
+      "result": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.AbbreviatedDayNames",
+      "property": "AbbreviatedDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        "day",
+        null,
+        "day",
+        "day",
+        "day",
+        "day"
+      ],
+      "result": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.AbbreviatedDayNames",
+      "property": "AbbreviatedDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        "day",
+        "day",
+        null,
+        "day",
+        "day",
+        "day"
+      ],
+      "result": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.AbbreviatedDayNames",
+      "property": "AbbreviatedDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        "day",
+        "day",
+        "day",
+        null,
+        "day",
+        "day"
+      ],
+      "result": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.AbbreviatedDayNames",
+      "property": "AbbreviatedDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        "day",
+        "day",
+        "day",
+        "day",
+        null,
+        "day"
+      ],
+      "result": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.AbbreviatedDayNames",
+      "property": "AbbreviatedDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        "day",
+        "day",
+        "day",
+        "day",
+        "day",
+        null
+      ],
+      "result": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeFormatInfoShortestDayNames.ShortestDayNames_InvariantInfo",
+      "property": "ShortestDayNames",
+      "culture": "invariant",
+      "set": false,
+      "value": null,
+      "result": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "Supplementary.ShortestDayNames",
+      "property": "ShortestDayNames",
+      "culture": "en-US",
+      "set": false,
+      "value": null,
+      "result": [
+        "S",
+        "M",
+        "T",
+        "W",
+        "T",
+        "F",
+        "S"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "Supplementary.ShortestDayNames",
+      "property": "ShortestDayNames",
+      "culture": "fr-FR",
+      "set": false,
+      "value": null,
+      "result": [
+        "D",
+        "L",
+        "M",
+        "M",
+        "J",
+        "V",
+        "S"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeFormatInfoShortestDayNames.ShortestDayNames_Set_GetReturnsExpected",
+      "property": "ShortestDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "result": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "getterCopies": true,
+      "afterMutation": [
+        null,
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeFormatInfoShortestDayNames.ShortestDayNames_Set_GetReturnsExpected",
+      "property": "ShortestDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "result": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "getterCopies": true,
+      "afterMutation": [
+        null,
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeFormatInfoShortestDayNames.ShortestDayNames_SetNulValue_ThrowsArgumentNullException",
+      "property": "ShortestDayNames",
+      "culture": "new",
+      "set": true,
+      "value": null,
+      "result": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Value cannot be null. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeFormatInfoShortestDayNames.ShortestDayNames_SetNulValueInValue_ThrowsArgumentNullException",
+      "property": "ShortestDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "1",
+        "2",
+        "3",
+        null,
+        "5",
+        "6",
+        "7"
+      ],
+      "result": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeFormatInfoShortestDayNames.ShortestDayNames_SetInvalidLength_ThrowsArgumentException",
+      "property": "ShortestDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "Sun"
+      ],
+      "result": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentException",
+      "paramName": "value",
+      "message": "Length of the array must be 7. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeFormatInfoShortestDayNames.ShortestDayNames_SetInvalidLength_ThrowsArgumentException",
+      "property": "ShortestDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Additional"
+      ],
+      "result": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentException",
+      "paramName": "value",
+      "message": "Length of the array must be 7. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeFormatInfoShortestDayNames.ShortestDayNames_SetReadOnly_ThrowsInvalidOperationException",
+      "property": "ShortestDayNames",
+      "culture": "invariant",
+      "set": true,
+      "value": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "result": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "InvalidOperationException",
+      "paramName": null,
+      "message": "Instance is read-only."
+    },
+    {
+      "source": "Supplementary.ShortestDayNames",
+      "property": "ShortestDayNames",
+      "culture": "invariant",
+      "set": true,
+      "value": null,
+      "result": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "InvalidOperationException",
+      "paramName": null,
+      "message": "Instance is read-only."
+    },
+    {
+      "source": "Supplementary.ShortestDayNames",
+      "property": "ShortestDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        null
+      ],
+      "result": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentException",
+      "paramName": "value",
+      "message": "Length of the array must be 7. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.ShortestDayNames",
+      "property": "ShortestDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        null,
+        "day",
+        "day",
+        "day",
+        "day",
+        "day",
+        "day"
+      ],
+      "result": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.ShortestDayNames",
+      "property": "ShortestDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        null,
+        "day",
+        "day",
+        "day",
+        "day",
+        "day"
+      ],
+      "result": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.ShortestDayNames",
+      "property": "ShortestDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        "day",
+        null,
+        "day",
+        "day",
+        "day",
+        "day"
+      ],
+      "result": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.ShortestDayNames",
+      "property": "ShortestDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        "day",
+        "day",
+        null,
+        "day",
+        "day",
+        "day"
+      ],
+      "result": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.ShortestDayNames",
+      "property": "ShortestDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        "day",
+        "day",
+        "day",
+        null,
+        "day",
+        "day"
+      ],
+      "result": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.ShortestDayNames",
+      "property": "ShortestDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        "day",
+        "day",
+        "day",
+        "day",
+        null,
+        "day"
+      ],
+      "result": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "Supplementary.ShortestDayNames",
+      "property": "ShortestDayNames",
+      "culture": "new",
+      "set": true,
+      "value": [
+        "day",
+        "day",
+        "day",
+        "day",
+        "day",
+        "day",
+        null
+      ],
+      "result": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": "ArgumentNullException",
+      "paramName": "value",
+      "message": "Found a null value within an array. (Parameter \u0027value\u0027)"
+    },
+    {
+      "source": "DateTimeFormatInfoDayNames.DayNames_Get_ReturnsClone",
+      "property": "DayNames",
+      "culture": "invariant",
+      "set": false,
+      "value": null,
+      "result": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeFormatInfoAbbreviatedDayNames.AbbreviatedDayNames_Get_ReturnsClone",
+      "property": "AbbreviatedDayNames",
+      "culture": "invariant",
+      "set": false,
+      "value": null,
+      "result": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeFormatInfoShortestDayNames.ShortestDayNames_Get_ReturnsClone",
+      "property": "ShortestDayNames",
+      "culture": "invariant",
+      "set": false,
+      "value": null,
+      "result": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ],
+      "getterCopies": true,
+      "afterMutation": null,
+      "error": null,
+      "paramName": null,
+      "message": null
+    }
+  ],
+  "formatError": "NullReferenceException",
+  "formatMessage": "Object reference not set to an instance of an object."
+}

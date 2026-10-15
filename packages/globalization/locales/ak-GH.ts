@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "ak", 
     lcid: 4096, 
     name: "ak-GH", 
@@ -40,29 +42,151 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "AN", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, yyyy MMMM dd h:mm:ss tt", 
-        longDatePattern: "dddd, yyyy MMMM dd", 
-        longTimePattern: "h:mm:ss tt", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "EW", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "yyyy/MM/dd", 
-        shortTimePattern: "h:mm tt", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["Kwe", "Dwo", "Ben", "Wuk", "Yaw", "Fia", "Mem"], 
-        shortestDayNames: ["Kwe", "Dwo", "Ben", "Wuk", "Yaw", "Fia", "Mem"], 
-        dayNames: ["Kwesida", "Dwowda", "Benada", "Wukuda", "Yawda", "Fida", "Memeneda"], 
-        abbreviatedMonthNames: ["S-Ɔ", "K-Ɔ", "E-Ɔ", "E-O", "E-K", "O-A", "A-K", "D-Ɔ", "F-Ɛ", "Ɔ-A", "Ɔ-O", "M-Ɔ", ""], 
-        monthNames: ["Sanda-Ɔpɛpɔn", "Kwakwar-Ɔgyefuo", "Ebɔw-Ɔbenem", "Ebɔbira-Oforisuo", "Esusow Aketseaba-Kɔtɔnimba", "Obirade-Ayɛwohomumu", "Ayɛwoho-Kitawonsa", "Difuu-Ɔsandaa", "Fankwa-Ɛbɔ", "Ɔbɛsɛ-Ahinime", "Ɔberɛfɛw-Obubuo", "Mumu-Ɔpɛnimba", ""], 
-        nativeCalendarName: "Gregorian Calendar", 
-        abbreviatedMonthGenitiveNames: ["S-Ɔ", "K-Ɔ", "E-Ɔ", "E-O", "E-K", "O-A", "A-K", "D-Ɔ", "F-Ɛ", "Ɔ-A", "Ɔ-O", "M-Ɔ", ""], 
-        monthGenitiveNames: ["Sanda-Ɔpɛpɔn", "Kwakwar-Ɔgyefuo", "Ebɔw-Ɔbenem", "Ebɔbira-Oforisuo", "Esusow Aketseaba-Kɔtɔnimba", "Obirade-Ayɛwohomumu", "Ayɛwoho-Kitawonsa", "Difuu-Ɔsandaa", "Fankwa-Ɛbɔ", "Ɔbɛsɛ-Ahinime", "Ɔberɛfɛw-Obubuo", "Mumu-Ɔpɛnimba", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Kwe",
+        "Dwo",
+        "Ben",
+        "Wuk",
+        "Yaw",
+        "Fia",
+        "Mem"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "S-Ɔ",
+        "K-Ɔ",
+        "E-Ɔ",
+        "E-O",
+        "E-K",
+        "O-A",
+        "A-K",
+        "D-Ɔ",
+        "F-Ɛ",
+        "Ɔ-A",
+        "Ɔ-O",
+        "M-Ɔ",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "S-Ɔ",
+        "K-Ɔ",
+        "E-Ɔ",
+        "E-O",
+        "E-K",
+        "O-A",
+        "A-K",
+        "D-Ɔ",
+        "F-Ɛ",
+        "Ɔ-A",
+        "Ɔ-O",
+        "M-Ɔ",
+        ""
+      ],
+      "amDesignator": "AN",
+      "dateSeparator": "/",
+      "dayNames": [
+        "Kwesida",
+        "Dwowda",
+        "Benada",
+        "Wukuda",
+        "Yawda",
+        "Fida",
+        "Memeneda"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, yyyy MMMM dd h:mm:ss tt",
+      "longDatePattern": "dddd, yyyy MMMM dd",
+      "longTimePattern": "h:mm:ss tt",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "Sanda-Ɔpɛpɔn",
+        "Kwakwar-Ɔgyefuo",
+        "Ebɔw-Ɔbenem",
+        "Ebɔbira-Oforisuo",
+        "Esusow Aketseaba-Kɔtɔnimba",
+        "Obirade-Ayɛwohomumu",
+        "Ayɛwoho-Kitawonsa",
+        "Difuu-Ɔsandaa",
+        "Fankwa-Ɛbɔ",
+        "Ɔbɛsɛ-Ahinime",
+        "Ɔberɛfɛw-Obubuo",
+        "Mumu-Ɔpɛnimba",
+        ""
+      ],
+      "monthNames": [
+        "Sanda-Ɔpɛpɔn",
+        "Kwakwar-Ɔgyefuo",
+        "Ebɔw-Ɔbenem",
+        "Ebɔbira-Oforisuo",
+        "Esusow Aketseaba-Kɔtɔnimba",
+        "Obirade-Ayɛwohomumu",
+        "Ayɛwoho-Kitawonsa",
+        "Difuu-Ɔsandaa",
+        "Fankwa-Ɛbɔ",
+        "Ɔbɛsɛ-Ahinime",
+        "Ɔberɛfɛw-Obubuo",
+        "Mumu-Ɔpɛnimba",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "EW",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "yyyy/MM/dd",
+      "shortestDayNames": [
+        "K",
+        "D",
+        "B",
+        "W",
+        "Y",
+        "F",
+        "M"
+      ],
+      "shortTimePattern": "h:mm tt",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "KE"
+      ],
+      "abbreviatedEraNames": [
+        "KE"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "yyyy/MM/dd",
+          "yyyy MMM d",
+          "yyyy/M/d",
+          "yy/MM/dd"
+        ],
+        "D": [
+          "dddd, yyyy MMMM dd",
+          "yyyy MMMM d"
+        ],
+        "t": [
+          "h:mm tt"
+        ],
+        "T": [
+          "h:mm:ss tt"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

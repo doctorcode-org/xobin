@@ -1,19 +1,23 @@
+import * as SR from '@xobin/core/internal/exception-resources';
 ﻿import { ArgumentOutOfRangeException } from '@xobin/core';
 
-export const LongMaxValue = Number.MAX_SAFE_INTEGER; // 2^53 - 1
-export const LongMinValue = Number.MIN_SAFE_INTEGER;
+export const LongMaxValue = 9223372036854775807n;
+export const LongMinValue = -9223372036854775808n;
 
-export const TicksPerMillisecond = 1;
-export const TicksPerSecond = TicksPerMillisecond * 1000;
-export const TicksPerMinute = TicksPerSecond * 60;
-export const TicksPerHour = TicksPerMinute * 60;
-export const TicksPerDay = TicksPerHour * 24;
+export const TicksPerMicrosecond = 10n;
+export const TicksPerMillisecond = TicksPerMicrosecond * 1000n;
+export const TicksPerSecond = TicksPerMillisecond * 1000n;
+export const TicksPerMinute = TicksPerSecond * 60n;
+export const TicksPerHour = TicksPerMinute * 60n;
+export const TicksPerDay = TicksPerHour * 24n;
 
 export const MaxSeconds = LongMaxValue / TicksPerSecond;
 export const MinSeconds = LongMinValue / TicksPerSecond;
 
-export const MaxMilliSeconds = LongMaxValue / TicksPerSecond;
-export const MinMilliSeconds = LongMinValue / TicksPerSecond;
+export const MaxMilliseconds = LongMaxValue / TicksPerMillisecond;
+export const MinMilliseconds = LongMinValue / TicksPerMillisecond;
+export const MaxMicroseconds = LongMaxValue / TicksPerMicrosecond;
+export const MinMicroseconds = LongMinValue / TicksPerMicrosecond;
 
 //----------------------------------------------------------------------------------------
 // Number of milliseconds per time unit
@@ -31,18 +35,14 @@ export const DaysPer100Years = DaysPer4Years * 25 - 1;  // 36524
 // Number of days in 400 years
 export const DaysPer400Years = DaysPer100Years * 4 + 1; // 146097
 
-// Number of days from 1/1/0001 to 12/31/1600
-export const DaysTo1601 = DaysPer400Years * 4;          // 584388
-// Number of days from 1/1/0001 to 12/30/1899
-export const DaysTo1899 = DaysPer400Years * 4 + DaysPer100Years * 3 - 367;
 // Number of days from 1/1/0001 to 12/31/1969
 export const DaysTo1970 = DaysPer400Years * 4 + DaysPer100Years * 3 + DaysPer4Years * 17 + DaysPerYear; // 719,162
 // Number of days from 1/1/0001 to 12/31/9999
 export const DaysTo10000 = DaysPer400Years * 25 - 366;  // 3652059
 
-export const MinTicks = 0;
-export const MaxTicks = DaysTo10000 * (TicksPerDay - 1);
-export const MaxMillis = DaysTo10000 * MillisPerDay;
+export const MinTicks = 0n;
+export const MaxTicks = BigInt(DaysTo10000) * TicksPerDay - 1n;
+export const MaxMillis = Number(MaxTicks / TicksPerMillisecond);
 
 export const DatePartYear = 0;
 export const DatePartDayOfYear = 1;
@@ -55,11 +55,11 @@ export function getTimezoneOffset(): number {
     return (new Date()).getTimezoneOffset();
 }
 
-export function timeToTicks(hour: number, minute: number, second: number): number {
+export function timeToTicks(hour: number, minute: number, second: number): bigint {
     // totalSeconds is bounded by 2^31 * 2^12 + 2^31 * 2^8 + 2^31,
     // which is less than 2^44, meaning we won't overflow totalSeconds.
-    const totalSeconds = hour * 3600 + minute * 60 + second;
+    const totalSeconds = BigInt(hour) * 3600n + BigInt(minute) * 60n + BigInt(second);
     if (totalSeconds > MaxSeconds || totalSeconds < MinSeconds)
-        throw new ArgumentOutOfRangeException(/*null, SR.Overflow_TimeSpanTooLong*/);
+        throw new ArgumentOutOfRangeException(null, SR.Overflow_TimeSpanTooLong);
     return totalSeconds * TicksPerSecond;
 }

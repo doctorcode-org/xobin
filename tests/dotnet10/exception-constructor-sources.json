@@ -1,0 +1,444 @@
+{
+  "sourceTag": "v10.0.7",
+  "javascriptScope": "Constructor message, parameter, actual value, inner exception, culture identifier and HRESULT contracts; shared helper Data/HelpLink/Source/StackTrace checks are outside this scope.",
+  "supportSource": {
+    "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/Exception.Helpers.cs",
+    "sourceSha256": "a4ddd8e9f2fce7bb79a6f81a5b86f4ff3c36114f27c82faf9fecf925fc09820a"
+  },
+  "constructors": [
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ExceptionTests.cs::ExceptionTests.Ctor_Empty@20",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ExceptionTests.cs",
+      "method": "ExceptionTests.Ctor_Empty",
+      "sourceSha256": "53d234ad4d87e112f164c9fbc9ff115cf673c42f9170bbb20b239984bddbfccf",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ExceptionTests.cs::ExceptionTests.Ctor_String@27",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ExceptionTests.cs",
+      "method": "ExceptionTests.Ctor_String",
+      "sourceSha256": "53d234ad4d87e112f164c9fbc9ff115cf673c42f9170bbb20b239984bddbfccf",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ExceptionTests.cs::ExceptionTests.Ctor_String_Exception@35",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ExceptionTests.cs",
+      "method": "ExceptionTests.Ctor_String_Exception",
+      "sourceSha256": "53d234ad4d87e112f164c9fbc9ff115cf673c42f9170bbb20b239984bddbfccf",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/SystemExceptionTests.cs::SystemExceptionTests.Ctor_Empty@14",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/SystemExceptionTests.cs",
+      "method": "SystemExceptionTests.Ctor_Empty",
+      "sourceSha256": "5f6db4d3bc7420d5dafea5263950e7865acb22a03ed167f1333361f72ad1638e",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/SystemExceptionTests.cs::SystemExceptionTests.Ctor_String@22",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/SystemExceptionTests.cs",
+      "method": "SystemExceptionTests.Ctor_String",
+      "sourceSha256": "5f6db4d3bc7420d5dafea5263950e7865acb22a03ed167f1333361f72ad1638e",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/SystemExceptionTests.cs::SystemExceptionTests.Ctor_String_Exception@31",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/SystemExceptionTests.cs",
+      "method": "SystemExceptionTests.Ctor_String_Exception",
+      "sourceSha256": "5f6db4d3bc7420d5dafea5263950e7865acb22a03ed167f1333361f72ad1638e",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArithmeticExceptionTests.cs::ArithmeticExceptionTests.Ctor_Empty@13",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArithmeticExceptionTests.cs",
+      "method": "ArithmeticExceptionTests.Ctor_Empty",
+      "sourceSha256": "7de84505d6e0a251afabe980d7b79f3531356bed72c8e7abf1b8042d89d3157b",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArithmeticExceptionTests.cs::ArithmeticExceptionTests.Ctor_String@20",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArithmeticExceptionTests.cs",
+      "method": "ArithmeticExceptionTests.Ctor_String",
+      "sourceSha256": "7de84505d6e0a251afabe980d7b79f3531356bed72c8e7abf1b8042d89d3157b",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArithmeticExceptionTests.cs::ArithmeticExceptionTests.Ctor_String_Exception@28",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArithmeticExceptionTests.cs",
+      "method": "ArithmeticExceptionTests.Ctor_String_Exception",
+      "sourceSha256": "7de84505d6e0a251afabe980d7b79f3531356bed72c8e7abf1b8042d89d3157b",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NullReferenceExceptionTests.cs::NullReferenceExceptionTests.NullReferenceException_Ctor_Empty@18",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NullReferenceExceptionTests.cs",
+      "method": "NullReferenceExceptionTests.NullReferenceException_Ctor_Empty",
+      "sourceSha256": "437f6f48d979249e531ed4c9c87d9206ccd3f1b69b307b6afc97a2c39428f2da",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NullReferenceExceptionTests.cs::NullReferenceExceptionTests.NullReferenceException_Ctor_String@25",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NullReferenceExceptionTests.cs",
+      "method": "NullReferenceExceptionTests.NullReferenceException_Ctor_String",
+      "sourceSha256": "437f6f48d979249e531ed4c9c87d9206ccd3f1b69b307b6afc97a2c39428f2da",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NullReferenceExceptionTests.cs::NullReferenceExceptionTests.NullReferenceException_Ctor_String_Exception@33",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NullReferenceExceptionTests.cs",
+      "method": "NullReferenceExceptionTests.NullReferenceException_Ctor_String_Exception",
+      "sourceSha256": "437f6f48d979249e531ed4c9c87d9206ccd3f1b69b307b6afc97a2c39428f2da",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidCastExceptionTests.cs::InvalidCastExceptionTests.Ctor_Empty@13",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidCastExceptionTests.cs",
+      "method": "InvalidCastExceptionTests.Ctor_Empty",
+      "sourceSha256": "8de5d3bdeced4f33995aefcdb492bb3ed2f1c9f701a1c6e5de99fcee75fc4b93",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidCastExceptionTests.cs::InvalidCastExceptionTests.Ctor_String@20",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidCastExceptionTests.cs",
+      "method": "InvalidCastExceptionTests.Ctor_String",
+      "sourceSha256": "8de5d3bdeced4f33995aefcdb492bb3ed2f1c9f701a1c6e5de99fcee75fc4b93",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidCastExceptionTests.cs::InvalidCastExceptionTests.Ctor_String_Exception@28",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidCastExceptionTests.cs",
+      "method": "InvalidCastExceptionTests.Ctor_String_Exception",
+      "sourceSha256": "8de5d3bdeced4f33995aefcdb492bb3ed2f1c9f701a1c6e5de99fcee75fc4b93",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidCastExceptionTests.cs::InvalidCastExceptionTests.Ctor_String_Int32@37",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidCastExceptionTests.cs",
+      "method": "InvalidCastExceptionTests.Ctor_String_Int32",
+      "sourceSha256": "8de5d3bdeced4f33995aefcdb492bb3ed2f1c9f701a1c6e5de99fcee75fc4b93",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/FormatExceptionTests.cs::FormatExceptionTests.Ctor_Empty@13",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/FormatExceptionTests.cs",
+      "method": "FormatExceptionTests.Ctor_Empty",
+      "sourceSha256": "6956cf14d829deddfd82bf16aea4ea540255ebc7044c075352a235303aaa2cd9",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/FormatExceptionTests.cs::FormatExceptionTests.Ctor_String@20",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/FormatExceptionTests.cs",
+      "method": "FormatExceptionTests.Ctor_String",
+      "sourceSha256": "6956cf14d829deddfd82bf16aea4ea540255ebc7044c075352a235303aaa2cd9",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/FormatExceptionTests.cs::FormatExceptionTests.Ctor_String_Exception@28",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/FormatExceptionTests.cs",
+      "method": "FormatExceptionTests.Ctor_String_Exception",
+      "sourceSha256": "6956cf14d829deddfd82bf16aea4ea540255ebc7044c075352a235303aaa2cd9",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/Runtime/Serialization/SerializationExceptionTests.cs::SerializationExceptionTests.Ctor_Default@16",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/Runtime/Serialization/SerializationExceptionTests.cs",
+      "method": "SerializationExceptionTests.Ctor_Default",
+      "sourceSha256": "17beffa4bd6581243fa24f2d0a3360b846536538efba26efe6a209ce2bbecce4",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/Runtime/Serialization/SerializationExceptionTests.cs::SerializationExceptionTests.Ctor_String@26",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/Runtime/Serialization/SerializationExceptionTests.cs",
+      "method": "SerializationExceptionTests.Ctor_String",
+      "sourceSha256": "17beffa4bd6581243fa24f2d0a3360b846536538efba26efe6a209ce2bbecce4",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/Runtime/Serialization/SerializationExceptionTests.cs::SerializationExceptionTests.Ctor_String_Exception@36",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/Runtime/Serialization/SerializationExceptionTests.cs",
+      "method": "SerializationExceptionTests.Ctor_String_Exception",
+      "sourceSha256": "17beffa4bd6581243fa24f2d0a3360b846536538efba26efe6a209ce2bbecce4",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NotImplementedExceptionTests.cs::NotImplementedExceptionTests.Ctor_Empty@13",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NotImplementedExceptionTests.cs",
+      "method": "NotImplementedExceptionTests.Ctor_Empty",
+      "sourceSha256": "d2e30fdbda407bd2f91005c6cd937c6ca122e6d7c930bf9f04afc95c18897ac0",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NotImplementedExceptionTests.cs::NotImplementedExceptionTests.Ctor_String@20",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NotImplementedExceptionTests.cs",
+      "method": "NotImplementedExceptionTests.Ctor_String",
+      "sourceSha256": "d2e30fdbda407bd2f91005c6cd937c6ca122e6d7c930bf9f04afc95c18897ac0",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NotImplementedExceptionTests.cs::NotImplementedExceptionTests.Ctor_String_Exception@28",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NotImplementedExceptionTests.cs",
+      "method": "NotImplementedExceptionTests.Ctor_String_Exception",
+      "sourceSha256": "d2e30fdbda407bd2f91005c6cd937c6ca122e6d7c930bf9f04afc95c18897ac0",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Reflection.Tests/ExceptionTests.cs::ExceptionTests.AmbiguousMatchException@107",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Reflection.Tests/ExceptionTests.cs",
+      "method": "ExceptionTests.AmbiguousMatchException",
+      "sourceSha256": "993ca7d28d056072cc1a14f0dbb627ab3ce6969fe63de2d6a7ad475d4e10814d",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Reflection.Tests/ExceptionTests.cs::ExceptionTests.AmbiguousMatchException_Message@117",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Reflection.Tests/ExceptionTests.cs",
+      "method": "ExceptionTests.AmbiguousMatchException_Message",
+      "sourceSha256": "993ca7d28d056072cc1a14f0dbb627ab3ce6969fe63de2d6a7ad475d4e10814d",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Reflection.Tests/ExceptionTests.cs::ExceptionTests.AmbiguousMatchException_Message_InnerException@128",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Reflection.Tests/ExceptionTests.cs",
+      "method": "ExceptionTests.AmbiguousMatchException_Message_InnerException",
+      "sourceSha256": "993ca7d28d056072cc1a14f0dbb627ab3ce6969fe63de2d6a7ad475d4e10814d",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidOperationExceptionTests.cs::InvalidOperationExceptionTests.Ctor_Empty@13",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidOperationExceptionTests.cs",
+      "method": "InvalidOperationExceptionTests.Ctor_Empty",
+      "sourceSha256": "6651fb8e28b647c7d10204be40a783cd5d6e2beb5d954d1b2e217ac4ae1810b5",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidOperationExceptionTests.cs::InvalidOperationExceptionTests.Ctor_String@20",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidOperationExceptionTests.cs",
+      "method": "InvalidOperationExceptionTests.Ctor_String",
+      "sourceSha256": "6651fb8e28b647c7d10204be40a783cd5d6e2beb5d954d1b2e217ac4ae1810b5",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidOperationExceptionTests.cs::InvalidOperationExceptionTests.Ctor_String_Exception@28",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidOperationExceptionTests.cs",
+      "method": "InvalidOperationExceptionTests.Ctor_String_Exception",
+      "sourceSha256": "6651fb8e28b647c7d10204be40a783cd5d6e2beb5d954d1b2e217ac4ae1810b5",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/IndexOutOfRangeExceptionTests.cs::IndexOutOfRangeExceptionTests.Ctor_Empty@13",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/IndexOutOfRangeExceptionTests.cs",
+      "method": "IndexOutOfRangeExceptionTests.Ctor_Empty",
+      "sourceSha256": "ee0108928836dcd0f087fb4ecf2575f126b2b486668d1d4e990168d8f8b7b6f8",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/IndexOutOfRangeExceptionTests.cs::IndexOutOfRangeExceptionTests.Ctor_String@20",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/IndexOutOfRangeExceptionTests.cs",
+      "method": "IndexOutOfRangeExceptionTests.Ctor_String",
+      "sourceSha256": "ee0108928836dcd0f087fb4ecf2575f126b2b486668d1d4e990168d8f8b7b6f8",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/IndexOutOfRangeExceptionTests.cs::IndexOutOfRangeExceptionTests.Ctor_String_Exception@28",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/IndexOutOfRangeExceptionTests.cs",
+      "method": "IndexOutOfRangeExceptionTests.Ctor_String_Exception",
+      "sourceSha256": "ee0108928836dcd0f087fb4ecf2575f126b2b486668d1d4e990168d8f8b7b6f8",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidProgramExceptionTests.cs::InvalidProgramExceptionTests.Ctor_Empty@13",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidProgramExceptionTests.cs",
+      "method": "InvalidProgramExceptionTests.Ctor_Empty",
+      "sourceSha256": "9f79fc34c27354f7ac34a4537e5febcebb4ab532e3491ba5e0c6aec3efbc1119",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidProgramExceptionTests.cs::InvalidProgramExceptionTests.Ctor_String@20",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidProgramExceptionTests.cs",
+      "method": "InvalidProgramExceptionTests.Ctor_String",
+      "sourceSha256": "9f79fc34c27354f7ac34a4537e5febcebb4ab532e3491ba5e0c6aec3efbc1119",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidProgramExceptionTests.cs::InvalidProgramExceptionTests.Ctor_String_Exception@28",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/InvalidProgramExceptionTests.cs",
+      "method": "InvalidProgramExceptionTests.Ctor_String_Exception",
+      "sourceSha256": "9f79fc34c27354f7ac34a4537e5febcebb4ab532e3491ba5e0c6aec3efbc1119",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NotSupportedExceptionTests.cs::NotSupportedExceptionTests.Ctor_Empty@13",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NotSupportedExceptionTests.cs",
+      "method": "NotSupportedExceptionTests.Ctor_Empty",
+      "sourceSha256": "ba0ca61fe5d99a68b1bf2c28c05eadc8b343460d0e477c5711c34da594215d72",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NotSupportedExceptionTests.cs::NotSupportedExceptionTests.Ctor_String@20",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NotSupportedExceptionTests.cs",
+      "method": "NotSupportedExceptionTests.Ctor_String",
+      "sourceSha256": "ba0ca61fe5d99a68b1bf2c28c05eadc8b343460d0e477c5711c34da594215d72",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NotSupportedExceptionTests.cs::NotSupportedExceptionTests.Ctor_String_Exception@28",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/NotSupportedExceptionTests.cs",
+      "method": "NotSupportedExceptionTests.Ctor_String_Exception",
+      "sourceSha256": "ba0ca61fe5d99a68b1bf2c28c05eadc8b343460d0e477c5711c34da594215d72",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/OverflowExceptionTests.cs::OverflowExceptionTests.Ctor_Empty@13",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/OverflowExceptionTests.cs",
+      "method": "OverflowExceptionTests.Ctor_Empty",
+      "sourceSha256": "4bdda909a54845bd0fa4931a75a544fab5777831c752e1c0144e329d4aa31eb8",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/OverflowExceptionTests.cs::OverflowExceptionTests.Ctor_String@20",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/OverflowExceptionTests.cs",
+      "method": "OverflowExceptionTests.Ctor_String",
+      "sourceSha256": "4bdda909a54845bd0fa4931a75a544fab5777831c752e1c0144e329d4aa31eb8",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/OverflowExceptionTests.cs::OverflowExceptionTests.Ctor_String_Exception@28",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/OverflowExceptionTests.cs",
+      "method": "OverflowExceptionTests.Ctor_String_Exception",
+      "sourceSha256": "4bdda909a54845bd0fa4931a75a544fab5777831c752e1c0144e329d4aa31eb8",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentExceptionTests.cs::ArgumentExceptionTests.Ctor_Empty@13",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentExceptionTests.cs",
+      "method": "ArgumentExceptionTests.Ctor_Empty",
+      "sourceSha256": "e9e5a3279523a71ae8740a386c4e40ee89fa1033d4de60f8dfaefcf1b9595938",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentExceptionTests.cs::ArgumentExceptionTests.Ctor_String@21",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentExceptionTests.cs",
+      "method": "ArgumentExceptionTests.Ctor_String",
+      "sourceSha256": "e9e5a3279523a71ae8740a386c4e40ee89fa1033d4de60f8dfaefcf1b9595938",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentExceptionTests.cs::ArgumentExceptionTests.Ctor_String_Exception@30",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentExceptionTests.cs",
+      "method": "ArgumentExceptionTests.Ctor_String_Exception",
+      "sourceSha256": "e9e5a3279523a71ae8740a386c4e40ee89fa1033d4de60f8dfaefcf1b9595938",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentExceptionTests.cs::ArgumentExceptionTests.Ctor_String_String@40",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentExceptionTests.cs",
+      "method": "ArgumentExceptionTests.Ctor_String_String",
+      "sourceSha256": "e9e5a3279523a71ae8740a386c4e40ee89fa1033d4de60f8dfaefcf1b9595938",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentExceptionTests.cs::ArgumentExceptionTests.Ctor_String_String_Exception@52",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentExceptionTests.cs",
+      "method": "ArgumentExceptionTests.Ctor_String_String_Exception",
+      "sourceSha256": "e9e5a3279523a71ae8740a386c4e40ee89fa1033d4de60f8dfaefcf1b9595938",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentNullExceptionTests.cs::ArgumentNullExceptionTests.Ctor_Empty@13",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentNullExceptionTests.cs",
+      "method": "ArgumentNullExceptionTests.Ctor_Empty",
+      "sourceSha256": "92cf1b59192d5eef364cd11ce3cf8b42032bf2964158c892a19a1f538147e36a",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentNullExceptionTests.cs::ArgumentNullExceptionTests.Ctor_String@21",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentNullExceptionTests.cs",
+      "method": "ArgumentNullExceptionTests.Ctor_String",
+      "sourceSha256": "92cf1b59192d5eef364cd11ce3cf8b42032bf2964158c892a19a1f538147e36a",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentNullExceptionTests.cs::ArgumentNullExceptionTests.Ctor_String_Exception@30",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentNullExceptionTests.cs",
+      "method": "ArgumentNullExceptionTests.Ctor_String_Exception",
+      "sourceSha256": "92cf1b59192d5eef364cd11ce3cf8b42032bf2964158c892a19a1f538147e36a",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentNullExceptionTests.cs::ArgumentNullExceptionTests.Ctor_String_String@40",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentNullExceptionTests.cs",
+      "method": "ArgumentNullExceptionTests.Ctor_String_String",
+      "sourceSha256": "92cf1b59192d5eef364cd11ce3cf8b42032bf2964158c892a19a1f538147e36a",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentOutOfRangeExceptionTests.cs::ArgumentOutOfRangeExceptionTests.Ctor_Empty@14",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentOutOfRangeExceptionTests.cs",
+      "method": "ArgumentOutOfRangeExceptionTests.Ctor_Empty",
+      "sourceSha256": "85368ce549cbec815df2517aa51560c7ee964f41f21fcd710986a11cf08907ab",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentOutOfRangeExceptionTests.cs::ArgumentOutOfRangeExceptionTests.Ctor_String@23",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentOutOfRangeExceptionTests.cs",
+      "method": "ArgumentOutOfRangeExceptionTests.Ctor_String",
+      "sourceSha256": "85368ce549cbec815df2517aa51560c7ee964f41f21fcd710986a11cf08907ab",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentOutOfRangeExceptionTests.cs::ArgumentOutOfRangeExceptionTests.Ctor_String_Exception@33",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentOutOfRangeExceptionTests.cs",
+      "method": "ArgumentOutOfRangeExceptionTests.Ctor_String_Exception",
+      "sourceSha256": "85368ce549cbec815df2517aa51560c7ee964f41f21fcd710986a11cf08907ab",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentOutOfRangeExceptionTests.cs::ArgumentOutOfRangeExceptionTests.Ctor_String_String@44",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentOutOfRangeExceptionTests.cs",
+      "method": "ArgumentOutOfRangeExceptionTests.Ctor_String_String",
+      "sourceSha256": "85368ce549cbec815df2517aa51560c7ee964f41f21fcd710986a11cf08907ab",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentOutOfRangeExceptionTests.cs::ArgumentOutOfRangeExceptionTests.Ctor_String_Object_String@57",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Runtime.Tests/System/ArgumentOutOfRangeExceptionTests.cs",
+      "method": "ArgumentOutOfRangeExceptionTests.Ctor_String_Object_String",
+      "sourceSha256": "85368ce549cbec815df2517aa51560c7ee964f41f21fcd710986a11cf08907ab",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Globalization.Tests/System/Globalization/CultureNotFoundExceptionTests.cs::CultureNotFoundExceptionTests.Ctor_String@11",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Globalization.Tests/System/Globalization/CultureNotFoundExceptionTests.cs",
+      "method": "CultureNotFoundExceptionTests.Ctor_String",
+      "sourceSha256": "9b1c9a051c22ca4e0bbb52d027730d8a1922c023f0177f25dca788aa1edadf01",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Globalization.Tests/System/Globalization/CultureNotFoundExceptionTests.cs::CultureNotFoundExceptionTests.Ctor_String_Exception@20",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Globalization.Tests/System/Globalization/CultureNotFoundExceptionTests.cs",
+      "method": "CultureNotFoundExceptionTests.Ctor_String_Exception",
+      "sourceSha256": "9b1c9a051c22ca4e0bbb52d027730d8a1922c023f0177f25dca788aa1edadf01",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Globalization.Tests/System/Globalization/CultureNotFoundExceptionTests.cs::CultureNotFoundExceptionTests.Ctor_String_String@31",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Globalization.Tests/System/Globalization/CultureNotFoundExceptionTests.cs",
+      "method": "CultureNotFoundExceptionTests.Ctor_String_String",
+      "sourceSha256": "9b1c9a051c22ca4e0bbb52d027730d8a1922c023f0177f25dca788aa1edadf01",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Globalization.Tests/System/Globalization/CultureNotFoundExceptionTests.cs::CultureNotFoundExceptionTests.Ctor_String_String_Exception@42",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Globalization.Tests/System/Globalization/CultureNotFoundExceptionTests.cs",
+      "method": "CultureNotFoundExceptionTests.Ctor_String_String_Exception",
+      "sourceSha256": "9b1c9a051c22ca4e0bbb52d027730d8a1922c023f0177f25dca788aa1edadf01",
+      "inputCount": 1
+    },
+    {
+      "id": "src/libraries/System.Runtime/tests/System.Globalization.Tests/System/Globalization/CultureNotFoundExceptionTests.cs::CultureNotFoundExceptionTests.Ctor_String_String_String@55",
+      "sourceFile": "src/libraries/System.Runtime/tests/System.Globalization.Tests/System/Globalization/CultureNotFoundExceptionTests.cs",
+      "method": "CultureNotFoundExceptionTests.Ctor_String_String_String",
+      "sourceSha256": "9b1c9a051c22ca4e0bbb52d027730d8a1922c023f0177f25dca788aa1edadf01",
+      "inputCount": 1
+    }
+  ]
+}

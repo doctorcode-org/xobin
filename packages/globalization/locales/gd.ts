@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 145, 
     name: "gd", 
@@ -40,29 +42,150 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "m", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, d'mh' MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd, d'mh' MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "d'mh' MMMM", 
-        pmDesignator: "f", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["DiD", "DiL", "DiM", "DiC", "Dia", "Dih", "DiS"], 
-        shortestDayNames: ["Dò", "Lu", "Mà", "Ci", "Da", "hA", "Sa"], 
-        dayNames: ["DiDòmhnaich", "DiLuain", "DiMàirt", "DiCiadain", "DiarDaoin", "DihAoine", "DiSathairne"], 
-        abbreviatedMonthNames: ["Faoi", "Gearr", "Màrt", "Gibl", "Cèit", "Ògmh", "Iuch", "Lùna", "Sult", "Dàmh", "Samh", "Dùbh", ""], 
-        monthNames: ["Am Faoilleach", "An Gearran", "Am Màrt", "An Giblean", "An Cèitean", "An t-Ògmhios", "An t-Iuchar", "An Lùnastal", "An t-Sultain", "An Dàmhair", "An t-Samhain", "An Dùbhlachd", ""], 
-        nativeCalendarName: "Am Mìosachan Griogarach", 
-        abbreviatedMonthGenitiveNames: ["Faoi", "Gearr", "Màrt", "Gibl", "Cèit", "Ògmh", "Iuch", "Lùna", "Sult", "Dàmh", "Samh", "Dùbh", ""], 
-        monthGenitiveNames: ["dhen Fhaoilleach", "dhen Ghearran", "dhen Mhàrt", "dhen Ghiblean", "dhen Chèitean", "dhen Ògmhios", "dhen Iuchar", "dhen Lùnastal", "dhen t-Sultain", "dhen Dàmhair", "dhen t-Samhain", "dhen Dùbhlachd", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "DiD",
+        "DiL",
+        "DiM",
+        "DiC",
+        "Dia",
+        "Dih",
+        "DiS"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Faoi",
+        "Gearr",
+        "Màrt",
+        "Gibl",
+        "Cèit",
+        "Ògmh",
+        "Iuch",
+        "Lùna",
+        "Sult",
+        "Dàmh",
+        "Samh",
+        "Dùbh",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Faoi",
+        "Gearr",
+        "Màrt",
+        "Gibl",
+        "Cèit",
+        "Ògmh",
+        "Iuch",
+        "Lùna",
+        "Sult",
+        "Dàmh",
+        "Samh",
+        "Dùbh",
+        ""
+      ],
+      "amDesignator": "m",
+      "dateSeparator": "/",
+      "dayNames": [
+        "DiDòmhnaich",
+        "DiLuain",
+        "DiMàirt",
+        "DiCiadain",
+        "DiarDaoin",
+        "DihAoine",
+        "DiSathairne"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 2,
+      "fullDateTimePattern": "dddd, d'mh' MMMM yyyy HH:mm:ss",
+      "longDatePattern": "dddd, d'mh' MMMM yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "d'mh' MMMM",
+      "monthGenitiveNames": [
+        "dhen Fhaoilleach",
+        "dhen Ghearran",
+        "dhen Mhàrt",
+        "dhen Ghiblean",
+        "dhen Chèitean",
+        "dhen Ògmhios",
+        "dhen Iuchar",
+        "dhen Lùnastal",
+        "dhen t-Sultain",
+        "dhen Dàmhair",
+        "dhen t-Samhain",
+        "dhen Dùbhlachd",
+        ""
+      ],
+      "monthNames": [
+        "Am Faoilleach",
+        "An Gearran",
+        "Am Màrt",
+        "An Giblean",
+        "An Cèitean",
+        "An t-Ògmhios",
+        "An t-Iuchar",
+        "An Lùnastal",
+        "An t-Sultain",
+        "An Dàmhair",
+        "An t-Samhain",
+        "An Dùbhlachd",
+        ""
+      ],
+      "nativeCalendarName": "Am Mìosachan Griogarach",
+      "pmDesignator": "f",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd/MM/yyyy",
+      "shortestDayNames": [
+        "D",
+        "L",
+        "M",
+        "C",
+        "A",
+        "H",
+        "S"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "AD"
+      ],
+      "abbreviatedEraNames": [
+        "A"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd/MM/yyyy",
+          "d MMM yyyy",
+          "d/M/yyyy"
+        ],
+        "D": [
+          "dddd, d'mh' MMMM yyyy",
+          "d'mh' MMMM yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "d'mh' MMMM"
+        ],
+        "M": [
+          "d'mh' MMMM"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

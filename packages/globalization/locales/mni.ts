@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 88, 
     name: "mni", 
@@ -40,29 +42,150 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dd MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dd MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "d MMMM", 
-        pmDesignator: "", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["নোংমাইজিং", "নিংথৌকাঃবা", "লৈঃপাক পোকপা", "য়ুমশা কৈশা", "সগোনসেল", "ইরাই", "থাংজা"], 
-        shortestDayNames: ["ন", "ন", "ল", "য়", "স", "ই", "থ"], 
-        dayNames: ["নোংমাইজিং", "নিংথৌকাঃবা", "লৈঃপাক পোকপা", "য়ুমশা কৈশা", "সগোনসেল", "ইরাই", "থাংজা"], 
-        abbreviatedMonthNames: ["ৱাকিচঙ", "লাঘাফাইরেল", "লমদা", "সজিবু", "কালেন্", "ইঙাঃ", "ইঙেন", "থৱান", "লাংবন", "মেরাঃ", "হাগৈঃ", "পোইনু", ""], 
-        monthNames: ["ৱাকিচঙ", "লাঘাফাইরেল", "লমদা", "সজিবু", "কালেন্", "ইঙাঃ", "ইঙেন", "থৱান", "লাংবন", "মেরাঃ", "হাগৈঃ", "পোইনু", ""], 
-        nativeCalendarName: "Gregorian Calendar", 
-        abbreviatedMonthGenitiveNames: ["ৱাকিচঙ", "লাঘাফাইরেল", "লমদা", "সজিবু", "কালেন্", "ইঙাঃ", "ইঙেন", "থৱান", "লাংবন", "মেরাঃ", "হাগৈঃ", "পোইনু", ""], 
-        monthGenitiveNames: ["ৱাকিচঙ", "লাঘাফাইরেল", "লমদা", "সজিবু", "কালেন্", "ইঙাঃ", "ইঙেন", "থৱান", "লাংবন", "মেরাঃ", "হাগৈঃ", "পোইনু", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "নোংমাইজিং",
+        "নিংথৌকাবা",
+        "লৈবাকপোকপা",
+        "য়ুমশকৈশা",
+        "শগোলশেন",
+        "ইরাই",
+        "থাংজ"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "জানুৱারি",
+        "ফেব্রুৱারি",
+        "মার্চ",
+        "এপ্রিল",
+        "মে",
+        "জুন",
+        "জুলাই",
+        "আগস্ট",
+        "সেপ্টেম্বর",
+        "ওক্টোবর",
+        "নভেম্বর",
+        "ডিসেম্বর",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "জানু",
+        "ফেব্রু",
+        "মার",
+        "এপ্রি",
+        "মে",
+        "জুন",
+        "জুলা",
+        "আগ",
+        "সেপ্ট",
+        "ওক্টো",
+        "নভে",
+        "ডিসে",
+        ""
+      ],
+      "amDesignator": "এ এম",
+      "dateSeparator": "/",
+      "dayNames": [
+        "নোংমাইজিং",
+        "নিংথৌকাবা",
+        "লৈবাকপোকপা",
+        "য়ুমশকৈশা",
+        "শগোলশেন",
+        "ইরাই",
+        "থাংজ"
+      ],
+      "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "MMMM d, yyyy, dddd h:mm:ss tt",
+      "longDatePattern": "MMMM d, yyyy, dddd",
+      "longTimePattern": "h:mm:ss tt",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "জানুৱারি",
+        "ফেব্রুৱারি",
+        "মার্চ",
+        "এপ্রিল",
+        "মে",
+        "জুন",
+        "জুলাই",
+        "আগস্ট",
+        "সেপ্টেম্বর",
+        "ওক্টোবর",
+        "নভেম্বর",
+        "ডিসেম্বর",
+        ""
+      ],
+      "monthNames": [
+        "জানুৱারি",
+        "ফেব্রুৱারি",
+        "মার্চ",
+        "এপ্রিল",
+        "মে",
+        "জুন",
+        "জুলাই",
+        "ওগষ্ট",
+        "সেপ্টেম্বর",
+        "ওক্টোবর",
+        "নবেম্বর",
+        "ডিসেম্বর",
+        ""
+      ],
+      "nativeCalendarName": "গ্রিগোরিয়ান কেলেন্দর",
+      "pmDesignator": "পি এম",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "d/M/yyyy",
+      "shortestDayNames": [
+        "নো",
+        "নিং",
+        "লৈ",
+        "য়ুম",
+        "শগ",
+        "ইরা",
+        "থাং"
+      ],
+      "shortTimePattern": "h:mm tt",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "খৃ: মতুং"
+      ],
+      "abbreviatedEraNames": [
+        "খৃ: মতুং"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "d/M/yyyy",
+          "MMM d, yyyy",
+          "d/M/yy"
+        ],
+        "D": [
+          "MMMM d, yyyy, dddd",
+          "MMMM d, yyyy"
+        ],
+        "t": [
+          "h:mm tt"
+        ],
+        "T": [
+          "h:mm:ss tt"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

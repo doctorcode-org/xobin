@@ -1,0 +1,272 @@
+{
+  "runtime": "10.0.7",
+  "rows": [
+    {
+      "source": "DateTimeTests.ToOADate_Invoke_ReturnsExpected",
+      "operation": "toOADate",
+      "input": "1",
+      "result": 0,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToOADate_Invoke_ReturnsExpected",
+      "operation": "toOADate",
+      "input": "863999999999",
+      "result": 0.999999988425926,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToOADate_Invoke_ReturnsExpected",
+      "operation": "toOADate",
+      "input": "31241376000000000",
+      "result": -657434,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToOADate_Invoke_ReturnsExpected",
+      "operation": "toOADate",
+      "input": "596078783999990001",
+      "result": -3687,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToOADate_Invoke_ReturnsExpected",
+      "operation": "toOADate",
+      "input": "596078566500120000",
+      "result": -3688.7482640277776,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToOADate_Invoke_ReturnsExpected",
+      "operation": "toOADate",
+      "input": "596077920000000001",
+      "result": -3688.0000000115742,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToOADate_Invoke_ReturnsExpected",
+      "operation": "toOADate",
+      "input": "599264352000000000",
+      "result": 0,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToOADate_Invoke_ReturnsExpected",
+      "operation": "toOADate",
+      "input": "636786144000000000",
+      "result": 43428,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToOADate_Invoke_ReturnsExpected",
+      "operation": "toOADate",
+      "input": "636786790500120000",
+      "result": 43428.74826402778,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToOADate_Invoke_ReturnsExpected",
+      "operation": "toOADate",
+      "input": "636787007999990001",
+      "result": 43428.999999988424,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToOADate_Invoke_ReturnsExpected",
+      "operation": "toOADate",
+      "input": "0",
+      "result": 0,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToOADate_Invoke_ReturnsExpected",
+      "operation": "toOADate",
+      "input": "3155378975999999999",
+      "result": 2958465.9999999884,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToOADate_SmallDate_ThrowsOverflowException",
+      "operation": "toOADate",
+      "input": "864000000000",
+      "result": null,
+      "error": "OverflowException",
+      "paramName": null,
+      "message": "Not a legal OleAut date."
+    },
+    {
+      "source": "DateTimeTests.ToOADate_SmallDate_ThrowsOverflowException",
+      "operation": "toOADate",
+      "input": "31241375999999999",
+      "result": null,
+      "error": "OverflowException",
+      "paramName": null,
+      "message": "Not a legal OleAut date."
+    },
+    {
+      "source": "DateTimeTests.FromOADate_Invoke_ReturnsExpected",
+      "operation": "fromOADate",
+      "input": "-1.5",
+      "result": {
+        "ticks": "599263920000000000",
+        "kind": 0
+      },
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.FromOADate_Invoke_ReturnsExpected",
+      "operation": "fromOADate",
+      "input": "-1",
+      "result": {
+        "ticks": "599263488000000000",
+        "kind": 0
+      },
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.FromOADate_Invoke_ReturnsExpected",
+      "operation": "fromOADate",
+      "input": "0",
+      "result": {
+        "ticks": "599264352000000000",
+        "kind": 0
+      },
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.FromOADate_Invoke_ReturnsExpected",
+      "operation": "fromOADate",
+      "input": "1",
+      "result": {
+        "ticks": "599265216000000000",
+        "kind": 0
+      },
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.FromOADate_Invoke_ReturnsExpected",
+      "operation": "fromOADate",
+      "input": "1.5",
+      "result": {
+        "ticks": "599265648000000000",
+        "kind": 0
+      },
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.FromOADate_Invoke_ReturnsExpected",
+      "operation": "fromOADate",
+      "input": "-657434.99999999",
+      "result": {
+        "ticks": "31242239999990000",
+        "kind": 0
+      },
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.FromOADate_Invoke_ReturnsExpected",
+      "operation": "fromOADate",
+      "input": "-657434.9999999999",
+      "result": {
+        "ticks": "31240512000000000",
+        "kind": 0
+      },
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.FromOADate_Invoke_ReturnsExpected",
+      "operation": "fromOADate",
+      "input": "2958465.999999994",
+      "result": {
+        "ticks": "3155378975999990000",
+        "kind": 0
+      },
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.FromOADate_InvalidValue_ThrowsArgumentException",
+      "operation": "fromOADate",
+      "input": "-657435",
+      "result": null,
+      "error": "ArgumentException",
+      "paramName": null,
+      "message": "Not a legal OleAut date."
+    },
+    {
+      "source": "DateTimeTests.FromOADate_InvalidValue_ThrowsArgumentException",
+      "operation": "fromOADate",
+      "input": "2958466",
+      "result": null,
+      "error": "ArgumentException",
+      "paramName": null,
+      "message": "Not a legal OleAut date."
+    },
+    {
+      "source": "DateTimeTests.FromOADate_InvalidValue_ThrowsArgumentException",
+      "operation": "fromOADate",
+      "input": "-657434.99999999995",
+      "result": null,
+      "error": "ArgumentException",
+      "paramName": null,
+      "message": "Not a legal OleAut date."
+    },
+    {
+      "source": "DateTimeTests.FromOADate_InvalidValue_ThrowsArgumentException",
+      "operation": "fromOADate",
+      "input": "2958465.999999995",
+      "result": null,
+      "error": "ArgumentException",
+      "paramName": null,
+      "message": "OleAut date did not convert to a DateTime correctly."
+    },
+    {
+      "source": "DateTimeTests.FromOADate_InvalidValue_ThrowsArgumentException",
+      "operation": "fromOADate",
+      "input": "NaN",
+      "result": null,
+      "error": "ArgumentException",
+      "paramName": null,
+      "message": "Not a legal OleAut date."
+    }
+  ]
+}

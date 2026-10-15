@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "my", 
     lcid: 1109, 
     name: "my-MM", 
@@ -40,29 +42,150 @@ export const cultureData: CultureData = {
         digitSubstitution: 2
     }, 
     dateTimeFormat: {
-        amDesignator: "နံနက်", 
-        dateSeparator: "-", 
-        firstDayOfWeek: 0, 
-        fullDateTimePattern: "yyyy၊ MMMM d၊ dddd HH:mm:ss", 
-        longDatePattern: "yyyy၊ MMMM d၊ dddd", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "ညနေ", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd-MM-yyyy", 
-        shortTimePattern: "H:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "yyyy MMMM", 
-        abbreviatedDayNames: ["တနင်္ဂနွေ", "တနင်္လာ", "အင်္ဂါ", "ဗုဒ္ဓဟူး", "ကြာသပတေး", "သောကြာ", "စနေ"], 
-        shortestDayNames: ["တနင်္ဂနွေ", "တနင်္လာ", "အင်္ဂါ", "ဗုဒ္ဓဟူး", "ကြာသပတေး", "သောကြာ", "စနေ"], 
-        dayNames: ["တနင်္ဂနွေ", "တနင်္လာ", "အင်္ဂါ", "ဗုဒ္ဓဟူး", "ကြာသပတေး", "သောကြာ", "စနေ"], 
-        abbreviatedMonthNames: ["ဇန်", "ဖေ", "မတ်", "ဧ", "မေ", "ဇွန်", "ဇူ", "ဩ", "စက်", "အောက်", "နို", "ဒီ", ""], 
-        monthNames: ["ဇန်နဝါရီ", "ဖေဖော်ဝါရီ", "မတ်", "ဧပြီ", "မေ", "ဇွန်", "ဇူလိုင်", "ဩဂုတ်", "စက်တင်ဘာ", "အောက်တိုဘာ", "နိုဝင်ဘာ", "ဒီဇင်ဘာ", ""], 
-        nativeCalendarName: "နိုင်ငံတကာသုံး ပြက္ခဒိန်", 
-        abbreviatedMonthGenitiveNames: ["ဇန်", "ဖေ", "မတ်", "ဧ", "မေ", "ဇွန်", "ဇူ", "ဩ", "စက်", "အောက်", "နို", "ဒီ", ""], 
-        monthGenitiveNames: ["ဇန်နဝါရီ", "ဖေဖော်ဝါရီ", "မတ်", "ဧပြီ", "မေ", "ဇွန်", "ဇူလိုင်", "ဩဂုတ်", "စက်တင်ဘာ", "အောက်တိုဘာ", "နိုဝင်ဘာ", "ဒီဇင်ဘာ", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "တနင်္ဂနွေ",
+        "တနင်္လာ",
+        "အင်္ဂါ",
+        "ဗုဒ္ဓဟူး",
+        "ကြာသပတေး",
+        "သောကြာ",
+        "စနေ"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "ဇန်",
+        "ဖေ",
+        "မတ်",
+        "ဧ",
+        "မေ",
+        "ဇွန်",
+        "ဇူ",
+        "ဩ",
+        "စက်",
+        "အောက်",
+        "နို",
+        "ဒီ",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "ဇန်",
+        "ဖေ",
+        "မတ်",
+        "ဧ",
+        "မေ",
+        "ဇွန်",
+        "ဇူ",
+        "ဩ",
+        "စက်",
+        "အောက်",
+        "နို",
+        "ဒီ",
+        ""
+      ],
+      "amDesignator": "နံနက်",
+      "dateSeparator": "/",
+      "dayNames": [
+        "တနင်္ဂနွေ",
+        "တနင်္လာ",
+        "အင်္ဂါ",
+        "ဗုဒ္ဓဟူး",
+        "ကြာသပတေး",
+        "သောကြာ",
+        "စနေ"
+      ],
+      "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "yyyy၊ MMMM d၊ dddd H:mm:ss",
+      "longDatePattern": "yyyy၊ MMMM d၊ dddd",
+      "longTimePattern": "H:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "ဇန်နဝါရီ",
+        "ဖေဖော်ဝါရီ",
+        "မတ်",
+        "ဧပြီ",
+        "မေ",
+        "ဇွန်",
+        "ဇူလိုင်",
+        "ဩဂုတ်",
+        "စက်တင်ဘာ",
+        "အောက်တိုဘာ",
+        "နိုဝင်ဘာ",
+        "ဒီဇင်ဘာ",
+        ""
+      ],
+      "monthNames": [
+        "ဇန်နဝါရီ",
+        "ဖေဖော်ဝါရီ",
+        "မတ်",
+        "ဧပြီ",
+        "မေ",
+        "ဇွန်",
+        "ဇူလိုင်",
+        "ဩဂုတ်",
+        "စက်တင်ဘာ",
+        "အောက်တိုဘာ",
+        "နိုဝင်ဘာ",
+        "ဒီဇင်ဘာ",
+        ""
+      ],
+      "nativeCalendarName": "နိုင်ငံတကာသုံး ပြက္ခဒိန်",
+      "pmDesignator": "ညနေ",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "d/M/yyyy",
+      "shortestDayNames": [
+        "တ",
+        "တ",
+        "အ",
+        "ဗ",
+        "က",
+        "သ",
+        "စ"
+      ],
+      "shortTimePattern": "H:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "အဒေီ"
+      ],
+      "abbreviatedEraNames": [
+        "အဒေီ"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "d/M/yyyy",
+          "yyyy၊ MMM d",
+          "d/M/yy"
+        ],
+        "D": [
+          "yyyy၊ MMMM d၊ dddd",
+          "yyyy၊ MMMM d"
+        ],
+        "t": [
+          "H:mm"
+        ],
+        "T": [
+          "H:mm:ss"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

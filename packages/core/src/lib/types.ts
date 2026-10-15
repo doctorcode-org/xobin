@@ -91,7 +91,7 @@ export interface IFormatProvider {
      * @param formatType An object that specifies the type of format object to return.
      * @returns An instance of the object specified by formatType, if the IFormatProvider implementation can supply that type of object; otherwise, null.
      */
-    getFormat(formatType: any): object;
+    getFormat(formatType: any): object | null;
 }
 
 /**

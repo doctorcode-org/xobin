@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "ln", 
     lcid: 4096, 
     name: "ln-AO", 
@@ -40,29 +42,149 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "ntɔ́ngɔ́", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd d MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd d MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "mpókwa", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "d/M/yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "yyyy MMMM", 
-        abbreviatedDayNames: ["eye", "ybo", "mbl", "mst", "min", "mtn", "mps"], 
-        shortestDayNames: ["eye", "ybo", "mbl", "mst", "min", "mtn", "mps"], 
-        dayNames: ["eyenga", "mokɔlɔ mwa yambo", "mokɔlɔ mwa míbalé", "mokɔlɔ mwa mísáto", "mokɔlɔ ya mínéi", "mokɔlɔ ya mítáno", "mpɔ́sɔ"], 
-        abbreviatedMonthNames: ["yan", "fbl", "msi", "apl", "mai", "yun", "yul", "agt", "stb", "ɔtb", "nvb", "dsb", ""], 
-        monthNames: ["sánzá ya yambo", "sánzá ya míbalé", "sánzá ya mísáto", "sánzá ya mínei", "sánzá ya mítáno", "sánzá ya motóbá", "sánzá ya nsambo", "sánzá ya mwambe", "sánzá ya libwa", "sánzá ya zómi", "sánzá ya zómi na mɔ̌kɔ́", "sánzá ya zómi na míbalé", ""], 
-        nativeCalendarName: "Manáka ma Gregɔr", 
-        abbreviatedMonthGenitiveNames: ["yan", "fbl", "msi", "apl", "mai", "yun", "yul", "agt", "stb", "ɔtb", "nvb", "dsb", ""], 
-        monthGenitiveNames: ["sánzá ya yambo", "sánzá ya míbalé", "sánzá ya mísáto", "sánzá ya mínei", "sánzá ya mítáno", "sánzá ya motóbá", "sánzá ya nsambo", "sánzá ya mwambe", "sánzá ya libwa", "sánzá ya zómi", "sánzá ya zómi na mɔ̌kɔ́", "sánzá ya zómi na míbalé", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "eye",
+        "ybo",
+        "mbl",
+        "mst",
+        "min",
+        "mtn",
+        "mps"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "yan",
+        "fbl",
+        "msi",
+        "apl",
+        "mai",
+        "yun",
+        "yul",
+        "agt",
+        "stb",
+        "ɔtb",
+        "nvb",
+        "dsb",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "yan",
+        "fbl",
+        "msi",
+        "apl",
+        "mai",
+        "yun",
+        "yul",
+        "agt",
+        "stb",
+        "ɔtb",
+        "nvb",
+        "dsb",
+        ""
+      ],
+      "amDesignator": "ntɔ́ngɔ́",
+      "dateSeparator": "/",
+      "dayNames": [
+        "eyenga",
+        "mokɔlɔ mwa yambo",
+        "mokɔlɔ mwa míbalé",
+        "mokɔlɔ mwa mísáto",
+        "mokɔlɔ ya mínéi",
+        "mokɔlɔ ya mítáno",
+        "mpɔ́sɔ"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd d MMMM yyyy HH:mm:ss",
+      "longDatePattern": "dddd d MMMM yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "sánzá ya yambo",
+        "sánzá ya míbalé",
+        "sánzá ya mísáto",
+        "sánzá ya mínei",
+        "sánzá ya mítáno",
+        "sánzá ya motóbá",
+        "sánzá ya nsambo",
+        "sánzá ya mwambe",
+        "sánzá ya libwa",
+        "sánzá ya zómi",
+        "sánzá ya zómi na mɔ̌kɔ́",
+        "sánzá ya zómi na míbalé",
+        ""
+      ],
+      "monthNames": [
+        "sánzá ya yambo",
+        "sánzá ya míbalé",
+        "sánzá ya mísáto",
+        "sánzá ya mínei",
+        "sánzá ya mítáno",
+        "sánzá ya motóbá",
+        "sánzá ya nsambo",
+        "sánzá ya mwambe",
+        "sánzá ya libwa",
+        "sánzá ya zómi",
+        "sánzá ya zómi na mɔ̌kɔ́",
+        "sánzá ya zómi na míbalé",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "mpókwa",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "d/M/yyyy",
+      "shortestDayNames": [
+        "e",
+        "y",
+        "m",
+        "m",
+        "m",
+        "m",
+        "p"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "nsima ya Y"
+      ],
+      "abbreviatedEraNames": [
+        "nsima ya Y"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "d/M/yyyy",
+          "d MMM yyyy"
+        ],
+        "D": [
+          "dddd d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

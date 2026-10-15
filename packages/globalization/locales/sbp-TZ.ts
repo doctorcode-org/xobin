@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "sbp", 
     lcid: 4096, 
     name: "sbp-TZ", 
@@ -40,29 +42,150 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "Lwamilawu", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, d MMMM yyyy HH:mm:ss", 
-        longDatePattern: "dddd, d MMMM yyyy", 
-        longTimePattern: "HH:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "Pashamihe", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd/MM/yyyy", 
-        shortTimePattern: "HH:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "yyyy MMMM", 
-        abbreviatedDayNames: ["Mul", "Jtt", "Jnn", "Jtn", "Alh", "Iju", "Jmo"], 
-        shortestDayNames: ["Mul", "Jtt", "Jnn", "Jtn", "Alh", "Iju", "Jmo"], 
-        dayNames: ["Mulungu", "Jumatatu", "Jumanne", "Jumatano", "Alahamisi", "Ijumaa", "Jumamosi"], 
-        abbreviatedMonthNames: ["Mup", "Mwi", "Msh", "Mun", "Mag", "Muj", "Msp", "Mpg", "Mye", "Mok", "Mus", "Muh", ""], 
-        monthNames: ["Mupalangulwa", "Mwitope", "Mushende", "Munyi", "Mushende Magali", "Mujimbi", "Mushipepo", "Mupuguto", "Munyense", "Mokhu", "Musongandembwe", "Muhaano", ""], 
-        nativeCalendarName: "Gregorian Calendar", 
-        abbreviatedMonthGenitiveNames: ["Mup", "Mwi", "Msh", "Mun", "Mag", "Muj", "Msp", "Mpg", "Mye", "Mok", "Mus", "Muh", ""], 
-        monthGenitiveNames: ["Mupalangulwa", "Mwitope", "Mushende", "Munyi", "Mushende Magali", "Mujimbi", "Mushipepo", "Mupuguto", "Munyense", "Mokhu", "Musongandembwe", "Muhaano", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "Mul",
+        "Jtt",
+        "Jnn",
+        "Jtn",
+        "Alh",
+        "Iju",
+        "Jmo"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "Mup",
+        "Mwi",
+        "Msh",
+        "Mun",
+        "Mag",
+        "Muj",
+        "Msp",
+        "Mpg",
+        "Mye",
+        "Mok",
+        "Mus",
+        "Muh",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "Mup",
+        "Mwi",
+        "Msh",
+        "Mun",
+        "Mag",
+        "Muj",
+        "Msp",
+        "Mpg",
+        "Mye",
+        "Mok",
+        "Mus",
+        "Muh",
+        ""
+      ],
+      "amDesignator": "Lwamilawu",
+      "dateSeparator": "/",
+      "dayNames": [
+        "Mulungu",
+        "Jumatatu",
+        "Jumanne",
+        "Jumatano",
+        "Alahamisi",
+        "Ijumaa",
+        "Jumamosi"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, d MMMM yyyy HH:mm:ss",
+      "longDatePattern": "dddd, d MMMM yyyy",
+      "longTimePattern": "HH:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "Mupalangulwa",
+        "Mwitope",
+        "Mushende",
+        "Munyi",
+        "Mushende Magali",
+        "Mujimbi",
+        "Mushipepo",
+        "Mupuguto",
+        "Munyense",
+        "Mokhu",
+        "Musongandembwe",
+        "Muhaano",
+        ""
+      ],
+      "monthNames": [
+        "Mupalangulwa",
+        "Mwitope",
+        "Mushende",
+        "Munyi",
+        "Mushende Magali",
+        "Mujimbi",
+        "Mushipepo",
+        "Mupuguto",
+        "Munyense",
+        "Mokhu",
+        "Musongandembwe",
+        "Muhaano",
+        ""
+      ],
+      "nativeCalendarName": "gregorian",
+      "pmDesignator": "Pashamihe",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "dd/MM/yyyy",
+      "shortestDayNames": [
+        "M",
+        "J",
+        "J",
+        "J",
+        "A",
+        "I",
+        "J"
+      ],
+      "shortTimePattern": "HH:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy MMMM",
+      "eraNames": [
+        "PK"
+      ],
+      "abbreviatedEraNames": [
+        "PK"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "dd/MM/yyyy",
+          "d MMM yyyy",
+          "M/d/yyyy"
+        ],
+        "D": [
+          "dddd, d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "HH:mm"
+        ],
+        "T": [
+          "HH:mm:ss"
+        ],
+        "y": [
+          "yyyy MMMM"
+        ],
+        "Y": [
+          "yyyy MMMM"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

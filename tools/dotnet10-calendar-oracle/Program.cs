@@ -1,0 +1,829 @@
+using System.Globalization;
+using System.Text.Json;
+
+if (Environment.Version.ToString() != "10.0.7")
+    throw new InvalidOperationException($"Expected .NET 10.0.7, got {Environment.Version}.");
+CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
+if (args.Length >= 2 && args[0] == "--exception-consumers") {
+    string output = ExceptionConsumersOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Exception consumers fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--exception-contracts") {
+    string output = ExceptionContractsOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Exception contracts fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--exception-types") {
+    string output = ExceptionTypesOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Exception types fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--temporal-format") {
+    string output = TemporalFormatOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Temporal format fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--time-only-core") {
+    string output = TimeOnlyCoreOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("TimeOnly core fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-only-core") {
+    string output = DateOnlyCoreOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("DateOnly core fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-only-constructors") {
+    string output = DateOnlyConstructorOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("DateOnly constructor fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--time-span-arithmetic") {
+    string output = TimeSpanArithmeticOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("TimeSpan arithmetic fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--time-span-core") {
+    string output = TimeSpanCoreOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("TimeSpan core fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--iso-week") {
+    string output = ISOWeekOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("ISOWeek fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--lunisolar") {
+    string output = LunisolarOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Lunisolar fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--calendar-math") {
+    string output = CalendarMathOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Calendar math fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--calendar-remaining") {
+    string output = CalendarRemainingOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Calendar remaining fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--korean") {
+    string output=KoreanOracle.Generate();
+    if(args.Length==3 && args[2]=="--check") { if(File.ReadAllText(args[1])!=output) throw new InvalidOperationException("Korean fixture differs from reference."); }
+    else File.WriteAllText(args[1],output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--taiwan") {
+    string output=TaiwanOracle.Generate();
+    if(args.Length==3 && args[2]=="--check") { if(File.ReadAllText(args[1])!=output) throw new InvalidOperationException("Taiwan fixture differs from reference."); }
+    else File.WriteAllText(args[1],output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--format-calendar-dependencies") {
+    string output=FormatCalendarDependenciesOracle.Generate();
+    if(args.Length==3 && args[2]=="--check") { if(File.ReadAllText(args[1])!=output) throw new InvalidOperationException("Format calendar dependencies fixture differs."); }
+    else File.WriteAllText(args[1],output);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--calendar-dependencies") {
+    string output = CalendarDependenciesOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Calendar dependency fixture differs.");
+    } else File.WriteAllText(args[1], output);
+    return;
+}
+if(args.Length>=2 && args[0]=="--culture-date-time-format") {
+    string output=CultureDateTimeFormatOracle.Generate();
+    if(args.Length==3 && args[2]=="--check") {if(File.ReadAllText(args[1])!=output) throw new InvalidOperationException("Culture fixture differs.");}
+    else if(args.Length==2) File.WriteAllText(args[1],output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-format-lookup") {
+    string output=DateTimeFormatLookupOracle.Generate();
+    if(args.Length==3 && args[2]=="--check") { if(File.ReadAllText(args[1])!=output) throw new InvalidOperationException("Lookup fixture differs."); }
+    else if(args.Length==2) File.WriteAllText(args[1],output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-format-patterns")
+{
+    string output = DateTimeFormatPatternsOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Patterns fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-format-era")
+{
+    string output = DateTimeFormatEraOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check") {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Era fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-format-month-names")
+{
+    string output = DateTimeFormatMonthNamesOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check")
+    {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Month names fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-format-day-names")
+{
+    string output = DateTimeFormatDayNamesOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check")
+    {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Day names fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-format-properties")
+{
+    string output = DateTimeFormatPropertiesOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check")
+    {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Format properties fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-format-info")
+{
+    string output = DateTimeFormatInfoOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check")
+    {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Format-info fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-styles")
+{
+    string output = DateTimeStylesOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check")
+    {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Styles fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+// Environment-dependent DateTime fixtures use UTC in both runtimes.
+// Pin only this isolated oracle process; no host time-zone setting is changed.
+if (args.Length > 0 && args[0] is "--date-time-format" or "--date-time-binary" or "--date-time-file-time")
+{
+    var cache = typeof(TimeZoneInfo).GetField("s_cachedData", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static)!.GetValue(null)!;
+    cache.GetType().GetField("_localTimeZone", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)!.SetValue(cache, TimeZoneInfo.Utc);
+}
+if (args.Length >= 2 && args[0] == "--date-time-format")
+{
+    string output = DateTimeFormatOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check")
+    {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Format fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-only")
+{
+    string output = DateTimeOnlyOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check")
+    {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("DateOnly/TimeOnly fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-conversion")
+{
+    string output = DateTimeConversionOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check")
+    {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Conversion fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-precision")
+{
+    string output = DateTimePrecisionOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check")
+    {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Precision fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-binary")
+{
+    string output = DateTimeBinaryOracle.Generate();
+    if (args.Length == 3 && args[2] == "--check")
+    {
+        if (File.ReadAllText(args[1]) != output) throw new InvalidOperationException("Binary fixture differs from the reference runtime.");
+    }
+    else if (args.Length == 2) File.WriteAllText(args[1], output);
+    else throw new ArgumentException("Pass output path and optionally --check.");
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-file-time")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass output path and optionally --check.");
+    string fileTimeFixture = DateTimeFileTimeOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != fileTimeFixture)
+            throw new InvalidOperationException("FileTime fixture differs from .NET 10.0.7 output.");
+    }
+    else File.WriteAllText(args[1], fileTimeFixture);
+    return;
+}
+if (args.Length >= 2 && args[0] == "--gregorian")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --gregorian, the fixture output path, and optionally --check.");
+    string gregorianFixture = GregorianOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != gregorianFixture)
+            throw new InvalidOperationException("Gregorian fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], gregorianFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--thai-buddhist")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --thai-buddhist, the fixture output path, and optionally --check.");
+    string thaiFixture = ThaiBuddhistOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != thaiFixture)
+            throw new InvalidOperationException("Thai Buddhist fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], thaiFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--persian")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --persian, the fixture output path, and optionally --check.");
+    string persianFixture = PersianOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != persianFixture)
+            throw new InvalidOperationException("Persian fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], persianFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--um-al-qura")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --um-al-qura, the fixture output path, and optionally --check.");
+    string umAlQuraFixture = UmAlQuraOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != umAlQuraFixture)
+            throw new InvalidOperationException("Um Al Qura fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], umAlQuraFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--calendar-state")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --calendar-state, the fixture output path, and optionally --check.");
+    string calendarStateFixture = CalendarStateOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != calendarStateFixture)
+            throw new InvalidOperationException("Calendar state fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], calendarStateFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--calendar-invalid-date")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --calendar-invalid-date, the fixture output path, and optionally --check.");
+    string invalidDateFixture = CalendarInvalidDateOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != invalidDateFixture)
+            throw new InvalidOperationException("Calendar invalid date fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], invalidDateFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--calendar-conversion")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --calendar-conversion, the fixture output path, and optionally --check.");
+    string conversionFixture = CalendarConversionOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != conversionFixture)
+            throw new InvalidOperationException("Calendar conversion fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], conversionFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--calendar-add")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --calendar-add, the fixture output path, and optionally --check.");
+    string addFixture = CalendarAddOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != addFixture)
+            throw new InvalidOperationException("Calendar add fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], addFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--calendar-range")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --calendar-range, the fixture output path, and optionally --check.");
+    string rangeFixture = CalendarRangeOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != rangeFixture)
+            throw new InvalidOperationException("Calendar range fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], rangeFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-constructor")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --date-time-constructor, the fixture output path, and optionally --check.");
+    string constructorFixture = DateTimeConstructorOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != constructorFixture)
+            throw new InvalidOperationException("DateTime constructor fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], constructorFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-constructor-valid")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --date-time-constructor-valid, the fixture output path, and optionally --check.");
+    string constructorFixture = DateTimeConstructorValidOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != constructorFixture)
+            throw new InvalidOperationException("Valid DateTime constructor fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], constructorFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-calendar-math")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --date-time-calendar-math, the fixture output path, and optionally --check.");
+    string calendarMathFixture = DateTimeCalendarMathOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != calendarMathFixture)
+            throw new InvalidOperationException("DateTime calendar math fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], calendarMathFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-comparison")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --date-time-comparison, the fixture output path, and optionally --check.");
+    string comparisonFixture = DateTimeComparisonOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != comparisonFixture)
+            throw new InvalidOperationException("DateTime comparison fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], comparisonFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-add")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --date-time-add, the fixture output path, and optionally --check.");
+    string addFixture = DateTimeAddOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != addFixture)
+            throw new InvalidOperationException("DateTime add fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], addFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-add-months-years")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --date-time-add-months-years, the fixture output path, and optionally --check.");
+    string addFixture = DateTimeAddMonthsYearsOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != addFixture)
+            throw new InvalidOperationException("DateTime AddMonths/AddYears fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], addFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-add-units")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --date-time-add-units, the fixture output path, and optionally --check.");
+    string addFixture = DateTimeAddUnitsOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != addFixture)
+            throw new InvalidOperationException("DateTime unit-addition fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], addFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-subtract")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --date-time-subtract, the fixture output path, and optionally --check.");
+    string subtractFixture = DateTimeSubtractOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != subtractFixture)
+            throw new InvalidOperationException("DateTime subtraction fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], subtractFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--date-time-parts")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --date-time-parts, the fixture output path, and optionally --check.");
+    string partsFixture = DateTimePartsOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != partsFixture)
+            throw new InvalidOperationException("DateTime parts fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], partsFixture);
+    }
+    return;
+}
+if (args.Length >= 2 && args[0] == "--api-inventory")
+{
+    if (args.Length > 3 || (args.Length == 3 && args[2] != "--check"))
+        throw new ArgumentException("Pass --api-inventory, the fixture output path, and optionally --check.");
+    string apiFixture = ApiInventoryOracle.Generate();
+    if (args.Length == 3)
+    {
+        if (!File.Exists(args[1]) || File.ReadAllText(args[1]) != apiFixture)
+            throw new InvalidOperationException("API inventory fixture differs from the .NET 10.0.7 output.");
+    }
+    else
+    {
+        File.WriteAllText(args[1], apiFixture);
+    }
+    return;
+}
+if (args.Length is < 1 or > 2 || (args.Length == 2 && args[1] != "--check"))
+    throw new ArgumentException("Pass the fixture output path, optionally followed by --check.");
+
+var calendarFactories = new Dictionary<string, Func<Calendar>>
+{
+    ["Gregorian"] = () => new GregorianCalendar(),
+    ["Persian"] = () => new PersianCalendar(),
+    ["ThaiBuddhist"] = () => new ThaiBuddhistCalendar(),
+    ["Korean"] = () => new KoreanCalendar(),
+    ["Taiwan"] = () => new TaiwanCalendar(),
+    ["Japanese"] = () => new JapaneseCalendar(),
+    ["Julian"] = () => new JulianCalendar(),
+    ["Hijri"] = () => new HijriCalendar(),
+    ["Hebrew"] = () => new HebrewCalendar(),
+    ["ChineseLunisolar"] = () => new ChineseLunisolarCalendar(),
+    ["JapaneseLunisolar"] = () => new JapaneseLunisolarCalendar(),
+    ["KoreanLunisolar"] = () => new KoreanLunisolarCalendar(),
+    ["TaiwanLunisolar"] = () => new TaiwanLunisolarCalendar(),
+    ["UmAlQura"] = () => new UmAlQuraCalendar(),
+};
+
+var exceptionConstructors = new[]
+{
+    (name: "empty", error: new ArgumentOutOfRangeException()),
+    (name: "parameter", error: new ArgumentOutOfRangeException("year")),
+    (name: "message", error: new ArgumentOutOfRangeException("year", "Invalid year.")),
+    (name: "actualValue", error: new ArgumentOutOfRangeException("year", -1, "Invalid year.")),
+    (name: "large15", error: new ArgumentOutOfRangeException("value", 1e15, "Invalid value.")),
+    (name: "large16", error: new ArgumentOutOfRangeException("value", 1e16, "Invalid value.")),
+    (name: "large17", error: new ArgumentOutOfRangeException("value", 1e17, "Invalid value.")),
+    (name: "small4", error: new ArgumentOutOfRangeException("value", 1e-4, "Invalid value.")),
+    (name: "small5", error: new ArgumentOutOfRangeException("value", 1e-5, "Invalid value.")),
+    (name: "small6", error: new ArgumentOutOfRangeException("value", 1e-6, "Invalid value.")),
+}.Select(row => new { row.name, paramName = row.error.ParamName,
+    message = row.error.Message, actualValue = row.error.ActualValue }).ToArray();
+
+var weeks = new List<object>();
+var invalidWeeks = new List<object>();
+var invalidTimes = new List<object>();
+var years = new List<object>();
+var adds = new List<object>();
+foreach (var (name, makeCalendar) in calendarFactories)
+{
+    Calendar calendar = makeCalendar();
+    var dates = new SortedSet<long>
+    {
+        calendar.MinSupportedDateTime.Ticks,
+        calendar.MaxSupportedDateTime.Ticks,
+    };
+    if (name is "Gregorian" or "ThaiBuddhist" or "Korean" or "Julian")
+    {
+        foreach (var date in new[]
+        {
+            new DateTime(1, 1, 2), new DateTime(1900, 1, 1), new DateTime(2000, 1, 1),
+            new DateTime(2000, 12, 31), new DateTime(2023, 12, 31), new DateTime(2024, 1, 1),
+            new DateTime(2024, 12, 31), new DateTime(2025, 1, 1), new DateTime(9999, 12, 30),
+        }) dates.Add(date.Ticks);
+    }
+    else
+    {
+        int[] sampleYears = name switch { "Persian" => [1402,1403,1404], "Japanese" => [1,31,100], "Hebrew" => [5344,5784,5999], "ChineseLunisolar" => [1902,2000,2100], "JapaneseLunisolar" => [1,10,31], "KoreanLunisolar" => [919,1445,2050], "TaiwanLunisolar" => [1,100,139], _ => [1400,1445,1499] };
+        foreach (int year in sampleYears)
+        {
+            var first = calendar.ToDateTime(year, 1, 1, 0, 0, 0, 0);
+            foreach (int offset in new[] { -1, 0, 1, 6, 7 })
+            {
+                var date = first.AddDays(offset);
+                if (date >= calendar.MinSupportedDateTime && date <= calendar.MaxSupportedDateTime)
+                    dates.Add(date.Ticks);
+            }
+        }
+    }
+
+    foreach (long ticks in dates)
+    {
+        var time = new DateTime(ticks);
+        foreach (CalendarWeekRule rule in Enum.GetValues<CalendarWeekRule>())
+        {
+            for (int firstDay = 0; firstDay < 7; firstDay++)
+            {
+                weeks.Add(new
+                {
+                    calendar = name,
+                    ticks = ticks.ToString(CultureInfo.InvariantCulture),
+                    rule = (int)rule,
+                    firstDay,
+                    week = calendar.GetWeekOfYear(time, rule, (DayOfWeek)firstDay),
+                });
+            }
+        }
+    }
+
+    foreach (var (rule, firstDay) in new[] { (-1, 6), (3, 6), (0, -1), (0, 7) })
+    {
+        try
+        {
+            calendar.GetWeekOfYear(calendar.MaxSupportedDateTime, (CalendarWeekRule)rule, (DayOfWeek)firstDay);
+            throw new InvalidOperationException("Expected an invalid week argument to throw.");
+        }
+        catch (ArgumentOutOfRangeException error)
+        {
+            invalidWeeks.Add(new { calendar = name, rule, firstDay, error = error.GetType().Name,
+                paramName = error.ParamName, message = error.Message, actualValue = error.ActualValue });
+        }
+    }
+
+    if (name is "Persian" or "UmAlQura")
+    {
+        int year = name == "Persian" ? 1403 : 1445;
+        foreach (var (hour, minute, second, millisecond) in new[]
+        {
+            (-1, 0, 0, 0), (24, 0, 0, 0), (0, -1, 0, 0), (0, 60, 0, 0),
+            (0, 0, -1, 0), (0, 0, 60, 0), (0, 0, 0, -1), (0, 0, 0, 1000),
+        })
+        {
+            try
+            {
+                calendar.ToDateTime(year, 1, 1, hour, minute, second, millisecond);
+                throw new InvalidOperationException("Expected an invalid time argument to throw.");
+            }
+            catch (ArgumentOutOfRangeException error)
+            {
+                invalidTimes.Add(new { calendar = name, year, hour, minute, second, millisecond,
+                    error = error.GetType().Name, paramName = error.ParamName, message = error.Message,
+                    actualValue = error.ActualValue });
+            }
+        }
+    }
+
+    int[] maxValues = name switch
+    {
+        "Gregorian" => [2029, 2049, 2099],
+        "Persian" => [1410, 1450],
+        "ThaiBuddhist" => [2049, 2572],
+        "Korean" => [2049, 4382],
+        "Taiwan" => [99, 8088],
+        "Japanese" => [99, 200],
+        "Julian" => [2049,2099],
+        "Hebrew" => [5343,5790],
+        "ChineseLunisolar" => [2049,2099],
+        "JapaneseLunisolar" => [99,2049],
+        "KoreanLunisolar" => [2049,2050],
+        "TaiwanLunisolar" => [99,139],
+        _ => [99, 1451, 1499],
+    };
+    foreach (int max in maxValues)
+    {
+        calendar.TwoDigitYearMax = max;
+        foreach (int year in new[] { -1, 0, 9, 10, 11, 25, 46, 49, 50, 72, 73, 99, 100, 1400, 9999, 10000 })
+        {
+            try
+            {
+                years.Add(new { calendar = name, max, year, result = (int?)calendar.ToFourDigitYear(year), error = (string?)null,
+                    paramName = (string?)null, message = (string?)null, actualValue = (object?)null });
+            }
+            catch (ArgumentOutOfRangeException error)
+            {
+                years.Add(new { calendar = name, max, year, result = (int?)null, error = nameof(ArgumentOutOfRangeException),
+                    paramName = error.ParamName, message = error.Message, actualValue = error.ActualValue });
+            }
+        }
+    }
+
+    var sample = new DateTime(2024, 3, 20, 12, 34, 56, 789).AddTicks(1234);
+    var operations = new (string Name, Func<Calendar, DateTime, double, DateTime> Apply)[]
+    {
+        ("addMilliseconds", (c, t, v) => c.AddMilliseconds(t, v)),
+        ("addSeconds", (c, t, v) => c.AddSeconds(t, (int)v)),
+        ("addMinutes", (c, t, v) => c.AddMinutes(t, (int)v)),
+        ("addHours", (c, t, v) => c.AddHours(t, (int)v)),
+        ("addDays", (c, t, v) => c.AddDays(t, (int)v)),
+        ("addWeeks", (c, t, v) => c.AddWeeks(t, (int)v)),
+    };
+    foreach (var operation in operations)
+    {
+        double[] values = operation.Name == "addMilliseconds"
+            ? [-1e20, -31.25, -1.5, -0.5, -0.00001, 0, 0.00001, 0.5, 1.5, 31.25, 1e20]
+            : [-31, -2, -1, 0, 1, 2, 31];
+        foreach (double value in values)
+        {
+            try
+            {
+                var result = operation.Apply(calendar, sample, value);
+                adds.Add(new { calendar = name, operation = operation.Name, ticks = sample.Ticks.ToString(CultureInfo.InvariantCulture), value,
+                    result = result.Ticks.ToString(CultureInfo.InvariantCulture), error = (string?)null, paramName = (string?)null,
+                    message = (string?)null, actualValue = (object?)null });
+            }
+            catch (ArgumentException error)
+            {
+                adds.Add(new { calendar = name, operation = operation.Name, ticks = sample.Ticks.ToString(CultureInfo.InvariantCulture), value,
+                    result = (string?)null, error = error.GetType().Name, paramName = error.ParamName,
+                    message = error.Message, actualValue = (error as ArgumentOutOfRangeException)?.ActualValue });
+            }
+        }
+    }
+    foreach (var (time, value) in new[] { (calendar.MinSupportedDateTime, -1.0), (calendar.MaxSupportedDateTime, 1.0) })
+    {
+        foreach (var operation in operations)
+        {
+            try
+            {
+                var result = operation.Apply(calendar, time, value);
+                adds.Add(new { calendar = name, operation = operation.Name, ticks = time.Ticks.ToString(CultureInfo.InvariantCulture), value,
+                    result = result.Ticks.ToString(CultureInfo.InvariantCulture), error = (string?)null, paramName = (string?)null,
+                    message = (string?)null, actualValue = (object?)null });
+            }
+            catch (ArgumentException error)
+            {
+                adds.Add(new { calendar = name, operation = operation.Name, ticks = time.Ticks.ToString(CultureInfo.InvariantCulture), value,
+                    result = (string?)null, error = error.GetType().Name, paramName = error.ParamName,
+                    message = error.Message, actualValue = (error as ArgumentOutOfRangeException)?.ActualValue });
+            }
+        }
+    }
+}
+
+var fixture = "{\n  \"runtime\": \"" + Environment.Version + "\",\n  \"exceptionConstructors\": [\n"
+    + string.Join(",\n", exceptionConstructors.Select(row => "    " + JsonSerializer.Serialize(row)))
+    + "\n  ],\n  \"weeks\": [\n"
+    + string.Join(",\n", weeks.Select(row => "    " + JsonSerializer.Serialize(row)))
+    + "\n  ],\n  \"invalidWeeks\": [\n"
+    + string.Join(",\n", invalidWeeks.Select(row => "    " + JsonSerializer.Serialize(row)))
+    + "\n  ],\n  \"invalidTimes\": [\n"
+    + string.Join(",\n", invalidTimes.Select(row => "    " + JsonSerializer.Serialize(row)))
+    + "\n  ],\n  \"years\": [\n"
+    + string.Join(",\n", years.Select(row => "    " + JsonSerializer.Serialize(row)))
+    + "\n  ],\n  \"adds\": [\n"
+    + string.Join(",\n", adds.Select(row => "    " + JsonSerializer.Serialize(row)))
+    + "\n  ]\n}\n";
+if (args.Length == 2)
+{
+    if (!File.Exists(args[0]) || File.ReadAllText(args[0]) != fixture)
+        throw new InvalidOperationException("Calendar fixture differs from the .NET 10.0.7 output.");
+}
+else
+{
+    File.WriteAllText(args[0], fixture);
+}

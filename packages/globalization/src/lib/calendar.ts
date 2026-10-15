@@ -1,6 +1,8 @@
+import { formatExceptionResource } from '@xobin/core/internal/exception-format';
+import * as SR from '@xobin/core/internal/exception-resources';
 ﻿import { DateTime } from './date_time';
 import { CalendarAlgorithmType } from './calendar_algorithm_type';
-import { ArgumentOutOfRangeException, ArgumentException, getOrCreateValue, int } from '@xobin/core';
+import { ArgumentOutOfRangeException, ArgumentException, ArgumentNullException, InvalidOperationException, copyValues, getOrCreateValue, int } from '@xobin/core';
 import {
     MillisPerDay,
     MillisPerHour,
@@ -14,12 +16,61 @@ import {
     timeToTicks as timeToTickHelper,
 } from './var';
 import { DayOfWeek } from './day_of_week';
+import { getCalendarIdentity } from './calendar_identity';
 import { CalendarWeekRule } from './calendar_week_rule';
+import { calendarRangeMessage, formatGregorianDateTime, throwIfNegativeYear } from './calendar_exception';
 
 /**
  * Represents time in divisions, such as weeks, months, and years.
  */
 export abstract class Calendar {
+    /**
+     * Gets the eras supported by this calendar in reverse chronological order.
+     */
+    abstract get eras(): number[];
+
+    /**
+     * Returns the calendar's type name, following the inherited .NET Object.ToString behavior.
+     */
+    toString(): string {
+        return getCalendarIdentity(this).name;
+    }
+
+    private _isReadOnly = false;
+
+    get isReadOnly(): boolean {
+        return this._isReadOnly;
+    }
+
+    private memberwiseClone(): this {
+        const cloned = Object.assign(Object.create(Object.getPrototypeOf(this)), this) as this;
+        copyValues(this, cloned);
+        return cloned;
+    }
+
+    clone(): this {
+        const cloned = this.memberwiseClone();
+        cloned._isReadOnly = false;
+        return cloned;
+    }
+
+    static readOnly<T extends Calendar>(calendar: T): T {
+        if (calendar == null) {
+            throw new ArgumentNullException('calendar');
+        }
+        if (calendar.isReadOnly) {
+            return calendar;
+        }
+        const cloned = calendar.memberwiseClone();
+        cloned._isReadOnly = true;
+        return cloned;
+    }
+
+    protected verifyWritable(): void {
+        if (this._isReadOnly) {
+            throw new InvalidOperationException(SR.InvalidOperation_ReadOnly);
+        }
+    }
 
     /**
      * Gets the number of days in the year that precedes the year that is specified by the MinSupportedDateTime property.
@@ -115,7 +166,7 @@ export abstract class Calendar {
      * @param time The DateTime to read.
      */
     getHour(time: DateTime): number {
-        return int((time.ticks / TicksPerHour) % 24);
+        return Number((time.ticks / TicksPerHour) % 24n);
     }
 
     /**
@@ -123,7 +174,7 @@ export abstract class Calendar {
      * @param time The DateTime to read.
      */
     getMilliseconds(time: DateTime): number {
-        return int((time.ticks / TicksPerMillisecond) % 1000);
+        return Number((time.ticks / TicksPerMillisecond) % 1000n);
     }
 
     /**
@@ -131,7 +182,7 @@ export abstract class Calendar {
      * @param time The DateTime to read.
      */
     getMinute(time: DateTime): number {
-        return int((time.ticks / TicksPerMinute) % 60);
+        return Number((time.ticks / TicksPerMinute) % 60n);
     }
 
     /**
@@ -139,7 +190,7 @@ export abstract class Calendar {
      * @param time The DateTime to read.
      */
     getSecond(time: DateTime): number {
-        return int((time.ticks / TicksPerSecond) % 60);
+        return Number((time.ticks / TicksPerSecond) % 60n);
     }
 
     /**
@@ -150,11 +201,8 @@ export abstract class Calendar {
      */
     getWeekOfYear(time: DateTime, rule: CalendarWeekRule, firstDayOfWeek: DayOfWeek): number {
         if (firstDayOfWeek < DayOfWeek.Sunday || firstDayOfWeek > DayOfWeek.Saturday) {
-            throw new ArgumentOutOfRangeException(
-                //nameof(firstDayOfWeek),
-                //firstDayOfWeek,
-                //SR.Format(SR.ArgumentOutOfRange_Range, DayOfWeek.Sunday, DayOfWeek.Saturday)
-            );
+            throw new ArgumentOutOfRangeException('firstDayOfWeek', firstDayOfWeek,
+                calendarRangeMessage('Sunday', 'Saturday'));
         }
 
         switch (rule) {
@@ -165,11 +213,8 @@ export abstract class Calendar {
             case CalendarWeekRule.FirstFourDayWeek:
                 return getWeekOfYearFullDays.call(this, time, firstDayOfWeek, 4);
             default:
-                throw new ArgumentOutOfRangeException(
-                    //nameof(rule),
-                    //rule,
-                    //SR.Format(SR.ArgumentOutOfRange_Range, CalendarWeekRule.FirstDay, CalendarWeekRule.FirstFourDayWeek)
-                );
+                throw new ArgumentOutOfRangeException('rule', rule,
+                    calendarRangeMessage('FirstDay', 'FirstFourDayWeek'));
         }
     }
 
@@ -179,10 +224,10 @@ export abstract class Calendar {
      */
     toFourDigitYear(year: number): number {
         if (year < 0) {
-            throw new ArgumentOutOfRangeException('year'/*, year, SR.ArgumentOutOfRange_NeedNonNegNum*/);
+            throwIfNegativeYear(year);
         }
         if (year < 100) {
-            return (this.twoDigitYearMax / 100 - (year > this.twoDigitYearMax % 100 ? 1 : 0)) * 100 + year;
+            return (Math.trunc(this.twoDigitYearMax / 100) - (year > this.twoDigitYearMax % 100 ? 1 : 0)) * 100 + year;
         }
 
         // If the year value is above 100, just return the year value.  Don't have to do
@@ -193,15 +238,16 @@ export abstract class Calendar {
     /**
      * Calculates the leap month for a specified year.
      * @param year A year.
+     * @param era The era to use; omission selects the current era.
      */
-    getLeapMonth(year: number): number {
-        if (!this.isLeapYear(year)) {
+    getLeapMonth(year: number, era = 0): number {
+        if (!this.isLeapYear(year, era)) {
             return 0;
         }
 
-        const monthsCount = this.getMonthsInYear(year);
+        const monthsCount = this.getMonthsInYear(year, era);
         for (let month = 1; month <= monthsCount; month++) {
-            if (this.isLeapMonth(year, month)) {
+            if (this.isLeapMonth(year, month, era)) {
                 return month;
             }
         }
@@ -212,23 +258,26 @@ export abstract class Calendar {
     /**
      * When overridden in a derived class, determines whether a year is a leap year.
      * @param year An integer that represents the year.
+     * @param era The era to use; omission selects the current era.
      */
-    abstract isLeapYear(year: number): boolean;
+    abstract isLeapYear(year: number, era?: number): boolean;
 
     /**
      * When overridden in a derived class, determines whether a month is a leap month.
      * @param year An integer that represents the year.
      * @param month A positive integer that represents the month.
+     * @param era The era to use; omission selects the current era.
      */
-    abstract isLeapMonth(year: number, month: number): boolean;
+    abstract isLeapMonth(year: number, month: number, era?: number): boolean;
 
     /**
      * When overridden in a derived class, determines whether a date is a leap day.
      * @param year An integer that represents the year.
      * @param month A positive integer that represents the month.
      * @param day A positive integer that represents the day.
+     * @param era The era to use; omission selects the current era.
      */
-    abstract isLeapDay(year: number, month: number, day: number): boolean;
+    abstract isLeapDay(year: number, month: number, day: number, era?: number): boolean;
 
     /**
      * When overridden in a derived class, returns a DateTime that is the specified number of years away from the specified DateTime.
@@ -269,6 +318,12 @@ export abstract class Calendar {
     abstract getYear(time: DateTime): number;
 
     /**
+     * When overridden in a derived class, returns the era in the specified DateTime.
+     * @param time The DateTime to read.
+     */
+    abstract getEra(time: DateTime): number;
+
+    /**
      * When overridden in a derived class, returns the month in the specified DateTime.
      * @param time The DateTime to read.
      */
@@ -277,21 +332,24 @@ export abstract class Calendar {
     /**
      * When overridden in a derived class, returns the number of months in the specified year.
      * @param year An integer that represents the year.
+     * @param era The era to use; omission selects the current era.
      */
-    abstract getMonthsInYear(year: number): number;
+    abstract getMonthsInYear(year: number, era?: number): number;
 
     /**
      * When overridden in a derived class, returns the number of days in the specified year.
      * @param year An integer that represents the year.
+     * @param era The era to use; omission selects the current era.
      */
-    abstract getDaysInYear(year: number): number;
+    abstract getDaysInYear(year: number, era?: number): number;
 
     /**
      * When overridden in a derived class, returns the number of days in the specified month.
      * @param year An integer that represents the year.
      * @param month A positive integer that represents the month.
+     * @param era The era to use; omission selects the current era.
      */
-    abstract getDaysInMonth(year: number, month: number): number;
+    abstract getDaysInMonth(year: number, month: number, era?: number): number;
 
     /**
      * When overridden in a derived class, returns a DateTime that is set to the specified date and time.
@@ -302,8 +360,9 @@ export abstract class Calendar {
      * @param minute An integer from 0 to 59 that represents the minute.
      * @param second An integer from 0 to 59 that represents the second.
      * @param millisecond An integer from 0 to 999 that represents the millisecond.
+     * @param era The era to use; omission selects the current era.
      */
-    abstract toDateTime(year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number): DateTime;
+    abstract toDateTime(year: number, month: number, day: number, hour: number, minute: number, second: number, millisecond: number, era?: number): DateTime;
 }
 
 //internal
@@ -317,42 +376,40 @@ function add(this: Calendar, time: DateTime, value: number, scale: number): Date
     // before attempting a cast. Otherwise, the result is undefined.
     const tempMillis = (value * scale + (value >= 0 ? 0.5 : -0.5));
     if (!((tempMillis > -MaxMillis) && (tempMillis < MaxMillis))) {
-        throw new ArgumentOutOfRangeException(/*nameof(value), value, SR.ArgumentOutOfRange_AddValue*/);
+        throw new ArgumentOutOfRangeException('value', value, SR.ArgumentOutOfRange_AddValue);
     }
 
     const millis = int(tempMillis);
-    const ticks = time.ticks + millis * TicksPerMillisecond;
+    const ticks = time.ticks + BigInt(millis) * TicksPerMillisecond;
     checkAddResult(ticks, this.minSupportedDateTime, this.maxSupportedDateTime);
     return new DateTime(ticks);
 }
 
-export function checkAddResult(ticks: number, minValue: DateTime, maxValue: DateTime) {
+export function checkAddResult(ticks: bigint, minValue: DateTime, maxValue: DateTime) {
     if (ticks < minValue.ticks || ticks > maxValue.ticks) {
-        throw new ArgumentException(/*SR.Format(SR.Argument_ResultCalendarRange, minValue, maxValue)*/);
+        throw new ArgumentException(formatExceptionResource(SR.Argument_ResultCalendarRange, formatGregorianDateTime(minValue), formatGregorianDateTime(maxValue)));
     }
 }
 
-export function timeToTicks(hour: number, minute: number, second: number, millisecond: number): number {
+export function timeToTicks(hour: number, minute: number, second: number, millisecond: number): bigint {
     if (hour < 0 || hour >= 24 || minute < 0 || minute >= 60 || second < 0 || second >= 60) {
-        throw new ArgumentOutOfRangeException(/*null, SR.ArgumentOutOfRange_BadHourMinuteSecond*/);
+        throw new ArgumentOutOfRangeException(undefined,
+            SR.ArgumentOutOfRange_BadHourMinuteSecond);
     }
 
     if (millisecond < 0 || millisecond >= MillisPerSecond) {
-        throw new ArgumentOutOfRangeException(
-            //nameof(millisecond),
-            //millisecond,
-            //SR.Format(SR.ArgumentOutOfRange_Range, 0, MillisPerSecond - 1)
-        );
+        throw new ArgumentOutOfRangeException('millisecond', millisecond,
+            calendarRangeMessage(0, MillisPerSecond - 1));
     }
 
-    return timeToTickHelper(hour, minute, second) + millisecond * TicksPerMillisecond;
+    return timeToTickHelper(hour, minute, second) + BigInt(millisecond) * TicksPerMillisecond;
 }
 
 function getFirstDayWeekOfYear(this: Calendar, time: DateTime, firstDayOfWeek: number) {
     const dayOfYear = this.getDayOfYear(time) - 1; // Make the day of year to be 0-based, so that 1/1 is day 0.
     const dayForJan1 = this.getDayOfWeek(time) - (dayOfYear % 7);
     const offset = (dayForJan1 - firstDayOfWeek + 14) % 7;
-    return (dayOfYear + offset) / 7 + 1;
+    return Math.trunc((dayOfYear + offset) / 7) + 1;
 }
 
 function getWeekOfYearFullDays(this: Calendar, time: DateTime, firstDayOfWeek: number, fullDays: number): number {
@@ -376,7 +433,7 @@ function getWeekOfYearFullDays(this: Calendar, time: DateTime, firstDayOfWeek: n
     day = dayOfYear - offset;
     if (day >= 0) {
         // If the day of year value is greater than zero, get the week of year.
-        return day / 7 + 1;
+        return Math.trunc(day / 7) + 1;
     }
 
     // Otherwise, the specified time falls on the week of previous year.
@@ -411,7 +468,7 @@ function getWeekOfYearOfMinSupportedDateTime(this: Calendar, firstDayOfWeek: num
         day += 7;
     }
 
-    return day / 7 + 1;
+    return Math.trunc(day / 7) + 1;
 }
 
 //function isValidYear(this: Calendar, year: number): boolean {

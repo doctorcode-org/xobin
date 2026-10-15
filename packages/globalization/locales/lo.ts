@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 84, 
     name: "lo", 
@@ -40,29 +42,149 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "ກ່ອນທ່ຽງ", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 0, 
-        fullDateTimePattern: "dddd ທີ d MMMM gg yyyy H:mm:ss", 
-        longDatePattern: "dddd ທີ d MMMM gg yyyy", 
-        longTimePattern: "H:mm:ss", 
-        monthDayPattern: "MMMM d", 
-        pmDesignator: "ຫຼັງທ່ຽງ", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "d/M/yyyy", 
-        shortTimePattern: "H:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["ອາທິດ", "ຈັນ", "ອັງຄານ", "ພຸດ", "ພະຫັດ", "ສຸກ", "ເສົາ"], 
-        shortestDayNames: ["ອາ.", "ຈ.", "ອ.", "ພ.", "ພຫ.", "ສຸ.", "ສ."], 
-        dayNames: ["ວັນອາທິດ", "ວັນຈັນ", "ວັນອັງຄານ", "ວັນພຸດ", "ວັນພະຫັດ", "ວັນສຸກ", "ວັນເສົາ"], 
-        abbreviatedMonthNames: ["ມ.ກ.", "ກ.ພ.", "ມ.ນ.", "ມ.ສ.", "ພ.ພ.", "ມິ.ຖ.", "ກ.ລ.", "ສ.ຫ.", "ກ.ຍ.", "ຕ.ລ.", "ພ.ຈ.", "ທ.ວ.", ""], 
-        monthNames: ["ມັງກອນ", "ກຸມພາ", "ມີນາ", "ເມສາ", "ພຶດສະພາ", "ມິຖຸນາ", "ກໍລະກົດ", "ສິງຫາ", "ກັນຍາ", "ຕຸລາ", "ພະຈິກ", "ທັນວາ", ""], 
-        nativeCalendarName: "ປະຕິທິນເກຣໂກຣຽນ", 
-        abbreviatedMonthGenitiveNames: ["ມ.ກ.", "ກ.ພ.", "ມ.ນ.", "ມ.ສ.", "ພ.ພ.", "ມິ.ຖ.", "ກ.ລ.", "ສ.ຫ.", "ກ.ຍ.", "ຕ.ລ.", "ພ.ຈ.", "ທ.ວ.", ""], 
-        monthGenitiveNames: ["ມັງກອນ", "ກຸມພາ", "ມີນາ", "ເມສາ", "ພຶດສະພາ", "ມິຖຸນາ", "ກໍລະກົດ", "ສິງຫາ", "ກັນຍາ", "ຕຸລາ", "ພະຈິກ", "ທັນວາ", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "ອາທິດ",
+        "ຈັນ",
+        "ອັງຄານ",
+        "ພຸດ",
+        "ພະຫັດ",
+        "ສຸກ",
+        "ເສົາ"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "ມ.ກ.",
+        "ກ.ພ.",
+        "ມ.ນ.",
+        "ມ.ສ.",
+        "ພ.ພ.",
+        "ມິ.ຖ.",
+        "ກ.ລ.",
+        "ສ.ຫ.",
+        "ກ.ຍ.",
+        "ຕ.ລ.",
+        "ພ.ຈ.",
+        "ທ.ວ.",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "ມ.ກ.",
+        "ກ.ພ.",
+        "ມ.ນ.",
+        "ມ.ສ.",
+        "ພ.ພ.",
+        "ມິ.ຖ.",
+        "ກ.ລ.",
+        "ສ.ຫ.",
+        "ກ.ຍ.",
+        "ຕ.ລ.",
+        "ພ.ຈ.",
+        "ທ.ວ.",
+        ""
+      ],
+      "amDesignator": "ກ່ອນທ່ຽງ",
+      "dateSeparator": "/",
+      "dayNames": [
+        "ວັນອາທິດ",
+        "ວັນຈັນ",
+        "ວັນອັງຄານ",
+        "ວັນພຸດ",
+        "ວັນພະຫັດ",
+        "ວັນສຸກ",
+        "ວັນເສົາ"
+      ],
+      "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd ທີ d MMMM g yyyy H:mm:ss",
+      "longDatePattern": "dddd ທີ d MMMM g yyyy",
+      "longTimePattern": "H:mm:ss",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "ມັງກອນ",
+        "ກຸມພາ",
+        "ມີນາ",
+        "ເມສາ",
+        "ພຶດສະພາ",
+        "ມິຖຸນາ",
+        "ກໍລະກົດ",
+        "ສິງຫາ",
+        "ກັນຍາ",
+        "ຕຸລາ",
+        "ພະຈິກ",
+        "ທັນວາ",
+        ""
+      ],
+      "monthNames": [
+        "ມັງກອນ",
+        "ກຸມພາ",
+        "ມີນາ",
+        "ເມສາ",
+        "ພຶດສະພາ",
+        "ມິຖຸນາ",
+        "ກໍລະກົດ",
+        "ສິງຫາ",
+        "ກັນຍາ",
+        "ຕຸລາ",
+        "ພະຈິກ",
+        "ທັນວາ",
+        ""
+      ],
+      "nativeCalendarName": "ປະຕິທິນເກຣໂກຣຽນ",
+      "pmDesignator": "ຫຼັງທ່ຽງ",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "d/M/yyyy",
+      "shortestDayNames": [
+        "ອາ",
+        "ຈ",
+        "ອ",
+        "ພ",
+        "ພຫ",
+        "ສຸ",
+        "ສ"
+      ],
+      "shortTimePattern": "H:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "ຄ.ສ."
+      ],
+      "abbreviatedEraNames": [
+        "ຄ.ສ."
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "d/M/yyyy",
+          "d MMM yyyy"
+        ],
+        "D": [
+          "dddd ທີ d MMMM g yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "H:mm"
+        ],
+        "T": [
+          "H:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

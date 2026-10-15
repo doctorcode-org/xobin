@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "", 
     lcid: 70, 
     name: "pa", 
@@ -40,29 +42,150 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "ਸਵੇਰ", 
-        dateSeparator: "-", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dd MMMM yyyy dddd tt hh:mm:ss", 
-        longDatePattern: "dd MMMM yyyy dddd", 
-        longTimePattern: "tt hh:mm:ss", 
-        monthDayPattern: "dd MMMM", 
-        pmDesignator: "ਸ਼ਾਮ", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "dd-MM-yy", 
-        shortTimePattern: "tt hh:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM, yyyy", 
-        abbreviatedDayNames: ["ਐਤ.", "ਸੋਮ.", "ਮੰਗਲ.", "ਬੁੱਧ.", "ਵੀਰ.", "ਸ਼ੁਕਰ.", "ਸ਼ਨਿੱਚਰ."], 
-        shortestDayNames: ["ਐ", "ਸ", "ਮ", "ਬ", "ਵ", "ਸ਼ੁ", "ਸ਼"], 
-        dayNames: ["ਐਤਵਾਰ", "ਸੋਮਵਾਰ", "ਮੰਗਲਵਾਰ", "ਬੁੱਧਵਾਰ", "ਵੀਰਵਾਰ", "ਸ਼ੁੱਕਰਵਾਰ", "ਸ਼ਨਿੱਚਰਵਾਰ"], 
-        abbreviatedMonthNames: ["ਜਨਵਰੀ", "ਫ਼ਰਵਰੀ", "ਮਾਰਚ", "ਅਪ੍ਰੈਲ", "ਮਈ", "ਜੂਨ", "ਜੁਲਾਈ", "ਅਗਸਤ", "ਸਤੰਬਰ", "ਅਕਤੂਬਰ", "ਨਵੰਬਰ", "ਦਸੰਬਰ", ""], 
-        monthNames: ["ਜਨਵਰੀ", "ਫ਼ਰਵਰੀ", "ਮਾਰਚ", "ਅਪ੍ਰੈਲ", "ਮਈ", "ਜੂਨ", "ਜੁਲਾਈ", "ਅਗਸਤ", "ਸਤੰਬਰ", "ਅਕਤੂਬਰ", "ਨਵੰਬਰ", "ਦਸੰਬਰ", ""], 
-        nativeCalendarName: "ਅੰਗ੍ਰੇਜ਼ੀ ਕਲੰਡਰ", 
-        abbreviatedMonthGenitiveNames: ["ਜਨਵਰੀ", "ਫ਼ਰਵਰੀ", "ਮਾਰਚ", "ਅਪ੍ਰੈਲ", "ਮਈ", "ਜੂਨ", "ਜੁਲਾਈ", "ਅਗਸਤ", "ਸਤੰਬਰ", "ਅਕਤੂਬਰ", "ਨਵੰਬਰ", "ਦਸੰਬਰ", ""], 
-        monthGenitiveNames: ["ਜਨਵਰੀ", "ਫ਼ਰਵਰੀ", "ਮਾਰਚ", "ਅਪ੍ਰੈਲ", "ਮਈ", "ਜੂਨ", "ਜੁਲਾਈ", "ਅਗਸਤ", "ਸਤੰਬਰ", "ਅਕਤੂਬਰ", "ਨਵੰਬਰ", "ਦਸੰਬਰ", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "ਐਤ",
+        "ਸੋਮ",
+        "ਮੰਗਲ",
+        "ਬੁੱਧ",
+        "ਵੀਰ",
+        "ਸ਼ੁੱਕਰ",
+        "ਸ਼ਨਿੱਚਰ"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "ਜਨ",
+        "ਫ਼ਰ",
+        "ਮਾਰਚ",
+        "ਅਪ੍ਰੈ",
+        "ਮਈ",
+        "ਜੂਨ",
+        "ਜੁਲਾ",
+        "ਅਗ",
+        "ਸਤੰ",
+        "ਅਕਤੂ",
+        "ਨਵੰ",
+        "ਦਸੰ",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "ਜਨ",
+        "ਫ਼ਰ",
+        "ਮਾਰਚ",
+        "ਅਪ੍ਰੈ",
+        "ਮਈ",
+        "ਜੂਨ",
+        "ਜੁਲਾ",
+        "ਅਗ",
+        "ਸਤੰ",
+        "ਅਕਤੂ",
+        "ਨਵੰ",
+        "ਦਸੰ",
+        ""
+      ],
+      "amDesignator": "ਪੂ.ਦੁ.",
+      "dateSeparator": "/",
+      "dayNames": [
+        "ਐਤਵਾਰ",
+        "ਸੋਮਵਾਰ",
+        "ਮੰਗਲਵਾਰ",
+        "ਬੁੱਧਵਾਰ",
+        "ਵੀਰਵਾਰ",
+        "ਸ਼ੁੱਕਰਵਾਰ",
+        "ਸ਼ਨਿੱਚਰਵਾਰ"
+      ],
+      "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, d MMMM yyyy h:mm:ss tt",
+      "longDatePattern": "dddd, d MMMM yyyy",
+      "longTimePattern": "h:mm:ss tt",
+      "monthDayPattern": "MMMM d",
+      "monthGenitiveNames": [
+        "ਜਨਵਰੀ",
+        "ਫ਼ਰਵਰੀ",
+        "ਮਾਰਚ",
+        "ਅਪ੍ਰੈਲ",
+        "ਮਈ",
+        "ਜੂਨ",
+        "ਜੁਲਾਈ",
+        "ਅਗਸਤ",
+        "ਸਤੰਬਰ",
+        "ਅਕਤੂਬਰ",
+        "ਨਵੰਬਰ",
+        "ਦਸੰਬਰ",
+        ""
+      ],
+      "monthNames": [
+        "ਜਨਵਰੀ",
+        "ਫ਼ਰਵਰੀ",
+        "ਮਾਰਚ",
+        "ਅਪ੍ਰੈਲ",
+        "ਮਈ",
+        "ਜੂਨ",
+        "ਜੁਲਾਈ",
+        "ਅਗਸਤ",
+        "ਸਤੰਬਰ",
+        "ਅਕਤੂਬਰ",
+        "ਨਵੰਬਰ",
+        "ਦਸੰਬਰ",
+        ""
+      ],
+      "nativeCalendarName": "ਗਰੇਗੋਰੀਅਨ ਕੈਲੰਡਰ",
+      "pmDesignator": "ਬਾ.ਦੁ.",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "d/M/yyyy",
+      "shortestDayNames": [
+        "ਐ",
+        "ਸੋ",
+        "ਮੰ",
+        "ਬੁੱ",
+        "ਵੀ",
+        "ਸ਼ੁੱ",
+        "ਸ਼"
+      ],
+      "shortTimePattern": "h:mm tt",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "ਸੰਨ"
+      ],
+      "abbreviatedEraNames": [
+        "ਸੰਨ"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "d/M/yyyy",
+          "d MMM yyyy",
+          "d/M/yy"
+        ],
+        "D": [
+          "dddd, d MMMM yyyy",
+          "d MMMM yyyy"
+        ],
+        "t": [
+          "h:mm tt"
+        ],
+        "T": [
+          "h:mm:ss tt"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "MMMM d"
+        ],
+        "M": [
+          "MMMM d"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

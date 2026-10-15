@@ -1,0 +1,158 @@
+{
+  "runtime": "10.0.7",
+  "rows": [
+    {
+      "source": "DateTimeTests.GetTypeCode_Invoke_ReturnsExpected",
+      "operation": "getTypeCode",
+      "result": 16,
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToBoolean_Invoke_ThrowsInvalidCastException",
+      "operation": "toBoolean",
+      "result": null,
+      "error": "InvalidCastException",
+      "paramName": null,
+      "message": "Invalid cast from \u0027DateTime\u0027 to \u0027Boolean\u0027."
+    },
+    {
+      "source": "DateTimeTests.ToChar_Invoke_ThrowsInvalidCastException",
+      "operation": "toChar",
+      "result": null,
+      "error": "InvalidCastException",
+      "paramName": null,
+      "message": "Invalid cast from \u0027DateTime\u0027 to \u0027Char\u0027."
+    },
+    {
+      "source": "DateTimeTests.ToSByte_Invoke_ThrowsInvalidCastException",
+      "operation": "toSByte",
+      "result": null,
+      "error": "InvalidCastException",
+      "paramName": null,
+      "message": "Invalid cast from \u0027DateTime\u0027 to \u0027SByte\u0027."
+    },
+    {
+      "source": "DateTimeTests.ToByte_Invoke_ThrowsInvalidCastException",
+      "operation": "toByte",
+      "result": null,
+      "error": "InvalidCastException",
+      "paramName": null,
+      "message": "Invalid cast from \u0027DateTime\u0027 to \u0027Byte\u0027."
+    },
+    {
+      "source": "DateTimeTests.ToInt16_Invoke_ThrowsInvalidCastException",
+      "operation": "toInt16",
+      "result": null,
+      "error": "InvalidCastException",
+      "paramName": null,
+      "message": "Invalid cast from \u0027DateTime\u0027 to \u0027Int16\u0027."
+    },
+    {
+      "source": "DateTimeTests.ToUInt16_Invoke_ThrowsInvalidCastException",
+      "operation": "toUInt16",
+      "result": null,
+      "error": "InvalidCastException",
+      "paramName": null,
+      "message": "Invalid cast from \u0027DateTime\u0027 to \u0027UInt16\u0027."
+    },
+    {
+      "source": "DateTimeTests.ToInt32_Invoke_ThrowsInvalidCastException",
+      "operation": "toInt32",
+      "result": null,
+      "error": "InvalidCastException",
+      "paramName": null,
+      "message": "Invalid cast from \u0027DateTime\u0027 to \u0027Int32\u0027."
+    },
+    {
+      "source": "DateTimeTests.ToUInt32_Invoke_ThrowsInvalidCastException",
+      "operation": "toUInt32",
+      "result": null,
+      "error": "InvalidCastException",
+      "paramName": null,
+      "message": "Invalid cast from \u0027DateTime\u0027 to \u0027UInt32\u0027."
+    },
+    {
+      "source": "DateTimeTests.ToInt64_Invoke_ThrowsInvalidCastException",
+      "operation": "toInt64",
+      "result": null,
+      "error": "InvalidCastException",
+      "paramName": null,
+      "message": "Invalid cast from \u0027DateTime\u0027 to \u0027Int64\u0027."
+    },
+    {
+      "source": "DateTimeTests.ToUInt64_Invoke_ThrowsInvalidCastException",
+      "operation": "toUInt64",
+      "result": null,
+      "error": "InvalidCastException",
+      "paramName": null,
+      "message": "Invalid cast from \u0027DateTime\u0027 to \u0027UInt64\u0027."
+    },
+    {
+      "source": "DateTimeTests.ToSingle_Invoke_ThrowsInvalidCastException",
+      "operation": "toSingle",
+      "result": null,
+      "error": "InvalidCastException",
+      "paramName": null,
+      "message": "Invalid cast from \u0027DateTime\u0027 to \u0027Single\u0027."
+    },
+    {
+      "source": "DateTimeTests.ToDouble_Invoke_ThrowsInvalidCastException",
+      "operation": "toDouble",
+      "result": null,
+      "error": "InvalidCastException",
+      "paramName": null,
+      "message": "Invalid cast from \u0027DateTime\u0027 to \u0027Double\u0027."
+    },
+    {
+      "source": "DateTimeTests.ToDecimal_Invoke_ThrowsInvalidCastException",
+      "operation": "toDecimal",
+      "result": null,
+      "error": "InvalidCastException",
+      "paramName": null,
+      "message": "Invalid cast from \u0027DateTime\u0027 to \u0027Decimal\u0027."
+    },
+    {
+      "source": "DateTimeTests.ToDateTime_Invoke_ReturnsExpected",
+      "operation": "toDateTime",
+      "result": {
+        "ticks": "10",
+        "kind": 1
+      },
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.ToType_DateTime_ReturnsExpected",
+      "operation": "toType",
+      "result": {
+        "ticks": "10",
+        "kind": 1
+      },
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.GetObjectData_Invoke_ReturnsExpected",
+      "operation": "getObjectData",
+      "result": {
+        "ticks": "10",
+        "dateData": "4611686018427387914"
+      },
+      "error": null,
+      "paramName": null,
+      "message": null
+    },
+    {
+      "source": "DateTimeTests.GetObjectData_NullInfo_ThrowsArgumentNullException",
+      "operation": "getObjectDataNull",
+      "result": null,
+      "error": "ArgumentNullException",
+      "paramName": "info",
+      "message": "Value cannot be null. (Parameter \u0027info\u0027)"
+    }
+  ]
+}

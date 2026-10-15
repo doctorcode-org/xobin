@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "zh-Hant", 
     lcid: 3076, 
     name: "zh-HK", 
@@ -40,29 +42,149 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "上午", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 0, 
-        fullDateTimePattern: "yyyy'年'M'月'd'日' H:mm:ss", 
-        longDatePattern: "yyyy'年'M'月'd'日'", 
-        longTimePattern: "H:mm:ss", 
-        monthDayPattern: "M月d日", 
-        pmDesignator: "下午", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "d/M/yyyy", 
-        shortTimePattern: "H:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "yyyy'年'M'月'", 
-        abbreviatedDayNames: ["週日", "週一", "週二", "週三", "週四", "週五", "週六"], 
-        shortestDayNames: ["日", "一", "二", "三", "四", "五", "六"], 
-        dayNames: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"], 
-        abbreviatedMonthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月", ""], 
-        monthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月", ""], 
-        nativeCalendarName: "西曆", 
-        abbreviatedMonthGenitiveNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月", ""], 
-        monthGenitiveNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "週日",
+        "週一",
+        "週二",
+        "週三",
+        "週四",
+        "週五",
+        "週六"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "1月",
+        "2月",
+        "3月",
+        "4月",
+        "5月",
+        "6月",
+        "7月",
+        "8月",
+        "9月",
+        "10月",
+        "11月",
+        "12月",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "1月",
+        "2月",
+        "3月",
+        "4月",
+        "5月",
+        "6月",
+        "7月",
+        "8月",
+        "9月",
+        "10月",
+        "11月",
+        "12月",
+        ""
+      ],
+      "amDesignator": "上午",
+      "dateSeparator": "/",
+      "dayNames": [
+        "星期日",
+        "星期一",
+        "星期二",
+        "星期三",
+        "星期四",
+        "星期五",
+        "星期六"
+      ],
+      "firstDayOfWeek": 0,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "yyyy年M月d日dddd tth:mm:ss",
+      "longDatePattern": "yyyy年M月d日dddd",
+      "longTimePattern": "tth:mm:ss",
+      "monthDayPattern": "M月d日",
+      "monthGenitiveNames": [
+        "1月",
+        "2月",
+        "3月",
+        "4月",
+        "5月",
+        "6月",
+        "7月",
+        "8月",
+        "9月",
+        "10月",
+        "11月",
+        "12月",
+        ""
+      ],
+      "monthNames": [
+        "1月",
+        "2月",
+        "3月",
+        "4月",
+        "5月",
+        "6月",
+        "7月",
+        "8月",
+        "9月",
+        "10月",
+        "11月",
+        "12月",
+        ""
+      ],
+      "nativeCalendarName": "公曆",
+      "pmDesignator": "下午",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "d/M/yyyy",
+      "shortestDayNames": [
+        "日",
+        "一",
+        "二",
+        "三",
+        "四",
+        "五",
+        "六"
+      ],
+      "shortTimePattern": "tth:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "yyyy年M月",
+      "eraNames": [
+        "公元"
+      ],
+      "abbreviatedEraNames": [
+        "公元"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "d/M/yyyy",
+          "yyyy年M月d日"
+        ],
+        "D": [
+          "yyyy年M月d日dddd",
+          "yyyy年M月d日"
+        ],
+        "t": [
+          "tth:mm"
+        ],
+        "T": [
+          "tth:mm:ss"
+        ],
+        "y": [
+          "yyyy年M月"
+        ],
+        "Y": [
+          "yyyy年M月"
+        ],
+        "m": [
+          "M月d日"
+        ],
+        "M": [
+          "M月d日"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };

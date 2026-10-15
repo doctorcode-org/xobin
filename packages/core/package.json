@@ -1,18 +1,36 @@
 {
   "name": "@xobin/core",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "The package contains shared classes, types, functions and utils.",
   "author": "DoctorCode Team",
   "license": "MIT",
-  "main": "dist/main.js",
-  "module": "dist/module.js",
-  "typings": "dist/index.d.ts",
-  "directories": {
-    "lib": "dist",
-    "test": "tests"
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./internal/exception-format": {
+      "types": "./dist/internal/exception_format.d.ts",
+      "import": "./dist/internal/exception_format.mjs",
+      "require": "./dist/internal/exception_format.js"
+    },
+    "./internal/exception-resources": {
+      "types": "./dist/internal/exception_resources.d.ts",
+      "import": "./dist/internal/exception_resources.mjs",
+      "require": "./dist/internal/exception_resources.js"
+    }
   },
+  "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "MIGRATION.md",
+    "CHANGELOG.md"
   ],
   "repository": {
     "type": "git",
@@ -20,13 +38,24 @@
     "directory": "packages/core"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "build": "tsup --config tsup.config.ts",
+    "prepack": "npm run build",
+    "prepublishOnly": "node ../../tools/release.mjs check core"
   },
   "bugs": {
     "url": "https://github.com/doctorcode-org/xobin/issues"
   },
-  "dependencies": {
-    "tslib": "^2.3.1"
+  "engines": {
+    "node": ">=22"
   },
-  "gitHead": "decd7897807915712df0d5f8301c378eae2115ec"
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "homepage": "https://github.com/doctorcode-org/xobin#readme",
+  "keywords": [
+    "xobin",
+    "typescript",
+    "exceptions"
+  ]
 }

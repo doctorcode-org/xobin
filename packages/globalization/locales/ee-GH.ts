@@ -1,5 +1,7 @@
-import { CultureData, GregorianCalendar } from '@xobin/globalization';
-export const cultureData: CultureData = {
+// Date format data generated from the pinned .NET 10.0.7 formatting oracle.
+import type { CultureData } from '@xobin/globalization';
+import { GregorianCalendar } from '@xobin/globalization/gregorian-calendar';
+export const cultureData: CultureData & { calendarFormats?: Readonly<Record<number, Partial<CultureData["dateTimeFormat"]>>>; calendarFactories?: ReadonlyArray<() => CultureData["calendar"]> } = {
     parent: "ee", 
     lcid: 4096, 
     name: "ee-GH", 
@@ -40,29 +42,150 @@ export const cultureData: CultureData = {
         digitSubstitution: 1
     }, 
     dateTimeFormat: {
-        amDesignator: "ŋdi", 
-        dateSeparator: "/", 
-        firstDayOfWeek: 1, 
-        fullDateTimePattern: "dddd, MMMM d 'lia' yyyy tt 'ga' h:mm:ss", 
-        longDatePattern: "dddd, MMMM d 'lia' yyyy", 
-        longTimePattern: "tt 'ga' h:mm:ss", 
-        monthDayPattern: "MMMM d 'lia'", 
-        pmDesignator: "ɣetrɔ", 
-        rfC1123Pattern: "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'", 
-        shortDatePattern: "M/d/yyyy", 
-        shortTimePattern: "tt 'ga' h:mm", 
-        sortableDateTimePattern: "yyyy'-'MM'-'dd'T'HH':'mm':'ss", 
-        timeSeparator: ":", 
-        universalSortableDateTimePattern: "yyyy'-'MM'-'dd HH':'mm':'ss'Z'", 
-        yearMonthPattern: "MMMM yyyy", 
-        abbreviatedDayNames: ["kɔs", "dzo", "bla", "kuɖ", "yaw", "fiɖ", "mem"], 
-        shortestDayNames: ["kɔs", "dzo", "bla", "kuɖ", "yaw", "fiɖ", "mem"], 
-        dayNames: ["kɔsiɖa", "dzoɖa", "blaɖa", "kuɖa", "yawoɖa", "fiɖa", "memleɖa"], 
-        abbreviatedMonthNames: ["dzv", "dzd", "ted", "afɔ", "dam", "mas", "sia", "dea", "any", "kel", "ade", "dzm", ""], 
-        monthNames: ["dzove", "dzodze", "tedoxe", "afɔfĩe", "dama", "masa", "siamlɔm", "deasiamime", "anyɔnyɔ", "kele", "adeɛmekpɔxe", "dzome", ""], 
-        nativeCalendarName: "Gregorian kalenda", 
-        abbreviatedMonthGenitiveNames: ["dzv", "dzd", "ted", "afɔ", "dam", "mas", "sia", "dea", "any", "kel", "ade", "dzm", ""], 
-        monthGenitiveNames: ["dzove", "dzodze", "tedoxe", "afɔfĩe", "dama", "masa", "siamlɔm", "deasiamime", "anyɔnyɔ", "kele", "adeɛmekpɔxe", "dzome", ""]
-    }, 
-    calendar: new GregorianCalendar()
+      "leapYearMonthNames": null,
+      "abbreviatedDayNames": [
+        "kɔs",
+        "dzo",
+        "bla",
+        "kuɖ",
+        "yaw",
+        "fiɖ",
+        "mem"
+      ],
+      "abbreviatedMonthGenitiveNames": [
+        "dzv",
+        "dzd",
+        "ted",
+        "afɔ",
+        "dam",
+        "mas",
+        "sia",
+        "dea",
+        "any",
+        "kel",
+        "ade",
+        "dzm",
+        ""
+      ],
+      "abbreviatedMonthNames": [
+        "dzv",
+        "dzd",
+        "ted",
+        "afɔ",
+        "dam",
+        "mas",
+        "sia",
+        "dea",
+        "any",
+        "kel",
+        "ade",
+        "dzm",
+        ""
+      ],
+      "amDesignator": "ŋdi",
+      "dateSeparator": "/",
+      "dayNames": [
+        "kɔsiɖa",
+        "dzoɖa",
+        "blaɖa",
+        "kuɖa",
+        "yawoɖa",
+        "fiɖa",
+        "memleɖa"
+      ],
+      "firstDayOfWeek": 1,
+      "calendarWeekRule": 0,
+      "fullDateTimePattern": "dddd, MMMM d 'lia' yyyy tt 'ga' h:mm:ss",
+      "longDatePattern": "dddd, MMMM d 'lia' yyyy",
+      "longTimePattern": "tt 'ga' h:mm:ss",
+      "monthDayPattern": "MMMM d 'lia'",
+      "monthGenitiveNames": [
+        "dzove",
+        "dzodze",
+        "tedoxe",
+        "afɔfĩe",
+        "dama",
+        "masa",
+        "siamlɔm",
+        "deasiamime",
+        "anyɔnyɔ",
+        "kele",
+        "adeɛmekpɔxe",
+        "dzome",
+        ""
+      ],
+      "monthNames": [
+        "dzove",
+        "dzodze",
+        "tedoxe",
+        "afɔfĩe",
+        "dama",
+        "masa",
+        "siamlɔm",
+        "deasiamime",
+        "anyɔnyɔ",
+        "kele",
+        "adeɛmekpɔxe",
+        "dzome",
+        ""
+      ],
+      "nativeCalendarName": "Gregorian kalenda",
+      "pmDesignator": "ɣetrɔ",
+      "rfC1123Pattern": "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'",
+      "shortDatePattern": "M/d/yyyy",
+      "shortestDayNames": [
+        "k",
+        "d",
+        "b",
+        "k",
+        "y",
+        "f",
+        "m"
+      ],
+      "shortTimePattern": "tt 'ga' h:mm",
+      "sortableDateTimePattern": "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
+      "timeSeparator": ":",
+      "universalSortableDateTimePattern": "yyyy'-'MM'-'dd HH':'mm':'ss'Z'",
+      "yearMonthPattern": "MMMM yyyy",
+      "eraNames": [
+        "Yŋ"
+      ],
+      "abbreviatedEraNames": [
+        "Yŋ"
+      ],
+      "abbreviatedEnglishEraNames": [
+        ""
+      ],
+      "allDateTimePatterns": {
+        "d": [
+          "M/d/yyyy",
+          "MMM d 'lia', yyyy",
+          "M/d/yy"
+        ],
+        "D": [
+          "dddd, MMMM d 'lia' yyyy",
+          "MMMM d 'lia' yyyy"
+        ],
+        "t": [
+          "tt 'ga' h:mm"
+        ],
+        "T": [
+          "tt 'ga' h:mm:ss"
+        ],
+        "y": [
+          "MMMM yyyy"
+        ],
+        "Y": [
+          "MMMM yyyy"
+        ],
+        "m": [
+          "MMMM d 'lia'"
+        ],
+        "M": [
+          "MMMM d 'lia'"
+        ]
+      }
+    },
+    calendarFormats: {},
+    calendar: new GregorianCalendar(1)
 };
