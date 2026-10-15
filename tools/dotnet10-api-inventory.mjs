@@ -395,7 +395,7 @@ const inventory = {
 const serialized = JSON.stringify(inventory, null, 2) + '\n';
 if (mode === '--write') {
   writeFileSync(outputPath, serialized, 'utf8');
-} else if (!existsSync(outputPath) || readFileSync(outputPath, 'utf8') !== serialized) {
+} else if (!existsSync(outputPath) || readFileSync(outputPath, 'utf8').replaceAll('\r\n', '\n') !== serialized) {
   throw new Error('API inventory is missing or differs. Run with --write and review the diff.');
 }
 console.log(JSON.stringify(summary));
