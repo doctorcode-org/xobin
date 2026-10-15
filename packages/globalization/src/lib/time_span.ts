@@ -516,6 +516,14 @@ export class TimeSpan implements IEquatable<TimeSpan>, IComparable<TimeSpan> {
     }
 
     /**
+     * Returns the invariant constant interval string used by JSON.stringify, preserving all ticks and the sign.
+     * @returns An interval in [-][d.]hh:mm:ss[.fffffff] format.
+     */
+    toJSON(): string {
+        return this.toString('c');
+    }
+
+    /**
      * Tries to format this interval into a UTF-16 character buffer or UTF-8 byte buffer.
      * @param destination The buffer that receives the formatted interval.
      * @param charsWritten Receives the number of code units or bytes written; zero if the buffer is too small.

@@ -43,7 +43,9 @@
         "missing": 26,
         "excluded": 2
       },
-      "extraLocalMembers": [],
+      "extraLocalMembers": [
+        "toJSON"
+      ],
       "members": [
         {
           "id": "System.DateOnly::constructor:.ctor:instance:value:int,value:int,value:int",
@@ -2029,7 +2031,9 @@
         "missing": 20,
         "excluded": 12
       },
-      "extraLocalMembers": [],
+      "extraLocalMembers": [
+        "toJSON"
+      ],
       "members": [
         {
           "id": "System.DateTime::constructor:.ctor:instance:value:DateOnly,value:TimeOnly",
@@ -18052,7 +18056,9 @@
         "missing": 26,
         "excluded": 5
       },
-      "extraLocalMembers": [],
+      "extraLocalMembers": [
+        "toJSON"
+      ],
       "members": [
         {
           "id": "System.TimeOnly::constructor:.ctor:instance:value:int,value:int",
@@ -20401,7 +20407,9 @@
         "missing": 21,
         "excluded": 1
       },
-      "extraLocalMembers": [],
+      "extraLocalMembers": [
+        "toJSON"
+      ],
       "members": [
         {
           "id": "System.TimeSpan::constructor:.ctor:instance:value:int,value:int,value:int,value:int",

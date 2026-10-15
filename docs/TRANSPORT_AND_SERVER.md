@@ -1,12 +1,26 @@
 # Data transport and server cultures
 
-## Exact wire values
+## Direct JSON serialization
 
-Temporal instances are not JSON DTOs. DateTime currently serializes as {}, DateOnly
-exposes its internal day number, and TimeOnly/TimeSpan contain bigint values that
-JSON.stringify cannot serialize. These incidental shapes are not a wire contract.
+DateTime, DateOnly, TimeOnly and TimeSpan implement toJSON. JSON.stringify calls
+it automatically, including for nested properties and array elements. The result
+is an invariant string: DateTime O, DateOnly yyyy-MM-dd, TimeOnly HH:mm:ss.fffffff,
+and TimeSpan c. Tick precision and interval signs are preserved.
 
-Use explicit fields, preserving exact ticks as decimal strings:
+DateTime UTC values have a Z suffix, local values have the host offset and
+unspecified values have no suffix. Serialization does not force values to UTC.
+No arbitrary named timezone is stored. Format output is independent of the
+current culture and selected calendar.
+
+JSON.parse returns ordinary strings; it does not reconstruct instances. Parsing
+remains deferred. Passing these strings through native Date loses submillisecond
+precision. toJSON does not change JavaScript's behavior for unrelated raw bigint
+properties, which still need explicit conversion to strings.
+
+## Exact wire values for restoring instances
+
+When instances must be restored without a date/time parser, use explicit fields,
+preserving exact ticks as decimal strings:
 
 ```ts
 import { DateTime, DateTimeKind } from '@xobin/globalization';

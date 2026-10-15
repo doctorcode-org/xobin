@@ -762,6 +762,14 @@ export class DateTime implements IComparable<DateTime>, IEquatable<DateTime> {
     }
 
     /**
+     * Returns the invariant round-trip string used by JSON.stringify, preserving all ticks and the Kind suffix.
+     * @returns A Gregorian date and time with seven fractional-second digits and its UTC or local suffix, if specified.
+     */
+    toJSON(): string {
+        return this.toString('O');
+    }
+
+    /**
      * Converts this instance to a long date string using the current culture.
      */
     toLongDateString(): string {

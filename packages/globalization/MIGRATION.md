@@ -47,9 +47,12 @@ Use an ES2022-capable browser or Node.js 22/24. Import classes by name from
 ESM entry; CommonJS servers may load the complete API. Culture imports remain
 selective. Do not mix ESM and CommonJS object graphs.
 
-Do not JSON.stringify temporal instances directly. Transport DateTime as string
+JSON.stringify now uses toJSON on all four temporal classes. DateTime uses
+invariant O text including its Kind suffix, DateOnly uses yyyy-MM-dd, TimeOnly
+uses HH:mm:ss.fffffff, and TimeSpan uses c. JSON.parse returns strings, not
+instances. To restore instances without a parser, transport DateTime as string
 ticks and numeric kind, TimeOnly/TimeSpan as string ticks and DateOnly as numeric
-dayNumber. Restore with bigint and the existing constructors/fromDayNumber.
+dayNumber, then use bigint and the existing constructors/fromDayNumber.
 On a server, pass each request's culture explicitly rather than changing shared
 CultureInfo.currentCulture during async requests.
 

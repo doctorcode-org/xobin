@@ -243,6 +243,14 @@ export class DateOnly implements IComparable<DateOnly>, IEquatable<DateOnly> {
     }
 
     /**
+     * Returns the invariant Gregorian date string used by JSON.stringify.
+     * @returns A date in yyyy-MM-dd format without a time or timezone.
+     */
+    toJSON(): string {
+        return this.toString('O');
+    }
+
+    /**
      * Converts this instance to a long date string using the current culture.
      */
     toLongDateString(): string {

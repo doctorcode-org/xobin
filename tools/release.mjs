@@ -103,6 +103,12 @@ const commonjs = require('@xobin/globalization');
 assert.strictEqual(commonjs.DateTime, require('@xobin/globalization/date-time').DateTime);
 const { cultureData: fullData } = require('@xobin/globalization/locales/fa-IR/full');
 assert.equal(commonjs.CultureInfo.loadCultureInfo('fa-IR', fullData).optionalCalendars.length, 3);
+for (const api of [await import('@xobin/globalization'), commonjs]) {
+    assert.deepEqual(JSON.parse(JSON.stringify([
+        new api.DateTime(1n, api.DateTimeKind.utc), new api.DateOnly(2024, 3, 20),
+        new api.TimeOnly(1n), new api.TimeSpan(-1n),
+    ])), ['0001-01-01T00:00:00.0000001Z', '2024-03-20', '00:00:00.0000001', '-00:00:00.0000001']);
+}
 for (const entry of Object.keys(manifest.exports).filter(value => !value.includes('*'))) {
     const specifier = '@xobin/globalization' + (entry === '.' ? '' : entry.slice(1));
     await import(specifier);

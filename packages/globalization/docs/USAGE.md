@@ -469,9 +469,40 @@ An unspecified wall time needs an application decision about its timezone first.
 
 ## JSON and server requests
 
-Temporal instances are not JSON DTOs. Serialize explicit wire fields: string
-ticks for DateTime/TimeOnly/TimeSpan, and numeric `dayNumber` for DateOnly.
-Preserve DateTime Kind separately.
+All four temporal classes implement `toJSON()`. `JSON.stringify` uses it
+automatically for standalone values, nested properties and array elements:
+
+```ts
+import { DateTime, DateTimeKind, DateOnly, TimeOnly, TimeSpan } from '@xobin/globalization';
+
+const json = JSON.stringify({
+    dateTime: new DateTime(2024, 3, 20, 13, 45, 0, DateTimeKind.utc),
+    date: new DateOnly(2024, 3, 20),
+    time: new TimeOnly(13, 45),
+    duration: TimeSpan.fromMinutes(30),
+});
+console.log(json);
+```
+
+Output:
+
+```text
+{"dateTime":"2024-03-20T13:45:00.0000000Z","date":"2024-03-20","time":"13:45:00.0000000","duration":"00:30:00"}
+```
+
+DateTime uses invariant Gregorian `O` format with seven fractional digits and
+the Kind suffix: `Z` for UTC, an offset for local, or no suffix for unspecified.
+DateOnly uses `yyyy-MM-dd`, TimeOnly uses `HH:mm:ss.fffffff`, and TimeSpan uses
+the invariant signed `c` format. Current culture and calendar do not affect the
+text. DateTime values are not automatically converted to UTC.
+
+`JSON.parse` returns strings, not instances; parsing remains deferred. Native
+Date loses submillisecond precision. Unrelated raw bigint fields still cannot
+be serialized automatically.
+
+If an application needs to restore instances without parsing date/time text,
+serialize explicit wire fields instead: string ticks for DateTime/TimeOnly/
+TimeSpan and numeric `dayNumber` for DateOnly. Preserve DateTime Kind separately.
 
 ```ts
 import { DateTime, DateTimeKind } from '@xobin/globalization';

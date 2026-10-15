@@ -323,6 +323,14 @@ export class TimeOnly implements IComparable<TimeOnly>, IEquatable<TimeOnly> {
     }
 
     /**
+     * Returns the invariant time string used by JSON.stringify, preserving all ticks.
+     * @returns A time in HH:mm:ss.fffffff format without a date or timezone.
+     */
+    toJSON(): string {
+        return this.toString('O');
+    }
+
+    /**
      * Converts this instance to a long time string using the current culture.
      */
     toLongTimeString(): string {

@@ -18,6 +18,8 @@
 - DateOnly, TimeOnly, ISOWeek and fourteen concrete calendar implementations.
 - Standard/custom temporal formatting, UTF-16/UTF-8 buffer formatting and exact
   arithmetic checked against the pinned .NET 10.0.7 reference.
+- Automatic invariant JSON strings for DateTime, DateOnly, TimeOnly and TimeSpan,
+  preserving tick precision without exposing internal fields or raw bigint.
 - ESM/CommonJS direct entries, selective cultures and optional-calendar modules.
 - Native JavaScript timezone handling without a bundled timezone database.
 - Strict packed consumer checks, real-browser CI, bundle size budgets, release

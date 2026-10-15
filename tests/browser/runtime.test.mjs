@@ -94,6 +94,27 @@ test('date/time conversions and string transport retain single ticks', async ({ 
     expect(result).toEqual({ same: true, kind: 1, span: '1' });
 });
 
+test('JSON.stringify serializes nested temporal values independently of culture', async ({ page }) => {
+    const result = await page.evaluate(async () => {
+        const { DateTime, DateTimeKind, DateOnly, TimeOnly, TimeSpan, CultureInfo, loadLocale } = window.xobin;
+        CultureInfo.currentCulture = CultureInfo.loadCultureInfo('fa-IR', await loadLocale('fa-IR'));
+        return JSON.parse(JSON.stringify({
+            dateTime: new DateTime(2024, 3, 20, 13, 45, 0, DateTimeKind.utc).addTicks(1n),
+            date: new DateOnly(2024, 3, 20),
+            time: new TimeOnly(1n),
+            duration: new TimeSpan(-1n),
+            values: [DateTime.minValue, DateOnly.maxValue, TimeOnly.maxValue, TimeSpan.minValue],
+        }));
+    });
+    expect(result).toEqual({
+        dateTime: '2024-03-20T13:45:00.0000001Z',
+        date: '2024-03-20',
+        time: '00:00:00.0000001',
+        duration: '-00:00:00.0000001',
+        values: ['0001-01-01T00:00:00.0000000', '9999-12-31', '23:59:59.9999999', '-10675199.02:48:05.4775808'],
+    });
+});
+
 test('native local conversions preserve overlapping UTC instants', async ({ browser }) => {
     for (const timezoneId of ['UTC', 'Asia/Tehran', 'America/New_York', 'Europe/Berlin', 'Australia/Lord_Howe']) {
         const context = await browser.newContext({ timezoneId });

@@ -145,9 +145,31 @@ Do not mutate currentCulture to implement simultaneous requests in different cul
 
 ## JSON transport
 
-Do not serialize temporal instances directly. DateTime currently serializes as {},
-DateOnly exposes its internal day field, and bigint-based values can throw. Use an
-explicit wire representation with string ticks and a numeric Kind:
+All four temporal types implement toJSON, so JSON.stringify works directly on
+values, nested objects and arrays. DateTime uses invariant Gregorian O format
+with seven fractional digits and its Kind suffix; DateOnly uses yyyy-MM-dd;
+TimeOnly uses HH:mm:ss.fffffff; TimeSpan uses the signed constant c format.
+
+```ts
+import { DateTime, DateTimeKind, DateOnly, TimeOnly, TimeSpan } from '@xobin/globalization';
+
+const json = JSON.stringify({
+    dateTime: new DateTime(2024, 3, 20, 13, 45, 0, DateTimeKind.utc),
+    date: new DateOnly(2024, 3, 20),
+    time: new TimeOnly(13, 45),
+    duration: TimeSpan.fromMinutes(30),
+});
+// {"dateTime":"2024-03-20T13:45:00.0000000Z","date":"2024-03-20","time":"13:45:00.0000000","duration":"00:30:00"}
+```
+
+The text is independent of currentCulture. DateTime preserves its Kind: UTC has
+Z, local has the host offset, and unspecified has no suffix. It does not force
+local or unspecified values to UTC. JSON.parse returns strings, not temporal
+instances; parsing is still unavailable. Native Date cannot preserve all seven
+fractional digits.
+
+If your application needs to restore instances without parsing date/time text,
+use explicit fields instead, with string ticks and a numeric Kind:
 
 ```ts
 import { DateTime, DateTimeKind } from '@xobin/globalization';
@@ -160,8 +182,7 @@ const restored = new DateTime(BigInt(data.ticks), new DateTimeKind(data.kind));
 
 Validate untrusted wire data before constructing values. For DateOnly, dayNumber
 can be transported as a number and restored with fromDayNumber. TimeOnly and
-TimeSpan ticks must be strings to retain their complete precision. No new toJSON
-contract is introduced in this release.
+TimeSpan ticks must be strings to retain their complete precision.
 
 ## Local time
 

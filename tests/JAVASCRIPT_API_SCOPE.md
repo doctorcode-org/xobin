@@ -30,6 +30,16 @@ non-Gregorian culture depends on that culture's Gregorian patterns and names.
 Separating alternate calendar factories must preserve the required format data;
 removing all `calendarFormats` would change valid formatting results.
 
+## JavaScript JSON serialization
+
+The approved JavaScript adaptation adds `toJSON(): string` to DateTime, DateOnly,
+TimeOnly and TimeSpan. JSON.stringify uses invariant O text for date/time values
+and constant c text for intervals, preserving tick precision and interval signs.
+These methods are JavaScript serialization hooks, not additional .NET APIs.
+JSON.parse returns strings; parsing remains deferred. Explicit tick/day-number
+objects remain available as an application wire representation for reconstruction
+without a date/time parser.
+
 ## Verification after the removals
 
 The rebuilt ESM/CommonJS packages and TypeScript consumers pass. The full
